@@ -1,0 +1,394 @@
+[registers.ACTLR_EL1]
+write = "unsafe"
+[registers.ACTLR_EL2]
+write = "unsafe"
+[registers.AFSR0_EL1]
+write = "unsafe"
+[registers.AFSR0_EL2]
+write = "unsafe"
+[registers.AFSR1_EL1]
+write = "unsafe"
+[registers.AFSR1_EL2]
+write = "unsafe"
+[registers.AMAIR_EL1]
+write = "unsafe"
+[registers.AMAIR_EL2]
+write = "unsafe"
+
+[registers.APIAKeyHi_EL1]
+[registers.APIAKeyLo_EL1]
+[registers.CCSIDR_EL1]
+[registers.CLIDR_EL1]
+description = "Cache Level ID."
+[registers.CLIDR_EL1.field_descriptions]
+LoC = "Level of Coherence for the cache hierarchy."
+ICB = "Inner cache boundary level."
+LoUU = "Level of Unification Uniprocessor for the cache hierarchy."
+LoUIS = "Level of Unification Inner Shareable for the cache hierarchy."
+Ctype = "Cache type."
+
+[registers.CNTFRQ_EL0]
+write = "safe"
+
+[registers.CNTHCTL_EL2]
+write = "safe"
+
+[registers.CNTVOFF_EL2]
+write = "safe"
+
+[registers.CONTEXTIDR_EL1]
+write = "safe"
+
+[registers.CONTEXTIDR_EL2]
+write = "safe"
+
+[registers.CPACR_EL1]
+[registers.CPTR_EL2]
+[registers.CPTR_EL3.field_descriptions]
+TCPAC = "Trap EL2 accesses to CPTR_EL2/HCPTR, and EL2/EL1 accesses to CPACR_EL1/CPACR."
+TAM = "When FEAT_AMUv1 implemented trap accesses from EL2/EL1/EL0 to AMU registers."
+TTA = "Trap trace system register accesses."
+ESM = "When FEAT_SME is implemented, do not trap SME instructions and system registers accesses."
+TFP = "Trap Advanced SIMD instructions execution."
+EZ = "Do not trap execution of SVE instructions."
+
+[registers.CSSELR_EL1]
+write = "safe"
+[registers.CSSELR_EL1.field_descriptions]
+TnD = "Allocation Tag not Data bit, only valid if FEAT_MTE2 is implemented."
+InD = "Instruction not Data bit."
+
+[registers.CTR_EL0]
+description = "Cache Type Register."
+[registers.CTR_EL0.field_descriptions]
+DminLine = "Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE."
+
+[registers.DISR_EL1]
+write = "safe"
+
+[registers.DIT]
+description = "Data Independent Timing."
+write = "safe"
+[registers.DIT.field_descriptions]
+DIT = "Enable data independent timing."
+
+[registers.ELR_EL1]
+[registers.ELR_EL2]
+
+[registers.ESR_EL1]
+write = "safe"
+manual_debug = true
+
+[registers.ESR_EL2]
+write = "safe"
+manual_debug = true
+[registers.ESR_EL2.field_descriptions]
+IL = "32-bit instruction length."
+
+[registers.ESR_EL3]
+write = "safe"
+manual_debug = true
+[registers.ESR_EL3.field_descriptions]
+IL = "32-bit instruction length."
+
+[registers.FAR_EL1]
+[registers.FAR_EL2]
+[registers.GCR_EL1]
+[registers.GCSCR_EL1]
+description = "Guarded Control Stack Control register."
+[registers.GCSCR_EL1.field_descriptions]
+EXLOCKEN = "Exception state lock enable."
+
+[registers.GCSCR_EL2]
+description = "Guarded Control Stack Control register."
+[registers.GCSCR_EL2.field_descriptions]
+EXLOCKEN = "Exception state lock enable."
+
+[registers.HACR_EL2]
+[registers.HCR_EL2.field_descriptions]
+TGE = "Trap general exceptions to EL2."
+
+[registers.HCRX_EL2]
+description = "Extended Hypervisor Configuration Register."
+[registers.HCRX_EL2.field_descriptions]
+EnAS0 = "Do not trap execution of an ST64BV0 instruction at EL0 or EL1 to EL2."
+EnALS = "Do not trap execution of an LD64B or ST64B instruction at EL0 or EL1 to EL2."
+EnASR = "Do not trap execution of an ST64BV instruction at EL0 or EL1 to EL2."
+FnXS = "Determines the behavior of TLBI instructions affected by the XS attribute."
+FGTnXS = "Determines if the fine-grained traps in HFGITR_EL2 also apply to the corresponding TLBI maintenance instructions with the nXS qualifier."
+SMPME = "Controls mapping of the value of SMPRI_EL1.Priority for streaming execution priority at EL0 or EL1."
+TALLINT = "Traps MSR writes of ALLINT at EL1 using AArch64 to EL2."
+VINMI = "Enables signaling of virtual IRQ interrupts with Superpriority."
+VFNMI = "Enables signaling of virtual FIQ interrupts with Superpriority."
+CMOW = "Controls the required permissions for cache maintenance instructions at EL1 or EL0."
+MCE2 = "Controls Memory Copy and Memory Set exceptions generated from EL1."
+MSCEn = "Enables execution of Memory Set and Memory Copy instructions at EL1 or EL0."
+
+[registers.HDFGRTR2_EL2]
+[registers.HDFGWTR2_EL2]
+[registers.HFGITR2_EL2]
+[registers.HFGRTR2_EL2]
+[registers.HFGWTR_EL2]
+[registers.HPFAR_EL2]
+[registers.HSTR_EL2]
+write = "safe"
+
+[registers.ICC_SRE_EL1.field_descriptions]
+SRE = "Enable the system register interface."
+DFB = "Disable FIQ bypass."
+DIB = "Disable IRQ bypass."
+
+[registers.ICC_SRE_EL2.field_descriptions]
+SRE = "Enable the system register interface."
+DFB = "Disable FIQ bypass."
+DIB = "Disable IRQ bypass."
+Enable = "Enable lower exception level access."
+
+[registers.ICC_SRE_EL3]
+write_safety_doc = "The SRE bit of `icc_sre_el3` must not be changed from 1 to 0, as this can result in unpredictable behaviour."
+[registers.ICC_SRE_EL3.field_descriptions]
+SRE = "Enable the system register interface."
+DFB = "Disable FIQ bypass."
+DIB = "Disable IRQ bypass."
+Enable = "Enable lower exception level access."
+
+
+[registers.ICH_HCR_EL2]
+[registers.ICH_VMCR_EL2]
+write = "safe"
+
+[registers.ID_AA64DFR0_EL1]
+[registers.ID_AA64DFR1_EL1]
+[registers.ID_AA64MMFR0_EL1]
+[registers.ID_AA64MMFR1_EL1]
+[registers.ID_AA64MMFR2_EL1]
+[registers.ID_AA64MMFR3_EL1]
+[registers.ID_AA64PFR0_EL1]
+[registers.ID_AA64PFR1_EL1]
+[registers.ISR_EL1]
+write = "never"
+
+[registers.MAIR_EL1]
+[registers.MAIR_EL2]
+[registers.MAIR_EL3]
+write_safety_doc = "The caller must ensure that `value` is a correct and safe configuration value for the EL3 memory attribute indirection register."
+
+[registers.MDCCINT_EL1]
+write = "safe"
+
+[registers.MDCR_EL2]
+write = "safe"
+
+[registers.MDCR_EL3]
+write = "safe"
+[registers.MDCR_EL3.field_descriptions]
+RLTE = "Realm Trace enable. Enables tracing in Realm state."
+TPM = "Trap Performance Monitor register accesses"
+EnPM2 = "Do not trap various PMUv3p9 related system register accesses to EL3."
+NSPBE = "Non-secure Profiling Buffer Extended. Together with MDCR_EL3.NSPB, controls the Profiling Buffer owning Security state and accesses to Statistical Profiling and Profiling Buffer System registers from EL2 and EL1."
+SDD = "Set to one to disable AArch64 Secure self-hosted debug. Debug exceptions, other than Breakpoint Instruction exceptions, are disabled from all ELs in Secure state."
+SPME = "Secure Performance Monitors Enable. Controls event counting in Secure state and EL3."
+STE = "Secure Trace enable. Enables tracing in Secure state."
+TTRF = "Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and EL1 to EL3."
+SCCD = "Secure Cycle Counter Disable. Prohibits PMCCNTR_EL0 from counting in Secure state."
+NSTB_EN = "Enable TRBE register access for the security state that owns the buffer."
+NSTB_SS = "Together with MDCR_EL3.NSTBE determines which security state owns the trace buffer"
+NSTBE = "Non-secure Trace Buffer Extended. Together with MDCR_EL3.NSTB, controls the trace buffer owning Security state and accesses to trace buffer System registers from EL2 and EL1."
+MTPME = "Multi-threaded PMU Enable. Enables use of the PMEVTYPER<n>_EL0.MT bits."
+MCCD = "Monitor Cycle Counter Disable. Prohibits the Cycle Counter, PMCCNTR_EL0, from counting at EL3."
+MPMX = "Monitor Performance Monitors Extended control. In conjunction with MDCR_EL3.SPME, controls when event counters are enabled at EL3 and in other Secure Exception levels."
+EnPMSN = "Trap accesses to PMSNEVFR_EL1. Controls access to Statistical Profiling PMSNEVFR_EL1 System register from EL2 and EL1."
+EnPMS3 = "Enable access to SPE registers. When disabled, accesses to SPE registers generate a trap to EL3."
+
+[registers.MDSCR_EL1]
+write = "safe"
+
+[registers.MIDR_EL1]
+[registers.MPAM2_EL2]
+
+[registers.MPAM3_EL3]
+description = "Holds information to generate MPAM labels for memory requests when executing at EL3."
+[registers.MPAM3_EL3.field_descriptions]
+TRAPLOWER = "Trap direct accesses to MPAM System registers that are not UNDEFINED from all ELn lower than EL3."
+MPAMEN = "MPAM Enable. If set, MPAM information is output based on the MPAMn_ELx register for ELn according the MPAM configuration. If not set, the default PARTID and default PMG are output in MPAM information when executing at any ELn."
+
+[registers.MPAMHCR_EL2]
+[registers.MPAMIDR_EL1]
+description = "Indicates the maximum PARTID and PMG values supported in the implementation and the support for other optional features."
+[registers.MPAMIDR_EL1.field_descriptions]
+HAS_HCR = "Indicates support for MPAM virtualization."
+VPMR_MAX = "Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers."
+
+[registers.MPIDR_EL1]
+[registers.MPAMVPM0_EL2]
+[registers.MPAMVPM1_EL2]
+[registers.MPAMVPM2_EL2]
+[registers.MPAMVPM3_EL2]
+[registers.MPAMVPM4_EL2]
+[registers.MPAMVPM5_EL2]
+[registers.MPAMVPM6_EL2]
+[registers.MPAMVPM7_EL2]
+[registers.MPAMVPMV_EL2]
+[registers.PAR_EL1]
+
+[registers.PMCR_EL0]
+write = "safe"
+[registers.PMCR_EL0.field_descriptions]
+E = "Enable. Affected counters are enabled by PMCNTENSET_EL0."
+P = "Event counter reset. Reset all affected event counters PMEVCNTR<n>_EL0 to zero."
+C = "Cycle counter reset. Reset PMCCNTR_EL0 to zero."
+D = "Clock divider. If set PMCCNTR_EL0 counts once every 64 clock cycles."
+X = "Enable export of events in an IMPLEMENTATION DEFINED PMU event export bus. If set, export events where not prohibited."
+DP = "If set, cycle counting by PMCCNTR_EL0 is disabled in prohibited regions."
+
+[registers.RGSR_EL1]
+write = "safe"
+
+[registers.SCR_EL3.field_descriptions]
+NS = "Non-secure."
+IRQ = "Take physical IRQs at EL3."
+FIQ = "Take physical FIQs at EL3."
+EA = "Take external abort and SError exceptions at EL3."
+SMD = "Disable SMC instructions."
+HCE = "Enable HVC instructions."
+SIF = "Disable execution from non-secure memory."
+RW = "Enable AArch64 in lower ELs."
+ST = "Trap physical secure timer to EL3."
+TWI = "Trap WFI to EL3."
+TWE = "Trap WFE to EL3."
+TLOR = "Trap LOR register access to EL3."
+TERR = "Trap error record register access to EL3."
+APK = "Don't trap PAC key registers to EL3."
+API = "Don't trap PAuth instructions to EL3."
+EEL2 = "Enable Secure EL2."
+EASE = "Synchronous external aborts are taken as SErrors."
+NMEA = "Take SError exceptions at EL3."
+FIEN = "Enable fault injection at lower ELs."
+TID3 = "Trap ID group 3 registers to EL3."
+TID5 = "Trap ID group 5 register to EL3."
+EnSCXT = "Enable SCXT at lower ELs."
+ATA = "Enable memory tagging at lower ELs."
+FGTEn = "Enable fine-grained traps to EL2."
+ECVEn = "Enable access to CNTPOFF_EL2."
+TWEDEn = "Enable a configurable delay for WFE traps."
+TME = "Enable access to TME at lower ELs."
+AMVOFFEN = "Enable acivity monitors virtual offsets."
+EnAS0 = "Enable ST64BV0 at lower ELs."
+ADEn = "Enable ACCDATA_EL1 at lower ELs."
+HXEn = "Enable HCRX_EL2."
+GCSEn = "Enable gaurded control stack."
+TRNDR = "Trap RNDR and RNDRRS to EL3."
+EnTP2 = "Enable TPIDR2_EL0 at lower ELs."
+RCWMASKEn = "Enable RCW and RCWS mask registers at lower ELs."
+TCR2En = "Enable TCR2_ELx registers at lower ELs."
+SCTLR2En = "Enable SCTLR2_ELx rogisters at lower ELs."
+PIEn = "Enable permission indirection and overlay registers at lower ELs."
+AIEn = "Enable MAIR2_ELx and AMAIR2_ELx at lower ELs."
+D128En = "Enable 128-bit system registers at  lower ELs."
+GPF = "Route GPFs to EL3."
+MECEn = "Enable MECID registers at EL2."
+EnFPM = "Enable access to FPMR at lower ELs."
+TMEA = "Take synchronous external abort and physical SError exception to EL3."
+TWERR = "Trap writes to Error Record registers to EL3."
+PFAREn = "Enable access to physical fault address registers at lower ELs."
+SRMASKEn = "Enable access to mask registers at lower ELs."
+EnIDCP128 = "Enable implementation-defined 128-bit system registers."
+DSE = "A delegated SError exception is pending."
+EnDSE = "Enable delegated SError exceptions."
+FGTEn2 = "Enable fine-grained traps to EL2."
+HDBSSEn = "Enable HDBSSBR_EL2 and HDBSSPROD_EL2 registers at EL2."
+HACDBSEn = "Enable HACDBSBR_EL2 and HACDBSCONS_EL2 registers at EL2."
+NSE = "Non-secure realm world bit."
+
+[registers.SCTLR_EL1]
+[registers.SCTLR_EL1.field_descriptions]
+SPAN = "Do not set Privileged Access Never, on taking an exception to EL1."
+EnIB = "Enable pointer authentication using APIBKey_EL1."
+EnIA = "Enable pointer authentication using APIAKey_EL1."
+DSSBS = "Default PSTATE.SSBS value on Exception Entry."
+SPINTMASK = "SP Interrupt Mask enable."
+
+[registers.SCTLR_EL2]
+[registers.SCTLR_EL2.field_descriptions]
+SPAN = "Do not set Privileged Access Never, on taking an exception to EL2."
+EnIB = "Enable pointer authentication using APIBKey_EL1."
+EnIA = "Enable pointer authentication using APIAKey_EL1."
+DSSBS = "Default PSTATE.SSBS value on Exception Entry."
+SPINTMASK = "SP Interrupt Mask enable."
+
+[registers.SCTLR_EL3]
+write_safety_doc = "The caller must ensure that `value` is a correct and safe configuration value for the EL3 system control register."
+[registers.SCTLR_EL3.field_descriptions]
+M = "MMU enable for EL3 stage 1 address translation."
+A = "Alignment check enable."
+C = "Cacheability control, for data accesses at EL3."
+SA = "SP alignment check enable."
+I = "Cacheability control, for instruction accesses at EL3."
+WXN = "Write permission implies XN (Execute-never). For the EL3 translation regime, this bit can force all memory regions that are writable to be treated as XN."
+IESB = "Enable Implicit Error Synchronization events."
+EnIB = "Enable pointer authentication using APIBKey_EL1."
+EnIA = "Enable pointer authentication using APIAKey_EL1."
+
+[registers.SP_EL1]
+[registers.SP_EL2]
+[registers.SPSR_EL1]
+[registers.SPSR_EL2]
+[registers.SPSR_EL3]
+[registers.TCR_EL1]
+[registers.TCR_EL2]
+[registers.TCR_EL3]
+write_safety_doc = "The caller must ensure that `value` is a correct and safe configuration value for the EL3 translation control register."
+
+[registers.TCR2_EL1]
+[registers.TCR2_EL2]
+[registers.TFSR_EL1]
+write = "safe"
+
+[registers.TFSR_EL2]
+write = "safe"
+
+[registers.TFSRE0_EL1]
+write = "safe"
+
+[registers.TPIDR_EL0]
+[registers.TPIDR_EL1]
+[registers.TPIDR_EL2]
+[registers.TPIDRRO_EL0]
+[registers.TTBR0_EL1]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
+[registers.TTBR0_EL2]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
+[registers.TTBR0_EL3]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
+[registers.TTBR1_EL1]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
+[registers.TTBR1_EL2]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
+[registers.VBAR_EL1]
+write_safety_doc = "The base address must point to a valid exception vector."
+
+[registers.VBAR_EL2]
+write_safety_doc = "The base address must point to a valid exception vector."
+
+[registers.VDISR_EL2]
+write = "safe"
+
+[registers.VMPIDR_EL2]
+write = "safe"
+
+[registers.VPIDR_EL2]
+write = "safe"
+
+[registers.VSESR_EL2]
+write = "safe"
+
+[registers.VTCR_EL2]
+[registers.VTTBR_EL2]
+write_safety_doc = "The base address must point to a valid and properly aligned stage 2 translation table."
+
+[registers.ZCR_EL3]
