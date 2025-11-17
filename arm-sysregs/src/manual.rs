@@ -4,43 +4,48 @@
 //! Manually implemented methods for system register types.
 
 use super::{IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, MpidrEl1};
-use crate::{Esr, read_mpidr_el1};
+use crate::{EsrEl1, EsrEl2, EsrEl3, read_mpidr_el1};
 use core::fmt::{self, Debug, Formatter};
 
-impl Debug for Esr {
+impl Debug for EsrEl1 {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "Esr({:#x})", self.0)
+    }
+}
+
+impl Debug for EsrEl2 {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "Esr({:#x})", self.0)
+    }
+}
+
+impl Debug for EsrEl3 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "Esr({:#x})", self.0)
     }
 }
 
 impl IdAa64mmfr1El1 {
-    const VH_SHIFT: u64 = 8;
-    const VH_MASK: u64 = 0b1111;
-    const VH_SUPPORTED: u64 = 0b0001;
-
-    const HCX_SHIFT: u64 = 40;
-    const HCX_MASK: u64 = 0b1111;
-    const HCX_SUPPORTED: u64 = 0b0001;
+    const VH_SUPPORTED: u8 = 0b0001;
+    const HCX_SUPPORTED: u8 = 0b0001;
 
     /// Indicates presence of FEAT_VHE.
     pub fn is_feat_vhe_present(self) -> bool {
-        (self.bits() >> Self::VH_SHIFT) & Self::VH_MASK >= Self::VH_SUPPORTED
+        self.vh() >= Self::VH_SUPPORTED
     }
 
     /// Indicates presence of FEAT_HCX.
     pub fn is_feat_hcx_present(self) -> bool {
-        (self.bits() >> Self::HCX_SHIFT) & Self::HCX_MASK >= Self::HCX_SUPPORTED
+        self.hcx() >= Self::HCX_SUPPORTED
     }
 }
 
 impl IdAa64mmfr2El1 {
-    const CCIDX_SHIFT: u64 = 20;
-    const CCIDX_MASK: u64 = 0b1111;
-    const CCIDX_64_BIT: u64 = 0b0001;
+    const CCIDX_64_BIT: u8 = 0b0001;
 
     /// Checks whether 64-bit format is implemented for all levels of the CCSIDR_EL1.
     pub fn has_64_bit_ccsidr_el1(self) -> bool {
-        (self.bits() >> Self::CCIDX_SHIFT) & Self::CCIDX_MASK == Self::CCIDX_64_BIT
+        self.ccidx() == Self::CCIDX_64_BIT
     }
 }
 
