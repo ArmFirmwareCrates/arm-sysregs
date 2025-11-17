@@ -3,4 +3,4 @@
 
 [workspace]
 resolver = "3"
-members = ["arm-sysregs"]
+members = ["arm-sysregs", "generate-sysregs"]
