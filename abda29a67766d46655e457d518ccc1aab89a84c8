@@ -16,6 +16,24 @@
       "message": "Why remove this header?",
       "revId": "abda29a67766d46655e457d518ccc1aab89a84c8",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92544c0f_29dd1cef",
+        "filename": "Cargo.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-18T14:56:47Z",
+      "side": 0,
+      "message": "I moved this file and created a new one. Added a header to this too.",
+      "parentUuid": "fbc3798a_ee02f747",
+      "revId": "abda29a67766d46655e457d518ccc1aab89a84c8",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccb0f2b_ffaa0192",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-18T14:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f973380_2419b989",
+      "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d8053cc_58b46efa",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "258d1fee_20873e01",
+        "filename": "AUTHORS",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-18T14:56:47Z",
+      "side": 1,
+      "message": "Done, but in that case who are \u0027The arm-sysregs Contributors\u0027 referred to in the copyright headers?",
+      "parentUuid": "1d8053cc_58b46efa",
+      "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9986b1f_4a2683d4",
         "filename": "arm-sysregs/Cargo.toml",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2025-11-18T14:13:36Z",
       "side": 1,
       "message": "Just to double check, this code was BSD-3 in the source of the copy, is it okay to move it under the new license?",
+      "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bff78ca_054a023c",
+        "filename": "arm-sysregs/Cargo.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-18T14:56:47Z",
+      "side": 1,
+      "message": "It should be fine for the Google-contributed parts, is it fine for the Arm-contributed parts?",
+      "parentUuid": "f9986b1f_4a2683d4",
       "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
