@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d22c41_63981a28",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-18T12:44:27Z",
+      "side": 1,
+      "message": "```suggestion\n    name.replace([\u0027:\u0027, \u0027[\u0027], \"_\")\n```\n\nChained `replace()` can be collapsed (same below in `uppercase_name()`).",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 26
+      },
+      "revId": "51bc9adfd16e4c0b13c27d8ffa68da50fc796fee",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}

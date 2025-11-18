@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35a7060_8136a076",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-18T12:44:27Z",
+      "side": 1,
+      "message": "```suggestion\n            RegisterEntry::Register(register) \u003d\u003e filter\n                .iter()\n                .any(|filter_entry| register.name \u003d\u003d **filter_entry)\n                .then(|| RegisterInfo::from_json_register(register)),\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "973b41c77f7a9c53f11ae3bf343f835492cdc99e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8add2c59_d90c192e",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-18T12:44:27Z",
+      "side": 1,
+      "message": "In which case could a clash occur? I would at least add a log to make sure that generation is not getting rid of important fields.",
+      "revId": "973b41c77f7a9c53f11ae3bf343f835492cdc99e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1e1b13_7cccc222",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-18T12:44:27Z",
+      "side": 1,
+      "message": "These writes can be moved to the `if first` true case on line 204, and the outer if can be removed.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 64
+      },
+      "revId": "973b41c77f7a9c53f11ae3bf343f835492cdc99e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
