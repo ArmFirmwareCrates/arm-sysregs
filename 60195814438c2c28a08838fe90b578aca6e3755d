@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fe609c_1ea07b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-19T11:19:33Z",
+      "side": 1,
+      "message": "@qwandor@google.com there are couple CPU extension related patches in RF-A which changes the included sysregs crate. It would make our lives easier, if we merge those patches first and then update this one.",
+      "revId": "60195814438c2c28a08838fe90b578aca6e3755d",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
