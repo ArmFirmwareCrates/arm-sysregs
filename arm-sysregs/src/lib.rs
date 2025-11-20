@@ -159,11 +159,6 @@ bitflags! {
     }
 }
 
-impl Esr {
-    /// Mask for the parts of an ESR value containing the opcode.
-    pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
-}
-
 bitflags! {
     /// Guarded Control Stack Control register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq, Default)]
@@ -862,49 +857,6 @@ impl Spsr {
     const EL_MASK: u64 = 0x3;
     const EL_SHIFT: usize = 2;
     const SP_MASK: u64 = 0x1;
-
-    /// AArch64 execution state, EL0.
-    pub const M_AARCH64_EL0: Self = Self::from_bits_retain(0b00000);
-    /// AArch64 execution state, EL1 with SP_EL0.
-    pub const M_AARCH64_EL1T: Self = Self::from_bits_retain(0b00100);
-    /// AArch64 execution state, EL1 with SP_EL1.
-    pub const M_AARCH64_EL1H: Self = Self::from_bits_retain(0b00101);
-    /// AArch64 execution state, EL2 with SP_EL0.
-    pub const M_AARCH64_EL2T: Self = Self::from_bits_retain(0b01000);
-    /// AArch64 execution state, EL2 with SP_EL2.
-    pub const M_AARCH64_EL2H: Self = Self::from_bits_retain(0b01001);
-    /// AArch64 execution state, EL3 with SP_EL0.
-    pub const M_AARCH64_EL3T: Self = Self::from_bits_retain(0b01100);
-    /// AArch64 execution state, EL3 with SP_EL3.
-    pub const M_AARCH64_EL3H: Self = Self::from_bits_retain(0b01101);
-
-    /// Exception was taken with PSTATE.SP set to SP_EL0.
-    pub const SP_EL0: Self = Self::from_bits_retain(0);
-    /// Exception was taken with PSTATE.SP set to SP_ELx.
-    pub const SP_ELX: Self = Self::from_bits_retain(1);
-
-    /// All of the N, Z, C and V bits.
-    pub const NZCV: Self = Spsr::V.union(Spsr::C).union(Spsr::Z).union(Spsr::N);
-
-    /// Returns the value of the EL field.
-    pub const fn exception_level(self) -> ExceptionLevel {
-        match (self.bits() >> Self::EL_SHIFT) & Self::EL_MASK {
-            0 => ExceptionLevel::El0,
-            1 => ExceptionLevel::El1,
-            2 => ExceptionLevel::El2,
-            3 => ExceptionLevel::El3,
-            _ => unreachable!(),
-        }
-    }
-
-    /// Returns the value of the SP field.
-    pub const fn stack_pointer(self) -> StackPointer {
-        match self.bits() & Self::SP_MASK {
-            0 => StackPointer::El0,
-            1 => StackPointer::ElX,
-            _ => unreachable!(),
-        }
-    }
 }
 
 read_write_sysreg!(actlr_el1, u64, safe_read, safe_write, fake::SYSREGS);
@@ -1049,38 +1001,3 @@ read_write_sysreg!(vsesr_el2: s3_4_c5_c2_3, u64, safe_read, safe_write, fake::SY
 read_write_sysreg!(vtcr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vttbr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(zcr_el3: s3_6_c1_c2_0, u64, safe_read, safe_write, fake::SYSREGS);
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn debug_mpidr_el1() {
-        assert_eq!(format!("{:?}", MpidrEl1::empty()), "MpidrEl1(0x0)");
-        assert_eq!(
-            format!("{:?}", MpidrEl1::MT | MpidrEl1::U),
-            "MpidrEl1(MT | U)"
-        );
-        assert_eq!(
-            format!("{:?}", MpidrEl1::from_bits_retain(0x12_4134_5678)),
-            "MpidrEl1(MT | U | 0x1200345678)"
-        );
-    }
-
-    #[test]
-    fn debug_spsr() {
-        assert_eq!(format!("{:?}", Spsr::empty()), "Spsr(0x0)");
-        assert_eq!(format!("{:?}", Spsr::NZCV), "Spsr(V | C | Z | N)");
-        assert_eq!(format!("{:?}", Spsr::M_AARCH64_EL3H), "Spsr(0xd)");
-    }
-
-    #[test]
-    fn debug_esr() {
-        assert_eq!(format!("{:?}", Esr::empty()), "Esr(0x0)");
-        assert_eq!(format!("{:?}", Esr::IL), "Esr(0x2000000)");
-        assert_eq!(
-            format!("{:?}", Esr::ISS_SYSREG_OPCODE_MASK),
-            "Esr(0x3ffc1e)"
-        );
-    }
-}
