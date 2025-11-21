@@ -4,10 +4,49 @@
 //! Manually implemented methods for system register types.
 
 use crate::{
-    EsrEl1, EsrEl2, EsrEl3, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, MpidrEl1, SpsrEl1,
-    SpsrEl2, SpsrEl3, read_mpidr_el1,
+    ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr1El1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1, MpidrEl1,
+    SpsrEl1, SpsrEl2, SpsrEl3, read_mpidr_el1,
 };
 use core::fmt::{self, Debug, Formatter};
+
+impl ClidrEl1 {
+    /// Returns the inner cache boundary level.
+    pub fn icb_level(self) -> Option<CacheLevel> {
+        let icb = self.icb();
+        if icb != 0 {
+            Some(CacheLevel(icb as u8))
+        } else {
+            None
+        }
+    }
+
+    /// Returns Cache Type [1-7] fields.
+    pub fn cache_type(self, level: CacheLevel) -> CacheType {
+        self.ctype(level.level().into()).try_into().unwrap()
+    }
+}
+
+impl CsselrEl1 {
+    /// Creates new instance. TnD is only valid if FEAT_MTE2 is implemented.
+    pub fn new(tnd: bool, level: CacheLevel, ind: bool) -> Self {
+        let mut instance = Self::from_bits_retain(u64::from(level) << 1);
+
+        if ind {
+            instance |= Self::IND;
+        } else if tnd {
+            // TnD is only valid if InD is not set.
+            instance |= Self::TND;
+        }
+
+        instance
+    }
+
+    /// Returns the cache level of requested cache.
+    pub fn cache_level(self) -> CacheLevel {
+        CacheLevel(self.level() + 1)
+    }
+}
 
 impl EsrEl1 {
     /// Mask for the parts of an ESR value containing the opcode.
@@ -39,6 +78,49 @@ impl EsrEl3 {
 impl Debug for EsrEl3 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl3({:#x})", self.0)
+    }
+}
+
+impl IdAa64dfr0El1 {
+    const SYS_REG_TRACE_SUPPORTED: u8 = 1;
+    const SPE_SUPPORTED: u8 = 1;
+    const TRF_SUPPORTED: u8 = 1;
+    const TRBE_NOT_SUPPORTED: u8 = 0;
+    const MTPMU_SUPPORTED: u8 = 1;
+
+    /// Trace support. Indicates whether System register interface to a PE trace unit is
+    /// implemented.
+    pub fn is_feat_sys_reg_trace_present(self) -> bool {
+        self.tracever() == Self::SYS_REG_TRACE_SUPPORTED
+    }
+
+    /// Indicates whether Armv8.1 Statistical Profiling Extension is implemented.
+    pub fn is_feat_spe_present(self) -> bool {
+        self.pmsver() >= Self::SPE_SUPPORTED
+    }
+
+    /// Indicates whether Armv8.4 Self-hosted Trace Extension is implemented.
+    pub fn is_feat_trf_present(self) -> bool {
+        self.tracefilt() == Self::TRF_SUPPORTED
+    }
+
+    /// Indicates whether Trace Buffer Extension is implemented.
+    pub fn is_feat_trbe_present(self) -> bool {
+        self.tracebuffer() != Self::TRBE_NOT_SUPPORTED
+    }
+
+    /// Indicates whether Multi Threaded PMU Extension is implemented.
+    pub fn is_feat_mtpmu_present(self) -> bool {
+        self.mtpmu() == Self::MTPMU_SUPPORTED
+    }
+}
+
+impl IdAa64dfr1El1 {
+    const EBEP_IMPLEMENTED: u8 = 0b1;
+
+    /// Indicates whether FEAT_EBEP is implemented.
+    pub fn is_feat_ebep_present(self) -> bool {
+        self.ebep() == Self::EBEP_IMPLEMENTED
     }
 }
 
@@ -77,7 +159,95 @@ impl IdAa64mmfr3El1 {
     }
 }
 
+impl IdAa64pfr0El1 {
+    const SVE_SUPPORTED: u8 = 1;
+    const MPAM_SUPPORTED: u8 = 1;
+
+    /// Indicates whether SVE is implemented.
+    pub fn is_feat_sve_present(self) -> bool {
+        self.sve() == Self::SVE_SUPPORTED
+    }
+
+    /// Indicates whether MPAM Extension is implemented.
+    pub fn is_feat_mpam_present(self) -> bool {
+        self.mpam() == Self::MPAM_SUPPORTED
+    }
+}
+
+impl IdAa64pfr1El1 {
+    const SSBS_IMPLEMENTED: u8 = 0b1;
+    const MTE_IMPLEMENTED: u8 = 0b0001;
+    const MTE2_IMPLEMENTED: u8 = 0b0010;
+    const NMI_IMPLEMENTED: u8 = 0b1;
+    const GCS_IMPLEMENTED: u8 = 0b1;
+
+    /// Indicates whether FEAT_SSBS is implemented.
+    pub fn is_feat_ssbs_present(self) -> bool {
+        self.ssbs() >= Self::SSBS_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_MTE is implemented.
+    pub fn is_feat_mte_present(self) -> bool {
+        self.mte() >= Self::MTE_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_MTE2 is implemented.
+    pub fn is_feat_mte2_present(self) -> bool {
+        self.mte() >= Self::MTE2_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_NMI is implemented.
+    pub fn is_feat_nmi_present(self) -> bool {
+        self.nmi() == Self::NMI_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_GCS is implemented.
+    pub fn is_feat_gcs_present(self) -> bool {
+        self.gcs() == Self::GCS_IMPLEMENTED
+    }
+}
+
+impl MdcrEl3 {
+    /// Set to 0b10 to disable AArch32 Secure self-hosted privileged debug from S-EL1.
+    pub const SPD32: Self = Self::from_bits_retain(0b10 << 14);
+    /// Non-secure state owns the Profiling Buffer. Profiling is disabled in Secure and Realm
+    /// states.
+    pub const NSPB_NS: Self = Self::from_bits_retain(0b11 << 12);
+}
+
+// TODO: Generate these masks and shifts automatically.
+impl MidrEl1 {
+    /// Mask for the Revision field.
+    pub const REVISION_MASK: u64 = 0xf << Self::REVISION_SHIFT;
+    /// Position of the lowest bit in the Revision field.
+    pub const REVISION_SHIFT: u32 = 0;
+
+    /// Mask for the Variant field.
+    pub const VARIANT_MASK: u64 = 0xf << Self::VARIANT_SHIFT;
+    /// Position of the lowest bit in the Variant field.
+    pub const VARIANT_SHIFT: u32 = 20;
+}
+
 impl MpidrEl1 {
+    /// Mask for the Aff0 field.
+    pub const AFF0_MASK: u64 = 0xff << Self::AFF0_SHIFT;
+    /// Mask for the Aff1 field.
+    pub const AFF1_MASK: u64 = 0xff << Self::AFF1_SHIFT;
+    /// Mask for the Aff2 field.
+    pub const AFF2_MASK: u64 = 0xff << Self::AFF2_SHIFT;
+    /// Mask for the Aff3 field.
+    pub const AFF3_MASK: u64 = 0xff << Self::AFF3_SHIFT;
+    /// Size in bits of the affinity fields.
+    pub const AFFINITY_BITS: usize = 8;
+    /// Position of the lowest bit in the Aff0 field.
+    pub const AFF0_SHIFT: u8 = 0;
+    /// Position of the lowest bit in the Aff1 field.
+    pub const AFF1_SHIFT: u8 = 8;
+    /// Position of the lowest bit in the Aff2 field.
+    pub const AFF2_SHIFT: u8 = 16;
+    /// Position of the lowest bit in the Aff3 field.
+    pub const AFF3_SHIFT: u8 = 32;
+
     /// Converts a PSCI MPIDR value into the equivalent `MpidrEL1` value.
     ///
     /// This reads the MT and U bits from the current CPU's MPIDR_EL1 value and combines them with
@@ -142,10 +312,10 @@ pub enum CacheType {
     Unified = 0b100,
 }
 
-impl TryFrom<u64> for CacheType {
+impl TryFrom<u8> for CacheType {
     type Error = ();
 
-    fn try_from(value: u64) -> Result<Self, Self::Error> {
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
         Ok(match value {
             0b000 => Self::NoCache,
             0b001 => Self::InstructionOnly,
@@ -174,9 +344,15 @@ impl CacheLevel {
     }
 }
 
-impl From<CacheLevel> for u64 {
+impl From<CacheLevel> for u32 {
     fn from(value: CacheLevel) -> Self {
         (value.0 - 1).into()
+    }
+}
+
+impl From<CacheLevel> for u64 {
+    fn from(value: CacheLevel) -> Self {
+        u32::from(value).into()
     }
 }
 
