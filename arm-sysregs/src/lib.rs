@@ -265,17 +265,17 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CptrEl3: u64 {
-        /// `EZ` bit.
+        /// Do not trap execution of SVE instructions.
         const EZ = 1 << 8;
-        /// `TFP` bit.
+        /// Trap Advanced SIMD instructions execution.
         const TFP = 1 << 10;
-        /// `ESM` bit.
+        /// When FEAT_SME is implemented, do not trap SME instructions and system registers accesses.
         const ESM = 1 << 12;
-        /// `TTA` bit.
+        /// Trap trace system register accesses.
         const TTA = 1 << 20;
-        /// `TAM` bit.
+        /// When FEAT_AMUv1 implemented trap accesses from EL2/EL1/EL0 to AMU registers.
         const TAM = 1 << 30;
-        /// `TCPAC` bit.
+        /// Trap EL2 accesses to CPTR_EL2/HCPTR, and EL2/EL1 accesses to CPACR_EL1/CPACR.
         const TCPAC = 1 << 31;
     }
 }
@@ -285,9 +285,9 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CsselrEl1: u64 {
-        /// `InD` bit.
+        /// Instruction not Data bit.
         const IND = 1 << 0;
-        /// `TnD` bit.
+        /// Allocation Tag not Data bit, only valid if FEAT_MTE2 is implemented.
         const TND = 1 << 4;
     }
 }
@@ -301,6 +301,8 @@ impl CsselrEl1 {
 
 bitflags! {
     /// CTR_EL0 system register value.
+    ///
+    /// Cache Type Register.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CtrEl0: u64 {
@@ -325,6 +327,8 @@ impl CtrEl0 {
     }
 
     /// Returns the value of the `DminLine` field.
+    ///
+    /// Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE.
     pub const fn dminline(self) -> u8 {
         (self.bits() >> 16) as u8 & 0b1111
     }
@@ -382,10 +386,12 @@ impl DisrEl1 {
 
 bitflags! {
     /// DIT system register value.
+    ///
+    /// Data Independent Timing.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dit: u64 {
-        /// `DIT` bit.
+        /// Enable data independent timing.
         const DIT = 1 << 24;
     }
 }
@@ -452,7 +458,7 @@ bitflags! {
     #[derive(Clone, Copy, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct EsrEl2: u64 {
-        /// `IL` bit.
+        /// 32-bit instruction length.
         const IL = 1 << 25;
     }
 }
@@ -479,7 +485,7 @@ bitflags! {
     #[derive(Clone, Copy, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct EsrEl3: u64 {
-        /// `IL` bit.
+        /// 32-bit instruction length.
         const IL = 1 << 25;
     }
 }
@@ -550,6 +556,8 @@ impl GcrEl1 {
 
 bitflags! {
     /// GCSCR_EL1 system register value.
+    ///
+    /// Guarded Control Stack Control register.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GcscrEl1: u64 {
@@ -557,7 +565,7 @@ bitflags! {
         const PCRSEL = 1 << 0;
         /// `RVCHKEN` bit.
         const RVCHKEN = 1 << 5;
-        /// `EXLOCKEN` bit.
+        /// Exception state lock enable.
         const EXLOCKEN = 1 << 6;
         /// `PUSHMEn` bit.
         const PUSHMEN = 1 << 8;
@@ -568,6 +576,8 @@ bitflags! {
 
 bitflags! {
     /// GCSCR_EL2 system register value.
+    ///
+    /// Guarded Control Stack Control register.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GcscrEl2: u64 {
@@ -575,7 +585,7 @@ bitflags! {
         const PCRSEL = 1 << 0;
         /// `RVCHKEN` bit.
         const RVCHKEN = 1 << 5;
-        /// `EXLOCKEN` bit.
+        /// Exception state lock enable.
         const EXLOCKEN = 1 << 6;
         /// `PUSHMEn` bit.
         const PUSHMEN = 1 << 8;
@@ -586,32 +596,34 @@ bitflags! {
 
 bitflags! {
     /// HCRX_EL2 system register value.
+    ///
+    /// Extended Hypervisor Configuration Register.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct HcrxEl2: u64 {
-        /// `EnAS0` bit.
+        /// Do not trap execution of an ST64BV0 instruction at EL0 or EL1 to EL2.
         const ENAS0 = 1 << 0;
-        /// `EnALS` bit.
+        /// Do not trap execution of an LD64B or ST64B instruction at EL0 or EL1 to EL2.
         const ENALS = 1 << 1;
-        /// `EnASR` bit.
+        /// Do not trap execution of an ST64BV instruction at EL0 or EL1 to EL2.
         const ENASR = 1 << 2;
-        /// `FnXS` bit.
+        /// Determines the behavior of TLBI instructions affected by the XS attribute.
         const FNXS = 1 << 3;
-        /// `FGTnXS` bit.
+        /// Determines if the fine-grained traps in HFGITR_EL2 also apply to the corresponding TLBI maintenance instructions with the nXS qualifier.
         const FGTNXS = 1 << 4;
-        /// `SMPME` bit.
+        /// Controls mapping of the value of SMPRI_EL1.Priority for streaming execution priority at EL0 or EL1.
         const SMPME = 1 << 5;
-        /// `TALLINT` bit.
+        /// Traps MSR writes of ALLINT at EL1 using AArch64 to EL2.
         const TALLINT = 1 << 6;
-        /// `VINMI` bit.
+        /// Enables signaling of virtual IRQ interrupts with Superpriority.
         const VINMI = 1 << 7;
-        /// `VFNMI` bit.
+        /// Enables signaling of virtual FIQ interrupts with Superpriority.
         const VFNMI = 1 << 8;
-        /// `CMOW` bit.
+        /// Controls the required permissions for cache maintenance instructions at EL1 or EL0.
         const CMOW = 1 << 9;
-        /// `MCE2` bit.
+        /// Controls Memory Copy and Memory Set exceptions generated from EL1.
         const MCE2 = 1 << 10;
-        /// `MSCEn` bit.
+        /// Enables execution of Memory Set and Memory Copy instructions at EL1 or EL0.
         const MSCEN = 1 << 11;
         /// `TCR2En` bit.
         const TCR2EN = 1 << 14;
@@ -721,7 +733,7 @@ bitflags! {
         const TTLB = 1 << 25;
         /// `TVM` bit.
         const TVM = 1 << 26;
-        /// `TGE` bit.
+        /// Trap general exceptions to EL2.
         const TGE = 1 << 27;
         /// `TDZ` bit.
         const TDZ = 1 << 28;
@@ -820,11 +832,11 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IccSreEl1: u64 {
-        /// `SRE` bit.
+        /// Enable the system register interface.
         const SRE = 1 << 0;
-        /// `DFB` bit.
+        /// Disable FIQ bypass.
         const DFB = 1 << 1;
-        /// `DIB` bit.
+        /// Disable IRQ bypass.
         const DIB = 1 << 2;
     }
 }
@@ -834,13 +846,13 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IccSreEl2: u64 {
-        /// `SRE` bit.
+        /// Enable the system register interface.
         const SRE = 1 << 0;
-        /// `DFB` bit.
+        /// Disable FIQ bypass.
         const DFB = 1 << 1;
-        /// `DIB` bit.
+        /// Disable IRQ bypass.
         const DIB = 1 << 2;
-        /// `Enable` bit.
+        /// Enable lower exception level access.
         const ENABLE = 1 << 3;
     }
 }
@@ -850,13 +862,13 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IccSreEl3: u64 {
-        /// `SRE` bit.
+        /// Enable the system register interface.
         const SRE = 1 << 0;
-        /// `DFB` bit.
+        /// Disable FIQ bypass.
         const DFB = 1 << 1;
-        /// `DIB` bit.
+        /// Disable IRQ bypass.
         const DIB = 1 << 2;
-        /// `Enable` bit.
+        /// Enable lower exception level access.
         const ENABLE = 1 << 3;
     }
 }
@@ -1682,7 +1694,7 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MdcrEl3: u64 {
-        /// `RLTE` bit.
+        /// Realm Trace enable. Enables tracing in Realm state.
         const RLTE = 1 << 0;
         /// `EPMADE` bit.
         const EPMADE = 1 << 2;
@@ -1690,23 +1702,23 @@ bitflags! {
         const ETADE = 1 << 3;
         /// `EDADE` bit.
         const EDADE = 1 << 4;
-        /// `TPM` bit.
+        /// Trap Performance Monitor register accesses
         const TPM = 1 << 6;
-        /// `EnPM2` bit.
+        /// Do not trap various PMUv3p9 related system register accesses to EL3.
         const ENPM2 = 1 << 7;
         /// `TDA` bit.
         const TDA = 1 << 9;
         /// `TDOSA` bit.
         const TDOSA = 1 << 10;
-        /// `NSPBE` bit.
+        /// Non-secure Profiling Buffer Extended. Together with MDCR_EL3.NSPB, controls the Profiling Buffer owning Security state and accesses to Statistical Profiling and Profiling Buffer System registers from EL2 and EL1.
         const NSPBE = 1 << 11;
-        /// `SDD` bit.
+        /// Set to one to disable AArch64 Secure self-hosted debug. Debug exceptions, other than Breakpoint Instruction exceptions, are disabled from all ELs in Secure state.
         const SDD = 1 << 16;
-        /// `SPME` bit.
+        /// Secure Performance Monitors Enable. Controls event counting in Secure state and EL3.
         const SPME = 1 << 17;
-        /// `STE` bit.
+        /// Secure Trace enable. Enables tracing in Secure state.
         const STE = 1 << 18;
-        /// `TTRF` bit.
+        /// Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and EL1 to EL3.
         const TTRF = 1 << 19;
         /// `EDAD` bit.
         const EDAD = 1 << 20;
@@ -1714,19 +1726,19 @@ bitflags! {
         const EPMAD = 1 << 21;
         /// `ETAD` bit.
         const ETAD = 1 << 22;
-        /// `SCCD` bit.
+        /// Secure Cycle Counter Disable. Prohibits PMCCNTR_EL0 from counting in Secure state.
         const SCCD = 1 << 23;
-        /// `NSTBE` bit.
+        /// Non-secure Trace Buffer Extended. Together with MDCR_EL3.NSTB, controls the trace buffer owning Security state and accesses to trace buffer System registers from EL2 and EL1.
         const NSTBE = 1 << 26;
         /// `TDCC` bit.
         const TDCC = 1 << 27;
-        /// `MTPME` bit.
+        /// Multi-threaded PMU Enable. Enables use of the PMEVTYPER<n>_EL0.MT bits.
         const MTPME = 1 << 28;
-        /// `MCCD` bit.
+        /// Monitor Cycle Counter Disable. Prohibits the Cycle Counter, PMCCNTR_EL0, from counting at EL3.
         const MCCD = 1 << 34;
-        /// `MPMX` bit.
+        /// Monitor Performance Monitors Extended control. In conjunction with MDCR_EL3.SPME, controls when event counters are enabled at EL3 and in other Secure Exception levels.
         const MPMX = 1 << 35;
-        /// `EnPMSN` bit.
+        /// Trap accesses to PMSNEVFR_EL1. Controls access to Statistical Profiling PMSNEVFR_EL1 System register from EL2 and EL1.
         const ENPMSN = 1 << 36;
         /// `E3BREW` bit.
         const E3BREW = 1 << 37;
@@ -1734,7 +1746,7 @@ bitflags! {
         const E3BREC = 1 << 38;
         /// `EnTB2` bit.
         const ENTB2 = 1 << 39;
-        /// `EnPMS3` bit.
+        /// Enable access to SPE registers. When disabled, accesses to SPE registers generate a trap to EL3.
         const ENPMS3 = 1 << 42;
         /// `EBWE` bit.
         const EBWE = 1 << 43;
@@ -1913,10 +1925,12 @@ bitflags! {
 
 bitflags! {
     /// MPAMIDR_EL1 system register value.
+    ///
+    /// Indicates the maximum PARTID and PMG values supported in the implementation and the support for other optional features.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MpamidrEl1: u64 {
-        /// `HAS_HCR` bit.
+        /// Indicates support for MPAM virtualization.
         const HAS_HCR = 1 << 17;
         /// `HAS_ALT_ID` bit.
         const HAS_ALT_ID = 1 << 21;
@@ -1944,6 +1958,8 @@ impl MpamidrEl1 {
     }
 
     /// Returns the value of the `VPMR_MAX` field.
+    ///
+    /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
     pub const fn vpmr_max(self) -> u8 {
         (self.bits() >> 18) as u8 & 0b111
     }
@@ -2333,17 +2349,17 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct PmcrEl0: u64 {
-        /// `E` bit.
+        /// Enable. Affected counters are enabled by PMCNTENSET_EL0.
         const E = 1 << 0;
-        /// `P` bit.
+        /// Event counter reset. Reset all affected event counters PMEVCNTR<n>_EL0 to zero.
         const P = 1 << 1;
-        /// `C` bit.
+        /// Cycle counter reset. Reset PMCCNTR_EL0 to zero.
         const C = 1 << 2;
-        /// `D` bit.
+        /// Clock divider. If set PMCCNTR_EL0 counts once every 64 clock cycles.
         const D = 1 << 3;
-        /// `X` bit.
+        /// Enable export of events in an IMPLEMENTATION DEFINED PMU event export bus. If set, export events where not prohibited.
         const X = 1 << 4;
-        /// `DP` bit.
+        /// If set, cycle counting by PMCCNTR_EL0 is disabled in prohibited regions.
         const DP = 1 << 5;
         /// `LC` bit.
         const LC = 1 << 6;
@@ -2571,7 +2587,7 @@ bitflags! {
         const IESB = 1 << 21;
         /// `EIS` bit.
         const EIS = 1 << 22;
-        /// `SPAN` bit.
+        /// Do not set Privileged Access Never, on taking an exception to EL1.
         const SPAN = 1 << 23;
         /// `UCI` bit.
         const UCI = 1 << 26;
@@ -2581,9 +2597,9 @@ bitflags! {
         const NTLSMD = 1 << 28;
         /// `LSMAOE` bit.
         const LSMAOE = 1 << 29;
-        /// `EnIB` bit.
+        /// Enable pointer authentication using APIBKey_EL1.
         const ENIB = 1 << 30;
-        /// `EnIA` bit.
+        /// Enable pointer authentication using APIAKey_EL1.
         const ENIA = 1 << 31;
         /// `CMOW` bit.
         const CMOW = 1 << 32;
@@ -2601,7 +2617,7 @@ bitflags! {
         const ATA0 = 1 << 42;
         /// `ATA` bit.
         const ATA = 1 << 43;
-        /// `DSSBS` bit.
+        /// Default PSTATE.SSBS value on Exception Entry.
         const DSSBS = 1 << 44;
         /// `TWEDEn` bit.
         const TWEDEN = 1 << 45;
@@ -2621,7 +2637,7 @@ bitflags! {
         const ENTP2 = 1 << 60;
         /// `NMI` bit.
         const NMI = 1 << 61;
-        /// `SPINTMASK` bit.
+        /// SP Interrupt Mask enable.
         const SPINTMASK = 1 << 62;
         /// `TIDCP` bit.
         const TIDCP = 1 << 63;
@@ -2690,7 +2706,7 @@ bitflags! {
         const IESB = 1 << 21;
         /// `EIS` bit.
         const EIS = 1 << 22;
-        /// `SPAN` bit.
+        /// Do not set Privileged Access Never, on taking an exception to EL2.
         const SPAN = 1 << 23;
         /// `UCI` bit.
         const UCI = 1 << 26;
@@ -2700,9 +2716,9 @@ bitflags! {
         const NTLSMD = 1 << 28;
         /// `LSMAOE` bit.
         const LSMAOE = 1 << 29;
-        /// `EnIB` bit.
+        /// Enable pointer authentication using APIBKey_EL1.
         const ENIB = 1 << 30;
-        /// `EnIA` bit.
+        /// Enable pointer authentication using APIAKey_EL1.
         const ENIA = 1 << 31;
         /// `CMOW` bit.
         const CMOW = 1 << 32;
@@ -2720,7 +2736,7 @@ bitflags! {
         const ATA0 = 1 << 42;
         /// `ATA` bit.
         const ATA = 1 << 43;
-        /// `DSSBS` bit.
+        /// Default PSTATE.SSBS value on Exception Entry.
         const DSSBS = 1 << 44;
         /// `TWEDEn` bit.
         const TWEDEN = 1 << 45;
@@ -2740,7 +2756,7 @@ bitflags! {
         const ENTP2 = 1 << 60;
         /// `NMI` bit.
         const NMI = 1 << 61;
-        /// `SPINTMASK` bit.
+        /// SP Interrupt Mask enable.
         const SPINTMASK = 1 << 62;
         /// `TIDCP` bit.
         const TIDCP = 1 << 63;
@@ -2771,33 +2787,33 @@ bitflags! {
     pub struct SctlrEl3: u64 {
         /// RES1 bits in the SCTLR_EL3 register.
         const RES1 = 0b110000100001010000000000110000;
-        /// `M` bit.
+        /// MMU enable for EL3 stage 1 address translation.
         const M = 1 << 0;
-        /// `A` bit.
+        /// Alignment check enable.
         const A = 1 << 1;
-        /// `C` bit.
+        /// Cacheability control, for data accesses at EL3.
         const C = 1 << 2;
-        /// `SA` bit.
+        /// SP alignment check enable.
         const SA = 1 << 3;
         /// `nAA` bit.
         const NAA = 1 << 6;
         /// `EOS` bit.
         const EOS = 1 << 11;
-        /// `I` bit.
+        /// Cacheability control, for instruction accesses at EL3.
         const I = 1 << 12;
         /// `EnDB` bit.
         const ENDB = 1 << 13;
-        /// `WXN` bit.
+        /// Write permission implies XN (Execute-never). For the EL3 translation regime, this bit can force all memory regions that are writable to be treated as XN.
         const WXN = 1 << 19;
-        /// `IESB` bit.
+        /// Enable Implicit Error Synchronization events.
         const IESB = 1 << 21;
         /// `EIS` bit.
         const EIS = 1 << 22;
         /// `EnDA` bit.
         const ENDA = 1 << 27;
-        /// `EnIB` bit.
+        /// Enable pointer authentication using APIBKey_EL1.
         const ENIB = 1 << 30;
-        /// `EnIA` bit.
+        /// Enable pointer authentication using APIAKey_EL1.
         const ENIA = 1 << 31;
         /// `BT` bit.
         const BT = 1 << 36;
