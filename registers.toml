@@ -14,8 +14,8 @@ write = "unsafe"
 write = "unsafe"
 [registers.AMAIR_EL2]
 write = "unsafe"
-[registers.CCSIDR_EL1]
 
+[registers.CCSIDR_EL1]
 [registers.CLIDR_EL1]
 description = "Cache Level ID."
 [registers.CLIDR_EL1.field_descriptions]
@@ -29,25 +29,42 @@ Ctype = "Cache type."
 write = "safe"
 
 [registers.CNTHCTL_EL2]
+write = "safe"
+
 [registers.CNTVOFF_EL2]
+write = "safe"
+
 [registers.CONTEXTIDR_EL1]
+write = "safe"
+
 [registers.CONTEXTIDR_EL2]
+write = "safe"
+
 [registers.CPACR_EL1]
 [registers.CPTR_EL2]
 [registers.CPTR_EL3]
 [registers.CSSELR_EL1]
+write = "safe"
+
 [registers.CTR_EL0]
 [registers.DISR_EL1]
+write = "safe"
+
 [registers.DIT]
+write = "safe"
+
 [registers.ELR_EL1]
 [registers.ELR_EL2]
 [registers.ESR_EL1]
+write = "safe"
 manual_debug = true
 
 [registers.ESR_EL2]
+write = "safe"
 manual_debug = true
 
 [registers.ESR_EL3]
+write = "safe"
 manual_debug = true
 
 [registers.FAR_EL1]
@@ -60,6 +77,8 @@ manual_debug = true
 [registers.HCRX_EL2]
 [registers.HPFAR_EL2]
 [registers.HSTR_EL2]
+write = "safe"
+
 [registers.ICC_SRE_EL1]
 [registers.ICC_SRE_EL2]
 [registers.ICC_SRE_EL3]
@@ -67,6 +86,8 @@ write_safety_doc = "The SRE bit of `icc_sre_el3` must not be changed from 1 to 0
 
 [registers.ICH_HCR_EL2]
 [registers.ICH_VMCR_EL2]
+write = "safe"
+
 [registers.ID_AA64DFR0_EL1]
 [registers.ID_AA64DFR1_EL1]
 [registers.ID_AA64MMFR1_EL1]
@@ -75,15 +96,25 @@ write_safety_doc = "The SRE bit of `icc_sre_el3` must not be changed from 1 to 0
 [registers.ID_AA64PFR0_EL1]
 [registers.ID_AA64PFR1_EL1]
 [registers.ISR_EL1]
+write = "never"
+
 [registers.MAIR_EL1]
 [registers.MAIR_EL2]
 [registers.MAIR_EL3]
 write_safety_doc = "The caller must ensure that `value` is a correct and safe configuration value for the EL3 memory attribute indirection register."
 
 [registers.MDCCINT_EL1]
+write = "safe"
+
 [registers.MDCR_EL2]
+write = "safe"
+
 [registers.MDCR_EL3]
+write = "safe"
+
 [registers.MDSCR_EL1]
+write = "safe"
+
 [registers.MIDR_EL1]
 [registers.MPAM2_EL2]
 [registers.MPAM3_EL3]
@@ -101,7 +132,11 @@ write_safety_doc = "The caller must ensure that `value` is a correct and safe co
 [registers.MPAMVPMV_EL2]
 [registers.PAR_EL1]
 [registers.PMCR_EL0]
+write = "safe"
+
 [registers.RGSR_EL1]
+write = "safe"
+
 [registers.SCR_EL3.field_descriptions]
 NS = "Non-secure."
 IRQ = "Take physical IRQs at EL3."
@@ -176,25 +211,53 @@ write_safety_doc = "The caller must ensure that `value` is a correct and safe co
 [registers.TCR2_EL1]
 [registers.TCR2_EL2]
 [registers.TFSR_EL1]
+write = "safe"
+
 [registers.TFSR_EL2]
+write = "safe"
+
 [registers.TFSRE0_EL1]
+write = "safe"
+
 [registers.TPIDR_EL0]
 [registers.TPIDR_EL1]
 [registers.TPIDR_EL2]
 [registers.TPIDRRO_EL0]
 [registers.TTBR0_EL1]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
 [registers.TTBR0_EL2]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
 [registers.TTBR0_EL3]
-write_safety_doc = "The caller must ensure that `value` is a valid base address for the EL3 translation table: it must be page-aligned, and must point to a stage 1 translation table in the EL3 translation regime."
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
 
 [registers.TTBR1_EL1]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
 [registers.TTBR1_EL2]
+write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+
 [registers.VBAR_EL1]
+write_safety_doc = "The base address must point to a valid exception vector."
+
 [registers.VBAR_EL2]
+write_safety_doc = "The base address must point to a valid exception vector."
+
 [registers.VDISR_EL2]
+write = "safe"
+
 [registers.VMPIDR_EL2]
+write = "safe"
+
 [registers.VPIDR_EL2]
+write = "safe"
+
 [registers.VSESR_EL2]
+write = "safe"
+
 [registers.VTCR_EL2]
 [registers.VTTBR_EL2]
+write_safety_doc = "The base address must point to a valid and properly aligned stage 2 translation table."
+
 [registers.ZCR_EL3]

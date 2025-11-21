@@ -3907,22 +3907,22 @@ read_write_sysreg!(amair_el2, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(ccsidr_el1, u64: CcsidrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(clidr_el1, u64: ClidrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(cntfrq_el0, u64: CntfrqEl0, safe_read, safe_write, fake::SYSREGS);
-read_write_sysreg!(cnthctl_el2, u64: CnthctlEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(cntvoff_el2, u64: CntvoffEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(contextidr_el1, u64: ContextidrEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(contextidr_el2, u64: ContextidrEl2, safe_read, fake::SYSREGS);
+read_write_sysreg!(cnthctl_el2, u64: CnthctlEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(cntvoff_el2, u64: CntvoffEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(contextidr_el1, u64: ContextidrEl1, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(contextidr_el2, u64: ContextidrEl2, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(cpacr_el1, u64: CpacrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(cptr_el2, u64: CptrEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(cptr_el3, u64: CptrEl3, safe_read, fake::SYSREGS);
-read_write_sysreg!(csselr_el1, u64: CsselrEl1, safe_read, fake::SYSREGS);
+read_write_sysreg!(csselr_el1, u64: CsselrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(ctr_el0, u64: CtrEl0, safe, fake::SYSREGS);
-read_write_sysreg!(disr_el1, u64: DisrEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(dit, u64: Dit, safe_read, fake::SYSREGS);
+read_write_sysreg!(disr_el1, u64: DisrEl1, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(dit, u64: Dit, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(elr_el1, u64: ElrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(elr_el2, u64: ElrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(esr_el1, u64: EsrEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(esr_el2, u64: EsrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(esr_el3, u64: EsrEl3, safe_read, fake::SYSREGS);
+read_write_sysreg!(esr_el1, u64: EsrEl1, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(esr_el2, u64: EsrEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(esr_el3, u64: EsrEl3, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(far_el1, u64: FarEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(far_el2, u64: FarEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(gcr_el1, u64: GcrEl1, safe_read, fake::SYSREGS);
@@ -3932,7 +3932,7 @@ read_sysreg!(hacr_el2, u64, safe, fake::SYSREGS);
 read_write_sysreg!(hcrx_el2, u64: HcrxEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hcr_el2, u64: HcrEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hpfar_el2, u64: HpfarEl2, safe_read, fake::SYSREGS);
-read_sysreg!(hstr_el2, u64, safe, fake::SYSREGS);
+read_write_sysreg!(hstr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(icc_sre_el1, u64: IccSreEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(icc_sre_el2, u64: IccSreEl2, safe_read, fake::SYSREGS);
 read_write_sysreg! {
@@ -3942,7 +3942,7 @@ read_write_sysreg! {
     icc_sre_el3, u64: IccSreEl3, safe_read, fake::SYSREGS
 }
 read_write_sysreg!(ich_hcr_el2, u64: IchHcrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(ich_vmcr_el2, u64: IchVmcrEl2, safe_read, fake::SYSREGS);
+read_write_sysreg!(ich_vmcr_el2, u64: IchVmcrEl2, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64dfr1_el1, u64: IdAa64dfr1El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
@@ -3950,7 +3950,7 @@ read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr3_el1, u64: IdAa64mmfr3El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64pfr1_el1, u64: IdAa64pfr1El1, safe, fake::SYSREGS);
-read_write_sysreg!(isr_el1, u64: IsrEl1, safe_read, fake::SYSREGS);
+read_sysreg!(isr_el1, u64: IsrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(mair_el1, u64: MairEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(mair_el2, u64: MairEl2, safe_read, fake::SYSREGS);
 read_write_sysreg! {
@@ -3959,10 +3959,10 @@ read_write_sysreg! {
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 memory attribute indirection register.
     mair_el3, u64: MairEl3, safe_read, fake::SYSREGS
 }
-read_write_sysreg!(mdccint_el1, u64: MdccintEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(mdcr_el2, u64: MdcrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(mdcr_el3, u64: MdcrEl3, safe_read, fake::SYSREGS);
-read_write_sysreg!(mdscr_el1, u64: MdscrEl1, safe_read, fake::SYSREGS);
+read_write_sysreg!(mdccint_el1, u64: MdccintEl1, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(mdcr_el2, u64: MdcrEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(mdcr_el3, u64: MdcrEl3, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(mdscr_el1, u64: MdscrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(midr_el1, u64: MidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(mpam2_el2, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(mpam3_el3, u64, safe_read, fake::SYSREGS);
@@ -3979,8 +3979,8 @@ read_write_sysreg!(mpamvpm7_el2, u64: Mpamvpm7El2, safe_read, fake::SYSREGS);
 read_write_sysreg!(mpamvpmv_el2, u64: MpamvpmvEl2, safe_read, fake::SYSREGS);
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(par_el1, u64: ParEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(pmcr_el0, u64: PmcrEl0, safe_read, fake::SYSREGS);
-read_write_sysreg!(rgsr_el1, u64: RgsrEl1, safe_read, fake::SYSREGS);
+read_write_sysreg!(pmcr_el0, u64: PmcrEl0, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(rgsr_el1, u64: RgsrEl1, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe_read, fake::SYSREGS);
 read_write_sysreg!(sctlr_el1, u64: SctlrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(sctlr_el2, u64: SctlrEl2, safe_read, fake::SYSREGS);
@@ -4005,29 +4005,64 @@ read_write_sysreg! {
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 translation control register.
     tcr_el3, u64: TcrEl3, safe_read, fake::SYSREGS
 }
-read_write_sysreg!(tfsre0_el1, u64: Tfsre0El1, safe_read, fake::SYSREGS);
-read_write_sysreg!(tfsr_el1, u64: TfsrEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(tfsr_el2, u64: TfsrEl2, safe_read, fake::SYSREGS);
+read_write_sysreg!(tfsre0_el1, u64: Tfsre0El1, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(tfsr_el1, u64: TfsrEl1, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(tfsr_el2, u64: TfsrEl2, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(tpidrro_el0, u64: TpidrroEl0, safe_read, fake::SYSREGS);
 read_write_sysreg!(tpidr_el0, u64: TpidrEl0, safe_read, fake::SYSREGS);
 read_write_sysreg!(tpidr_el1, u64: TpidrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(tpidr_el2, u64: TpidrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(ttbr0_el1, u64: Ttbr0El1, safe_read, fake::SYSREGS);
-read_write_sysreg!(ttbr0_el2, u64: Ttbr0El2, safe_read, fake::SYSREGS);
 read_write_sysreg! {
     /// # Safety
     ///
-    /// The caller must ensure that `value` is a valid base address for the EL3 translation table: it must be page-aligned, and must point to a stage 1 translation table in the EL3 translation regime.
+    /// The base address must point to a valid and properly aligned translation table.
+    ttbr0_el1, u64: Ttbr0El1, safe_read, fake::SYSREGS
+}
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid and properly aligned translation table.
+    ttbr0_el2, u64: Ttbr0El2, safe_read, fake::SYSREGS
+}
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid and properly aligned translation table.
     ttbr0_el3, u64: Ttbr0El3, safe_read, fake::SYSREGS
 }
-read_write_sysreg!(ttbr1_el1, u64: Ttbr1El1, safe_read, fake::SYSREGS);
-read_write_sysreg!(ttbr1_el2, u64: Ttbr1El2, safe_read, fake::SYSREGS);
-read_write_sysreg!(vbar_el1, u64: VbarEl1, safe_read, fake::SYSREGS);
-read_write_sysreg!(vbar_el2, u64: VbarEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(vdisr_el2, u64: VdisrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(vmpidr_el2, u64: VmpidrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(vpidr_el2, u64: VpidrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(vsesr_el2, u64: VsesrEl2, safe_read, fake::SYSREGS);
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid and properly aligned translation table.
+    ttbr1_el1, u64: Ttbr1El1, safe_read, fake::SYSREGS
+}
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid and properly aligned translation table.
+    ttbr1_el2, u64: Ttbr1El2, safe_read, fake::SYSREGS
+}
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid exception vector.
+    vbar_el1, u64: VbarEl1, safe_read, fake::SYSREGS
+}
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid exception vector.
+    vbar_el2, u64: VbarEl2, safe_read, fake::SYSREGS
+}
+read_write_sysreg!(vdisr_el2, u64: VdisrEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(vmpidr_el2, u64: VmpidrEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(vpidr_el2, u64: VpidrEl2, safe_read, safe_write, fake::SYSREGS);
+read_write_sysreg!(vsesr_el2, u64: VsesrEl2, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(vtcr_el2, u64: VtcrEl2, safe_read, fake::SYSREGS);
-read_write_sysreg!(vttbr_el2, u64: VttbrEl2, safe_read, fake::SYSREGS);
+read_write_sysreg! {
+    /// # Safety
+    ///
+    /// The base address must point to a valid and properly aligned stage 2 translation table.
+    vttbr_el2, u64: VttbrEl2, safe_read, fake::SYSREGS
+}
 read_write_sysreg!(zcr_el3, u64: ZcrEl3, safe_read, fake::SYSREGS);
