@@ -204,7 +204,18 @@ impl RegisterInfo {
                         writeln!(writer)?;
                     }
 
-                    let field_type = type_for_width(field.width);
+                    let int_ty = type_for_width(field.width);
+                    let constness;
+                    let field_type: &str;
+                    let cast = field.r#type.is_none();
+
+                    if let Some(ty) = &field.r#type {
+                        constness = "";
+                        field_type = ty;
+                    } else {
+                        constness = "const ";
+                        field_type = int_ty;
+                    };
 
                     if let Some(array_info) = &field.array_info {
                         writeln!(
@@ -218,7 +229,7 @@ impl RegisterInfo {
                         }
                         writeln!(
                             writer,
-                            "    pub const fn {}(self, {}: u32) -> {} {{",
+                            "    pub {constness}fn {}(self, {}: u32) -> {} {{",
                             field.function_name().replace(&array_info.placeholder(), ""),
                             array_info.index_variable,
                             field_type,
@@ -239,16 +250,26 @@ impl RegisterInfo {
                                 array_info.index_variable, array_info.indices.end,
                             )?;
                         }
-                        writeln!(
+
+                        write!(writer, "        ")?;
+                        if !cast {
+                            write!(writer, "{}::try_from(", field_type)?;
+                        }
+                        write!(
                             writer,
-                            "        (self.bits() >> ({} + ({} - {}) * {})) as {} & {:#b}",
+                            "((self.bits() >> ({} + ({} - {}) * {})) & {:#b}) as {}",
                             field.index,
                             array_info.index_variable,
                             array_info.indices.start,
                             field.width,
-                            field_type,
                             ones(field.width),
+                            int_ty,
                         )?;
+                        if !cast {
+                            write!(writer, ").unwrap()")?;
+                        }
+                        writeln!(writer)?;
+
                         writeln!(writer, "    }}")?;
                     } else {
                         writeln!(
@@ -262,17 +283,27 @@ impl RegisterInfo {
                         }
                         writeln!(
                             writer,
-                            "    pub const fn {}(self) -> {} {{",
+                            "    pub {constness}fn {}(self) -> {} {{",
                             field.function_name(),
                             field_type
                         )?;
-                        writeln!(
+
+                        write!(writer, "        ")?;
+                        if !cast {
+                            write!(writer, "{}::try_from(", field_type)?;
+                        }
+                        write!(
                             writer,
-                            "        (self.bits() >> {}) as {} & {:#b}",
+                            "((self.bits() >> {}) & {:#b}) as {}",
                             field.index,
-                            field_type,
                             ones(field.width),
+                            int_ty,
                         )?;
+                        if !cast {
+                            write!(writer, ").unwrap()")?;
+                        }
+                        writeln!(writer)?;
+
                         writeln!(writer, "    }}")?;
                     }
                 }

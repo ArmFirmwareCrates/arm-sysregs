@@ -198,3 +198,6 @@ write_safety_doc = "The caller must ensure that `value` is a valid base address 
 [registers.VTCR_EL2]
 [registers.VTTBR_EL2]
 [registers.ZCR_EL3]
+
+[registers.CLIDR_EL1.types]
+"Ctype<n>" = "crate::manual::CacheType"
