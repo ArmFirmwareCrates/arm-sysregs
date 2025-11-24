@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-use crate::{CcsidrEl1, ClidrEl1, CntfrqEl0, CnthctlEl2, CntvoffEl2, ContextidrEl1, ContextidrEl2, CpacrEl1, CptrEl2, CptrEl3, CsselrEl1, CtrEl0, DisrEl1, Dit, ElrEl1, ElrEl2, EsrEl1, EsrEl2, EsrEl3, FarEl1, FarEl2, GcrEl1, GcscrEl1, GcscrEl2, HcrxEl2, HcrEl2, HpfarEl2, IccSreEl1, IccSreEl2, IccSreEl3, IchHcrEl2, IchVmcrEl2, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IsrEl1, MairEl1, MairEl2, MairEl3, MdccintEl1, MdcrEl2, MdcrEl3, MdscrEl1, MidrEl1, Mpam2El2, Mpam3El3, MpamhcrEl2, MpamidrEl1, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, MpidrEl1, ParEl1, PmcrEl0, RgsrEl1, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, SpsrEl1, SpsrEl2, SpsrEl3, SpEl1, SpEl2, Tcr2El1, Tcr2El2, TcrEl1, TcrEl2, TcrEl3, Tfsre0El1, TfsrEl1, TfsrEl2, TpidrroEl0, TpidrEl0, TpidrEl1, TpidrEl2, Ttbr0El1, Ttbr0El2, Ttbr0El3, Ttbr1El1, Ttbr1El2, VbarEl1, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2, ZcrEl3};
+use crate::{ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntfrqEl0, CnthctlEl2, CntvoffEl2, ContextidrEl1, ContextidrEl2, CpacrEl1, CptrEl2, CptrEl3, CsselrEl1, CtrEl0, DisrEl1, Dit, ElrEl1, ElrEl2, EsrEl1, EsrEl2, EsrEl3, FarEl1, FarEl2, GcrEl1, GcscrEl1, GcscrEl2, HcrxEl2, HcrEl2, HpfarEl2, IccSreEl1, IccSreEl2, IccSreEl3, IchHcrEl2, IchVmcrEl2, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IsrEl1, MairEl1, MairEl2, MairEl3, MdccintEl1, MdcrEl2, MdcrEl3, MdscrEl1, MidrEl1, Mpam2El2, Mpam3El3, MpamhcrEl2, MpamidrEl1, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, MpidrEl1, ParEl1, PmcrEl0, RgsrEl1, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, SpsrEl1, SpsrEl2, SpsrEl3, SpEl1, SpEl2, Tcr2El1, Tcr2El2, TcrEl1, TcrEl2, TcrEl3, Tfsre0El1, TfsrEl1, TfsrEl2, TpidrroEl0, TpidrEl0, TpidrEl1, TpidrEl2, Ttbr0El1, Ttbr0El2, Ttbr0El3, Ttbr1El1, Ttbr1El2, VbarEl1, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2, ZcrEl3};
 
 /// A set of fake system registers.
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -22,6 +22,10 @@ pub struct SystemRegisters {
     pub amair_el1: u64,
     /// Fake value for the `AMAIR_EL2` system register.
     pub amair_el2: u64,
+    /// Fake value for the `APIAKeyHi_EL1` system register.
+    pub apiakeyhi_el1: ApiakeyhiEl1,
+    /// Fake value for the `APIAKeyLo_EL1` system register.
+    pub apiakeylo_el1: ApiakeyloEl1,
     /// Fake value for the `CCSIDR_EL1` system register.
     pub ccsidr_el1: CcsidrEl1,
     /// Fake value for the `CLIDR_EL1` system register.
@@ -239,6 +243,8 @@ impl SystemRegisters {
             afsr1_el2: 0,
             amair_el1: 0,
             amair_el2: 0,
+            apiakeyhi_el1: ApiakeyhiEl1::empty(),
+            apiakeylo_el1: ApiakeyloEl1::empty(),
             ccsidr_el1: CcsidrEl1::empty(),
             clidr_el1: ClidrEl1::empty(),
             cntfrq_el0: CntfrqEl0::empty(),

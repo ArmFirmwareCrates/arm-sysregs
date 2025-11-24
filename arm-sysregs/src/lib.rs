@@ -18,6 +18,36 @@ pub use manual::*;
 pub use paste as _paste;
 
 bitflags! {
+    /// `APIAKeyHi_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct ApiakeyhiEl1: u64 {
+    }
+}
+
+impl ApiakeyhiEl1 {
+    /// Returns the value of the `APIAKeyHi` field.
+    pub const fn apiakeyhi(self) -> u64 {
+        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+    }
+}
+
+bitflags! {
+    /// `APIAKeyLo_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct ApiakeyloEl1: u64 {
+    }
+}
+
+impl ApiakeyloEl1 {
+    /// Returns the value of the `APIAKeyLo` field.
+    pub const fn apiakeylo(self) -> u64 {
+        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+    }
+}
+
+bitflags! {
     /// `CCSIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -4277,6 +4307,8 @@ read_write_sysreg!(afsr1_el1, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(afsr1_el2, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(amair_el1, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(amair_el2, u64, safe_read, fake::SYSREGS);
+read_write_sysreg!(apiakeyhi_el1, u64: ApiakeyhiEl1, safe_read, fake::SYSREGS);
+read_write_sysreg!(apiakeylo_el1, u64: ApiakeyloEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(ccsidr_el1, u64: CcsidrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(clidr_el1, u64: ClidrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(cntfrq_el0, u64: CntfrqEl0, safe_read, safe_write, fake::SYSREGS);
