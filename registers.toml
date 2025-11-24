@@ -395,3 +395,6 @@ write = "safe"
 write_safety_doc = "The base address must point to a valid and properly aligned stage 2 translation table."
 
 [registers.ZCR_EL3]
+
+[registers.CLIDR_EL1.types]
+"Ctype<n>" = "crate::manual::CacheType"

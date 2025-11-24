@@ -3,6 +3,8 @@
 
 //! Manually implemented methods for system register types.
 
+use num_enum::TryFromPrimitive;
+
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1,
     IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1,
@@ -359,7 +361,7 @@ impl SpsrEl3 {
 }
 
 /// Cache type enum.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, TryFromPrimitive)]
 #[repr(u8)]
 pub enum CacheType {
     /// No cache.
@@ -419,7 +421,8 @@ impl From<CacheLevel> for u64 {
 }
 
 /// An AArch64 exception level.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[repr(u8)]
 pub enum ExceptionLevel {
     /// Exception level 0.
     El0 = 0,
@@ -432,7 +435,7 @@ pub enum ExceptionLevel {
 }
 
 /// Values for SPSEL.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
 #[repr(u8)]
 pub enum StackPointer {
     /// Use SP_EL0.

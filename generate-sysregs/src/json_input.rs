@@ -171,6 +171,7 @@ impl RegisterField {
                 width: range.width,
                 writable: true,
                 array_info: None,
+                r#type: None,
             })
         } else {
             info!(
@@ -195,6 +196,7 @@ impl RegisterField {
                         indices: array_range.start..array_range.start + array_range.width,
                         index_variable: field.index_variable.clone(),
                     }),
+                    r#type: None,
                 })
             } else {
                 info!(
@@ -222,6 +224,7 @@ impl RegisterField {
                 width: range.width,
                 writable: false,
                 array_info: None,
+                r#type: None,
             })
         } else {
             info!(
@@ -242,6 +245,7 @@ impl RegisterField {
                 width: range.width,
                 writable: true,
                 array_info: None,
+                r#type: None,
             })
         } else {
             info!(
@@ -266,6 +270,7 @@ impl RegisterField {
                         indices: array_range.start..array_range.start + array_range.width,
                         index_variable: field.index_variable.clone(),
                     }),
+                    r#type: None,
                 })
             } else {
                 info!(

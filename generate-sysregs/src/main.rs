@@ -128,6 +128,9 @@ fn add_details(register: &mut RegisterInfo, config: &Config) {
             if let Some(description) = register_config.field_descriptions.get(&field.name) {
                 field.description = Some(description.clone());
             }
+            if let Some(ty) = register_config.types.get(&field.name) {
+                field.r#type = Some(ty.clone());
+            }
         }
     }
 }
@@ -136,6 +139,8 @@ fn add_details(register: &mut RegisterInfo, config: &Config) {
 struct RegisterField {
     /// The name of the field.
     pub name: String,
+    /// The type of the field.
+    pub r#type: Option<String>,
     /// The description of the field, if available.
     pub description: Option<String>,
     /// The index of the least significant bit of the field.
@@ -213,6 +218,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
+                    r#type: None,
                 },
                 RegisterField {
                     name: "FOO".to_string(),
@@ -221,6 +227,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
+                    r#type: None,
                 },
                 RegisterField {
                     name: "BAR".to_string(),
@@ -229,6 +236,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
+                    r#type: None,
                 },
                 RegisterField {
                     name: "BAZ".to_string(),
@@ -237,6 +245,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
+                    r#type: None,
                 },
             ],
             ..Default::default()
@@ -253,6 +262,7 @@ mod tests {
                         width: 1,
                         writable: false,
                         array_info: None,
+                        r#type: None,
                     },
                     RegisterField {
                         name: "BAZ".to_string(),
@@ -261,6 +271,7 @@ mod tests {
                         width: 1,
                         writable: false,
                         array_info: None,
+                        r#type: None,
                     },
                 ],
                 ..Default::default()

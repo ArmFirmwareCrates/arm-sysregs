@@ -18,6 +18,13 @@ pub struct RegisterConfig {
     pub description: Option<String>,
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub field_descriptions: BTreeMap<String, String>,
+    /// Types to use for each register fields.
+    ///
+    /// They must be absolute paths and implement `TryFrom<uXX>`, where `uXX` is the smallest
+    /// unsigned type able to store the field. E.g. a 3-bits wide field must implement 
+    /// `TryFrom<u8>`, while a 15-bits one needs `TryFrom<u16>`.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub types: BTreeMap<String, String>,
     /// If this is set it overrides the read access from the JSON input.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub read: Option<AccessType>,

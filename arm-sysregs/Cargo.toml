@@ -16,6 +16,7 @@ rust-version = "1.88"
 
 [dependencies]
 bitflags = "2.9.1"
+num_enum = "0.7.5"
 paste = "1.0.14"
 
 [features]
