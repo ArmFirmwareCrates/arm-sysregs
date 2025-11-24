@@ -105,6 +105,8 @@ description = "Guarded Control Stack Control register."
 EXLOCKEN = "Exception state lock enable."
 
 [registers.HACR_EL2]
+write = "unsafe"
+
 [registers.HCR_EL2.field_descriptions]
 TGE = "Trap general exceptions to EL2."
 

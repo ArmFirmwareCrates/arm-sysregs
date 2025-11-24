@@ -4333,7 +4333,7 @@ read_write_sysreg!(far_el2, u64: FarEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(gcr_el1, u64: GcrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(gcscr_el1, u64: GcscrEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(gcscr_el2, u64: GcscrEl2, safe_read, fake::SYSREGS);
-read_sysreg!(hacr_el2, u64, safe, fake::SYSREGS);
+read_write_sysreg!(hacr_el2, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(hcrx_el2, u64: HcrxEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hcr_el2, u64: HcrEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hpfar_el2, u64: HpfarEl2, safe_read, fake::SYSREGS);
