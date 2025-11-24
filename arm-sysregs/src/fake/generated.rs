@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-use crate::{ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntfrqEl0, CnthctlEl2, CntvoffEl2, ContextidrEl1, ContextidrEl2, CpacrEl1, CptrEl2, CptrEl3, CsselrEl1, CtrEl0, DisrEl1, Dit, ElrEl1, ElrEl2, EsrEl1, EsrEl2, EsrEl3, FarEl1, FarEl2, GcrEl1, GcscrEl1, GcscrEl2, HcrxEl2, HcrEl2, Hdfgrtr2El2, Hdfgwtr2El2, Hfgitr2El2, Hfgrtr2El2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl1, IccSreEl2, IccSreEl3, IchHcrEl2, IchVmcrEl2, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1, MairEl2, MairEl3, MdccintEl1, MdcrEl2, MdcrEl3, MdscrEl1, MidrEl1, MpamhcrEl2, MpamidrEl1, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, MpidrEl1, ParEl1, PmcrEl0, RgsrEl1, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, SmcrEl3, SpsrEl1, SpsrEl2, SpsrEl3, SpEl1, SpEl2, Tcr2El1, Tcr2El2, TcrEl1, TcrEl2, TcrEl3, Tfsre0El1, TfsrEl1, TfsrEl2, TpidrroEl0, TpidrEl0, TpidrEl1, TpidrEl2, Ttbr0El1, Ttbr0El2, Ttbr0El3, Ttbr1El1, Ttbr1El2, VbarEl1, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2, ZcrEl3};
+use crate::{ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntfrqEl0, CnthctlEl2, CntvoffEl2, ContextidrEl1, ContextidrEl2, CpacrEl1, CptrEl2, CptrEl3, CsselrEl1, CtrEl0, DisrEl1, Dit, ElrEl1, ElrEl2, EsrEl1, EsrEl2, EsrEl3, FarEl1, FarEl2, GcrEl1, GcscrEl1, GcscrEl2, HcrxEl2, HcrEl2, Hdfgrtr2El2, Hdfgwtr2El2, Hfgitr2El2, Hfgrtr2El2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl1, IccSreEl2, IccSreEl3, IchHcrEl2, IchVmcrEl2, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1, MairEl2, MairEl3, MdccintEl1, MdcrEl2, MdcrEl3, MdscrEl1, MidrEl1, Mpam2El2, Mpam3El3, MpamhcrEl2, MpamidrEl1, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, MpidrEl1, ParEl1, PmcrEl0, RgsrEl1, ScrEl3, SctlrEl1, SctlrEl2, SctlrEl3, SmcrEl3, SpsrEl1, SpsrEl2, SpsrEl3, SpEl1, SpEl2, Tcr2El1, Tcr2El2, TcrEl1, TcrEl2, TcrEl3, Tfsre0El1, TfsrEl1, TfsrEl2, TpidrroEl0, TpidrEl0, TpidrEl1, TpidrEl2, Ttbr0El1, Ttbr0El2, Ttbr0El3, Ttbr1El1, Ttbr1El2, VbarEl1, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2, ZcrEl3};
 
 /// A set of fake system registers.
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -143,9 +143,9 @@ pub struct SystemRegisters {
     /// Fake value for the `MIDR_EL1` system register.
     pub midr_el1: MidrEl1,
     /// Fake value for the `MPAM2_EL2` system register.
-    pub mpam2_el2: u64,
+    pub mpam2_el2: Mpam2El2,
     /// Fake value for the `MPAM3_EL3` system register.
-    pub mpam3_el3: u64,
+    pub mpam3_el3: Mpam3El3,
     /// Fake value for the `MPAMHCR_EL2` system register.
     pub mpamhcr_el2: MpamhcrEl2,
     /// Fake value for the `MPAMIDR_EL1` system register.
@@ -321,8 +321,8 @@ impl SystemRegisters {
             mdcr_el3: MdcrEl3::empty(),
             mdscr_el1: MdscrEl1::empty(),
             midr_el1: MidrEl1::empty(),
-            mpam2_el2: 0,
-            mpam3_el3: 0,
+            mpam2_el2: Mpam2El2::empty(),
+            mpam3_el3: Mpam3El3::empty(),
             mpamhcr_el2: MpamhcrEl2::empty(),
             mpamidr_el1: MpamidrEl1::empty(),
             mpamvpm0_el2: Mpamvpm0El2::empty(),

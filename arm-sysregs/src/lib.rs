@@ -134,6 +134,12 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthctlEl2: u64 {
+        /// `EL0PCTEN` bit.
+        const EL0PCTEN = 1 << 0;
+        /// `EL0VCTEN` bit.
+        const EL0VCTEN = 1 << 1;
+        /// `EL1PCEN` bit.
+        const EL1PCEN = 1 << 1;
         /// `EVNTEN` bit.
         const EVNTEN = 1 << 2;
         /// `EVNTDIR` bit.
@@ -282,6 +288,11 @@ impl CptrEl2 {
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
         (self.bits() >> 16) as u8 & 0b11
+    }
+
+    /// Returns the value of the `FPEN` field.
+    pub const fn fpen(self) -> u8 {
+        (self.bits() >> 20) as u8 & 0b11
     }
 
     /// Returns the value of the `SMEN` field.
@@ -1379,6 +1390,10 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IchVmcrEl2: u64 {
+        /// `EN` bit.
+        const EN = 1 << 0;
+        /// `VENG0` bit.
+        const VENG0 = 1 << 0;
         /// `VENG1` bit.
         const VENG1 = 1 << 1;
         /// `VAckCtl` bit.
@@ -2506,6 +2521,140 @@ impl MidrEl1 {
 }
 
 bitflags! {
+    /// `MPAM2_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Mpam2El2: u64 {
+        /// `TRAPMPAM1EL1` bit.
+        const TRAPMPAM1EL1 = 1 << 48;
+        /// `TRAPMPAM0EL1` bit.
+        const TRAPMPAM0EL1 = 1 << 49;
+        /// `EnMPAMSM` bit.
+        const ENMPAMSM = 1 << 50;
+        /// `ALTSP_FRCD` bit.
+        const ALTSP_FRCD = 1 << 54;
+        /// `ALTSP_EL2` bit.
+        const ALTSP_EL2 = 1 << 55;
+        /// `ALTSP_HFC` bit.
+        const ALTSP_HFC = 1 << 56;
+        /// `TIDR` bit.
+        const TIDR = 1 << 58;
+        /// `MPAMEN` bit.
+        const MPAMEN = 1 << 63;
+    }
+}
+
+impl Mpam2El2 {
+    /// Returns the value of the `PARTID` field.
+    pub const fn partid(self) -> u16 {
+        (self.bits() >> 0) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PARTID_I` field.
+    pub const fn partid_i(self) -> u16 {
+        (self.bits() >> 0) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PARTID_D` field.
+    pub const fn partid_d(self) -> u16 {
+        (self.bits() >> 16) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `altPARTID` field.
+    pub const fn altpartid(self) -> u16 {
+        (self.bits() >> 16) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PMG` field.
+    pub const fn pmg(self) -> u16 {
+        (self.bits() >> 32) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PMG_I` field.
+    pub const fn pmg_i(self) -> u8 {
+        (self.bits() >> 32) as u8 & 0b11111111
+    }
+
+    /// Returns the value of the `PMG_D` field.
+    pub const fn pmg_d(self) -> u8 {
+        (self.bits() >> 40) as u8 & 0b11111111
+    }
+
+    /// Returns the value of the `altPMG` field.
+    pub const fn altpmg(self) -> u16 {
+        (self.bits() >> 48) as u16 & 0b1111111111111111
+    }
+}
+
+bitflags! {
+    /// `MPAM3_EL3` system register value.
+    ///
+    /// Holds information to generate MPAM labels for memory requests when executing at EL3.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Mpam3El3: u64 {
+        /// `RT_ALTSP_NS` bit.
+        const RT_ALTSP_NS = 1 << 52;
+        /// `ALTSP_EL3` bit.
+        const ALTSP_EL3 = 1 << 55;
+        /// `ALTSP_HFC` bit.
+        const ALTSP_HFC = 1 << 56;
+        /// `ALTSP_HEN` bit.
+        const ALTSP_HEN = 1 << 57;
+        /// `FORCE_NS` bit.
+        const FORCE_NS = 1 << 60;
+        /// `SDEFLT` bit.
+        const SDEFLT = 1 << 61;
+        /// Trap direct accesses to MPAM System registers that are not UNDEFINED from all ELn lower than EL3.
+        const TRAPLOWER = 1 << 62;
+        /// MPAM Enable. If set, MPAM information is output based on the MPAMn_ELx register for ELn according the MPAM configuration. If not set, the default PARTID and default PMG are output in MPAM information when executing at any ELn.
+        const MPAMEN = 1 << 63;
+    }
+}
+
+impl Mpam3El3 {
+    /// Returns the value of the `PARTID` field.
+    pub const fn partid(self) -> u16 {
+        (self.bits() >> 0) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PARTID_I` field.
+    pub const fn partid_i(self) -> u16 {
+        (self.bits() >> 0) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PARTID_D` field.
+    pub const fn partid_d(self) -> u16 {
+        (self.bits() >> 16) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `altPARTID` field.
+    pub const fn altpartid(self) -> u16 {
+        (self.bits() >> 16) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PMG` field.
+    pub const fn pmg(self) -> u16 {
+        (self.bits() >> 32) as u16 & 0b1111111111111111
+    }
+
+    /// Returns the value of the `PMG_I` field.
+    pub const fn pmg_i(self) -> u8 {
+        (self.bits() >> 32) as u8 & 0b11111111
+    }
+
+    /// Returns the value of the `PMG_D` field.
+    pub const fn pmg_d(self) -> u8 {
+        (self.bits() >> 40) as u8 & 0b11111111
+    }
+
+    /// Returns the value of the `altPMG` field.
+    pub const fn altpmg(self) -> u16 {
+        (self.bits() >> 48) as u16 & 0b1111111111111111
+    }
+}
+
+bitflags! {
     /// `MPAMHCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -2928,8 +3077,22 @@ bitflags! {
         const RES1 = 0b100000000000;
         /// `F` bit.
         const F = 1 << 0;
+        /// `PTW` bit.
+        const PTW = 1 << 8;
+        /// `NS` bit.
+        const NS = 1 << 9;
+        /// `S` bit.
+        const S = 1 << 9;
         /// `NSE` bit.
         const NSE = 1 << 11;
+        /// `AssuredOnly` bit.
+        const ASSUREDONLY = 1 << 12;
+        /// `TopLevel` bit.
+        const TOPLEVEL = 1 << 13;
+        /// `Overlay` bit.
+        const OVERLAY = 1 << 14;
+        /// `DirtyBit` bit.
+        const DIRTYBIT = 1 << 15;
     }
 }
 
@@ -2937,6 +3100,16 @@ impl ParEl1 {
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
         (self.bits() >> 1) as u8 & 0b111111
+    }
+
+    /// Returns the value of the `SH` field.
+    pub const fn sh(self) -> u8 {
+        (self.bits() >> 7) as u8 & 0b11
+    }
+
+    /// Returns the value of the `PA[47:12]` field.
+    pub const fn pa_47_12(self) -> u64 {
+        (self.bits() >> 12) as u64 & 0b111111111111111111111111111111111111
     }
 
     /// Returns the value of the `PA[51:48]` field.
@@ -3479,6 +3652,10 @@ bitflags! {
         const I = 1 << 7;
         /// `A` bit.
         const A = 1 << 8;
+        /// `D` bit.
+        const D = 1 << 9;
+        /// `E` bit.
+        const E = 1 << 9;
         /// `ALLINT` bit.
         const ALLINT = 1 << 13;
         /// `BTYPE2` bit.
@@ -3489,6 +3666,8 @@ bitflags! {
         const SS = 1 << 21;
         /// `PAN` bit.
         const PAN = 1 << 22;
+        /// `UAO` bit.
+        const UAO = 1 << 23;
         /// `DIT` bit.
         const DIT = 1 << 24;
         /// `TCO` bit.
@@ -3548,6 +3727,10 @@ bitflags! {
         const I = 1 << 7;
         /// `A` bit.
         const A = 1 << 8;
+        /// `D` bit.
+        const D = 1 << 9;
+        /// `E` bit.
+        const E = 1 << 9;
         /// `ALLINT` bit.
         const ALLINT = 1 << 13;
         /// `BTYPE2` bit.
@@ -3558,6 +3741,8 @@ bitflags! {
         const SS = 1 << 21;
         /// `PAN` bit.
         const PAN = 1 << 22;
+        /// `UAO` bit.
+        const UAO = 1 << 23;
         /// `DIT` bit.
         const DIT = 1 << 24;
         /// `TCO` bit.
@@ -3617,6 +3802,10 @@ bitflags! {
         const I = 1 << 7;
         /// `A` bit.
         const A = 1 << 8;
+        /// `D` bit.
+        const D = 1 << 9;
+        /// `E` bit.
+        const E = 1 << 9;
         /// `ALLINT` bit.
         const ALLINT = 1 << 13;
         /// `BTYPE2` bit.
@@ -3627,6 +3816,8 @@ bitflags! {
         const SS = 1 << 21;
         /// `PAN` bit.
         const PAN = 1 << 22;
+        /// `UAO` bit.
+        const UAO = 1 << 23;
         /// `DIT` bit.
         const DIT = 1 << 24;
         /// `TCO` bit.
@@ -3955,8 +4146,28 @@ bitflags! {
         const RES1 = 0b10000000100000000000000000000000;
         /// `EPD0` bit.
         const EPD0 = 1 << 7;
+        /// `TBI` bit.
+        const TBI = 1 << 20;
+        /// `A1` bit.
+        const A1 = 1 << 22;
         /// `EPD1` bit.
         const EPD1 = 1 << 23;
+        /// `HPD` bit.
+        const HPD = 1 << 24;
+        /// `HWU59` bit.
+        const HWU59 = 1 << 25;
+        /// `HWU60` bit.
+        const HWU60 = 1 << 26;
+        /// `HWU61` bit.
+        const HWU61 = 1 << 27;
+        /// `HWU62` bit.
+        const HWU62 = 1 << 28;
+        /// `TBID` bit.
+        const TBID = 1 << 29;
+        /// `TCMA` bit.
+        const TCMA = 1 << 30;
+        /// `MTX` bit.
+        const MTX = 1 << 33;
         /// `AS` bit.
         const AS = 1 << 36;
         /// `TBI0` bit.
@@ -3977,6 +4188,20 @@ bitflags! {
         const HWU062 = 1 << 46;
         /// `HWU159` bit.
         const HWU159 = 1 << 47;
+        /// `HWU160` bit.
+        const HWU160 = 1 << 48;
+        /// `HWU161` bit.
+        const HWU161 = 1 << 49;
+        /// `HWU162` bit.
+        const HWU162 = 1 << 50;
+        /// `TBID0` bit.
+        const TBID0 = 1 << 51;
+        /// `TBID1` bit.
+        const TBID1 = 1 << 52;
+        /// `NFD0` bit.
+        const NFD0 = 1 << 53;
+        /// `TVAD` bit.
+        const TVAD = 1 << 53;
         /// `NFD1` bit.
         const NFD1 = 1 << 54;
         /// `E0PD0` bit.
@@ -4018,6 +4243,46 @@ impl TcrEl2 {
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
         (self.bits() >> 14) as u8 & 0b11
+    }
+
+    /// Returns the value of the `PS` field.
+    pub const fn ps(self) -> u8 {
+        (self.bits() >> 16) as u8 & 0b111
+    }
+
+    /// Returns the value of the `T1SZ` field.
+    pub const fn t1sz(self) -> u8 {
+        (self.bits() >> 16) as u8 & 0b111111
+    }
+
+    /// Returns the value of the `IRGN1` field.
+    pub const fn irgn1(self) -> u8 {
+        (self.bits() >> 24) as u8 & 0b11
+    }
+
+    /// Returns the value of the `ORGN1` field.
+    pub const fn orgn1(self) -> u8 {
+        (self.bits() >> 26) as u8 & 0b11
+    }
+
+    /// Returns the value of the `SH1` field.
+    pub const fn sh1(self) -> u8 {
+        (self.bits() >> 28) as u8 & 0b11
+    }
+
+    /// Returns the value of the `TG1` field.
+    pub const fn tg1(self) -> u8 {
+        (self.bits() >> 30) as u8 & 0b11
+    }
+
+    /// Returns the value of the `IPS` field.
+    pub const fn ips(self) -> u8 {
+        (self.bits() >> 32) as u8 & 0b111
+    }
+
+    /// Returns the value of the `VTB` field.
+    pub const fn vtb(self) -> u8 {
+        (self.bits() >> 48) as u8 & 0b11111
     }
 }
 
@@ -4224,6 +4489,16 @@ bitflags! {
 }
 
 impl Ttbr0El1 {
+    /// Returns the value of the `BADDR[47:1]` field.
+    pub const fn baddr_47_1(self) -> u64 {
+        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+    }
+
+    /// Returns the value of the `SKL` field.
+    pub const fn skl(self) -> u8 {
+        (self.bits() >> 1) as u8 & 0b11
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         (self.bits() >> 48) as u16 & 0b1111111111111111
@@ -4241,6 +4516,16 @@ bitflags! {
 }
 
 impl Ttbr0El2 {
+    /// Returns the value of the `BADDR[47:1]` field.
+    pub const fn baddr_47_1(self) -> u64 {
+        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+    }
+
+    /// Returns the value of the `SKL` field.
+    pub const fn skl(self) -> u8 {
+        (self.bits() >> 1) as u8 & 0b11
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         (self.bits() >> 48) as u16 & 0b1111111111111111
@@ -4257,6 +4542,13 @@ bitflags! {
     }
 }
 
+impl Ttbr0El3 {
+    /// Returns the value of the `SKL` field.
+    pub const fn skl(self) -> u8 {
+        (self.bits() >> 1) as u8 & 0b11
+    }
+}
+
 bitflags! {
     /// `TTBR1_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4268,6 +4560,16 @@ bitflags! {
 }
 
 impl Ttbr1El1 {
+    /// Returns the value of the `BADDR[47:1]` field.
+    pub const fn baddr_47_1(self) -> u64 {
+        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+    }
+
+    /// Returns the value of the `SKL` field.
+    pub const fn skl(self) -> u8 {
+        (self.bits() >> 1) as u8 & 0b11
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         (self.bits() >> 48) as u16 & 0b1111111111111111
@@ -4285,6 +4587,16 @@ bitflags! {
 }
 
 impl Ttbr1El2 {
+    /// Returns the value of the `BADDR[47:1]` field.
+    pub const fn baddr_47_1(self) -> u64 {
+        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+    }
+
+    /// Returns the value of the `SKL` field.
+    pub const fn skl(self) -> u8 {
+        (self.bits() >> 1) as u8 & 0b11
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         (self.bits() >> 48) as u16 & 0b1111111111111111
@@ -4330,10 +4642,31 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VdisrEl2: u64 {
+        /// `LPAE` bit.
+        const LPAE = 1 << 9;
+        /// `ExT` bit.
+        const EXT = 1 << 12;
         /// `IDS` bit.
         const IDS = 1 << 24;
         /// `A` bit.
         const A = 1 << 31;
+    }
+}
+
+impl VdisrEl2 {
+    /// Returns the value of the `ISS` field.
+    pub const fn iss(self) -> u32 {
+        (self.bits() >> 0) as u32 & 0b111111111111111111111111
+    }
+
+    /// Returns the value of the `STATUS` field.
+    pub const fn status(self) -> u8 {
+        (self.bits() >> 0) as u8 & 0b111111
+    }
+
+    /// Returns the value of the `AET` field.
+    pub const fn aet(self) -> u8 {
+        (self.bits() >> 14) as u8 & 0b11
     }
 }
 
@@ -4413,8 +4746,22 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VsesrEl2: u64 {
+        /// `ExT` bit.
+        const EXT = 1 << 12;
         /// `IDS` bit.
         const IDS = 1 << 24;
+    }
+}
+
+impl VsesrEl2 {
+    /// Returns the value of the `ISS` field.
+    pub const fn iss(self) -> u32 {
+        (self.bits() >> 0) as u32 & 0b111111111111111111111111
+    }
+
+    /// Returns the value of the `AET` field.
+    pub const fn aet(self) -> u8 {
+        (self.bits() >> 14) as u8 & 0b11
     }
 }
 
@@ -4516,6 +4863,16 @@ bitflags! {
 }
 
 impl VttbrEl2 {
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+    }
+
+    /// Returns the value of the `SKL` field.
+    pub const fn skl(self) -> u8 {
+        (self.bits() >> 1) as u8 & 0b11
+    }
+
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u16 {
         (self.bits() >> 48) as u16 & 0b1111111111111111
@@ -4615,8 +4972,8 @@ read_write_sysreg!(mdcr_el2, u64: MdcrEl2, safe_read, safe_write, fake::SYSREGS)
 read_write_sysreg!(mdcr_el3, u64: MdcrEl3, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(mdscr_el1, u64: MdscrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(midr_el1, u64: MidrEl1, safe, fake::SYSREGS);
-read_write_sysreg!(mpam2_el2, u64, safe_read, fake::SYSREGS);
-read_write_sysreg!(mpam3_el3, u64, safe_read, fake::SYSREGS);
+read_write_sysreg!(mpam2_el2, u64: Mpam2El2, safe_read, fake::SYSREGS);
+read_write_sysreg!(mpam3_el3, u64: Mpam3El3, safe_read, fake::SYSREGS);
 read_write_sysreg!(mpamhcr_el2, u64: MpamhcrEl2, safe_read, fake::SYSREGS);
 read_sysreg!(mpamidr_el1, u64: MpamidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(mpamvpm0_el2, u64: Mpamvpm0El2, safe_read, fake::SYSREGS);
