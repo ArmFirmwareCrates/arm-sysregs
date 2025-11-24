@@ -2,16 +2,18 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 mod config;
+mod enums;
 mod json_input;
 mod output;
 
 use crate::{
     config::Config,
+    enums::identify_enums,
     json_input::register_entries_to_register_infos,
     output::{write_fake, write_lib},
 };
-use arm_sysregs_json::RegisterEntry;
-use clap::Parser;
+use arm_sysregs_json::{RegisterEntry, Values};
+use clap::{Parser, Subcommand};
 use eyre::Report;
 use log::{info, warn};
 use std::{
@@ -24,29 +26,50 @@ fn main() -> Result<(), Report> {
     pretty_env_logger::init();
     let args = Args::parse();
     let config: Config = toml::from_str(&read_to_string(&args.config_toml)?)?;
-    let registers =
-        serde_json::from_str::<Vec<RegisterEntry>>(&read_to_string(&args.registers_json)?)?;
+
+    match args.command {
+        Commands::Generate { output_directory } => {
+            let output_lib = File::create(output_directory.join("lib.rs"))?;
+            let output_fake = File::create(output_directory.join("fake").join("generated.rs"))?;
+            let register_infos = parse_registers(&config, args.registers_json)?;
+
+            warn_missing(&register_infos, &config);
+            write_lib(&output_lib, &register_infos)?;
+            write_fake(&output_fake, &register_infos)?;
+        }
+        Commands::Enums {
+            generate_stubs,
+            skip_existing,
+        } => {
+            let register_infos = parse_registers(&config, args.registers_json)?;
+            identify_enums(&register_infos, generate_stubs, skip_existing);
+        }
+    }
+
+    Ok(())
+}
+
+fn parse_registers(config: &Config, registers_json: PathBuf) -> Result<Vec<RegisterInfo>, Report> {
+    let registers = serde_json::from_str::<Vec<RegisterEntry>>(&read_to_string(&registers_json)?)?;
     println!(
         "Read {} system registers from {}",
         registers.len(),
-        args.registers_json.display()
+        registers_json.display()
     );
-    let output_lib = File::create(args.output_directory.join("lib.rs"))?;
-    let output_fake = File::create(args.output_directory.join("fake").join("generated.rs"))?;
+
     let registers_filter = config.registers.keys().collect::<Vec<_>>();
     let mut register_infos = register_entries_to_register_infos(&registers, &registers_filter);
+
     for register in &mut register_infos {
         remove_clashes(register);
-        add_details(register, &config);
+        add_details(register, config);
         remove_over_64bit(register);
     }
-    register_infos.sort_by_cached_key(|register| register.name.clone());
-    register_infos.retain(|register| register.width > 0);
-    warn_missing(&register_infos, &config);
-    write_lib(&output_lib, &register_infos)?;
-    write_fake(&output_fake, &register_infos)?;
 
-    Ok(())
+    register_infos.sort_by_cached_key(|register| register.name.clone());
+    register_infos.dedup();
+
+    Ok(register_infos)
 }
 
 /// Logs warnings for any registers which are present in the config file but not the JSON file.
@@ -151,6 +174,7 @@ struct RegisterField {
     pub writable: bool,
     /// Information about the array, if it is an array field.
     pub array_info: Option<ArrayInfo>,
+    pub values: Option<Values>,
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -188,14 +212,34 @@ enum Safety {
     Unsafe,
 }
 
+#[derive(Subcommand, Clone, Debug)]
+enum Commands {
+    /// Generate all system registers.
+    Generate {
+        /// Path to output directory.
+        output_directory: PathBuf,
+    },
+    /// Scans the register values to identify fields that could be represented as Rust enums.
+    Enums {
+        #[arg(long)]
+        /// Generate a stub implementation for the encountered enums, along with the corresponding
+        /// configuration.
+        generate_stubs: bool,
+        #[arg(long)]
+        /// Skip all fields which have a type assigned in the configuration file.
+        skip_existing: bool,
+    },
+}
+
 #[derive(Clone, Debug, Parser)]
 struct Args {
     /// Path to config toml file.
     config_toml: PathBuf,
     /// Path to JSON system registers file.
     registers_json: PathBuf,
-    /// Path to output directory.
-    output_directory: PathBuf,
+    /// Operation to execute.
+    #[command(subcommand)]
+    command: Commands,
 }
 
 /// Returns a value with the given number of 1 bits, starting at the least significant bit.
@@ -219,6 +263,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     r#type: None,
+                    values: None,
                 },
                 RegisterField {
                     name: "FOO".to_string(),
@@ -228,6 +273,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     r#type: None,
+                    values: None,
                 },
                 RegisterField {
                     name: "BAR".to_string(),
@@ -237,6 +283,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     r#type: None,
+                    values: None,
                 },
                 RegisterField {
                     name: "BAZ".to_string(),
@@ -246,6 +293,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     r#type: None,
+                    values: None,
                 },
             ],
             ..Default::default()
@@ -263,6 +311,7 @@ mod tests {
                         writable: false,
                         array_info: None,
                         r#type: None,
+                        values: None,
                     },
                     RegisterField {
                         name: "BAZ".to_string(),
@@ -272,6 +321,7 @@ mod tests {
                         writable: false,
                         array_info: None,
                         r#type: None,
+                        values: None,
                     },
                 ],
                 ..Default::default()
