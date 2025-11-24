@@ -7,7 +7,7 @@
 use crate::{ArrayInfo, RegisterField, RegisterInfo, Safety, ones};
 use arm_sysregs_json::{
     ArrayField, ConditionalField, ConstantField, DynamicField, Field, FieldEntry, Register,
-    RegisterEntry, VectorField,
+    RegisterEntry, Values, VectorField,
 };
 use log::{info, trace};
 
@@ -148,6 +148,7 @@ impl RegisterField {
                 writable: true,
                 array_info: None,
                 r#type: None,
+                values: field.values.clone(),
             })
         } else {
             info!(
@@ -173,6 +174,7 @@ impl RegisterField {
                         index_variable: field.index_variable.clone(),
                     }),
                     r#type: None,
+                    values: field.values.clone(),
                 })
             } else {
                 info!(
@@ -201,6 +203,9 @@ impl RegisterField {
                 writable: false,
                 array_info: None,
                 r#type: None,
+                values: Some(Values {
+                    values: vec![field.value.clone()],
+                }),
             })
         } else {
             info!(
@@ -222,6 +227,7 @@ impl RegisterField {
                 writable: true,
                 array_info: None,
                 r#type: None,
+                values: None,
             })
         } else {
             info!(
@@ -247,6 +253,7 @@ impl RegisterField {
                         index_variable: field.index_variable.clone(),
                     }),
                     r#type: None,
+                    values: field.values.clone(),
                 })
             } else {
                 info!(
