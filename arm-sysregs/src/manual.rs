@@ -213,6 +213,10 @@ impl MdcrEl3 {
     /// Non-secure state owns the Profiling Buffer. Profiling is disabled in Secure and Realm
     /// states.
     pub const NSPB_NS: Self = Self::from_bits_retain(0b11 << 12);
+    /// Enable TRBE register access for the security state that owns the buffer.
+    pub const NSTB_EN: Self = Self::from_bits_retain(1 << 24);
+    /// Together with MDCR_EL3.NSTBE determines which security state owns the trace buffer
+    pub const NSTB_SS: Self = Self::from_bits_retain(1 << 25);
 }
 
 // TODO: Generate these masks and shifts automatically.
@@ -294,6 +298,33 @@ impl SpsrEl3 {
 
     /// All of the N, Z, C and V bits.
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
+
+    /// Speculative Store Bypass Safe.
+    pub const SSBS: Self = Self::from_bits_retain(1 << 12);
+
+    const EL_MASK: u64 = 0x3;
+    const EL_SHIFT: usize = 2;
+    const SP_MASK: u64 = 0x1;
+
+    /// Returns the value of the EL field.
+    pub const fn exception_level(self) -> ExceptionLevel {
+        match (self.bits() >> Self::EL_SHIFT) & Self::EL_MASK {
+            0 => ExceptionLevel::El0,
+            1 => ExceptionLevel::El1,
+            2 => ExceptionLevel::El2,
+            3 => ExceptionLevel::El3,
+            _ => unreachable!(),
+        }
+    }
+
+    /// Returns the value of the SP field.
+    pub const fn stack_pointer(self) -> StackPointer {
+        match self.bits() & Self::SP_MASK {
+            0 => StackPointer::El0,
+            1 => StackPointer::ElX,
+            _ => unreachable!(),
+        }
+    }
 }
 
 /// Cache type enum.
