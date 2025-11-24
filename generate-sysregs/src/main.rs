@@ -64,13 +64,19 @@ fn warn_missing(register_infos: &[RegisterInfo], config: &Config) {
     }
 }
 
-/// Removes any fields which have the same name or overlapping position as each other.
+/// Removes any fields which have the same name as each other, and only keep one copy of any that
+/// are exact duplicates.
 fn remove_clashes(register: &mut RegisterInfo) {
+    register
+        .fields
+        .sort_by_cached_key(|field| (field.index, field.name.clone()));
+    register.fields.dedup();
+
     let fields_copy = register.fields.clone();
     register.fields.retain(|field| {
-        let clash = fields_copy.iter().any(|other_field| {
-            field != other_field && (field.name == other_field.name || field.overlaps(other_field))
-        });
+        let clash = fields_copy
+            .iter()
+            .any(|other_field| field != other_field && field.name == other_field.name);
         if clash {
             if field.width == 1 {
                 info!(
@@ -142,13 +148,6 @@ struct RegisterField {
     pub array_info: Option<ArrayInfo>,
 }
 
-impl RegisterField {
-    fn overlaps(&self, other: &Self) -> bool {
-        (self.index..self.index + self.width).contains(&other.index)
-            || (other.index..other.index + other.width).contains(&self.index)
-    }
-}
-
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ArrayInfo {
     /// The range of entries in the array.
@@ -163,7 +162,7 @@ impl ArrayInfo {
     }
 }
 
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
 struct RegisterInfo {
     pub name: String,
     /// The description of the register, if available.
@@ -197,4 +196,75 @@ struct Args {
 /// Returns a value with the given number of 1 bits, starting at the least significant bit.
 const fn ones(n: u32) -> u64 {
     u64::MAX >> (64 - n)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn remove_clashing_names() {
+        let mut register = RegisterInfo {
+            fields: vec![
+                RegisterField {
+                    name: "FOO".to_string(),
+                    description: None,
+                    index: 0,
+                    width: 1,
+                    writable: false,
+                    array_info: None,
+                },
+                RegisterField {
+                    name: "FOO".to_string(),
+                    description: None,
+                    index: 1,
+                    width: 1,
+                    writable: false,
+                    array_info: None,
+                },
+                RegisterField {
+                    name: "BAR".to_string(),
+                    description: None,
+                    index: 0,
+                    width: 1,
+                    writable: false,
+                    array_info: None,
+                },
+                RegisterField {
+                    name: "BAZ".to_string(),
+                    description: None,
+                    index: 0,
+                    width: 1,
+                    writable: false,
+                    array_info: None,
+                },
+            ],
+            ..Default::default()
+        };
+        remove_clashes(&mut register);
+        assert_eq!(
+            register,
+            RegisterInfo {
+                fields: vec![
+                    RegisterField {
+                        name: "BAR".to_string(),
+                        description: None,
+                        index: 0,
+                        width: 1,
+                        writable: false,
+                        array_info: None,
+                    },
+                    RegisterField {
+                        name: "BAZ".to_string(),
+                        description: None,
+                        index: 0,
+                        width: 1,
+                        writable: false,
+                        array_info: None,
+                    },
+                ],
+                ..Default::default()
+            },
+        );
+    }
 }
