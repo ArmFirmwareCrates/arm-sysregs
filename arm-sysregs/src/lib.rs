@@ -356,8 +356,6 @@ bitflags! {
         const WNRV = 1 << 7;
         /// `EA` bit.
         const EA = 1 << 9;
-        /// `IDS` bit.
-        const IDS = 1 << 24;
         /// `A` bit.
         const A = 1 << 31;
     }
@@ -689,8 +687,6 @@ bitflags! {
         const VI = 1 << 7;
         /// `VSE` bit.
         const VSE = 1 << 8;
-        /// `FB` bit.
-        const FB = 1 << 9;
         /// `DC` bit.
         const DC = 1 << 12;
         /// `TWI` bit.
@@ -1708,12 +1704,6 @@ bitflags! {
         const STE = 1 << 18;
         /// `TTRF` bit.
         const TTRF = 1 << 19;
-        /// `EDAD` bit.
-        const EDAD = 1 << 20;
-        /// `EPMAD` bit.
-        const EPMAD = 1 << 21;
-        /// `ETAD` bit.
-        const ETAD = 1 << 22;
         /// `SCCD` bit.
         const SCCD = 1 << 23;
         /// `NSTBE` bit.
@@ -1750,19 +1740,9 @@ bitflags! {
 }
 
 impl MdcrEl3 {
-    /// Returns the value of the `NSPB` field.
-    pub const fn nspb(self) -> u8 {
-        ((self.bits() >> 12) & 0b11) as u8
-    }
-
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
         ((self.bits() >> 14) & 0b11) as u8
-    }
-
-    /// Returns the value of the `NSTB` field.
-    pub const fn nstb(self) -> u8 {
-        ((self.bits() >> 24) & 0b11) as u8
     }
 
     /// Returns the value of the `PMSSE` field.
@@ -2304,8 +2284,6 @@ bitflags! {
     pub struct ParEl1: u64 {
         /// RES1 bits in the `PAR_EL1` register.
         const RES1 = 0b100000000000;
-        /// `F` bit.
-        const F = 1 << 0;
         /// `NSE` bit.
         const NSE = 1 << 11;
     }
@@ -2400,8 +2378,6 @@ bitflags! {
     pub struct ScrEl3: u64 {
         /// RES1 bits in the `SCR_EL3` register.
         const RES1 = 0b110000;
-        /// Non-secure.
-        const NS = 1 << 0;
         /// Take physical IRQs at EL3.
         const IRQ = 1 << 1;
         /// Take physical FIQs at EL3.
@@ -2660,12 +2636,8 @@ bitflags! {
         const SA = 1 << 3;
         /// `SA0` bit.
         const SA0 = 1 << 4;
-        /// `CP15BEN` bit.
-        const CP15BEN = 1 << 5;
         /// `nAA` bit.
         const NAA = 1 << 6;
-        /// `SED` bit.
-        const SED = 1 << 8;
         /// `UMA` bit.
         const UMA = 1 << 9;
         /// `EnRCTX` bit.
@@ -2828,8 +2800,6 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpsrEl1: u64 {
-        /// `M[4]` bit.
-        const M_4 = 1 << 4;
         /// `T` bit.
         const T = 1 << 5;
         /// `F` bit.
@@ -2876,11 +2846,6 @@ bitflags! {
 }
 
 impl SpsrEl1 {
-    /// Returns the value of the `M[3:0]` field.
-    pub const fn m_3_0(self) -> u8 {
-        ((self.bits() >> 0) & 0b1111) as u8
-    }
-
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> 10) & 0b11) as u8
@@ -2897,8 +2862,6 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpsrEl2: u64 {
-        /// `M[4]` bit.
-        const M_4 = 1 << 4;
         /// `T` bit.
         const T = 1 << 5;
         /// `F` bit.
@@ -2945,11 +2908,6 @@ bitflags! {
 }
 
 impl SpsrEl2 {
-    /// Returns the value of the `M[3:0]` field.
-    pub const fn m_3_0(self) -> u8 {
-        ((self.bits() >> 0) & 0b1111) as u8
-    }
-
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> 10) & 0b11) as u8
@@ -2966,8 +2924,6 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpsrEl3: u64 {
-        /// `M[4]` bit.
-        const M_4 = 1 << 4;
         /// `T` bit.
         const T = 1 << 5;
         /// `F` bit.
@@ -3014,11 +2970,6 @@ bitflags! {
 }
 
 impl SpsrEl3 {
-    /// Returns the value of the `M[3:0]` field.
-    pub const fn m_3_0(self) -> u8 {
-        ((self.bits() >> 0) & 0b1111) as u8
-    }
-
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> 10) & 0b11) as u8
@@ -3239,8 +3190,6 @@ bitflags! {
         const TCMA0 = 1 << 57;
         /// `TCMA1` bit.
         const TCMA1 = 1 << 58;
-        /// `DS` bit.
-        const DS = 1 << 59;
         /// `MTX0` bit.
         const MTX0 = 1 << 60;
         /// `MTX1` bit.
@@ -3407,8 +3356,6 @@ bitflags! {
         const TBID = 1 << 29;
         /// `TCMA` bit.
         const TCMA = 1 << 30;
-        /// `DS` bit.
-        const DS = 1 << 32;
         /// `MTX` bit.
         const MTX = 1 << 33;
         /// `PnCH` bit.
@@ -3831,11 +3778,6 @@ impl VtcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
         ((self.bits() >> 0) & 0b111111) as u8
-    }
-
-    /// Returns the value of the `SL0` field.
-    pub const fn sl0(self) -> u8 {
-        ((self.bits() >> 6) & 0b11) as u8
     }
 
     /// Returns the value of the `IRGN0` field.
