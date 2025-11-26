@@ -126,6 +126,11 @@ CMOW = "Controls the required permissions for cache maintenance instructions at 
 MCE2 = "Controls Memory Copy and Memory Set exceptions generated from EL1."
 MSCEn = "Enables execution of Memory Set and Memory Copy instructions at EL1 or EL0."
 
+[registers.HDFGRTR2_EL2]
+[registers.HDFGWTR2_EL2]
+[registers.HFGITR2_EL2]
+[registers.HFGRTR2_EL2]
+[registers.HFGWTR_EL2]
 [registers.HPFAR_EL2]
 [registers.HSTR_EL2]
 write = "safe"
@@ -156,6 +161,7 @@ write = "safe"
 
 [registers.ID_AA64DFR0_EL1]
 [registers.ID_AA64DFR1_EL1]
+[registers.ID_AA64MMFR0_EL1]
 [registers.ID_AA64MMFR1_EL1]
 [registers.ID_AA64MMFR2_EL1]
 [registers.ID_AA64MMFR3_EL1]

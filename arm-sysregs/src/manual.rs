@@ -4,9 +4,9 @@
 //! Manually implemented methods for system register types.
 
 use crate::{
-    ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1, MpidrEl1,
-    SpsrEl1, SpsrEl2, SpsrEl3, read_mpidr_el1,
+    ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1,
+    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1,
+    MpidrEl1, SpsrEl1, SpsrEl2, SpsrEl3, read_mpidr_el1,
 };
 use core::fmt::{self, Debug, Formatter};
 
@@ -121,6 +121,22 @@ impl IdAa64dfr1El1 {
     /// Indicates whether FEAT_EBEP is implemented.
     pub fn is_feat_ebep_present(self) -> bool {
         self.ebep() == Self::EBEP_IMPLEMENTED
+    }
+}
+
+impl IdAa64mmfr0El1 {
+    const FGT_SUPPORTED: u8 = 0b0001;
+    const FGT2_SUPPORTED: u8 = 0b0001;
+
+    /// Indicates whether Fine Grain Traps Extension is implemented.
+    pub fn is_feat_fgt_present(self) -> bool {
+        let val = self.fgt();
+        val == Self::FGT_SUPPORTED || val == Self::FGT2_SUPPORTED
+    }
+
+    /// Indicates whether Fine Grain Traps 2 Extension is implemented.
+    pub fn is_feat_fgt2_present(self) -> bool {
+        self.fgt() == Self::FGT2_SUPPORTED
     }
 }
 

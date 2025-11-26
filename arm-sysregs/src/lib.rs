@@ -852,6 +852,348 @@ impl HcrEl2 {
 }
 
 bitflags! {
+    /// `HDFGRTR2_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hdfgrtr2El2: u64 {
+        /// `nPMECR_EL1` bit.
+        const NPMECR_EL1 = 1 << 0;
+        /// `nPMIAR_EL1` bit.
+        const NPMIAR_EL1 = 1 << 1;
+        /// `nPMICNTR_EL0` bit.
+        const NPMICNTR_EL0 = 1 << 2;
+        /// `nPMICFILTR_EL0` bit.
+        const NPMICFILTR_EL0 = 1 << 3;
+        /// `nPMUACR_EL1` bit.
+        const NPMUACR_EL1 = 1 << 4;
+        /// `nMDSELR_EL1` bit.
+        const NMDSELR_EL1 = 1 << 5;
+        /// `nPMSSDATA` bit.
+        const NPMSSDATA = 1 << 6;
+        /// `nPMSSCR_EL1` bit.
+        const NPMSSCR_EL1 = 1 << 7;
+        /// `nSPMEVCNTRn_EL0` bit.
+        const NSPMEVCNTRN_EL0 = 1 << 8;
+        /// `nSPMEVTYPERn_EL0` bit.
+        const NSPMEVTYPERN_EL0 = 1 << 9;
+        /// `nSPMSELR_EL0` bit.
+        const NSPMSELR_EL0 = 1 << 10;
+        /// `nSPMCNTEN` bit.
+        const NSPMCNTEN = 1 << 11;
+        /// `nSPMINTEN` bit.
+        const NSPMINTEN = 1 << 12;
+        /// `nSPMOVS` bit.
+        const NSPMOVS = 1 << 13;
+        /// `nSPMCR_EL0` bit.
+        const NSPMCR_EL0 = 1 << 14;
+        /// `nSPMACCESSR_EL1` bit.
+        const NSPMACCESSR_EL1 = 1 << 15;
+        /// `nSPMSCR_EL1` bit.
+        const NSPMSCR_EL1 = 1 << 16;
+        /// `nSPMID` bit.
+        const NSPMID = 1 << 17;
+        /// `nSPMDEVAFF_EL1` bit.
+        const NSPMDEVAFF_EL1 = 1 << 18;
+        /// `nPMSDSFR_EL1` bit.
+        const NPMSDSFR_EL1 = 1 << 19;
+        /// `nTRCITECR_EL1` bit.
+        const NTRCITECR_EL1 = 1 << 20;
+        /// `nTRBMPAM_EL1` bit.
+        const NTRBMPAM_EL1 = 1 << 22;
+        /// `nMDSTEPOP_EL1` bit.
+        const NMDSTEPOP_EL1 = 1 << 23;
+        /// `nPMBMAR_EL1` bit.
+        const NPMBMAR_EL1 = 1 << 24;
+    }
+}
+
+bitflags! {
+    /// `HDFGWTR2_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hdfgwtr2El2: u64 {
+        /// `nPMECR_EL1` bit.
+        const NPMECR_EL1 = 1 << 0;
+        /// `nPMIAR_EL1` bit.
+        const NPMIAR_EL1 = 1 << 1;
+        /// `nPMICNTR_EL0` bit.
+        const NPMICNTR_EL0 = 1 << 2;
+        /// `nPMICFILTR_EL0` bit.
+        const NPMICFILTR_EL0 = 1 << 3;
+        /// `nPMUACR_EL1` bit.
+        const NPMUACR_EL1 = 1 << 4;
+        /// `nMDSELR_EL1` bit.
+        const NMDSELR_EL1 = 1 << 5;
+        /// `nPMSSCR_EL1` bit.
+        const NPMSSCR_EL1 = 1 << 7;
+        /// `nSPMEVCNTRn_EL0` bit.
+        const NSPMEVCNTRN_EL0 = 1 << 8;
+        /// `nSPMEVTYPERn_EL0` bit.
+        const NSPMEVTYPERN_EL0 = 1 << 9;
+        /// `nSPMSELR_EL0` bit.
+        const NSPMSELR_EL0 = 1 << 10;
+        /// `nSPMCNTEN` bit.
+        const NSPMCNTEN = 1 << 11;
+        /// `nSPMINTEN` bit.
+        const NSPMINTEN = 1 << 12;
+        /// `nSPMOVS` bit.
+        const NSPMOVS = 1 << 13;
+        /// `nSPMCR_EL0` bit.
+        const NSPMCR_EL0 = 1 << 14;
+        /// `nSPMACCESSR_EL1` bit.
+        const NSPMACCESSR_EL1 = 1 << 15;
+        /// `nSPMSCR_EL1` bit.
+        const NSPMSCR_EL1 = 1 << 16;
+        /// `nPMSDSFR_EL1` bit.
+        const NPMSDSFR_EL1 = 1 << 19;
+        /// `nTRCITECR_EL1` bit.
+        const NTRCITECR_EL1 = 1 << 20;
+        /// `nPMZR_EL0` bit.
+        const NPMZR_EL0 = 1 << 21;
+        /// `nTRBMPAM_EL1` bit.
+        const NTRBMPAM_EL1 = 1 << 22;
+        /// `nMDSTEPOP_EL1` bit.
+        const NMDSTEPOP_EL1 = 1 << 23;
+        /// `nPMBMAR_EL1` bit.
+        const NPMBMAR_EL1 = 1 << 24;
+    }
+}
+
+bitflags! {
+    /// `HFGITR2_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hfgitr2El2: u64 {
+        /// `TSBCSYNC` bit.
+        const TSBCSYNC = 1 << 0;
+        /// `nDCCIVAPS` bit.
+        const NDCCIVAPS = 1 << 1;
+        /// `PLBIPERME1OS` bit.
+        const PLBIPERME1OS = 1 << 2;
+        /// `PLBIASIDE1OS` bit.
+        const PLBIASIDE1OS = 1 << 3;
+        /// `PLBIVMALLE1OS` bit.
+        const PLBIVMALLE1OS = 1 << 4;
+        /// `PLBIPERME1IS` bit.
+        const PLBIPERME1IS = 1 << 5;
+        /// `PLBIASIDE1IS` bit.
+        const PLBIASIDE1IS = 1 << 6;
+        /// `PLBIVMALLE1IS` bit.
+        const PLBIVMALLE1IS = 1 << 7;
+        /// `PLBIPERME1` bit.
+        const PLBIPERME1 = 1 << 8;
+        /// `PLBIASIDE1` bit.
+        const PLBIASIDE1 = 1 << 9;
+        /// `PLBIVMALLE1` bit.
+        const PLBIVMALLE1 = 1 << 10;
+        /// `PLBIPERMAE1OS` bit.
+        const PLBIPERMAE1OS = 1 << 11;
+        /// `PLBIPERMAE1IS` bit.
+        const PLBIPERMAE1IS = 1 << 12;
+        /// `PLBIPERMAE1` bit.
+        const PLBIPERMAE1 = 1 << 13;
+        /// `DCGBVA` bit.
+        const DCGBVA = 1 << 14;
+    }
+}
+
+bitflags! {
+    /// `HFGRTR2_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hfgrtr2El2: u64 {
+        /// `nPFAR_EL1` bit.
+        const NPFAR_EL1 = 1 << 0;
+        /// `nERXGSR_EL1` bit.
+        const NERXGSR_EL1 = 1 << 1;
+        /// `nRCWSMASK_EL1` bit.
+        const NRCWSMASK_EL1 = 1 << 2;
+        /// `nCPACRMASK_EL1` bit.
+        const NCPACRMASK_EL1 = 1 << 3;
+        /// `nSCTLRMASK_EL1` bit.
+        const NSCTLRMASK_EL1 = 1 << 4;
+        /// `nSCTLR2MASK_EL1` bit.
+        const NSCTLR2MASK_EL1 = 1 << 5;
+        /// `nTCRMASK_EL1` bit.
+        const NTCRMASK_EL1 = 1 << 6;
+        /// `nTCR2MASK_EL1` bit.
+        const NTCR2MASK_EL1 = 1 << 7;
+        /// `nCPACRALIAS_EL1` bit.
+        const NCPACRALIAS_EL1 = 1 << 8;
+        /// `nSCTLRALIAS_EL1` bit.
+        const NSCTLRALIAS_EL1 = 1 << 9;
+        /// `nSCTLR2ALIAS_EL1` bit.
+        const NSCTLR2ALIAS_EL1 = 1 << 10;
+        /// `nTCRALIAS_EL1` bit.
+        const NTCRALIAS_EL1 = 1 << 11;
+        /// `nTCR2ALIAS_EL1` bit.
+        const NTCR2ALIAS_EL1 = 1 << 12;
+        /// `nACTLRMASK_EL1` bit.
+        const NACTLRMASK_EL1 = 1 << 13;
+        /// `nACTLRALIAS_EL1` bit.
+        const NACTLRALIAS_EL1 = 1 << 14;
+        /// `nTINDEX_EL0` bit.
+        const NTINDEX_EL0 = 1 << 15;
+        /// `nTINDEX_EL1` bit.
+        const NTINDEX_EL1 = 1 << 16;
+        /// `nSTINDEX_EL1` bit.
+        const NSTINDEX_EL1 = 1 << 17;
+        /// `nTTTBRP_EL1` bit.
+        const NTTTBRP_EL1 = 1 << 20;
+        /// `nTTTBRU_EL1` bit.
+        const NTTTBRU_EL1 = 1 << 21;
+        /// `nIRTBRP_EL1` bit.
+        const NIRTBRP_EL1 = 1 << 22;
+        /// `nIRTBRU_EL1` bit.
+        const NIRTBRU_EL1 = 1 << 23;
+        /// `nDPOTBR1_EL1` bit.
+        const NDPOTBR1_EL1 = 1 << 24;
+        /// `nDPOTBR0_EL1` bit.
+        const NDPOTBR0_EL1 = 1 << 25;
+        /// `nTPMIN1_EL1` bit.
+        const NTPMIN1_EL1 = 1 << 26;
+        /// `nTPMIN0_EL1` bit.
+        const NTPMIN0_EL1 = 1 << 27;
+        /// `nTPMIN1_EL0` bit.
+        const NTPMIN1_EL0 = 1 << 28;
+        /// `nTPMIN0_EL0` bit.
+        const NTPMIN0_EL0 = 1 << 29;
+        /// `nTLBIDIDR_EL1` bit.
+        const NTLBIDIDR_EL1 = 1 << 30;
+        /// `TFSR_EL1` bit.
+        const TFSR_EL1 = 1 << 33;
+        /// `RGSR_EL1` bit.
+        const RGSR_EL1 = 1 << 34;
+        /// `GCR_EL1` bit.
+        const GCR_EL1 = 1 << 35;
+        /// `nTPIDR3_EL0` bit.
+        const NTPIDR3_EL0 = 1 << 36;
+        /// `nTPIDR3_EL1` bit.
+        const NTPIDR3_EL1 = 1 << 37;
+    }
+}
+
+impl Hfgrtr2El2 {
+    /// Returns the value of the `nFGDTn_EL1` field.
+    pub const fn nfgdtn_el1(self) -> u8 {
+        (self.bits() >> 18) as u8 & 0b11
+    }
+
+    /// Returns the value of the `nAFGDTn_EL1` field.
+    pub const fn nafgdtn_el1(self) -> u8 {
+        (self.bits() >> 31) as u8 & 0b11
+    }
+}
+
+bitflags! {
+    /// `HFGWTR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HfgwtrEl2: u64 {
+        /// `AFSR0_EL1` bit.
+        const AFSR0_EL1 = 1 << 0;
+        /// `AFSR1_EL1` bit.
+        const AFSR1_EL1 = 1 << 1;
+        /// `AMAIR_EL1` bit.
+        const AMAIR_EL1 = 1 << 3;
+        /// `APDAKey` bit.
+        const APDAKEY = 1 << 4;
+        /// `APDBKey` bit.
+        const APDBKEY = 1 << 5;
+        /// `APGAKey` bit.
+        const APGAKEY = 1 << 6;
+        /// `APIAKey` bit.
+        const APIAKEY = 1 << 7;
+        /// `APIBKey` bit.
+        const APIBKEY = 1 << 8;
+        /// `CONTEXTIDR_EL1` bit.
+        const CONTEXTIDR_EL1 = 1 << 11;
+        /// `CPACR_EL1` bit.
+        const CPACR_EL1 = 1 << 12;
+        /// `CSSELR_EL1` bit.
+        const CSSELR_EL1 = 1 << 13;
+        /// `ESR_EL1` bit.
+        const ESR_EL1 = 1 << 16;
+        /// `FAR_EL1` bit.
+        const FAR_EL1 = 1 << 17;
+        /// `LORC_EL1` bit.
+        const LORC_EL1 = 1 << 19;
+        /// `LOREA_EL1` bit.
+        const LOREA_EL1 = 1 << 20;
+        /// `LORN_EL1` bit.
+        const LORN_EL1 = 1 << 22;
+        /// `LORSA_EL1` bit.
+        const LORSA_EL1 = 1 << 23;
+        /// `MAIR_EL1` bit.
+        const MAIR_EL1 = 1 << 24;
+        /// `PAR_EL1` bit.
+        const PAR_EL1 = 1 << 27;
+        /// `SCTLR_EL1` bit.
+        const SCTLR_EL1 = 1 << 29;
+        /// `SCXTNUM_EL1` bit.
+        const SCXTNUM_EL1 = 1 << 30;
+        /// `SCXTNUM_EL0` bit.
+        const SCXTNUM_EL0 = 1 << 31;
+        /// `TCR_EL1` bit.
+        const TCR_EL1 = 1 << 32;
+        /// `TPIDR_EL1` bit.
+        const TPIDR_EL1 = 1 << 33;
+        /// `TPIDRRO_EL0` bit.
+        const TPIDRRO_EL0 = 1 << 34;
+        /// `TPIDR_EL0` bit.
+        const TPIDR_EL0 = 1 << 35;
+        /// `TTBR0_EL1` bit.
+        const TTBR0_EL1 = 1 << 36;
+        /// `TTBR1_EL1` bit.
+        const TTBR1_EL1 = 1 << 37;
+        /// `VBAR_EL1` bit.
+        const VBAR_EL1 = 1 << 38;
+        /// `ICC_IGRPENn_EL1` bit.
+        const ICC_IGRPENN_EL1 = 1 << 39;
+        /// `ERRSELR_EL1` bit.
+        const ERRSELR_EL1 = 1 << 41;
+        /// `ERXCTLR_EL1` bit.
+        const ERXCTLR_EL1 = 1 << 43;
+        /// `ERXSTATUS_EL1` bit.
+        const ERXSTATUS_EL1 = 1 << 44;
+        /// `ERXMISCn_EL1` bit.
+        const ERXMISCN_EL1 = 1 << 45;
+        /// `ERXPFGCTL_EL1` bit.
+        const ERXPFGCTL_EL1 = 1 << 47;
+        /// `ERXPFGCDN_EL1` bit.
+        const ERXPFGCDN_EL1 = 1 << 48;
+        /// `ERXADDR_EL1` bit.
+        const ERXADDR_EL1 = 1 << 49;
+        /// `nACCDATA_EL1` bit.
+        const NACCDATA_EL1 = 1 << 50;
+        /// `nGCS_EL0` bit.
+        const NGCS_EL0 = 1 << 52;
+        /// `nGCS_EL1` bit.
+        const NGCS_EL1 = 1 << 53;
+        /// `nSMPRI_EL1` bit.
+        const NSMPRI_EL1 = 1 << 54;
+        /// `nTPIDR2_EL0` bit.
+        const NTPIDR2_EL0 = 1 << 55;
+        /// `nRCWMASK_EL1` bit.
+        const NRCWMASK_EL1 = 1 << 56;
+        /// `nPIRE0_EL1` bit.
+        const NPIRE0_EL1 = 1 << 57;
+        /// `nPIR_EL1` bit.
+        const NPIR_EL1 = 1 << 58;
+        /// `nPOR_EL0` bit.
+        const NPOR_EL0 = 1 << 59;
+        /// `nPOR_EL1` bit.
+        const NPOR_EL1 = 1 << 60;
+        /// `nS2POR_EL1` bit.
+        const NS2POR_EL1 = 1 << 61;
+        /// `nMAIR2_EL1` bit.
+        const NMAIR2_EL1 = 1 << 62;
+        /// `nAMAIR2_EL1` bit.
+        const NAMAIR2_EL1 = 1 << 63;
+    }
+}
+
+bitflags! {
     /// `HPFAR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -1145,6 +1487,86 @@ impl IdAa64dfr1El1 {
     /// Returns the value of the `ABL_CMPs` field.
     pub const fn abl_cmps(self) -> u8 {
         (self.bits() >> 56) as u8 & 0b11111111
+    }
+}
+
+bitflags! {
+    /// `ID_AA64MMFR0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64mmfr0El1: u64 {
+    }
+}
+
+impl IdAa64mmfr0El1 {
+    /// Returns the value of the `PARange` field.
+    pub const fn parange(self) -> u8 {
+        (self.bits() >> 0) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `ASIDBits` field.
+    pub const fn asidbits(self) -> u8 {
+        (self.bits() >> 4) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `BigEnd` field.
+    pub const fn bigend(self) -> u8 {
+        (self.bits() >> 8) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `SNSMem` field.
+    pub const fn snsmem(self) -> u8 {
+        (self.bits() >> 12) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `BigEndEL0` field.
+    pub const fn bigendel0(self) -> u8 {
+        (self.bits() >> 16) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `TGran16` field.
+    pub const fn tgran16(self) -> u8 {
+        (self.bits() >> 20) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `TGran64` field.
+    pub const fn tgran64(self) -> u8 {
+        (self.bits() >> 24) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `TGran4` field.
+    pub const fn tgran4(self) -> u8 {
+        (self.bits() >> 28) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `TGran16_2` field.
+    pub const fn tgran16_2(self) -> u8 {
+        (self.bits() >> 32) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `TGran64_2` field.
+    pub const fn tgran64_2(self) -> u8 {
+        (self.bits() >> 36) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `TGran4_2` field.
+    pub const fn tgran4_2(self) -> u8 {
+        (self.bits() >> 40) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `ExS` field.
+    pub const fn exs(self) -> u8 {
+        (self.bits() >> 44) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `FGT` field.
+    pub const fn fgt(self) -> u8 {
+        (self.bits() >> 56) as u8 & 0b1111
+    }
+
+    /// Returns the value of the `ECV` field.
+    pub const fn ecv(self) -> u8 {
+        (self.bits() >> 60) as u8 & 0b1111
     }
 }
 
@@ -4336,6 +4758,11 @@ read_write_sysreg!(gcscr_el2, u64: GcscrEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hacr_el2, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(hcrx_el2, u64: HcrxEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hcr_el2, u64: HcrEl2, safe_read, fake::SYSREGS);
+read_write_sysreg!(hdfgrtr2_el2, u64: Hdfgrtr2El2, safe_read, fake::SYSREGS);
+read_write_sysreg!(hdfgwtr2_el2, u64: Hdfgwtr2El2, safe_read, fake::SYSREGS);
+read_write_sysreg!(hfgitr2_el2, u64: Hfgitr2El2, safe_read, fake::SYSREGS);
+read_write_sysreg!(hfgrtr2_el2, u64: Hfgrtr2El2, safe_read, fake::SYSREGS);
+read_write_sysreg!(hfgwtr_el2, u64: HfgwtrEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hpfar_el2, u64: HpfarEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(hstr_el2, u64, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(icc_sre_el1, u64: IccSreEl1, safe_read, fake::SYSREGS);
@@ -4350,6 +4777,7 @@ read_write_sysreg!(ich_hcr_el2, u64: IchHcrEl2, safe_read, fake::SYSREGS);
 read_write_sysreg!(ich_vmcr_el2, u64: IchVmcrEl2, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64dfr1_el1, u64: IdAa64dfr1El1, safe, fake::SYSREGS);
+read_sysreg!(id_aa64mmfr0_el1, u64: IdAa64mmfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64mmfr3_el1, u64: IdAa64mmfr3El1, safe, fake::SYSREGS);
