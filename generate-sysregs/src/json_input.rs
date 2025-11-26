@@ -6,8 +6,8 @@
 
 use crate::{ArrayInfo, RegisterField, RegisterInfo, Safety, ones};
 use arm_sysregs_json::{
-    ArrayField, ConditionalField, ConstantField, DynamicField, Field, FieldEntry, Register,
-    RegisterEntry, VectorField,
+    Accessor, ArrayField, ConditionalField, ConstantField, DynamicField, Field, FieldEntry,
+    Register, RegisterEntry, VectorField,
 };
 use log::{info, trace};
 
@@ -47,20 +47,42 @@ impl RegisterInfo {
         }
         fields.sort_by_key(|field| field.index);
         fields.dedup();
-        // TODO: Find a better way to detect register width, including 32-bit registers.
-        let width = if fields.iter().any(|field| field.index + field.width > 64) {
-            128
-        } else {
-            64
-        };
-        let writable = fields.iter().any(|field| field.writable);
+        let mut writable = false;
+        let mut readable = false;
+        let mut width = 0;
+        for accessor in &register.accessors {
+            match accessor {
+                Accessor::SystemAccessor(system_accessor) => match system_accessor.name.as_str() {
+                    "A64.MRS" => {
+                        readable = true;
+                        width = 64;
+                    }
+                    "A64.MSRregister" => {
+                        writable = true;
+                        width = 64;
+                    }
+                    "A64.MRRS" => {
+                        readable = true;
+                        width = 128;
+                    }
+                    "A64.MSRRregister" => {
+                        writable = true;
+                        width = 128;
+                    }
+                    other_name => {
+                        log::info!("Unexpected system accessor name {other_name}.");
+                    }
+                },
+                _ => {}
+            }
+        }
         RegisterInfo {
             name: register.name.clone(),
             description: None,
             width,
             fields,
             res1,
-            read: Some(Safety::Safe),
+            read: if readable { Some(Safety::Safe) } else { None },
             write: if writable { Some(Safety::Unsafe) } else { None },
             write_safety_doc: None,
             derive_debug: true,
