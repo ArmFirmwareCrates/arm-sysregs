@@ -41,7 +41,7 @@ fn main() -> Result<(), Report> {
         remove_over_64bit(register);
     }
     register_infos.sort_by_cached_key(|register| register.name.clone());
-    register_infos.dedup();
+    register_infos.retain(|register| register.width > 0);
     warn_missing(&register_infos, &config);
     write_lib(&output_lib, &register_infos)?;
     write_fake(&output_fake, &register_infos)?;
