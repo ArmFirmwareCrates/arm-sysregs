@@ -158,6 +158,24 @@
       "parentUuid": "5bff78ca_054a023c",
       "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f262148_26297049",
+        "filename": "arm-sysregs/Cargo.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2025-11-27T19:38:07Z",
+      "side": 1,
+      "message": "We’ve been asked to clearly state in the commit message that the source files are being relicensed from `BSD-3-Clause` to `MIT OR Apache-2.0`, and that all license holders have agreed to this change.",
+      "parentUuid": "527789bb_c8805e29",
+      "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
