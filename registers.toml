@@ -208,6 +208,7 @@ write = "safe"
 [registers.MPAM2_EL2]
 
 [registers.MPAM3_EL3]
+use_encoded_asm_name = true
 description = "Holds information to generate MPAM labels for memory requests when executing at EL3."
 [registers.MPAM3_EL3.field_descriptions]
 TRAPLOWER = "Trap direct accesses to MPAM System registers that are not UNDEFINED from all ELn lower than EL3."

@@ -129,6 +129,9 @@ fn add_details(register: &mut RegisterInfo, config: &Config) {
                 field.description = Some(description.clone());
             }
         }
+        if !register_config.use_encoded_asm_name {
+            register.assembly_name = None;
+        }
     }
 }
 
@@ -175,6 +178,7 @@ struct RegisterInfo {
     pub write: Option<Safety>,
     pub write_safety_doc: Option<String>,
     pub derive_debug: bool,
+    pub assembly_name: Option<String>,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]

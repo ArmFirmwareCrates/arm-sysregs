@@ -4888,7 +4888,7 @@ read_write_sysreg!(mdcr_el3, u64: MdcrEl3, safe_read, safe_write, fake::SYSREGS)
 read_write_sysreg!(mdscr_el1, u64: MdscrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(midr_el1, u64: MidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(mpam2_el2, u64: Mpam2El2, safe_read, fake::SYSREGS);
-read_write_sysreg!(mpam3_el3, u64: Mpam3El3, safe_read, fake::SYSREGS);
+read_write_sysreg!(mpam3_el3: s3_6_c10_c5_0, u64: Mpam3El3, safe_read, fake::SYSREGS);
 read_write_sysreg!(mpamhcr_el2, u64: MpamhcrEl2, safe_read, fake::SYSREGS);
 read_sysreg!(mpamidr_el1, u64: MpamidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(mpamvpm0_el2, u64: Mpamvpm0El2, safe_read, fake::SYSREGS);
