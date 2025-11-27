@@ -64,6 +64,7 @@ description = "Cache Type Register."
 DminLine = "Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE."
 
 [registers.DISR_EL1]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.DIT]
@@ -94,6 +95,7 @@ IL = "32-bit instruction length."
 [registers.FAR_EL1]
 [registers.FAR_EL2]
 [registers.GCR_EL1]
+use_encoded_asm_name = true
 [registers.GCSCR_EL1]
 description = "Guarded Control Stack Control register."
 [registers.GCSCR_EL1.field_descriptions]
@@ -109,6 +111,7 @@ EXLOCKEN = "Exception state lock enable."
 TGE = "Trap general exceptions to EL2."
 
 [registers.HCRX_EL2]
+use_encoded_asm_name = true
 description = "Extended Hypervisor Configuration Register."
 [registers.HCRX_EL2.field_descriptions]
 EnAS0 = "Do not trap execution of an ST64BV0 instruction at EL0 or EL1 to EL2."
@@ -125,11 +128,17 @@ MCE2 = "Controls Memory Copy and Memory Set exceptions generated from EL1."
 MSCEn = "Enables execution of Memory Set and Memory Copy instructions at EL1 or EL0."
 
 [registers.HDFGRTR2_EL2]
+use_encoded_asm_name = true
 [registers.HDFGWTR2_EL2]
+use_encoded_asm_name = true
 [registers.HFGITR2_EL2]
+use_encoded_asm_name = true
 [registers.HFGRTR2_EL2]
+use_encoded_asm_name = true
 [registers.HFGWTR_EL2]
+use_encoded_asm_name = true
 [registers.HFGWTR2_EL2]
+use_encoded_asm_name = true
 [registers.HPFAR_EL2]
 [registers.HSTR_EL2]
 write = "safe"
@@ -207,29 +216,42 @@ write = "safe"
 
 [registers.MIDR_EL1]
 [registers.MPAM2_EL2]
+use_encoded_asm_name = true
 
 [registers.MPAM3_EL3]
+use_encoded_asm_name = true
 description = "Holds information to generate MPAM labels for memory requests when executing at EL3."
 [registers.MPAM3_EL3.field_descriptions]
 TRAPLOWER = "Trap direct accesses to MPAM System registers that are not UNDEFINED from all ELn lower than EL3."
 MPAMEN = "MPAM Enable. If set, MPAM information is output based on the MPAMn_ELx register for ELn according the MPAM configuration. If not set, the default PARTID and default PMG are output in MPAM information when executing at any ELn."
 
 [registers.MPAMHCR_EL2]
+use_encoded_asm_name = true
 [registers.MPAMIDR_EL1]
+use_encoded_asm_name = true
 description = "Indicates the maximum PARTID and PMG values supported in the implementation and the support for other optional features."
 [registers.MPAMIDR_EL1.field_descriptions]
 HAS_HCR = "Indicates support for MPAM virtualization."
 VPMR_MAX = "Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers."
 
 [registers.MPAMVPM0_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM1_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM2_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM3_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM4_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM5_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM6_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPM7_EL2]
+use_encoded_asm_name = true
 [registers.MPAMVPMV_EL2]
+use_encoded_asm_name = true
 [registers.MPIDR_EL1]
 [registers.PAR_EL1]
 
@@ -244,6 +266,7 @@ X = "Enable export of events in an IMPLEMENTATION DEFINED PMU event export bus. 
 DP = "If set, cycle counting by PMCCNTR_EL0 is disabled in prohibited regions."
 
 [registers.RGSR_EL1]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.SCR_EL3.field_descriptions]
@@ -345,12 +368,15 @@ write_safety_doc = "The caller must ensure that `value` is a correct and safe co
 [registers.TCR2_EL1]
 [registers.TCR2_EL2]
 [registers.TFSR_EL1]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.TFSR_EL2]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.TFSRE0_EL1]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.TPIDR_EL0]
@@ -379,6 +405,7 @@ write_safety_doc = "The base address must point to a valid exception vector."
 write_safety_doc = "The base address must point to a valid exception vector."
 
 [registers.VDISR_EL2]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.VMPIDR_EL2]
@@ -388,6 +415,7 @@ write = "safe"
 write = "safe"
 
 [registers.VSESR_EL2]
+use_encoded_asm_name = true
 write = "safe"
 
 [registers.VTCR_EL2]
