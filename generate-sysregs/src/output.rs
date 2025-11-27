@@ -318,6 +318,11 @@ impl RegisterInfo {
         } else {
             format!("u{}", self.width)
         };
+        let register_assembly_name = self
+            .assembly_name
+            .as_ref()
+            .map(|register_name| format!(": {register_name}"))
+            .unwrap_or_default();
         match (self.read, self.write) {
             (None, None) => {}
             (None, Some(write_safety)) => {
@@ -333,18 +338,20 @@ write_sysreg! {{
     /// # Safety
     ///
     /// {}
-    {}, {}{}, fake::SYSREGS
+    {}{}, {}{}, fake::SYSREGS
 }}",
                         safety_doc,
                         self.variable_name(),
+                        register_assembly_name,
                         register_type,
                         safe_write,
                     )?;
                 } else {
                     writeln!(
                         writer,
-                        "write_sysreg!({}, {}{}, fake::SYSREGS);",
+                        "write_sysreg!({}{}, {}{}, fake::SYSREGS);",
                         self.variable_name(),
+                        register_assembly_name,
                         register_type,
                         safe_write,
                     )?;
@@ -357,8 +364,9 @@ write_sysreg! {{
                 };
                 writeln!(
                     writer,
-                    "read_sysreg!({}, {}{}, fake::SYSREGS);",
+                    "read_sysreg!({}{}, {}{}, fake::SYSREGS);",
                     self.variable_name(),
+                    register_assembly_name,
                     register_type,
                     safe_read,
                 )?;
@@ -380,10 +388,11 @@ read_write_sysreg! {{
     /// # Safety
     ///
     /// {}
-    {}, {}{}{}, fake::SYSREGS
+    {}{}, {}{}{}, fake::SYSREGS
 }}",
                         safety_doc,
                         self.variable_name(),
+                        register_assembly_name,
                         register_type,
                         safe_read,
                         safe_write,
@@ -391,8 +400,9 @@ read_write_sysreg! {{
                 } else {
                     writeln!(
                         writer,
-                        "read_write_sysreg!({}, {}{}{}, fake::SYSREGS);",
+                        "read_write_sysreg!({}{}, {}{}{}, fake::SYSREGS);",
                         self.variable_name(),
+                        register_assembly_name,
                         register_type,
                         safe_read,
                         safe_write,
