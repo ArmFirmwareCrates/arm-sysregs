@@ -7,9 +7,10 @@
 use crate::{ArrayInfo, RegisterField, RegisterInfo, Safety, ones};
 use arm_sysregs_json::{
     Accessor, ArrayField, ConditionalField, ConstantField, DynamicField, Field, FieldEntry,
-    Register, RegisterEntry, VectorField,
+    Register, RegisterEntry, Value, VectorField,
 };
 use log::{info, trace};
+use std::num::ParseIntError;
 
 /// Converts all the `registers` with names contained in `filter` to `RegisterInfo`s.
 pub fn register_entries_to_register_infos(
@@ -50,32 +51,48 @@ impl RegisterInfo {
         let mut writable = false;
         let mut readable = false;
         let mut width = 0;
+        let mut encoding = None;
         for accessor in &register.accessors {
             match accessor {
-                Accessor::SystemAccessor(system_accessor) => match system_accessor.name.as_str() {
-                    "A64.MRS" => {
-                        readable = true;
-                        width = 64;
+                Accessor::SystemAccessor(system_accessor) => {
+                    match system_accessor.name.as_str() {
+                        "A64.MRS" => {
+                            readable = true;
+                            width = 64;
+                        }
+                        "A64.MSRregister" => {
+                            writable = true;
+                            width = 64;
+                        }
+                        "A64.MRRS" => {
+                            readable = true;
+                            width = 128;
+                        }
+                        "A64.MSRRregister" => {
+                            writable = true;
+                            width = 128;
+                        }
+                        other_name => {
+                            log::info!("Unexpected system accessor name {other_name}.");
+                        }
                     }
-                    "A64.MSRregister" => {
-                        writable = true;
-                        width = 64;
+
+                    if encoding.is_none() {
+                        encoding = Encoding::from_json_encoding(&system_accessor.encoding[0]);
                     }
-                    "A64.MRRS" => {
-                        readable = true;
-                        width = 128;
-                    }
-                    "A64.MSRRregister" => {
-                        writable = true;
-                        width = 128;
-                    }
-                    other_name => {
-                        log::info!("Unexpected system accessor name {other_name}.");
-                    }
-                },
+                }
                 _ => {}
             }
         }
+        let assembly_name = encoding.map(
+            |Encoding {
+                 op0,
+                 op1,
+                 op2,
+                 crn,
+                 crm,
+             }| format!("s{op0}_{op1}_c{crn}_c{crm}_{op2}"),
+        );
         RegisterInfo {
             name: register.name.clone(),
             description: None,
@@ -86,7 +103,33 @@ impl RegisterInfo {
             write: if writable { Some(Safety::Unsafe) } else { None },
             write_safety_doc: None,
             derive_debug: true,
+            assembly_name,
         }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+struct Encoding {
+    pub op0: u8,
+    pub op1: u8,
+    pub op2: u8,
+    pub crn: u8,
+    pub crm: u8,
+}
+
+impl Encoding {
+    fn parse_value(value: &Value) -> Result<u8, ParseIntError> {
+        u8::from_str_radix(value.value.trim_matches('\''), 2)
+    }
+
+    pub fn from_json_encoding(encoding: &arm_sysregs_json::Encoding) -> Option<Self> {
+        Some(Encoding {
+            op0: Self::parse_value(encoding.encodings.get("op0")?).unwrap(),
+            op1: Self::parse_value(encoding.encodings.get("op1")?).unwrap(),
+            op2: Self::parse_value(encoding.encodings.get("op2")?).unwrap(),
+            crn: Self::parse_value(encoding.encodings.get("CRn")?).unwrap(),
+            crm: Self::parse_value(encoding.encodings.get("CRm")?).unwrap(),
+        })
     }
 }
 
