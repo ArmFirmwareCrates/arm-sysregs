@@ -14,7 +14,7 @@ categories = ["development-tools"]
 readme = "README.md"
 
 [dependencies]
-arm-sysregs-json = "0.3.0"
+arm-sysregs-json = "0.4.0"
 clap = { version = "4.5.51", features = ["derive"] }
 eyre = "0.6.12"
 log = "0.4.28"

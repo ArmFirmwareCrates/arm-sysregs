@@ -129,6 +129,9 @@ fn add_details(register: &mut RegisterInfo, config: &Config) {
                 field.description = Some(description.clone());
             }
         }
+        if !register.has_special_conditions {
+            register.assembly_name = None;
+        }
     }
 }
 
@@ -175,6 +178,11 @@ struct RegisterInfo {
     pub write: Option<Safety>,
     pub write_safety_doc: Option<String>,
     pub derive_debug: bool,
+    pub assembly_name: Option<String>,
+    /// The register has conditions beyond just AArch64 and having certain exception levels.
+    ///
+    /// For example, it might require certain CPU features.
+    pub has_special_conditions: bool,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]

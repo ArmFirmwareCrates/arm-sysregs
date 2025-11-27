@@ -71,9 +71,9 @@ dependencies = [
 
 [[package]]
 name = "arm-sysregs-json"
-version = "0.3.0"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9919d484e4a153113dd16a3e99dfe83c9993c4a912aa1a97e0d26d8ea3841e24"
+checksum = "7ec89d263c70d1741c1ca9ee01bdb3a63158da8c4f7fd09c6b177e420424661b"
 dependencies = [
  "serde",
 ]

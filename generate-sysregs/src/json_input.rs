@@ -6,10 +6,59 @@
 
 use crate::{ArrayInfo, RegisterField, RegisterInfo, Safety, ones};
 use arm_sysregs_json::{
-    Accessor, ArrayField, ConditionalField, ConstantField, DynamicField, Field, FieldEntry,
-    Register, RegisterEntry, VectorField,
+    Accessor, ArrayField, AstBinaryOp, AstBool, AstFunction, AstIdentifier, ConditionalField,
+    ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Register, RegisterEntry,
+    Value, VectorField,
 };
 use log::{info, trace};
+use std::{num::ParseIntError, sync::LazyLock};
+
+static STANDARD_CONDITIONS: LazyLock<Vec<Expression>> = LazyLock::new(|| {
+    vec![
+        Expression::Bool(AstBool { value: true }),
+        Expression::Function(AstFunction {
+            arguments: vec![Expression::Identifier(AstIdentifier {
+                value: "FEAT_AA64".to_string(),
+            })],
+            name: "IsFeatureImplemented".into(),
+            parameters: vec![],
+        }),
+        Expression::BinaryOp(AstBinaryOp {
+            op: "&&".to_string(),
+            left: Box::new(Expression::Function(AstFunction {
+                arguments: vec![Expression::Identifier(AstIdentifier {
+                    value: "FEAT_VHE".to_string(),
+                })],
+                name: "IsFeatureImplemented".into(),
+                parameters: vec![],
+            })),
+            right: Box::new(Expression::Function(AstFunction {
+                arguments: vec![Expression::Identifier(AstIdentifier {
+                    value: "FEAT_AA64".to_string(),
+                })],
+                name: "IsFeatureImplemented".into(),
+                parameters: vec![],
+            })),
+        }),
+        Expression::BinaryOp(AstBinaryOp {
+            op: "&&".to_string(),
+            left: Box::new(Expression::Function(AstFunction {
+                arguments: vec![Expression::Identifier(AstIdentifier {
+                    value: "EL3".to_string(),
+                })],
+                name: "HaveEL".into(),
+                parameters: vec![],
+            })),
+            right: Box::new(Expression::Function(AstFunction {
+                arguments: vec![Expression::Identifier(AstIdentifier {
+                    value: "FEAT_AA64".to_string(),
+                })],
+                name: "IsFeatureImplemented".into(),
+                parameters: vec![],
+            })),
+        }),
+    ]
+});
 
 /// Converts all the `registers` with names contained in `filter` to `RegisterInfo`s.
 pub fn register_entries_to_register_infos(
@@ -30,7 +79,9 @@ pub fn register_entries_to_register_infos(
 
 impl RegisterInfo {
     fn from_json_register(register: &Register) -> RegisterInfo {
-        trace!("{:#?}", register);
+        if !STANDARD_CONDITIONS.contains(&register.condition) {
+            trace!("condition for {}: {:#?}", register.name, register.condition);
+        }
         let mut fields = Vec::new();
         let mut res1 = 0;
         for fieldset in &register.fieldsets {
@@ -50,37 +101,44 @@ impl RegisterInfo {
         let mut writable = false;
         let mut readable = false;
         let mut width = 0;
+        let mut assembly_name = None;
         for accessor in &register.accessors {
             match accessor {
-                Accessor::SystemAccessor(system_accessor) => match system_accessor.name.as_str() {
-                    "A32.MRC" => {
-                        readable = true;
-                        width = 32;
+                Accessor::SystemAccessor(system_accessor) => {
+                    match system_accessor.name.as_str() {
+                        "A32.MRC" => {
+                            readable = true;
+                            width = 32;
+                        }
+                        "A32.MCR" => {
+                            writable = true;
+                            width = 32;
+                        }
+                        "A64.MRS" => {
+                            readable = true;
+                            width = 64;
+                        }
+                        "A64.MSRregister" => {
+                            writable = true;
+                            width = 64;
+                        }
+                        "A64.MRRS" => {
+                            readable = true;
+                            width = 128;
+                        }
+                        "A64.MSRRregister" => {
+                            writable = true;
+                            width = 128;
+                        }
+                        other_name => {
+                            log::info!("Unexpected system accessor name {other_name}.");
+                        }
                     }
-                    "A32.MCR" => {
-                        writable = true;
-                        width = 32;
+
+                    if assembly_name.is_none() {
+                        assembly_name = encoding_to_assembly_name(&system_accessor.encoding[0]);
                     }
-                    "A64.MRS" => {
-                        readable = true;
-                        width = 64;
-                    }
-                    "A64.MSRregister" => {
-                        writable = true;
-                        width = 64;
-                    }
-                    "A64.MRRS" => {
-                        readable = true;
-                        width = 128;
-                    }
-                    "A64.MSRRregister" => {
-                        writable = true;
-                        width = 128;
-                    }
-                    other_name => {
-                        log::info!("Unexpected system accessor name {other_name}.");
-                    }
-                },
+                }
                 _ => {}
             }
         }
@@ -94,8 +152,23 @@ impl RegisterInfo {
             write: writable.then_some(Safety::Unsafe),
             write_safety_doc: None,
             derive_debug: true,
+            assembly_name,
+            has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
         }
     }
+}
+
+fn parse_binary_value(value: &Value) -> Result<u8, ParseIntError> {
+    u8::from_str_radix(value.value.trim_matches('\''), 2)
+}
+
+fn encoding_to_assembly_name(encoding: &Encoding) -> Option<String> {
+    let op0 = parse_binary_value(encoding.encodings.get("op0")?).ok()?;
+    let op1 = parse_binary_value(encoding.encodings.get("op1")?).ok()?;
+    let op2 = parse_binary_value(encoding.encodings.get("op2")?).ok()?;
+    let crn = parse_binary_value(encoding.encodings.get("CRn")?).ok()?;
+    let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
+    Some(format!("s{op0}_{op1}_c{crn}_c{crm}_{op2}"))
 }
 
 impl RegisterField {
