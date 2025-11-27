@@ -28,6 +28,10 @@ pub struct RegisterConfig {
     pub write_safety_doc: Option<String>,
     #[serde(default)]
     pub manual_debug: bool,
+    /// Use the encoded name like `s3_0_c1_c0_1` in assembly rather than the human-readable name
+    /// like `actlr_el1`.
+    #[serde(default)]
+    pub use_encoded_asm_name: bool,
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]
