@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a07334_6edf1a71",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-27T15:39:47Z",
+      "side": 1,
+      "message": "I don\u0027t think we should escape the description here, as doing so would prevent us from inserting references through the configuration file. Instead, we should probably escape it when collecting from the JSON.\n\nOn the topic of comments, maybe we should consider using `#[doc \u003d \"\"]` instead of inserting them in `///` blocs. As of now, a multiline description would result in all the comment after the line break to but output as code rather than documentation. It would also simplify the logic of optional descriptions as outputing `#[doc \u003d \"smth smth\\n\\n\"]` when the description is `None` is much less noisy than \n\n```\n/// smth smth\n///\n///\n```\n\nIn this case, we could also use `r#\"\"#` literals to avoid having to escape double quotes.",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 1
+      },
+      "revId": "2997e7b22f211585e65df2f5c6fecf32ea9b185b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
