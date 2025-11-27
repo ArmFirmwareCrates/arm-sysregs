@@ -22,6 +22,30 @@
       },
       "revId": "51bc9adfd16e4c0b13c27d8ffa68da50fc796fee",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2118a8fd_9b478173",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-27T14:41:02Z",
+      "side": 1,
+      "message": "Nice, I didn\u0027t know about that.",
+      "parentUuid": "28d22c41_63981a28",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 26
+      },
+      "revId": "51bc9adfd16e4c0b13c27d8ffa68da50fc796fee",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

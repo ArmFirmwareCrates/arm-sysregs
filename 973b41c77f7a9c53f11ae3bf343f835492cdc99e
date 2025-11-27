@@ -24,6 +24,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e67ba7e_572a96e0",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-27T14:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35a7060_8136a076",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "973b41c77f7a9c53f11ae3bf343f835492cdc99e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8add2c59_d90c192e",
@@ -41,6 +65,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8a9e29_e7c44737",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-27T14:41:02Z",
+      "side": 1,
+      "message": "There are several, but for example in `SPSR_EL1` the position of the `SSBS` field can be either bit 12 or bit 23, depending on whether the exception comes from aarch32 or aarch64 mode. In cases like this we\u0027ll need some more complicated logic in a manual implementation to get the appropriate bit.\n\nI\u0027ve added a log.",
+      "parentUuid": "8add2c59_d90c192e",
+      "revId": "973b41c77f7a9c53f11ae3bf343f835492cdc99e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1e1b13_7cccc222",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-11-18T12:44:27Z",
       "side": 1,
       "message": "These writes can be moved to the `if first` true case on line 204, and the outer if can be removed.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 64
+      },
+      "revId": "973b41c77f7a9c53f11ae3bf343f835492cdc99e",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17c8f3e_d8f3ed23",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-27T14:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1e1b13_7cccc222",
       "range": {
         "startLine": 197,
         "startChar": 0,
