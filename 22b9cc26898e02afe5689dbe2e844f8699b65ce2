@@ -176,6 +176,24 @@
       "parentUuid": "527789bb_c8805e29",
       "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c776ee7_27a9174b",
+        "filename": "arm-sysregs/Cargo.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-28T10:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f262148_26297049",
+      "revId": "22b9cc26898e02afe5689dbe2e844f8699b65ce2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
