@@ -188,6 +188,17 @@ struct RegisterInfo {
     ///
     /// For example, it might require certain CPU features.
     pub has_special_conditions: bool,
+    /// The lowest exception level at which this system register is accessible.
+    pub exception_level: ExceptionLevel,
+}
+
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+enum ExceptionLevel {
+    #[default]
+    El0,
+    El1,
+    El2,
+    El3,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
