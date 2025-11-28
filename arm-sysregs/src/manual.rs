@@ -6,7 +6,7 @@
 #[cfg(feature = "el1")]
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MidrEl1, MpidrEl1, SpsrEl1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MpidrEl1, SpsrEl1,
     read_mpidr_el1,
 };
 #[cfg(feature = "el2")]
@@ -268,36 +268,10 @@ impl MdcrEl3 {
     pub const NSTB_SS: Self = Self::from_bits_retain(1 << 25);
 }
 
-// TODO: Generate these masks and shifts automatically.
-#[cfg(feature = "el1")]
-impl MidrEl1 {
-    /// Position of the lowest bit in the Revision field.
-    pub const REVISION_SHIFT: u32 = 0;
-
-    /// Position of the lowest bit in the Variant field.
-    pub const VARIANT_SHIFT: u32 = 20;
-}
-
 #[cfg(feature = "el1")]
 impl MpidrEl1 {
-    /// Mask for the Aff0 field.
-    pub const AFF0_MASK: u64 = 0xff;
-    /// Mask for the Aff1 field.
-    pub const AFF1_MASK: u64 = 0xff;
-    /// Mask for the Aff2 field.
-    pub const AFF2_MASK: u64 = 0xff;
-    /// Mask for the Aff3 field.
-    pub const AFF3_MASK: u64 = 0xff;
     /// Size in bits of the affinity fields.
     pub const AFFINITY_BITS: usize = 8;
-    /// Position of the lowest bit in the Aff0 field.
-    pub const AFF0_SHIFT: u8 = 0;
-    /// Position of the lowest bit in the Aff1 field.
-    pub const AFF1_SHIFT: u8 = 8;
-    /// Position of the lowest bit in the Aff2 field.
-    pub const AFF2_SHIFT: u8 = 16;
-    /// Position of the lowest bit in the Aff3 field.
-    pub const AFF3_SHIFT: u8 = 32;
 
     /// Converts a PSCI MPIDR value into the equivalent `MpidrEL1` value.
     ///
@@ -314,11 +288,9 @@ impl MpidrEl1 {
 
 #[cfg(feature = "el3")]
 impl SmcrEl3 {
-    const SSVE_LEN_MASK: u64 = 0b1111;
-
     /// Build SMCR_EL3 register value from given SSVE vector length.
     pub fn from_ssve_vector_len(vector_length: u64) -> Self {
-        Self::from_bits_retain(((vector_length - 1) / 128) & Self::SSVE_LEN_MASK)
+        Self::from_bits_retain(((vector_length - 1) / 128) & Self::LEN_MASK)
     }
 }
 
