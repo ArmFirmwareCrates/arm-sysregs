@@ -6,6 +6,8 @@
 use crate::{RegisterField, RegisterInfo, Safety, ones};
 use std::io::{self, Write};
 
+const RESERVED_NAMES: &[&str] = &["extend", "type"];
+
 pub fn write_lib(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
     writer.write_all(
         "\
@@ -398,7 +400,12 @@ impl RegisterField {
 
     /// Returns the name of the field formatted to be a valid Rust function name.
     fn function_name(&self) -> String {
-        lowercase_name(&self.name)
+        let name = lowercase_name(&self.name);
+        if RESERVED_NAMES.contains(&name.as_str()) {
+            format!("{name}_")
+        } else {
+            name
+        }
     }
 }
 
