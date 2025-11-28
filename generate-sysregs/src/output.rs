@@ -3,7 +3,7 @@
 
 //! Logic for writing out a Rust source file with system register types and accessors.
 
-use crate::{RegisterField, RegisterInfo, Safety, ones};
+use crate::{ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
 use std::io::{self, Write};
 
 pub fn write_lib(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
@@ -56,13 +56,23 @@ pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> 
         .as_bytes(),
     )?;
 
-    let struct_names = registers
-        .iter()
-        .filter(|register| register.use_struct())
-        .map(RegisterInfo::struct_name)
-        .collect::<Vec<_>>()
-        .join(", ");
-    writeln!(writer, "use crate::{{{struct_names}}};")?;
+    for exception_level in [
+        ExceptionLevel::El0,
+        ExceptionLevel::El1,
+        ExceptionLevel::El2,
+        ExceptionLevel::El3,
+    ] {
+        let struct_names = registers
+            .iter()
+            .filter(|register| register.use_struct() && register.exception_level == exception_level)
+            .map(RegisterInfo::struct_name)
+            .collect::<Vec<_>>()
+            .join(", ");
+        if let Some(feature) = exception_level.feature() {
+            writeln!(writer, "#[cfg(feature = \"{feature}\")]")?;
+        }
+        writeln!(writer, "use crate::{{{struct_names}}};")?;
+    }
 
     writer.write_all(
         "
@@ -74,6 +84,9 @@ pub struct SystemRegisters {
     )?;
 
     for register in registers {
+        if let Some(guard) = register.cfg_guard() {
+            writeln!(writer, "    {guard}")?;
+        }
         writeln!(
             writer,
             "    /// Fake value for the `{}` system register.",
@@ -97,6 +110,9 @@ pub struct SystemRegisters {
     writeln!(writer, "    pub(crate) const fn new() -> Self {{")?;
     writeln!(writer, "        Self {{")?;
     for register in registers {
+        if let Some(guard) = register.cfg_guard() {
+            writeln!(writer, "            {guard}")?;
+        }
         if register.use_struct() {
             writeln!(
                 writer,
@@ -127,7 +143,16 @@ impl RegisterInfo {
         camel_case(&self.name)
     }
 
+    fn cfg_guard(&self) -> Option<String> {
+        self.exception_level
+            .feature()
+            .map(|feature| format!("#[cfg(feature = \"{feature}\")]"))
+    }
+
     fn write_bitflags(&self, mut writer: impl Write) -> io::Result<()> {
+        if let Some(guard) = self.cfg_guard() {
+            writeln!(writer, "{guard}")?;
+        }
         writeln!(writer, "bitflags! {{")?;
         writeln!(writer, "    /// `{}` system register value.", self.name)?;
         if let Some(description) = &self.description {
@@ -201,6 +226,9 @@ impl RegisterInfo {
             writeln!(writer)?;
 
             if first {
+                if let Some(guard) = self.cfg_guard() {
+                    writeln!(writer, "{guard}")?;
+                }
                 writeln!(writer, "impl {} {{", self.struct_name())?;
                 first = false;
             }
@@ -284,6 +312,9 @@ impl RegisterInfo {
     }
 
     fn write_accessor(&self, mut writer: impl Write) -> io::Result<()> {
+        if let Some(guard) = self.cfg_guard() {
+            writeln!(writer, "{guard}")?;
+        }
         let register_type = if self.use_struct() {
             format!("u{}: {}", self.width, self.struct_name())
         } else {
@@ -399,6 +430,17 @@ impl RegisterField {
     /// Returns the name of the field formatted to be a valid Rust function name.
     fn function_name(&self) -> String {
         lowercase_name(&self.name)
+    }
+}
+
+impl ExceptionLevel {
+    fn feature(self) -> Option<&'static str> {
+        match self {
+            ExceptionLevel::El0 => None,
+            ExceptionLevel::El1 => Some("el1"),
+            ExceptionLevel::El2 => Some("el2"),
+            ExceptionLevel::El3 => Some("el3"),
+        }
     }
 }
 
