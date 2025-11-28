@@ -211,21 +211,46 @@ impl RegisterInfo {
     }
 
     fn write_impl(&self, mut writer: impl Write) -> io::Result<()> {
+        writeln!(writer)?;
+        if let Some(guard) = self.exception_level.cfg_guard() {
+            writeln!(writer, "{guard}")?;
+        }
+        writeln!(writer, "impl {} {{", self.struct_name())?;
+
+        // Constants for field offsets and masks.
+        for field in &self.fields {
+            let constant_name = field.constant_name();
+
+            writeln!(writer, "    /// Offset of the {} field.", field.name)?;
+            writeln!(
+                writer,
+                "    pub const {}_SHIFT: u32 = {};",
+                constant_name, field.index
+            )?;
+            if field.width > 1 {
+                writeln!(writer, "    /// Mask for the {} field.", field.name)?;
+                writeln!(
+                    writer,
+                    "    pub const {}_MASK: u{} = {:#b};",
+                    constant_name,
+                    self.width,
+                    ones(field.width)
+                )?;
+            }
+        }
+
+        // Methods to access fields.
         let mut first = true;
         for field in &self.fields {
             if field.width <= 1 {
                 continue;
             }
 
-            writeln!(writer)?;
-
             if first {
-                if let Some(guard) = self.exception_level.cfg_guard() {
-                    writeln!(writer, "{guard}")?;
-                }
-                writeln!(writer, "impl {} {{", self.struct_name())?;
                 first = false;
             }
+
+            writeln!(writer)?;
 
             let int_ty = type_for_width(field.width);
             let constness;
@@ -279,8 +304,8 @@ impl RegisterInfo {
                 }
                 write!(
                     writer,
-                    "((self.bits() >> ({} + ({} - {}) * {})) & {:#b}) as {}",
-                    field.index,
+                    "((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) & {:#b}) as {}",
+                    field.constant_name(),
                     array_info.index_variable,
                     array_info.indices.start,
                     field.width,
@@ -315,8 +340,8 @@ impl RegisterInfo {
                 }
                 write!(
                     writer,
-                    "((self.bits() >> {}) & {:#b}) as {}",
-                    field.index,
+                    "((self.bits() >> Self::{}_SHIFT) & {:#b}) as {}",
+                    field.constant_name(),
                     ones(field.width),
                     int_ty,
                 )?;
@@ -328,9 +353,9 @@ impl RegisterInfo {
                 writeln!(writer, "    }}")?;
             }
         }
-        if !first {
-            writeln!(writer, "}}")?;
-        }
+
+        writeln!(writer, "}}")?;
+
         Ok(())
     }
 
@@ -447,7 +472,11 @@ read_write_sysreg! {{
 impl RegisterField {
     /// Returns the name of the field formatted to be a valid Rust constant name.
     fn constant_name(&self) -> String {
-        uppercase_name(&self.name)
+        if let Some(array_info) = &self.array_info {
+            uppercase_name(&self.name.replace(&array_info.placeholder(), ""))
+        } else {
+            uppercase_name(&self.name)
+        }
     }
 
     /// Returns the name of the field formatted to be a valid Rust function name.
