@@ -4,10 +4,14 @@
 //! Manually implemented methods for system register types.
 
 use crate::{
-    ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1,
-    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1,
-    MpidrEl1, SpsrEl1, SpsrEl2, SpsrEl3, read_mpidr_el1,
+    ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MidrEl1, MpidrEl1, SpsrEl1,
+    read_mpidr_el1,
 };
+#[cfg(feature = "el2")]
+use crate::{EsrEl2, SpsrEl2};
+#[cfg(feature = "el3")]
+use crate::{EsrEl3, MdcrEl3, SpsrEl3};
 use core::fmt::{self, Debug, Formatter};
 
 impl ClidrEl1 {
@@ -59,22 +63,26 @@ impl Debug for EsrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 impl EsrEl2 {
     /// Mask for the parts of an ESR value containing the opcode.
     pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
 }
 
+#[cfg(feature = "el2")]
 impl Debug for EsrEl2 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl2({:#x})", self.0)
     }
 }
 
+#[cfg(feature = "el3")]
 impl EsrEl3 {
     /// Mask for the parts of an ESR value containing the opcode.
     pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
 }
 
+#[cfg(feature = "el3")]
 impl Debug for EsrEl3 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl3({:#x})", self.0)
@@ -223,6 +231,7 @@ impl IdAa64pfr1El1 {
     }
 }
 
+#[cfg(feature = "el3")]
 impl MdcrEl3 {
     /// Set to 0b10 to disable AArch32 Secure self-hosted privileged debug from S-EL1.
     pub const SPD32: Self = Self::from_bits_retain(0b10 << 14);
@@ -286,11 +295,13 @@ impl SpsrEl1 {
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
 }
 
+#[cfg(feature = "el2")]
 impl SpsrEl2 {
     /// All of the N, Z, C and V bits.
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
 }
 
+#[cfg(feature = "el3")]
 impl SpsrEl3 {
     /// AArch64 execution state, EL0.
     pub const M_AARCH64_EL0: Self = Self::from_bits_retain(0b00000);
@@ -443,18 +454,21 @@ mod tests {
         );
     }
 
+    #[cfg(feature = "el1")]
     #[test]
     fn debug_spsr_el1() {
         assert_eq!(format!("{:?}", SpsrEl1::empty()), "SpsrEl1(0x0)");
         assert_eq!(format!("{:?}", SpsrEl1::NZCV), "SpsrEl1(V | C | Z | N)");
     }
 
+    #[cfg(feature = "el2")]
     #[test]
     fn debug_spsr_el2() {
         assert_eq!(format!("{:?}", SpsrEl2::empty()), "SpsrEl2(0x0)");
         assert_eq!(format!("{:?}", SpsrEl2::NZCV), "SpsrEl2(V | C | Z | N)");
     }
 
+    #[cfg(feature = "el3")]
     #[test]
     fn debug_spsr_el3() {
         assert_eq!(format!("{:?}", SpsrEl3::empty()), "SpsrEl3(0x0)");
@@ -462,6 +476,7 @@ mod tests {
         assert_eq!(format!("{:?}", SpsrEl3::M_AARCH64_EL3H), "SpsrEl3(0xd)");
     }
 
+    #[cfg(feature = "el1")]
     #[test]
     fn debug_esr_el1() {
         assert_eq!(format!("{:?}", EsrEl1::empty()), "EsrEl1(0x0)");
@@ -472,6 +487,7 @@ mod tests {
         );
     }
 
+    #[cfg(feature = "el2")]
     #[test]
     fn debug_esr_el2() {
         assert_eq!(format!("{:?}", EsrEl2::empty()), "EsrEl2(0x0)");
@@ -482,6 +498,7 @@ mod tests {
         );
     }
 
+    #[cfg(feature = "el3")]
     #[test]
     fn debug_esr_el3() {
         assert_eq!(format!("{:?}", EsrEl3::empty()), "EsrEl3(0x0)");
