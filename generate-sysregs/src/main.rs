@@ -40,6 +40,7 @@ fn main() -> Result<(), Report> {
     };
     let mut register_infos =
         register_entries_to_register_infos(&registers, registers_filter.as_deref());
+    register_infos.retain(|register| !register.name.contains('<'));
     for register in &mut register_infos {
         remove_clashes(register);
         add_details(register, &config);
