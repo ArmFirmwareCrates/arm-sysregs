@@ -4,7 +4,7 @@
 //! Logic for converting from a parsed JSON system register `RegisterEntry` to the `RegisterInfo`
 //! intermediate representation.
 
-use crate::{ArrayInfo, RegisterField, RegisterInfo, Safety, ones};
+use crate::{ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
 use arm_sysregs_json::{
     Accessor, ArrayField, ConditionalField, ConstantField, DynamicField, Encoding, Field,
     FieldEntry, Register, RegisterEntry, Value, VectorField,
@@ -54,6 +54,20 @@ impl RegisterInfo {
         }
         fields.sort_by_key(|field| field.index);
         fields.dedup();
+
+        let exception_level = if register.name.ends_with("_EL3") {
+            ExceptionLevel::El3
+        } else if register.name.ends_with("_EL2") {
+            ExceptionLevel::El2
+        } else if register.name.ends_with("_EL1") {
+            ExceptionLevel::El1
+        } else if register.name.ends_with("_EL0") {
+            ExceptionLevel::El0
+        } else {
+            info!("Assuming {} is available to EL0.", register.name);
+            ExceptionLevel::El0
+        };
+
         let mut writable = false;
         let mut readable = false;
         let mut width = 0;
@@ -98,6 +112,7 @@ impl RegisterInfo {
                 _ => {}
             }
         }
+
         RegisterInfo {
             name: register.name.clone(),
             description: None,
@@ -109,6 +124,7 @@ impl RegisterInfo {
             write_safety_doc: None,
             derive_debug: true,
             assembly_name,
+            exception_level,
         }
     }
 }
