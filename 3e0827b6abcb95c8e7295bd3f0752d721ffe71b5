@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a15b61b_7a9a23d1",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T14:16:55Z",
+      "side": 1,
+      "message": "Add a TODO as we\u0027ll probably want to support these registers at some point.",
+      "revId": "3e0827b6abcb95c8e7295bd3f0752d721ffe71b5",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
