@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be151eed_7fad74b1",
+        "filename": "arm-sysregs/src/manual.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T14:22:39Z",
+      "side": 0,
+      "message": "Also add `#[cfg(feature \u003d \"el1\")]` for `*El1` registers",
+      "revId": "eab07c88ec25437ae310aaa7d6842a871774a5e2",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
