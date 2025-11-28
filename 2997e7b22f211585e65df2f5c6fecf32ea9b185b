@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e6aad2d_31526c55",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T10:06:39Z",
+      "side": 1,
+      "message": "Should we really limit the generated registers to those present in the configuration file? It seems to me it would kind of defeat the purpose of generating the code, as we would still have to update the `arm-sysregs` crate each time we need to access a new register.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "2997e7b22f211585e65df2f5c6fecf32ea9b185b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77a07334_6edf1a71",
         "filename": "generate-sysregs/src/output.rs",
         "patchSetId": 12
