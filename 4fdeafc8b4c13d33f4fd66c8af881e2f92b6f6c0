@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89c1b95_a1c61586",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T10:42:33Z",
+      "side": 1,
+      "message": "The TODO mentions 32-bits registers, but this is not handled here. AFAIU, this could be done similarly by checking for the `A32.MRC`/`A32.MCR` accessors.",
+      "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875cdf49_412542ac",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T10:42:33Z",
+      "side": 1,
+      "message": "```suggestion\n            read: readable.then_some(Safety::Safe),\n            write: writable.then_some(Safety::Unsafe),\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b8d7de_09e50474",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T10:42:33Z",
+      "side": 1,
+      "message": "Why removing the `dedup()` call?",
+      "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
