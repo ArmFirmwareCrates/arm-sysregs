@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a119c957_ed0346c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-28T12:51:54Z",
+      "side": 1,
+      "message": "Shorter and more readable generated code.",
+      "parentUuid": "391ad773_b01cfe33",
+      "revId": "fb82e8578555f8973d5cb86b66f540ffd73e137b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9736ad8_85c90181",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-28T10:53:41Z",
       "side": 1,
       "message": "Why using an intermediary struct? Couldn\u0027t this function directly produce the assembly name?",
+      "revId": "fb82e8578555f8973d5cb86b66f540ffd73e137b",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df92b234_5c1e8166",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-28T12:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9736ad8_85c90181",
       "revId": "fb82e8578555f8973d5cb86b66f540ffd73e137b",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
