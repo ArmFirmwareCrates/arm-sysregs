@@ -1,0 +1,7 @@
+Code-Review+2: Kis Imre <imre.kis@arm.com>
+Submitted-by: Andrew Walbran <qwandor@google.com>
+Submitted-at: Fri, 28 Nov 2025 10:47:34 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/arm-firmware-crates/arm-sysregs/+/45374
+Comments-Total: 15
+Project: arm-firmware-crates/arm-sysregs
+Branch: refs/heads/main
