@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d958d169_3fe1f80a",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-28T12:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b89c1b95_a1c61586",
+      "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "875cdf49_412542ac",
@@ -41,6 +59,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc491fbc_dd06e179",
+        "filename": "generate-sysregs/src/json_input.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-28T12:18:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875cdf49_412542ac",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84b8d7de_09e50474",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-11-28T10:42:33Z",
       "side": 1,
       "message": "Why removing the `dedup()` call?",
+      "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf021166_71d63d51",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-11-28T12:18:07Z",
+      "side": 1,
+      "message": "It\u0027s no longer necessary, as the duplicates were a copy of the register with a 0 width and a copy with a non-zero width. Removing the 0 width copy here is sufficient.",
+      "parentUuid": "84b8d7de_09e50474",
       "revId": "4fdeafc8b4c13d33f4fd66c8af881e2f92b6f6c0",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
