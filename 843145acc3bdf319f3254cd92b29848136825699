@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c390848d_8c3ac269",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-11-28T14:59:25Z",
+      "side": 1,
+      "message": "It would be cleaner with a loop over `ExceptionLevel` variants and using `cfg_guard()`.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "843145acc3bdf319f3254cd92b29848136825699",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
