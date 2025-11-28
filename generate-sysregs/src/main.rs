@@ -184,6 +184,17 @@ struct RegisterInfo {
     pub write_safety_doc: Option<String>,
     pub derive_debug: bool,
     pub assembly_name: Option<String>,
+    /// The lowest exception level at which this system register is accessible.
+    pub exception_level: ExceptionLevel,
+}
+
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+enum ExceptionLevel {
+    #[default]
+    El0,
+    El1,
+    El2,
+    El3,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
