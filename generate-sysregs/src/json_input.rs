@@ -61,16 +61,22 @@ static STANDARD_CONDITIONS: LazyLock<Vec<Expression>> = LazyLock::new(|| {
 });
 
 /// Converts all the `registers` with names contained in `filter` to `RegisterInfo`s.
+///
+/// If `filter` is `None` then all registers are included.
 pub fn register_entries_to_register_infos(
     registers: &[RegisterEntry],
-    filter: &[&String],
+    filter: Option<&[&String]>,
 ) -> Vec<RegisterInfo> {
     registers
         .iter()
         .filter_map(|register| match register {
             RegisterEntry::Register(register) => filter
-                .iter()
-                .any(|filter_entry| register.name == **filter_entry)
+                .map(|filter| {
+                    filter
+                        .iter()
+                        .any(|filter_entry| register.name == **filter_entry)
+                })
+                .unwrap_or(true)
                 .then(|| RegisterInfo::from_json_register(register)),
             _ => None,
         })
