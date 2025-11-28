@@ -3,7 +3,7 @@
 
 //! Logic for writing out a Rust source file with system register types and accessors.
 
-use crate::{RegisterField, RegisterInfo, Safety, ones};
+use crate::{ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
 use std::io::{self, Write};
 
 pub fn write_lib(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
@@ -58,10 +58,34 @@ pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> 
 
     let struct_names = registers
         .iter()
-        .filter(|register| register.use_struct())
+        .filter(|register| register.use_struct() && register.exception_level == ExceptionLevel::El0)
         .map(RegisterInfo::struct_name)
         .collect::<Vec<_>>()
         .join(", ");
+    writeln!(writer, "use crate::{{{struct_names}}};")?;
+    let struct_names = registers
+        .iter()
+        .filter(|register| register.use_struct() && register.exception_level == ExceptionLevel::El1)
+        .map(RegisterInfo::struct_name)
+        .collect::<Vec<_>>()
+        .join(", ");
+    writeln!(writer, "#[cfg(feature = \"el1\")]")?;
+    writeln!(writer, "use crate::{{{struct_names}}};")?;
+    let struct_names = registers
+        .iter()
+        .filter(|register| register.use_struct() && register.exception_level == ExceptionLevel::El2)
+        .map(RegisterInfo::struct_name)
+        .collect::<Vec<_>>()
+        .join(", ");
+    writeln!(writer, "#[cfg(feature = \"el2\")]")?;
+    writeln!(writer, "use crate::{{{struct_names}}};")?;
+    let struct_names = registers
+        .iter()
+        .filter(|register| register.use_struct() && register.exception_level == ExceptionLevel::El3)
+        .map(RegisterInfo::struct_name)
+        .collect::<Vec<_>>()
+        .join(", ");
+    writeln!(writer, "#[cfg(feature = \"el3\")]")?;
     writeln!(writer, "use crate::{{{struct_names}}};")?;
 
     writer.write_all(
@@ -74,6 +98,9 @@ pub struct SystemRegisters {
     )?;
 
     for register in registers {
+        if let Some(guard) = register.cfg_guard() {
+            writeln!(writer, "    {guard}")?;
+        }
         writeln!(
             writer,
             "    /// Fake value for the `{}` system register.",
@@ -97,6 +124,9 @@ pub struct SystemRegisters {
     writeln!(writer, "    pub(crate) const fn new() -> Self {{")?;
     writeln!(writer, "        Self {{")?;
     for register in registers {
+        if let Some(guard) = register.cfg_guard() {
+            writeln!(writer, "            {guard}")?;
+        }
         if register.use_struct() {
             writeln!(
                 writer,
@@ -127,7 +157,19 @@ impl RegisterInfo {
         camel_case(&self.name)
     }
 
+    fn cfg_guard(&self) -> Option<&str> {
+        match self.exception_level {
+            crate::ExceptionLevel::El0 => None,
+            crate::ExceptionLevel::El1 => Some("#[cfg(feature = \"el1\")]"),
+            crate::ExceptionLevel::El2 => Some("#[cfg(feature = \"el2\")]"),
+            crate::ExceptionLevel::El3 => Some("#[cfg(feature = \"el3\")]"),
+        }
+    }
+
     fn write_bitflags(&self, mut writer: impl Write) -> io::Result<()> {
+        if let Some(guard) = self.cfg_guard() {
+            writeln!(writer, "{guard}")?;
+        }
         writeln!(writer, "bitflags! {{")?;
         writeln!(writer, "    /// `{}` system register value.", self.name)?;
         if let Some(description) = &self.description {
@@ -201,6 +243,9 @@ impl RegisterInfo {
             writeln!(writer)?;
 
             if first {
+                if let Some(guard) = self.cfg_guard() {
+                    writeln!(writer, "{guard}")?;
+                }
                 writeln!(writer, "impl {} {{", self.struct_name())?;
                 first = false;
             }
@@ -284,6 +329,9 @@ impl RegisterInfo {
     }
 
     fn write_accessor(&self, mut writer: impl Write) -> io::Result<()> {
+        if let Some(guard) = self.cfg_guard() {
+            writeln!(writer, "{guard}")?;
+        }
         let register_type = if self.use_struct() {
             format!("u{}: {}", self.width, self.struct_name())
         } else {
