@@ -33,8 +33,13 @@ fn main() -> Result<(), Report> {
     );
     let output_lib = File::create(args.output_directory.join("lib.rs"))?;
     let output_fake = File::create(args.output_directory.join("fake").join("generated.rs"))?;
-    let registers_filter = config.registers.keys().collect::<Vec<_>>();
-    let mut register_infos = register_entries_to_register_infos(&registers, &registers_filter);
+    let registers_filter = if args.all {
+        None
+    } else {
+        Some(config.registers.keys().collect::<Vec<_>>())
+    };
+    let mut register_infos =
+        register_entries_to_register_infos(&registers, registers_filter.as_deref());
     for register in &mut register_infos {
         remove_clashes(register);
         add_details(register, &config);
@@ -189,12 +194,15 @@ enum Safety {
 
 #[derive(Clone, Debug, Parser)]
 struct Args {
-    /// Path to config toml file.
+    /// Path to config TOML file.
     config_toml: PathBuf,
     /// Path to JSON system registers file.
     registers_json: PathBuf,
     /// Path to output directory.
     output_directory: PathBuf,
+    /// Include all registers from the JSON file, not just those in the config file.
+    #[arg(long)]
+    all: bool,
 }
 
 /// Returns a value with the given number of 1 bits, starting at the least significant bit.
@@ -205,6 +213,12 @@ const fn ones(n: u32) -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use clap::CommandFactory;
+
+    #[test]
+    fn verify_args() {
+        Args::command().debug_assert();
+    }
 
     #[test]
     fn remove_clashing_names() {
