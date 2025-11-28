@@ -17,6 +17,7 @@ pub use manual::*;
 #[doc(hidden)]
 pub use paste as _paste;
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `APIAKeyHi_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -25,6 +26,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl ApiakeyhiEl1 {
     /// Returns the value of the `APIAKeyHi` field.
     pub const fn apiakeyhi(self) -> u64 {
@@ -33,6 +35,7 @@ impl ApiakeyhiEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `APIAKeyLo_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -41,6 +44,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl ApiakeyloEl1 {
     /// Returns the value of the `APIAKeyLo` field.
     pub const fn apiakeylo(self) -> u64 {
@@ -49,6 +53,7 @@ impl ApiakeyloEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `CCSIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -57,6 +62,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl CcsidrEl1 {
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
@@ -64,6 +70,7 @@ impl CcsidrEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `CLIDR_EL1` system register value.
     ///
@@ -74,6 +81,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl ClidrEl1 {
     /// Returns the value of the given `Ctype<n>` field.
     pub fn ctype(self, n: u32) -> crate::manual::CacheType {
@@ -132,6 +140,7 @@ impl CntfrqEl0 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `CNTHCTL_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -172,6 +181,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl CnthctlEl2 {
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
@@ -179,6 +189,7 @@ impl CnthctlEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `CNTVOFF_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -187,6 +198,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl CntvoffEl2 {
     /// Returns the value of the `VOffset` field.
     pub const fn voffset(self) -> u64 {
@@ -195,6 +207,7 @@ impl CntvoffEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `CONTEXTIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -203,6 +216,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl ContextidrEl1 {
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
@@ -210,6 +224,7 @@ impl ContextidrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `CONTEXTIDR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -218,6 +233,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl ContextidrEl2 {
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
@@ -225,6 +241,7 @@ impl ContextidrEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `CPACR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -245,6 +262,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl CpacrEl1 {
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
@@ -262,6 +280,7 @@ impl CpacrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `CPTR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -288,6 +307,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl CptrEl2 {
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
@@ -305,6 +325,7 @@ impl CptrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `CPTR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -325,6 +346,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `CSSELR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -337,6 +359,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl CsselrEl1 {
     /// Returns the value of the `Level` field.
     pub const fn level(self) -> u8 {
@@ -394,6 +417,7 @@ impl CtrEl0 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `DISR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -412,6 +436,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl DisrEl1 {
     /// Returns the value of the `DFSC` field.
     pub const fn dfsc(self) -> u8 {
@@ -441,6 +466,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ELR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -449,6 +475,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl ElrEl1 {
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
@@ -457,6 +484,7 @@ impl ElrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `ELR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -465,6 +493,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl ElrEl2 {
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
@@ -473,6 +502,7 @@ impl ElrEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ESR_EL1` system register value.
     #[derive(Clone, Copy, Eq, PartialEq)]
@@ -483,6 +513,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl EsrEl1 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -500,6 +531,7 @@ impl EsrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `ESR_EL2` system register value.
     #[derive(Clone, Copy, Eq, PartialEq)]
@@ -510,6 +542,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl EsrEl2 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -527,6 +560,7 @@ impl EsrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `ESR_EL3` system register value.
     #[derive(Clone, Copy, Eq, PartialEq)]
@@ -537,6 +571,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl EsrEl3 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -554,6 +589,7 @@ impl EsrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `FAR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -562,6 +598,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl FarEl1 {
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
@@ -570,6 +607,7 @@ impl FarEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `FAR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -578,6 +616,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl FarEl2 {
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
@@ -586,6 +625,7 @@ impl FarEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `GCR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -596,6 +636,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl GcrEl1 {
     /// Returns the value of the `Exclude` field.
     pub const fn exclude(self) -> u16 {
@@ -603,6 +644,7 @@ impl GcrEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `GCSCR_EL1` system register value.
     ///
@@ -623,6 +665,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `GCSCR_EL2` system register value.
     ///
@@ -643,6 +686,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HCRX_EL2` system register value.
     ///
@@ -727,6 +771,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -847,6 +892,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl HcrEl2 {
     /// Returns the value of the `BSU` field.
     pub const fn bsu(self) -> u8 {
@@ -859,6 +905,7 @@ impl HcrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HDFGRTR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -915,6 +962,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HDFGWTR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -967,6 +1015,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HFGITR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1005,6 +1054,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HFGRTR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1081,6 +1131,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Hfgrtr2El2 {
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
@@ -1093,6 +1144,7 @@ impl Hfgrtr2El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HFGWTR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1165,6 +1217,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Hfgwtr2El2 {
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
@@ -1177,6 +1230,7 @@ impl Hfgwtr2El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HFGWTR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1285,6 +1339,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `HPFAR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1295,6 +1350,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl HpfarEl2 {
     /// Returns the value of the `FIPA` field.
     pub const fn fipa(self) -> u64 {
@@ -1302,6 +1358,7 @@ impl HpfarEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ICC_SRE_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1316,6 +1373,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `ICC_SRE_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1332,6 +1390,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `ICC_SRE_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1348,6 +1407,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `ICH_HCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1386,6 +1446,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl IchHcrEl2 {
     /// Returns the value of the `EOIcount` field.
     pub const fn eoicount(self) -> u8 {
@@ -1393,6 +1454,7 @@ impl IchHcrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `ICH_VMCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1415,6 +1477,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl IchVmcrEl2 {
     /// Returns the value of the `VBPR1` field.
     pub const fn vbpr1(self) -> u8 {
@@ -1427,6 +1490,7 @@ impl IchVmcrEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64DFR0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1435,6 +1499,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64dfr0El1 {
     /// Returns the value of the `DebugVer` field.
     pub const fn debugver(self) -> u8 {
@@ -1517,6 +1582,7 @@ impl IdAa64dfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64DFR1_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1525,6 +1591,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64dfr1El1 {
     /// Returns the value of the `SYSPMUID` field.
     pub const fn syspmuid(self) -> u8 {
@@ -1582,6 +1649,7 @@ impl IdAa64dfr1El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1590,6 +1658,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr0El1 {
     /// Returns the value of the `PARange` field.
     pub const fn parange(self) -> u8 {
@@ -1662,6 +1731,7 @@ impl IdAa64mmfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR1_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1670,6 +1740,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr1El1 {
     /// Returns the value of the `HAFDBS` field.
     pub const fn hafdbs(self) -> u8 {
@@ -1752,6 +1823,7 @@ impl IdAa64mmfr1El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR2_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1760,6 +1832,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr2El1 {
     /// Returns the value of the `CnP` field.
     pub const fn cnp(self) -> u8 {
@@ -1837,6 +1910,7 @@ impl IdAa64mmfr2El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR3_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1845,6 +1919,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr3El1 {
     /// Returns the value of the `TCRX` field.
     pub const fn tcrx(self) -> u8 {
@@ -1922,6 +1997,7 @@ impl IdAa64mmfr3El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64PFR0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -1930,6 +2006,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64pfr0El1 {
     /// Returns the value of the `EL0` field.
     pub const fn el0(self) -> u8 {
@@ -2012,6 +2089,7 @@ impl IdAa64pfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64PFR1_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2020,6 +2098,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64pfr1El1 {
     /// Returns the value of the `BT` field.
     pub const fn bt(self) -> u8 {
@@ -2097,6 +2176,7 @@ impl IdAa64pfr1El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64SMFR0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2145,6 +2225,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64smfr0El1 {
     /// Returns the value of the `I8I32` field.
     pub const fn i8i32(self) -> u8 {
@@ -2167,6 +2248,7 @@ impl IdAa64smfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `ISR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2185,6 +2267,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `MAIR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2193,6 +2276,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl MairEl1 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -2201,6 +2285,7 @@ impl MairEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MAIR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2209,6 +2294,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl MairEl2 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -2217,6 +2303,7 @@ impl MairEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `MAIR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2225,6 +2312,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl MairEl3 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -2233,6 +2321,7 @@ impl MairEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `MDCCINT_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2245,6 +2334,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MDCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2291,6 +2381,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl MdcrEl2 {
     /// Returns the value of the `HPMN` field.
     pub const fn hpmn(self) -> u8 {
@@ -2318,6 +2409,7 @@ impl MdcrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `MDCR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2390,6 +2482,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl MdcrEl3 {
     /// Returns the value of the `NSPB` field.
     pub const fn nspb(self) -> u8 {
@@ -2442,6 +2535,7 @@ impl MdcrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `MDSCR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2486,6 +2580,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl MdscrEl1 {
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
@@ -2493,6 +2588,7 @@ impl MdscrEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `MIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2501,6 +2597,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl MidrEl1 {
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
@@ -2528,6 +2625,7 @@ impl MidrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAM2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2552,6 +2650,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpam2El2 {
     /// Returns the value of the `PARTID` field.
     pub const fn partid(self) -> u16 {
@@ -2594,6 +2693,7 @@ impl Mpam2El2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `MPAM3_EL3` system register value.
     ///
@@ -2620,6 +2720,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl Mpam3El3 {
     /// Returns the value of the `PARTID` field.
     pub const fn partid(self) -> u16 {
@@ -2662,6 +2763,7 @@ impl Mpam3El3 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMHCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2686,6 +2788,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `MPAMIDR_EL1` system register value.
     ///
@@ -2714,6 +2817,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl MpamidrEl1 {
     /// Returns the value of the `PARTID_MAX` field.
     pub const fn partid_max(self) -> u16 {
@@ -2728,6 +2832,7 @@ impl MpamidrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM0_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2736,6 +2841,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm0El2 {
     /// Returns the value of the `PhyPARTID0` field.
     pub const fn phypartid0(self) -> u16 {
@@ -2758,6 +2864,7 @@ impl Mpamvpm0El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM1_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2766,6 +2873,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm1El2 {
     /// Returns the value of the `PhyPARTID4` field.
     pub const fn phypartid4(self) -> u16 {
@@ -2788,6 +2896,7 @@ impl Mpamvpm1El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2796,6 +2905,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm2El2 {
     /// Returns the value of the `PhyPARTID8` field.
     pub const fn phypartid8(self) -> u16 {
@@ -2818,6 +2928,7 @@ impl Mpamvpm2El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM3_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2826,6 +2937,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm3El2 {
     /// Returns the value of the `PhyPARTID12` field.
     pub const fn phypartid12(self) -> u16 {
@@ -2848,6 +2960,7 @@ impl Mpamvpm3El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM4_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2856,6 +2969,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm4El2 {
     /// Returns the value of the `PhyPARTID16` field.
     pub const fn phypartid16(self) -> u16 {
@@ -2878,6 +2992,7 @@ impl Mpamvpm4El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM5_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2886,6 +3001,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm5El2 {
     /// Returns the value of the `PhyPARTID20` field.
     pub const fn phypartid20(self) -> u16 {
@@ -2908,6 +3024,7 @@ impl Mpamvpm5El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM6_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2916,6 +3033,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm6El2 {
     /// Returns the value of the `PhyPARTID24` field.
     pub const fn phypartid24(self) -> u16 {
@@ -2938,6 +3056,7 @@ impl Mpamvpm6El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM7_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -2946,6 +3065,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Mpamvpm7El2 {
     /// Returns the value of the `PhyPARTID28` field.
     pub const fn phypartid28(self) -> u16 {
@@ -2968,6 +3088,7 @@ impl Mpamvpm7El2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPMV_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3040,6 +3161,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `MPIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3054,6 +3176,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl MpidrEl1 {
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
@@ -3076,6 +3199,7 @@ impl MpidrEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `PAR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3104,6 +3228,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl ParEl1 {
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
@@ -3176,6 +3301,7 @@ impl PmcrEl0 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `RGSR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3184,6 +3310,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl RgsrEl1 {
     /// Returns the value of the `TAG` field.
     pub const fn tag(self) -> u8 {
@@ -3196,6 +3323,7 @@ impl RgsrEl1 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `SCR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3318,6 +3446,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl ScrEl3 {
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
@@ -3325,6 +3454,7 @@ impl ScrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `SCTLR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3431,6 +3561,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl SctlrEl1 {
     /// Returns the value of the `TCF0` field.
     pub const fn tcf0(self) -> u8 {
@@ -3448,6 +3579,7 @@ impl SctlrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `SCTLR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3550,6 +3682,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl SctlrEl2 {
     /// Returns the value of the `TCF0` field.
     pub const fn tcf0(self) -> u8 {
@@ -3567,6 +3700,7 @@ impl SctlrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `SCTLR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3619,6 +3753,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl SctlrEl3 {
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
@@ -3626,6 +3761,7 @@ impl SctlrEl3 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `SMCR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3638,6 +3774,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl SmcrEl3 {
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
@@ -3645,6 +3782,7 @@ impl SmcrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `SPSR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3703,6 +3841,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl SpsrEl1 {
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
@@ -3720,6 +3859,7 @@ impl SpsrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `SPSR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3778,6 +3918,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl SpsrEl2 {
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
@@ -3795,6 +3936,7 @@ impl SpsrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `SPSR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3853,6 +3995,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl SpsrEl3 {
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
@@ -3870,6 +4013,7 @@ impl SpsrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `SP_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3878,6 +4022,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl SpEl1 {
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
@@ -3886,6 +4031,7 @@ impl SpEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `SP_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3894,6 +4040,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl SpEl2 {
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
@@ -3902,6 +4049,7 @@ impl SpEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TCR2_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -3946,6 +4094,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl Tcr2El1 {
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
@@ -3963,6 +4112,7 @@ impl Tcr2El1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `TCR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4007,6 +4157,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Tcr2El2 {
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
@@ -4024,6 +4175,7 @@ impl Tcr2El2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TCR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4090,6 +4242,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl TcrEl1 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
@@ -4147,6 +4300,7 @@ impl TcrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `TCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4229,6 +4383,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl TcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
@@ -4296,6 +4451,7 @@ impl TcrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `TCR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4350,6 +4506,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl TcrEl3 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
@@ -4392,6 +4549,7 @@ impl TcrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TFSRE0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4404,6 +4562,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TFSR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4416,6 +4575,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `TFSR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4460,6 +4620,7 @@ impl TpidrEl0 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TPIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4468,6 +4629,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl TpidrEl1 {
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -4476,6 +4638,7 @@ impl TpidrEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `TPIDR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4484,6 +4647,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl TpidrEl2 {
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -4492,6 +4656,7 @@ impl TpidrEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TTBR0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4502,6 +4667,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl Ttbr0El1 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -4519,6 +4685,7 @@ impl Ttbr0El1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `TTBR0_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4529,6 +4696,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Ttbr0El2 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -4546,6 +4714,7 @@ impl Ttbr0El2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `TTBR0_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4556,6 +4725,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl Ttbr0El3 {
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
@@ -4563,6 +4733,7 @@ impl Ttbr0El3 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `TTBR1_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4573,6 +4744,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl Ttbr1El1 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -4590,6 +4762,7 @@ impl Ttbr1El1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `TTBR1_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4600,6 +4773,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl Ttbr1El2 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -4617,6 +4791,7 @@ impl Ttbr1El2 {
     }
 }
 
+#[cfg(feature = "el1")]
 bitflags! {
     /// `VBAR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4627,6 +4802,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el1")]
 impl VbarEl1 {
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
@@ -4634,6 +4810,7 @@ impl VbarEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VBAR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4644,6 +4821,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VbarEl2 {
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
@@ -4651,6 +4829,7 @@ impl VbarEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VDISR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4667,6 +4846,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VdisrEl2 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -4684,6 +4864,7 @@ impl VdisrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VMPIDR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4698,6 +4879,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VmpidrEl2 {
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
@@ -4720,6 +4902,7 @@ impl VmpidrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VPIDR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4728,6 +4911,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VpidrEl2 {
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
@@ -4755,6 +4939,7 @@ impl VpidrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VSESR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4767,6 +4952,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VsesrEl2 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -4779,6 +4965,7 @@ impl VsesrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VTCR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4829,6 +5016,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VtcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
@@ -4866,6 +5054,7 @@ impl VtcrEl2 {
     }
 }
 
+#[cfg(feature = "el2")]
 bitflags! {
     /// `VTTBR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4876,6 +5065,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el2")]
 impl VttbrEl2 {
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
@@ -4893,6 +5083,7 @@ impl VttbrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
 bitflags! {
     /// `ZCR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -4901,6 +5092,7 @@ bitflags! {
     }
 }
 
+#[cfg(feature = "el3")]
 impl ZcrEl3 {
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
@@ -4908,184 +5100,299 @@ impl ZcrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 read_write_sysreg!(actlr_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(actlr_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(afsr0_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(afsr0_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(afsr1_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(afsr1_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(amair_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(amair_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(apiakeyhi_el1: s3_0_c2_c1_1, u64: ApiakeyhiEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(apiakeylo_el1: s3_0_c2_c1_0, u64: ApiakeyloEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(ccsidr_el1, u64: CcsidrEl1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(clidr_el1, u64: ClidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(cntfrq_el0, u64: CntfrqEl0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(cnthctl_el2, u64: CnthctlEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(cntvoff_el2, u64: CntvoffEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(contextidr_el1, u64: ContextidrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(contextidr_el2: s3_4_c13_c0_1, u64: ContextidrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(cpacr_el1, u64: CpacrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(cptr_el2, u64: CptrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg!(cptr_el3, u64: CptrEl3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(csselr_el1, u64: CsselrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(ctr_el0, u64: CtrEl0, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(disr_el1: s3_0_c12_c1_1, u64: DisrEl1, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(dit: s3_3_c4_c2_5, u64: Dit, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(elr_el1, u64: ElrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(elr_el2, u64: ElrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(esr_el1, u64: EsrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(esr_el2, u64: EsrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg!(esr_el3, u64: EsrEl3, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(far_el1, u64: FarEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(far_el2, u64: FarEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(gcr_el1: s3_0_c1_c0_6, u64: GcrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(gcscr_el1: s3_0_c2_c5_0, u64: GcscrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(gcscr_el2: s3_4_c2_c5_0, u64: GcscrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hacr_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hcrx_el2: s3_4_c1_c2_2, u64: HcrxEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hcr_el2, u64: HcrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hdfgrtr2_el2: s3_4_c3_c1_0, u64: Hdfgrtr2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hdfgwtr2_el2: s3_4_c3_c1_1, u64: Hdfgwtr2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hfgitr2_el2: s3_4_c3_c1_7, u64: Hfgitr2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hfgrtr2_el2: s3_4_c3_c1_2, u64: Hfgrtr2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hfgwtr2_el2: s3_4_c3_c1_3, u64: Hfgwtr2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hfgwtr_el2: s3_4_c1_c1_5, u64: HfgwtrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hpfar_el2, u64: HpfarEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(hstr_el2, u64, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(icc_sre_el1: s3_0_c12_c12_5, u64: IccSreEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(icc_sre_el2: s3_4_c12_c9_5, u64: IccSreEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The SRE bit of `icc_sre_el3` must not be changed from 1 to 0, as this can result in unpredictable behaviour.
     icc_sre_el3: s3_6_c12_c12_5, u64: IccSreEl3, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el2")]
 read_write_sysreg!(ich_hcr_el2: s3_4_c12_c11_0, u64: IchHcrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(ich_vmcr_el2: s3_4_c12_c11_7, u64: IchVmcrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64dfr1_el1, u64: IdAa64dfr1El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64mmfr0_el1, u64: IdAa64mmfr0El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64mmfr2_el1, u64: IdAa64mmfr2El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64mmfr3_el1, u64: IdAa64mmfr3El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64pfr1_el1, u64: IdAa64pfr1El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64smfr0_el1, u64: IdAa64smfr0El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(isr_el1, u64: IsrEl1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(mair_el1, u64: MairEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mair_el2, u64: MairEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 memory attribute indirection register.
     mair_el3, u64: MairEl3, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el1")]
 read_write_sysreg!(mdccint_el1, u64: MdccintEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mdcr_el2, u64: MdcrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg!(mdcr_el3, u64: MdcrEl3, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(mdscr_el1, u64: MdscrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(midr_el1, u64: MidrEl1, safe, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpam2_el2: s3_4_c10_c5_0, u64: Mpam2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg!(mpam3_el3: s3_6_c10_c5_0, u64: Mpam3El3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamhcr_el2: s3_4_c10_c4_0, u64: MpamhcrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(mpamidr_el1: s3_0_c10_c4_4, u64: MpamidrEl1, safe, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm0_el2: s3_4_c10_c6_0, u64: Mpamvpm0El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm1_el2: s3_4_c10_c6_1, u64: Mpamvpm1El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm2_el2: s3_4_c10_c6_2, u64: Mpamvpm2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm3_el2: s3_4_c10_c6_3, u64: Mpamvpm3El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm4_el2: s3_4_c10_c6_4, u64: Mpamvpm4El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm5_el2: s3_4_c10_c6_5, u64: Mpamvpm5El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm6_el2: s3_4_c10_c6_6, u64: Mpamvpm6El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpm7_el2: s3_4_c10_c6_7, u64: Mpamvpm7El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(mpamvpmv_el2: s3_4_c10_c4_1, u64: MpamvpmvEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(par_el1, u64: ParEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(pmcr_el0: s3_3_c9_c12_0, u64: PmcrEl0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(rgsr_el1: s3_0_c1_c0_5, u64: RgsrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(sctlr_el1, u64: SctlrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(sctlr_el2, u64: SctlrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 system control register.
     sctlr_el3, u64: SctlrEl3, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el3")]
 read_write_sysreg!(smcr_el3: s3_6_c1_c2_6, u64: SmcrEl3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(spsr_el1, u64: SpsrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(spsr_el2, u64: SpsrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg!(spsr_el3, u64: SpsrEl3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(sp_el1, u64: SpEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(sp_el2, u64: SpEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(tcr2_el1: s3_0_c2_c0_3, u64: Tcr2El1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(tcr2_el2: s3_4_c2_c0_3, u64: Tcr2El2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(tcr_el1, u64: TcrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(tcr_el2, u64: TcrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 translation control register.
     tcr_el3, u64: TcrEl3, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el1")]
 read_write_sysreg!(tfsre0_el1: s3_0_c5_c6_1, u64: Tfsre0El1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(tfsr_el1: s3_0_c5_c6_0, u64: TfsrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(tfsr_el2: s3_4_c5_c6_0, u64: TfsrEl2, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(tpidrro_el0, u64: TpidrroEl0, safe_read, fake::SYSREGS);
 read_write_sysreg!(tpidr_el0, u64: TpidrEl0, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg!(tpidr_el1, u64: TpidrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(tpidr_el2, u64: TpidrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned translation table.
     ttbr0_el1, u64: Ttbr0El1, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el2")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned translation table.
     ttbr0_el2, u64: Ttbr0El2, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el3")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned translation table.
     ttbr0_el3, u64: Ttbr0El3, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el1")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned translation table.
     ttbr1_el1, u64: Ttbr1El1, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el2")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned translation table.
     ttbr1_el2, u64: Ttbr1El2, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el1")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid exception vector.
     vbar_el1, u64: VbarEl1, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el2")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid exception vector.
     vbar_el2, u64: VbarEl2, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el2")]
 read_write_sysreg!(vdisr_el2: s3_4_c12_c1_1, u64: VdisrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(vmpidr_el2, u64: VmpidrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(vpidr_el2, u64: VpidrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(vsesr_el2: s3_4_c5_c2_3, u64: VsesrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg!(vtcr_el2, u64: VtcrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el2")]
 read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned stage 2 translation table.
     vttbr_el2, u64: VttbrEl2, safe_read, fake::SYSREGS
 }
+#[cfg(feature = "el3")]
 read_write_sysreg!(zcr_el3: s3_6_c1_c2_0, u64: ZcrEl3, safe_read, fake::SYSREGS);

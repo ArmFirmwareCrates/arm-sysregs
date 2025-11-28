@@ -16,10 +16,13 @@ rust-version = "1.88"
 
 [dependencies]
 bitflags = "2.9.1"
-num_enum = "0.7.5"
+num_enum = { version = "0.7.5", default-features = false }
 paste = "1.0.14"
 
 [features]
+el1 = []
+el2 = ["el1"]
+el3 = ["el2"]
 fakes = []
 
 [lints.clippy]

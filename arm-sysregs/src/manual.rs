@@ -3,15 +3,21 @@
 
 //! Manually implemented methods for system register types.
 
+#[cfg(feature = "el1")]
+use crate::{
+    ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MidrEl1, MpidrEl1, SpsrEl1,
+    read_mpidr_el1,
+};
+#[cfg(feature = "el2")]
+use crate::{EsrEl2, SpsrEl2};
+#[cfg(feature = "el3")]
+use crate::{EsrEl3, MdcrEl3, SmcrEl3, SpsrEl3};
+#[cfg(feature = "el1")]
+use core::fmt::{self, Debug, Formatter};
 use num_enum::TryFromPrimitive;
 
-use crate::{
-    ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1,
-    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1,
-    MpidrEl1, SmcrEl3, SpsrEl1, SpsrEl2, SpsrEl3, read_mpidr_el1,
-};
-use core::fmt::{self, Debug, Formatter};
-
+#[cfg(feature = "el1")]
 impl ClidrEl1 {
     /// Returns the inner cache boundary level.
     pub fn icb_level(self) -> Option<CacheLevel> {
@@ -29,6 +35,7 @@ impl ClidrEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl CsselrEl1 {
     /// Creates new instance. TnD is only valid if FEAT_MTE2 is implemented.
     pub fn new(tnd: bool, level: CacheLevel, ind: bool) -> Self {
@@ -50,39 +57,46 @@ impl CsselrEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl EsrEl1 {
     /// Mask for the parts of an ESR value containing the opcode.
     pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
 }
 
+#[cfg(feature = "el1")]
 impl Debug for EsrEl1 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl1({:#x})", self.0)
     }
 }
 
+#[cfg(feature = "el2")]
 impl EsrEl2 {
     /// Mask for the parts of an ESR value containing the opcode.
     pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
 }
 
+#[cfg(feature = "el2")]
 impl Debug for EsrEl2 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl2({:#x})", self.0)
     }
 }
 
+#[cfg(feature = "el3")]
 impl EsrEl3 {
     /// Mask for the parts of an ESR value containing the opcode.
     pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
 }
 
+#[cfg(feature = "el3")]
 impl Debug for EsrEl3 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl3({:#x})", self.0)
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64dfr0El1 {
     const SYS_REG_TRACE_SUPPORTED: u8 = 1;
     const SPE_SUPPORTED: u8 = 1;
@@ -117,6 +131,7 @@ impl IdAa64dfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64dfr1El1 {
     const EBEP_IMPLEMENTED: u8 = 0b1;
 
@@ -126,6 +141,7 @@ impl IdAa64dfr1El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr0El1 {
     const FGT_SUPPORTED: u8 = 0b0001;
     const FGT2_SUPPORTED: u8 = 0b0001;
@@ -142,6 +158,7 @@ impl IdAa64mmfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr1El1 {
     const VH_SUPPORTED: u8 = 0b0001;
     const HCX_SUPPORTED: u8 = 0b0001;
@@ -157,6 +174,7 @@ impl IdAa64mmfr1El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr2El1 {
     const CCIDX_64_BIT: u8 = 0b0001;
 
@@ -166,6 +184,7 @@ impl IdAa64mmfr2El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64mmfr3El1 {
     const TCRX_SUPPORTED: u8 = 1;
 
@@ -175,6 +194,7 @@ impl IdAa64mmfr3El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64pfr0El1 {
     const SVE_SUPPORTED: u8 = 1;
     const MPAM_SUPPORTED: u8 = 1;
@@ -190,6 +210,7 @@ impl IdAa64pfr0El1 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl IdAa64pfr1El1 {
     const SSBS_IMPLEMENTED: u8 = 0b1;
     const MTE_IMPLEMENTED: u8 = 0b0001;
@@ -235,6 +256,7 @@ impl IdAa64pfr1El1 {
     }
 }
 
+#[cfg(feature = "el3")]
 impl MdcrEl3 {
     /// Set to 0b10 to disable AArch32 Secure self-hosted privileged debug from S-EL1.
     pub const SPD32: Self = Self::from_bits_retain(0b10 << 14);
@@ -248,6 +270,7 @@ impl MdcrEl3 {
 }
 
 // TODO: Generate these masks and shifts automatically.
+#[cfg(feature = "el1")]
 impl MidrEl1 {
     /// Position of the lowest bit in the Revision field.
     pub const REVISION_SHIFT: u32 = 0;
@@ -256,6 +279,7 @@ impl MidrEl1 {
     pub const VARIANT_SHIFT: u32 = 20;
 }
 
+#[cfg(feature = "el1")]
 impl MpidrEl1 {
     /// Mask for the Aff0 field.
     pub const AFF0_MASK: u64 = 0xff;
@@ -289,6 +313,7 @@ impl MpidrEl1 {
     }
 }
 
+#[cfg(feature = "el3")]
 impl SmcrEl3 {
     const SSVE_LEN_MASK: u64 = 0b1111;
 
@@ -298,16 +323,19 @@ impl SmcrEl3 {
     }
 }
 
+#[cfg(feature = "el1")]
 impl SpsrEl1 {
     /// All of the N, Z, C and V bits.
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
 }
 
+#[cfg(feature = "el2")]
 impl SpsrEl2 {
     /// All of the N, Z, C and V bits.
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
 }
 
+#[cfg(feature = "el3")]
 impl SpsrEl3 {
     /// AArch64 execution state, EL0.
     pub const M_AARCH64_EL0: Self = Self::from_bits_retain(0b00000);
@@ -431,9 +459,11 @@ pub enum StackPointer {
 
 #[cfg(test)]
 mod tests {
+    #[cfg(feature = "el1")]
     use super::*;
 
     #[test]
+    #[cfg(feature = "el1")]
     fn debug_mpidr_el1() {
         assert_eq!(format!("{:?}", MpidrEl1::empty()), "MpidrEl1(0x0)");
         assert_eq!(
@@ -446,18 +476,21 @@ mod tests {
         );
     }
 
+    #[cfg(feature = "el1")]
     #[test]
     fn debug_spsr_el1() {
         assert_eq!(format!("{:?}", SpsrEl1::empty()), "SpsrEl1(0x0)");
         assert_eq!(format!("{:?}", SpsrEl1::NZCV), "SpsrEl1(V | C | Z | N)");
     }
 
+    #[cfg(feature = "el2")]
     #[test]
     fn debug_spsr_el2() {
         assert_eq!(format!("{:?}", SpsrEl2::empty()), "SpsrEl2(0x0)");
         assert_eq!(format!("{:?}", SpsrEl2::NZCV), "SpsrEl2(V | C | Z | N)");
     }
 
+    #[cfg(feature = "el3")]
     #[test]
     fn debug_spsr_el3() {
         assert_eq!(format!("{:?}", SpsrEl3::empty()), "SpsrEl3(0x0)");
@@ -465,6 +498,7 @@ mod tests {
         assert_eq!(format!("{:?}", SpsrEl3::M_AARCH64_EL3H), "SpsrEl3(0xd)");
     }
 
+    #[cfg(feature = "el1")]
     #[test]
     fn debug_esr_el1() {
         assert_eq!(format!("{:?}", EsrEl1::empty()), "EsrEl1(0x0)");
@@ -475,6 +509,7 @@ mod tests {
         );
     }
 
+    #[cfg(feature = "el2")]
     #[test]
     fn debug_esr_el2() {
         assert_eq!(format!("{:?}", EsrEl2::empty()), "EsrEl2(0x0)");
@@ -485,6 +520,7 @@ mod tests {
         );
     }
 
+    #[cfg(feature = "el3")]
     #[test]
     fn debug_esr_el3() {
         assert_eq!(format!("{:?}", EsrEl3::empty()), "EsrEl3(0x0)");
