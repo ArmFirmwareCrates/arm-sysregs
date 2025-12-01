@@ -1,0 +1,383 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e93a14_c13d2338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "It seems like this drops a lot of safe write accessors, is there a particular reason? Or maybe I\u0027m missing something?",
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35023ce8_09dbc2a4",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "The current arm-sysregs crate implements a safe write for these.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e0a78b_e7cf43c2",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b02f4ba_f35ca0ec",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f05e2f_c032258a",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0235a2fa_c8415239",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b137d37_0c605303",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "This should be after `MPAMVPMV_EL2` to keep alphabetical ordering",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2f1f2d_6ff0f623",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto (safety)",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88a8856_d05e3cc3",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 21
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b1acb9_2600c717",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68fc1217_84f769c2",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c706088_d3027004",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2e333c_9868a221",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "Are these actually unsafe to write to? AFAIU this would not affect Rust code, hence should not be considered unsafe.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e4f7e9_7a141b2b",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1ba914_3342bb1d",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto (safe in the current manual implementation)",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3989093d_676a81c3",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1df1fa_b8a929e4",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2025-12-01T13:27:45Z",
+      "side": 1,
+      "message": "ditto (safe in the current manual implementation)",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
