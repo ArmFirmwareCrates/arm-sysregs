@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ba35f4_dacad9c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "Yes. In general I\u0027ve gone with writes being unsafe unless they are definitely safe in all cases. In RF-A we went with many of lower EL system registers being safe to write on the basis that they only affect the lower EL and not EL3 where our code is running. This was a somewhat dubious approach in RF-A (should we really consider writing an invalid address to that will cause a lower EL to fault or otherwise misbehave safe?) but is definitely not correct once we have code running at lower ELs using the `arm-sysregs` crate. This was alright while `arm-sysregs` was within the RF-A repository and only used in RF-A, but now that we\u0027re moving it out to be published to crates.io and used by other crates we need to assume it can be used from any EL when reasoning about safety.",
+      "parentUuid": "d9e93a14_c13d2338",
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35023ce8_09dbc2a4",
@@ -64,6 +82,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92fe621_c1f1964d",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "Setting these to an invalid value in EL1 or EL2 before an ERET will cause invalid memory access.",
+      "parentUuid": "a8e0a78b_e7cf43c2",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b02f4ba_f35ca0ec",
@@ -87,6 +129,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccc6c26_be70d893",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "It may be that some of these could be safe, I haven\u0027t been through every field of every register in detail. I think we should assume system register writes are unsafe unless we are confident that they are safe, so I\u0027ve started with most of them being unsafe, and we can make some of them safe later if we\u0027re sure that\u0027s correct.",
+      "parentUuid": "3b02f4ba_f35ca0ec",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6f05e2f_c032258a",
@@ -100,6 +166,30 @@
       "writtenOn": "2025-12-01T13:27:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8c3771_8fb3522d",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "Setting these to incorrect values in EL1 or EL2 can cause memory to be accessed with the wrong attributes and thus cause undefined behaviour, the same way as `MAIR_EL3` does in EL3.",
+      "parentUuid": "f6f05e2f_c032258a",
       "range": {
         "startLine": 172,
         "startChar": 0,
@@ -140,6 +230,30 @@
       "writtenOn": "2025-12-01T13:27:45Z",
       "side": 1,
       "message": "This should be after `MPAMVPMV_EL2` to keep alphabetical ordering",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8625069d_0f27d238",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b137d37_0c605303",
       "range": {
         "startLine": 223,
         "startChar": 0,
@@ -288,6 +402,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a0766e_cdf28089",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "Writing the address of a pagetable which doesn\u0027t map addresses used by Rust to valid physical addresses, or creates aliases, would violate the Rust memory model.",
+      "parentUuid": "eb2e333c_9868a221",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95e4f7e9_7a141b2b",
@@ -301,6 +439,30 @@
       "writtenOn": "2025-12-01T13:27:45Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc1fa6f_5836fe3b",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-01T14:25:49Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "95e4f7e9_7a141b2b",
       "range": {
         "startLine": 368,
         "startChar": 0,
