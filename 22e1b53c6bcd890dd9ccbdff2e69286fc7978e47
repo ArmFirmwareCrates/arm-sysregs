@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "086cb617_7ef5b9fe",
+        "filename": "generate-sysregs/Cargo.toml",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-09T14:21:47Z",
+      "side": 1,
+      "message": "I guess so, yeah. I hadn\u0027t really thought about that.",
+      "parentUuid": "14b03aed_e4dd674e",
+      "revId": "22e1b53c6bcd890dd9ccbdff2e69286fc7978e47",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b311cb5_2ccfa51b",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-09T14:14:55Z",
       "side": 1,
       "message": "Should this crate get moved into this repo as well? (sometime in the future)",
+      "revId": "22e1b53c6bcd890dd9ccbdff2e69286fc7978e47",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07a8c33_80a56a91",
+        "filename": "generate-sysregs/Cargo.toml",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-09T14:21:47Z",
+      "side": 1,
+      "message": "It could do I guess.",
+      "parentUuid": "3b311cb5_2ccfa51b",
       "revId": "22e1b53c6bcd890dd9ccbdff2e69286fc7978e47",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
