@@ -41,6 +41,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0491f7_fad7d2f5",
+        "filename": "registers.toml",
+        "patchSetId": 16
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-09T14:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa4c96b2_ad0c6701",
+      "range": {
+        "startLine": 277,
+        "startChar": 19,
+        "endLine": 277,
+        "endChar": 26
+      },
+      "revId": "b2f31b9ae39c7e16ee0756d7126e7ff1d0dc164f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a8c7d60_213209bc",
@@ -64,6 +88,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd04f209_3b5b9ef1",
+        "filename": "registers.toml",
+        "patchSetId": 16
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-09T14:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a8c7d60_213209bc",
+      "range": {
+        "startLine": 281,
+        "startChar": 16,
+        "endLine": 281,
+        "endChar": 23
+      },
+      "revId": "b2f31b9ae39c7e16ee0756d7126e7ff1d0dc164f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7088fba5_b2f28a74",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-12-09T14:42:53Z",
       "side": 1,
       "message": "registers",
+      "range": {
+        "startLine": 286,
+        "startChar": 30,
+        "endLine": 286,
+        "endChar": 39
+      },
+      "revId": "b2f31b9ae39c7e16ee0756d7126e7ff1d0dc164f",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa6888a_4bd683b7",
+        "filename": "registers.toml",
+        "patchSetId": 16
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-09T14:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7088fba5_b2f28a74",
       "range": {
         "startLine": 286,
         "startChar": 30,
