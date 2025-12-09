@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b03aed_e4dd674e",
+        "filename": "generate-sysregs/Cargo.toml",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-12-09T14:14:55Z",
+      "side": 1,
+      "message": "Just to check if we have the same understanding: IMO this should never get published on crates.io as a separate crate, it\u0027s just an \"internal\" helper tool for the arm-sysreg crate developers.",
+      "revId": "22e1b53c6bcd890dd9ccbdff2e69286fc7978e47",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b311cb5_2ccfa51b",
+        "filename": "generate-sysregs/Cargo.toml",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-12-09T14:14:55Z",
+      "side": 1,
+      "message": "Should this crate get moved into this repo as well? (sometime in the future)",
+      "revId": "22e1b53c6bcd890dd9ccbdff2e69286fc7978e47",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
