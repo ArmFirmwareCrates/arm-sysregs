@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba15d70_a8b2e9a3",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-12-10T15:56:47Z",
+      "side": 1,
+      "message": "I noticed that this register has different fields, based on the `ELIsInHost(EL2)` condition. When it\u0027s true, these field names are correct. When it\u0027s false, these low bits have a different name and also bits[11:8] a reserved. I\u0027m not sure what to do about it, since it\u0027s a runtime condition",
+      "revId": "a7c84ee705edf062112c3e5049a4c73ad4525c53",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6be544f_5517f260",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2025-12-10T15:56:47Z",
+      "side": 1,
+      "message": "Bit 10 `EL1PCTEN` is missing. I think it\u0027s related to my comment above, for the non-VHE use case bit 0 has this name, for the VHE case bit 10. And somehow the dedup logic ends up dropping it",
+      "revId": "a7c84ee705edf062112c3e5049a4c73ad4525c53",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
