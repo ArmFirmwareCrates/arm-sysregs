@@ -18,6 +18,24 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34295a87_82b8b8d0",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:22:24Z",
+      "side": 1,
+      "message": "Right, there are a number of other registers like this. There\u0027s no great solution, but I think the approach I\u0027ve taken here is a reasonable compromise between correctness and usefulness. For cases where the same name refers to multiple different bits depending on some condition I still omit them all, but for cases like this where several different names refer to the same bit I include them. There\u0027s no ambiguity here for the user of the library constructing a value, they can just use the appropriate name when constructing a register value, as they presumably know the context of which runtime conditions apply, and there\u0027s no ambiguity.",
+      "parentUuid": "2ba15d70_a8b2e9a3",
+      "revId": "a7c84ee705edf062112c3e5049a4c73ad4525c53",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6be544f_5517f260",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-10T15:56:47Z",
       "side": 1,
       "message": "Bit 10 `EL1PCTEN` is missing. I think it\u0027s related to my comment above, for the non-VHE use case bit 0 has this name, for the VHE case bit 10. And somehow the dedup logic ends up dropping it",
+      "revId": "a7c84ee705edf062112c3e5049a4c73ad4525c53",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d85f16_fd96f453",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:22:24Z",
+      "side": 1,
+      "message": "Right, `remove_clashes` will still remove the two `EL1PCTEN` bits, because they have the same name but different values so it would be ambiguous which was intended when someone writes `CnthctlEl2::EL1PCTEN`. They will need to instead use the appropriate raw value, or we can add some manual constants for this later if we want.",
+      "parentUuid": "c6be544f_5517f260",
       "revId": "a7c84ee705edf062112c3e5049a4c73ad4525c53",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
