@@ -59,6 +59,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "605cef17_098b209c",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether we should treat registers that can cause traps from a lower EL as safe. In particular this can be used to trap floating point functionality, which lower ELs might be using from safe Rust code. In general I\u0027ve taken a conservative approach, making system registers unsafe to write unless I\u0027m confident that they are safe.",
+      "parentUuid": "35023ce8_09dbc2a4",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8e0a78b_e7cf43c2",
@@ -219,6 +243,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdae22ff_ea084d98",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "Can this cause traps from safe Rust code?",
+      "parentUuid": "0235a2fa_c8415239",
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b137d37_0c605303",
         "filename": "registers.toml",
         "patchSetId": 14
@@ -289,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9860cbd2_ff17da37",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "What effect does writing a value here actually have? It\u0027s not very clear to me.",
+      "parentUuid": "bb2f1f2d_6ff0f623",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b88a8856_d05e3cc3",
         "filename": "registers.toml",
         "patchSetId": 14
@@ -300,6 +366,30 @@
       "writtenOn": "2025-12-01T13:27:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 21
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573cec63_fbfa905a",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "These can change the cacheability of memory or other attributes which can cause undefined behaviour, so they should be unsafe.",
+      "parentUuid": "b88a8856_d05e3cc3",
       "range": {
         "startLine": 248,
         "startChar": 0,
@@ -333,6 +423,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f9829d_cc8924fe",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "Changing the stack pointer, saved program state or translation control can cause undefined behaviour in safe Rust code, so these should be unsafe.",
+      "parentUuid": "88b1acb9_2600c717",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68fc1217_84f769c2",
@@ -356,6 +470,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e772e97b_4765949b",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "These are unsafe for the same reason as the other translation control registers.",
+      "parentUuid": "68fc1217_84f769c2",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c706088_d3027004",
@@ -369,6 +507,30 @@
       "writtenOn": "2025-12-01T13:27:45Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71420966_af475d0b",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "These are likely to be used to store a pointer for implementing thread-local storage, so changing the value could cause undefined behaviour for that.",
+      "parentUuid": "6c706088_d3027004",
       "range": {
         "startLine": 355,
         "startChar": 0,
@@ -496,6 +658,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2edc1b95_6d2ae783",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "Unsafe for the same reason as the other TCRs.",
+      "parentUuid": "9d1ba914_3342bb1d",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3989093d_676a81c3",
@@ -519,6 +705,30 @@
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2641c0f5_7811c4ca",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "Unsafe for the same reason as the other TTBRs.",
+      "parentUuid": "3989093d_676a81c3",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1df1fa_b8a929e4",
@@ -532,6 +742,30 @@
       "writtenOn": "2025-12-01T13:27:45Z",
       "side": 1,
       "message": "ditto (safe in the current manual implementation)",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 2
+      },
+      "revId": "b01ffa5081325d06b2d6ec53944822f5f4bb26f1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50a4d5e_52e3cb60",
+        "filename": "registers.toml",
+        "patchSetId": 14
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2025-12-11T16:03:49Z",
+      "side": 1,
+      "message": "Can this cause undefined behaviour in SVE instructions generated by safe Rust code?",
+      "parentUuid": "be1df1fa_b8a929e4",
       "range": {
         "startLine": 396,
         "startChar": 0,
