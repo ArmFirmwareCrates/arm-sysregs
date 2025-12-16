@@ -1,0 +1,7 @@
+Code-Review+2: Bálint Dobszay <balint.dobszay@arm.com>
+Submitted-by: Bálint Dobszay <balint.dobszay@arm.com>
+Submitted-at: Tue, 16 Dec 2025 14:57:13 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/arm-firmware-crates/arm-sysregs/+/45626
+Comments-Total: 4
+Project: arm-firmware-crates/arm-sysregs
+Branch: refs/heads/main
