@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c43dc7_7255a54b",
+        "filename": "registers.toml",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2026-01-09T14:39:35Z",
+      "side": 1,
+      "message": "Is there a way to determine whether the compiler recognizes a particular register name? For example, depending on the architecture version of the CPU feature that the register belongs? I am just wondering if we can derive `use_encoded_asm_name` information from somewhere.",
+      "revId": "16db4dece8f357ca1ff62bf8bbc9ad584597a592",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
