@@ -16,6 +16,24 @@
       "message": "Why this register in particular?",
       "revId": "e8b51fd26a2f8cb029d6bc3fcf892b2992097558",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26dab81f_a0b1d784",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2026-01-12T11:06:18Z",
+      "side": 1,
+      "message": "Mb forgot to remove this",
+      "parentUuid": "908f4c6d_5fb37b72",
+      "revId": "e8b51fd26a2f8cb029d6bc3fcf892b2992097558",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }

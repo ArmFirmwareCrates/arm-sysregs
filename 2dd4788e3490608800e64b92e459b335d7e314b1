@@ -52,6 +52,24 @@
       "parentUuid": "073ea399_ab59a868",
       "revId": "2dd4788e3490608800e64b92e459b335d7e314b1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26acf3a0_c028a46b",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2026-01-12T11:06:18Z",
+      "side": 0,
+      "message": "It adds a `values` field to the `RegisterField` struct, which interferes with the comparison in `remove_clashes` (which remove any two fields that have the same name but are not equal).",
+      "parentUuid": "8e1ccd56_57771a4c",
+      "revId": "2dd4788e3490608800e64b92e459b335d7e314b1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
