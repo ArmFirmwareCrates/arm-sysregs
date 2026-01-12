@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047c34c4_e6cfcbe2",
+        "filename": "generate-sysregs/src/output.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2026-01-12T10:56:31Z",
+      "side": 1,
+      "message": "Now the naming is back to front. Let\u0027s make this `is_some()` and change `!use_custom_type` below to `use_custom_type`.",
+      "revId": "aa6ecc4ae1cb5259c1bc3260caaf2cde137c1ae3",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
