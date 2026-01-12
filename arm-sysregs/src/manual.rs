@@ -3,6 +3,8 @@
 
 //! Manually implemented methods for system register types.
 
+use num_enum::TryFromPrimitive;
+
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, EsrEl2, EsrEl3, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1,
     IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MdcrEl3, MidrEl1,
@@ -359,7 +361,7 @@ impl SpsrEl3 {
 }
 
 /// Cache type enum.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, TryFromPrimitive)]
 #[repr(u8)]
 pub enum CacheType {
     /// No cache.
@@ -372,21 +374,6 @@ pub enum CacheType {
     SeparateInstructionAndData = 0b011,
     /// Unified cache.
     Unified = 0b100,
-}
-
-impl TryFrom<u8> for CacheType {
-    type Error = ();
-
-    fn try_from(value: u8) -> Result<Self, Self::Error> {
-        Ok(match value {
-            0b000 => Self::NoCache,
-            0b001 => Self::InstructionOnly,
-            0b010 => Self::DataOnly,
-            0b011 => Self::SeparateInstructionAndData,
-            0b100 => Self::Unified,
-            _ => return Err(()),
-        })
-    }
 }
 
 /// Wrapper type for describing cache level in a human readable format, i.e. L3 cache = `CacheLevel(3)`
@@ -419,7 +406,8 @@ impl From<CacheLevel> for u64 {
 }
 
 /// An AArch64 exception level.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[repr(u8)]
 pub enum ExceptionLevel {
     /// Exception level 0.
     El0 = 0,
@@ -432,7 +420,7 @@ pub enum ExceptionLevel {
 }
 
 /// Values for SPSEL.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
 #[repr(u8)]
 pub enum StackPointer {
     /// Use SP_EL0.
