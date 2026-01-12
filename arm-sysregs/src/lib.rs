@@ -62,6 +62,11 @@ impl CcsidrEl1 {
     pub const fn linesize(self) -> u8 {
         ((self.bits() >> 0) & 0b111) as u8
     }
+
+    /// Returns the value of the `Associativity` field.
+    pub const fn associativity(self) -> u32 {
+        ((self.bits() >> 3) & 0b111111111111111111111) as u32
+    }
 }
 
 bitflags! {
@@ -750,8 +755,6 @@ bitflags! {
         const VI = 1 << 7;
         /// `VSE` bit.
         const VSE = 1 << 8;
-        /// `FB` bit.
-        const FB = 1 << 9;
         /// `DC` bit.
         const DC = 1 << 12;
         /// `TWI` bit.
@@ -2349,12 +2352,6 @@ bitflags! {
         const STE = 1 << 18;
         /// Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and EL1 to EL3.
         const TTRF = 1 << 19;
-        /// `EDAD` bit.
-        const EDAD = 1 << 20;
-        /// `EPMAD` bit.
-        const EPMAD = 1 << 21;
-        /// `ETAD` bit.
-        const ETAD = 1 << 22;
         /// Secure Cycle Counter Disable. Prohibits PMCCNTR_EL0 from counting in Secure state.
         const SCCD = 1 << 23;
         /// Non-secure Trace Buffer Extended. Together with MDCR_EL3.NSTB, controls the trace buffer owning Security state and accesses to trace buffer System registers from EL2 and EL1.
@@ -2391,19 +2388,9 @@ bitflags! {
 }
 
 impl MdcrEl3 {
-    /// Returns the value of the `NSPB` field.
-    pub const fn nspb(self) -> u8 {
-        ((self.bits() >> 12) & 0b11) as u8
-    }
-
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
         ((self.bits() >> 14) & 0b11) as u8
-    }
-
-    /// Returns the value of the `NSTB` field.
-    pub const fn nstb(self) -> u8 {
-        ((self.bits() >> 24) & 0b11) as u8
     }
 
     /// Returns the value of the `PMSSE` field.
@@ -2725,6 +2712,11 @@ impl MpamidrEl1 {
     /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
     pub const fn vpmr_max(self) -> u8 {
         ((self.bits() >> 18) & 0b111) as u8
+    }
+
+    /// Returns the value of the `PMG_MAX` field.
+    pub const fn pmg_max(self) -> u16 {
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 }
 
@@ -3203,8 +3195,6 @@ bitflags! {
     pub struct ScrEl3: u64 {
         /// RES1 bits in the `SCR_EL3` register.
         const RES1 = 0b110000;
-        /// Non-secure.
-        const NS = 1 << 0;
         /// Take physical IRQs at EL3.
         const IRQ = 1 << 1;
         /// Take physical FIQs at EL3.
@@ -3463,12 +3453,8 @@ bitflags! {
         const SA = 1 << 3;
         /// `SA0` bit.
         const SA0 = 1 << 4;
-        /// `CP15BEN` bit.
-        const CP15BEN = 1 << 5;
         /// `nAA` bit.
         const NAA = 1 << 6;
-        /// `SED` bit.
-        const SED = 1 << 8;
         /// `UMA` bit.
         const UMA = 1 << 9;
         /// `EnRCTX` bit.
@@ -4081,8 +4067,6 @@ bitflags! {
         const TCMA0 = 1 << 57;
         /// `TCMA1` bit.
         const TCMA1 = 1 << 58;
-        /// `DS` bit.
-        const DS = 1 << 59;
         /// `MTX0` bit.
         const MTX0 = 1 << 60;
         /// `MTX1` bit.
@@ -4323,8 +4307,6 @@ bitflags! {
         const TBID = 1 << 29;
         /// `TCMA` bit.
         const TCMA = 1 << 30;
-        /// `DS` bit.
-        const DS = 1 << 32;
         /// `MTX` bit.
         const MTX = 1 << 33;
         /// `PnCH` bit.
@@ -4833,11 +4815,6 @@ impl VtcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
         ((self.bits() >> 0) & 0b111111) as u8
-    }
-
-    /// Returns the value of the `SL0` field.
-    pub const fn sl0(self) -> u8 {
-        ((self.bits() >> 6) & 0b11) as u8
     }
 
     /// Returns the value of the `IRGN0` field.
