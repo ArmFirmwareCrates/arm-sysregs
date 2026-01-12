@@ -88,6 +88,24 @@
       "parentUuid": "26acf3a0_c028a46b",
       "revId": "2dd4788e3490608800e64b92e459b335d7e314b1",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffaef3ea_ff511754",
+        "filename": "arm-sysregs/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2026-01-12T12:52:40Z",
+      "side": 0,
+      "message": "Agreed. Although I think the tool for identifying enums could show the retained field\u0027s values as it may still be useful.",
+      "parentUuid": "94524b84_fb8ad754",
+      "revId": "2dd4788e3490608800e64b92e459b335d7e314b1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
