@@ -28,7 +28,8 @@ bitflags! {
 impl ApiakeyhiEl1 {
     /// Returns the value of the `APIAKeyHi` field.
     pub const fn apiakeyhi(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -43,7 +44,8 @@ bitflags! {
 impl ApiakeyloEl1 {
     /// Returns the value of the `APIAKeyLo` field.
     pub const fn apiakeylo(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -58,7 +60,7 @@ bitflags! {
 impl CcsidrEl1 {
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111
+        ((self.bits() >> 0) & 0b111) as u8
     }
 }
 
@@ -74,43 +76,44 @@ bitflags! {
 
 impl ClidrEl1 {
     /// Returns the value of the given `Ctype<n>` field.
-    pub const fn ctype(self, n: u32) -> u8 {
+    pub fn ctype(self, n: u32) -> crate::manual::CacheType {
         assert!(n >= 1 && n < 8);
-        (self.bits() >> (0 + (n - 1) * 3)) as u8 & 0b111
+        crate::manual::CacheType::try_from(((self.bits() >> (0 + (n - 1) * 3)) & 0b111) as u8)
+            .unwrap()
     }
 
     /// Returns the value of the `LoUIS` field.
     ///
     /// Level of Unification Inner Shareable for the cache hierarchy.
     pub const fn louis(self) -> u8 {
-        (self.bits() >> 21) as u8 & 0b111
+        ((self.bits() >> 21) & 0b111) as u8
     }
 
     /// Returns the value of the `LoC` field.
     ///
     /// Level of Coherence for the cache hierarchy.
     pub const fn loc(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b111
+        ((self.bits() >> 24) & 0b111) as u8
     }
 
     /// Returns the value of the `LoUU` field.
     ///
     /// Level of Unification Uniprocessor for the cache hierarchy.
     pub const fn louu(self) -> u8 {
-        (self.bits() >> 27) as u8 & 0b111
+        ((self.bits() >> 27) & 0b111) as u8
     }
 
     /// Returns the value of the `ICB` field.
     ///
     /// Inner cache boundary level.
     pub const fn icb(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b111
+        ((self.bits() >> 30) & 0b111) as u8
     }
 
     /// Returns the value of the given `Ttype<n>` field.
     pub const fn ttype(self, n: u32) -> u8 {
         assert!(n >= 1 && n < 8);
-        (self.bits() >> (33 + (n - 1) * 2)) as u8 & 0b11
+        ((self.bits() >> (33 + (n - 1) * 2)) & 0b11) as u8
     }
 }
 
@@ -125,7 +128,7 @@ bitflags! {
 impl CntfrqEl0 {
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b11111111111111111111111111111111
+        ((self.bits() >> 0) & 0b11111111111111111111111111111111) as u32
     }
 }
 
@@ -172,7 +175,7 @@ bitflags! {
 impl CnthctlEl2 {
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 }
 
@@ -187,7 +190,8 @@ bitflags! {
 impl CntvoffEl2 {
     /// Returns the value of the `VOffset` field.
     pub const fn voffset(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -202,7 +206,7 @@ bitflags! {
 impl ContextidrEl1 {
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b11111111111111111111111111111111
+        ((self.bits() >> 0) & 0b11111111111111111111111111111111) as u32
     }
 }
 
@@ -217,7 +221,7 @@ bitflags! {
 impl ContextidrEl2 {
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b11111111111111111111111111111111
+        ((self.bits() >> 0) & 0b11111111111111111111111111111111) as u32
     }
 }
 
@@ -244,17 +248,17 @@ bitflags! {
 impl CpacrEl1 {
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11
+        ((self.bits() >> 16) & 0b11) as u8
     }
 
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b11
+        ((self.bits() >> 20) & 0b11) as u8
     }
 
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11
+        ((self.bits() >> 24) & 0b11) as u8
     }
 }
 
@@ -287,17 +291,17 @@ bitflags! {
 impl CptrEl2 {
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11
+        ((self.bits() >> 16) & 0b11) as u8
     }
 
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b11
+        ((self.bits() >> 20) & 0b11) as u8
     }
 
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11
+        ((self.bits() >> 24) & 0b11) as u8
     }
 }
 
@@ -336,7 +340,7 @@ bitflags! {
 impl CsselrEl1 {
     /// Returns the value of the `Level` field.
     pub const fn level(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b111
+        ((self.bits() >> 1) & 0b111) as u8
     }
 }
 
@@ -359,34 +363,34 @@ bitflags! {
 impl CtrEl0 {
     /// Returns the value of the `IminLine` field.
     pub const fn iminline(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 
     /// Returns the value of the `DminLine` field.
     ///
     /// Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE.
     pub const fn dminline(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `CWG` field.
     pub const fn cwg(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `TminLine` field.
     pub const fn tminline(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b111111
+        ((self.bits() >> 32) & 0b111111) as u8
     }
 }
 
@@ -411,17 +415,17 @@ bitflags! {
 impl DisrEl1 {
     /// Returns the value of the `DFSC` field.
     pub const fn dfsc(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111111
+        ((self.bits() >> 0) & 0b111111) as u8
     }
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b111
+        ((self.bits() >> 10) & 0b111) as u8
     }
 
     /// Returns the value of the `WU` field.
     pub const fn wu(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11
+        ((self.bits() >> 16) & 0b11) as u8
     }
 }
 
@@ -448,7 +452,8 @@ bitflags! {
 impl ElrEl1 {
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -463,7 +468,8 @@ bitflags! {
 impl ElrEl2 {
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -480,17 +486,17 @@ bitflags! {
 impl EsrEl1 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b1111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111) as u32
     }
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        (self.bits() >> 26) as u8 & 0b111111
+        ((self.bits() >> 26) & 0b111111) as u8
     }
 
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
-        (self.bits() >> 32) as u32 & 0b111111111111111111111111
+        ((self.bits() >> 32) & 0b111111111111111111111111) as u32
     }
 }
 
@@ -507,17 +513,17 @@ bitflags! {
 impl EsrEl2 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b1111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111) as u32
     }
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        (self.bits() >> 26) as u8 & 0b111111
+        ((self.bits() >> 26) & 0b111111) as u8
     }
 
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
-        (self.bits() >> 32) as u32 & 0b111111111111111111111111
+        ((self.bits() >> 32) & 0b111111111111111111111111) as u32
     }
 }
 
@@ -534,17 +540,17 @@ bitflags! {
 impl EsrEl3 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b1111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111) as u32
     }
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        (self.bits() >> 26) as u8 & 0b111111
+        ((self.bits() >> 26) & 0b111111) as u8
     }
 
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
-        (self.bits() >> 32) as u32 & 0b111111111111111111111111
+        ((self.bits() >> 32) & 0b111111111111111111111111) as u32
     }
 }
 
@@ -559,7 +565,8 @@ bitflags! {
 impl FarEl1 {
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -574,7 +581,8 @@ bitflags! {
 impl FarEl2 {
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -591,7 +599,7 @@ bitflags! {
 impl GcrEl1 {
     /// Returns the value of the `Exclude` field.
     pub const fn exclude(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 }
 
@@ -842,12 +850,12 @@ bitflags! {
 impl HcrEl2 {
     /// Returns the value of the `BSU` field.
     pub const fn bsu(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -1076,12 +1084,12 @@ bitflags! {
 impl Hfgrtr2El2 {
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
-        (self.bits() >> 18) as u8 & 0b11
+        ((self.bits() >> 18) & 0b11) as u8
     }
 
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
-        (self.bits() >> 31) as u8 & 0b11
+        ((self.bits() >> 31) & 0b11) as u8
     }
 }
 
@@ -1160,12 +1168,12 @@ bitflags! {
 impl Hfgwtr2El2 {
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
-        (self.bits() >> 18) as u8 & 0b11
+        ((self.bits() >> 18) & 0b11) as u8
     }
 
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
-        (self.bits() >> 31) as u8 & 0b11
+        ((self.bits() >> 31) & 0b11) as u8
     }
 }
 
@@ -1290,7 +1298,7 @@ bitflags! {
 impl HpfarEl2 {
     /// Returns the value of the `FIPA` field.
     pub const fn fipa(self) -> u64 {
-        (self.bits() >> 4) as u64 & 0b11111111111111111111111111111111111111111111
+        ((self.bits() >> 4) & 0b11111111111111111111111111111111111111111111) as u64
     }
 }
 
@@ -1381,7 +1389,7 @@ bitflags! {
 impl IchHcrEl2 {
     /// Returns the value of the `EOIcount` field.
     pub const fn eoicount(self) -> u8 {
-        (self.bits() >> 27) as u8 & 0b11111
+        ((self.bits() >> 27) & 0b11111) as u8
     }
 }
 
@@ -1410,12 +1418,12 @@ bitflags! {
 impl IchVmcrEl2 {
     /// Returns the value of the `VBPR1` field.
     pub const fn vbpr1(self) -> u8 {
-        (self.bits() >> 18) as u8 & 0b111
+        ((self.bits() >> 18) & 0b111) as u8
     }
 
     /// Returns the value of the `VBPR0` field.
     pub const fn vbpr0(self) -> u8 {
-        (self.bits() >> 21) as u8 & 0b111
+        ((self.bits() >> 21) & 0b111) as u8
     }
 }
 
@@ -1430,82 +1438,82 @@ bitflags! {
 impl IdAa64dfr0El1 {
     /// Returns the value of the `DebugVer` field.
     pub const fn debugver(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `TraceVer` field.
     pub const fn tracever(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `PMUVer` field.
     pub const fn pmuver(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `PMSS` field.
     pub const fn pmss(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `SEBEP` field.
     pub const fn sebep(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `PMSVer` field.
     pub const fn pmsver(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `TraceFilt` field.
     pub const fn tracefilt(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `TraceBuffer` field.
     pub const fn tracebuffer(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `MTPMU` field.
     pub const fn mtpmu(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `BRBE` field.
     pub const fn brbe(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `ExtTrcBuff` field.
     pub const fn exttrcbuff(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -1520,57 +1528,57 @@ bitflags! {
 impl IdAa64dfr1El1 {
     /// Returns the value of the `SYSPMUID` field.
     pub const fn syspmuid(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b11111111
+        ((self.bits() >> 0) & 0b11111111) as u8
     }
 
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11111111
+        ((self.bits() >> 8) & 0b11111111) as u8
     }
 
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11111111
+        ((self.bits() >> 16) & 0b11111111) as u8
     }
 
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11111111
+        ((self.bits() >> 24) & 0b11111111) as u8
     }
 
     /// Returns the value of the `SPMU` field.
     pub const fn spmu(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `PMICNTR` field.
     pub const fn pmicntr(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `ABLE` field.
     pub const fn able(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `ITE` field.
     pub const fn ite(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `EBEP` field.
     pub const fn ebep(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `DPFZS` field.
     pub const fn dpfzs(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `ABL_CMPs` field.
     pub const fn abl_cmps(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b11111111
+        ((self.bits() >> 56) & 0b11111111) as u8
     }
 }
 
@@ -1585,72 +1593,72 @@ bitflags! {
 impl IdAa64mmfr0El1 {
     /// Returns the value of the `PARange` field.
     pub const fn parange(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `ASIDBits` field.
     pub const fn asidbits(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `BigEnd` field.
     pub const fn bigend(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `SNSMem` field.
     pub const fn snsmem(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `BigEndEL0` field.
     pub const fn bigendel0(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `TGran16` field.
     pub const fn tgran16(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `TGran64` field.
     pub const fn tgran64(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `TGran4` field.
     pub const fn tgran4(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `TGran16_2` field.
     pub const fn tgran16_2(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `TGran64_2` field.
     pub const fn tgran64_2(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `TGran4_2` field.
     pub const fn tgran4_2(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `ExS` field.
     pub const fn exs(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `FGT` field.
     pub const fn fgt(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `ECV` field.
     pub const fn ecv(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -1665,82 +1673,82 @@ bitflags! {
 impl IdAa64mmfr1El1 {
     /// Returns the value of the `HAFDBS` field.
     pub const fn hafdbs(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `VMIDBits` field.
     pub const fn vmidbits(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `VH` field.
     pub const fn vh(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `HPDS` field.
     pub const fn hpds(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `LO` field.
     pub const fn lo(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `PAN` field.
     pub const fn pan(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `SpecSEI` field.
     pub const fn specsei(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `XNX` field.
     pub const fn xnx(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `TWED` field.
     pub const fn twed(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `ETS` field.
     pub const fn ets(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `HCX` field.
     pub const fn hcx(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `AFP` field.
     pub const fn afp(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `nTLBPA` field.
     pub const fn ntlbpa(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `TIDCP1` field.
     pub const fn tidcp1(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `CMOW` field.
     pub const fn cmow(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `ECBHB` field.
     pub const fn ecbhb(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -1755,77 +1763,77 @@ bitflags! {
 impl IdAa64mmfr2El1 {
     /// Returns the value of the `CnP` field.
     pub const fn cnp(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `UAO` field.
     pub const fn uao(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `LSM` field.
     pub const fn lsm(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `IESB` field.
     pub const fn iesb(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `VARange` field.
     pub const fn varange(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `CCIDX` field.
     pub const fn ccidx(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `NV` field.
     pub const fn nv(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `ST` field.
     pub const fn st(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `AT` field.
     pub const fn at(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `IDS` field.
     pub const fn ids(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `FWB` field.
     pub const fn fwb(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `TTL` field.
     pub const fn ttl(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `BBM` field.
     pub const fn bbm(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `E0PD` field.
     pub const fn e0pd(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -1840,77 +1848,77 @@ bitflags! {
 impl IdAa64mmfr3El1 {
     /// Returns the value of the `TCRX` field.
     pub const fn tcrx(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `SCTLRX` field.
     pub const fn sctlrx(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `S1PIE` field.
     pub const fn s1pie(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `S2PIE` field.
     pub const fn s2pie(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `S1POE` field.
     pub const fn s1poe(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `S2POE` field.
     pub const fn s2poe(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `AIE` field.
     pub const fn aie(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `MEC` field.
     pub const fn mec(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `D128` field.
     pub const fn d128(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `D128_2` field.
     pub const fn d128_2(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `SNERR` field.
     pub const fn snerr(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `ANERR` field.
     pub const fn anerr(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `SDERR` field.
     pub const fn sderr(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `ADERR` field.
     pub const fn aderr(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `Spec_FPACC` field.
     pub const fn spec_fpacc(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -1925,82 +1933,82 @@ bitflags! {
 impl IdAa64pfr0El1 {
     /// Returns the value of the `EL0` field.
     pub const fn el0(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `EL1` field.
     pub const fn el1(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `EL2` field.
     pub const fn el2(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `EL3` field.
     pub const fn el3(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `FP` field.
     pub const fn fp(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `AdvSIMD` field.
     pub const fn advsimd(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `GIC` field.
     pub const fn gic(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `SVE` field.
     pub const fn sve(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `SEL2` field.
     pub const fn sel2(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `MPAM` field.
     pub const fn mpam(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `DIT` field.
     pub const fn dit(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `RME` field.
     pub const fn rme(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `CSV2` field.
     pub const fn csv2(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `CSV3` field.
     pub const fn csv3(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -2015,77 +2023,77 @@ bitflags! {
 impl IdAa64pfr1El1 {
     /// Returns the value of the `BT` field.
     pub const fn bt(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
-        (self.bits() >> 4) as u8 & 0b1111
+        ((self.bits() >> 4) & 0b1111) as u8
     }
 
     /// Returns the value of the `MTE` field.
     pub const fn mte(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b1111
+        ((self.bits() >> 8) & 0b1111) as u8
     }
 
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b1111
+        ((self.bits() >> 12) & 0b1111) as u8
     }
 
     /// Returns the value of the `MPAM_frac` field.
     pub const fn mpam_frac(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `SME` field.
     pub const fn sme(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b1111
+        ((self.bits() >> 24) & 0b1111) as u8
     }
 
     /// Returns the value of the `RNDR_trap` field.
     pub const fn rndr_trap(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b1111
+        ((self.bits() >> 28) & 0b1111) as u8
     }
 
     /// Returns the value of the `CSV2_frac` field.
     pub const fn csv2_frac(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b1111
+        ((self.bits() >> 32) & 0b1111) as u8
     }
 
     /// Returns the value of the `NMI` field.
     pub const fn nmi(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `MTE_frac` field.
     pub const fn mte_frac(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b1111
+        ((self.bits() >> 40) & 0b1111) as u8
     }
 
     /// Returns the value of the `GCS` field.
     pub const fn gcs(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `THE` field.
     pub const fn the(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `MTEX` field.
     pub const fn mtex(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `DF2` field.
     pub const fn df2(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 
     /// Returns the value of the `PFAR` field.
     pub const fn pfar(self) -> u8 {
-        (self.bits() >> 60) as u8 & 0b1111
+        ((self.bits() >> 60) & 0b1111) as u8
     }
 }
 
@@ -2140,22 +2148,22 @@ bitflags! {
 impl IdAa64smfr0El1 {
     /// Returns the value of the `I8I32` field.
     pub const fn i8i32(self) -> u8 {
-        (self.bits() >> 36) as u8 & 0b1111
+        ((self.bits() >> 36) & 0b1111) as u8
     }
 
     /// Returns the value of the `I16I32` field.
     pub const fn i16i32(self) -> u8 {
-        (self.bits() >> 44) as u8 & 0b1111
+        ((self.bits() >> 44) & 0b1111) as u8
     }
 
     /// Returns the value of the `I16I64` field.
     pub const fn i16i64(self) -> u8 {
-        (self.bits() >> 52) as u8 & 0b1111
+        ((self.bits() >> 52) & 0b1111) as u8
     }
 
     /// Returns the value of the `SMEver` field.
     pub const fn smever(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b1111
+        ((self.bits() >> 56) & 0b1111) as u8
     }
 }
 
@@ -2189,7 +2197,7 @@ impl MairEl1 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        (self.bits() >> (0 + (n - 0) * 8)) as u8 & 0b11111111
+        ((self.bits() >> (0 + (n - 0) * 8)) & 0b11111111) as u8
     }
 }
 
@@ -2205,7 +2213,7 @@ impl MairEl2 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        (self.bits() >> (0 + (n - 0) * 8)) as u8 & 0b11111111
+        ((self.bits() >> (0 + (n - 0) * 8)) & 0b11111111) as u8
     }
 }
 
@@ -2221,7 +2229,7 @@ impl MairEl3 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        (self.bits() >> (0 + (n - 0) * 8)) as u8 & 0b11111111
+        ((self.bits() >> (0 + (n - 0) * 8)) & 0b11111111) as u8
     }
 }
 
@@ -2286,27 +2294,27 @@ bitflags! {
 impl MdcrEl2 {
     /// Returns the value of the `HPMN` field.
     pub const fn hpmn(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b11111
+        ((self.bits() >> 0) & 0b11111) as u8
     }
 
     /// Returns the value of the `E2PB` field.
     pub const fn e2pb(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b11
+        ((self.bits() >> 12) & 0b11) as u8
     }
 
     /// Returns the value of the `E2TB` field.
     pub const fn e2tb(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11
+        ((self.bits() >> 24) & 0b11) as u8
     }
 
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b11
+        ((self.bits() >> 30) & 0b11) as u8
     }
 
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11
+        ((self.bits() >> 40) & 0b11) as u8
     }
 }
 
@@ -2385,52 +2393,52 @@ bitflags! {
 impl MdcrEl3 {
     /// Returns the value of the `NSPB` field.
     pub const fn nspb(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b11
+        ((self.bits() >> 12) & 0b11) as u8
     }
 
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 
     /// Returns the value of the `NSTB` field.
     pub const fn nstb(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11
+        ((self.bits() >> 24) & 0b11) as u8
     }
 
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b11
+        ((self.bits() >> 30) & 0b11) as u8
     }
 
     /// Returns the value of the `SBRBE` field.
     pub const fn sbrbe(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b11
+        ((self.bits() >> 32) & 0b11) as u8
     }
 
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11
+        ((self.bits() >> 40) & 0b11) as u8
     }
 
     /// Returns the value of the `EPMSSAD` field.
     pub const fn epmssad(self) -> u8 {
-        (self.bits() >> 45) as u8 & 0b11
+        ((self.bits() >> 45) & 0b11) as u8
     }
 
     /// Returns the value of the `ETBAD` field.
     pub const fn etbad(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b11
+        ((self.bits() >> 48) & 0b11) as u8
     }
 
     /// Returns the value of the `PMSEE` field.
     pub const fn pmsee(self) -> u8 {
-        (self.bits() >> 51) as u8 & 0b11
+        ((self.bits() >> 51) & 0b11) as u8
     }
 
     /// Returns the value of the `TRBEE` field.
     pub const fn trbee(self) -> u8 {
-        (self.bits() >> 53) as u8 & 0b11
+        ((self.bits() >> 53) & 0b11) as u8
     }
 }
 
@@ -2481,7 +2489,7 @@ bitflags! {
 impl MdscrEl1 {
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
-        (self.bits() >> 22) as u8 & 0b11
+        ((self.bits() >> 22) & 0b11) as u8
     }
 }
 
@@ -2496,27 +2504,27 @@ bitflags! {
 impl MidrEl1 {
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
-        (self.bits() >> 4) as u16 & 0b111111111111
+        ((self.bits() >> 4) & 0b111111111111) as u16
     }
 
     /// Returns the value of the `Architecture` field.
     pub const fn architecture(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11111111
+        ((self.bits() >> 24) & 0b11111111) as u8
     }
 }
 
@@ -2547,42 +2555,42 @@ bitflags! {
 impl Mpam2El2 {
     /// Returns the value of the `PARTID` field.
     pub const fn partid(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PARTID_D` field.
     pub const fn partid_d(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PMG` field.
     pub const fn pmg(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b11111111
+        ((self.bits() >> 32) & 0b11111111) as u8
     }
 
     /// Returns the value of the `PMG_D` field.
     pub const fn pmg_d(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11111111
+        ((self.bits() >> 40) & 0b11111111) as u8
     }
 
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2615,42 +2623,42 @@ bitflags! {
 impl Mpam3El3 {
     /// Returns the value of the `PARTID` field.
     pub const fn partid(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PARTID_D` field.
     pub const fn partid_d(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PMG` field.
     pub const fn pmg(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b11111111
+        ((self.bits() >> 32) & 0b11111111) as u8
     }
 
     /// Returns the value of the `PMG_D` field.
     pub const fn pmg_d(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11111111
+        ((self.bits() >> 40) & 0b11111111) as u8
     }
 
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2709,14 +2717,14 @@ bitflags! {
 impl MpamidrEl1 {
     /// Returns the value of the `PARTID_MAX` field.
     pub const fn partid_max(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `VPMR_MAX` field.
     ///
     /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
     pub const fn vpmr_max(self) -> u8 {
-        (self.bits() >> 18) as u8 & 0b111
+        ((self.bits() >> 18) & 0b111) as u8
     }
 }
 
@@ -2731,22 +2739,22 @@ bitflags! {
 impl Mpamvpm0El2 {
     /// Returns the value of the `PhyPARTID0` field.
     pub const fn phypartid0(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID1` field.
     pub const fn phypartid1(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID2` field.
     pub const fn phypartid2(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID3` field.
     pub const fn phypartid3(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2761,22 +2769,22 @@ bitflags! {
 impl Mpamvpm1El2 {
     /// Returns the value of the `PhyPARTID4` field.
     pub const fn phypartid4(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID5` field.
     pub const fn phypartid5(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID6` field.
     pub const fn phypartid6(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID7` field.
     pub const fn phypartid7(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2791,22 +2799,22 @@ bitflags! {
 impl Mpamvpm2El2 {
     /// Returns the value of the `PhyPARTID8` field.
     pub const fn phypartid8(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID9` field.
     pub const fn phypartid9(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID10` field.
     pub const fn phypartid10(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID11` field.
     pub const fn phypartid11(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2821,22 +2829,22 @@ bitflags! {
 impl Mpamvpm3El2 {
     /// Returns the value of the `PhyPARTID12` field.
     pub const fn phypartid12(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID13` field.
     pub const fn phypartid13(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID14` field.
     pub const fn phypartid14(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID15` field.
     pub const fn phypartid15(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2851,22 +2859,22 @@ bitflags! {
 impl Mpamvpm4El2 {
     /// Returns the value of the `PhyPARTID16` field.
     pub const fn phypartid16(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID17` field.
     pub const fn phypartid17(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID18` field.
     pub const fn phypartid18(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID19` field.
     pub const fn phypartid19(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2881,22 +2889,22 @@ bitflags! {
 impl Mpamvpm5El2 {
     /// Returns the value of the `PhyPARTID20` field.
     pub const fn phypartid20(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID21` field.
     pub const fn phypartid21(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID22` field.
     pub const fn phypartid22(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID23` field.
     pub const fn phypartid23(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2911,22 +2919,22 @@ bitflags! {
 impl Mpamvpm6El2 {
     /// Returns the value of the `PhyPARTID24` field.
     pub const fn phypartid24(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID25` field.
     pub const fn phypartid25(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID26` field.
     pub const fn phypartid26(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID27` field.
     pub const fn phypartid27(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -2941,22 +2949,22 @@ bitflags! {
 impl Mpamvpm7El2 {
     /// Returns the value of the `PhyPARTID28` field.
     pub const fn phypartid28(self) -> u16 {
-        (self.bits() >> 0) as u16 & 0b1111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID29` field.
     pub const fn phypartid29(self) -> u16 {
-        (self.bits() >> 16) as u16 & 0b1111111111111111
+        ((self.bits() >> 16) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID30` field.
     pub const fn phypartid30(self) -> u16 {
-        (self.bits() >> 32) as u16 & 0b1111111111111111
+        ((self.bits() >> 32) & 0b1111111111111111) as u16
     }
 
     /// Returns the value of the `PhyPARTID31` field.
     pub const fn phypartid31(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -3049,22 +3057,22 @@ bitflags! {
 impl MpidrEl1 {
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b11111111
+        ((self.bits() >> 0) & 0b11111111) as u8
     }
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11111111
+        ((self.bits() >> 8) & 0b11111111) as u8
     }
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11111111
+        ((self.bits() >> 16) & 0b11111111) as u8
     }
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b11111111
+        ((self.bits() >> 32) & 0b11111111) as u8
     }
 }
 
@@ -3099,27 +3107,27 @@ bitflags! {
 impl ParEl1 {
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b111111
+        ((self.bits() >> 1) & 0b111111) as u8
     }
 
     /// Returns the value of the `SH` field.
     pub const fn sh(self) -> u8 {
-        (self.bits() >> 7) as u8 & 0b11
+        ((self.bits() >> 7) & 0b11) as u8
     }
 
     /// Returns the value of the `PA[47:12]` field.
     pub const fn pa_47_12(self) -> u64 {
-        (self.bits() >> 12) as u64 & 0b111111111111111111111111111111111111
+        ((self.bits() >> 12) & 0b111111111111111111111111111111111111) as u64
     }
 
     /// Returns the value of the `PA[51:48]` field.
     pub const fn pa_51_48(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b1111
+        ((self.bits() >> 48) & 0b1111) as u8
     }
 
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
-        (self.bits() >> 56) as u8 & 0b11111111
+        ((self.bits() >> 56) & 0b11111111) as u8
     }
 }
 
@@ -3154,17 +3162,17 @@ bitflags! {
 impl PmcrEl0 {
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
-        (self.bits() >> 11) as u8 & 0b11111
+        ((self.bits() >> 11) & 0b11111) as u8
     }
 
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11111111
+        ((self.bits() >> 16) & 0b11111111) as u8
     }
 
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11111111
+        ((self.bits() >> 24) & 0b11111111) as u8
     }
 }
 
@@ -3179,12 +3187,12 @@ bitflags! {
 impl RgsrEl1 {
     /// Returns the value of the `TAG` field.
     pub const fn tag(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `SEED` field.
     pub const fn seed(self) -> u16 {
-        (self.bits() >> 8) as u16 & 0b1111111111111111
+        ((self.bits() >> 8) & 0b1111111111111111) as u16
     }
 }
 
@@ -3313,7 +3321,7 @@ bitflags! {
 impl ScrEl3 {
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b1111
+        ((self.bits() >> 30) & 0b1111) as u8
     }
 }
 
@@ -3426,17 +3434,17 @@ bitflags! {
 impl SctlrEl1 {
     /// Returns the value of the `TCF0` field.
     pub const fn tcf0(self) -> u8 {
-        (self.bits() >> 38) as u8 & 0b11
+        ((self.bits() >> 38) & 0b11) as u8
     }
 
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11
+        ((self.bits() >> 40) & 0b11) as u8
     }
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        (self.bits() >> 46) as u8 & 0b1111
+        ((self.bits() >> 46) & 0b1111) as u8
     }
 }
 
@@ -3545,17 +3553,17 @@ bitflags! {
 impl SctlrEl2 {
     /// Returns the value of the `TCF0` field.
     pub const fn tcf0(self) -> u8 {
-        (self.bits() >> 38) as u8 & 0b11
+        ((self.bits() >> 38) & 0b11) as u8
     }
 
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11
+        ((self.bits() >> 40) & 0b11) as u8
     }
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        (self.bits() >> 46) as u8 & 0b1111
+        ((self.bits() >> 46) & 0b1111) as u8
     }
 }
 
@@ -3614,7 +3622,7 @@ bitflags! {
 impl SctlrEl3 {
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
-        (self.bits() >> 40) as u8 & 0b11
+        ((self.bits() >> 40) & 0b11) as u8
     }
 }
 
@@ -3633,7 +3641,7 @@ bitflags! {
 impl SmcrEl3 {
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 }
 
@@ -3698,17 +3706,17 @@ bitflags! {
 impl SpsrEl1 {
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 }
 
@@ -3773,17 +3781,17 @@ bitflags! {
 impl SpsrEl2 {
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 }
 
@@ -3848,17 +3856,17 @@ bitflags! {
 impl SpsrEl3 {
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 }
 
@@ -3873,7 +3881,8 @@ bitflags! {
 impl SpEl1 {
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -3888,7 +3897,8 @@ bitflags! {
 impl SpEl2 {
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -3939,17 +3949,17 @@ bitflags! {
 impl Tcr2El1 {
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
-        (self.bits() >> 22) as u8 & 0b111
+        ((self.bits() >> 22) & 0b111) as u8
     }
 
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
-        (self.bits() >> 25) as u8 & 0b11111
+        ((self.bits() >> 25) & 0b11111) as u8
     }
 
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b11111
+        ((self.bits() >> 30) & 0b11111) as u8
     }
 }
 
@@ -4000,17 +4010,17 @@ bitflags! {
 impl Tcr2El2 {
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
-        (self.bits() >> 22) as u8 & 0b111
+        ((self.bits() >> 22) & 0b111) as u8
     }
 
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
-        (self.bits() >> 25) as u8 & 0b11111
+        ((self.bits() >> 25) & 0b11111) as u8
     }
 
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b11111
+        ((self.bits() >> 30) & 0b11111) as u8
     }
 }
 
@@ -4083,57 +4093,57 @@ bitflags! {
 impl TcrEl1 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111111
+        ((self.bits() >> 0) & 0b111111) as u8
     }
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11
+        ((self.bits() >> 8) & 0b11) as u8
     }
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b11
+        ((self.bits() >> 12) & 0b11) as u8
     }
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b111111
+        ((self.bits() >> 16) & 0b111111) as u8
     }
 
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11
+        ((self.bits() >> 24) & 0b11) as u8
     }
 
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
-        (self.bits() >> 26) as u8 & 0b11
+        ((self.bits() >> 26) & 0b11) as u8
     }
 
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b11
+        ((self.bits() >> 28) & 0b11) as u8
     }
 
     /// Returns the value of the `TG1` field.
     pub const fn tg1(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b11
+        ((self.bits() >> 30) & 0b11) as u8
     }
 
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b111
+        ((self.bits() >> 32) & 0b111) as u8
     }
 }
 
@@ -4222,67 +4232,67 @@ bitflags! {
 impl TcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111111
+        ((self.bits() >> 0) & 0b111111) as u8
     }
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11
+        ((self.bits() >> 8) & 0b11) as u8
     }
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b11
+        ((self.bits() >> 12) & 0b11) as u8
     }
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b111
+        ((self.bits() >> 16) & 0b111) as u8
     }
 
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b111111
+        ((self.bits() >> 16) & 0b111111) as u8
     }
 
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11
+        ((self.bits() >> 24) & 0b11) as u8
     }
 
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
-        (self.bits() >> 26) as u8 & 0b11
+        ((self.bits() >> 26) & 0b11) as u8
     }
 
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
-        (self.bits() >> 28) as u8 & 0b11
+        ((self.bits() >> 28) & 0b11) as u8
     }
 
     /// Returns the value of the `TG1` field.
     pub const fn tg1(self) -> u8 {
-        (self.bits() >> 30) as u8 & 0b11
+        ((self.bits() >> 30) & 0b11) as u8
     }
 
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b111
+        ((self.bits() >> 32) & 0b111) as u8
     }
 
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b11111
+        ((self.bits() >> 48) & 0b11111) as u8
     }
 }
 
@@ -4343,42 +4353,42 @@ bitflags! {
 impl TcrEl3 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111111
+        ((self.bits() >> 0) & 0b111111) as u8
     }
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11
+        ((self.bits() >> 8) & 0b11) as u8
     }
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b11
+        ((self.bits() >> 12) & 0b11) as u8
     }
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b111
+        ((self.bits() >> 16) & 0b111) as u8
     }
 
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
-        (self.bits() >> 45) as u8 & 0b111
+        ((self.bits() >> 45) & 0b111) as u8
     }
 
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
-        (self.bits() >> 48) as u8 & 0b11111
+        ((self.bits() >> 48) & 0b11111) as u8
     }
 }
 
@@ -4429,7 +4439,8 @@ bitflags! {
 impl TpidrroEl0 {
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -4444,7 +4455,8 @@ bitflags! {
 impl TpidrEl0 {
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -4459,7 +4471,8 @@ bitflags! {
 impl TpidrEl1 {
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -4474,7 +4487,8 @@ bitflags! {
 impl TpidrEl2 {
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        (self.bits() >> 0) as u64 & 0b1111111111111111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 0) & 0b1111111111111111111111111111111111111111111111111111111111111111)
+            as u64
     }
 }
 
@@ -4491,17 +4505,17 @@ bitflags! {
 impl Ttbr0El1 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+        ((self.bits() >> 1) & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b11
+        ((self.bits() >> 1) & 0b11) as u8
     }
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -4518,17 +4532,17 @@ bitflags! {
 impl Ttbr0El2 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+        ((self.bits() >> 1) & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b11
+        ((self.bits() >> 1) & 0b11) as u8
     }
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -4545,7 +4559,7 @@ bitflags! {
 impl Ttbr0El3 {
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b11
+        ((self.bits() >> 1) & 0b11) as u8
     }
 }
 
@@ -4562,17 +4576,17 @@ bitflags! {
 impl Ttbr1El1 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+        ((self.bits() >> 1) & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b11
+        ((self.bits() >> 1) & 0b11) as u8
     }
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -4589,17 +4603,17 @@ bitflags! {
 impl Ttbr1El2 {
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+        ((self.bits() >> 1) & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b11
+        ((self.bits() >> 1) & 0b11) as u8
     }
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -4616,7 +4630,7 @@ bitflags! {
 impl VbarEl1 {
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
-        (self.bits() >> 11) as u64 & 0b11111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 11) & 0b11111111111111111111111111111111111111111111111111111) as u64
     }
 }
 
@@ -4633,7 +4647,7 @@ bitflags! {
 impl VbarEl2 {
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
-        (self.bits() >> 11) as u64 & 0b11111111111111111111111111111111111111111111111111111
+        ((self.bits() >> 11) & 0b11111111111111111111111111111111111111111111111111111) as u64
     }
 }
 
@@ -4656,17 +4670,17 @@ bitflags! {
 impl VdisrEl2 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b111111111111111111111111
+        ((self.bits() >> 0) & 0b111111111111111111111111) as u32
     }
 
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111111
+        ((self.bits() >> 0) & 0b111111) as u8
     }
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 }
 
@@ -4687,22 +4701,22 @@ bitflags! {
 impl VmpidrEl2 {
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b11111111
+        ((self.bits() >> 0) & 0b11111111) as u8
     }
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11111111
+        ((self.bits() >> 8) & 0b11111111) as u8
     }
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b11111111
+        ((self.bits() >> 16) & 0b11111111) as u8
     }
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        (self.bits() >> 32) as u8 & 0b11111111
+        ((self.bits() >> 32) & 0b11111111) as u8
     }
 }
 
@@ -4717,27 +4731,27 @@ bitflags! {
 impl VpidrEl2 {
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
-        (self.bits() >> 4) as u16 & 0b111111111111
+        ((self.bits() >> 4) & 0b111111111111) as u16
     }
 
     /// Returns the value of the `Architecture` field.
     pub const fn architecture(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b1111
+        ((self.bits() >> 16) & 0b1111) as u8
     }
 
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
-        (self.bits() >> 20) as u8 & 0b1111
+        ((self.bits() >> 20) & 0b1111) as u8
     }
 
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
-        (self.bits() >> 24) as u8 & 0b11111111
+        ((self.bits() >> 24) & 0b11111111) as u8
     }
 }
 
@@ -4756,12 +4770,12 @@ bitflags! {
 impl VsesrEl2 {
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        (self.bits() >> 0) as u32 & 0b111111111111111111111111
+        ((self.bits() >> 0) & 0b111111111111111111111111) as u32
     }
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 }
 
@@ -4818,37 +4832,37 @@ bitflags! {
 impl VtcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b111111
+        ((self.bits() >> 0) & 0b111111) as u8
     }
 
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
-        (self.bits() >> 6) as u8 & 0b11
+        ((self.bits() >> 6) & 0b11) as u8
     }
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        (self.bits() >> 8) as u8 & 0b11
+        ((self.bits() >> 8) & 0b11) as u8
     }
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        (self.bits() >> 10) as u8 & 0b11
+        ((self.bits() >> 10) & 0b11) as u8
     }
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        (self.bits() >> 12) as u8 & 0b11
+        ((self.bits() >> 12) & 0b11) as u8
     }
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        (self.bits() >> 14) as u8 & 0b11
+        ((self.bits() >> 14) & 0b11) as u8
     }
 
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
-        (self.bits() >> 16) as u8 & 0b111
+        ((self.bits() >> 16) & 0b111) as u8
     }
 }
 
@@ -4865,17 +4879,17 @@ bitflags! {
 impl VttbrEl2 {
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        (self.bits() >> 1) as u64 & 0b11111111111111111111111111111111111111111111111
+        ((self.bits() >> 1) & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        (self.bits() >> 1) as u8 & 0b11
+        ((self.bits() >> 1) & 0b11) as u8
     }
 
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u16 {
-        (self.bits() >> 48) as u16 & 0b1111111111111111
+        ((self.bits() >> 48) & 0b1111111111111111) as u16
     }
 }
 
@@ -4890,7 +4904,7 @@ bitflags! {
 impl ZcrEl3 {
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
-        (self.bits() >> 0) as u8 & 0b1111
+        ((self.bits() >> 0) & 0b1111) as u8
     }
 }
 
