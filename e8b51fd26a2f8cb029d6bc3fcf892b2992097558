@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908f4c6d_5fb37b72",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2026-01-12T11:01:15Z",
+      "side": 1,
+      "message": "Why this register in particular?",
+      "revId": "e8b51fd26a2f8cb029d6bc3fcf892b2992097558",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
