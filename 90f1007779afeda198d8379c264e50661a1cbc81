@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9642ae0_a45880ed",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2026-01-13T16:33:25Z",
+      "side": 1,
+      "message": "Let\u0027s put the index before the name, to keep the order of fields in the output.",
+      "revId": "90f1007779afeda198d8379c264e50661a1cbc81",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791bf041_fd7badc2",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000309
+      },
+      "writtenOn": "2026-01-13T16:33:25Z",
+      "side": 1,
+      "message": "Nit: A value of this enum is a single command, so let\u0027s call it `Command` rather than `Commands`.",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 13
+      },
+      "revId": "90f1007779afeda198d8379c264e50661a1cbc81",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
