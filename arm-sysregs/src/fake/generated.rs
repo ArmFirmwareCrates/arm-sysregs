@@ -14,10 +14,12 @@ use crate::{
     Dspsr2, Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0,
     Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr,
     Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr,
-    Httbr, Hvbar, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5, IdIsar6,
-    IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr,
-    Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1,
-    Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr,
+    Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1, IccHppir0,
+    IccHppir1, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccPmr, IccRpr, IccSgi0r, IccSgi1r,
+    IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5, IdIsar6, IdMmfr0,
+    IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0,
+    Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2,
+    Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr,
     Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder,
     Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0,
     Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
@@ -26,11 +28,13 @@ use crate::{
 use crate::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
     CntpsTvalEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1, ElrEl1, EsrEl1, FarEl1, GcrEl1,
-    GcscrEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1,
-    IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1,
-    IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1,
-    RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1,
-    Ttbr1El1, VbarEl1,
+    GcscrEl1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1, IccEoir0El1,
+    IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1, IccIgrpen1El1,
+    IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1, IdAa64dfr0El1,
+    IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1,
+    IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1,
+    MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1,
+    TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -46,8 +50,8 @@ use crate::{
 };
 #[cfg(feature = "el3")]
 use crate::{
-    CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, Sctlr2El3,
-    SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
+    CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3, MdcrEl3,
+    Mpam3El3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -525,6 +529,100 @@ pub struct SystemRegisters {
     pub httbr: Httbr,
     /// Fake value for the `HVBAR` system register.
     pub hvbar: Hvbar,
+    /// Fake value for the `ICC_ASGI1R` system register.
+    pub icc_asgi1r: IccAsgi1r,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_ASGI1R_EL1` system register.
+    pub icc_asgi1r_el1: IccAsgi1rEl1,
+    /// Fake value for the `ICC_BPR0` system register.
+    pub icc_bpr0: IccBpr0,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_BPR0_EL1` system register.
+    pub icc_bpr0_el1: IccBpr0El1,
+    /// Fake value for the `ICC_BPR1` system register.
+    pub icc_bpr1: IccBpr1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_BPR1_EL1` system register.
+    pub icc_bpr1_el1: IccBpr1El1,
+    /// Fake value for the `ICC_CTLR` system register.
+    pub icc_ctlr: IccCtlr,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_CTLR_EL1` system register.
+    pub icc_ctlr_el1: IccCtlrEl1,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `ICC_CTLR_EL3` system register.
+    pub icc_ctlr_el3: IccCtlrEl3,
+    /// Fake value for the `ICC_DIR` system register.
+    pub icc_dir: IccDir,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_DIR_EL1` system register.
+    pub icc_dir_el1: IccDirEl1,
+    /// Fake value for the `ICC_EOIR0` system register.
+    pub icc_eoir0: IccEoir0,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_EOIR0_EL1` system register.
+    pub icc_eoir0_el1: IccEoir0El1,
+    /// Fake value for the `ICC_EOIR1` system register.
+    pub icc_eoir1: IccEoir1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_EOIR1_EL1` system register.
+    pub icc_eoir1_el1: IccEoir1El1,
+    /// Fake value for the `ICC_HPPIR0` system register.
+    pub icc_hppir0: IccHppir0,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_HPPIR0_EL1` system register.
+    pub icc_hppir0_el1: IccHppir0El1,
+    /// Fake value for the `ICC_HPPIR1` system register.
+    pub icc_hppir1: IccHppir1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_HPPIR1_EL1` system register.
+    pub icc_hppir1_el1: IccHppir1El1,
+    /// Fake value for the `ICC_IAR0` system register.
+    pub icc_iar0: IccIar0,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IAR0_EL1` system register.
+    pub icc_iar0_el1: IccIar0El1,
+    /// Fake value for the `ICC_IAR1` system register.
+    pub icc_iar1: IccIar1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IAR1_EL1` system register.
+    pub icc_iar1_el1: IccIar1El1,
+    /// Fake value for the `ICC_IGRPEN0` system register.
+    pub icc_igrpen0: IccIgrpen0,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IGRPEN0_EL1` system register.
+    pub icc_igrpen0_el1: IccIgrpen0El1,
+    /// Fake value for the `ICC_IGRPEN1` system register.
+    pub icc_igrpen1: IccIgrpen1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IGRPEN1_EL1` system register.
+    pub icc_igrpen1_el1: IccIgrpen1El1,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `ICC_IGRPEN1_EL3` system register.
+    pub icc_igrpen1_el3: IccIgrpen1El3,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_NMIAR1_EL1` system register.
+    pub icc_nmiar1_el1: IccNmiar1El1,
+    /// Fake value for the `ICC_PMR` system register.
+    pub icc_pmr: IccPmr,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_PMR_EL1` system register.
+    pub icc_pmr_el1: IccPmrEl1,
+    /// Fake value for the `ICC_RPR` system register.
+    pub icc_rpr: IccRpr,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_RPR_EL1` system register.
+    pub icc_rpr_el1: IccRprEl1,
+    /// Fake value for the `ICC_SGI0R` system register.
+    pub icc_sgi0r: IccSgi0r,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_SGI0R_EL1` system register.
+    pub icc_sgi0r_el1: IccSgi0rEl1,
+    /// Fake value for the `ICC_SGI1R` system register.
+    pub icc_sgi1r: IccSgi1r,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_SGI1R_EL1` system register.
+    pub icc_sgi1r_el1: IccSgi1rEl1,
     #[cfg(feature = "el1")]
     /// Fake value for the `ICC_SRE_EL1` system register.
     pub icc_sre_el1: IccSreEl1,
@@ -1190,6 +1288,63 @@ impl SystemRegisters {
             htrfcr: Htrfcr::empty(),
             httbr: Httbr::empty(),
             hvbar: Hvbar::empty(),
+            icc_asgi1r: IccAsgi1r::empty(),
+            #[cfg(feature = "el1")]
+            icc_asgi1r_el1: IccAsgi1rEl1::empty(),
+            icc_bpr0: IccBpr0::empty(),
+            #[cfg(feature = "el1")]
+            icc_bpr0_el1: IccBpr0El1::empty(),
+            icc_bpr1: IccBpr1::empty(),
+            #[cfg(feature = "el1")]
+            icc_bpr1_el1: IccBpr1El1::empty(),
+            icc_ctlr: IccCtlr::empty(),
+            #[cfg(feature = "el1")]
+            icc_ctlr_el1: IccCtlrEl1::empty(),
+            #[cfg(feature = "el3")]
+            icc_ctlr_el3: IccCtlrEl3::empty(),
+            icc_dir: IccDir::empty(),
+            #[cfg(feature = "el1")]
+            icc_dir_el1: IccDirEl1::empty(),
+            icc_eoir0: IccEoir0::empty(),
+            #[cfg(feature = "el1")]
+            icc_eoir0_el1: IccEoir0El1::empty(),
+            icc_eoir1: IccEoir1::empty(),
+            #[cfg(feature = "el1")]
+            icc_eoir1_el1: IccEoir1El1::empty(),
+            icc_hppir0: IccHppir0::empty(),
+            #[cfg(feature = "el1")]
+            icc_hppir0_el1: IccHppir0El1::empty(),
+            icc_hppir1: IccHppir1::empty(),
+            #[cfg(feature = "el1")]
+            icc_hppir1_el1: IccHppir1El1::empty(),
+            icc_iar0: IccIar0::empty(),
+            #[cfg(feature = "el1")]
+            icc_iar0_el1: IccIar0El1::empty(),
+            icc_iar1: IccIar1::empty(),
+            #[cfg(feature = "el1")]
+            icc_iar1_el1: IccIar1El1::empty(),
+            icc_igrpen0: IccIgrpen0::empty(),
+            #[cfg(feature = "el1")]
+            icc_igrpen0_el1: IccIgrpen0El1::empty(),
+            icc_igrpen1: IccIgrpen1::empty(),
+            #[cfg(feature = "el1")]
+            icc_igrpen1_el1: IccIgrpen1El1::empty(),
+            #[cfg(feature = "el3")]
+            icc_igrpen1_el3: IccIgrpen1El3::empty(),
+            #[cfg(feature = "el1")]
+            icc_nmiar1_el1: IccNmiar1El1::empty(),
+            icc_pmr: IccPmr::empty(),
+            #[cfg(feature = "el1")]
+            icc_pmr_el1: IccPmrEl1::empty(),
+            icc_rpr: IccRpr::empty(),
+            #[cfg(feature = "el1")]
+            icc_rpr_el1: IccRprEl1::empty(),
+            icc_sgi0r: IccSgi0r::empty(),
+            #[cfg(feature = "el1")]
+            icc_sgi0r_el1: IccSgi0rEl1::empty(),
+            icc_sgi1r: IccSgi1r::empty(),
+            #[cfg(feature = "el1")]
+            icc_sgi1r_el1: IccSgi1rEl1::empty(),
             #[cfg(feature = "el1")]
             icc_sre_el1: IccSreEl1::empty(),
             #[cfg(feature = "el2")]
