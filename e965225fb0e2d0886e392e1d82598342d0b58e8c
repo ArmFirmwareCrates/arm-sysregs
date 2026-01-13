@@ -1,0 +1,9 @@
+Verified+1: ci-bot
+Code-Review+2: Andrew Walbran <qwandor@google.com>
+Code-Review+1: Kis Imre <imre.kis@arm.com>
+Submitted-by: Andrew Walbran <qwandor@google.com>
+Submitted-at: Tue, 13 Jan 2026 14:49:25 +0000
+Reviewed-on: https://review.trustedfirmware.org/c/arm-firmware-crates/arm-sysregs/+/45607
+Comments-Total: 9
+Project: arm-firmware-crates/arm-sysregs
+Branch: refs/heads/main
