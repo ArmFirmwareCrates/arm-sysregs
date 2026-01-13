@@ -4,6 +4,7 @@
 //! Access to Arm CPU system registers.
 
 #![cfg_attr(not(any(test, feature = "fakes")), no_std)]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[cfg(not(any(test, feature = "fakes")))]
 mod aarch64;

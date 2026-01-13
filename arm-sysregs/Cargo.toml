@@ -14,6 +14,10 @@ categories = ["hardware-support", "embedded", "no-std", "no-std::no-alloc"]
 readme = "README.md"
 rust-version = "1.88"
 
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
 [dependencies]
 bitflags = "2.9.1"
 num_enum = { version = "0.7.5", default-features = false }
