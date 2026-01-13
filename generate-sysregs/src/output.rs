@@ -224,14 +224,14 @@ impl RegisterInfo {
         for field in &self.fields {
             let constant_name = field.constant_name();
 
-            writeln!(writer, "    /// Offset of the {} field.", field.name)?;
+            writeln!(writer, "    /// Offset of the `{}` field.", field.name)?;
             writeln!(
                 writer,
                 "    pub const {}_SHIFT: u32 = {};",
                 constant_name, field.index
             )?;
             if field.width > 1 {
-                writeln!(writer, "    /// Mask for the {} field.", field.name)?;
+                writeln!(writer, "    /// Mask for the `{}` field.", field.name)?;
                 writeln!(
                     writer,
                     "    pub const {}_MASK: u{} = {:#b};",

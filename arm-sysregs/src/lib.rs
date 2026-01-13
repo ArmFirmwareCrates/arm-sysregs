@@ -29,9 +29,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl ApiakeyhiEl1 {
-    /// Offset of the APIAKeyHi field.
+    /// Offset of the `APIAKeyHi` field.
     pub const APIAKEYHI_SHIFT: u32 = 0;
-    /// Mask for the APIAKeyHi field.
+    /// Mask for the `APIAKeyHi` field.
     pub const APIAKEYHI_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -53,9 +53,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl ApiakeyloEl1 {
-    /// Offset of the APIAKeyLo field.
+    /// Offset of the `APIAKeyLo` field.
     pub const APIAKEYLO_SHIFT: u32 = 0;
-    /// Mask for the APIAKeyLo field.
+    /// Mask for the `APIAKeyLo` field.
     pub const APIAKEYLO_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -77,9 +77,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl CcsidrEl1 {
-    /// Offset of the LineSize field.
+    /// Offset of the `LineSize` field.
     pub const LINESIZE_SHIFT: u32 = 0;
-    /// Mask for the LineSize field.
+    /// Mask for the `LineSize` field.
     pub const LINESIZE_MASK: u64 = 0b111;
 
     /// Returns the value of the `LineSize` field.
@@ -101,29 +101,29 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl ClidrEl1 {
-    /// Offset of the Ctype<n> field.
+    /// Offset of the `Ctype<n>` field.
     pub const CTYPE_SHIFT: u32 = 0;
-    /// Mask for the Ctype<n> field.
+    /// Mask for the `Ctype<n>` field.
     pub const CTYPE_MASK: u64 = 0b111;
-    /// Offset of the LoUIS field.
+    /// Offset of the `LoUIS` field.
     pub const LOUIS_SHIFT: u32 = 21;
-    /// Mask for the LoUIS field.
+    /// Mask for the `LoUIS` field.
     pub const LOUIS_MASK: u64 = 0b111;
-    /// Offset of the LoC field.
+    /// Offset of the `LoC` field.
     pub const LOC_SHIFT: u32 = 24;
-    /// Mask for the LoC field.
+    /// Mask for the `LoC` field.
     pub const LOC_MASK: u64 = 0b111;
-    /// Offset of the LoUU field.
+    /// Offset of the `LoUU` field.
     pub const LOUU_SHIFT: u32 = 27;
-    /// Mask for the LoUU field.
+    /// Mask for the `LoUU` field.
     pub const LOUU_MASK: u64 = 0b111;
-    /// Offset of the ICB field.
+    /// Offset of the `ICB` field.
     pub const ICB_SHIFT: u32 = 30;
-    /// Mask for the ICB field.
+    /// Mask for the `ICB` field.
     pub const ICB_MASK: u64 = 0b111;
-    /// Offset of the Ttype<n> field.
+    /// Offset of the `Ttype<n>` field.
     pub const TTYPE_SHIFT: u32 = 33;
-    /// Mask for the Ttype<n> field.
+    /// Mask for the `Ttype<n>` field.
     pub const TTYPE_MASK: u64 = 0b11;
 
     /// Returns the value of the given `Ctype<n>` field.
@@ -179,9 +179,9 @@ bitflags! {
 }
 
 impl CntfrqEl0 {
-    /// Offset of the ClockFreq field.
+    /// Offset of the `ClockFreq` field.
     pub const CLOCKFREQ_SHIFT: u32 = 0;
-    /// Mask for the ClockFreq field.
+    /// Mask for the `ClockFreq` field.
     pub const CLOCKFREQ_MASK: u64 = 0b11111111111111111111111111111111;
 
     /// Returns the value of the `ClockFreq` field.
@@ -233,41 +233,41 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl CnthctlEl2 {
-    /// Offset of the EL0PCTEN field.
+    /// Offset of the `EL0PCTEN` field.
     pub const EL0PCTEN_SHIFT: u32 = 0;
-    /// Offset of the EL0VCTEN field.
+    /// Offset of the `EL0VCTEN` field.
     pub const EL0VCTEN_SHIFT: u32 = 1;
-    /// Offset of the EL1PCEN field.
+    /// Offset of the `EL1PCEN` field.
     pub const EL1PCEN_SHIFT: u32 = 1;
-    /// Offset of the EVNTEN field.
+    /// Offset of the `EVNTEN` field.
     pub const EVNTEN_SHIFT: u32 = 2;
-    /// Offset of the EVNTDIR field.
+    /// Offset of the `EVNTDIR` field.
     pub const EVNTDIR_SHIFT: u32 = 3;
-    /// Offset of the EVNTI field.
+    /// Offset of the `EVNTI` field.
     pub const EVNTI_SHIFT: u32 = 4;
-    /// Mask for the EVNTI field.
+    /// Mask for the `EVNTI` field.
     pub const EVNTI_MASK: u64 = 0b1111;
-    /// Offset of the EL0VTEN field.
+    /// Offset of the `EL0VTEN` field.
     pub const EL0VTEN_SHIFT: u32 = 8;
-    /// Offset of the EL0PTEN field.
+    /// Offset of the `EL0PTEN` field.
     pub const EL0PTEN_SHIFT: u32 = 9;
-    /// Offset of the EL1PTEN field.
+    /// Offset of the `EL1PTEN` field.
     pub const EL1PTEN_SHIFT: u32 = 11;
-    /// Offset of the ECV field.
+    /// Offset of the `ECV` field.
     pub const ECV_SHIFT: u32 = 12;
-    /// Offset of the EL1TVT field.
+    /// Offset of the `EL1TVT` field.
     pub const EL1TVT_SHIFT: u32 = 13;
-    /// Offset of the EL1TVCT field.
+    /// Offset of the `EL1TVCT` field.
     pub const EL1TVCT_SHIFT: u32 = 14;
-    /// Offset of the EL1NVPCT field.
+    /// Offset of the `EL1NVPCT` field.
     pub const EL1NVPCT_SHIFT: u32 = 15;
-    /// Offset of the EL1NVVCT field.
+    /// Offset of the `EL1NVVCT` field.
     pub const EL1NVVCT_SHIFT: u32 = 16;
-    /// Offset of the EVNTIS field.
+    /// Offset of the `EVNTIS` field.
     pub const EVNTIS_SHIFT: u32 = 17;
-    /// Offset of the CNTVMASK field.
+    /// Offset of the `CNTVMASK` field.
     pub const CNTVMASK_SHIFT: u32 = 18;
-    /// Offset of the CNTPMASK field.
+    /// Offset of the `CNTPMASK` field.
     pub const CNTPMASK_SHIFT: u32 = 19;
 
     /// Returns the value of the `EVNTI` field.
@@ -287,9 +287,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl CntvoffEl2 {
-    /// Offset of the VOffset field.
+    /// Offset of the `VOffset` field.
     pub const VOFFSET_SHIFT: u32 = 0;
-    /// Mask for the VOffset field.
+    /// Mask for the `VOffset` field.
     pub const VOFFSET_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -311,9 +311,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl ContextidrEl1 {
-    /// Offset of the PROCID field.
+    /// Offset of the `PROCID` field.
     pub const PROCID_SHIFT: u32 = 0;
-    /// Mask for the PROCID field.
+    /// Mask for the `PROCID` field.
     pub const PROCID_MASK: u64 = 0b11111111111111111111111111111111;
 
     /// Returns the value of the `PROCID` field.
@@ -333,9 +333,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl ContextidrEl2 {
-    /// Offset of the PROCID field.
+    /// Offset of the `PROCID` field.
     pub const PROCID_SHIFT: u32 = 0;
-    /// Mask for the PROCID field.
+    /// Mask for the `PROCID` field.
     pub const PROCID_MASK: u64 = 0b11111111111111111111111111111111;
 
     /// Returns the value of the `PROCID` field.
@@ -367,29 +367,29 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl CpacrEl1 {
-    /// Offset of the ZEN field.
+    /// Offset of the `ZEN` field.
     pub const ZEN_SHIFT: u32 = 16;
-    /// Mask for the ZEN field.
+    /// Mask for the `ZEN` field.
     pub const ZEN_MASK: u64 = 0b11;
-    /// Offset of the FPEN field.
+    /// Offset of the `FPEN` field.
     pub const FPEN_SHIFT: u32 = 20;
-    /// Mask for the FPEN field.
+    /// Mask for the `FPEN` field.
     pub const FPEN_MASK: u64 = 0b11;
-    /// Offset of the SMEN field.
+    /// Offset of the `SMEN` field.
     pub const SMEN_SHIFT: u32 = 24;
-    /// Mask for the SMEN field.
+    /// Mask for the `SMEN` field.
     pub const SMEN_MASK: u64 = 0b11;
-    /// Offset of the TTA field.
+    /// Offset of the `TTA` field.
     pub const TTA_SHIFT: u32 = 28;
-    /// Offset of the E0POE field.
+    /// Offset of the `E0POE` field.
     pub const E0POE_SHIFT: u32 = 29;
-    /// Offset of the TAM field.
+    /// Offset of the `TAM` field.
     pub const TAM_SHIFT: u32 = 30;
-    /// Offset of the TCPAC field.
+    /// Offset of the `TCPAC` field.
     pub const TCPAC_SHIFT: u32 = 31;
-    /// Offset of the E0TP0E field.
+    /// Offset of the `E0TP0E` field.
     pub const E0TP0E_SHIFT: u32 = 32;
-    /// Offset of the E0TP1E field.
+    /// Offset of the `E0TP1E` field.
     pub const E0TP1E_SHIFT: u32 = 33;
 
     /// Returns the value of the `ZEN` field.
@@ -437,33 +437,33 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl CptrEl2 {
-    /// Offset of the TZ field.
+    /// Offset of the `TZ` field.
     pub const TZ_SHIFT: u32 = 8;
-    /// Offset of the TFP field.
+    /// Offset of the `TFP` field.
     pub const TFP_SHIFT: u32 = 10;
-    /// Offset of the TSM field.
+    /// Offset of the `TSM` field.
     pub const TSM_SHIFT: u32 = 12;
-    /// Offset of the ZEN field.
+    /// Offset of the `ZEN` field.
     pub const ZEN_SHIFT: u32 = 16;
-    /// Mask for the ZEN field.
+    /// Mask for the `ZEN` field.
     pub const ZEN_MASK: u64 = 0b11;
-    /// Offset of the FPEN field.
+    /// Offset of the `FPEN` field.
     pub const FPEN_SHIFT: u32 = 20;
-    /// Mask for the FPEN field.
+    /// Mask for the `FPEN` field.
     pub const FPEN_MASK: u64 = 0b11;
-    /// Offset of the SMEN field.
+    /// Offset of the `SMEN` field.
     pub const SMEN_SHIFT: u32 = 24;
-    /// Mask for the SMEN field.
+    /// Mask for the `SMEN` field.
     pub const SMEN_MASK: u64 = 0b11;
-    /// Offset of the E0POE field.
+    /// Offset of the `E0POE` field.
     pub const E0POE_SHIFT: u32 = 29;
-    /// Offset of the TAM field.
+    /// Offset of the `TAM` field.
     pub const TAM_SHIFT: u32 = 30;
-    /// Offset of the TCPAC field.
+    /// Offset of the `TCPAC` field.
     pub const TCPAC_SHIFT: u32 = 31;
-    /// Offset of the E0TP0E field.
+    /// Offset of the `E0TP0E` field.
     pub const E0TP0E_SHIFT: u32 = 32;
-    /// Offset of the E0TP1E field.
+    /// Offset of the `E0TP1E` field.
     pub const E0TP1E_SHIFT: u32 = 33;
 
     /// Returns the value of the `ZEN` field.
@@ -505,17 +505,17 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl CptrEl3 {
-    /// Offset of the EZ field.
+    /// Offset of the `EZ` field.
     pub const EZ_SHIFT: u32 = 8;
-    /// Offset of the TFP field.
+    /// Offset of the `TFP` field.
     pub const TFP_SHIFT: u32 = 10;
-    /// Offset of the ESM field.
+    /// Offset of the `ESM` field.
     pub const ESM_SHIFT: u32 = 12;
-    /// Offset of the TTA field.
+    /// Offset of the `TTA` field.
     pub const TTA_SHIFT: u32 = 20;
-    /// Offset of the TAM field.
+    /// Offset of the `TAM` field.
     pub const TAM_SHIFT: u32 = 30;
-    /// Offset of the TCPAC field.
+    /// Offset of the `TCPAC` field.
     pub const TCPAC_SHIFT: u32 = 31;
 }
 
@@ -534,13 +534,13 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl CsselrEl1 {
-    /// Offset of the InD field.
+    /// Offset of the `InD` field.
     pub const IND_SHIFT: u32 = 0;
-    /// Offset of the Level field.
+    /// Offset of the `Level` field.
     pub const LEVEL_SHIFT: u32 = 1;
-    /// Mask for the Level field.
+    /// Mask for the `Level` field.
     pub const LEVEL_MASK: u64 = 0b111;
-    /// Offset of the TnD field.
+    /// Offset of the `TnD` field.
     pub const TND_SHIFT: u32 = 4;
 
     /// Returns the value of the `Level` field.
@@ -566,33 +566,33 @@ bitflags! {
 }
 
 impl CtrEl0 {
-    /// Offset of the IminLine field.
+    /// Offset of the `IminLine` field.
     pub const IMINLINE_SHIFT: u32 = 0;
-    /// Mask for the IminLine field.
+    /// Mask for the `IminLine` field.
     pub const IMINLINE_MASK: u64 = 0b1111;
-    /// Offset of the L1Ip field.
+    /// Offset of the `L1Ip` field.
     pub const L1IP_SHIFT: u32 = 14;
-    /// Mask for the L1Ip field.
+    /// Mask for the `L1Ip` field.
     pub const L1IP_MASK: u64 = 0b11;
-    /// Offset of the DminLine field.
+    /// Offset of the `DminLine` field.
     pub const DMINLINE_SHIFT: u32 = 16;
-    /// Mask for the DminLine field.
+    /// Mask for the `DminLine` field.
     pub const DMINLINE_MASK: u64 = 0b1111;
-    /// Offset of the ERG field.
+    /// Offset of the `ERG` field.
     pub const ERG_SHIFT: u32 = 20;
-    /// Mask for the ERG field.
+    /// Mask for the `ERG` field.
     pub const ERG_MASK: u64 = 0b1111;
-    /// Offset of the CWG field.
+    /// Offset of the `CWG` field.
     pub const CWG_SHIFT: u32 = 24;
-    /// Mask for the CWG field.
+    /// Mask for the `CWG` field.
     pub const CWG_MASK: u64 = 0b1111;
-    /// Offset of the IDC field.
+    /// Offset of the `IDC` field.
     pub const IDC_SHIFT: u32 = 28;
-    /// Offset of the DIC field.
+    /// Offset of the `DIC` field.
     pub const DIC_SHIFT: u32 = 29;
-    /// Offset of the TminLine field.
+    /// Offset of the `TminLine` field.
     pub const TMINLINE_SHIFT: u32 = 32;
-    /// Mask for the TminLine field.
+    /// Mask for the `TminLine` field.
     pub const TMINLINE_MASK: u64 = 0b111111;
 
     /// Returns the value of the `IminLine` field.
@@ -637,9 +637,9 @@ bitflags! {
 }
 
 impl Currentel {
-    /// Offset of the EL field.
+    /// Offset of the `EL` field.
     pub const EL_SHIFT: u32 = 2;
-    /// Mask for the EL field.
+    /// Mask for the `EL` field.
     pub const EL_MASK: u64 = 0b11;
 
     /// Returns the value of the `EL` field.
@@ -669,27 +669,27 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl DisrEl1 {
-    /// Offset of the DFSC field.
+    /// Offset of the `DFSC` field.
     pub const DFSC_SHIFT: u32 = 0;
-    /// Mask for the DFSC field.
+    /// Mask for the `DFSC` field.
     pub const DFSC_MASK: u64 = 0b111111;
-    /// Offset of the WnR field.
+    /// Offset of the `WnR` field.
     pub const WNR_SHIFT: u32 = 6;
-    /// Offset of the WnRV field.
+    /// Offset of the `WnRV` field.
     pub const WNRV_SHIFT: u32 = 7;
-    /// Offset of the EA field.
+    /// Offset of the `EA` field.
     pub const EA_SHIFT: u32 = 9;
-    /// Offset of the AET field.
+    /// Offset of the `AET` field.
     pub const AET_SHIFT: u32 = 10;
-    /// Mask for the AET field.
+    /// Mask for the `AET` field.
     pub const AET_MASK: u64 = 0b111;
-    /// Offset of the WU field.
+    /// Offset of the `WU` field.
     pub const WU_SHIFT: u32 = 16;
-    /// Mask for the WU field.
+    /// Mask for the `WU` field.
     pub const WU_MASK: u64 = 0b11;
-    /// Offset of the IDS field.
+    /// Offset of the `IDS` field.
     pub const IDS_SHIFT: u32 = 24;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 31;
 
     /// Returns the value of the `DFSC` field.
@@ -721,7 +721,7 @@ bitflags! {
 }
 
 impl Dit {
-    /// Offset of the DIT field.
+    /// Offset of the `DIT` field.
     pub const DIT_SHIFT: u32 = 24;
 }
 
@@ -736,9 +736,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl ElrEl1 {
-    /// Offset of the ADDR field.
+    /// Offset of the `ADDR` field.
     pub const ADDR_SHIFT: u32 = 0;
-    /// Mask for the ADDR field.
+    /// Mask for the `ADDR` field.
     pub const ADDR_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
 
     /// Returns the value of the `ADDR` field.
@@ -759,9 +759,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl ElrEl2 {
-    /// Offset of the ADDR field.
+    /// Offset of the `ADDR` field.
     pub const ADDR_SHIFT: u32 = 0;
-    /// Mask for the ADDR field.
+    /// Mask for the `ADDR` field.
     pub const ADDR_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
 
     /// Returns the value of the `ADDR` field.
@@ -784,19 +784,19 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl EsrEl1 {
-    /// Offset of the ISS field.
+    /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
-    /// Mask for the ISS field.
+    /// Mask for the `ISS` field.
     pub const ISS_MASK: u64 = 0b1111111111111111111111111;
-    /// Offset of the IL field.
+    /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
-    /// Offset of the EC field.
+    /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
-    /// Mask for the EC field.
+    /// Mask for the `EC` field.
     pub const EC_MASK: u64 = 0b111111;
-    /// Offset of the ISS2 field.
+    /// Offset of the `ISS2` field.
     pub const ISS2_SHIFT: u32 = 32;
-    /// Mask for the ISS2 field.
+    /// Mask for the `ISS2` field.
     pub const ISS2_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `ISS` field.
@@ -828,19 +828,19 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl EsrEl2 {
-    /// Offset of the ISS field.
+    /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
-    /// Mask for the ISS field.
+    /// Mask for the `ISS` field.
     pub const ISS_MASK: u64 = 0b1111111111111111111111111;
-    /// Offset of the IL field.
+    /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
-    /// Offset of the EC field.
+    /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
-    /// Mask for the EC field.
+    /// Mask for the `EC` field.
     pub const EC_MASK: u64 = 0b111111;
-    /// Offset of the ISS2 field.
+    /// Offset of the `ISS2` field.
     pub const ISS2_SHIFT: u32 = 32;
-    /// Mask for the ISS2 field.
+    /// Mask for the `ISS2` field.
     pub const ISS2_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `ISS` field.
@@ -872,19 +872,19 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl EsrEl3 {
-    /// Offset of the ISS field.
+    /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
-    /// Mask for the ISS field.
+    /// Mask for the `ISS` field.
     pub const ISS_MASK: u64 = 0b1111111111111111111111111;
-    /// Offset of the IL field.
+    /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
-    /// Offset of the EC field.
+    /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
-    /// Mask for the EC field.
+    /// Mask for the `EC` field.
     pub const EC_MASK: u64 = 0b111111;
-    /// Offset of the ISS2 field.
+    /// Offset of the `ISS2` field.
     pub const ISS2_SHIFT: u32 = 32;
-    /// Mask for the ISS2 field.
+    /// Mask for the `ISS2` field.
     pub const ISS2_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `ISS` field.
@@ -914,9 +914,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl FarEl1 {
-    /// Offset of the VA field.
+    /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
-    /// Mask for the VA field.
+    /// Mask for the `VA` field.
     pub const VA_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
 
     /// Returns the value of the `VA` field.
@@ -937,9 +937,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl FarEl2 {
-    /// Offset of the VA field.
+    /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
-    /// Mask for the VA field.
+    /// Mask for the `VA` field.
     pub const VA_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
 
     /// Returns the value of the `VA` field.
@@ -962,11 +962,11 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl GcrEl1 {
-    /// Offset of the Exclude field.
+    /// Offset of the `Exclude` field.
     pub const EXCLUDE_SHIFT: u32 = 0;
-    /// Mask for the Exclude field.
+    /// Mask for the `Exclude` field.
     pub const EXCLUDE_MASK: u64 = 0b1111111111111111;
-    /// Offset of the RRND field.
+    /// Offset of the `RRND` field.
     pub const RRND_SHIFT: u32 = 16;
 
     /// Returns the value of the `Exclude` field.
@@ -998,15 +998,15 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl GcscrEl1 {
-    /// Offset of the PCRSEL field.
+    /// Offset of the `PCRSEL` field.
     pub const PCRSEL_SHIFT: u32 = 0;
-    /// Offset of the RVCHKEN field.
+    /// Offset of the `RVCHKEN` field.
     pub const RVCHKEN_SHIFT: u32 = 5;
-    /// Offset of the EXLOCKEN field.
+    /// Offset of the `EXLOCKEN` field.
     pub const EXLOCKEN_SHIFT: u32 = 6;
-    /// Offset of the PUSHMEn field.
+    /// Offset of the `PUSHMEn` field.
     pub const PUSHMEN_SHIFT: u32 = 8;
-    /// Offset of the STREn field.
+    /// Offset of the `STREn` field.
     pub const STREN_SHIFT: u32 = 9;
 }
 
@@ -1033,15 +1033,15 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl GcscrEl2 {
-    /// Offset of the PCRSEL field.
+    /// Offset of the `PCRSEL` field.
     pub const PCRSEL_SHIFT: u32 = 0;
-    /// Offset of the RVCHKEN field.
+    /// Offset of the `RVCHKEN` field.
     pub const RVCHKEN_SHIFT: u32 = 5;
-    /// Offset of the EXLOCKEN field.
+    /// Offset of the `EXLOCKEN` field.
     pub const EXLOCKEN_SHIFT: u32 = 6;
-    /// Offset of the PUSHMEn field.
+    /// Offset of the `PUSHMEn` field.
     pub const PUSHMEN_SHIFT: u32 = 8;
-    /// Offset of the STREn field.
+    /// Offset of the `STREn` field.
     pub const STREN_SHIFT: u32 = 9;
 }
 
@@ -1132,79 +1132,79 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl HcrxEl2 {
-    /// Offset of the EnAS0 field.
+    /// Offset of the `EnAS0` field.
     pub const ENAS0_SHIFT: u32 = 0;
-    /// Offset of the EnALS field.
+    /// Offset of the `EnALS` field.
     pub const ENALS_SHIFT: u32 = 1;
-    /// Offset of the EnASR field.
+    /// Offset of the `EnASR` field.
     pub const ENASR_SHIFT: u32 = 2;
-    /// Offset of the FnXS field.
+    /// Offset of the `FnXS` field.
     pub const FNXS_SHIFT: u32 = 3;
-    /// Offset of the FGTnXS field.
+    /// Offset of the `FGTnXS` field.
     pub const FGTNXS_SHIFT: u32 = 4;
-    /// Offset of the SMPME field.
+    /// Offset of the `SMPME` field.
     pub const SMPME_SHIFT: u32 = 5;
-    /// Offset of the TALLINT field.
+    /// Offset of the `TALLINT` field.
     pub const TALLINT_SHIFT: u32 = 6;
-    /// Offset of the VINMI field.
+    /// Offset of the `VINMI` field.
     pub const VINMI_SHIFT: u32 = 7;
-    /// Offset of the VFNMI field.
+    /// Offset of the `VFNMI` field.
     pub const VFNMI_SHIFT: u32 = 8;
-    /// Offset of the CMOW field.
+    /// Offset of the `CMOW` field.
     pub const CMOW_SHIFT: u32 = 9;
-    /// Offset of the MCE2 field.
+    /// Offset of the `MCE2` field.
     pub const MCE2_SHIFT: u32 = 10;
-    /// Offset of the MSCEn field.
+    /// Offset of the `MSCEn` field.
     pub const MSCEN_SHIFT: u32 = 11;
-    /// Offset of the TCR2En field.
+    /// Offset of the `TCR2En` field.
     pub const TCR2EN_SHIFT: u32 = 14;
-    /// Offset of the SCTLR2En field.
+    /// Offset of the `SCTLR2En` field.
     pub const SCTLR2EN_SHIFT: u32 = 15;
-    /// Offset of the PTTWI field.
+    /// Offset of the `PTTWI` field.
     pub const PTTWI_SHIFT: u32 = 16;
-    /// Offset of the D128En field.
+    /// Offset of the `D128En` field.
     pub const D128EN_SHIFT: u32 = 17;
-    /// Offset of the EnSNERR field.
+    /// Offset of the `EnSNERR` field.
     pub const ENSNERR_SHIFT: u32 = 18;
-    /// Offset of the TMEA field.
+    /// Offset of the `TMEA` field.
     pub const TMEA_SHIFT: u32 = 19;
-    /// Offset of the EnSDERR field.
+    /// Offset of the `EnSDERR` field.
     pub const ENSDERR_SHIFT: u32 = 20;
-    /// Offset of the EnIDCP128 field.
+    /// Offset of the `EnIDCP128` field.
     pub const ENIDCP128_SHIFT: u32 = 21;
-    /// Offset of the GCSEn field.
+    /// Offset of the `GCSEn` field.
     pub const GCSEN_SHIFT: u32 = 22;
-    /// Offset of the EnFPM field.
+    /// Offset of the `EnFPM` field.
     pub const ENFPM_SHIFT: u32 = 23;
-    /// Offset of the PACMEn field.
+    /// Offset of the `PACMEn` field.
     pub const PACMEN_SHIFT: u32 = 24;
-    /// Offset of the VTLBIDEn field.
+    /// Offset of the `VTLBIDEn` field.
     pub const VTLBIDEN_SHIFT: u32 = 25;
-    /// Offset of the SRMASKEn field.
+    /// Offset of the `SRMASKEn` field.
     pub const SRMASKEN_SHIFT: u32 = 26;
-    /// Offset of the NVTGE field.
+    /// Offset of the `NVTGE` field.
     pub const NVTGE_SHIFT: u32 = 27;
-    /// Offset of the POE2En field.
+    /// Offset of the `POE2En` field.
     pub const POE2EN_SHIFT: u32 = 29;
-    /// Offset of the TPLIMEn field.
+    /// Offset of the `TPLIMEn` field.
     pub const TPLIMEN_SHIFT: u32 = 30;
-    /// Offset of the FDIT field.
+    /// Offset of the `FDIT` field.
     pub const FDIT_SHIFT: u32 = 31;
-    /// Offset of the NVnTTLB field.
+    /// Offset of the `NVnTTLB` field.
     pub const NVNTTLB_SHIFT: u32 = 32;
-    /// Offset of the NVnTTLBIS field.
+    /// Offset of the `NVnTTLBIS` field.
     pub const NVNTTLBIS_SHIFT: u32 = 33;
-    /// Offset of the NVnTTLBOS field.
+    /// Offset of the `NVnTTLBOS` field.
     pub const NVNTTLBOS_SHIFT: u32 = 34;
-    /// Offset of the VTLBIDOSEn field.
+    /// Offset of the `VTLBIDOSEn` field.
     pub const VTLBIDOSEN_SHIFT: u32 = 35;
-    /// Offset of the FNB field.
+    /// Offset of the `FNB` field.
     pub const FNB_SHIFT: u32 = 36;
-    /// Offset of the VTE field.
+    /// Offset of the `VTE` field.
     pub const VTE_SHIFT: u32 = 37;
-    /// Offset of the VTAO field.
+    /// Offset of the `VTAO` field.
     pub const VTAO_SHIFT: u32 = 38;
-    /// Offset of the VTCO field.
+    /// Offset of the `VTCO` field.
     pub const VTCO_SHIFT: u32 = 39;
 }
 
@@ -1331,125 +1331,125 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl HcrEl2 {
-    /// Offset of the VM field.
+    /// Offset of the `VM` field.
     pub const VM_SHIFT: u32 = 0;
-    /// Offset of the SWIO field.
+    /// Offset of the `SWIO` field.
     pub const SWIO_SHIFT: u32 = 1;
-    /// Offset of the PTW field.
+    /// Offset of the `PTW` field.
     pub const PTW_SHIFT: u32 = 2;
-    /// Offset of the FMO field.
+    /// Offset of the `FMO` field.
     pub const FMO_SHIFT: u32 = 3;
-    /// Offset of the IMO field.
+    /// Offset of the `IMO` field.
     pub const IMO_SHIFT: u32 = 4;
-    /// Offset of the AMO field.
+    /// Offset of the `AMO` field.
     pub const AMO_SHIFT: u32 = 5;
-    /// Offset of the VF field.
+    /// Offset of the `VF` field.
     pub const VF_SHIFT: u32 = 6;
-    /// Offset of the VI field.
+    /// Offset of the `VI` field.
     pub const VI_SHIFT: u32 = 7;
-    /// Offset of the VSE field.
+    /// Offset of the `VSE` field.
     pub const VSE_SHIFT: u32 = 8;
-    /// Offset of the FB field.
+    /// Offset of the `FB` field.
     pub const FB_SHIFT: u32 = 9;
-    /// Offset of the BSU field.
+    /// Offset of the `BSU` field.
     pub const BSU_SHIFT: u32 = 10;
-    /// Mask for the BSU field.
+    /// Mask for the `BSU` field.
     pub const BSU_MASK: u64 = 0b11;
-    /// Offset of the DC field.
+    /// Offset of the `DC` field.
     pub const DC_SHIFT: u32 = 12;
-    /// Offset of the TWI field.
+    /// Offset of the `TWI` field.
     pub const TWI_SHIFT: u32 = 13;
-    /// Offset of the TWE field.
+    /// Offset of the `TWE` field.
     pub const TWE_SHIFT: u32 = 14;
-    /// Offset of the TID0 field.
+    /// Offset of the `TID0` field.
     pub const TID0_SHIFT: u32 = 15;
-    /// Offset of the TID1 field.
+    /// Offset of the `TID1` field.
     pub const TID1_SHIFT: u32 = 16;
-    /// Offset of the TID2 field.
+    /// Offset of the `TID2` field.
     pub const TID2_SHIFT: u32 = 17;
-    /// Offset of the TID3 field.
+    /// Offset of the `TID3` field.
     pub const TID3_SHIFT: u32 = 18;
-    /// Offset of the TSC field.
+    /// Offset of the `TSC` field.
     pub const TSC_SHIFT: u32 = 19;
-    /// Offset of the TIDCP field.
+    /// Offset of the `TIDCP` field.
     pub const TIDCP_SHIFT: u32 = 20;
-    /// Offset of the TACR field.
+    /// Offset of the `TACR` field.
     pub const TACR_SHIFT: u32 = 21;
-    /// Offset of the TSW field.
+    /// Offset of the `TSW` field.
     pub const TSW_SHIFT: u32 = 22;
-    /// Offset of the TPCP field.
+    /// Offset of the `TPCP` field.
     pub const TPCP_SHIFT: u32 = 23;
-    /// Offset of the TPU field.
+    /// Offset of the `TPU` field.
     pub const TPU_SHIFT: u32 = 24;
-    /// Offset of the TTLB field.
+    /// Offset of the `TTLB` field.
     pub const TTLB_SHIFT: u32 = 25;
-    /// Offset of the TVM field.
+    /// Offset of the `TVM` field.
     pub const TVM_SHIFT: u32 = 26;
-    /// Offset of the TGE field.
+    /// Offset of the `TGE` field.
     pub const TGE_SHIFT: u32 = 27;
-    /// Offset of the TDZ field.
+    /// Offset of the `TDZ` field.
     pub const TDZ_SHIFT: u32 = 28;
-    /// Offset of the HCD field.
+    /// Offset of the `HCD` field.
     pub const HCD_SHIFT: u32 = 29;
-    /// Offset of the TRVM field.
+    /// Offset of the `TRVM` field.
     pub const TRVM_SHIFT: u32 = 30;
-    /// Offset of the RW field.
+    /// Offset of the `RW` field.
     pub const RW_SHIFT: u32 = 31;
-    /// Offset of the CD field.
+    /// Offset of the `CD` field.
     pub const CD_SHIFT: u32 = 32;
-    /// Offset of the ID field.
+    /// Offset of the `ID` field.
     pub const ID_SHIFT: u32 = 33;
-    /// Offset of the E2H field.
+    /// Offset of the `E2H` field.
     pub const E2H_SHIFT: u32 = 34;
-    /// Offset of the TLOR field.
+    /// Offset of the `TLOR` field.
     pub const TLOR_SHIFT: u32 = 35;
-    /// Offset of the TERR field.
+    /// Offset of the `TERR` field.
     pub const TERR_SHIFT: u32 = 36;
-    /// Offset of the TEA field.
+    /// Offset of the `TEA` field.
     pub const TEA_SHIFT: u32 = 37;
-    /// Offset of the APK field.
+    /// Offset of the `APK` field.
     pub const APK_SHIFT: u32 = 40;
-    /// Offset of the API field.
+    /// Offset of the `API` field.
     pub const API_SHIFT: u32 = 41;
-    /// Offset of the NV field.
+    /// Offset of the `NV` field.
     pub const NV_SHIFT: u32 = 42;
-    /// Offset of the NV1 field.
+    /// Offset of the `NV1` field.
     pub const NV1_SHIFT: u32 = 43;
-    /// Offset of the AT field.
+    /// Offset of the `AT` field.
     pub const AT_SHIFT: u32 = 44;
-    /// Offset of the NV2 field.
+    /// Offset of the `NV2` field.
     pub const NV2_SHIFT: u32 = 45;
-    /// Offset of the FWB field.
+    /// Offset of the `FWB` field.
     pub const FWB_SHIFT: u32 = 46;
-    /// Offset of the FIEN field.
+    /// Offset of the `FIEN` field.
     pub const FIEN_SHIFT: u32 = 47;
-    /// Offset of the GPF field.
+    /// Offset of the `GPF` field.
     pub const GPF_SHIFT: u32 = 48;
-    /// Offset of the TID4 field.
+    /// Offset of the `TID4` field.
     pub const TID4_SHIFT: u32 = 49;
-    /// Offset of the TICAB field.
+    /// Offset of the `TICAB` field.
     pub const TICAB_SHIFT: u32 = 50;
-    /// Offset of the AMVOFFEN field.
+    /// Offset of the `AMVOFFEN` field.
     pub const AMVOFFEN_SHIFT: u32 = 51;
-    /// Offset of the TOCU field.
+    /// Offset of the `TOCU` field.
     pub const TOCU_SHIFT: u32 = 52;
-    /// Offset of the EnSCXT field.
+    /// Offset of the `EnSCXT` field.
     pub const ENSCXT_SHIFT: u32 = 53;
-    /// Offset of the TTLBIS field.
+    /// Offset of the `TTLBIS` field.
     pub const TTLBIS_SHIFT: u32 = 54;
-    /// Offset of the TTLBOS field.
+    /// Offset of the `TTLBOS` field.
     pub const TTLBOS_SHIFT: u32 = 55;
-    /// Offset of the ATA field.
+    /// Offset of the `ATA` field.
     pub const ATA_SHIFT: u32 = 56;
-    /// Offset of the DCT field.
+    /// Offset of the `DCT` field.
     pub const DCT_SHIFT: u32 = 57;
-    /// Offset of the TID5 field.
+    /// Offset of the `TID5` field.
     pub const TID5_SHIFT: u32 = 58;
-    /// Offset of the TWEDEn field.
+    /// Offset of the `TWEDEn` field.
     pub const TWEDEN_SHIFT: u32 = 59;
-    /// Offset of the TWEDEL field.
+    /// Offset of the `TWEDEL` field.
     pub const TWEDEL_SHIFT: u32 = 60;
-    /// Mask for the TWEDEL field.
+    /// Mask for the `TWEDEL` field.
     pub const TWEDEL_MASK: u64 = 0b1111;
 
     /// Returns the value of the `BSU` field.
@@ -1522,53 +1522,53 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Hdfgrtr2El2 {
-    /// Offset of the nPMECR_EL1 field.
+    /// Offset of the `nPMECR_EL1` field.
     pub const NPMECR_EL1_SHIFT: u32 = 0;
-    /// Offset of the nPMIAR_EL1 field.
+    /// Offset of the `nPMIAR_EL1` field.
     pub const NPMIAR_EL1_SHIFT: u32 = 1;
-    /// Offset of the nPMICNTR_EL0 field.
+    /// Offset of the `nPMICNTR_EL0` field.
     pub const NPMICNTR_EL0_SHIFT: u32 = 2;
-    /// Offset of the nPMICFILTR_EL0 field.
+    /// Offset of the `nPMICFILTR_EL0` field.
     pub const NPMICFILTR_EL0_SHIFT: u32 = 3;
-    /// Offset of the nPMUACR_EL1 field.
+    /// Offset of the `nPMUACR_EL1` field.
     pub const NPMUACR_EL1_SHIFT: u32 = 4;
-    /// Offset of the nMDSELR_EL1 field.
+    /// Offset of the `nMDSELR_EL1` field.
     pub const NMDSELR_EL1_SHIFT: u32 = 5;
-    /// Offset of the nPMSSDATA field.
+    /// Offset of the `nPMSSDATA` field.
     pub const NPMSSDATA_SHIFT: u32 = 6;
-    /// Offset of the nPMSSCR_EL1 field.
+    /// Offset of the `nPMSSCR_EL1` field.
     pub const NPMSSCR_EL1_SHIFT: u32 = 7;
-    /// Offset of the nSPMEVCNTRn_EL0 field.
+    /// Offset of the `nSPMEVCNTRn_EL0` field.
     pub const NSPMEVCNTRN_EL0_SHIFT: u32 = 8;
-    /// Offset of the nSPMEVTYPERn_EL0 field.
+    /// Offset of the `nSPMEVTYPERn_EL0` field.
     pub const NSPMEVTYPERN_EL0_SHIFT: u32 = 9;
-    /// Offset of the nSPMSELR_EL0 field.
+    /// Offset of the `nSPMSELR_EL0` field.
     pub const NSPMSELR_EL0_SHIFT: u32 = 10;
-    /// Offset of the nSPMCNTEN field.
+    /// Offset of the `nSPMCNTEN` field.
     pub const NSPMCNTEN_SHIFT: u32 = 11;
-    /// Offset of the nSPMINTEN field.
+    /// Offset of the `nSPMINTEN` field.
     pub const NSPMINTEN_SHIFT: u32 = 12;
-    /// Offset of the nSPMOVS field.
+    /// Offset of the `nSPMOVS` field.
     pub const NSPMOVS_SHIFT: u32 = 13;
-    /// Offset of the nSPMCR_EL0 field.
+    /// Offset of the `nSPMCR_EL0` field.
     pub const NSPMCR_EL0_SHIFT: u32 = 14;
-    /// Offset of the nSPMACCESSR_EL1 field.
+    /// Offset of the `nSPMACCESSR_EL1` field.
     pub const NSPMACCESSR_EL1_SHIFT: u32 = 15;
-    /// Offset of the nSPMSCR_EL1 field.
+    /// Offset of the `nSPMSCR_EL1` field.
     pub const NSPMSCR_EL1_SHIFT: u32 = 16;
-    /// Offset of the nSPMID field.
+    /// Offset of the `nSPMID` field.
     pub const NSPMID_SHIFT: u32 = 17;
-    /// Offset of the nSPMDEVAFF_EL1 field.
+    /// Offset of the `nSPMDEVAFF_EL1` field.
     pub const NSPMDEVAFF_EL1_SHIFT: u32 = 18;
-    /// Offset of the nPMSDSFR_EL1 field.
+    /// Offset of the `nPMSDSFR_EL1` field.
     pub const NPMSDSFR_EL1_SHIFT: u32 = 19;
-    /// Offset of the nTRCITECR_EL1 field.
+    /// Offset of the `nTRCITECR_EL1` field.
     pub const NTRCITECR_EL1_SHIFT: u32 = 20;
-    /// Offset of the nTRBMPAM_EL1 field.
+    /// Offset of the `nTRBMPAM_EL1` field.
     pub const NTRBMPAM_EL1_SHIFT: u32 = 22;
-    /// Offset of the nMDSTEPOP_EL1 field.
+    /// Offset of the `nMDSTEPOP_EL1` field.
     pub const NMDSTEPOP_EL1_SHIFT: u32 = 23;
-    /// Offset of the nPMBMAR_EL1 field.
+    /// Offset of the `nPMBMAR_EL1` field.
     pub const NPMBMAR_EL1_SHIFT: u32 = 24;
 }
 
@@ -1627,49 +1627,49 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Hdfgwtr2El2 {
-    /// Offset of the nPMECR_EL1 field.
+    /// Offset of the `nPMECR_EL1` field.
     pub const NPMECR_EL1_SHIFT: u32 = 0;
-    /// Offset of the nPMIAR_EL1 field.
+    /// Offset of the `nPMIAR_EL1` field.
     pub const NPMIAR_EL1_SHIFT: u32 = 1;
-    /// Offset of the nPMICNTR_EL0 field.
+    /// Offset of the `nPMICNTR_EL0` field.
     pub const NPMICNTR_EL0_SHIFT: u32 = 2;
-    /// Offset of the nPMICFILTR_EL0 field.
+    /// Offset of the `nPMICFILTR_EL0` field.
     pub const NPMICFILTR_EL0_SHIFT: u32 = 3;
-    /// Offset of the nPMUACR_EL1 field.
+    /// Offset of the `nPMUACR_EL1` field.
     pub const NPMUACR_EL1_SHIFT: u32 = 4;
-    /// Offset of the nMDSELR_EL1 field.
+    /// Offset of the `nMDSELR_EL1` field.
     pub const NMDSELR_EL1_SHIFT: u32 = 5;
-    /// Offset of the nPMSSCR_EL1 field.
+    /// Offset of the `nPMSSCR_EL1` field.
     pub const NPMSSCR_EL1_SHIFT: u32 = 7;
-    /// Offset of the nSPMEVCNTRn_EL0 field.
+    /// Offset of the `nSPMEVCNTRn_EL0` field.
     pub const NSPMEVCNTRN_EL0_SHIFT: u32 = 8;
-    /// Offset of the nSPMEVTYPERn_EL0 field.
+    /// Offset of the `nSPMEVTYPERn_EL0` field.
     pub const NSPMEVTYPERN_EL0_SHIFT: u32 = 9;
-    /// Offset of the nSPMSELR_EL0 field.
+    /// Offset of the `nSPMSELR_EL0` field.
     pub const NSPMSELR_EL0_SHIFT: u32 = 10;
-    /// Offset of the nSPMCNTEN field.
+    /// Offset of the `nSPMCNTEN` field.
     pub const NSPMCNTEN_SHIFT: u32 = 11;
-    /// Offset of the nSPMINTEN field.
+    /// Offset of the `nSPMINTEN` field.
     pub const NSPMINTEN_SHIFT: u32 = 12;
-    /// Offset of the nSPMOVS field.
+    /// Offset of the `nSPMOVS` field.
     pub const NSPMOVS_SHIFT: u32 = 13;
-    /// Offset of the nSPMCR_EL0 field.
+    /// Offset of the `nSPMCR_EL0` field.
     pub const NSPMCR_EL0_SHIFT: u32 = 14;
-    /// Offset of the nSPMACCESSR_EL1 field.
+    /// Offset of the `nSPMACCESSR_EL1` field.
     pub const NSPMACCESSR_EL1_SHIFT: u32 = 15;
-    /// Offset of the nSPMSCR_EL1 field.
+    /// Offset of the `nSPMSCR_EL1` field.
     pub const NSPMSCR_EL1_SHIFT: u32 = 16;
-    /// Offset of the nPMSDSFR_EL1 field.
+    /// Offset of the `nPMSDSFR_EL1` field.
     pub const NPMSDSFR_EL1_SHIFT: u32 = 19;
-    /// Offset of the nTRCITECR_EL1 field.
+    /// Offset of the `nTRCITECR_EL1` field.
     pub const NTRCITECR_EL1_SHIFT: u32 = 20;
-    /// Offset of the nPMZR_EL0 field.
+    /// Offset of the `nPMZR_EL0` field.
     pub const NPMZR_EL0_SHIFT: u32 = 21;
-    /// Offset of the nTRBMPAM_EL1 field.
+    /// Offset of the `nTRBMPAM_EL1` field.
     pub const NTRBMPAM_EL1_SHIFT: u32 = 22;
-    /// Offset of the nMDSTEPOP_EL1 field.
+    /// Offset of the `nMDSTEPOP_EL1` field.
     pub const NMDSTEPOP_EL1_SHIFT: u32 = 23;
-    /// Offset of the nPMBMAR_EL1 field.
+    /// Offset of the `nPMBMAR_EL1` field.
     pub const NPMBMAR_EL1_SHIFT: u32 = 24;
 }
 
@@ -1714,35 +1714,35 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Hfgitr2El2 {
-    /// Offset of the TSBCSYNC field.
+    /// Offset of the `TSBCSYNC` field.
     pub const TSBCSYNC_SHIFT: u32 = 0;
-    /// Offset of the nDCCIVAPS field.
+    /// Offset of the `nDCCIVAPS` field.
     pub const NDCCIVAPS_SHIFT: u32 = 1;
-    /// Offset of the PLBIPERME1OS field.
+    /// Offset of the `PLBIPERME1OS` field.
     pub const PLBIPERME1OS_SHIFT: u32 = 2;
-    /// Offset of the PLBIASIDE1OS field.
+    /// Offset of the `PLBIASIDE1OS` field.
     pub const PLBIASIDE1OS_SHIFT: u32 = 3;
-    /// Offset of the PLBIVMALLE1OS field.
+    /// Offset of the `PLBIVMALLE1OS` field.
     pub const PLBIVMALLE1OS_SHIFT: u32 = 4;
-    /// Offset of the PLBIPERME1IS field.
+    /// Offset of the `PLBIPERME1IS` field.
     pub const PLBIPERME1IS_SHIFT: u32 = 5;
-    /// Offset of the PLBIASIDE1IS field.
+    /// Offset of the `PLBIASIDE1IS` field.
     pub const PLBIASIDE1IS_SHIFT: u32 = 6;
-    /// Offset of the PLBIVMALLE1IS field.
+    /// Offset of the `PLBIVMALLE1IS` field.
     pub const PLBIVMALLE1IS_SHIFT: u32 = 7;
-    /// Offset of the PLBIPERME1 field.
+    /// Offset of the `PLBIPERME1` field.
     pub const PLBIPERME1_SHIFT: u32 = 8;
-    /// Offset of the PLBIASIDE1 field.
+    /// Offset of the `PLBIASIDE1` field.
     pub const PLBIASIDE1_SHIFT: u32 = 9;
-    /// Offset of the PLBIVMALLE1 field.
+    /// Offset of the `PLBIVMALLE1` field.
     pub const PLBIVMALLE1_SHIFT: u32 = 10;
-    /// Offset of the PLBIPERMAE1OS field.
+    /// Offset of the `PLBIPERMAE1OS` field.
     pub const PLBIPERMAE1OS_SHIFT: u32 = 11;
-    /// Offset of the PLBIPERMAE1IS field.
+    /// Offset of the `PLBIPERMAE1IS` field.
     pub const PLBIPERMAE1IS_SHIFT: u32 = 12;
-    /// Offset of the PLBIPERMAE1 field.
+    /// Offset of the `PLBIPERMAE1` field.
     pub const PLBIPERMAE1_SHIFT: u32 = 13;
-    /// Offset of the DCGBVA field.
+    /// Offset of the `DCGBVA` field.
     pub const DCGBVA_SHIFT: u32 = 14;
 }
 
@@ -1825,81 +1825,81 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Hfgrtr2El2 {
-    /// Offset of the nPFAR_EL1 field.
+    /// Offset of the `nPFAR_EL1` field.
     pub const NPFAR_EL1_SHIFT: u32 = 0;
-    /// Offset of the nERXGSR_EL1 field.
+    /// Offset of the `nERXGSR_EL1` field.
     pub const NERXGSR_EL1_SHIFT: u32 = 1;
-    /// Offset of the nRCWSMASK_EL1 field.
+    /// Offset of the `nRCWSMASK_EL1` field.
     pub const NRCWSMASK_EL1_SHIFT: u32 = 2;
-    /// Offset of the nCPACRMASK_EL1 field.
+    /// Offset of the `nCPACRMASK_EL1` field.
     pub const NCPACRMASK_EL1_SHIFT: u32 = 3;
-    /// Offset of the nSCTLRMASK_EL1 field.
+    /// Offset of the `nSCTLRMASK_EL1` field.
     pub const NSCTLRMASK_EL1_SHIFT: u32 = 4;
-    /// Offset of the nSCTLR2MASK_EL1 field.
+    /// Offset of the `nSCTLR2MASK_EL1` field.
     pub const NSCTLR2MASK_EL1_SHIFT: u32 = 5;
-    /// Offset of the nTCRMASK_EL1 field.
+    /// Offset of the `nTCRMASK_EL1` field.
     pub const NTCRMASK_EL1_SHIFT: u32 = 6;
-    /// Offset of the nTCR2MASK_EL1 field.
+    /// Offset of the `nTCR2MASK_EL1` field.
     pub const NTCR2MASK_EL1_SHIFT: u32 = 7;
-    /// Offset of the nCPACRALIAS_EL1 field.
+    /// Offset of the `nCPACRALIAS_EL1` field.
     pub const NCPACRALIAS_EL1_SHIFT: u32 = 8;
-    /// Offset of the nSCTLRALIAS_EL1 field.
+    /// Offset of the `nSCTLRALIAS_EL1` field.
     pub const NSCTLRALIAS_EL1_SHIFT: u32 = 9;
-    /// Offset of the nSCTLR2ALIAS_EL1 field.
+    /// Offset of the `nSCTLR2ALIAS_EL1` field.
     pub const NSCTLR2ALIAS_EL1_SHIFT: u32 = 10;
-    /// Offset of the nTCRALIAS_EL1 field.
+    /// Offset of the `nTCRALIAS_EL1` field.
     pub const NTCRALIAS_EL1_SHIFT: u32 = 11;
-    /// Offset of the nTCR2ALIAS_EL1 field.
+    /// Offset of the `nTCR2ALIAS_EL1` field.
     pub const NTCR2ALIAS_EL1_SHIFT: u32 = 12;
-    /// Offset of the nACTLRMASK_EL1 field.
+    /// Offset of the `nACTLRMASK_EL1` field.
     pub const NACTLRMASK_EL1_SHIFT: u32 = 13;
-    /// Offset of the nACTLRALIAS_EL1 field.
+    /// Offset of the `nACTLRALIAS_EL1` field.
     pub const NACTLRALIAS_EL1_SHIFT: u32 = 14;
-    /// Offset of the nTINDEX_EL0 field.
+    /// Offset of the `nTINDEX_EL0` field.
     pub const NTINDEX_EL0_SHIFT: u32 = 15;
-    /// Offset of the nTINDEX_EL1 field.
+    /// Offset of the `nTINDEX_EL1` field.
     pub const NTINDEX_EL1_SHIFT: u32 = 16;
-    /// Offset of the nSTINDEX_EL1 field.
+    /// Offset of the `nSTINDEX_EL1` field.
     pub const NSTINDEX_EL1_SHIFT: u32 = 17;
-    /// Offset of the nFGDTn_EL1 field.
+    /// Offset of the `nFGDTn_EL1` field.
     pub const NFGDTN_EL1_SHIFT: u32 = 18;
-    /// Mask for the nFGDTn_EL1 field.
+    /// Mask for the `nFGDTn_EL1` field.
     pub const NFGDTN_EL1_MASK: u64 = 0b11;
-    /// Offset of the nTTTBRP_EL1 field.
+    /// Offset of the `nTTTBRP_EL1` field.
     pub const NTTTBRP_EL1_SHIFT: u32 = 20;
-    /// Offset of the nTTTBRU_EL1 field.
+    /// Offset of the `nTTTBRU_EL1` field.
     pub const NTTTBRU_EL1_SHIFT: u32 = 21;
-    /// Offset of the nIRTBRP_EL1 field.
+    /// Offset of the `nIRTBRP_EL1` field.
     pub const NIRTBRP_EL1_SHIFT: u32 = 22;
-    /// Offset of the nIRTBRU_EL1 field.
+    /// Offset of the `nIRTBRU_EL1` field.
     pub const NIRTBRU_EL1_SHIFT: u32 = 23;
-    /// Offset of the nDPOTBR1_EL1 field.
+    /// Offset of the `nDPOTBR1_EL1` field.
     pub const NDPOTBR1_EL1_SHIFT: u32 = 24;
-    /// Offset of the nDPOTBR0_EL1 field.
+    /// Offset of the `nDPOTBR0_EL1` field.
     pub const NDPOTBR0_EL1_SHIFT: u32 = 25;
-    /// Offset of the nTPMIN1_EL1 field.
+    /// Offset of the `nTPMIN1_EL1` field.
     pub const NTPMIN1_EL1_SHIFT: u32 = 26;
-    /// Offset of the nTPMIN0_EL1 field.
+    /// Offset of the `nTPMIN0_EL1` field.
     pub const NTPMIN0_EL1_SHIFT: u32 = 27;
-    /// Offset of the nTPMIN1_EL0 field.
+    /// Offset of the `nTPMIN1_EL0` field.
     pub const NTPMIN1_EL0_SHIFT: u32 = 28;
-    /// Offset of the nTPMIN0_EL0 field.
+    /// Offset of the `nTPMIN0_EL0` field.
     pub const NTPMIN0_EL0_SHIFT: u32 = 29;
-    /// Offset of the nTLBIDIDR_EL1 field.
+    /// Offset of the `nTLBIDIDR_EL1` field.
     pub const NTLBIDIDR_EL1_SHIFT: u32 = 30;
-    /// Offset of the nAFGDTn_EL1 field.
+    /// Offset of the `nAFGDTn_EL1` field.
     pub const NAFGDTN_EL1_SHIFT: u32 = 31;
-    /// Mask for the nAFGDTn_EL1 field.
+    /// Mask for the `nAFGDTn_EL1` field.
     pub const NAFGDTN_EL1_MASK: u64 = 0b11;
-    /// Offset of the TFSR_EL1 field.
+    /// Offset of the `TFSR_EL1` field.
     pub const TFSR_EL1_SHIFT: u32 = 33;
-    /// Offset of the RGSR_EL1 field.
+    /// Offset of the `RGSR_EL1` field.
     pub const RGSR_EL1_SHIFT: u32 = 34;
-    /// Offset of the GCR_EL1 field.
+    /// Offset of the `GCR_EL1` field.
     pub const GCR_EL1_SHIFT: u32 = 35;
-    /// Offset of the nTPIDR3_EL0 field.
+    /// Offset of the `nTPIDR3_EL0` field.
     pub const NTPIDR3_EL0_SHIFT: u32 = 36;
-    /// Offset of the nTPIDR3_EL1 field.
+    /// Offset of the `nTPIDR3_EL1` field.
     pub const NTPIDR3_EL1_SHIFT: u32 = 37;
 
     /// Returns the value of the `nFGDTn_EL1` field.
@@ -1988,77 +1988,77 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Hfgwtr2El2 {
-    /// Offset of the nPFAR_EL1 field.
+    /// Offset of the `nPFAR_EL1` field.
     pub const NPFAR_EL1_SHIFT: u32 = 0;
-    /// Offset of the nRCWSMASK_EL1 field.
+    /// Offset of the `nRCWSMASK_EL1` field.
     pub const NRCWSMASK_EL1_SHIFT: u32 = 2;
-    /// Offset of the nCPACRMASK_EL1 field.
+    /// Offset of the `nCPACRMASK_EL1` field.
     pub const NCPACRMASK_EL1_SHIFT: u32 = 3;
-    /// Offset of the nSCTLRMASK_EL1 field.
+    /// Offset of the `nSCTLRMASK_EL1` field.
     pub const NSCTLRMASK_EL1_SHIFT: u32 = 4;
-    /// Offset of the nSCTLR2MASK_EL1 field.
+    /// Offset of the `nSCTLR2MASK_EL1` field.
     pub const NSCTLR2MASK_EL1_SHIFT: u32 = 5;
-    /// Offset of the nTCRMASK_EL1 field.
+    /// Offset of the `nTCRMASK_EL1` field.
     pub const NTCRMASK_EL1_SHIFT: u32 = 6;
-    /// Offset of the nTCR2MASK_EL1 field.
+    /// Offset of the `nTCR2MASK_EL1` field.
     pub const NTCR2MASK_EL1_SHIFT: u32 = 7;
-    /// Offset of the nCPACRALIAS_EL1 field.
+    /// Offset of the `nCPACRALIAS_EL1` field.
     pub const NCPACRALIAS_EL1_SHIFT: u32 = 8;
-    /// Offset of the nSCTLRALIAS_EL1 field.
+    /// Offset of the `nSCTLRALIAS_EL1` field.
     pub const NSCTLRALIAS_EL1_SHIFT: u32 = 9;
-    /// Offset of the nSCTLR2ALIAS_EL1 field.
+    /// Offset of the `nSCTLR2ALIAS_EL1` field.
     pub const NSCTLR2ALIAS_EL1_SHIFT: u32 = 10;
-    /// Offset of the nTCRALIAS_EL1 field.
+    /// Offset of the `nTCRALIAS_EL1` field.
     pub const NTCRALIAS_EL1_SHIFT: u32 = 11;
-    /// Offset of the nTCR2ALIAS_EL1 field.
+    /// Offset of the `nTCR2ALIAS_EL1` field.
     pub const NTCR2ALIAS_EL1_SHIFT: u32 = 12;
-    /// Offset of the nACTLRMASK_EL1 field.
+    /// Offset of the `nACTLRMASK_EL1` field.
     pub const NACTLRMASK_EL1_SHIFT: u32 = 13;
-    /// Offset of the nACTLRALIAS_EL1 field.
+    /// Offset of the `nACTLRALIAS_EL1` field.
     pub const NACTLRALIAS_EL1_SHIFT: u32 = 14;
-    /// Offset of the nTINDEX_EL0 field.
+    /// Offset of the `nTINDEX_EL0` field.
     pub const NTINDEX_EL0_SHIFT: u32 = 15;
-    /// Offset of the nTINDEX_EL1 field.
+    /// Offset of the `nTINDEX_EL1` field.
     pub const NTINDEX_EL1_SHIFT: u32 = 16;
-    /// Offset of the nSTINDEX_EL1 field.
+    /// Offset of the `nSTINDEX_EL1` field.
     pub const NSTINDEX_EL1_SHIFT: u32 = 17;
-    /// Offset of the nFGDTn_EL1 field.
+    /// Offset of the `nFGDTn_EL1` field.
     pub const NFGDTN_EL1_SHIFT: u32 = 18;
-    /// Mask for the nFGDTn_EL1 field.
+    /// Mask for the `nFGDTn_EL1` field.
     pub const NFGDTN_EL1_MASK: u64 = 0b11;
-    /// Offset of the nTTTBRP_EL1 field.
+    /// Offset of the `nTTTBRP_EL1` field.
     pub const NTTTBRP_EL1_SHIFT: u32 = 20;
-    /// Offset of the nTTTBRU_EL1 field.
+    /// Offset of the `nTTTBRU_EL1` field.
     pub const NTTTBRU_EL1_SHIFT: u32 = 21;
-    /// Offset of the nIRTBRP_EL1 field.
+    /// Offset of the `nIRTBRP_EL1` field.
     pub const NIRTBRP_EL1_SHIFT: u32 = 22;
-    /// Offset of the nIRTBRU_EL1 field.
+    /// Offset of the `nIRTBRU_EL1` field.
     pub const NIRTBRU_EL1_SHIFT: u32 = 23;
-    /// Offset of the nDPOTBR1_EL1 field.
+    /// Offset of the `nDPOTBR1_EL1` field.
     pub const NDPOTBR1_EL1_SHIFT: u32 = 24;
-    /// Offset of the nDPOTBR0_EL1 field.
+    /// Offset of the `nDPOTBR0_EL1` field.
     pub const NDPOTBR0_EL1_SHIFT: u32 = 25;
-    /// Offset of the nTPMIN1_EL1 field.
+    /// Offset of the `nTPMIN1_EL1` field.
     pub const NTPMIN1_EL1_SHIFT: u32 = 26;
-    /// Offset of the nTPMIN0_EL1 field.
+    /// Offset of the `nTPMIN0_EL1` field.
     pub const NTPMIN0_EL1_SHIFT: u32 = 27;
-    /// Offset of the nTPMIN1_EL0 field.
+    /// Offset of the `nTPMIN1_EL0` field.
     pub const NTPMIN1_EL0_SHIFT: u32 = 28;
-    /// Offset of the nTPMIN0_EL0 field.
+    /// Offset of the `nTPMIN0_EL0` field.
     pub const NTPMIN0_EL0_SHIFT: u32 = 29;
-    /// Offset of the nAFGDTn_EL1 field.
+    /// Offset of the `nAFGDTn_EL1` field.
     pub const NAFGDTN_EL1_SHIFT: u32 = 31;
-    /// Mask for the nAFGDTn_EL1 field.
+    /// Mask for the `nAFGDTn_EL1` field.
     pub const NAFGDTN_EL1_MASK: u64 = 0b11;
-    /// Offset of the TFSR_EL1 field.
+    /// Offset of the `TFSR_EL1` field.
     pub const TFSR_EL1_SHIFT: u32 = 33;
-    /// Offset of the RGSR_EL1 field.
+    /// Offset of the `RGSR_EL1` field.
     pub const RGSR_EL1_SHIFT: u32 = 34;
-    /// Offset of the GCR_EL1 field.
+    /// Offset of the `GCR_EL1` field.
     pub const GCR_EL1_SHIFT: u32 = 35;
-    /// Offset of the nTPIDR3_EL0 field.
+    /// Offset of the `nTPIDR3_EL0` field.
     pub const NTPIDR3_EL0_SHIFT: u32 = 36;
-    /// Offset of the nTPIDR3_EL1 field.
+    /// Offset of the `nTPIDR3_EL1` field.
     pub const NTPIDR3_EL1_SHIFT: u32 = 37;
 
     /// Returns the value of the `nFGDTn_EL1` field.
@@ -2183,105 +2183,105 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl HfgwtrEl2 {
-    /// Offset of the AFSR0_EL1 field.
+    /// Offset of the `AFSR0_EL1` field.
     pub const AFSR0_EL1_SHIFT: u32 = 0;
-    /// Offset of the AFSR1_EL1 field.
+    /// Offset of the `AFSR1_EL1` field.
     pub const AFSR1_EL1_SHIFT: u32 = 1;
-    /// Offset of the AMAIR_EL1 field.
+    /// Offset of the `AMAIR_EL1` field.
     pub const AMAIR_EL1_SHIFT: u32 = 3;
-    /// Offset of the APDAKey field.
+    /// Offset of the `APDAKey` field.
     pub const APDAKEY_SHIFT: u32 = 4;
-    /// Offset of the APDBKey field.
+    /// Offset of the `APDBKey` field.
     pub const APDBKEY_SHIFT: u32 = 5;
-    /// Offset of the APGAKey field.
+    /// Offset of the `APGAKey` field.
     pub const APGAKEY_SHIFT: u32 = 6;
-    /// Offset of the APIAKey field.
+    /// Offset of the `APIAKey` field.
     pub const APIAKEY_SHIFT: u32 = 7;
-    /// Offset of the APIBKey field.
+    /// Offset of the `APIBKey` field.
     pub const APIBKEY_SHIFT: u32 = 8;
-    /// Offset of the CONTEXTIDR_EL1 field.
+    /// Offset of the `CONTEXTIDR_EL1` field.
     pub const CONTEXTIDR_EL1_SHIFT: u32 = 11;
-    /// Offset of the CPACR_EL1 field.
+    /// Offset of the `CPACR_EL1` field.
     pub const CPACR_EL1_SHIFT: u32 = 12;
-    /// Offset of the CSSELR_EL1 field.
+    /// Offset of the `CSSELR_EL1` field.
     pub const CSSELR_EL1_SHIFT: u32 = 13;
-    /// Offset of the ESR_EL1 field.
+    /// Offset of the `ESR_EL1` field.
     pub const ESR_EL1_SHIFT: u32 = 16;
-    /// Offset of the FAR_EL1 field.
+    /// Offset of the `FAR_EL1` field.
     pub const FAR_EL1_SHIFT: u32 = 17;
-    /// Offset of the LORC_EL1 field.
+    /// Offset of the `LORC_EL1` field.
     pub const LORC_EL1_SHIFT: u32 = 19;
-    /// Offset of the LOREA_EL1 field.
+    /// Offset of the `LOREA_EL1` field.
     pub const LOREA_EL1_SHIFT: u32 = 20;
-    /// Offset of the LORN_EL1 field.
+    /// Offset of the `LORN_EL1` field.
     pub const LORN_EL1_SHIFT: u32 = 22;
-    /// Offset of the LORSA_EL1 field.
+    /// Offset of the `LORSA_EL1` field.
     pub const LORSA_EL1_SHIFT: u32 = 23;
-    /// Offset of the MAIR_EL1 field.
+    /// Offset of the `MAIR_EL1` field.
     pub const MAIR_EL1_SHIFT: u32 = 24;
-    /// Offset of the PAR_EL1 field.
+    /// Offset of the `PAR_EL1` field.
     pub const PAR_EL1_SHIFT: u32 = 27;
-    /// Offset of the SCTLR_EL1 field.
+    /// Offset of the `SCTLR_EL1` field.
     pub const SCTLR_EL1_SHIFT: u32 = 29;
-    /// Offset of the SCXTNUM_EL1 field.
+    /// Offset of the `SCXTNUM_EL1` field.
     pub const SCXTNUM_EL1_SHIFT: u32 = 30;
-    /// Offset of the SCXTNUM_EL0 field.
+    /// Offset of the `SCXTNUM_EL0` field.
     pub const SCXTNUM_EL0_SHIFT: u32 = 31;
-    /// Offset of the TCR_EL1 field.
+    /// Offset of the `TCR_EL1` field.
     pub const TCR_EL1_SHIFT: u32 = 32;
-    /// Offset of the TPIDR_EL1 field.
+    /// Offset of the `TPIDR_EL1` field.
     pub const TPIDR_EL1_SHIFT: u32 = 33;
-    /// Offset of the TPIDRRO_EL0 field.
+    /// Offset of the `TPIDRRO_EL0` field.
     pub const TPIDRRO_EL0_SHIFT: u32 = 34;
-    /// Offset of the TPIDR_EL0 field.
+    /// Offset of the `TPIDR_EL0` field.
     pub const TPIDR_EL0_SHIFT: u32 = 35;
-    /// Offset of the TTBR0_EL1 field.
+    /// Offset of the `TTBR0_EL1` field.
     pub const TTBR0_EL1_SHIFT: u32 = 36;
-    /// Offset of the TTBR1_EL1 field.
+    /// Offset of the `TTBR1_EL1` field.
     pub const TTBR1_EL1_SHIFT: u32 = 37;
-    /// Offset of the VBAR_EL1 field.
+    /// Offset of the `VBAR_EL1` field.
     pub const VBAR_EL1_SHIFT: u32 = 38;
-    /// Offset of the ICC_IGRPENn_EL1 field.
+    /// Offset of the `ICC_IGRPENn_EL1` field.
     pub const ICC_IGRPENN_EL1_SHIFT: u32 = 39;
-    /// Offset of the ERRSELR_EL1 field.
+    /// Offset of the `ERRSELR_EL1` field.
     pub const ERRSELR_EL1_SHIFT: u32 = 41;
-    /// Offset of the ERXCTLR_EL1 field.
+    /// Offset of the `ERXCTLR_EL1` field.
     pub const ERXCTLR_EL1_SHIFT: u32 = 43;
-    /// Offset of the ERXSTATUS_EL1 field.
+    /// Offset of the `ERXSTATUS_EL1` field.
     pub const ERXSTATUS_EL1_SHIFT: u32 = 44;
-    /// Offset of the ERXMISCn_EL1 field.
+    /// Offset of the `ERXMISCn_EL1` field.
     pub const ERXMISCN_EL1_SHIFT: u32 = 45;
-    /// Offset of the ERXPFGCTL_EL1 field.
+    /// Offset of the `ERXPFGCTL_EL1` field.
     pub const ERXPFGCTL_EL1_SHIFT: u32 = 47;
-    /// Offset of the ERXPFGCDN_EL1 field.
+    /// Offset of the `ERXPFGCDN_EL1` field.
     pub const ERXPFGCDN_EL1_SHIFT: u32 = 48;
-    /// Offset of the ERXADDR_EL1 field.
+    /// Offset of the `ERXADDR_EL1` field.
     pub const ERXADDR_EL1_SHIFT: u32 = 49;
-    /// Offset of the nACCDATA_EL1 field.
+    /// Offset of the `nACCDATA_EL1` field.
     pub const NACCDATA_EL1_SHIFT: u32 = 50;
-    /// Offset of the nGCS_EL0 field.
+    /// Offset of the `nGCS_EL0` field.
     pub const NGCS_EL0_SHIFT: u32 = 52;
-    /// Offset of the nGCS_EL1 field.
+    /// Offset of the `nGCS_EL1` field.
     pub const NGCS_EL1_SHIFT: u32 = 53;
-    /// Offset of the nSMPRI_EL1 field.
+    /// Offset of the `nSMPRI_EL1` field.
     pub const NSMPRI_EL1_SHIFT: u32 = 54;
-    /// Offset of the nTPIDR2_EL0 field.
+    /// Offset of the `nTPIDR2_EL0` field.
     pub const NTPIDR2_EL0_SHIFT: u32 = 55;
-    /// Offset of the nRCWMASK_EL1 field.
+    /// Offset of the `nRCWMASK_EL1` field.
     pub const NRCWMASK_EL1_SHIFT: u32 = 56;
-    /// Offset of the nPIRE0_EL1 field.
+    /// Offset of the `nPIRE0_EL1` field.
     pub const NPIRE0_EL1_SHIFT: u32 = 57;
-    /// Offset of the nPIR_EL1 field.
+    /// Offset of the `nPIR_EL1` field.
     pub const NPIR_EL1_SHIFT: u32 = 58;
-    /// Offset of the nPOR_EL0 field.
+    /// Offset of the `nPOR_EL0` field.
     pub const NPOR_EL0_SHIFT: u32 = 59;
-    /// Offset of the nPOR_EL1 field.
+    /// Offset of the `nPOR_EL1` field.
     pub const NPOR_EL1_SHIFT: u32 = 60;
-    /// Offset of the nS2POR_EL1 field.
+    /// Offset of the `nS2POR_EL1` field.
     pub const NS2POR_EL1_SHIFT: u32 = 61;
-    /// Offset of the nMAIR2_EL1 field.
+    /// Offset of the `nMAIR2_EL1` field.
     pub const NMAIR2_EL1_SHIFT: u32 = 62;
-    /// Offset of the nAMAIR2_EL1 field.
+    /// Offset of the `nAMAIR2_EL1` field.
     pub const NAMAIR2_EL1_SHIFT: u32 = 63;
 }
 
@@ -2298,11 +2298,11 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl HpfarEl2 {
-    /// Offset of the FIPA field.
+    /// Offset of the `FIPA` field.
     pub const FIPA_SHIFT: u32 = 4;
-    /// Mask for the FIPA field.
+    /// Mask for the `FIPA` field.
     pub const FIPA_MASK: u64 = 0b11111111111111111111111111111111111111111111;
-    /// Offset of the NS field.
+    /// Offset of the `NS` field.
     pub const NS_SHIFT: u32 = 63;
 
     /// Returns the value of the `FIPA` field.
@@ -2324,31 +2324,31 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccAsgi1rEl1 {
-    /// Offset of the TargetList field.
+    /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
-    /// Mask for the TargetList field.
+    /// Mask for the `TargetList` field.
     pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
-    /// Offset of the Aff1 field.
+    /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
-    /// Mask for the Aff1 field.
+    /// Mask for the `Aff1` field.
     pub const AFF1_MASK: u64 = 0b11111111;
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b1111;
-    /// Offset of the Aff2 field.
+    /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
-    /// Mask for the Aff2 field.
+    /// Mask for the `Aff2` field.
     pub const AFF2_MASK: u64 = 0b11111111;
-    /// Offset of the IRM field.
+    /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
-    /// Offset of the RS field.
+    /// Offset of the `RS` field.
     pub const RS_SHIFT: u32 = 44;
-    /// Mask for the RS field.
+    /// Mask for the `RS` field.
     pub const RS_MASK: u64 = 0b1111;
-    /// Offset of the Aff3 field.
+    /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
-    /// Mask for the Aff3 field.
+    /// Mask for the `Aff3` field.
     pub const AFF3_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `TargetList` field.
@@ -2407,27 +2407,27 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccCtlrEl1 {
-    /// Offset of the CBPR field.
+    /// Offset of the `CBPR` field.
     pub const CBPR_SHIFT: u32 = 0;
-    /// Offset of the EOImode field.
+    /// Offset of the `EOImode` field.
     pub const EOIMODE_SHIFT: u32 = 1;
-    /// Offset of the PMHE field.
+    /// Offset of the `PMHE` field.
     pub const PMHE_SHIFT: u32 = 6;
-    /// Offset of the PRIbits field.
+    /// Offset of the `PRIbits` field.
     pub const PRIBITS_SHIFT: u32 = 8;
-    /// Mask for the PRIbits field.
+    /// Mask for the `PRIbits` field.
     pub const PRIBITS_MASK: u64 = 0b111;
-    /// Offset of the IDbits field.
+    /// Offset of the `IDbits` field.
     pub const IDBITS_SHIFT: u32 = 11;
-    /// Mask for the IDbits field.
+    /// Mask for the `IDbits` field.
     pub const IDBITS_MASK: u64 = 0b111;
-    /// Offset of the SEIS field.
+    /// Offset of the `SEIS` field.
     pub const SEIS_SHIFT: u32 = 14;
-    /// Offset of the A3V field.
+    /// Offset of the `A3V` field.
     pub const A3V_SHIFT: u32 = 15;
-    /// Offset of the RSS field.
+    /// Offset of the `RSS` field.
     pub const RSS_SHIFT: u32 = 18;
-    /// Offset of the ExtRange field.
+    /// Offset of the `ExtRange` field.
     pub const EXTRANGE_SHIFT: u32 = 19;
 
     /// Returns the value of the `PRIbits` field.
@@ -2452,9 +2452,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccEoir0El1 {
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `INTID` field.
@@ -2474,9 +2474,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccEoir1El1 {
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `INTID` field.
@@ -2496,9 +2496,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccHppir0El1 {
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `INTID` field.
@@ -2518,9 +2518,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccHppir1El1 {
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `INTID` field.
@@ -2540,9 +2540,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccIar0El1 {
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `INTID` field.
@@ -2562,9 +2562,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccIar1El1 {
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b111111111111111111111111;
 
     /// Returns the value of the `INTID` field.
@@ -2586,7 +2586,7 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccIgrpen0El1 {
-    /// Offset of the Enable field.
+    /// Offset of the `Enable` field.
     pub const ENABLE_SHIFT: u32 = 0;
 }
 
@@ -2603,7 +2603,7 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccIgrpen1El1 {
-    /// Offset of the Enable field.
+    /// Offset of the `Enable` field.
     pub const ENABLE_SHIFT: u32 = 0;
 }
 
@@ -2622,9 +2622,9 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl IccIgrpen1El3 {
-    /// Offset of the EnableGrp1NS field.
+    /// Offset of the `EnableGrp1NS` field.
     pub const ENABLEGRP1NS_SHIFT: u32 = 0;
-    /// Offset of the EnableGrp1S field.
+    /// Offset of the `EnableGrp1S` field.
     pub const ENABLEGRP1S_SHIFT: u32 = 1;
 }
 
@@ -2639,9 +2639,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccPmrEl1 {
-    /// Offset of the Priority field.
+    /// Offset of the `Priority` field.
     pub const PRIORITY_SHIFT: u32 = 0;
-    /// Mask for the Priority field.
+    /// Mask for the `Priority` field.
     pub const PRIORITY_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `Priority` field.
@@ -2663,31 +2663,31 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccSgi0rEl1 {
-    /// Offset of the TargetList field.
+    /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
-    /// Mask for the TargetList field.
+    /// Mask for the `TargetList` field.
     pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
-    /// Offset of the Aff1 field.
+    /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
-    /// Mask for the Aff1 field.
+    /// Mask for the `Aff1` field.
     pub const AFF1_MASK: u64 = 0b11111111;
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b1111;
-    /// Offset of the Aff2 field.
+    /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
-    /// Mask for the Aff2 field.
+    /// Mask for the `Aff2` field.
     pub const AFF2_MASK: u64 = 0b11111111;
-    /// Offset of the IRM field.
+    /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
-    /// Offset of the RS field.
+    /// Offset of the `RS` field.
     pub const RS_SHIFT: u32 = 44;
-    /// Mask for the RS field.
+    /// Mask for the `RS` field.
     pub const RS_MASK: u64 = 0b1111;
-    /// Offset of the Aff3 field.
+    /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
-    /// Mask for the Aff3 field.
+    /// Mask for the `Aff3` field.
     pub const AFF3_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `TargetList` field.
@@ -2734,31 +2734,31 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccSgi1rEl1 {
-    /// Offset of the TargetList field.
+    /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
-    /// Mask for the TargetList field.
+    /// Mask for the `TargetList` field.
     pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
-    /// Offset of the Aff1 field.
+    /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
-    /// Mask for the Aff1 field.
+    /// Mask for the `Aff1` field.
     pub const AFF1_MASK: u64 = 0b11111111;
-    /// Offset of the INTID field.
+    /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
-    /// Mask for the INTID field.
+    /// Mask for the `INTID` field.
     pub const INTID_MASK: u64 = 0b1111;
-    /// Offset of the Aff2 field.
+    /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
-    /// Mask for the Aff2 field.
+    /// Mask for the `Aff2` field.
     pub const AFF2_MASK: u64 = 0b11111111;
-    /// Offset of the IRM field.
+    /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
-    /// Offset of the RS field.
+    /// Offset of the `RS` field.
     pub const RS_SHIFT: u32 = 44;
-    /// Mask for the RS field.
+    /// Mask for the `RS` field.
     pub const RS_MASK: u64 = 0b1111;
-    /// Offset of the Aff3 field.
+    /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
-    /// Mask for the Aff3 field.
+    /// Mask for the `Aff3` field.
     pub const AFF3_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `TargetList` field.
@@ -2809,11 +2809,11 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IccSreEl1 {
-    /// Offset of the SRE field.
+    /// Offset of the `SRE` field.
     pub const SRE_SHIFT: u32 = 0;
-    /// Offset of the DFB field.
+    /// Offset of the `DFB` field.
     pub const DFB_SHIFT: u32 = 1;
-    /// Offset of the DIB field.
+    /// Offset of the `DIB` field.
     pub const DIB_SHIFT: u32 = 2;
 }
 
@@ -2836,13 +2836,13 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl IccSreEl2 {
-    /// Offset of the SRE field.
+    /// Offset of the `SRE` field.
     pub const SRE_SHIFT: u32 = 0;
-    /// Offset of the DFB field.
+    /// Offset of the `DFB` field.
     pub const DFB_SHIFT: u32 = 1;
-    /// Offset of the DIB field.
+    /// Offset of the `DIB` field.
     pub const DIB_SHIFT: u32 = 2;
-    /// Offset of the Enable field.
+    /// Offset of the `Enable` field.
     pub const ENABLE_SHIFT: u32 = 3;
 }
 
@@ -2865,13 +2865,13 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl IccSreEl3 {
-    /// Offset of the SRE field.
+    /// Offset of the `SRE` field.
     pub const SRE_SHIFT: u32 = 0;
-    /// Offset of the DFB field.
+    /// Offset of the `DFB` field.
     pub const DFB_SHIFT: u32 = 1;
-    /// Offset of the DIB field.
+    /// Offset of the `DIB` field.
     pub const DIB_SHIFT: u32 = 2;
-    /// Offset of the Enable field.
+    /// Offset of the `Enable` field.
     pub const ENABLE_SHIFT: u32 = 3;
 }
 
@@ -2916,39 +2916,39 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl IchHcrEl2 {
-    /// Offset of the En field.
+    /// Offset of the `En` field.
     pub const EN_SHIFT: u32 = 0;
-    /// Offset of the UIE field.
+    /// Offset of the `UIE` field.
     pub const UIE_SHIFT: u32 = 1;
-    /// Offset of the LRENPIE field.
+    /// Offset of the `LRENPIE` field.
     pub const LRENPIE_SHIFT: u32 = 2;
-    /// Offset of the NPIE field.
+    /// Offset of the `NPIE` field.
     pub const NPIE_SHIFT: u32 = 3;
-    /// Offset of the VGrp0EIE field.
+    /// Offset of the `VGrp0EIE` field.
     pub const VGRP0EIE_SHIFT: u32 = 4;
-    /// Offset of the VGrp0DIE field.
+    /// Offset of the `VGrp0DIE` field.
     pub const VGRP0DIE_SHIFT: u32 = 5;
-    /// Offset of the VGrp1EIE field.
+    /// Offset of the `VGrp1EIE` field.
     pub const VGRP1EIE_SHIFT: u32 = 6;
-    /// Offset of the VGrp1DIE field.
+    /// Offset of the `VGrp1DIE` field.
     pub const VGRP1DIE_SHIFT: u32 = 7;
-    /// Offset of the vSGIEOICount field.
+    /// Offset of the `vSGIEOICount` field.
     pub const VSGIEOICOUNT_SHIFT: u32 = 8;
-    /// Offset of the TC field.
+    /// Offset of the `TC` field.
     pub const TC_SHIFT: u32 = 10;
-    /// Offset of the TALL0 field.
+    /// Offset of the `TALL0` field.
     pub const TALL0_SHIFT: u32 = 11;
-    /// Offset of the TALL1 field.
+    /// Offset of the `TALL1` field.
     pub const TALL1_SHIFT: u32 = 12;
-    /// Offset of the TSEI field.
+    /// Offset of the `TSEI` field.
     pub const TSEI_SHIFT: u32 = 13;
-    /// Offset of the TDIR field.
+    /// Offset of the `TDIR` field.
     pub const TDIR_SHIFT: u32 = 14;
-    /// Offset of the DVIM field.
+    /// Offset of the `DVIM` field.
     pub const DVIM_SHIFT: u32 = 15;
-    /// Offset of the EOIcount field.
+    /// Offset of the `EOIcount` field.
     pub const EOICOUNT_SHIFT: u32 = 27;
-    /// Mask for the EOIcount field.
+    /// Mask for the `EOIcount` field.
     pub const EOICOUNT_MASK: u64 = 0b11111;
 
     /// Returns the value of the `EOIcount` field.
@@ -2982,27 +2982,27 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl IchVmcrEl2 {
-    /// Offset of the EN field.
+    /// Offset of the `EN` field.
     pub const EN_SHIFT: u32 = 0;
-    /// Offset of the VENG0 field.
+    /// Offset of the `VENG0` field.
     pub const VENG0_SHIFT: u32 = 0;
-    /// Offset of the VENG1 field.
+    /// Offset of the `VENG1` field.
     pub const VENG1_SHIFT: u32 = 1;
-    /// Offset of the VAckCtl field.
+    /// Offset of the `VAckCtl` field.
     pub const VACKCTL_SHIFT: u32 = 2;
-    /// Offset of the VFIQEn field.
+    /// Offset of the `VFIQEn` field.
     pub const VFIQEN_SHIFT: u32 = 3;
-    /// Offset of the VCBPR field.
+    /// Offset of the `VCBPR` field.
     pub const VCBPR_SHIFT: u32 = 4;
-    /// Offset of the VEOIM field.
+    /// Offset of the `VEOIM` field.
     pub const VEOIM_SHIFT: u32 = 9;
-    /// Offset of the VBPR1 field.
+    /// Offset of the `VBPR1` field.
     pub const VBPR1_SHIFT: u32 = 18;
-    /// Mask for the VBPR1 field.
+    /// Mask for the `VBPR1` field.
     pub const VBPR1_MASK: u64 = 0b111;
-    /// Offset of the VBPR0 field.
+    /// Offset of the `VBPR0` field.
     pub const VBPR0_SHIFT: u32 = 21;
-    /// Mask for the VBPR0 field.
+    /// Mask for the `VBPR0` field.
     pub const VBPR0_MASK: u64 = 0b111;
 
     /// Returns the value of the `VBPR1` field.
@@ -3027,69 +3027,69 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64dfr0El1 {
-    /// Offset of the DebugVer field.
+    /// Offset of the `DebugVer` field.
     pub const DEBUGVER_SHIFT: u32 = 0;
-    /// Mask for the DebugVer field.
+    /// Mask for the `DebugVer` field.
     pub const DEBUGVER_MASK: u64 = 0b1111;
-    /// Offset of the TraceVer field.
+    /// Offset of the `TraceVer` field.
     pub const TRACEVER_SHIFT: u32 = 4;
-    /// Mask for the TraceVer field.
+    /// Mask for the `TraceVer` field.
     pub const TRACEVER_MASK: u64 = 0b1111;
-    /// Offset of the PMUVer field.
+    /// Offset of the `PMUVer` field.
     pub const PMUVER_SHIFT: u32 = 8;
-    /// Mask for the PMUVer field.
+    /// Mask for the `PMUVer` field.
     pub const PMUVER_MASK: u64 = 0b1111;
-    /// Offset of the BRPs field.
+    /// Offset of the `BRPs` field.
     pub const BRPS_SHIFT: u32 = 12;
-    /// Mask for the BRPs field.
+    /// Mask for the `BRPs` field.
     pub const BRPS_MASK: u64 = 0b1111;
-    /// Offset of the PMSS field.
+    /// Offset of the `PMSS` field.
     pub const PMSS_SHIFT: u32 = 16;
-    /// Mask for the PMSS field.
+    /// Mask for the `PMSS` field.
     pub const PMSS_MASK: u64 = 0b1111;
-    /// Offset of the WRPs field.
+    /// Offset of the `WRPs` field.
     pub const WRPS_SHIFT: u32 = 20;
-    /// Mask for the WRPs field.
+    /// Mask for the `WRPs` field.
     pub const WRPS_MASK: u64 = 0b1111;
-    /// Offset of the SEBEP field.
+    /// Offset of the `SEBEP` field.
     pub const SEBEP_SHIFT: u32 = 24;
-    /// Mask for the SEBEP field.
+    /// Mask for the `SEBEP` field.
     pub const SEBEP_MASK: u64 = 0b1111;
-    /// Offset of the CTX_CMPs field.
+    /// Offset of the `CTX_CMPs` field.
     pub const CTX_CMPS_SHIFT: u32 = 28;
-    /// Mask for the CTX_CMPs field.
+    /// Mask for the `CTX_CMPs` field.
     pub const CTX_CMPS_MASK: u64 = 0b1111;
-    /// Offset of the PMSVer field.
+    /// Offset of the `PMSVer` field.
     pub const PMSVER_SHIFT: u32 = 32;
-    /// Mask for the PMSVer field.
+    /// Mask for the `PMSVer` field.
     pub const PMSVER_MASK: u64 = 0b1111;
-    /// Offset of the DoubleLock field.
+    /// Offset of the `DoubleLock` field.
     pub const DOUBLELOCK_SHIFT: u32 = 36;
-    /// Mask for the DoubleLock field.
+    /// Mask for the `DoubleLock` field.
     pub const DOUBLELOCK_MASK: u64 = 0b1111;
-    /// Offset of the TraceFilt field.
+    /// Offset of the `TraceFilt` field.
     pub const TRACEFILT_SHIFT: u32 = 40;
-    /// Mask for the TraceFilt field.
+    /// Mask for the `TraceFilt` field.
     pub const TRACEFILT_MASK: u64 = 0b1111;
-    /// Offset of the TraceBuffer field.
+    /// Offset of the `TraceBuffer` field.
     pub const TRACEBUFFER_SHIFT: u32 = 44;
-    /// Mask for the TraceBuffer field.
+    /// Mask for the `TraceBuffer` field.
     pub const TRACEBUFFER_MASK: u64 = 0b1111;
-    /// Offset of the MTPMU field.
+    /// Offset of the `MTPMU` field.
     pub const MTPMU_SHIFT: u32 = 48;
-    /// Mask for the MTPMU field.
+    /// Mask for the `MTPMU` field.
     pub const MTPMU_MASK: u64 = 0b1111;
-    /// Offset of the BRBE field.
+    /// Offset of the `BRBE` field.
     pub const BRBE_SHIFT: u32 = 52;
-    /// Mask for the BRBE field.
+    /// Mask for the `BRBE` field.
     pub const BRBE_MASK: u64 = 0b1111;
-    /// Offset of the ExtTrcBuff field.
+    /// Offset of the `ExtTrcBuff` field.
     pub const EXTTRCBUFF_SHIFT: u32 = 56;
-    /// Mask for the ExtTrcBuff field.
+    /// Mask for the `ExtTrcBuff` field.
     pub const EXTTRCBUFF_MASK: u64 = 0b1111;
-    /// Offset of the HPMN0 field.
+    /// Offset of the `HPMN0` field.
     pub const HPMN0_SHIFT: u32 = 60;
-    /// Mask for the HPMN0 field.
+    /// Mask for the `HPMN0` field.
     pub const HPMN0_MASK: u64 = 0b1111;
 
     /// Returns the value of the `DebugVer` field.
@@ -3184,49 +3184,49 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64dfr1El1 {
-    /// Offset of the SYSPMUID field.
+    /// Offset of the `SYSPMUID` field.
     pub const SYSPMUID_SHIFT: u32 = 0;
-    /// Mask for the SYSPMUID field.
+    /// Mask for the `SYSPMUID` field.
     pub const SYSPMUID_MASK: u64 = 0b11111111;
-    /// Offset of the BRPs field.
+    /// Offset of the `BRPs` field.
     pub const BRPS_SHIFT: u32 = 8;
-    /// Mask for the BRPs field.
+    /// Mask for the `BRPs` field.
     pub const BRPS_MASK: u64 = 0b11111111;
-    /// Offset of the WRPs field.
+    /// Offset of the `WRPs` field.
     pub const WRPS_SHIFT: u32 = 16;
-    /// Mask for the WRPs field.
+    /// Mask for the `WRPs` field.
     pub const WRPS_MASK: u64 = 0b11111111;
-    /// Offset of the CTX_CMPs field.
+    /// Offset of the `CTX_CMPs` field.
     pub const CTX_CMPS_SHIFT: u32 = 24;
-    /// Mask for the CTX_CMPs field.
+    /// Mask for the `CTX_CMPs` field.
     pub const CTX_CMPS_MASK: u64 = 0b11111111;
-    /// Offset of the SPMU field.
+    /// Offset of the `SPMU` field.
     pub const SPMU_SHIFT: u32 = 32;
-    /// Mask for the SPMU field.
+    /// Mask for the `SPMU` field.
     pub const SPMU_MASK: u64 = 0b1111;
-    /// Offset of the PMICNTR field.
+    /// Offset of the `PMICNTR` field.
     pub const PMICNTR_SHIFT: u32 = 36;
-    /// Mask for the PMICNTR field.
+    /// Mask for the `PMICNTR` field.
     pub const PMICNTR_MASK: u64 = 0b1111;
-    /// Offset of the ABLE field.
+    /// Offset of the `ABLE` field.
     pub const ABLE_SHIFT: u32 = 40;
-    /// Mask for the ABLE field.
+    /// Mask for the `ABLE` field.
     pub const ABLE_MASK: u64 = 0b1111;
-    /// Offset of the ITE field.
+    /// Offset of the `ITE` field.
     pub const ITE_SHIFT: u32 = 44;
-    /// Mask for the ITE field.
+    /// Mask for the `ITE` field.
     pub const ITE_MASK: u64 = 0b1111;
-    /// Offset of the EBEP field.
+    /// Offset of the `EBEP` field.
     pub const EBEP_SHIFT: u32 = 48;
-    /// Mask for the EBEP field.
+    /// Mask for the `EBEP` field.
     pub const EBEP_MASK: u64 = 0b1111;
-    /// Offset of the DPFZS field.
+    /// Offset of the `DPFZS` field.
     pub const DPFZS_SHIFT: u32 = 52;
-    /// Mask for the DPFZS field.
+    /// Mask for the `DPFZS` field.
     pub const DPFZS_MASK: u64 = 0b1111;
-    /// Offset of the ABL_CMPs field.
+    /// Offset of the `ABL_CMPs` field.
     pub const ABL_CMPS_SHIFT: u32 = 56;
-    /// Mask for the ABL_CMPs field.
+    /// Mask for the `ABL_CMPs` field.
     pub const ABL_CMPS_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `SYSPMUID` field.
@@ -3296,61 +3296,61 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64mmfr0El1 {
-    /// Offset of the PARange field.
+    /// Offset of the `PARange` field.
     pub const PARANGE_SHIFT: u32 = 0;
-    /// Mask for the PARange field.
+    /// Mask for the `PARange` field.
     pub const PARANGE_MASK: u64 = 0b1111;
-    /// Offset of the ASIDBits field.
+    /// Offset of the `ASIDBits` field.
     pub const ASIDBITS_SHIFT: u32 = 4;
-    /// Mask for the ASIDBits field.
+    /// Mask for the `ASIDBits` field.
     pub const ASIDBITS_MASK: u64 = 0b1111;
-    /// Offset of the BigEnd field.
+    /// Offset of the `BigEnd` field.
     pub const BIGEND_SHIFT: u32 = 8;
-    /// Mask for the BigEnd field.
+    /// Mask for the `BigEnd` field.
     pub const BIGEND_MASK: u64 = 0b1111;
-    /// Offset of the SNSMem field.
+    /// Offset of the `SNSMem` field.
     pub const SNSMEM_SHIFT: u32 = 12;
-    /// Mask for the SNSMem field.
+    /// Mask for the `SNSMem` field.
     pub const SNSMEM_MASK: u64 = 0b1111;
-    /// Offset of the BigEndEL0 field.
+    /// Offset of the `BigEndEL0` field.
     pub const BIGENDEL0_SHIFT: u32 = 16;
-    /// Mask for the BigEndEL0 field.
+    /// Mask for the `BigEndEL0` field.
     pub const BIGENDEL0_MASK: u64 = 0b1111;
-    /// Offset of the TGran16 field.
+    /// Offset of the `TGran16` field.
     pub const TGRAN16_SHIFT: u32 = 20;
-    /// Mask for the TGran16 field.
+    /// Mask for the `TGran16` field.
     pub const TGRAN16_MASK: u64 = 0b1111;
-    /// Offset of the TGran64 field.
+    /// Offset of the `TGran64` field.
     pub const TGRAN64_SHIFT: u32 = 24;
-    /// Mask for the TGran64 field.
+    /// Mask for the `TGran64` field.
     pub const TGRAN64_MASK: u64 = 0b1111;
-    /// Offset of the TGran4 field.
+    /// Offset of the `TGran4` field.
     pub const TGRAN4_SHIFT: u32 = 28;
-    /// Mask for the TGran4 field.
+    /// Mask for the `TGran4` field.
     pub const TGRAN4_MASK: u64 = 0b1111;
-    /// Offset of the TGran16_2 field.
+    /// Offset of the `TGran16_2` field.
     pub const TGRAN16_2_SHIFT: u32 = 32;
-    /// Mask for the TGran16_2 field.
+    /// Mask for the `TGran16_2` field.
     pub const TGRAN16_2_MASK: u64 = 0b1111;
-    /// Offset of the TGran64_2 field.
+    /// Offset of the `TGran64_2` field.
     pub const TGRAN64_2_SHIFT: u32 = 36;
-    /// Mask for the TGran64_2 field.
+    /// Mask for the `TGran64_2` field.
     pub const TGRAN64_2_MASK: u64 = 0b1111;
-    /// Offset of the TGran4_2 field.
+    /// Offset of the `TGran4_2` field.
     pub const TGRAN4_2_SHIFT: u32 = 40;
-    /// Mask for the TGran4_2 field.
+    /// Mask for the `TGran4_2` field.
     pub const TGRAN4_2_MASK: u64 = 0b1111;
-    /// Offset of the ExS field.
+    /// Offset of the `ExS` field.
     pub const EXS_SHIFT: u32 = 44;
-    /// Mask for the ExS field.
+    /// Mask for the `ExS` field.
     pub const EXS_MASK: u64 = 0b1111;
-    /// Offset of the FGT field.
+    /// Offset of the `FGT` field.
     pub const FGT_SHIFT: u32 = 56;
-    /// Mask for the FGT field.
+    /// Mask for the `FGT` field.
     pub const FGT_MASK: u64 = 0b1111;
-    /// Offset of the ECV field.
+    /// Offset of the `ECV` field.
     pub const ECV_SHIFT: u32 = 60;
-    /// Mask for the ECV field.
+    /// Mask for the `ECV` field.
     pub const ECV_MASK: u64 = 0b1111;
 
     /// Returns the value of the `PARange` field.
@@ -3435,69 +3435,69 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64mmfr1El1 {
-    /// Offset of the HAFDBS field.
+    /// Offset of the `HAFDBS` field.
     pub const HAFDBS_SHIFT: u32 = 0;
-    /// Mask for the HAFDBS field.
+    /// Mask for the `HAFDBS` field.
     pub const HAFDBS_MASK: u64 = 0b1111;
-    /// Offset of the VMIDBits field.
+    /// Offset of the `VMIDBits` field.
     pub const VMIDBITS_SHIFT: u32 = 4;
-    /// Mask for the VMIDBits field.
+    /// Mask for the `VMIDBits` field.
     pub const VMIDBITS_MASK: u64 = 0b1111;
-    /// Offset of the VH field.
+    /// Offset of the `VH` field.
     pub const VH_SHIFT: u32 = 8;
-    /// Mask for the VH field.
+    /// Mask for the `VH` field.
     pub const VH_MASK: u64 = 0b1111;
-    /// Offset of the HPDS field.
+    /// Offset of the `HPDS` field.
     pub const HPDS_SHIFT: u32 = 12;
-    /// Mask for the HPDS field.
+    /// Mask for the `HPDS` field.
     pub const HPDS_MASK: u64 = 0b1111;
-    /// Offset of the LO field.
+    /// Offset of the `LO` field.
     pub const LO_SHIFT: u32 = 16;
-    /// Mask for the LO field.
+    /// Mask for the `LO` field.
     pub const LO_MASK: u64 = 0b1111;
-    /// Offset of the PAN field.
+    /// Offset of the `PAN` field.
     pub const PAN_SHIFT: u32 = 20;
-    /// Mask for the PAN field.
+    /// Mask for the `PAN` field.
     pub const PAN_MASK: u64 = 0b1111;
-    /// Offset of the SpecSEI field.
+    /// Offset of the `SpecSEI` field.
     pub const SPECSEI_SHIFT: u32 = 24;
-    /// Mask for the SpecSEI field.
+    /// Mask for the `SpecSEI` field.
     pub const SPECSEI_MASK: u64 = 0b1111;
-    /// Offset of the XNX field.
+    /// Offset of the `XNX` field.
     pub const XNX_SHIFT: u32 = 28;
-    /// Mask for the XNX field.
+    /// Mask for the `XNX` field.
     pub const XNX_MASK: u64 = 0b1111;
-    /// Offset of the TWED field.
+    /// Offset of the `TWED` field.
     pub const TWED_SHIFT: u32 = 32;
-    /// Mask for the TWED field.
+    /// Mask for the `TWED` field.
     pub const TWED_MASK: u64 = 0b1111;
-    /// Offset of the ETS field.
+    /// Offset of the `ETS` field.
     pub const ETS_SHIFT: u32 = 36;
-    /// Mask for the ETS field.
+    /// Mask for the `ETS` field.
     pub const ETS_MASK: u64 = 0b1111;
-    /// Offset of the HCX field.
+    /// Offset of the `HCX` field.
     pub const HCX_SHIFT: u32 = 40;
-    /// Mask for the HCX field.
+    /// Mask for the `HCX` field.
     pub const HCX_MASK: u64 = 0b1111;
-    /// Offset of the AFP field.
+    /// Offset of the `AFP` field.
     pub const AFP_SHIFT: u32 = 44;
-    /// Mask for the AFP field.
+    /// Mask for the `AFP` field.
     pub const AFP_MASK: u64 = 0b1111;
-    /// Offset of the nTLBPA field.
+    /// Offset of the `nTLBPA` field.
     pub const NTLBPA_SHIFT: u32 = 48;
-    /// Mask for the nTLBPA field.
+    /// Mask for the `nTLBPA` field.
     pub const NTLBPA_MASK: u64 = 0b1111;
-    /// Offset of the TIDCP1 field.
+    /// Offset of the `TIDCP1` field.
     pub const TIDCP1_SHIFT: u32 = 52;
-    /// Mask for the TIDCP1 field.
+    /// Mask for the `TIDCP1` field.
     pub const TIDCP1_MASK: u64 = 0b1111;
-    /// Offset of the CMOW field.
+    /// Offset of the `CMOW` field.
     pub const CMOW_SHIFT: u32 = 56;
-    /// Mask for the CMOW field.
+    /// Mask for the `CMOW` field.
     pub const CMOW_MASK: u64 = 0b1111;
-    /// Offset of the ECBHB field.
+    /// Offset of the `ECBHB` field.
     pub const ECBHB_SHIFT: u32 = 60;
-    /// Mask for the ECBHB field.
+    /// Mask for the `ECBHB` field.
     pub const ECBHB_MASK: u64 = 0b1111;
 
     /// Returns the value of the `HAFDBS` field.
@@ -3592,65 +3592,65 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64mmfr2El1 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Mask for the CnP field.
+    /// Mask for the `CnP` field.
     pub const CNP_MASK: u64 = 0b1111;
-    /// Offset of the UAO field.
+    /// Offset of the `UAO` field.
     pub const UAO_SHIFT: u32 = 4;
-    /// Mask for the UAO field.
+    /// Mask for the `UAO` field.
     pub const UAO_MASK: u64 = 0b1111;
-    /// Offset of the LSM field.
+    /// Offset of the `LSM` field.
     pub const LSM_SHIFT: u32 = 8;
-    /// Mask for the LSM field.
+    /// Mask for the `LSM` field.
     pub const LSM_MASK: u64 = 0b1111;
-    /// Offset of the IESB field.
+    /// Offset of the `IESB` field.
     pub const IESB_SHIFT: u32 = 12;
-    /// Mask for the IESB field.
+    /// Mask for the `IESB` field.
     pub const IESB_MASK: u64 = 0b1111;
-    /// Offset of the VARange field.
+    /// Offset of the `VARange` field.
     pub const VARANGE_SHIFT: u32 = 16;
-    /// Mask for the VARange field.
+    /// Mask for the `VARange` field.
     pub const VARANGE_MASK: u64 = 0b1111;
-    /// Offset of the CCIDX field.
+    /// Offset of the `CCIDX` field.
     pub const CCIDX_SHIFT: u32 = 20;
-    /// Mask for the CCIDX field.
+    /// Mask for the `CCIDX` field.
     pub const CCIDX_MASK: u64 = 0b1111;
-    /// Offset of the NV field.
+    /// Offset of the `NV` field.
     pub const NV_SHIFT: u32 = 24;
-    /// Mask for the NV field.
+    /// Mask for the `NV` field.
     pub const NV_MASK: u64 = 0b1111;
-    /// Offset of the ST field.
+    /// Offset of the `ST` field.
     pub const ST_SHIFT: u32 = 28;
-    /// Mask for the ST field.
+    /// Mask for the `ST` field.
     pub const ST_MASK: u64 = 0b1111;
-    /// Offset of the AT field.
+    /// Offset of the `AT` field.
     pub const AT_SHIFT: u32 = 32;
-    /// Mask for the AT field.
+    /// Mask for the `AT` field.
     pub const AT_MASK: u64 = 0b1111;
-    /// Offset of the IDS field.
+    /// Offset of the `IDS` field.
     pub const IDS_SHIFT: u32 = 36;
-    /// Mask for the IDS field.
+    /// Mask for the `IDS` field.
     pub const IDS_MASK: u64 = 0b1111;
-    /// Offset of the FWB field.
+    /// Offset of the `FWB` field.
     pub const FWB_SHIFT: u32 = 40;
-    /// Mask for the FWB field.
+    /// Mask for the `FWB` field.
     pub const FWB_MASK: u64 = 0b1111;
-    /// Offset of the TTL field.
+    /// Offset of the `TTL` field.
     pub const TTL_SHIFT: u32 = 48;
-    /// Mask for the TTL field.
+    /// Mask for the `TTL` field.
     pub const TTL_MASK: u64 = 0b1111;
-    /// Offset of the BBM field.
+    /// Offset of the `BBM` field.
     pub const BBM_SHIFT: u32 = 52;
-    /// Mask for the BBM field.
+    /// Mask for the `BBM` field.
     pub const BBM_MASK: u64 = 0b1111;
-    /// Offset of the EVT field.
+    /// Offset of the `EVT` field.
     pub const EVT_SHIFT: u32 = 56;
-    /// Mask for the EVT field.
+    /// Mask for the `EVT` field.
     pub const EVT_MASK: u64 = 0b1111;
-    /// Offset of the E0PD field.
+    /// Offset of the `E0PD` field.
     pub const E0PD_SHIFT: u32 = 60;
-    /// Mask for the E0PD field.
+    /// Mask for the `E0PD` field.
     pub const E0PD_MASK: u64 = 0b1111;
 
     /// Returns the value of the `CnP` field.
@@ -3740,65 +3740,65 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64mmfr3El1 {
-    /// Offset of the TCRX field.
+    /// Offset of the `TCRX` field.
     pub const TCRX_SHIFT: u32 = 0;
-    /// Mask for the TCRX field.
+    /// Mask for the `TCRX` field.
     pub const TCRX_MASK: u64 = 0b1111;
-    /// Offset of the SCTLRX field.
+    /// Offset of the `SCTLRX` field.
     pub const SCTLRX_SHIFT: u32 = 4;
-    /// Mask for the SCTLRX field.
+    /// Mask for the `SCTLRX` field.
     pub const SCTLRX_MASK: u64 = 0b1111;
-    /// Offset of the S1PIE field.
+    /// Offset of the `S1PIE` field.
     pub const S1PIE_SHIFT: u32 = 8;
-    /// Mask for the S1PIE field.
+    /// Mask for the `S1PIE` field.
     pub const S1PIE_MASK: u64 = 0b1111;
-    /// Offset of the S2PIE field.
+    /// Offset of the `S2PIE` field.
     pub const S2PIE_SHIFT: u32 = 12;
-    /// Mask for the S2PIE field.
+    /// Mask for the `S2PIE` field.
     pub const S2PIE_MASK: u64 = 0b1111;
-    /// Offset of the S1POE field.
+    /// Offset of the `S1POE` field.
     pub const S1POE_SHIFT: u32 = 16;
-    /// Mask for the S1POE field.
+    /// Mask for the `S1POE` field.
     pub const S1POE_MASK: u64 = 0b1111;
-    /// Offset of the S2POE field.
+    /// Offset of the `S2POE` field.
     pub const S2POE_SHIFT: u32 = 20;
-    /// Mask for the S2POE field.
+    /// Mask for the `S2POE` field.
     pub const S2POE_MASK: u64 = 0b1111;
-    /// Offset of the AIE field.
+    /// Offset of the `AIE` field.
     pub const AIE_SHIFT: u32 = 24;
-    /// Mask for the AIE field.
+    /// Mask for the `AIE` field.
     pub const AIE_MASK: u64 = 0b1111;
-    /// Offset of the MEC field.
+    /// Offset of the `MEC` field.
     pub const MEC_SHIFT: u32 = 28;
-    /// Mask for the MEC field.
+    /// Mask for the `MEC` field.
     pub const MEC_MASK: u64 = 0b1111;
-    /// Offset of the D128 field.
+    /// Offset of the `D128` field.
     pub const D128_SHIFT: u32 = 32;
-    /// Mask for the D128 field.
+    /// Mask for the `D128` field.
     pub const D128_MASK: u64 = 0b1111;
-    /// Offset of the D128_2 field.
+    /// Offset of the `D128_2` field.
     pub const D128_2_SHIFT: u32 = 36;
-    /// Mask for the D128_2 field.
+    /// Mask for the `D128_2` field.
     pub const D128_2_MASK: u64 = 0b1111;
-    /// Offset of the SNERR field.
+    /// Offset of the `SNERR` field.
     pub const SNERR_SHIFT: u32 = 40;
-    /// Mask for the SNERR field.
+    /// Mask for the `SNERR` field.
     pub const SNERR_MASK: u64 = 0b1111;
-    /// Offset of the ANERR field.
+    /// Offset of the `ANERR` field.
     pub const ANERR_SHIFT: u32 = 44;
-    /// Mask for the ANERR field.
+    /// Mask for the `ANERR` field.
     pub const ANERR_MASK: u64 = 0b1111;
-    /// Offset of the SDERR field.
+    /// Offset of the `SDERR` field.
     pub const SDERR_SHIFT: u32 = 52;
-    /// Mask for the SDERR field.
+    /// Mask for the `SDERR` field.
     pub const SDERR_MASK: u64 = 0b1111;
-    /// Offset of the ADERR field.
+    /// Offset of the `ADERR` field.
     pub const ADERR_SHIFT: u32 = 56;
-    /// Mask for the ADERR field.
+    /// Mask for the `ADERR` field.
     pub const ADERR_MASK: u64 = 0b1111;
-    /// Offset of the Spec_FPACC field.
+    /// Offset of the `Spec_FPACC` field.
     pub const SPEC_FPACC_SHIFT: u32 = 60;
-    /// Mask for the Spec_FPACC field.
+    /// Mask for the `Spec_FPACC` field.
     pub const SPEC_FPACC_MASK: u64 = 0b1111;
 
     /// Returns the value of the `TCRX` field.
@@ -3888,69 +3888,69 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64pfr0El1 {
-    /// Offset of the EL0 field.
+    /// Offset of the `EL0` field.
     pub const EL0_SHIFT: u32 = 0;
-    /// Mask for the EL0 field.
+    /// Mask for the `EL0` field.
     pub const EL0_MASK: u64 = 0b1111;
-    /// Offset of the EL1 field.
+    /// Offset of the `EL1` field.
     pub const EL1_SHIFT: u32 = 4;
-    /// Mask for the EL1 field.
+    /// Mask for the `EL1` field.
     pub const EL1_MASK: u64 = 0b1111;
-    /// Offset of the EL2 field.
+    /// Offset of the `EL2` field.
     pub const EL2_SHIFT: u32 = 8;
-    /// Mask for the EL2 field.
+    /// Mask for the `EL2` field.
     pub const EL2_MASK: u64 = 0b1111;
-    /// Offset of the EL3 field.
+    /// Offset of the `EL3` field.
     pub const EL3_SHIFT: u32 = 12;
-    /// Mask for the EL3 field.
+    /// Mask for the `EL3` field.
     pub const EL3_MASK: u64 = 0b1111;
-    /// Offset of the FP field.
+    /// Offset of the `FP` field.
     pub const FP_SHIFT: u32 = 16;
-    /// Mask for the FP field.
+    /// Mask for the `FP` field.
     pub const FP_MASK: u64 = 0b1111;
-    /// Offset of the AdvSIMD field.
+    /// Offset of the `AdvSIMD` field.
     pub const ADVSIMD_SHIFT: u32 = 20;
-    /// Mask for the AdvSIMD field.
+    /// Mask for the `AdvSIMD` field.
     pub const ADVSIMD_MASK: u64 = 0b1111;
-    /// Offset of the GIC field.
+    /// Offset of the `GIC` field.
     pub const GIC_SHIFT: u32 = 24;
-    /// Mask for the GIC field.
+    /// Mask for the `GIC` field.
     pub const GIC_MASK: u64 = 0b1111;
-    /// Offset of the RAS field.
+    /// Offset of the `RAS` field.
     pub const RAS_SHIFT: u32 = 28;
-    /// Mask for the RAS field.
+    /// Mask for the `RAS` field.
     pub const RAS_MASK: u64 = 0b1111;
-    /// Offset of the SVE field.
+    /// Offset of the `SVE` field.
     pub const SVE_SHIFT: u32 = 32;
-    /// Mask for the SVE field.
+    /// Mask for the `SVE` field.
     pub const SVE_MASK: u64 = 0b1111;
-    /// Offset of the SEL2 field.
+    /// Offset of the `SEL2` field.
     pub const SEL2_SHIFT: u32 = 36;
-    /// Mask for the SEL2 field.
+    /// Mask for the `SEL2` field.
     pub const SEL2_MASK: u64 = 0b1111;
-    /// Offset of the MPAM field.
+    /// Offset of the `MPAM` field.
     pub const MPAM_SHIFT: u32 = 40;
-    /// Mask for the MPAM field.
+    /// Mask for the `MPAM` field.
     pub const MPAM_MASK: u64 = 0b1111;
-    /// Offset of the AMU field.
+    /// Offset of the `AMU` field.
     pub const AMU_SHIFT: u32 = 44;
-    /// Mask for the AMU field.
+    /// Mask for the `AMU` field.
     pub const AMU_MASK: u64 = 0b1111;
-    /// Offset of the DIT field.
+    /// Offset of the `DIT` field.
     pub const DIT_SHIFT: u32 = 48;
-    /// Mask for the DIT field.
+    /// Mask for the `DIT` field.
     pub const DIT_MASK: u64 = 0b1111;
-    /// Offset of the RME field.
+    /// Offset of the `RME` field.
     pub const RME_SHIFT: u32 = 52;
-    /// Mask for the RME field.
+    /// Mask for the `RME` field.
     pub const RME_MASK: u64 = 0b1111;
-    /// Offset of the CSV2 field.
+    /// Offset of the `CSV2` field.
     pub const CSV2_SHIFT: u32 = 56;
-    /// Mask for the CSV2 field.
+    /// Mask for the `CSV2` field.
     pub const CSV2_MASK: u64 = 0b1111;
-    /// Offset of the CSV3 field.
+    /// Offset of the `CSV3` field.
     pub const CSV3_SHIFT: u32 = 60;
-    /// Mask for the CSV3 field.
+    /// Mask for the `CSV3` field.
     pub const CSV3_MASK: u64 = 0b1111;
 
     /// Returns the value of the `EL0` field.
@@ -4045,65 +4045,65 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64pfr1El1 {
-    /// Offset of the BT field.
+    /// Offset of the `BT` field.
     pub const BT_SHIFT: u32 = 0;
-    /// Mask for the BT field.
+    /// Mask for the `BT` field.
     pub const BT_MASK: u64 = 0b1111;
-    /// Offset of the SSBS field.
+    /// Offset of the `SSBS` field.
     pub const SSBS_SHIFT: u32 = 4;
-    /// Mask for the SSBS field.
+    /// Mask for the `SSBS` field.
     pub const SSBS_MASK: u64 = 0b1111;
-    /// Offset of the MTE field.
+    /// Offset of the `MTE` field.
     pub const MTE_SHIFT: u32 = 8;
-    /// Mask for the MTE field.
+    /// Mask for the `MTE` field.
     pub const MTE_MASK: u64 = 0b1111;
-    /// Offset of the RAS_frac field.
+    /// Offset of the `RAS_frac` field.
     pub const RAS_FRAC_SHIFT: u32 = 12;
-    /// Mask for the RAS_frac field.
+    /// Mask for the `RAS_frac` field.
     pub const RAS_FRAC_MASK: u64 = 0b1111;
-    /// Offset of the MPAM_frac field.
+    /// Offset of the `MPAM_frac` field.
     pub const MPAM_FRAC_SHIFT: u32 = 16;
-    /// Mask for the MPAM_frac field.
+    /// Mask for the `MPAM_frac` field.
     pub const MPAM_FRAC_MASK: u64 = 0b1111;
-    /// Offset of the SME field.
+    /// Offset of the `SME` field.
     pub const SME_SHIFT: u32 = 24;
-    /// Mask for the SME field.
+    /// Mask for the `SME` field.
     pub const SME_MASK: u64 = 0b1111;
-    /// Offset of the RNDR_trap field.
+    /// Offset of the `RNDR_trap` field.
     pub const RNDR_TRAP_SHIFT: u32 = 28;
-    /// Mask for the RNDR_trap field.
+    /// Mask for the `RNDR_trap` field.
     pub const RNDR_TRAP_MASK: u64 = 0b1111;
-    /// Offset of the CSV2_frac field.
+    /// Offset of the `CSV2_frac` field.
     pub const CSV2_FRAC_SHIFT: u32 = 32;
-    /// Mask for the CSV2_frac field.
+    /// Mask for the `CSV2_frac` field.
     pub const CSV2_FRAC_MASK: u64 = 0b1111;
-    /// Offset of the NMI field.
+    /// Offset of the `NMI` field.
     pub const NMI_SHIFT: u32 = 36;
-    /// Mask for the NMI field.
+    /// Mask for the `NMI` field.
     pub const NMI_MASK: u64 = 0b1111;
-    /// Offset of the MTE_frac field.
+    /// Offset of the `MTE_frac` field.
     pub const MTE_FRAC_SHIFT: u32 = 40;
-    /// Mask for the MTE_frac field.
+    /// Mask for the `MTE_frac` field.
     pub const MTE_FRAC_MASK: u64 = 0b1111;
-    /// Offset of the GCS field.
+    /// Offset of the `GCS` field.
     pub const GCS_SHIFT: u32 = 44;
-    /// Mask for the GCS field.
+    /// Mask for the `GCS` field.
     pub const GCS_MASK: u64 = 0b1111;
-    /// Offset of the THE field.
+    /// Offset of the `THE` field.
     pub const THE_SHIFT: u32 = 48;
-    /// Mask for the THE field.
+    /// Mask for the `THE` field.
     pub const THE_MASK: u64 = 0b1111;
-    /// Offset of the MTEX field.
+    /// Offset of the `MTEX` field.
     pub const MTEX_SHIFT: u32 = 52;
-    /// Mask for the MTEX field.
+    /// Mask for the `MTEX` field.
     pub const MTEX_MASK: u64 = 0b1111;
-    /// Offset of the DF2 field.
+    /// Offset of the `DF2` field.
     pub const DF2_SHIFT: u32 = 56;
-    /// Mask for the DF2 field.
+    /// Mask for the `DF2` field.
     pub const DF2_MASK: u64 = 0b1111;
-    /// Offset of the PFAR field.
+    /// Offset of the `PFAR` field.
     pub const PFAR_SHIFT: u32 = 60;
-    /// Mask for the PFAR field.
+    /// Mask for the `PFAR` field.
     pub const PFAR_MASK: u64 = 0b1111;
 
     /// Returns the value of the `BT` field.
@@ -4233,61 +4233,61 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IdAa64smfr0El1 {
-    /// Offset of the SMOP4 field.
+    /// Offset of the `SMOP4` field.
     pub const SMOP4_SHIFT: u32 = 0;
-    /// Offset of the STMOP field.
+    /// Offset of the `STMOP` field.
     pub const STMOP_SHIFT: u32 = 16;
-    /// Offset of the SFEXPA field.
+    /// Offset of the `SFEXPA` field.
     pub const SFEXPA_SHIFT: u32 = 23;
-    /// Offset of the AES field.
+    /// Offset of the `AES` field.
     pub const AES_SHIFT: u32 = 24;
-    /// Offset of the SBitPerm field.
+    /// Offset of the `SBitPerm` field.
     pub const SBITPERM_SHIFT: u32 = 25;
-    /// Offset of the SF8DP2 field.
+    /// Offset of the `SF8DP2` field.
     pub const SF8DP2_SHIFT: u32 = 28;
-    /// Offset of the SF8DP4 field.
+    /// Offset of the `SF8DP4` field.
     pub const SF8DP4_SHIFT: u32 = 29;
-    /// Offset of the SF8FMA field.
+    /// Offset of the `SF8FMA` field.
     pub const SF8FMA_SHIFT: u32 = 30;
-    /// Offset of the F32F32 field.
+    /// Offset of the `F32F32` field.
     pub const F32F32_SHIFT: u32 = 32;
-    /// Offset of the BI32I32 field.
+    /// Offset of the `BI32I32` field.
     pub const BI32I32_SHIFT: u32 = 33;
-    /// Offset of the B16F32 field.
+    /// Offset of the `B16F32` field.
     pub const B16F32_SHIFT: u32 = 34;
-    /// Offset of the F16F32 field.
+    /// Offset of the `F16F32` field.
     pub const F16F32_SHIFT: u32 = 35;
-    /// Offset of the I8I32 field.
+    /// Offset of the `I8I32` field.
     pub const I8I32_SHIFT: u32 = 36;
-    /// Mask for the I8I32 field.
+    /// Mask for the `I8I32` field.
     pub const I8I32_MASK: u64 = 0b1111;
-    /// Offset of the F8F32 field.
+    /// Offset of the `F8F32` field.
     pub const F8F32_SHIFT: u32 = 40;
-    /// Offset of the F8F16 field.
+    /// Offset of the `F8F16` field.
     pub const F8F16_SHIFT: u32 = 41;
-    /// Offset of the F16F16 field.
+    /// Offset of the `F16F16` field.
     pub const F16F16_SHIFT: u32 = 42;
-    /// Offset of the B16B16 field.
+    /// Offset of the `B16B16` field.
     pub const B16B16_SHIFT: u32 = 43;
-    /// Offset of the I16I32 field.
+    /// Offset of the `I16I32` field.
     pub const I16I32_SHIFT: u32 = 44;
-    /// Mask for the I16I32 field.
+    /// Mask for the `I16I32` field.
     pub const I16I32_MASK: u64 = 0b1111;
-    /// Offset of the F64F64 field.
+    /// Offset of the `F64F64` field.
     pub const F64F64_SHIFT: u32 = 48;
-    /// Offset of the I16I64 field.
+    /// Offset of the `I16I64` field.
     pub const I16I64_SHIFT: u32 = 52;
-    /// Mask for the I16I64 field.
+    /// Mask for the `I16I64` field.
     pub const I16I64_MASK: u64 = 0b1111;
-    /// Offset of the SMEver field.
+    /// Offset of the `SMEver` field.
     pub const SMEVER_SHIFT: u32 = 56;
-    /// Mask for the SMEver field.
+    /// Mask for the `SMEver` field.
     pub const SMEVER_MASK: u64 = 0b1111;
-    /// Offset of the LUTv2 field.
+    /// Offset of the `LUTv2` field.
     pub const LUTV2_SHIFT: u32 = 60;
-    /// Offset of the LUT6 field.
+    /// Offset of the `LUT6` field.
     pub const LUT6_SHIFT: u32 = 61;
-    /// Offset of the FA64 field.
+    /// Offset of the `FA64` field.
     pub const FA64_SHIFT: u32 = 63;
 
     /// Returns the value of the `I8I32` field.
@@ -4332,15 +4332,15 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl IsrEl1 {
-    /// Offset of the F field.
+    /// Offset of the `F` field.
     pub const F_SHIFT: u32 = 6;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 7;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 8;
-    /// Offset of the FS field.
+    /// Offset of the `FS` field.
     pub const FS_SHIFT: u32 = 9;
-    /// Offset of the IS field.
+    /// Offset of the `IS` field.
     pub const IS_SHIFT: u32 = 10;
 }
 
@@ -4355,9 +4355,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl MairEl1 {
-    /// Offset of the Attr<n> field.
+    /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
-    /// Mask for the Attr<n> field.
+    /// Mask for the `Attr<n>` field.
     pub const ATTR_MASK: u64 = 0b11111111;
 
     /// Returns the value of the given `Attr<n>` field.
@@ -4378,9 +4378,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl MairEl2 {
-    /// Offset of the Attr<n> field.
+    /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
-    /// Mask for the Attr<n> field.
+    /// Mask for the `Attr<n>` field.
     pub const ATTR_MASK: u64 = 0b11111111;
 
     /// Returns the value of the given `Attr<n>` field.
@@ -4401,9 +4401,9 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl MairEl3 {
-    /// Offset of the Attr<n> field.
+    /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
-    /// Mask for the Attr<n> field.
+    /// Mask for the `Attr<n>` field.
     pub const ATTR_MASK: u64 = 0b11111111;
 
     /// Returns the value of the given `Attr<n>` field.
@@ -4428,9 +4428,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl MdccintEl1 {
-    /// Offset of the TX field.
+    /// Offset of the `TX` field.
     pub const TX_SHIFT: u32 = 29;
-    /// Offset of the RX field.
+    /// Offset of the `RX` field.
     pub const RX_SHIFT: u32 = 30;
 }
 
@@ -4483,63 +4483,63 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl MdcrEl2 {
-    /// Offset of the HPMN field.
+    /// Offset of the `HPMN` field.
     pub const HPMN_SHIFT: u32 = 0;
-    /// Mask for the HPMN field.
+    /// Mask for the `HPMN` field.
     pub const HPMN_MASK: u64 = 0b11111;
-    /// Offset of the TPMCR field.
+    /// Offset of the `TPMCR` field.
     pub const TPMCR_SHIFT: u32 = 5;
-    /// Offset of the TPM field.
+    /// Offset of the `TPM` field.
     pub const TPM_SHIFT: u32 = 6;
-    /// Offset of the HPME field.
+    /// Offset of the `HPME` field.
     pub const HPME_SHIFT: u32 = 7;
-    /// Offset of the TDE field.
+    /// Offset of the `TDE` field.
     pub const TDE_SHIFT: u32 = 8;
-    /// Offset of the TDA field.
+    /// Offset of the `TDA` field.
     pub const TDA_SHIFT: u32 = 9;
-    /// Offset of the TDOSA field.
+    /// Offset of the `TDOSA` field.
     pub const TDOSA_SHIFT: u32 = 10;
-    /// Offset of the TDRA field.
+    /// Offset of the `TDRA` field.
     pub const TDRA_SHIFT: u32 = 11;
-    /// Offset of the E2PB field.
+    /// Offset of the `E2PB` field.
     pub const E2PB_SHIFT: u32 = 12;
-    /// Mask for the E2PB field.
+    /// Mask for the `E2PB` field.
     pub const E2PB_MASK: u64 = 0b11;
-    /// Offset of the TPMS field.
+    /// Offset of the `TPMS` field.
     pub const TPMS_SHIFT: u32 = 14;
-    /// Offset of the EnSPM field.
+    /// Offset of the `EnSPM` field.
     pub const ENSPM_SHIFT: u32 = 15;
-    /// Offset of the HPMD field.
+    /// Offset of the `HPMD` field.
     pub const HPMD_SHIFT: u32 = 17;
-    /// Offset of the TTRF field.
+    /// Offset of the `TTRF` field.
     pub const TTRF_SHIFT: u32 = 19;
-    /// Offset of the HCCD field.
+    /// Offset of the `HCCD` field.
     pub const HCCD_SHIFT: u32 = 23;
-    /// Offset of the E2TB field.
+    /// Offset of the `E2TB` field.
     pub const E2TB_SHIFT: u32 = 24;
-    /// Mask for the E2TB field.
+    /// Mask for the `E2TB` field.
     pub const E2TB_MASK: u64 = 0b11;
-    /// Offset of the HLP field.
+    /// Offset of the `HLP` field.
     pub const HLP_SHIFT: u32 = 26;
-    /// Offset of the TDCC field.
+    /// Offset of the `TDCC` field.
     pub const TDCC_SHIFT: u32 = 27;
-    /// Offset of the MTPME field.
+    /// Offset of the `MTPME` field.
     pub const MTPME_SHIFT: u32 = 28;
-    /// Offset of the HPMFZO field.
+    /// Offset of the `HPMFZO` field.
     pub const HPMFZO_SHIFT: u32 = 29;
-    /// Offset of the PMSSE field.
+    /// Offset of the `PMSSE` field.
     pub const PMSSE_SHIFT: u32 = 30;
-    /// Mask for the PMSSE field.
+    /// Mask for the `PMSSE` field.
     pub const PMSSE_MASK: u64 = 0b11;
-    /// Offset of the HPMFZS field.
+    /// Offset of the `HPMFZS` field.
     pub const HPMFZS_SHIFT: u32 = 36;
-    /// Offset of the PMEE field.
+    /// Offset of the `PMEE` field.
     pub const PMEE_SHIFT: u32 = 40;
-    /// Mask for the PMEE field.
+    /// Mask for the `PMEE` field.
     pub const PMEE_MASK: u64 = 0b11;
-    /// Offset of the EBWE field.
+    /// Offset of the `EBWE` field.
     pub const EBWE_SHIFT: u32 = 43;
-    /// Offset of the EnSTEPOP field.
+    /// Offset of the `EnSTEPOP` field.
     pub const ENSTEPOP_SHIFT: u32 = 50;
 
     /// Returns the value of the `HPMN` field.
@@ -4643,109 +4643,109 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl MdcrEl3 {
-    /// Offset of the RLTE field.
+    /// Offset of the `RLTE` field.
     pub const RLTE_SHIFT: u32 = 0;
-    /// Offset of the EPMADE field.
+    /// Offset of the `EPMADE` field.
     pub const EPMADE_SHIFT: u32 = 2;
-    /// Offset of the ETADE field.
+    /// Offset of the `ETADE` field.
     pub const ETADE_SHIFT: u32 = 3;
-    /// Offset of the EDADE field.
+    /// Offset of the `EDADE` field.
     pub const EDADE_SHIFT: u32 = 4;
-    /// Offset of the TPM field.
+    /// Offset of the `TPM` field.
     pub const TPM_SHIFT: u32 = 6;
-    /// Offset of the EnPM2 field.
+    /// Offset of the `EnPM2` field.
     pub const ENPM2_SHIFT: u32 = 7;
-    /// Offset of the TDA field.
+    /// Offset of the `TDA` field.
     pub const TDA_SHIFT: u32 = 9;
-    /// Offset of the TDOSA field.
+    /// Offset of the `TDOSA` field.
     pub const TDOSA_SHIFT: u32 = 10;
-    /// Offset of the NSPBE field.
+    /// Offset of the `NSPBE` field.
     pub const NSPBE_SHIFT: u32 = 11;
-    /// Offset of the NSPB field.
+    /// Offset of the `NSPB` field.
     pub const NSPB_SHIFT: u32 = 12;
-    /// Mask for the NSPB field.
+    /// Mask for the `NSPB` field.
     pub const NSPB_MASK: u64 = 0b11;
-    /// Offset of the SPD32 field.
+    /// Offset of the `SPD32` field.
     pub const SPD32_SHIFT: u32 = 14;
-    /// Mask for the SPD32 field.
+    /// Mask for the `SPD32` field.
     pub const SPD32_MASK: u64 = 0b11;
-    /// Offset of the SDD field.
+    /// Offset of the `SDD` field.
     pub const SDD_SHIFT: u32 = 16;
-    /// Offset of the SPME field.
+    /// Offset of the `SPME` field.
     pub const SPME_SHIFT: u32 = 17;
-    /// Offset of the STE field.
+    /// Offset of the `STE` field.
     pub const STE_SHIFT: u32 = 18;
-    /// Offset of the TTRF field.
+    /// Offset of the `TTRF` field.
     pub const TTRF_SHIFT: u32 = 19;
-    /// Offset of the EDAD field.
+    /// Offset of the `EDAD` field.
     pub const EDAD_SHIFT: u32 = 20;
-    /// Offset of the EPMAD field.
+    /// Offset of the `EPMAD` field.
     pub const EPMAD_SHIFT: u32 = 21;
-    /// Offset of the ETAD field.
+    /// Offset of the `ETAD` field.
     pub const ETAD_SHIFT: u32 = 22;
-    /// Offset of the SCCD field.
+    /// Offset of the `SCCD` field.
     pub const SCCD_SHIFT: u32 = 23;
-    /// Offset of the NSTB field.
+    /// Offset of the `NSTB` field.
     pub const NSTB_SHIFT: u32 = 24;
-    /// Mask for the NSTB field.
+    /// Mask for the `NSTB` field.
     pub const NSTB_MASK: u64 = 0b11;
-    /// Offset of the NSTBE field.
+    /// Offset of the `NSTBE` field.
     pub const NSTBE_SHIFT: u32 = 26;
-    /// Offset of the TDCC field.
+    /// Offset of the `TDCC` field.
     pub const TDCC_SHIFT: u32 = 27;
-    /// Offset of the MTPME field.
+    /// Offset of the `MTPME` field.
     pub const MTPME_SHIFT: u32 = 28;
-    /// Offset of the PMSSE field.
+    /// Offset of the `PMSSE` field.
     pub const PMSSE_SHIFT: u32 = 30;
-    /// Mask for the PMSSE field.
+    /// Mask for the `PMSSE` field.
     pub const PMSSE_MASK: u64 = 0b11;
-    /// Offset of the SBRBE field.
+    /// Offset of the `SBRBE` field.
     pub const SBRBE_SHIFT: u32 = 32;
-    /// Mask for the SBRBE field.
+    /// Mask for the `SBRBE` field.
     pub const SBRBE_MASK: u64 = 0b11;
-    /// Offset of the MCCD field.
+    /// Offset of the `MCCD` field.
     pub const MCCD_SHIFT: u32 = 34;
-    /// Offset of the MPMX field.
+    /// Offset of the `MPMX` field.
     pub const MPMX_SHIFT: u32 = 35;
-    /// Offset of the EnPMSN field.
+    /// Offset of the `EnPMSN` field.
     pub const ENPMSN_SHIFT: u32 = 36;
-    /// Offset of the E3BREW field.
+    /// Offset of the `E3BREW` field.
     pub const E3BREW_SHIFT: u32 = 37;
-    /// Offset of the E3BREC field.
+    /// Offset of the `E3BREC` field.
     pub const E3BREC_SHIFT: u32 = 38;
-    /// Offset of the EnTB2 field.
+    /// Offset of the `EnTB2` field.
     pub const ENTB2_SHIFT: u32 = 39;
-    /// Offset of the PMEE field.
+    /// Offset of the `PMEE` field.
     pub const PMEE_SHIFT: u32 = 40;
-    /// Mask for the PMEE field.
+    /// Mask for the `PMEE` field.
     pub const PMEE_MASK: u64 = 0b11;
-    /// Offset of the EnPMS3 field.
+    /// Offset of the `EnPMS3` field.
     pub const ENPMS3_SHIFT: u32 = 42;
-    /// Offset of the EBWE field.
+    /// Offset of the `EBWE` field.
     pub const EBWE_SHIFT: u32 = 43;
-    /// Offset of the EnPMSS field.
+    /// Offset of the `EnPMSS` field.
     pub const ENPMSS_SHIFT: u32 = 44;
-    /// Offset of the EPMSSAD field.
+    /// Offset of the `EPMSSAD` field.
     pub const EPMSSAD_SHIFT: u32 = 45;
-    /// Mask for the EPMSSAD field.
+    /// Mask for the `EPMSSAD` field.
     pub const EPMSSAD_MASK: u64 = 0b11;
-    /// Offset of the EnITE field.
+    /// Offset of the `EnITE` field.
     pub const ENITE_SHIFT: u32 = 47;
-    /// Offset of the ETBAD field.
+    /// Offset of the `ETBAD` field.
     pub const ETBAD_SHIFT: u32 = 48;
-    /// Mask for the ETBAD field.
+    /// Mask for the `ETBAD` field.
     pub const ETBAD_MASK: u64 = 0b11;
-    /// Offset of the EnSTEPOP field.
+    /// Offset of the `EnSTEPOP` field.
     pub const ENSTEPOP_SHIFT: u32 = 50;
-    /// Offset of the PMSEE field.
+    /// Offset of the `PMSEE` field.
     pub const PMSEE_SHIFT: u32 = 51;
-    /// Mask for the PMSEE field.
+    /// Mask for the `PMSEE` field.
     pub const PMSEE_MASK: u64 = 0b11;
-    /// Offset of the TRBEE field.
+    /// Offset of the `TRBEE` field.
     pub const TRBEE_SHIFT: u32 = 53;
-    /// Mask for the TRBEE field.
+    /// Mask for the `TRBEE` field.
     pub const TRBEE_MASK: u64 = 0b11;
-    /// Offset of the EnPMS4 field.
+    /// Offset of the `EnPMS4` field.
     pub const ENPMS4_SHIFT: u32 = 55;
 
     /// Returns the value of the `NSPB` field.
@@ -4846,45 +4846,45 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl MdscrEl1 {
-    /// Offset of the SS field.
+    /// Offset of the `SS` field.
     pub const SS_SHIFT: u32 = 0;
-    /// Offset of the ERR field.
+    /// Offset of the `ERR` field.
     pub const ERR_SHIFT: u32 = 6;
-    /// Offset of the TDCC field.
+    /// Offset of the `TDCC` field.
     pub const TDCC_SHIFT: u32 = 12;
-    /// Offset of the KDE field.
+    /// Offset of the `KDE` field.
     pub const KDE_SHIFT: u32 = 13;
-    /// Offset of the HDE field.
+    /// Offset of the `HDE` field.
     pub const HDE_SHIFT: u32 = 14;
-    /// Offset of the MDE field.
+    /// Offset of the `MDE` field.
     pub const MDE_SHIFT: u32 = 15;
-    /// Offset of the SC2 field.
+    /// Offset of the `SC2` field.
     pub const SC2_SHIFT: u32 = 19;
-    /// Offset of the TDA field.
+    /// Offset of the `TDA` field.
     pub const TDA_SHIFT: u32 = 21;
-    /// Offset of the INTdis field.
+    /// Offset of the `INTdis` field.
     pub const INTDIS_SHIFT: u32 = 22;
-    /// Mask for the INTdis field.
+    /// Mask for the `INTdis` field.
     pub const INTDIS_MASK: u64 = 0b11;
-    /// Offset of the TXU field.
+    /// Offset of the `TXU` field.
     pub const TXU_SHIFT: u32 = 26;
-    /// Offset of the RXO field.
+    /// Offset of the `RXO` field.
     pub const RXO_SHIFT: u32 = 27;
-    /// Offset of the TXfull field.
+    /// Offset of the `TXfull` field.
     pub const TXFULL_SHIFT: u32 = 29;
-    /// Offset of the RXfull field.
+    /// Offset of the `RXfull` field.
     pub const RXFULL_SHIFT: u32 = 30;
-    /// Offset of the TFO field.
+    /// Offset of the `TFO` field.
     pub const TFO_SHIFT: u32 = 31;
-    /// Offset of the EMBWE field.
+    /// Offset of the `EMBWE` field.
     pub const EMBWE_SHIFT: u32 = 32;
-    /// Offset of the TTA field.
+    /// Offset of the `TTA` field.
     pub const TTA_SHIFT: u32 = 33;
-    /// Offset of the EnSPM field.
+    /// Offset of the `EnSPM` field.
     pub const ENSPM_SHIFT: u32 = 34;
-    /// Offset of the EHBWE field.
+    /// Offset of the `EHBWE` field.
     pub const EHBWE_SHIFT: u32 = 35;
-    /// Offset of the EnSTEPOP field.
+    /// Offset of the `EnSTEPOP` field.
     pub const ENSTEPOP_SHIFT: u32 = 50;
 
     /// Returns the value of the `INTdis` field.
@@ -4904,25 +4904,25 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl MidrEl1 {
-    /// Offset of the Revision field.
+    /// Offset of the `Revision` field.
     pub const REVISION_SHIFT: u32 = 0;
-    /// Mask for the Revision field.
+    /// Mask for the `Revision` field.
     pub const REVISION_MASK: u64 = 0b1111;
-    /// Offset of the PartNum field.
+    /// Offset of the `PartNum` field.
     pub const PARTNUM_SHIFT: u32 = 4;
-    /// Mask for the PartNum field.
+    /// Mask for the `PartNum` field.
     pub const PARTNUM_MASK: u64 = 0b111111111111;
-    /// Offset of the Architecture field.
+    /// Offset of the `Architecture` field.
     pub const ARCHITECTURE_SHIFT: u32 = 16;
-    /// Mask for the Architecture field.
+    /// Mask for the `Architecture` field.
     pub const ARCHITECTURE_MASK: u64 = 0b1111;
-    /// Offset of the Variant field.
+    /// Offset of the `Variant` field.
     pub const VARIANT_SHIFT: u32 = 20;
-    /// Mask for the Variant field.
+    /// Mask for the `Variant` field.
     pub const VARIANT_MASK: u64 = 0b1111;
-    /// Offset of the Implementer field.
+    /// Offset of the `Implementer` field.
     pub const IMPLEMENTER_SHIFT: u32 = 24;
-    /// Mask for the Implementer field.
+    /// Mask for the `Implementer` field.
     pub const IMPLEMENTER_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `Revision` field.
@@ -4978,53 +4978,53 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpam2El2 {
-    /// Offset of the PARTID field.
+    /// Offset of the `PARTID` field.
     pub const PARTID_SHIFT: u32 = 0;
-    /// Mask for the PARTID field.
+    /// Mask for the `PARTID` field.
     pub const PARTID_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PARTID_I field.
+    /// Offset of the `PARTID_I` field.
     pub const PARTID_I_SHIFT: u32 = 0;
-    /// Mask for the PARTID_I field.
+    /// Mask for the `PARTID_I` field.
     pub const PARTID_I_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PARTID_D field.
+    /// Offset of the `PARTID_D` field.
     pub const PARTID_D_SHIFT: u32 = 16;
-    /// Mask for the PARTID_D field.
+    /// Mask for the `PARTID_D` field.
     pub const PARTID_D_MASK: u64 = 0b1111111111111111;
-    /// Offset of the altPARTID field.
+    /// Offset of the `altPARTID` field.
     pub const ALTPARTID_SHIFT: u32 = 16;
-    /// Mask for the altPARTID field.
+    /// Mask for the `altPARTID` field.
     pub const ALTPARTID_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PMG field.
+    /// Offset of the `PMG` field.
     pub const PMG_SHIFT: u32 = 32;
-    /// Mask for the PMG field.
+    /// Mask for the `PMG` field.
     pub const PMG_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PMG_I field.
+    /// Offset of the `PMG_I` field.
     pub const PMG_I_SHIFT: u32 = 32;
-    /// Mask for the PMG_I field.
+    /// Mask for the `PMG_I` field.
     pub const PMG_I_MASK: u64 = 0b11111111;
-    /// Offset of the PMG_D field.
+    /// Offset of the `PMG_D` field.
     pub const PMG_D_SHIFT: u32 = 40;
-    /// Mask for the PMG_D field.
+    /// Mask for the `PMG_D` field.
     pub const PMG_D_MASK: u64 = 0b11111111;
-    /// Offset of the TRAPMPAM1EL1 field.
+    /// Offset of the `TRAPMPAM1EL1` field.
     pub const TRAPMPAM1EL1_SHIFT: u32 = 48;
-    /// Offset of the altPMG field.
+    /// Offset of the `altPMG` field.
     pub const ALTPMG_SHIFT: u32 = 48;
-    /// Mask for the altPMG field.
+    /// Mask for the `altPMG` field.
     pub const ALTPMG_MASK: u64 = 0b1111111111111111;
-    /// Offset of the TRAPMPAM0EL1 field.
+    /// Offset of the `TRAPMPAM0EL1` field.
     pub const TRAPMPAM0EL1_SHIFT: u32 = 49;
-    /// Offset of the EnMPAMSM field.
+    /// Offset of the `EnMPAMSM` field.
     pub const ENMPAMSM_SHIFT: u32 = 50;
-    /// Offset of the ALTSP_FRCD field.
+    /// Offset of the `ALTSP_FRCD` field.
     pub const ALTSP_FRCD_SHIFT: u32 = 54;
-    /// Offset of the ALTSP_EL2 field.
+    /// Offset of the `ALTSP_EL2` field.
     pub const ALTSP_EL2_SHIFT: u32 = 55;
-    /// Offset of the ALTSP_HFC field.
+    /// Offset of the `ALTSP_HFC` field.
     pub const ALTSP_HFC_SHIFT: u32 = 56;
-    /// Offset of the TIDR field.
+    /// Offset of the `TIDR` field.
     pub const TIDR_SHIFT: u32 = 58;
-    /// Offset of the MPAMEN field.
+    /// Offset of the `MPAMEN` field.
     pub const MPAMEN_SHIFT: u32 = 63;
 
     /// Returns the value of the `PARTID` field.
@@ -5097,53 +5097,53 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl Mpam3El3 {
-    /// Offset of the PARTID field.
+    /// Offset of the `PARTID` field.
     pub const PARTID_SHIFT: u32 = 0;
-    /// Mask for the PARTID field.
+    /// Mask for the `PARTID` field.
     pub const PARTID_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PARTID_I field.
+    /// Offset of the `PARTID_I` field.
     pub const PARTID_I_SHIFT: u32 = 0;
-    /// Mask for the PARTID_I field.
+    /// Mask for the `PARTID_I` field.
     pub const PARTID_I_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PARTID_D field.
+    /// Offset of the `PARTID_D` field.
     pub const PARTID_D_SHIFT: u32 = 16;
-    /// Mask for the PARTID_D field.
+    /// Mask for the `PARTID_D` field.
     pub const PARTID_D_MASK: u64 = 0b1111111111111111;
-    /// Offset of the altPARTID field.
+    /// Offset of the `altPARTID` field.
     pub const ALTPARTID_SHIFT: u32 = 16;
-    /// Mask for the altPARTID field.
+    /// Mask for the `altPARTID` field.
     pub const ALTPARTID_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PMG field.
+    /// Offset of the `PMG` field.
     pub const PMG_SHIFT: u32 = 32;
-    /// Mask for the PMG field.
+    /// Mask for the `PMG` field.
     pub const PMG_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PMG_I field.
+    /// Offset of the `PMG_I` field.
     pub const PMG_I_SHIFT: u32 = 32;
-    /// Mask for the PMG_I field.
+    /// Mask for the `PMG_I` field.
     pub const PMG_I_MASK: u64 = 0b11111111;
-    /// Offset of the PMG_D field.
+    /// Offset of the `PMG_D` field.
     pub const PMG_D_SHIFT: u32 = 40;
-    /// Mask for the PMG_D field.
+    /// Mask for the `PMG_D` field.
     pub const PMG_D_MASK: u64 = 0b11111111;
-    /// Offset of the altPMG field.
+    /// Offset of the `altPMG` field.
     pub const ALTPMG_SHIFT: u32 = 48;
-    /// Mask for the altPMG field.
+    /// Mask for the `altPMG` field.
     pub const ALTPMG_MASK: u64 = 0b1111111111111111;
-    /// Offset of the RT_ALTSP_NS field.
+    /// Offset of the `RT_ALTSP_NS` field.
     pub const RT_ALTSP_NS_SHIFT: u32 = 52;
-    /// Offset of the ALTSP_EL3 field.
+    /// Offset of the `ALTSP_EL3` field.
     pub const ALTSP_EL3_SHIFT: u32 = 55;
-    /// Offset of the ALTSP_HFC field.
+    /// Offset of the `ALTSP_HFC` field.
     pub const ALTSP_HFC_SHIFT: u32 = 56;
-    /// Offset of the ALTSP_HEN field.
+    /// Offset of the `ALTSP_HEN` field.
     pub const ALTSP_HEN_SHIFT: u32 = 57;
-    /// Offset of the FORCE_NS field.
+    /// Offset of the `FORCE_NS` field.
     pub const FORCE_NS_SHIFT: u32 = 60;
-    /// Offset of the SDEFLT field.
+    /// Offset of the `SDEFLT` field.
     pub const SDEFLT_SHIFT: u32 = 61;
-    /// Offset of the TRAPLOWER field.
+    /// Offset of the `TRAPLOWER` field.
     pub const TRAPLOWER_SHIFT: u32 = 62;
-    /// Offset of the MPAMEN field.
+    /// Offset of the `MPAMEN` field.
     pub const MPAMEN_SHIFT: u32 = 63;
 
     /// Returns the value of the `PARTID` field.
@@ -5214,21 +5214,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl MpamhcrEl2 {
-    /// Offset of the EL0_VPMEN field.
+    /// Offset of the `EL0_VPMEN` field.
     pub const EL0_VPMEN_SHIFT: u32 = 0;
-    /// Offset of the EL1_VPMEN field.
+    /// Offset of the `EL1_VPMEN` field.
     pub const EL1_VPMEN_SHIFT: u32 = 1;
-    /// Offset of the VPMEN field.
+    /// Offset of the `VPMEN` field.
     pub const VPMEN_SHIFT: u32 = 2;
-    /// Offset of the VMMEN field.
+    /// Offset of the `VMMEN` field.
     pub const VMMEN_SHIFT: u32 = 3;
-    /// Offset of the SMVPMEN field.
+    /// Offset of the `SMVPMEN` field.
     pub const SMVPMEN_SHIFT: u32 = 4;
-    /// Offset of the SMVMMEN field.
+    /// Offset of the `SMVMMEN` field.
     pub const SMVMMEN_SHIFT: u32 = 5;
-    /// Offset of the GSTAPP_PLK field.
+    /// Offset of the `GSTAPP_PLK` field.
     pub const GSTAPP_PLK_SHIFT: u32 = 8;
-    /// Offset of the TRAP_MPAMIDR_EL1 field.
+    /// Offset of the `TRAP_MPAMIDR_EL1` field.
     pub const TRAP_MPAMIDR_EL1_SHIFT: u32 = 31;
 }
 
@@ -5263,31 +5263,31 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl MpamidrEl1 {
-    /// Offset of the PARTID_MAX field.
+    /// Offset of the `PARTID_MAX` field.
     pub const PARTID_MAX_SHIFT: u32 = 0;
-    /// Mask for the PARTID_MAX field.
+    /// Mask for the `PARTID_MAX` field.
     pub const PARTID_MAX_MASK: u64 = 0b1111111111111111;
-    /// Offset of the HAS_HCR field.
+    /// Offset of the `HAS_HCR` field.
     pub const HAS_HCR_SHIFT: u32 = 17;
-    /// Offset of the VPMR_MAX field.
+    /// Offset of the `VPMR_MAX` field.
     pub const VPMR_MAX_SHIFT: u32 = 18;
-    /// Mask for the VPMR_MAX field.
+    /// Mask for the `VPMR_MAX` field.
     pub const VPMR_MAX_MASK: u64 = 0b111;
-    /// Offset of the HAS_ALT_ID field.
+    /// Offset of the `HAS_ALT_ID` field.
     pub const HAS_ALT_ID_SHIFT: u32 = 21;
-    /// Offset of the HAS_INSTR_ALT_ID field.
+    /// Offset of the `HAS_INSTR_ALT_ID` field.
     pub const HAS_INSTR_ALT_ID_SHIFT: u32 = 22;
-    /// Offset of the HAS_BW_CTRL field.
+    /// Offset of the `HAS_BW_CTRL` field.
     pub const HAS_BW_CTRL_SHIFT: u32 = 56;
-    /// Offset of the HAS_ALTSP field.
+    /// Offset of the `HAS_ALTSP` field.
     pub const HAS_ALTSP_SHIFT: u32 = 57;
-    /// Offset of the HAS_TIDR field.
+    /// Offset of the `HAS_TIDR` field.
     pub const HAS_TIDR_SHIFT: u32 = 58;
-    /// Offset of the SP4 field.
+    /// Offset of the `SP4` field.
     pub const SP4_SHIFT: u32 = 59;
-    /// Offset of the HAS_FORCE_NS field.
+    /// Offset of the `HAS_FORCE_NS` field.
     pub const HAS_FORCE_NS_SHIFT: u32 = 60;
-    /// Offset of the HAS_SDEFLT field.
+    /// Offset of the `HAS_SDEFLT` field.
     pub const HAS_SDEFLT_SHIFT: u32 = 61;
 
     /// Returns the value of the `PARTID_MAX` field.
@@ -5314,21 +5314,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm0El2 {
-    /// Offset of the PhyPARTID0 field.
+    /// Offset of the `PhyPARTID0` field.
     pub const PHYPARTID0_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID0 field.
+    /// Mask for the `PhyPARTID0` field.
     pub const PHYPARTID0_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID1 field.
+    /// Offset of the `PhyPARTID1` field.
     pub const PHYPARTID1_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID1 field.
+    /// Mask for the `PhyPARTID1` field.
     pub const PHYPARTID1_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID2 field.
+    /// Offset of the `PhyPARTID2` field.
     pub const PHYPARTID2_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID2 field.
+    /// Mask for the `PhyPARTID2` field.
     pub const PHYPARTID2_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID3 field.
+    /// Offset of the `PhyPARTID3` field.
     pub const PHYPARTID3_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID3 field.
+    /// Mask for the `PhyPARTID3` field.
     pub const PHYPARTID3_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID0` field.
@@ -5363,21 +5363,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm1El2 {
-    /// Offset of the PhyPARTID4 field.
+    /// Offset of the `PhyPARTID4` field.
     pub const PHYPARTID4_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID4 field.
+    /// Mask for the `PhyPARTID4` field.
     pub const PHYPARTID4_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID5 field.
+    /// Offset of the `PhyPARTID5` field.
     pub const PHYPARTID5_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID5 field.
+    /// Mask for the `PhyPARTID5` field.
     pub const PHYPARTID5_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID6 field.
+    /// Offset of the `PhyPARTID6` field.
     pub const PHYPARTID6_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID6 field.
+    /// Mask for the `PhyPARTID6` field.
     pub const PHYPARTID6_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID7 field.
+    /// Offset of the `PhyPARTID7` field.
     pub const PHYPARTID7_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID7 field.
+    /// Mask for the `PhyPARTID7` field.
     pub const PHYPARTID7_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID4` field.
@@ -5412,21 +5412,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm2El2 {
-    /// Offset of the PhyPARTID8 field.
+    /// Offset of the `PhyPARTID8` field.
     pub const PHYPARTID8_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID8 field.
+    /// Mask for the `PhyPARTID8` field.
     pub const PHYPARTID8_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID9 field.
+    /// Offset of the `PhyPARTID9` field.
     pub const PHYPARTID9_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID9 field.
+    /// Mask for the `PhyPARTID9` field.
     pub const PHYPARTID9_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID10 field.
+    /// Offset of the `PhyPARTID10` field.
     pub const PHYPARTID10_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID10 field.
+    /// Mask for the `PhyPARTID10` field.
     pub const PHYPARTID10_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID11 field.
+    /// Offset of the `PhyPARTID11` field.
     pub const PHYPARTID11_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID11 field.
+    /// Mask for the `PhyPARTID11` field.
     pub const PHYPARTID11_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID8` field.
@@ -5461,21 +5461,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm3El2 {
-    /// Offset of the PhyPARTID12 field.
+    /// Offset of the `PhyPARTID12` field.
     pub const PHYPARTID12_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID12 field.
+    /// Mask for the `PhyPARTID12` field.
     pub const PHYPARTID12_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID13 field.
+    /// Offset of the `PhyPARTID13` field.
     pub const PHYPARTID13_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID13 field.
+    /// Mask for the `PhyPARTID13` field.
     pub const PHYPARTID13_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID14 field.
+    /// Offset of the `PhyPARTID14` field.
     pub const PHYPARTID14_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID14 field.
+    /// Mask for the `PhyPARTID14` field.
     pub const PHYPARTID14_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID15 field.
+    /// Offset of the `PhyPARTID15` field.
     pub const PHYPARTID15_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID15 field.
+    /// Mask for the `PhyPARTID15` field.
     pub const PHYPARTID15_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID12` field.
@@ -5510,21 +5510,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm4El2 {
-    /// Offset of the PhyPARTID16 field.
+    /// Offset of the `PhyPARTID16` field.
     pub const PHYPARTID16_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID16 field.
+    /// Mask for the `PhyPARTID16` field.
     pub const PHYPARTID16_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID17 field.
+    /// Offset of the `PhyPARTID17` field.
     pub const PHYPARTID17_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID17 field.
+    /// Mask for the `PhyPARTID17` field.
     pub const PHYPARTID17_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID18 field.
+    /// Offset of the `PhyPARTID18` field.
     pub const PHYPARTID18_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID18 field.
+    /// Mask for the `PhyPARTID18` field.
     pub const PHYPARTID18_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID19 field.
+    /// Offset of the `PhyPARTID19` field.
     pub const PHYPARTID19_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID19 field.
+    /// Mask for the `PhyPARTID19` field.
     pub const PHYPARTID19_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID16` field.
@@ -5559,21 +5559,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm5El2 {
-    /// Offset of the PhyPARTID20 field.
+    /// Offset of the `PhyPARTID20` field.
     pub const PHYPARTID20_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID20 field.
+    /// Mask for the `PhyPARTID20` field.
     pub const PHYPARTID20_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID21 field.
+    /// Offset of the `PhyPARTID21` field.
     pub const PHYPARTID21_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID21 field.
+    /// Mask for the `PhyPARTID21` field.
     pub const PHYPARTID21_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID22 field.
+    /// Offset of the `PhyPARTID22` field.
     pub const PHYPARTID22_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID22 field.
+    /// Mask for the `PhyPARTID22` field.
     pub const PHYPARTID22_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID23 field.
+    /// Offset of the `PhyPARTID23` field.
     pub const PHYPARTID23_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID23 field.
+    /// Mask for the `PhyPARTID23` field.
     pub const PHYPARTID23_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID20` field.
@@ -5608,21 +5608,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm6El2 {
-    /// Offset of the PhyPARTID24 field.
+    /// Offset of the `PhyPARTID24` field.
     pub const PHYPARTID24_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID24 field.
+    /// Mask for the `PhyPARTID24` field.
     pub const PHYPARTID24_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID25 field.
+    /// Offset of the `PhyPARTID25` field.
     pub const PHYPARTID25_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID25 field.
+    /// Mask for the `PhyPARTID25` field.
     pub const PHYPARTID25_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID26 field.
+    /// Offset of the `PhyPARTID26` field.
     pub const PHYPARTID26_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID26 field.
+    /// Mask for the `PhyPARTID26` field.
     pub const PHYPARTID26_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID27 field.
+    /// Offset of the `PhyPARTID27` field.
     pub const PHYPARTID27_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID27 field.
+    /// Mask for the `PhyPARTID27` field.
     pub const PHYPARTID27_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID24` field.
@@ -5657,21 +5657,21 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Mpamvpm7El2 {
-    /// Offset of the PhyPARTID28 field.
+    /// Offset of the `PhyPARTID28` field.
     pub const PHYPARTID28_SHIFT: u32 = 0;
-    /// Mask for the PhyPARTID28 field.
+    /// Mask for the `PhyPARTID28` field.
     pub const PHYPARTID28_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID29 field.
+    /// Offset of the `PhyPARTID29` field.
     pub const PHYPARTID29_SHIFT: u32 = 16;
-    /// Mask for the PhyPARTID29 field.
+    /// Mask for the `PhyPARTID29` field.
     pub const PHYPARTID29_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID30 field.
+    /// Offset of the `PhyPARTID30` field.
     pub const PHYPARTID30_SHIFT: u32 = 32;
-    /// Mask for the PhyPARTID30 field.
+    /// Mask for the `PhyPARTID30` field.
     pub const PHYPARTID30_MASK: u64 = 0b1111111111111111;
-    /// Offset of the PhyPARTID31 field.
+    /// Offset of the `PhyPARTID31` field.
     pub const PHYPARTID31_SHIFT: u32 = 48;
-    /// Mask for the PhyPARTID31 field.
+    /// Mask for the `PhyPARTID31` field.
     pub const PHYPARTID31_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `PhyPARTID28` field.
@@ -5770,7 +5770,7 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl MpamvpmvEl2 {
-    /// Offset of the VPM_V<m> field.
+    /// Offset of the `VPM_V<m>` field.
     pub const VPM_V_SHIFT: u32 = 0;
 }
 
@@ -5791,25 +5791,25 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl MpidrEl1 {
-    /// Offset of the Aff0 field.
+    /// Offset of the `Aff0` field.
     pub const AFF0_SHIFT: u32 = 0;
-    /// Mask for the Aff0 field.
+    /// Mask for the `Aff0` field.
     pub const AFF0_MASK: u64 = 0b11111111;
-    /// Offset of the Aff1 field.
+    /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 8;
-    /// Mask for the Aff1 field.
+    /// Mask for the `Aff1` field.
     pub const AFF1_MASK: u64 = 0b11111111;
-    /// Offset of the Aff2 field.
+    /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 16;
-    /// Mask for the Aff2 field.
+    /// Mask for the `Aff2` field.
     pub const AFF2_MASK: u64 = 0b11111111;
-    /// Offset of the MT field.
+    /// Offset of the `MT` field.
     pub const MT_SHIFT: u32 = 24;
-    /// Offset of the U field.
+    /// Offset of the `U` field.
     pub const U_SHIFT: u32 = 30;
-    /// Offset of the Aff3 field.
+    /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 32;
-    /// Mask for the Aff3 field.
+    /// Mask for the `Aff3` field.
     pub const AFF3_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `Aff0` field.
@@ -5864,43 +5864,43 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl ParEl1 {
-    /// Offset of the F field.
+    /// Offset of the `F` field.
     pub const F_SHIFT: u32 = 0;
-    /// Offset of the FST field.
+    /// Offset of the `FST` field.
     pub const FST_SHIFT: u32 = 1;
-    /// Mask for the FST field.
+    /// Mask for the `FST` field.
     pub const FST_MASK: u64 = 0b111111;
-    /// Offset of the SH field.
+    /// Offset of the `SH` field.
     pub const SH_SHIFT: u32 = 7;
-    /// Mask for the SH field.
+    /// Mask for the `SH` field.
     pub const SH_MASK: u64 = 0b11;
-    /// Offset of the PTW field.
+    /// Offset of the `PTW` field.
     pub const PTW_SHIFT: u32 = 8;
-    /// Offset of the NS field.
+    /// Offset of the `NS` field.
     pub const NS_SHIFT: u32 = 9;
-    /// Offset of the S field.
+    /// Offset of the `S` field.
     pub const S_SHIFT: u32 = 9;
-    /// Offset of the NSE field.
+    /// Offset of the `NSE` field.
     pub const NSE_SHIFT: u32 = 11;
-    /// Offset of the AssuredOnly field.
+    /// Offset of the `AssuredOnly` field.
     pub const ASSUREDONLY_SHIFT: u32 = 12;
-    /// Offset of the PA[47:12] field.
+    /// Offset of the `PA[47:12]` field.
     pub const PA_47_12_SHIFT: u32 = 12;
-    /// Mask for the PA[47:12] field.
+    /// Mask for the `PA[47:12]` field.
     pub const PA_47_12_MASK: u64 = 0b111111111111111111111111111111111111;
-    /// Offset of the TopLevel field.
+    /// Offset of the `TopLevel` field.
     pub const TOPLEVEL_SHIFT: u32 = 13;
-    /// Offset of the Overlay field.
+    /// Offset of the `Overlay` field.
     pub const OVERLAY_SHIFT: u32 = 14;
-    /// Offset of the DirtyBit field.
+    /// Offset of the `DirtyBit` field.
     pub const DIRTYBIT_SHIFT: u32 = 15;
-    /// Offset of the PA[51:48] field.
+    /// Offset of the `PA[51:48]` field.
     pub const PA_51_48_SHIFT: u32 = 48;
-    /// Mask for the PA[51:48] field.
+    /// Mask for the `PA[51:48]` field.
     pub const PA_51_48_MASK: u64 = 0b1111;
-    /// Offset of the ATTR field.
+    /// Offset of the `ATTR` field.
     pub const ATTR_SHIFT: u32 = 56;
-    /// Mask for the ATTR field.
+    /// Mask for the `ATTR` field.
     pub const ATTR_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `FST` field.
@@ -5958,37 +5958,37 @@ bitflags! {
 }
 
 impl PmcrEl0 {
-    /// Offset of the E field.
+    /// Offset of the `E` field.
     pub const E_SHIFT: u32 = 0;
-    /// Offset of the P field.
+    /// Offset of the `P` field.
     pub const P_SHIFT: u32 = 1;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 2;
-    /// Offset of the D field.
+    /// Offset of the `D` field.
     pub const D_SHIFT: u32 = 3;
-    /// Offset of the X field.
+    /// Offset of the `X` field.
     pub const X_SHIFT: u32 = 4;
-    /// Offset of the DP field.
+    /// Offset of the `DP` field.
     pub const DP_SHIFT: u32 = 5;
-    /// Offset of the LC field.
+    /// Offset of the `LC` field.
     pub const LC_SHIFT: u32 = 6;
-    /// Offset of the LP field.
+    /// Offset of the `LP` field.
     pub const LP_SHIFT: u32 = 7;
-    /// Offset of the FZO field.
+    /// Offset of the `FZO` field.
     pub const FZO_SHIFT: u32 = 9;
-    /// Offset of the N field.
+    /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 11;
-    /// Mask for the N field.
+    /// Mask for the `N` field.
     pub const N_MASK: u64 = 0b11111;
-    /// Offset of the IDCODE field.
+    /// Offset of the `IDCODE` field.
     pub const IDCODE_SHIFT: u32 = 16;
-    /// Mask for the IDCODE field.
+    /// Mask for the `IDCODE` field.
     pub const IDCODE_MASK: u64 = 0b11111111;
-    /// Offset of the IMP field.
+    /// Offset of the `IMP` field.
     pub const IMP_SHIFT: u32 = 24;
-    /// Mask for the IMP field.
+    /// Mask for the `IMP` field.
     pub const IMP_MASK: u64 = 0b11111111;
-    /// Offset of the FZS field.
+    /// Offset of the `FZS` field.
     pub const FZS_SHIFT: u32 = 32;
 
     /// Returns the value of the `N` field.
@@ -6018,13 +6018,13 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl RgsrEl1 {
-    /// Offset of the TAG field.
+    /// Offset of the `TAG` field.
     pub const TAG_SHIFT: u32 = 0;
-    /// Mask for the TAG field.
+    /// Mask for the `TAG` field.
     pub const TAG_MASK: u64 = 0b1111;
-    /// Offset of the SEED field.
+    /// Offset of the `SEED` field.
     pub const SEED_SHIFT: u32 = 8;
-    /// Mask for the SEED field.
+    /// Mask for the `SEED` field.
     pub const SEED_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `TAG` field.
@@ -6163,121 +6163,121 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl ScrEl3 {
-    /// Offset of the NS field.
+    /// Offset of the `NS` field.
     pub const NS_SHIFT: u32 = 0;
-    /// Offset of the IRQ field.
+    /// Offset of the `IRQ` field.
     pub const IRQ_SHIFT: u32 = 1;
-    /// Offset of the FIQ field.
+    /// Offset of the `FIQ` field.
     pub const FIQ_SHIFT: u32 = 2;
-    /// Offset of the EA field.
+    /// Offset of the `EA` field.
     pub const EA_SHIFT: u32 = 3;
-    /// Offset of the SMD field.
+    /// Offset of the `SMD` field.
     pub const SMD_SHIFT: u32 = 7;
-    /// Offset of the HCE field.
+    /// Offset of the `HCE` field.
     pub const HCE_SHIFT: u32 = 8;
-    /// Offset of the SIF field.
+    /// Offset of the `SIF` field.
     pub const SIF_SHIFT: u32 = 9;
-    /// Offset of the RW field.
+    /// Offset of the `RW` field.
     pub const RW_SHIFT: u32 = 10;
-    /// Offset of the ST field.
+    /// Offset of the `ST` field.
     pub const ST_SHIFT: u32 = 11;
-    /// Offset of the TWI field.
+    /// Offset of the `TWI` field.
     pub const TWI_SHIFT: u32 = 12;
-    /// Offset of the TWE field.
+    /// Offset of the `TWE` field.
     pub const TWE_SHIFT: u32 = 13;
-    /// Offset of the TLOR field.
+    /// Offset of the `TLOR` field.
     pub const TLOR_SHIFT: u32 = 14;
-    /// Offset of the TERR field.
+    /// Offset of the `TERR` field.
     pub const TERR_SHIFT: u32 = 15;
-    /// Offset of the APK field.
+    /// Offset of the `APK` field.
     pub const APK_SHIFT: u32 = 16;
-    /// Offset of the API field.
+    /// Offset of the `API` field.
     pub const API_SHIFT: u32 = 17;
-    /// Offset of the EEL2 field.
+    /// Offset of the `EEL2` field.
     pub const EEL2_SHIFT: u32 = 18;
-    /// Offset of the EASE field.
+    /// Offset of the `EASE` field.
     pub const EASE_SHIFT: u32 = 19;
-    /// Offset of the NMEA field.
+    /// Offset of the `NMEA` field.
     pub const NMEA_SHIFT: u32 = 20;
-    /// Offset of the FIEN field.
+    /// Offset of the `FIEN` field.
     pub const FIEN_SHIFT: u32 = 21;
-    /// Offset of the TID3 field.
+    /// Offset of the `TID3` field.
     pub const TID3_SHIFT: u32 = 22;
-    /// Offset of the TID5 field.
+    /// Offset of the `TID5` field.
     pub const TID5_SHIFT: u32 = 23;
-    /// Offset of the POE2En field.
+    /// Offset of the `POE2En` field.
     pub const POE2EN_SHIFT: u32 = 24;
-    /// Offset of the EnSCXT field.
+    /// Offset of the `EnSCXT` field.
     pub const ENSCXT_SHIFT: u32 = 25;
-    /// Offset of the ATA field.
+    /// Offset of the `ATA` field.
     pub const ATA_SHIFT: u32 = 26;
-    /// Offset of the FGTEn field.
+    /// Offset of the `FGTEn` field.
     pub const FGTEN_SHIFT: u32 = 27;
-    /// Offset of the ECVEn field.
+    /// Offset of the `ECVEn` field.
     pub const ECVEN_SHIFT: u32 = 28;
-    /// Offset of the TWEDEn field.
+    /// Offset of the `TWEDEn` field.
     pub const TWEDEN_SHIFT: u32 = 29;
-    /// Offset of the TWEDEL field.
+    /// Offset of the `TWEDEL` field.
     pub const TWEDEL_SHIFT: u32 = 30;
-    /// Mask for the TWEDEL field.
+    /// Mask for the `TWEDEL` field.
     pub const TWEDEL_MASK: u64 = 0b1111;
-    /// Offset of the AMVOFFEN field.
+    /// Offset of the `AMVOFFEN` field.
     pub const AMVOFFEN_SHIFT: u32 = 35;
-    /// Offset of the EnAS0 field.
+    /// Offset of the `EnAS0` field.
     pub const ENAS0_SHIFT: u32 = 36;
-    /// Offset of the ADEn field.
+    /// Offset of the `ADEn` field.
     pub const ADEN_SHIFT: u32 = 37;
-    /// Offset of the HXEn field.
+    /// Offset of the `HXEn` field.
     pub const HXEN_SHIFT: u32 = 38;
-    /// Offset of the GCSEn field.
+    /// Offset of the `GCSEn` field.
     pub const GCSEN_SHIFT: u32 = 39;
-    /// Offset of the TRNDR field.
+    /// Offset of the `TRNDR` field.
     pub const TRNDR_SHIFT: u32 = 40;
-    /// Offset of the EnTP2 field.
+    /// Offset of the `EnTP2` field.
     pub const ENTP2_SHIFT: u32 = 41;
-    /// Offset of the RCWMASKEn field.
+    /// Offset of the `RCWMASKEn` field.
     pub const RCWMASKEN_SHIFT: u32 = 42;
-    /// Offset of the TCR2En field.
+    /// Offset of the `TCR2En` field.
     pub const TCR2EN_SHIFT: u32 = 43;
-    /// Offset of the SCTLR2En field.
+    /// Offset of the `SCTLR2En` field.
     pub const SCTLR2EN_SHIFT: u32 = 44;
-    /// Offset of the PIEn field.
+    /// Offset of the `PIEn` field.
     pub const PIEN_SHIFT: u32 = 45;
-    /// Offset of the AIEn field.
+    /// Offset of the `AIEn` field.
     pub const AIEN_SHIFT: u32 = 46;
-    /// Offset of the D128En field.
+    /// Offset of the `D128En` field.
     pub const D128EN_SHIFT: u32 = 47;
-    /// Offset of the GPF field.
+    /// Offset of the `GPF` field.
     pub const GPF_SHIFT: u32 = 48;
-    /// Offset of the MECEn field.
+    /// Offset of the `MECEn` field.
     pub const MECEN_SHIFT: u32 = 49;
-    /// Offset of the EnFPM field.
+    /// Offset of the `EnFPM` field.
     pub const ENFPM_SHIFT: u32 = 50;
-    /// Offset of the TMEA field.
+    /// Offset of the `TMEA` field.
     pub const TMEA_SHIFT: u32 = 51;
-    /// Offset of the TWERR field.
+    /// Offset of the `TWERR` field.
     pub const TWERR_SHIFT: u32 = 52;
-    /// Offset of the PFAREn field.
+    /// Offset of the `PFAREn` field.
     pub const PFAREN_SHIFT: u32 = 53;
-    /// Offset of the SRMASKEn field.
+    /// Offset of the `SRMASKEn` field.
     pub const SRMASKEN_SHIFT: u32 = 54;
-    /// Offset of the EnIDCP128 field.
+    /// Offset of the `EnIDCP128` field.
     pub const ENIDCP128_SHIFT: u32 = 55;
-    /// Offset of the VTLBIDEn field.
+    /// Offset of the `VTLBIDEn` field.
     pub const VTLBIDEN_SHIFT: u32 = 56;
-    /// Offset of the DSE field.
+    /// Offset of the `DSE` field.
     pub const DSE_SHIFT: u32 = 57;
-    /// Offset of the EnDSE field.
+    /// Offset of the `EnDSE` field.
     pub const ENDSE_SHIFT: u32 = 58;
-    /// Offset of the FGTEn2 field.
+    /// Offset of the `FGTEn2` field.
     pub const FGTEN2_SHIFT: u32 = 59;
-    /// Offset of the HDBSSEn field.
+    /// Offset of the `HDBSSEn` field.
     pub const HDBSSEN_SHIFT: u32 = 60;
-    /// Offset of the HACDBSEn field.
+    /// Offset of the `HACDBSEn` field.
     pub const HACDBSEN_SHIFT: u32 = 61;
-    /// Offset of the NSE field.
+    /// Offset of the `NSE` field.
     pub const NSE_SHIFT: u32 = 62;
-    /// Offset of the TPLIMEn field.
+    /// Offset of the `TPLIMEn` field.
     pub const TPLIMEN_SHIFT: u32 = 63;
 
     /// Returns the value of the `TWEDEL` field.
@@ -6395,115 +6395,115 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl SctlrEl1 {
-    /// Offset of the M field.
+    /// Offset of the `M` field.
     pub const M_SHIFT: u32 = 0;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 1;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 2;
-    /// Offset of the SA field.
+    /// Offset of the `SA` field.
     pub const SA_SHIFT: u32 = 3;
-    /// Offset of the SA0 field.
+    /// Offset of the `SA0` field.
     pub const SA0_SHIFT: u32 = 4;
-    /// Offset of the CP15BEN field.
+    /// Offset of the `CP15BEN` field.
     pub const CP15BEN_SHIFT: u32 = 5;
-    /// Offset of the nAA field.
+    /// Offset of the `nAA` field.
     pub const NAA_SHIFT: u32 = 6;
-    /// Offset of the ITD field.
+    /// Offset of the `ITD` field.
     pub const ITD_SHIFT: u32 = 7;
-    /// Offset of the SED field.
+    /// Offset of the `SED` field.
     pub const SED_SHIFT: u32 = 8;
-    /// Offset of the UMA field.
+    /// Offset of the `UMA` field.
     pub const UMA_SHIFT: u32 = 9;
-    /// Offset of the EnRCTX field.
+    /// Offset of the `EnRCTX` field.
     pub const ENRCTX_SHIFT: u32 = 10;
-    /// Offset of the EOS field.
+    /// Offset of the `EOS` field.
     pub const EOS_SHIFT: u32 = 11;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 12;
-    /// Offset of the EnDB field.
+    /// Offset of the `EnDB` field.
     pub const ENDB_SHIFT: u32 = 13;
-    /// Offset of the DZE field.
+    /// Offset of the `DZE` field.
     pub const DZE_SHIFT: u32 = 14;
-    /// Offset of the UCT field.
+    /// Offset of the `UCT` field.
     pub const UCT_SHIFT: u32 = 15;
-    /// Offset of the nTWI field.
+    /// Offset of the `nTWI` field.
     pub const NTWI_SHIFT: u32 = 16;
-    /// Offset of the nTWE field.
+    /// Offset of the `nTWE` field.
     pub const NTWE_SHIFT: u32 = 18;
-    /// Offset of the WXN field.
+    /// Offset of the `WXN` field.
     pub const WXN_SHIFT: u32 = 19;
-    /// Offset of the TSCXT field.
+    /// Offset of the `TSCXT` field.
     pub const TSCXT_SHIFT: u32 = 20;
-    /// Offset of the IESB field.
+    /// Offset of the `IESB` field.
     pub const IESB_SHIFT: u32 = 21;
-    /// Offset of the EIS field.
+    /// Offset of the `EIS` field.
     pub const EIS_SHIFT: u32 = 22;
-    /// Offset of the SPAN field.
+    /// Offset of the `SPAN` field.
     pub const SPAN_SHIFT: u32 = 23;
-    /// Offset of the UCI field.
+    /// Offset of the `UCI` field.
     pub const UCI_SHIFT: u32 = 26;
-    /// Offset of the EnDA field.
+    /// Offset of the `EnDA` field.
     pub const ENDA_SHIFT: u32 = 27;
-    /// Offset of the nTLSMD field.
+    /// Offset of the `nTLSMD` field.
     pub const NTLSMD_SHIFT: u32 = 28;
-    /// Offset of the LSMAOE field.
+    /// Offset of the `LSMAOE` field.
     pub const LSMAOE_SHIFT: u32 = 29;
-    /// Offset of the EnIB field.
+    /// Offset of the `EnIB` field.
     pub const ENIB_SHIFT: u32 = 30;
-    /// Offset of the EnIA field.
+    /// Offset of the `EnIA` field.
     pub const ENIA_SHIFT: u32 = 31;
-    /// Offset of the CMOW field.
+    /// Offset of the `CMOW` field.
     pub const CMOW_SHIFT: u32 = 32;
-    /// Offset of the MSCEn field.
+    /// Offset of the `MSCEn` field.
     pub const MSCEN_SHIFT: u32 = 33;
-    /// Offset of the EnFPM field.
+    /// Offset of the `EnFPM` field.
     pub const ENFPM_SHIFT: u32 = 34;
-    /// Offset of the BT0 field.
+    /// Offset of the `BT0` field.
     pub const BT0_SHIFT: u32 = 35;
-    /// Offset of the BT1 field.
+    /// Offset of the `BT1` field.
     pub const BT1_SHIFT: u32 = 36;
-    /// Offset of the ITFSB field.
+    /// Offset of the `ITFSB` field.
     pub const ITFSB_SHIFT: u32 = 37;
-    /// Offset of the TCF0 field.
+    /// Offset of the `TCF0` field.
     pub const TCF0_SHIFT: u32 = 38;
-    /// Mask for the TCF0 field.
+    /// Mask for the `TCF0` field.
     pub const TCF0_MASK: u64 = 0b11;
-    /// Offset of the TCF field.
+    /// Offset of the `TCF` field.
     pub const TCF_SHIFT: u32 = 40;
-    /// Mask for the TCF field.
+    /// Mask for the `TCF` field.
     pub const TCF_MASK: u64 = 0b11;
-    /// Offset of the ATA0 field.
+    /// Offset of the `ATA0` field.
     pub const ATA0_SHIFT: u32 = 42;
-    /// Offset of the ATA field.
+    /// Offset of the `ATA` field.
     pub const ATA_SHIFT: u32 = 43;
-    /// Offset of the DSSBS field.
+    /// Offset of the `DSSBS` field.
     pub const DSSBS_SHIFT: u32 = 44;
-    /// Offset of the TWEDEn field.
+    /// Offset of the `TWEDEn` field.
     pub const TWEDEN_SHIFT: u32 = 45;
-    /// Offset of the TWEDEL field.
+    /// Offset of the `TWEDEL` field.
     pub const TWEDEL_SHIFT: u32 = 46;
-    /// Mask for the TWEDEL field.
+    /// Mask for the `TWEDEL` field.
     pub const TWEDEL_MASK: u64 = 0b1111;
-    /// Offset of the EnASR field.
+    /// Offset of the `EnASR` field.
     pub const ENASR_SHIFT: u32 = 54;
-    /// Offset of the EnAS0 field.
+    /// Offset of the `EnAS0` field.
     pub const ENAS0_SHIFT: u32 = 55;
-    /// Offset of the EnALS field.
+    /// Offset of the `EnALS` field.
     pub const ENALS_SHIFT: u32 = 56;
-    /// Offset of the EPAN field.
+    /// Offset of the `EPAN` field.
     pub const EPAN_SHIFT: u32 = 57;
-    /// Offset of the TCSO0 field.
+    /// Offset of the `TCSO0` field.
     pub const TCSO0_SHIFT: u32 = 58;
-    /// Offset of the TCSO field.
+    /// Offset of the `TCSO` field.
     pub const TCSO_SHIFT: u32 = 59;
-    /// Offset of the EnTP2 field.
+    /// Offset of the `EnTP2` field.
     pub const ENTP2_SHIFT: u32 = 60;
-    /// Offset of the NMI field.
+    /// Offset of the `NMI` field.
     pub const NMI_SHIFT: u32 = 61;
-    /// Offset of the SPINTMASK field.
+    /// Offset of the `SPINTMASK` field.
     pub const SPINTMASK_SHIFT: u32 = 62;
-    /// Offset of the TIDCP field.
+    /// Offset of the `TIDCP` field.
     pub const TIDCP_SHIFT: u32 = 63;
 
     /// Returns the value of the `TCF0` field.
@@ -6627,111 +6627,111 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl SctlrEl2 {
-    /// Offset of the M field.
+    /// Offset of the `M` field.
     pub const M_SHIFT: u32 = 0;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 1;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 2;
-    /// Offset of the SA field.
+    /// Offset of the `SA` field.
     pub const SA_SHIFT: u32 = 3;
-    /// Offset of the SA0 field.
+    /// Offset of the `SA0` field.
     pub const SA0_SHIFT: u32 = 4;
-    /// Offset of the CP15BEN field.
+    /// Offset of the `CP15BEN` field.
     pub const CP15BEN_SHIFT: u32 = 5;
-    /// Offset of the nAA field.
+    /// Offset of the `nAA` field.
     pub const NAA_SHIFT: u32 = 6;
-    /// Offset of the SED field.
+    /// Offset of the `SED` field.
     pub const SED_SHIFT: u32 = 8;
-    /// Offset of the UMA field.
+    /// Offset of the `UMA` field.
     pub const UMA_SHIFT: u32 = 9;
-    /// Offset of the EnRCTX field.
+    /// Offset of the `EnRCTX` field.
     pub const ENRCTX_SHIFT: u32 = 10;
-    /// Offset of the EOS field.
+    /// Offset of the `EOS` field.
     pub const EOS_SHIFT: u32 = 11;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 12;
-    /// Offset of the EnDB field.
+    /// Offset of the `EnDB` field.
     pub const ENDB_SHIFT: u32 = 13;
-    /// Offset of the DZE field.
+    /// Offset of the `DZE` field.
     pub const DZE_SHIFT: u32 = 14;
-    /// Offset of the UCT field.
+    /// Offset of the `UCT` field.
     pub const UCT_SHIFT: u32 = 15;
-    /// Offset of the nTWI field.
+    /// Offset of the `nTWI` field.
     pub const NTWI_SHIFT: u32 = 16;
-    /// Offset of the nTWE field.
+    /// Offset of the `nTWE` field.
     pub const NTWE_SHIFT: u32 = 18;
-    /// Offset of the WXN field.
+    /// Offset of the `WXN` field.
     pub const WXN_SHIFT: u32 = 19;
-    /// Offset of the IESB field.
+    /// Offset of the `IESB` field.
     pub const IESB_SHIFT: u32 = 21;
-    /// Offset of the EIS field.
+    /// Offset of the `EIS` field.
     pub const EIS_SHIFT: u32 = 22;
-    /// Offset of the SPAN field.
+    /// Offset of the `SPAN` field.
     pub const SPAN_SHIFT: u32 = 23;
-    /// Offset of the UCI field.
+    /// Offset of the `UCI` field.
     pub const UCI_SHIFT: u32 = 26;
-    /// Offset of the EnDA field.
+    /// Offset of the `EnDA` field.
     pub const ENDA_SHIFT: u32 = 27;
-    /// Offset of the nTLSMD field.
+    /// Offset of the `nTLSMD` field.
     pub const NTLSMD_SHIFT: u32 = 28;
-    /// Offset of the LSMAOE field.
+    /// Offset of the `LSMAOE` field.
     pub const LSMAOE_SHIFT: u32 = 29;
-    /// Offset of the EnIB field.
+    /// Offset of the `EnIB` field.
     pub const ENIB_SHIFT: u32 = 30;
-    /// Offset of the EnIA field.
+    /// Offset of the `EnIA` field.
     pub const ENIA_SHIFT: u32 = 31;
-    /// Offset of the CMOW field.
+    /// Offset of the `CMOW` field.
     pub const CMOW_SHIFT: u32 = 32;
-    /// Offset of the MSCEn field.
+    /// Offset of the `MSCEn` field.
     pub const MSCEN_SHIFT: u32 = 33;
-    /// Offset of the EnFPM field.
+    /// Offset of the `EnFPM` field.
     pub const ENFPM_SHIFT: u32 = 34;
-    /// Offset of the BT0 field.
+    /// Offset of the `BT0` field.
     pub const BT0_SHIFT: u32 = 35;
-    /// Offset of the BT field.
+    /// Offset of the `BT` field.
     pub const BT_SHIFT: u32 = 36;
-    /// Offset of the ITFSB field.
+    /// Offset of the `ITFSB` field.
     pub const ITFSB_SHIFT: u32 = 37;
-    /// Offset of the TCF0 field.
+    /// Offset of the `TCF0` field.
     pub const TCF0_SHIFT: u32 = 38;
-    /// Mask for the TCF0 field.
+    /// Mask for the `TCF0` field.
     pub const TCF0_MASK: u64 = 0b11;
-    /// Offset of the TCF field.
+    /// Offset of the `TCF` field.
     pub const TCF_SHIFT: u32 = 40;
-    /// Mask for the TCF field.
+    /// Mask for the `TCF` field.
     pub const TCF_MASK: u64 = 0b11;
-    /// Offset of the ATA0 field.
+    /// Offset of the `ATA0` field.
     pub const ATA0_SHIFT: u32 = 42;
-    /// Offset of the ATA field.
+    /// Offset of the `ATA` field.
     pub const ATA_SHIFT: u32 = 43;
-    /// Offset of the DSSBS field.
+    /// Offset of the `DSSBS` field.
     pub const DSSBS_SHIFT: u32 = 44;
-    /// Offset of the TWEDEn field.
+    /// Offset of the `TWEDEn` field.
     pub const TWEDEN_SHIFT: u32 = 45;
-    /// Offset of the TWEDEL field.
+    /// Offset of the `TWEDEL` field.
     pub const TWEDEL_SHIFT: u32 = 46;
-    /// Mask for the TWEDEL field.
+    /// Mask for the `TWEDEL` field.
     pub const TWEDEL_MASK: u64 = 0b1111;
-    /// Offset of the EnASR field.
+    /// Offset of the `EnASR` field.
     pub const ENASR_SHIFT: u32 = 54;
-    /// Offset of the EnAS0 field.
+    /// Offset of the `EnAS0` field.
     pub const ENAS0_SHIFT: u32 = 55;
-    /// Offset of the EnALS field.
+    /// Offset of the `EnALS` field.
     pub const ENALS_SHIFT: u32 = 56;
-    /// Offset of the EPAN field.
+    /// Offset of the `EPAN` field.
     pub const EPAN_SHIFT: u32 = 57;
-    /// Offset of the TCSO0 field.
+    /// Offset of the `TCSO0` field.
     pub const TCSO0_SHIFT: u32 = 58;
-    /// Offset of the TCSO field.
+    /// Offset of the `TCSO` field.
     pub const TCSO_SHIFT: u32 = 59;
-    /// Offset of the EnTP2 field.
+    /// Offset of the `EnTP2` field.
     pub const ENTP2_SHIFT: u32 = 60;
-    /// Offset of the NMI field.
+    /// Offset of the `NMI` field.
     pub const NMI_SHIFT: u32 = 61;
-    /// Offset of the SPINTMASK field.
+    /// Offset of the `SPINTMASK` field.
     pub const SPINTMASK_SHIFT: u32 = 62;
-    /// Offset of the TIDCP field.
+    /// Offset of the `TIDCP` field.
     pub const TIDCP_SHIFT: u32 = 63;
 
     /// Returns the value of the `TCF0` field.
@@ -6805,51 +6805,51 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl SctlrEl3 {
-    /// Offset of the M field.
+    /// Offset of the `M` field.
     pub const M_SHIFT: u32 = 0;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 1;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 2;
-    /// Offset of the SA field.
+    /// Offset of the `SA` field.
     pub const SA_SHIFT: u32 = 3;
-    /// Offset of the nAA field.
+    /// Offset of the `nAA` field.
     pub const NAA_SHIFT: u32 = 6;
-    /// Offset of the EOS field.
+    /// Offset of the `EOS` field.
     pub const EOS_SHIFT: u32 = 11;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 12;
-    /// Offset of the EnDB field.
+    /// Offset of the `EnDB` field.
     pub const ENDB_SHIFT: u32 = 13;
-    /// Offset of the WXN field.
+    /// Offset of the `WXN` field.
     pub const WXN_SHIFT: u32 = 19;
-    /// Offset of the IESB field.
+    /// Offset of the `IESB` field.
     pub const IESB_SHIFT: u32 = 21;
-    /// Offset of the EIS field.
+    /// Offset of the `EIS` field.
     pub const EIS_SHIFT: u32 = 22;
-    /// Offset of the EnDA field.
+    /// Offset of the `EnDA` field.
     pub const ENDA_SHIFT: u32 = 27;
-    /// Offset of the EnIB field.
+    /// Offset of the `EnIB` field.
     pub const ENIB_SHIFT: u32 = 30;
-    /// Offset of the EnIA field.
+    /// Offset of the `EnIA` field.
     pub const ENIA_SHIFT: u32 = 31;
-    /// Offset of the BT field.
+    /// Offset of the `BT` field.
     pub const BT_SHIFT: u32 = 36;
-    /// Offset of the ITFSB field.
+    /// Offset of the `ITFSB` field.
     pub const ITFSB_SHIFT: u32 = 37;
-    /// Offset of the TCF field.
+    /// Offset of the `TCF` field.
     pub const TCF_SHIFT: u32 = 40;
-    /// Mask for the TCF field.
+    /// Mask for the `TCF` field.
     pub const TCF_MASK: u64 = 0b11;
-    /// Offset of the ATA field.
+    /// Offset of the `ATA` field.
     pub const ATA_SHIFT: u32 = 43;
-    /// Offset of the DSSBS field.
+    /// Offset of the `DSSBS` field.
     pub const DSSBS_SHIFT: u32 = 44;
-    /// Offset of the TCSO field.
+    /// Offset of the `TCSO` field.
     pub const TCSO_SHIFT: u32 = 59;
-    /// Offset of the NMI field.
+    /// Offset of the `NMI` field.
     pub const NMI_SHIFT: u32 = 61;
-    /// Offset of the SPINTMASK field.
+    /// Offset of the `SPINTMASK` field.
     pub const SPINTMASK_SHIFT: u32 = 62;
 
     /// Returns the value of the `TCF` field.
@@ -6873,13 +6873,13 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl SmcrEl3 {
-    /// Offset of the LEN field.
+    /// Offset of the `LEN` field.
     pub const LEN_SHIFT: u32 = 0;
-    /// Mask for the LEN field.
+    /// Mask for the `LEN` field.
     pub const LEN_MASK: u64 = 0b1111;
-    /// Offset of the EZT0 field.
+    /// Offset of the `EZT0` field.
     pub const EZT0_SHIFT: u32 = 30;
-    /// Offset of the FA64 field.
+    /// Offset of the `FA64` field.
     pub const FA64_SHIFT: u32 = 31;
 
     /// Returns the value of the `LEN` field.
@@ -6949,67 +6949,67 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl SpsrEl1 {
-    /// Offset of the M[3:0] field.
+    /// Offset of the `M[3:0]` field.
     pub const M_3_0_SHIFT: u32 = 0;
-    /// Mask for the M[3:0] field.
+    /// Mask for the `M[3:0]` field.
     pub const M_3_0_MASK: u64 = 0b1111;
-    /// Offset of the M[4] field.
+    /// Offset of the `M[4]` field.
     pub const M_4_SHIFT: u32 = 4;
-    /// Offset of the T field.
+    /// Offset of the `T` field.
     pub const T_SHIFT: u32 = 5;
-    /// Offset of the F field.
+    /// Offset of the `F` field.
     pub const F_SHIFT: u32 = 6;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 7;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 8;
-    /// Offset of the D field.
+    /// Offset of the `D` field.
     pub const D_SHIFT: u32 = 9;
-    /// Offset of the E field.
+    /// Offset of the `E` field.
     pub const E_SHIFT: u32 = 9;
-    /// Offset of the BTYPE field.
+    /// Offset of the `BTYPE` field.
     pub const BTYPE_SHIFT: u32 = 10;
-    /// Mask for the BTYPE field.
+    /// Mask for the `BTYPE` field.
     pub const BTYPE_MASK: u64 = 0b11;
-    /// Offset of the ALLINT field.
+    /// Offset of the `ALLINT` field.
     pub const ALLINT_SHIFT: u32 = 13;
-    /// Offset of the BTYPE2 field.
+    /// Offset of the `BTYPE2` field.
     pub const BTYPE2_SHIFT: u32 = 14;
-    /// Offset of the GE field.
+    /// Offset of the `GE` field.
     pub const GE_SHIFT: u32 = 16;
-    /// Mask for the GE field.
+    /// Mask for the `GE` field.
     pub const GE_MASK: u64 = 0b1111;
-    /// Offset of the IL field.
+    /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 20;
-    /// Offset of the SS field.
+    /// Offset of the `SS` field.
     pub const SS_SHIFT: u32 = 21;
-    /// Offset of the PAN field.
+    /// Offset of the `PAN` field.
     pub const PAN_SHIFT: u32 = 22;
-    /// Offset of the UAO field.
+    /// Offset of the `UAO` field.
     pub const UAO_SHIFT: u32 = 23;
-    /// Offset of the DIT field.
+    /// Offset of the `DIT` field.
     pub const DIT_SHIFT: u32 = 24;
-    /// Offset of the TCO field.
+    /// Offset of the `TCO` field.
     pub const TCO_SHIFT: u32 = 25;
-    /// Offset of the Q field.
+    /// Offset of the `Q` field.
     pub const Q_SHIFT: u32 = 27;
-    /// Offset of the V field.
+    /// Offset of the `V` field.
     pub const V_SHIFT: u32 = 28;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 29;
-    /// Offset of the Z field.
+    /// Offset of the `Z` field.
     pub const Z_SHIFT: u32 = 30;
-    /// Offset of the N field.
+    /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 31;
-    /// Offset of the PM field.
+    /// Offset of the `PM` field.
     pub const PM_SHIFT: u32 = 32;
-    /// Offset of the PPEND field.
+    /// Offset of the `PPEND` field.
     pub const PPEND_SHIFT: u32 = 33;
-    /// Offset of the EXLOCK field.
+    /// Offset of the `EXLOCK` field.
     pub const EXLOCK_SHIFT: u32 = 34;
-    /// Offset of the PACM field.
+    /// Offset of the `PACM` field.
     pub const PACM_SHIFT: u32 = 35;
-    /// Offset of the UINJ field.
+    /// Offset of the `UINJ` field.
     pub const UINJ_SHIFT: u32 = 36;
 
     /// Returns the value of the `M[3:0]` field.
@@ -7089,67 +7089,67 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl SpsrEl2 {
-    /// Offset of the M[3:0] field.
+    /// Offset of the `M[3:0]` field.
     pub const M_3_0_SHIFT: u32 = 0;
-    /// Mask for the M[3:0] field.
+    /// Mask for the `M[3:0]` field.
     pub const M_3_0_MASK: u64 = 0b1111;
-    /// Offset of the M[4] field.
+    /// Offset of the `M[4]` field.
     pub const M_4_SHIFT: u32 = 4;
-    /// Offset of the T field.
+    /// Offset of the `T` field.
     pub const T_SHIFT: u32 = 5;
-    /// Offset of the F field.
+    /// Offset of the `F` field.
     pub const F_SHIFT: u32 = 6;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 7;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 8;
-    /// Offset of the D field.
+    /// Offset of the `D` field.
     pub const D_SHIFT: u32 = 9;
-    /// Offset of the E field.
+    /// Offset of the `E` field.
     pub const E_SHIFT: u32 = 9;
-    /// Offset of the BTYPE field.
+    /// Offset of the `BTYPE` field.
     pub const BTYPE_SHIFT: u32 = 10;
-    /// Mask for the BTYPE field.
+    /// Mask for the `BTYPE` field.
     pub const BTYPE_MASK: u64 = 0b11;
-    /// Offset of the ALLINT field.
+    /// Offset of the `ALLINT` field.
     pub const ALLINT_SHIFT: u32 = 13;
-    /// Offset of the BTYPE2 field.
+    /// Offset of the `BTYPE2` field.
     pub const BTYPE2_SHIFT: u32 = 14;
-    /// Offset of the GE field.
+    /// Offset of the `GE` field.
     pub const GE_SHIFT: u32 = 16;
-    /// Mask for the GE field.
+    /// Mask for the `GE` field.
     pub const GE_MASK: u64 = 0b1111;
-    /// Offset of the IL field.
+    /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 20;
-    /// Offset of the SS field.
+    /// Offset of the `SS` field.
     pub const SS_SHIFT: u32 = 21;
-    /// Offset of the PAN field.
+    /// Offset of the `PAN` field.
     pub const PAN_SHIFT: u32 = 22;
-    /// Offset of the UAO field.
+    /// Offset of the `UAO` field.
     pub const UAO_SHIFT: u32 = 23;
-    /// Offset of the DIT field.
+    /// Offset of the `DIT` field.
     pub const DIT_SHIFT: u32 = 24;
-    /// Offset of the TCO field.
+    /// Offset of the `TCO` field.
     pub const TCO_SHIFT: u32 = 25;
-    /// Offset of the Q field.
+    /// Offset of the `Q` field.
     pub const Q_SHIFT: u32 = 27;
-    /// Offset of the V field.
+    /// Offset of the `V` field.
     pub const V_SHIFT: u32 = 28;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 29;
-    /// Offset of the Z field.
+    /// Offset of the `Z` field.
     pub const Z_SHIFT: u32 = 30;
-    /// Offset of the N field.
+    /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 31;
-    /// Offset of the PM field.
+    /// Offset of the `PM` field.
     pub const PM_SHIFT: u32 = 32;
-    /// Offset of the PPEND field.
+    /// Offset of the `PPEND` field.
     pub const PPEND_SHIFT: u32 = 33;
-    /// Offset of the EXLOCK field.
+    /// Offset of the `EXLOCK` field.
     pub const EXLOCK_SHIFT: u32 = 34;
-    /// Offset of the PACM field.
+    /// Offset of the `PACM` field.
     pub const PACM_SHIFT: u32 = 35;
-    /// Offset of the UINJ field.
+    /// Offset of the `UINJ` field.
     pub const UINJ_SHIFT: u32 = 36;
 
     /// Returns the value of the `M[3:0]` field.
@@ -7229,67 +7229,67 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl SpsrEl3 {
-    /// Offset of the M[3:0] field.
+    /// Offset of the `M[3:0]` field.
     pub const M_3_0_SHIFT: u32 = 0;
-    /// Mask for the M[3:0] field.
+    /// Mask for the `M[3:0]` field.
     pub const M_3_0_MASK: u64 = 0b1111;
-    /// Offset of the M[4] field.
+    /// Offset of the `M[4]` field.
     pub const M_4_SHIFT: u32 = 4;
-    /// Offset of the T field.
+    /// Offset of the `T` field.
     pub const T_SHIFT: u32 = 5;
-    /// Offset of the F field.
+    /// Offset of the `F` field.
     pub const F_SHIFT: u32 = 6;
-    /// Offset of the I field.
+    /// Offset of the `I` field.
     pub const I_SHIFT: u32 = 7;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 8;
-    /// Offset of the D field.
+    /// Offset of the `D` field.
     pub const D_SHIFT: u32 = 9;
-    /// Offset of the E field.
+    /// Offset of the `E` field.
     pub const E_SHIFT: u32 = 9;
-    /// Offset of the BTYPE field.
+    /// Offset of the `BTYPE` field.
     pub const BTYPE_SHIFT: u32 = 10;
-    /// Mask for the BTYPE field.
+    /// Mask for the `BTYPE` field.
     pub const BTYPE_MASK: u64 = 0b11;
-    /// Offset of the ALLINT field.
+    /// Offset of the `ALLINT` field.
     pub const ALLINT_SHIFT: u32 = 13;
-    /// Offset of the BTYPE2 field.
+    /// Offset of the `BTYPE2` field.
     pub const BTYPE2_SHIFT: u32 = 14;
-    /// Offset of the GE field.
+    /// Offset of the `GE` field.
     pub const GE_SHIFT: u32 = 16;
-    /// Mask for the GE field.
+    /// Mask for the `GE` field.
     pub const GE_MASK: u64 = 0b1111;
-    /// Offset of the IL field.
+    /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 20;
-    /// Offset of the SS field.
+    /// Offset of the `SS` field.
     pub const SS_SHIFT: u32 = 21;
-    /// Offset of the PAN field.
+    /// Offset of the `PAN` field.
     pub const PAN_SHIFT: u32 = 22;
-    /// Offset of the UAO field.
+    /// Offset of the `UAO` field.
     pub const UAO_SHIFT: u32 = 23;
-    /// Offset of the DIT field.
+    /// Offset of the `DIT` field.
     pub const DIT_SHIFT: u32 = 24;
-    /// Offset of the TCO field.
+    /// Offset of the `TCO` field.
     pub const TCO_SHIFT: u32 = 25;
-    /// Offset of the Q field.
+    /// Offset of the `Q` field.
     pub const Q_SHIFT: u32 = 27;
-    /// Offset of the V field.
+    /// Offset of the `V` field.
     pub const V_SHIFT: u32 = 28;
-    /// Offset of the C field.
+    /// Offset of the `C` field.
     pub const C_SHIFT: u32 = 29;
-    /// Offset of the Z field.
+    /// Offset of the `Z` field.
     pub const Z_SHIFT: u32 = 30;
-    /// Offset of the N field.
+    /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 31;
-    /// Offset of the PM field.
+    /// Offset of the `PM` field.
     pub const PM_SHIFT: u32 = 32;
-    /// Offset of the PPEND field.
+    /// Offset of the `PPEND` field.
     pub const PPEND_SHIFT: u32 = 33;
-    /// Offset of the EXLOCK field.
+    /// Offset of the `EXLOCK` field.
     pub const EXLOCK_SHIFT: u32 = 34;
-    /// Offset of the PACM field.
+    /// Offset of the `PACM` field.
     pub const PACM_SHIFT: u32 = 35;
-    /// Offset of the UINJ field.
+    /// Offset of the `UINJ` field.
     pub const UINJ_SHIFT: u32 = 36;
 
     /// Returns the value of the `M[3:0]` field.
@@ -7319,9 +7319,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl SpEl1 {
-    /// Offset of the StackPointer field.
+    /// Offset of the `StackPointer` field.
     pub const STACKPOINTER_SHIFT: u32 = 0;
-    /// Mask for the StackPointer field.
+    /// Mask for the `StackPointer` field.
     pub const STACKPOINTER_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -7343,9 +7343,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl SpEl2 {
-    /// Offset of the StackPointer field.
+    /// Offset of the `StackPointer` field.
     pub const STACKPOINTER_SHIFT: u32 = 0;
-    /// Mask for the StackPointer field.
+    /// Mask for the `StackPointer` field.
     pub const STACKPOINTER_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -7403,53 +7403,53 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl Tcr2El1 {
-    /// Offset of the PnCH field.
+    /// Offset of the `PnCH` field.
     pub const PNCH_SHIFT: u32 = 0;
-    /// Offset of the PIE field.
+    /// Offset of the `PIE` field.
     pub const PIE_SHIFT: u32 = 1;
-    /// Offset of the E0POE field.
+    /// Offset of the `E0POE` field.
     pub const E0POE_SHIFT: u32 = 2;
-    /// Offset of the POE field.
+    /// Offset of the `POE` field.
     pub const POE_SHIFT: u32 = 3;
-    /// Offset of the AIE field.
+    /// Offset of the `AIE` field.
     pub const AIE_SHIFT: u32 = 4;
-    /// Offset of the D128 field.
+    /// Offset of the `D128` field.
     pub const D128_SHIFT: u32 = 5;
-    /// Offset of the PTTWI field.
+    /// Offset of the `PTTWI` field.
     pub const PTTWI_SHIFT: u32 = 10;
-    /// Offset of the HAFT field.
+    /// Offset of the `HAFT` field.
     pub const HAFT_SHIFT: u32 = 11;
-    /// Offset of the DisCH0 field.
+    /// Offset of the `DisCH0` field.
     pub const DISCH0_SHIFT: u32 = 14;
-    /// Offset of the DisCH1 field.
+    /// Offset of the `DisCH1` field.
     pub const DISCH1_SHIFT: u32 = 15;
-    /// Offset of the A2 field.
+    /// Offset of the `A2` field.
     pub const A2_SHIFT: u32 = 16;
-    /// Offset of the FNG0 field.
+    /// Offset of the `FNG0` field.
     pub const FNG0_SHIFT: u32 = 17;
-    /// Offset of the FNG1 field.
+    /// Offset of the `FNG1` field.
     pub const FNG1_SHIFT: u32 = 18;
-    /// Offset of the POE2F field.
+    /// Offset of the `POE2F` field.
     pub const POE2F_SHIFT: u32 = 19;
-    /// Offset of the FNGNA0 field.
+    /// Offset of the `FNGNA0` field.
     pub const FNGNA0_SHIFT: u32 = 20;
-    /// Offset of the FNGNA1 field.
+    /// Offset of the `FNGNA1` field.
     pub const FNGNA1_SHIFT: u32 = 21;
-    /// Offset of the POIW field.
+    /// Offset of the `POIW` field.
     pub const POIW_SHIFT: u32 = 22;
-    /// Mask for the POIW field.
+    /// Mask for the `POIW` field.
     pub const POIW_MASK: u64 = 0b111;
-    /// Offset of the VTB0 field.
+    /// Offset of the `VTB0` field.
     pub const VTB0_SHIFT: u32 = 25;
-    /// Mask for the VTB0 field.
+    /// Mask for the `VTB0` field.
     pub const VTB0_MASK: u64 = 0b11111;
-    /// Offset of the VTB1 field.
+    /// Offset of the `VTB1` field.
     pub const VTB1_SHIFT: u32 = 30;
-    /// Mask for the VTB1 field.
+    /// Mask for the `VTB1` field.
     pub const VTB1_MASK: u64 = 0b11111;
-    /// Offset of the TVAD0 field.
+    /// Offset of the `TVAD0` field.
     pub const TVAD0_SHIFT: u32 = 35;
-    /// Offset of the TVAD1 field.
+    /// Offset of the `TVAD1` field.
     pub const TVAD1_SHIFT: u32 = 36;
 
     /// Returns the value of the `POIW` field.
@@ -7515,53 +7515,53 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Tcr2El2 {
-    /// Offset of the PnCH field.
+    /// Offset of the `PnCH` field.
     pub const PNCH_SHIFT: u32 = 0;
-    /// Offset of the PIE field.
+    /// Offset of the `PIE` field.
     pub const PIE_SHIFT: u32 = 1;
-    /// Offset of the E0POE field.
+    /// Offset of the `E0POE` field.
     pub const E0POE_SHIFT: u32 = 2;
-    /// Offset of the POE field.
+    /// Offset of the `POE` field.
     pub const POE_SHIFT: u32 = 3;
-    /// Offset of the AIE field.
+    /// Offset of the `AIE` field.
     pub const AIE_SHIFT: u32 = 4;
-    /// Offset of the D128 field.
+    /// Offset of the `D128` field.
     pub const D128_SHIFT: u32 = 5;
-    /// Offset of the PTTWI field.
+    /// Offset of the `PTTWI` field.
     pub const PTTWI_SHIFT: u32 = 10;
-    /// Offset of the HAFT field.
+    /// Offset of the `HAFT` field.
     pub const HAFT_SHIFT: u32 = 11;
-    /// Offset of the AMEC0 field.
+    /// Offset of the `AMEC0` field.
     pub const AMEC0_SHIFT: u32 = 12;
-    /// Offset of the AMEC1 field.
+    /// Offset of the `AMEC1` field.
     pub const AMEC1_SHIFT: u32 = 13;
-    /// Offset of the DisCH0 field.
+    /// Offset of the `DisCH0` field.
     pub const DISCH0_SHIFT: u32 = 14;
-    /// Offset of the DisCH1 field.
+    /// Offset of the `DisCH1` field.
     pub const DISCH1_SHIFT: u32 = 15;
-    /// Offset of the A2 field.
+    /// Offset of the `A2` field.
     pub const A2_SHIFT: u32 = 16;
-    /// Offset of the FNG0 field.
+    /// Offset of the `FNG0` field.
     pub const FNG0_SHIFT: u32 = 17;
-    /// Offset of the FNG1 field.
+    /// Offset of the `FNG1` field.
     pub const FNG1_SHIFT: u32 = 18;
-    /// Offset of the POE2F field.
+    /// Offset of the `POE2F` field.
     pub const POE2F_SHIFT: u32 = 19;
-    /// Offset of the POIW field.
+    /// Offset of the `POIW` field.
     pub const POIW_SHIFT: u32 = 22;
-    /// Mask for the POIW field.
+    /// Mask for the `POIW` field.
     pub const POIW_MASK: u64 = 0b111;
-    /// Offset of the VTB0 field.
+    /// Offset of the `VTB0` field.
     pub const VTB0_SHIFT: u32 = 25;
-    /// Mask for the VTB0 field.
+    /// Mask for the `VTB0` field.
     pub const VTB0_MASK: u64 = 0b11111;
-    /// Offset of the VTB1 field.
+    /// Offset of the `VTB1` field.
     pub const VTB1_SHIFT: u32 = 30;
-    /// Mask for the VTB1 field.
+    /// Mask for the `VTB1` field.
     pub const VTB1_MASK: u64 = 0b11111;
-    /// Offset of the TVAD0 field.
+    /// Offset of the `TVAD0` field.
     pub const TVAD0_SHIFT: u32 = 35;
-    /// Offset of the TVAD1 field.
+    /// Offset of the `TVAD1` field.
     pub const TVAD1_SHIFT: u32 = 36;
 
     /// Returns the value of the `POIW` field.
@@ -7649,107 +7649,107 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl TcrEl1 {
-    /// Offset of the T0SZ field.
+    /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
-    /// Mask for the T0SZ field.
+    /// Mask for the `T0SZ` field.
     pub const T0SZ_MASK: u64 = 0b111111;
-    /// Offset of the EPD0 field.
+    /// Offset of the `EPD0` field.
     pub const EPD0_SHIFT: u32 = 7;
-    /// Offset of the IRGN0 field.
+    /// Offset of the `IRGN0` field.
     pub const IRGN0_SHIFT: u32 = 8;
-    /// Mask for the IRGN0 field.
+    /// Mask for the `IRGN0` field.
     pub const IRGN0_MASK: u64 = 0b11;
-    /// Offset of the ORGN0 field.
+    /// Offset of the `ORGN0` field.
     pub const ORGN0_SHIFT: u32 = 10;
-    /// Mask for the ORGN0 field.
+    /// Mask for the `ORGN0` field.
     pub const ORGN0_MASK: u64 = 0b11;
-    /// Offset of the SH0 field.
+    /// Offset of the `SH0` field.
     pub const SH0_SHIFT: u32 = 12;
-    /// Mask for the SH0 field.
+    /// Mask for the `SH0` field.
     pub const SH0_MASK: u64 = 0b11;
-    /// Offset of the TG0 field.
+    /// Offset of the `TG0` field.
     pub const TG0_SHIFT: u32 = 14;
-    /// Mask for the TG0 field.
+    /// Mask for the `TG0` field.
     pub const TG0_MASK: u64 = 0b11;
-    /// Offset of the T1SZ field.
+    /// Offset of the `T1SZ` field.
     pub const T1SZ_SHIFT: u32 = 16;
-    /// Mask for the T1SZ field.
+    /// Mask for the `T1SZ` field.
     pub const T1SZ_MASK: u64 = 0b111111;
-    /// Offset of the A1 field.
+    /// Offset of the `A1` field.
     pub const A1_SHIFT: u32 = 22;
-    /// Offset of the EPD1 field.
+    /// Offset of the `EPD1` field.
     pub const EPD1_SHIFT: u32 = 23;
-    /// Offset of the IRGN1 field.
+    /// Offset of the `IRGN1` field.
     pub const IRGN1_SHIFT: u32 = 24;
-    /// Mask for the IRGN1 field.
+    /// Mask for the `IRGN1` field.
     pub const IRGN1_MASK: u64 = 0b11;
-    /// Offset of the ORGN1 field.
+    /// Offset of the `ORGN1` field.
     pub const ORGN1_SHIFT: u32 = 26;
-    /// Mask for the ORGN1 field.
+    /// Mask for the `ORGN1` field.
     pub const ORGN1_MASK: u64 = 0b11;
-    /// Offset of the SH1 field.
+    /// Offset of the `SH1` field.
     pub const SH1_SHIFT: u32 = 28;
-    /// Mask for the SH1 field.
+    /// Mask for the `SH1` field.
     pub const SH1_MASK: u64 = 0b11;
-    /// Offset of the TG1 field.
+    /// Offset of the `TG1` field.
     pub const TG1_SHIFT: u32 = 30;
-    /// Mask for the TG1 field.
+    /// Mask for the `TG1` field.
     pub const TG1_MASK: u64 = 0b11;
-    /// Offset of the IPS field.
+    /// Offset of the `IPS` field.
     pub const IPS_SHIFT: u32 = 32;
-    /// Mask for the IPS field.
+    /// Mask for the `IPS` field.
     pub const IPS_MASK: u64 = 0b111;
-    /// Offset of the AS field.
+    /// Offset of the `AS` field.
     pub const AS_SHIFT: u32 = 36;
-    /// Offset of the TBI0 field.
+    /// Offset of the `TBI0` field.
     pub const TBI0_SHIFT: u32 = 37;
-    /// Offset of the TBI1 field.
+    /// Offset of the `TBI1` field.
     pub const TBI1_SHIFT: u32 = 38;
-    /// Offset of the HA field.
+    /// Offset of the `HA` field.
     pub const HA_SHIFT: u32 = 39;
-    /// Offset of the HD field.
+    /// Offset of the `HD` field.
     pub const HD_SHIFT: u32 = 40;
-    /// Offset of the HPD0 field.
+    /// Offset of the `HPD0` field.
     pub const HPD0_SHIFT: u32 = 41;
-    /// Offset of the HPD1 field.
+    /// Offset of the `HPD1` field.
     pub const HPD1_SHIFT: u32 = 42;
-    /// Offset of the HWU059 field.
+    /// Offset of the `HWU059` field.
     pub const HWU059_SHIFT: u32 = 43;
-    /// Offset of the HWU060 field.
+    /// Offset of the `HWU060` field.
     pub const HWU060_SHIFT: u32 = 44;
-    /// Offset of the HWU061 field.
+    /// Offset of the `HWU061` field.
     pub const HWU061_SHIFT: u32 = 45;
-    /// Offset of the HWU062 field.
+    /// Offset of the `HWU062` field.
     pub const HWU062_SHIFT: u32 = 46;
-    /// Offset of the HWU159 field.
+    /// Offset of the `HWU159` field.
     pub const HWU159_SHIFT: u32 = 47;
-    /// Offset of the HWU160 field.
+    /// Offset of the `HWU160` field.
     pub const HWU160_SHIFT: u32 = 48;
-    /// Offset of the HWU161 field.
+    /// Offset of the `HWU161` field.
     pub const HWU161_SHIFT: u32 = 49;
-    /// Offset of the HWU162 field.
+    /// Offset of the `HWU162` field.
     pub const HWU162_SHIFT: u32 = 50;
-    /// Offset of the TBID0 field.
+    /// Offset of the `TBID0` field.
     pub const TBID0_SHIFT: u32 = 51;
-    /// Offset of the TBID1 field.
+    /// Offset of the `TBID1` field.
     pub const TBID1_SHIFT: u32 = 52;
-    /// Offset of the NFD0 field.
+    /// Offset of the `NFD0` field.
     pub const NFD0_SHIFT: u32 = 53;
-    /// Offset of the NFD1 field.
+    /// Offset of the `NFD1` field.
     pub const NFD1_SHIFT: u32 = 54;
-    /// Offset of the E0PD0 field.
+    /// Offset of the `E0PD0` field.
     pub const E0PD0_SHIFT: u32 = 55;
-    /// Offset of the E0PD1 field.
+    /// Offset of the `E0PD1` field.
     pub const E0PD1_SHIFT: u32 = 56;
-    /// Offset of the TCMA0 field.
+    /// Offset of the `TCMA0` field.
     pub const TCMA0_SHIFT: u32 = 57;
-    /// Offset of the TCMA1 field.
+    /// Offset of the `TCMA1` field.
     pub const TCMA1_SHIFT: u32 = 58;
-    /// Offset of the DS field.
+    /// Offset of the `DS` field.
     pub const DS_SHIFT: u32 = 59;
-    /// Offset of the MTX0 field.
+    /// Offset of the `MTX0` field.
     pub const MTX0_SHIFT: u32 = 60;
-    /// Offset of the MTX1 field.
+    /// Offset of the `MTX1` field.
     pub const MTX1_SHIFT: u32 = 61;
 
     /// Returns the value of the `T0SZ` field.
@@ -7893,129 +7893,129 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl TcrEl2 {
-    /// Offset of the T0SZ field.
+    /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
-    /// Mask for the T0SZ field.
+    /// Mask for the `T0SZ` field.
     pub const T0SZ_MASK: u64 = 0b111111;
-    /// Offset of the EPD0 field.
+    /// Offset of the `EPD0` field.
     pub const EPD0_SHIFT: u32 = 7;
-    /// Offset of the IRGN0 field.
+    /// Offset of the `IRGN0` field.
     pub const IRGN0_SHIFT: u32 = 8;
-    /// Mask for the IRGN0 field.
+    /// Mask for the `IRGN0` field.
     pub const IRGN0_MASK: u64 = 0b11;
-    /// Offset of the ORGN0 field.
+    /// Offset of the `ORGN0` field.
     pub const ORGN0_SHIFT: u32 = 10;
-    /// Mask for the ORGN0 field.
+    /// Mask for the `ORGN0` field.
     pub const ORGN0_MASK: u64 = 0b11;
-    /// Offset of the SH0 field.
+    /// Offset of the `SH0` field.
     pub const SH0_SHIFT: u32 = 12;
-    /// Mask for the SH0 field.
+    /// Mask for the `SH0` field.
     pub const SH0_MASK: u64 = 0b11;
-    /// Offset of the TG0 field.
+    /// Offset of the `TG0` field.
     pub const TG0_SHIFT: u32 = 14;
-    /// Mask for the TG0 field.
+    /// Mask for the `TG0` field.
     pub const TG0_MASK: u64 = 0b11;
-    /// Offset of the PS field.
+    /// Offset of the `PS` field.
     pub const PS_SHIFT: u32 = 16;
-    /// Mask for the PS field.
+    /// Mask for the `PS` field.
     pub const PS_MASK: u64 = 0b111;
-    /// Offset of the T1SZ field.
+    /// Offset of the `T1SZ` field.
     pub const T1SZ_SHIFT: u32 = 16;
-    /// Mask for the T1SZ field.
+    /// Mask for the `T1SZ` field.
     pub const T1SZ_MASK: u64 = 0b111111;
-    /// Offset of the TBI field.
+    /// Offset of the `TBI` field.
     pub const TBI_SHIFT: u32 = 20;
-    /// Offset of the A1 field.
+    /// Offset of the `A1` field.
     pub const A1_SHIFT: u32 = 22;
-    /// Offset of the EPD1 field.
+    /// Offset of the `EPD1` field.
     pub const EPD1_SHIFT: u32 = 23;
-    /// Offset of the HPD field.
+    /// Offset of the `HPD` field.
     pub const HPD_SHIFT: u32 = 24;
-    /// Offset of the IRGN1 field.
+    /// Offset of the `IRGN1` field.
     pub const IRGN1_SHIFT: u32 = 24;
-    /// Mask for the IRGN1 field.
+    /// Mask for the `IRGN1` field.
     pub const IRGN1_MASK: u64 = 0b11;
-    /// Offset of the HWU59 field.
+    /// Offset of the `HWU59` field.
     pub const HWU59_SHIFT: u32 = 25;
-    /// Offset of the HWU60 field.
+    /// Offset of the `HWU60` field.
     pub const HWU60_SHIFT: u32 = 26;
-    /// Offset of the ORGN1 field.
+    /// Offset of the `ORGN1` field.
     pub const ORGN1_SHIFT: u32 = 26;
-    /// Mask for the ORGN1 field.
+    /// Mask for the `ORGN1` field.
     pub const ORGN1_MASK: u64 = 0b11;
-    /// Offset of the HWU61 field.
+    /// Offset of the `HWU61` field.
     pub const HWU61_SHIFT: u32 = 27;
-    /// Offset of the HWU62 field.
+    /// Offset of the `HWU62` field.
     pub const HWU62_SHIFT: u32 = 28;
-    /// Offset of the SH1 field.
+    /// Offset of the `SH1` field.
     pub const SH1_SHIFT: u32 = 28;
-    /// Mask for the SH1 field.
+    /// Mask for the `SH1` field.
     pub const SH1_MASK: u64 = 0b11;
-    /// Offset of the TBID field.
+    /// Offset of the `TBID` field.
     pub const TBID_SHIFT: u32 = 29;
-    /// Offset of the TCMA field.
+    /// Offset of the `TCMA` field.
     pub const TCMA_SHIFT: u32 = 30;
-    /// Offset of the TG1 field.
+    /// Offset of the `TG1` field.
     pub const TG1_SHIFT: u32 = 30;
-    /// Mask for the TG1 field.
+    /// Mask for the `TG1` field.
     pub const TG1_MASK: u64 = 0b11;
-    /// Offset of the IPS field.
+    /// Offset of the `IPS` field.
     pub const IPS_SHIFT: u32 = 32;
-    /// Mask for the IPS field.
+    /// Mask for the `IPS` field.
     pub const IPS_MASK: u64 = 0b111;
-    /// Offset of the MTX field.
+    /// Offset of the `MTX` field.
     pub const MTX_SHIFT: u32 = 33;
-    /// Offset of the AS field.
+    /// Offset of the `AS` field.
     pub const AS_SHIFT: u32 = 36;
-    /// Offset of the TBI0 field.
+    /// Offset of the `TBI0` field.
     pub const TBI0_SHIFT: u32 = 37;
-    /// Offset of the TBI1 field.
+    /// Offset of the `TBI1` field.
     pub const TBI1_SHIFT: u32 = 38;
-    /// Offset of the HPD0 field.
+    /// Offset of the `HPD0` field.
     pub const HPD0_SHIFT: u32 = 41;
-    /// Offset of the HPD1 field.
+    /// Offset of the `HPD1` field.
     pub const HPD1_SHIFT: u32 = 42;
-    /// Offset of the HWU059 field.
+    /// Offset of the `HWU059` field.
     pub const HWU059_SHIFT: u32 = 43;
-    /// Offset of the HWU060 field.
+    /// Offset of the `HWU060` field.
     pub const HWU060_SHIFT: u32 = 44;
-    /// Offset of the HWU061 field.
+    /// Offset of the `HWU061` field.
     pub const HWU061_SHIFT: u32 = 45;
-    /// Offset of the HWU062 field.
+    /// Offset of the `HWU062` field.
     pub const HWU062_SHIFT: u32 = 46;
-    /// Offset of the HWU159 field.
+    /// Offset of the `HWU159` field.
     pub const HWU159_SHIFT: u32 = 47;
-    /// Offset of the HWU160 field.
+    /// Offset of the `HWU160` field.
     pub const HWU160_SHIFT: u32 = 48;
-    /// Offset of the VTB field.
+    /// Offset of the `VTB` field.
     pub const VTB_SHIFT: u32 = 48;
-    /// Mask for the VTB field.
+    /// Mask for the `VTB` field.
     pub const VTB_MASK: u64 = 0b11111;
-    /// Offset of the HWU161 field.
+    /// Offset of the `HWU161` field.
     pub const HWU161_SHIFT: u32 = 49;
-    /// Offset of the HWU162 field.
+    /// Offset of the `HWU162` field.
     pub const HWU162_SHIFT: u32 = 50;
-    /// Offset of the TBID0 field.
+    /// Offset of the `TBID0` field.
     pub const TBID0_SHIFT: u32 = 51;
-    /// Offset of the TBID1 field.
+    /// Offset of the `TBID1` field.
     pub const TBID1_SHIFT: u32 = 52;
-    /// Offset of the NFD0 field.
+    /// Offset of the `NFD0` field.
     pub const NFD0_SHIFT: u32 = 53;
-    /// Offset of the TVAD field.
+    /// Offset of the `TVAD` field.
     pub const TVAD_SHIFT: u32 = 53;
-    /// Offset of the NFD1 field.
+    /// Offset of the `NFD1` field.
     pub const NFD1_SHIFT: u32 = 54;
-    /// Offset of the E0PD0 field.
+    /// Offset of the `E0PD0` field.
     pub const E0PD0_SHIFT: u32 = 55;
-    /// Offset of the E0PD1 field.
+    /// Offset of the `E0PD1` field.
     pub const E0PD1_SHIFT: u32 = 56;
-    /// Offset of the TCMA0 field.
+    /// Offset of the `TCMA0` field.
     pub const TCMA0_SHIFT: u32 = 57;
-    /// Offset of the TCMA1 field.
+    /// Offset of the `TCMA1` field.
     pub const TCMA1_SHIFT: u32 = 58;
-    /// Offset of the MTX0 field.
+    /// Offset of the `MTX0` field.
     pub const MTX0_SHIFT: u32 = 60;
-    /// Offset of the MTX1 field.
+    /// Offset of the `MTX1` field.
     pub const MTX1_SHIFT: u32 = 61;
 
     /// Returns the value of the `T0SZ` field.
@@ -8141,81 +8141,81 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl TcrEl3 {
-    /// Offset of the T0SZ field.
+    /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
-    /// Mask for the T0SZ field.
+    /// Mask for the `T0SZ` field.
     pub const T0SZ_MASK: u64 = 0b111111;
-    /// Offset of the IRGN0 field.
+    /// Offset of the `IRGN0` field.
     pub const IRGN0_SHIFT: u32 = 8;
-    /// Mask for the IRGN0 field.
+    /// Mask for the `IRGN0` field.
     pub const IRGN0_MASK: u64 = 0b11;
-    /// Offset of the ORGN0 field.
+    /// Offset of the `ORGN0` field.
     pub const ORGN0_SHIFT: u32 = 10;
-    /// Mask for the ORGN0 field.
+    /// Mask for the `ORGN0` field.
     pub const ORGN0_MASK: u64 = 0b11;
-    /// Offset of the SH0 field.
+    /// Offset of the `SH0` field.
     pub const SH0_SHIFT: u32 = 12;
-    /// Mask for the SH0 field.
+    /// Mask for the `SH0` field.
     pub const SH0_MASK: u64 = 0b11;
-    /// Offset of the TG0 field.
+    /// Offset of the `TG0` field.
     pub const TG0_SHIFT: u32 = 14;
-    /// Mask for the TG0 field.
+    /// Mask for the `TG0` field.
     pub const TG0_MASK: u64 = 0b11;
-    /// Offset of the PS field.
+    /// Offset of the `PS` field.
     pub const PS_SHIFT: u32 = 16;
-    /// Mask for the PS field.
+    /// Mask for the `PS` field.
     pub const PS_MASK: u64 = 0b111;
-    /// Offset of the TBI field.
+    /// Offset of the `TBI` field.
     pub const TBI_SHIFT: u32 = 20;
-    /// Offset of the HA field.
+    /// Offset of the `HA` field.
     pub const HA_SHIFT: u32 = 21;
-    /// Offset of the HD field.
+    /// Offset of the `HD` field.
     pub const HD_SHIFT: u32 = 22;
-    /// Offset of the HPD field.
+    /// Offset of the `HPD` field.
     pub const HPD_SHIFT: u32 = 24;
-    /// Offset of the HWU59 field.
+    /// Offset of the `HWU59` field.
     pub const HWU59_SHIFT: u32 = 25;
-    /// Offset of the HWU60 field.
+    /// Offset of the `HWU60` field.
     pub const HWU60_SHIFT: u32 = 26;
-    /// Offset of the HWU61 field.
+    /// Offset of the `HWU61` field.
     pub const HWU61_SHIFT: u32 = 27;
-    /// Offset of the HWU62 field.
+    /// Offset of the `HWU62` field.
     pub const HWU62_SHIFT: u32 = 28;
-    /// Offset of the TBID field.
+    /// Offset of the `TBID` field.
     pub const TBID_SHIFT: u32 = 29;
-    /// Offset of the TCMA field.
+    /// Offset of the `TCMA` field.
     pub const TCMA_SHIFT: u32 = 30;
-    /// Offset of the DS field.
+    /// Offset of the `DS` field.
     pub const DS_SHIFT: u32 = 32;
-    /// Offset of the MTX field.
+    /// Offset of the `MTX` field.
     pub const MTX_SHIFT: u32 = 33;
-    /// Offset of the PnCH field.
+    /// Offset of the `PnCH` field.
     pub const PNCH_SHIFT: u32 = 34;
-    /// Offset of the PIE field.
+    /// Offset of the `PIE` field.
     pub const PIE_SHIFT: u32 = 35;
-    /// Offset of the POE field.
+    /// Offset of the `POE` field.
     pub const POE_SHIFT: u32 = 36;
-    /// Offset of the AIE field.
+    /// Offset of the `AIE` field.
     pub const AIE_SHIFT: u32 = 37;
-    /// Offset of the D128 field.
+    /// Offset of the `D128` field.
     pub const D128_SHIFT: u32 = 38;
-    /// Offset of the PTTWI field.
+    /// Offset of the `PTTWI` field.
     pub const PTTWI_SHIFT: u32 = 41;
-    /// Offset of the HAFT field.
+    /// Offset of the `HAFT` field.
     pub const HAFT_SHIFT: u32 = 42;
-    /// Offset of the DisCH0 field.
+    /// Offset of the `DisCH0` field.
     pub const DISCH0_SHIFT: u32 = 43;
-    /// Offset of the POE2F field.
+    /// Offset of the `POE2F` field.
     pub const POE2F_SHIFT: u32 = 44;
-    /// Offset of the POIW field.
+    /// Offset of the `POIW` field.
     pub const POIW_SHIFT: u32 = 45;
-    /// Mask for the POIW field.
+    /// Mask for the `POIW` field.
     pub const POIW_MASK: u64 = 0b111;
-    /// Offset of the VTB field.
+    /// Offset of the `VTB` field.
     pub const VTB_SHIFT: u32 = 48;
-    /// Mask for the VTB field.
+    /// Mask for the `VTB` field.
     pub const VTB_MASK: u64 = 0b11111;
-    /// Offset of the TVAD field.
+    /// Offset of the `TVAD` field.
     pub const TVAD_SHIFT: u32 = 53;
 
     /// Returns the value of the `T0SZ` field.
@@ -8274,9 +8274,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl Tfsre0El1 {
-    /// Offset of the TF0 field.
+    /// Offset of the `TF0` field.
     pub const TF0_SHIFT: u32 = 0;
-    /// Offset of the TF1 field.
+    /// Offset of the `TF1` field.
     pub const TF1_SHIFT: u32 = 1;
 }
 
@@ -8295,9 +8295,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl TfsrEl1 {
-    /// Offset of the TF0 field.
+    /// Offset of the `TF0` field.
     pub const TF0_SHIFT: u32 = 0;
-    /// Offset of the TF1 field.
+    /// Offset of the `TF1` field.
     pub const TF1_SHIFT: u32 = 1;
 }
 
@@ -8316,9 +8316,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl TfsrEl2 {
-    /// Offset of the TF0 field.
+    /// Offset of the `TF0` field.
     pub const TF0_SHIFT: u32 = 0;
-    /// Offset of the TF1 field.
+    /// Offset of the `TF1` field.
     pub const TF1_SHIFT: u32 = 1;
 }
 
@@ -8331,9 +8331,9 @@ bitflags! {
 }
 
 impl TpidrroEl0 {
-    /// Offset of the ThreadID field.
+    /// Offset of the `ThreadID` field.
     pub const THREADID_SHIFT: u32 = 0;
-    /// Mask for the ThreadID field.
+    /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -8353,9 +8353,9 @@ bitflags! {
 }
 
 impl TpidrEl0 {
-    /// Offset of the ThreadID field.
+    /// Offset of the `ThreadID` field.
     pub const THREADID_SHIFT: u32 = 0;
-    /// Mask for the ThreadID field.
+    /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -8377,9 +8377,9 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl TpidrEl1 {
-    /// Offset of the ThreadID field.
+    /// Offset of the `ThreadID` field.
     pub const THREADID_SHIFT: u32 = 0;
-    /// Mask for the ThreadID field.
+    /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -8401,9 +8401,9 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl TpidrEl2 {
-    /// Offset of the ThreadID field.
+    /// Offset of the `ThreadID` field.
     pub const THREADID_SHIFT: u32 = 0;
-    /// Mask for the ThreadID field.
+    /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
         0b1111111111111111111111111111111111111111111111111111111111111111;
 
@@ -8427,19 +8427,19 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl Ttbr0El1 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the BADDR[47:1] field.
+    /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
-    /// Mask for the BADDR[47:1] field.
+    /// Mask for the `BADDR[47:1]` field.
     pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
-    /// Offset of the SKL field.
+    /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the SKL field.
+    /// Mask for the `SKL` field.
     pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the ASID field.
+    /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
-    /// Mask for the ASID field.
+    /// Mask for the `ASID` field.
     pub const ASID_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `BADDR[47:1]` field.
@@ -8472,19 +8472,19 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Ttbr0El2 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the BADDR[47:1] field.
+    /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
-    /// Mask for the BADDR[47:1] field.
+    /// Mask for the `BADDR[47:1]` field.
     pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
-    /// Offset of the SKL field.
+    /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the SKL field.
+    /// Mask for the `SKL` field.
     pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the ASID field.
+    /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
-    /// Mask for the ASID field.
+    /// Mask for the `ASID` field.
     pub const ASID_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `BADDR[47:1]` field.
@@ -8517,11 +8517,11 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl Ttbr0El3 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the SKL field.
+    /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the SKL field.
+    /// Mask for the `SKL` field.
     pub const SKL_MASK: u64 = 0b11;
 
     /// Returns the value of the `SKL` field.
@@ -8543,19 +8543,19 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl Ttbr1El1 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the BADDR[47:1] field.
+    /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
-    /// Mask for the BADDR[47:1] field.
+    /// Mask for the `BADDR[47:1]` field.
     pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
-    /// Offset of the SKL field.
+    /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the SKL field.
+    /// Mask for the `SKL` field.
     pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the ASID field.
+    /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
-    /// Mask for the ASID field.
+    /// Mask for the `ASID` field.
     pub const ASID_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `BADDR[47:1]` field.
@@ -8588,19 +8588,19 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl Ttbr1El2 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the BADDR[47:1] field.
+    /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
-    /// Mask for the BADDR[47:1] field.
+    /// Mask for the `BADDR[47:1]` field.
     pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
-    /// Offset of the SKL field.
+    /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the SKL field.
+    /// Mask for the `SKL` field.
     pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the ASID field.
+    /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
-    /// Mask for the ASID field.
+    /// Mask for the `ASID` field.
     pub const ASID_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `BADDR[47:1]` field.
@@ -8633,11 +8633,11 @@ bitflags! {
 
 #[cfg(feature = "el1")]
 impl VbarEl1 {
-    /// Offset of the UT field.
+    /// Offset of the `UT` field.
     pub const UT_SHIFT: u32 = 0;
-    /// Offset of the VBA field.
+    /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 11;
-    /// Mask for the VBA field.
+    /// Mask for the `VBA` field.
     pub const VBA_MASK: u64 = 0b11111111111111111111111111111111111111111111111111111;
 
     /// Returns the value of the `VBA` field.
@@ -8660,11 +8660,11 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VbarEl2 {
-    /// Offset of the UT field.
+    /// Offset of the `UT` field.
     pub const UT_SHIFT: u32 = 0;
-    /// Offset of the VBA field.
+    /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 11;
-    /// Mask for the VBA field.
+    /// Mask for the `VBA` field.
     pub const VBA_MASK: u64 = 0b11111111111111111111111111111111111111111111111111111;
 
     /// Returns the value of the `VBA` field.
@@ -8693,25 +8693,25 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VdisrEl2 {
-    /// Offset of the ISS field.
+    /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
-    /// Mask for the ISS field.
+    /// Mask for the `ISS` field.
     pub const ISS_MASK: u64 = 0b111111111111111111111111;
-    /// Offset of the STATUS field.
+    /// Offset of the `STATUS` field.
     pub const STATUS_SHIFT: u32 = 0;
-    /// Mask for the STATUS field.
+    /// Mask for the `STATUS` field.
     pub const STATUS_MASK: u64 = 0b111111;
-    /// Offset of the LPAE field.
+    /// Offset of the `LPAE` field.
     pub const LPAE_SHIFT: u32 = 9;
-    /// Offset of the ExT field.
+    /// Offset of the `ExT` field.
     pub const EXT_SHIFT: u32 = 12;
-    /// Offset of the AET field.
+    /// Offset of the `AET` field.
     pub const AET_SHIFT: u32 = 14;
-    /// Mask for the AET field.
+    /// Mask for the `AET` field.
     pub const AET_MASK: u64 = 0b11;
-    /// Offset of the IDS field.
+    /// Offset of the `IDS` field.
     pub const IDS_SHIFT: u32 = 24;
-    /// Offset of the A field.
+    /// Offset of the `A` field.
     pub const A_SHIFT: u32 = 31;
 
     /// Returns the value of the `ISS` field.
@@ -8747,25 +8747,25 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VmpidrEl2 {
-    /// Offset of the Aff0 field.
+    /// Offset of the `Aff0` field.
     pub const AFF0_SHIFT: u32 = 0;
-    /// Mask for the Aff0 field.
+    /// Mask for the `Aff0` field.
     pub const AFF0_MASK: u64 = 0b11111111;
-    /// Offset of the Aff1 field.
+    /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 8;
-    /// Mask for the Aff1 field.
+    /// Mask for the `Aff1` field.
     pub const AFF1_MASK: u64 = 0b11111111;
-    /// Offset of the Aff2 field.
+    /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 16;
-    /// Mask for the Aff2 field.
+    /// Mask for the `Aff2` field.
     pub const AFF2_MASK: u64 = 0b11111111;
-    /// Offset of the MT field.
+    /// Offset of the `MT` field.
     pub const MT_SHIFT: u32 = 24;
-    /// Offset of the U field.
+    /// Offset of the `U` field.
     pub const U_SHIFT: u32 = 30;
-    /// Offset of the Aff3 field.
+    /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 32;
-    /// Mask for the Aff3 field.
+    /// Mask for the `Aff3` field.
     pub const AFF3_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `Aff0` field.
@@ -8800,25 +8800,25 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VpidrEl2 {
-    /// Offset of the Revision field.
+    /// Offset of the `Revision` field.
     pub const REVISION_SHIFT: u32 = 0;
-    /// Mask for the Revision field.
+    /// Mask for the `Revision` field.
     pub const REVISION_MASK: u64 = 0b1111;
-    /// Offset of the PartNum field.
+    /// Offset of the `PartNum` field.
     pub const PARTNUM_SHIFT: u32 = 4;
-    /// Mask for the PartNum field.
+    /// Mask for the `PartNum` field.
     pub const PARTNUM_MASK: u64 = 0b111111111111;
-    /// Offset of the Architecture field.
+    /// Offset of the `Architecture` field.
     pub const ARCHITECTURE_SHIFT: u32 = 16;
-    /// Mask for the Architecture field.
+    /// Mask for the `Architecture` field.
     pub const ARCHITECTURE_MASK: u64 = 0b1111;
-    /// Offset of the Variant field.
+    /// Offset of the `Variant` field.
     pub const VARIANT_SHIFT: u32 = 20;
-    /// Mask for the Variant field.
+    /// Mask for the `Variant` field.
     pub const VARIANT_MASK: u64 = 0b1111;
-    /// Offset of the Implementer field.
+    /// Offset of the `Implementer` field.
     pub const IMPLEMENTER_SHIFT: u32 = 24;
-    /// Mask for the Implementer field.
+    /// Mask for the `Implementer` field.
     pub const IMPLEMENTER_MASK: u64 = 0b11111111;
 
     /// Returns the value of the `Revision` field.
@@ -8862,17 +8862,17 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VsesrEl2 {
-    /// Offset of the ISS field.
+    /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
-    /// Mask for the ISS field.
+    /// Mask for the `ISS` field.
     pub const ISS_MASK: u64 = 0b111111111111111111111111;
-    /// Offset of the ExT field.
+    /// Offset of the `ExT` field.
     pub const EXT_SHIFT: u32 = 12;
-    /// Offset of the AET field.
+    /// Offset of the `AET` field.
     pub const AET_SHIFT: u32 = 14;
-    /// Mask for the AET field.
+    /// Mask for the `AET` field.
     pub const AET_MASK: u64 = 0b11;
-    /// Offset of the IDS field.
+    /// Offset of the `IDS` field.
     pub const IDS_SHIFT: u32 = 24;
 
     /// Returns the value of the `ISS` field.
@@ -8939,73 +8939,73 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VtcrEl2 {
-    /// Offset of the T0SZ field.
+    /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
-    /// Mask for the T0SZ field.
+    /// Mask for the `T0SZ` field.
     pub const T0SZ_MASK: u64 = 0b111111;
-    /// Offset of the SL0 field.
+    /// Offset of the `SL0` field.
     pub const SL0_SHIFT: u32 = 6;
-    /// Mask for the SL0 field.
+    /// Mask for the `SL0` field.
     pub const SL0_MASK: u64 = 0b11;
-    /// Offset of the IRGN0 field.
+    /// Offset of the `IRGN0` field.
     pub const IRGN0_SHIFT: u32 = 8;
-    /// Mask for the IRGN0 field.
+    /// Mask for the `IRGN0` field.
     pub const IRGN0_MASK: u64 = 0b11;
-    /// Offset of the ORGN0 field.
+    /// Offset of the `ORGN0` field.
     pub const ORGN0_SHIFT: u32 = 10;
-    /// Mask for the ORGN0 field.
+    /// Mask for the `ORGN0` field.
     pub const ORGN0_MASK: u64 = 0b11;
-    /// Offset of the SH0 field.
+    /// Offset of the `SH0` field.
     pub const SH0_SHIFT: u32 = 12;
-    /// Mask for the SH0 field.
+    /// Mask for the `SH0` field.
     pub const SH0_MASK: u64 = 0b11;
-    /// Offset of the TG0 field.
+    /// Offset of the `TG0` field.
     pub const TG0_SHIFT: u32 = 14;
-    /// Mask for the TG0 field.
+    /// Mask for the `TG0` field.
     pub const TG0_MASK: u64 = 0b11;
-    /// Offset of the PS field.
+    /// Offset of the `PS` field.
     pub const PS_SHIFT: u32 = 16;
-    /// Mask for the PS field.
+    /// Mask for the `PS` field.
     pub const PS_MASK: u64 = 0b111;
-    /// Offset of the VS field.
+    /// Offset of the `VS` field.
     pub const VS_SHIFT: u32 = 19;
-    /// Offset of the HA field.
+    /// Offset of the `HA` field.
     pub const HA_SHIFT: u32 = 21;
-    /// Offset of the HD field.
+    /// Offset of the `HD` field.
     pub const HD_SHIFT: u32 = 22;
-    /// Offset of the HWU59 field.
+    /// Offset of the `HWU59` field.
     pub const HWU59_SHIFT: u32 = 25;
-    /// Offset of the HWU60 field.
+    /// Offset of the `HWU60` field.
     pub const HWU60_SHIFT: u32 = 26;
-    /// Offset of the HWU61 field.
+    /// Offset of the `HWU61` field.
     pub const HWU61_SHIFT: u32 = 27;
-    /// Offset of the HWU62 field.
+    /// Offset of the `HWU62` field.
     pub const HWU62_SHIFT: u32 = 28;
-    /// Offset of the NSW field.
+    /// Offset of the `NSW` field.
     pub const NSW_SHIFT: u32 = 29;
-    /// Offset of the NSA field.
+    /// Offset of the `NSA` field.
     pub const NSA_SHIFT: u32 = 30;
-    /// Offset of the DS field.
+    /// Offset of the `DS` field.
     pub const DS_SHIFT: u32 = 32;
-    /// Offset of the SL2 field.
+    /// Offset of the `SL2` field.
     pub const SL2_SHIFT: u32 = 33;
-    /// Offset of the AssuredOnly field.
+    /// Offset of the `AssuredOnly` field.
     pub const ASSUREDONLY_SHIFT: u32 = 34;
-    /// Offset of the TL1 field.
+    /// Offset of the `TL1` field.
     pub const TL1_SHIFT: u32 = 35;
-    /// Offset of the S2PIE field.
+    /// Offset of the `S2PIE` field.
     pub const S2PIE_SHIFT: u32 = 36;
-    /// Offset of the S2POE field.
+    /// Offset of the `S2POE` field.
     pub const S2POE_SHIFT: u32 = 37;
-    /// Offset of the D128 field.
+    /// Offset of the `D128` field.
     pub const D128_SHIFT: u32 = 38;
-    /// Offset of the GCSH field.
+    /// Offset of the `GCSH` field.
     pub const GCSH_SHIFT: u32 = 40;
-    /// Offset of the TL0 field.
+    /// Offset of the `TL0` field.
     pub const TL0_SHIFT: u32 = 41;
-    /// Offset of the HAFT field.
+    /// Offset of the `HAFT` field.
     pub const HAFT_SHIFT: u32 = 44;
-    /// Offset of the HDBSS field.
+    /// Offset of the `HDBSS` field.
     pub const HDBSS_SHIFT: u32 = 45;
 
     /// Returns the value of the `T0SZ` field.
@@ -9057,19 +9057,19 @@ bitflags! {
 
 #[cfg(feature = "el2")]
 impl VttbrEl2 {
-    /// Offset of the CnP field.
+    /// Offset of the `CnP` field.
     pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the BADDR field.
+    /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 1;
-    /// Mask for the BADDR field.
+    /// Mask for the `BADDR` field.
     pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
-    /// Offset of the SKL field.
+    /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the SKL field.
+    /// Mask for the `SKL` field.
     pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the VMID field.
+    /// Offset of the `VMID` field.
     pub const VMID_SHIFT: u32 = 48;
-    /// Mask for the VMID field.
+    /// Mask for the `VMID` field.
     pub const VMID_MASK: u64 = 0b1111111111111111;
 
     /// Returns the value of the `BADDR` field.
@@ -9100,9 +9100,9 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl ZcrEl3 {
-    /// Offset of the LEN field.
+    /// Offset of the `LEN` field.
     pub const LEN_SHIFT: u32 = 0;
-    /// Mask for the LEN field.
+    /// Mask for the `LEN` field.
     pub const LEN_MASK: u64 = 0b1111;
 
     /// Returns the value of the `LEN` field.
