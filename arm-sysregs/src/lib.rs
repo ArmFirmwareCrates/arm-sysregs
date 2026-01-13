@@ -2313,6 +2313,487 @@ impl HpfarEl2 {
 
 #[cfg(feature = "el1")]
 bitflags! {
+    /// `ICC_ASGI1R_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccAsgi1rEl1: u64 {
+        /// `IRM` bit.
+        const IRM = 1 << 40;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccAsgi1rEl1 {
+    /// Offset of the `TargetList` field.
+    pub const TARGETLIST_SHIFT: u32 = 0;
+    /// Mask for the `TargetList` field.
+    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    /// Offset of the `Aff1` field.
+    pub const AFF1_SHIFT: u32 = 16;
+    /// Mask for the `Aff1` field.
+    pub const AFF1_MASK: u64 = 0b11111111;
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 24;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b1111;
+    /// Offset of the `Aff2` field.
+    pub const AFF2_SHIFT: u32 = 32;
+    /// Mask for the `Aff2` field.
+    pub const AFF2_MASK: u64 = 0b11111111;
+    /// Offset of the `IRM` field.
+    pub const IRM_SHIFT: u32 = 40;
+    /// Offset of the `RS` field.
+    pub const RS_SHIFT: u32 = 44;
+    /// Mask for the `RS` field.
+    pub const RS_MASK: u64 = 0b1111;
+    /// Offset of the `Aff3` field.
+    pub const AFF3_SHIFT: u32 = 48;
+    /// Mask for the `Aff3` field.
+    pub const AFF3_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `TargetList` field.
+    pub const fn targetlist(self) -> u16 {
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Returns the value of the `Aff1` field.
+    pub const fn aff1(self) -> u8 {
+        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u8 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Aff2` field.
+    pub const fn aff2(self) -> u8 {
+        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `RS` field.
+    pub const fn rs(self) -> u8 {
+        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Aff3` field.
+    pub const fn aff3(self) -> u8 {
+        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_CTLR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccCtlrEl1: u64 {
+        /// `CBPR` bit.
+        const CBPR = 1 << 0;
+        /// `EOImode` bit.
+        const EOIMODE = 1 << 1;
+        /// `PMHE` bit.
+        const PMHE = 1 << 6;
+        /// `SEIS` bit.
+        const SEIS = 1 << 14;
+        /// `A3V` bit.
+        const A3V = 1 << 15;
+        /// `RSS` bit.
+        const RSS = 1 << 18;
+        /// `ExtRange` bit.
+        const EXTRANGE = 1 << 19;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccCtlrEl1 {
+    /// Offset of the `CBPR` field.
+    pub const CBPR_SHIFT: u32 = 0;
+    /// Offset of the `EOImode` field.
+    pub const EOIMODE_SHIFT: u32 = 1;
+    /// Offset of the `PMHE` field.
+    pub const PMHE_SHIFT: u32 = 6;
+    /// Offset of the `PRIbits` field.
+    pub const PRIBITS_SHIFT: u32 = 8;
+    /// Mask for the `PRIbits` field.
+    pub const PRIBITS_MASK: u64 = 0b111;
+    /// Offset of the `IDbits` field.
+    pub const IDBITS_SHIFT: u32 = 11;
+    /// Mask for the `IDbits` field.
+    pub const IDBITS_MASK: u64 = 0b111;
+    /// Offset of the `SEIS` field.
+    pub const SEIS_SHIFT: u32 = 14;
+    /// Offset of the `A3V` field.
+    pub const A3V_SHIFT: u32 = 15;
+    /// Offset of the `RSS` field.
+    pub const RSS_SHIFT: u32 = 18;
+    /// Offset of the `ExtRange` field.
+    pub const EXTRANGE_SHIFT: u32 = 19;
+
+    /// Returns the value of the `PRIbits` field.
+    pub const fn pribits(self) -> u8 {
+        ((self.bits() >> Self::PRIBITS_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `IDbits` field.
+    pub const fn idbits(self) -> u8 {
+        ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_EOIR0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccEoir0El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccEoir0El1 {
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 0;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u32 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_EOIR1_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccEoir1El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccEoir1El1 {
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 0;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u32 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_HPPIR0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccHppir0El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccHppir0El1 {
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 0;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u32 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_HPPIR1_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccHppir1El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccHppir1El1 {
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 0;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u32 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_IAR0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccIar0El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccIar0El1 {
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 0;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u32 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_IAR1_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccIar1El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccIar1El1 {
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 0;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u32 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_IGRPEN0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccIgrpen0El1: u64 {
+        /// `Enable` bit.
+        const ENABLE = 1 << 0;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccIgrpen0El1 {
+    /// Offset of the `Enable` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_IGRPEN1_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccIgrpen1El1: u64 {
+        /// `Enable` bit.
+        const ENABLE = 1 << 0;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccIgrpen1El1 {
+    /// Offset of the `Enable` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+}
+
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `ICC_IGRPEN1_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccIgrpen1El3: u64 {
+        /// `EnableGrp1NS` bit.
+        const ENABLEGRP1NS = 1 << 0;
+        /// `EnableGrp1S` bit.
+        const ENABLEGRP1S = 1 << 1;
+    }
+}
+
+#[cfg(feature = "el3")]
+impl IccIgrpen1El3 {
+    /// Offset of the `EnableGrp1NS` field.
+    pub const ENABLEGRP1NS_SHIFT: u32 = 0;
+    /// Offset of the `EnableGrp1S` field.
+    pub const ENABLEGRP1S_SHIFT: u32 = 1;
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_PMR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccPmrEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccPmrEl1 {
+    /// Offset of the `Priority` field.
+    pub const PRIORITY_SHIFT: u32 = 0;
+    /// Mask for the `Priority` field.
+    pub const PRIORITY_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `Priority` field.
+    pub const fn priority(self) -> u8 {
+        ((self.bits() >> Self::PRIORITY_SHIFT) & 0b11111111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_SGI0R_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccSgi0rEl1: u64 {
+        /// `IRM` bit.
+        const IRM = 1 << 40;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccSgi0rEl1 {
+    /// Offset of the `TargetList` field.
+    pub const TARGETLIST_SHIFT: u32 = 0;
+    /// Mask for the `TargetList` field.
+    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    /// Offset of the `Aff1` field.
+    pub const AFF1_SHIFT: u32 = 16;
+    /// Mask for the `Aff1` field.
+    pub const AFF1_MASK: u64 = 0b11111111;
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 24;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b1111;
+    /// Offset of the `Aff2` field.
+    pub const AFF2_SHIFT: u32 = 32;
+    /// Mask for the `Aff2` field.
+    pub const AFF2_MASK: u64 = 0b11111111;
+    /// Offset of the `IRM` field.
+    pub const IRM_SHIFT: u32 = 40;
+    /// Offset of the `RS` field.
+    pub const RS_SHIFT: u32 = 44;
+    /// Mask for the `RS` field.
+    pub const RS_MASK: u64 = 0b1111;
+    /// Offset of the `Aff3` field.
+    pub const AFF3_SHIFT: u32 = 48;
+    /// Mask for the `Aff3` field.
+    pub const AFF3_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `TargetList` field.
+    pub const fn targetlist(self) -> u16 {
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Returns the value of the `Aff1` field.
+    pub const fn aff1(self) -> u8 {
+        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u8 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Aff2` field.
+    pub const fn aff2(self) -> u8 {
+        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `RS` field.
+    pub const fn rs(self) -> u8 {
+        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Aff3` field.
+    pub const fn aff3(self) -> u8 {
+        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_SGI1R_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccSgi1rEl1: u64 {
+        /// `IRM` bit.
+        const IRM = 1 << 40;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccSgi1rEl1 {
+    /// Offset of the `TargetList` field.
+    pub const TARGETLIST_SHIFT: u32 = 0;
+    /// Mask for the `TargetList` field.
+    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    /// Offset of the `Aff1` field.
+    pub const AFF1_SHIFT: u32 = 16;
+    /// Mask for the `Aff1` field.
+    pub const AFF1_MASK: u64 = 0b11111111;
+    /// Offset of the `INTID` field.
+    pub const INTID_SHIFT: u32 = 24;
+    /// Mask for the `INTID` field.
+    pub const INTID_MASK: u64 = 0b1111;
+    /// Offset of the `Aff2` field.
+    pub const AFF2_SHIFT: u32 = 32;
+    /// Mask for the `Aff2` field.
+    pub const AFF2_MASK: u64 = 0b11111111;
+    /// Offset of the `IRM` field.
+    pub const IRM_SHIFT: u32 = 40;
+    /// Offset of the `RS` field.
+    pub const RS_SHIFT: u32 = 44;
+    /// Mask for the `RS` field.
+    pub const RS_MASK: u64 = 0b1111;
+    /// Offset of the `Aff3` field.
+    pub const AFF3_SHIFT: u32 = 48;
+    /// Mask for the `Aff3` field.
+    pub const AFF3_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `TargetList` field.
+    pub const fn targetlist(self) -> u16 {
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Returns the value of the `Aff1` field.
+    pub const fn aff1(self) -> u8 {
+        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `INTID` field.
+    pub const fn intid(self) -> u8 {
+        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Aff2` field.
+    pub const fn aff2(self) -> u8 {
+        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `RS` field.
+    pub const fn rs(self) -> u8 {
+        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Aff3` field.
+    pub const fn aff3(self) -> u8 {
+        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
     /// `ICC_SRE_EL1` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -8718,6 +9199,34 @@ read_write_sysreg!(hfgwtr_el2: s3_4_c1_c1_5, u64: HfgwtrEl2, safe_read, fake::SY
 read_write_sysreg!(hpfar_el2, u64: HpfarEl2, safe_read, fake::SYSREGS);
 #[cfg(feature = "el2")]
 read_write_sysreg!(hstr_el2, u64, safe_read, safe_write, fake::SYSREGS);
+#[cfg(feature = "el1")]
+write_sysreg!(icc_asgi1r_el1: s3_0_c12_c11_6, u64: IccAsgi1rEl1, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_write_sysreg!(icc_ctlr_el1: s3_0_c12_c12_4, u64: IccCtlrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
+write_sysreg!(icc_eoir0_el1: s3_0_c12_c8_1, u64: IccEoir0El1, fake::SYSREGS);
+#[cfg(feature = "el1")]
+write_sysreg!(icc_eoir1_el1: s3_0_c12_c12_1, u64: IccEoir1El1, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_sysreg!(icc_hppir0_el1: s3_0_c12_c8_2, u64: IccHppir0El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_sysreg!(icc_hppir1_el1: s3_0_c12_c12_2, u64: IccHppir1El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_sysreg!(icc_iar0_el1: s3_0_c12_c8_0, u64: IccIar0El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_sysreg!(icc_iar1_el1: s3_0_c12_c12_0, u64: IccIar1El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_write_sysreg!(icc_igrpen0_el1: s3_0_c12_c12_6, u64: IccIgrpen0El1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_write_sysreg!(icc_igrpen1_el1: s3_0_c12_c12_7, u64: IccIgrpen1El1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
+read_write_sysreg!(icc_igrpen1_el3: s3_6_c12_c12_7, u64: IccIgrpen1El3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_write_sysreg!(icc_pmr_el1: s3_0_c4_c6_0, u64: IccPmrEl1, safe_read, fake::SYSREGS);
+#[cfg(feature = "el1")]
+write_sysreg!(icc_sgi0r_el1: s3_0_c12_c11_7, u64: IccSgi0rEl1, fake::SYSREGS);
+#[cfg(feature = "el1")]
+write_sysreg!(icc_sgi1r_el1: s3_0_c12_c11_5, u64: IccSgi1rEl1, fake::SYSREGS);
 #[cfg(feature = "el1")]
 read_write_sysreg!(icc_sre_el1: s3_0_c12_c12_5, u64: IccSreEl1, safe_read, fake::SYSREGS);
 #[cfg(feature = "el2")]
