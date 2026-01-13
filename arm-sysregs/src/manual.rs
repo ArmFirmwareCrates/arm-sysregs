@@ -376,7 +376,7 @@ pub enum CacheType {
     Unified = 0b100,
 }
 
-/// Wrapper type for describing cache level in a human readable format, i.e. L3 cache = `CacheLevel(3)`
+/// Wrapper type for describing cache level in a human readable format, e.g. L3 cache = `CacheLevel(3)`
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct CacheLevel(pub(crate) u8);
 

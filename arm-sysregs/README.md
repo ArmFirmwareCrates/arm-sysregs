@@ -6,6 +6,18 @@ Helper crate to access Arm A-profile CPU system registers.
 
 ## Feature flags
 
+The system registers for each Exception Level are guarded by a corresponding feature flag. Each EL
+feature implies the lower ELs.
+
+- `el3` gives access to all supported system registers.
+- `el2` gives access to EL2, EL1 and EL0 system registers.
+- `el1` gives access to EL1 and EL0 system registers.
+
+Without any feature flags only EL0 system registers are included.
+
+For unit testing, the `fakes` feature can be used. This replaces the assembly code for reading and
+writing system registers with accesses to a set of fake system registers, stored in `fake::SYSREGS`.
+
 ## Future plans
 
 ## License

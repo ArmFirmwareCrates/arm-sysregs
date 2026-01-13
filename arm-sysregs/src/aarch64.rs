@@ -16,7 +16,7 @@ macro_rules! read_sysreg {
             #[inline(always)]
             pub fn [< read_ $sysreg >]() -> $type {
                 let value;
-                // SAFETY: The macro call site's author (i.e. see below) has determined that it is
+                // SAFETY: The macro call site's author (see below) has determined that it is
                 // always safe to read the given `$sysreg.`
                 unsafe {
                     core::arch::asm!(
@@ -58,7 +58,7 @@ macro_rules! read_sysreg {
             #[inline(always)]
             pub fn [< read_ $sysreg >]() -> $bitflags_type {
                 let value: $type;
-                // SAFETY: The macro call site's author (i.e. see below) has determined that it is
+                // SAFETY: The macro call site's author (see below) has determined that it is
                 // always safe to read the given `$sysreg.`
                 unsafe {
                     core::arch::asm!(
@@ -121,7 +121,7 @@ macro_rules! write_sysreg {
             #[doc = "` system register."]
             #[inline(always)]
             pub fn [< write_ $sysreg >](value: $type) {
-                // SAFETY: The macro call site's author (i.e. see below) has determined that it is safe
+                // SAFETY: The macro call site's author (see below) has determined that it is safe
                 // to write any value to the given `$sysreg.`
                 unsafe {
                     core::arch::asm!(
@@ -163,7 +163,7 @@ macro_rules! write_sysreg {
             #[inline(always)]
             pub fn [< write_ $sysreg >](value: $bitflags_type) {
                 let value: $type = value.bits();
-                // SAFETY: The macro call site's author (i.e. see below) has determined that it is safe
+                // SAFETY: The macro call site's author (see below) has determined that it is safe
                 // to write any value to the given `$sysreg.`
                 unsafe {
                     core::arch::asm!(
