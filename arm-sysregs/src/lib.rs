@@ -80,10 +80,19 @@ impl CcsidrEl1 {
     pub const LINESIZE_SHIFT: u32 = 0;
     /// Mask for the LineSize field.
     pub const LINESIZE_MASK: u64 = 0b111;
+    /// Offset of the Associativity field.
+    pub const ASSOCIATIVITY_SHIFT: u32 = 3;
+    /// Mask for the Associativity field.
+    pub const ASSOCIATIVITY_MASK: u64 = 0b111111111111111111111;
 
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
         ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `Associativity` field.
+    pub const fn associativity(self) -> u32 {
+        ((self.bits() >> Self::ASSOCIATIVITY_SHIFT) & 0b111111111111111111111) as u32
     }
 }
 
@@ -1211,8 +1220,6 @@ bitflags! {
         const VI = 1 << 7;
         /// `VSE` bit.
         const VSE = 1 << 8;
-        /// `FB` bit.
-        const FB = 1 << 9;
         /// `DC` bit.
         const DC = 1 << 12;
         /// `TWI` bit.
@@ -1328,8 +1335,6 @@ impl HcrEl2 {
     pub const VI_SHIFT: u32 = 7;
     /// Offset of the VSE field.
     pub const VSE_SHIFT: u32 = 8;
-    /// Offset of the FB field.
-    pub const FB_SHIFT: u32 = 9;
     /// Offset of the BSU field.
     pub const BSU_SHIFT: u32 = 10;
     /// Mask for the BSU field.
@@ -4098,12 +4103,6 @@ bitflags! {
         const STE = 1 << 18;
         /// Trap Trace Filter controls. Traps use of the Trace Filter control registers at EL2 and EL1 to EL3.
         const TTRF = 1 << 19;
-        /// `EDAD` bit.
-        const EDAD = 1 << 20;
-        /// `EPMAD` bit.
-        const EPMAD = 1 << 21;
-        /// `ETAD` bit.
-        const ETAD = 1 << 22;
         /// Secure Cycle Counter Disable. Prohibits PMCCNTR_EL0 from counting in Secure state.
         const SCCD = 1 << 23;
         /// Non-secure Trace Buffer Extended. Together with MDCR_EL3.NSTB, controls the trace buffer owning Security state and accesses to trace buffer System registers from EL2 and EL1.
@@ -4159,10 +4158,6 @@ impl MdcrEl3 {
     pub const TDOSA_SHIFT: u32 = 10;
     /// Offset of the NSPBE field.
     pub const NSPBE_SHIFT: u32 = 11;
-    /// Offset of the NSPB field.
-    pub const NSPB_SHIFT: u32 = 12;
-    /// Mask for the NSPB field.
-    pub const NSPB_MASK: u64 = 0b11;
     /// Offset of the SPD32 field.
     pub const SPD32_SHIFT: u32 = 14;
     /// Mask for the SPD32 field.
@@ -4175,18 +4170,8 @@ impl MdcrEl3 {
     pub const STE_SHIFT: u32 = 18;
     /// Offset of the TTRF field.
     pub const TTRF_SHIFT: u32 = 19;
-    /// Offset of the EDAD field.
-    pub const EDAD_SHIFT: u32 = 20;
-    /// Offset of the EPMAD field.
-    pub const EPMAD_SHIFT: u32 = 21;
-    /// Offset of the ETAD field.
-    pub const ETAD_SHIFT: u32 = 22;
     /// Offset of the SCCD field.
     pub const SCCD_SHIFT: u32 = 23;
-    /// Offset of the NSTB field.
-    pub const NSTB_SHIFT: u32 = 24;
-    /// Mask for the NSTB field.
-    pub const NSTB_MASK: u64 = 0b11;
     /// Offset of the NSTBE field.
     pub const NSTBE_SHIFT: u32 = 26;
     /// Offset of the TDCC field.
@@ -4246,19 +4231,9 @@ impl MdcrEl3 {
     /// Offset of the EnPMS4 field.
     pub const ENPMS4_SHIFT: u32 = 55;
 
-    /// Returns the value of the `NSPB` field.
-    pub const fn nspb(self) -> u8 {
-        ((self.bits() >> Self::NSPB_SHIFT) & 0b11) as u8
-    }
-
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
         ((self.bits() >> Self::SPD32_SHIFT) & 0b11) as u8
-    }
-
-    /// Returns the value of the `NSTB` field.
-    pub const fn nstb(self) -> u8 {
-        ((self.bits() >> Self::NSTB_SHIFT) & 0b11) as u8
     }
 
     /// Returns the value of the `PMSSE` field.
@@ -4775,6 +4750,10 @@ impl MpamidrEl1 {
     pub const HAS_ALT_ID_SHIFT: u32 = 21;
     /// Offset of the HAS_INSTR_ALT_ID field.
     pub const HAS_INSTR_ALT_ID_SHIFT: u32 = 22;
+    /// Offset of the PMG_MAX field.
+    pub const PMG_MAX_SHIFT: u32 = 32;
+    /// Mask for the PMG_MAX field.
+    pub const PMG_MAX_MASK: u64 = 0b1111111111111111;
     /// Offset of the HAS_BW_CTRL field.
     pub const HAS_BW_CTRL_SHIFT: u32 = 56;
     /// Offset of the HAS_ALTSP field.
@@ -4798,6 +4777,11 @@ impl MpamidrEl1 {
     /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
     pub const fn vpmr_max(self) -> u8 {
         ((self.bits() >> Self::VPMR_MAX_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `PMG_MAX` field.
+    pub const fn pmg_max(self) -> u16 {
+        ((self.bits() >> Self::PMG_MAX_SHIFT) & 0b1111111111111111) as u16
     }
 }
 
@@ -5544,8 +5528,6 @@ bitflags! {
     pub struct ScrEl3: u64 {
         /// RES1 bits in the `SCR_EL3` register.
         const RES1 = 0b110000;
-        /// Non-secure.
-        const NS = 1 << 0;
         /// Take physical IRQs at EL3.
         const IRQ = 1 << 1;
         /// Take physical FIQs at EL3.
@@ -5661,8 +5643,6 @@ bitflags! {
 
 #[cfg(feature = "el3")]
 impl ScrEl3 {
-    /// Offset of the NS field.
-    pub const NS_SHIFT: u32 = 0;
     /// Offset of the IRQ field.
     pub const IRQ_SHIFT: u32 = 1;
     /// Offset of the FIQ field.
@@ -6036,12 +6016,8 @@ bitflags! {
         const SA = 1 << 3;
         /// `SA0` bit.
         const SA0 = 1 << 4;
-        /// `CP15BEN` bit.
-        const CP15BEN = 1 << 5;
         /// `nAA` bit.
         const NAA = 1 << 6;
-        /// `SED` bit.
-        const SED = 1 << 8;
         /// `UMA` bit.
         const UMA = 1 << 9;
         /// `EnRCTX` bit.
@@ -6135,12 +6111,8 @@ impl SctlrEl2 {
     pub const SA_SHIFT: u32 = 3;
     /// Offset of the SA0 field.
     pub const SA0_SHIFT: u32 = 4;
-    /// Offset of the CP15BEN field.
-    pub const CP15BEN_SHIFT: u32 = 5;
     /// Offset of the nAA field.
     pub const NAA_SHIFT: u32 = 6;
-    /// Offset of the SED field.
-    pub const SED_SHIFT: u32 = 8;
     /// Offset of the UMA field.
     pub const UMA_SHIFT: u32 = 9;
     /// Offset of the EnRCTX field.
@@ -7136,8 +7108,6 @@ bitflags! {
         const TCMA0 = 1 << 57;
         /// `TCMA1` bit.
         const TCMA1 = 1 << 58;
-        /// `DS` bit.
-        const DS = 1 << 59;
         /// `MTX0` bit.
         const MTX0 = 1 << 60;
         /// `MTX1` bit.
@@ -7243,8 +7213,6 @@ impl TcrEl1 {
     pub const TCMA0_SHIFT: u32 = 57;
     /// Offset of the TCMA1 field.
     pub const TCMA1_SHIFT: u32 = 58;
-    /// Offset of the DS field.
-    pub const DS_SHIFT: u32 = 59;
     /// Offset of the MTX0 field.
     pub const MTX0_SHIFT: u32 = 60;
     /// Offset of the MTX1 field.
@@ -7610,8 +7578,6 @@ bitflags! {
         const TBID = 1 << 29;
         /// `TCMA` bit.
         const TCMA = 1 << 30;
-        /// `DS` bit.
-        const DS = 1 << 32;
         /// `MTX` bit.
         const MTX = 1 << 33;
         /// `PnCH` bit.
@@ -7683,8 +7649,6 @@ impl TcrEl3 {
     pub const TBID_SHIFT: u32 = 29;
     /// Offset of the TCMA field.
     pub const TCMA_SHIFT: u32 = 30;
-    /// Offset of the DS field.
-    pub const DS_SHIFT: u32 = 32;
     /// Offset of the MTX field.
     pub const MTX_SHIFT: u32 = 33;
     /// Offset of the PnCH field.
@@ -8441,10 +8405,6 @@ impl VtcrEl2 {
     pub const T0SZ_SHIFT: u32 = 0;
     /// Mask for the T0SZ field.
     pub const T0SZ_MASK: u64 = 0b111111;
-    /// Offset of the SL0 field.
-    pub const SL0_SHIFT: u32 = 6;
-    /// Mask for the SL0 field.
-    pub const SL0_MASK: u64 = 0b11;
     /// Offset of the IRGN0 field.
     pub const IRGN0_SHIFT: u32 = 8;
     /// Mask for the IRGN0 field.
@@ -8509,11 +8469,6 @@ impl VtcrEl2 {
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
-    }
-
-    /// Returns the value of the `SL0` field.
-    pub const fn sl0(self) -> u8 {
-        ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
     }
 
     /// Returns the value of the `IRGN0` field.

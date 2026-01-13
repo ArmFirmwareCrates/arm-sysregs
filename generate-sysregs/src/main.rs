@@ -2,16 +2,18 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 mod config;
+mod enums;
 mod json_input;
 mod output;
 
 use crate::{
     config::Config,
+    enums::identify_enums,
     json_input::register_entries_to_register_infos,
     output::{write_fake, write_lib},
 };
-use arm_sysregs_json::RegisterEntry;
-use clap::Parser;
+use arm_sysregs_json::{RegisterEntry, Values};
+use clap::{Parser, Subcommand};
 use eyre::Report;
 use log::{info, warn};
 use std::{
@@ -24,34 +26,58 @@ fn main() -> Result<(), Report> {
     pretty_env_logger::init();
     let args = Args::parse();
     let config: Config = toml::from_str(&read_to_string(&args.config_toml)?)?;
-    let registers =
-        serde_json::from_str::<Vec<RegisterEntry>>(&read_to_string(&args.registers_json)?)?;
+    let register_infos = parse_registers(&config, args.registers_json, args.all)?;
+
+    match args.command {
+        Commands::Generate { output_directory } => {
+            let output_lib = File::create(output_directory.join("lib.rs"))?;
+            let output_fake = File::create(output_directory.join("fake").join("generated.rs"))?;
+
+            warn_missing(&register_infos, &config);
+            write_lib(&output_lib, &register_infos)?;
+            write_fake(&output_fake, &register_infos)?;
+        }
+        Commands::Enums {
+            generate_stubs,
+            skip_existing,
+        } => {
+            identify_enums(&register_infos, generate_stubs, skip_existing);
+        }
+    }
+
+    Ok(())
+}
+
+fn parse_registers(
+    config: &Config,
+    registers_json: PathBuf,
+    use_all_registers: bool,
+) -> Result<Vec<RegisterInfo>, Report> {
+    let registers = serde_json::from_str::<Vec<RegisterEntry>>(&read_to_string(&registers_json)?)?;
     println!(
         "Read {} system registers from {}",
         registers.len(),
-        args.registers_json.display()
+        registers_json.display()
     );
-    let output_lib = File::create(args.output_directory.join("lib.rs"))?;
-    let output_fake = File::create(args.output_directory.join("fake").join("generated.rs"))?;
-    let registers_filter = if args.all {
+
+    let registers_filter = if use_all_registers {
         None
     } else {
         Some(config.registers.keys().collect::<Vec<_>>())
     };
     let mut register_infos =
         register_entries_to_register_infos(&registers, registers_filter.as_deref());
+
     for register in &mut register_infos {
         remove_clashes(register);
-        add_details(register, &config);
+        add_details(register, config);
         remove_over_64bit(register);
     }
+
     register_infos.sort_by_cached_key(|register| register.name.clone());
     register_infos.retain(|register| register.width > 0);
-    warn_missing(&register_infos, &config);
-    write_lib(&output_lib, &register_infos)?;
-    write_fake(&output_fake, &register_infos)?;
 
-    Ok(())
+    Ok(register_infos)
 }
 
 /// Logs warnings for any registers which are present in the config file but not the JSON file.
@@ -70,18 +96,20 @@ fn warn_missing(register_infos: &[RegisterInfo], config: &Config) {
 }
 
 /// Removes any fields which have the same name as each other, and only keep one copy of any that
-/// are exact duplicates.
+/// have the same main attributes (see [`RegisterField::is_incompatible_with`]).
 fn remove_clashes(register: &mut RegisterInfo) {
     register
         .fields
         .sort_by_cached_key(|field| (field.index, field.name.clone()));
-    register.fields.dedup();
+    register
+        .fields
+        .dedup_by_key(|field| (field.index, field.name.clone()));
 
     let fields_copy = register.fields.clone();
     register.fields.retain(|field| {
         let clash = fields_copy
             .iter()
-            .any(|other_field| field != other_field && field.name == other_field.name);
+            .any(|other_field| field.is_incompatible_with(other_field));
         if clash {
             if field.width == 1 {
                 info!(
@@ -159,6 +187,21 @@ struct RegisterField {
     pub writable: bool,
     /// Information about the array, if it is an array field.
     pub array_info: Option<ArrayInfo>,
+    /// Possible values that this field can hold, if specified.
+    pub values: Option<Values>,
+}
+
+impl RegisterField {
+    /// Whether `self` and `other` are incompatible and should be ignored by generation.
+    ///
+    /// Two registers are considered to incompatible if they have the same name but their main
+    /// attributes (position, width or writability) differ.
+    fn is_incompatible_with(&self, other: &Self) -> bool {
+        self.name == other.name
+            && (self.index != other.index
+                || self.width != other.width
+                || self.writable != other.writable)
+    }
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -212,17 +255,37 @@ enum Safety {
     Unsafe,
 }
 
+#[derive(Subcommand, Clone, Debug)]
+enum Commands {
+    /// Generate all system registers.
+    Generate {
+        /// Path to output directory.
+        output_directory: PathBuf,
+    },
+    /// Scans the register values to identify fields that could be represented as Rust enums.
+    Enums {
+        /// Generate a stub implementation for the encountered enums, along with the corresponding
+        /// configuration.
+        #[arg(long)]
+        generate_stubs: bool,
+        /// Skip all fields which have a type assigned in the configuration file.
+        #[arg(long)]
+        skip_existing: bool,
+    },
+}
+
 #[derive(Clone, Debug, Parser)]
 struct Args {
     /// Path to config TOML file.
     config_toml: PathBuf,
     /// Path to JSON system registers file.
     registers_json: PathBuf,
-    /// Path to output directory.
-    output_directory: PathBuf,
     /// Include all registers from the JSON file, not just those in the config file.
     #[arg(long)]
     all: bool,
+    /// Operation to execute.
+    #[command(subcommand)]
+    command: Commands,
 }
 
 /// Returns a value with the given number of 1 bits, starting at the least significant bit.
@@ -252,6 +315,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     type_name: None,
+                    values: None,
                 },
                 RegisterField {
                     name: "FOO".to_string(),
@@ -261,6 +325,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     type_name: None,
+                    values: None,
                 },
                 RegisterField {
                     name: "BAR".to_string(),
@@ -270,6 +335,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     type_name: None,
+                    values: None,
                 },
                 RegisterField {
                     name: "BAZ".to_string(),
@@ -279,6 +345,7 @@ mod tests {
                     writable: false,
                     array_info: None,
                     type_name: None,
+                    values: None,
                 },
             ],
             ..Default::default()
@@ -296,6 +363,7 @@ mod tests {
                         writable: false,
                         array_info: None,
                         type_name: None,
+                        values: None,
                     },
                     RegisterField {
                         name: "BAZ".to_string(),
@@ -305,6 +373,7 @@ mod tests {
                         writable: false,
                         array_info: None,
                         type_name: None,
+                        values: None,
                     },
                 ],
                 ..Default::default()

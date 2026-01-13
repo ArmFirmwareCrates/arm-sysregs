@@ -8,7 +8,7 @@ use crate::{ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones
 use arm_sysregs_json::{
     Accessor, ArrayField, AstBinaryOp, AstBool, AstFunction, AstIdentifier, ConditionalField,
     ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Register, RegisterEntry,
-    Value, VectorField,
+    Value, Values, VectorField,
 };
 use log::{info, trace};
 use std::{num::ParseIntError, sync::LazyLock};
@@ -267,6 +267,7 @@ impl RegisterField {
                 writable: true,
                 array_info: None,
                 type_name: None,
+                values: field.values.clone(),
             })
         } else {
             info!(
@@ -292,6 +293,7 @@ impl RegisterField {
                         index_variable: field.index_variable.clone(),
                     }),
                     type_name: None,
+                    values: field.values.clone(),
                 })
             } else {
                 info!(
@@ -320,6 +322,9 @@ impl RegisterField {
                 writable: false,
                 array_info: None,
                 type_name: None,
+                values: Some(Values {
+                    values: vec![field.value.clone()],
+                }),
             })
         } else {
             info!(
@@ -341,6 +346,7 @@ impl RegisterField {
                 writable: true,
                 array_info: None,
                 type_name: None,
+                values: None,
             })
         } else {
             info!(
@@ -366,6 +372,7 @@ impl RegisterField {
                         index_variable: field.index_variable.clone(),
                     }),
                     type_name: None,
+                    values: field.values.clone(),
                 })
             } else {
                 info!(
