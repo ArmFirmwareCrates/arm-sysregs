@@ -16,6 +16,24 @@
       "message": "Doesn\u0027t this also need to include the `width` and `writable`? It should be checking the same attributes as `is_incompatible_with` checks.",
       "revId": "cf96b14f52a2e4f06deaea09f727a06d45f000ad",
       "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60641fe0_1b1ce8cf",
+        "filename": "generate-sysregs/src/main.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2026-01-13T16:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cc8a0a3_37906e0a",
+      "revId": "cf96b14f52a2e4f06deaea09f727a06d45f000ad",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
     }
   ]
 }
