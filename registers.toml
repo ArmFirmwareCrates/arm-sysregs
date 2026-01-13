@@ -63,6 +63,8 @@ description = "Cache Type Register."
 [registers.CTR_EL0.field_descriptions]
 DminLine = "Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE."
 
+[registers.CurrentEL]
+
 [registers.DISR_EL1]
 write = "safe"
 
@@ -133,6 +135,21 @@ MSCEn = "Enables execution of Memory Set and Memory Copy instructions at EL1 or 
 [registers.HPFAR_EL2]
 [registers.HSTR_EL2]
 write = "safe"
+
+[registers.ICC_HPPIR0_EL1]
+[registers.ICC_HPPIR1_EL1]
+[registers.ICC_IAR0_EL1]
+[registers.ICC_IAR1_EL1]
+[registers.ICC_PMR_EL1]
+[registers.ICC_CTLR_EL1]
+[registers.ICC_EOIR0_EL1]
+[registers.ICC_EOIR1_EL1]
+[registers.ICC_IGRPEN0_EL1]
+[registers.ICC_IGRPEN1_EL1]
+[registers.ICC_IGRPEN1_EL3]
+[registers.ICC_ASGI1R_EL1]
+[registers.ICC_SGI1R_EL1]
+[registers.ICC_SGI0R_EL1]
 
 [registers.ICC_SRE_EL1.field_descriptions]
 SRE = "Enable the system register interface."

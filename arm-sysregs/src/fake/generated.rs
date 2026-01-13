@@ -4,13 +4,15 @@
 #[cfg(feature = "el1")]
 use crate::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1,
-    ElrEl1, EsrEl1, FarEl1, GcrEl1, GcscrEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1,
-    IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1,
-    IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1,
-    RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1,
-    Ttbr1El1, VbarEl1,
+    ElrEl1, EsrEl1, FarEl1, GcrEl1, GcscrEl1, IccAsgi1rEl1, IccCtlrEl1, IccEoir0El1, IccEoir1El1,
+    IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1, IccIgrpen1El1, IccPmrEl1,
+    IccSgi0rEl1, IccSgi1rEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1,
+    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1,
+    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1,
+    SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1,
+    VbarEl1,
 };
-use crate::{CntfrqEl0, CtrEl0, Dit, PmcrEl0, TpidrEl0, TpidrroEl0};
+use crate::{CntfrqEl0, CtrEl0, Currentel, Dit, PmcrEl0, TpidrEl0, TpidrroEl0};
 #[cfg(feature = "el2")]
 use crate::{
     CnthctlEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, EsrEl2, FarEl2, GcscrEl2, HcrEl2,
@@ -22,8 +24,8 @@ use crate::{
 };
 #[cfg(feature = "el3")]
 use crate::{
-    CptrEl3, EsrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, SctlrEl3, SmcrEl3, SpsrEl3,
-    TcrEl3, Ttbr0El3, ZcrEl3,
+    CptrEl3, EsrEl3, IccIgrpen1El3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, SctlrEl3,
+    SmcrEl3, SpsrEl3, TcrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -93,6 +95,8 @@ pub struct SystemRegisters {
     pub csselr_el1: CsselrEl1,
     /// Fake value for the `CTR_EL0` system register.
     pub ctr_el0: CtrEl0,
+    /// Fake value for the `CurrentEL` system register.
+    pub currentel: Currentel,
     #[cfg(feature = "el1")]
     /// Fake value for the `DISR_EL1` system register.
     pub disr_el1: DisrEl1,
@@ -161,6 +165,48 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `HSTR_EL2` system register.
     pub hstr_el2: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_ASGI1R_EL1` system register.
+    pub icc_asgi1r_el1: IccAsgi1rEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_CTLR_EL1` system register.
+    pub icc_ctlr_el1: IccCtlrEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_EOIR0_EL1` system register.
+    pub icc_eoir0_el1: IccEoir0El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_EOIR1_EL1` system register.
+    pub icc_eoir1_el1: IccEoir1El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_HPPIR0_EL1` system register.
+    pub icc_hppir0_el1: IccHppir0El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_HPPIR1_EL1` system register.
+    pub icc_hppir1_el1: IccHppir1El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IAR0_EL1` system register.
+    pub icc_iar0_el1: IccIar0El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IAR1_EL1` system register.
+    pub icc_iar1_el1: IccIar1El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IGRPEN0_EL1` system register.
+    pub icc_igrpen0_el1: IccIgrpen0El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_IGRPEN1_EL1` system register.
+    pub icc_igrpen1_el1: IccIgrpen1El1,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `ICC_IGRPEN1_EL3` system register.
+    pub icc_igrpen1_el3: IccIgrpen1El3,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_PMR_EL1` system register.
+    pub icc_pmr_el1: IccPmrEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_SGI0R_EL1` system register.
+    pub icc_sgi0r_el1: IccSgi0rEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_SGI1R_EL1` system register.
+    pub icc_sgi1r_el1: IccSgi1rEl1,
     #[cfg(feature = "el1")]
     /// Fake value for the `ICC_SRE_EL1` system register.
     pub icc_sre_el1: IccSreEl1,
@@ -433,6 +479,7 @@ impl SystemRegisters {
             #[cfg(feature = "el1")]
             csselr_el1: CsselrEl1::empty(),
             ctr_el0: CtrEl0::empty(),
+            currentel: Currentel::empty(),
             #[cfg(feature = "el1")]
             disr_el1: DisrEl1::empty(),
             dit: Dit::empty(),
@@ -478,6 +525,34 @@ impl SystemRegisters {
             hpfar_el2: HpfarEl2::empty(),
             #[cfg(feature = "el2")]
             hstr_el2: 0,
+            #[cfg(feature = "el1")]
+            icc_asgi1r_el1: IccAsgi1rEl1::empty(),
+            #[cfg(feature = "el1")]
+            icc_ctlr_el1: IccCtlrEl1::empty(),
+            #[cfg(feature = "el1")]
+            icc_eoir0_el1: IccEoir0El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_eoir1_el1: IccEoir1El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_hppir0_el1: IccHppir0El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_hppir1_el1: IccHppir1El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_iar0_el1: IccIar0El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_iar1_el1: IccIar1El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_igrpen0_el1: IccIgrpen0El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_igrpen1_el1: IccIgrpen1El1::empty(),
+            #[cfg(feature = "el3")]
+            icc_igrpen1_el3: IccIgrpen1El3::empty(),
+            #[cfg(feature = "el1")]
+            icc_pmr_el1: IccPmrEl1::empty(),
+            #[cfg(feature = "el1")]
+            icc_sgi0r_el1: IccSgi0rEl1::empty(),
+            #[cfg(feature = "el1")]
+            icc_sgi1r_el1: IccSgi1rEl1::empty(),
             #[cfg(feature = "el1")]
             icc_sre_el1: IccSreEl1::empty(),
             #[cfg(feature = "el2")]
