@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d675be5d_a30aa39c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000159
+      },
+      "writtenOn": "2026-01-14T13:01:29Z",
+      "side": 1,
+      "message": "I\u0027m somewhat ambivalent about including GIC register definitions in this crate. Although these are Arm v8-A system registers, they\u0027re owned by the GIC and defined in the GIC specification.\nI would strongly discourage accessing these registers directly through these functions, we should steer the users to the arm-gic crate instead.\nMatthew had a patch for redefining the sysreg types: https://review.trustedfirmware.org/c/RF-A/rusted-firmware-a/+/44725\nThe arm-sysreg crate should expose these accessors using opaque u32/u64 types, so the values can be saved and restored like any other register. The arm-gic crate could then define meaningful, strongly-typed wrappers for those values.",
+      "revId": "764b5438d0c1523b2206058530338b908a3848b1",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
