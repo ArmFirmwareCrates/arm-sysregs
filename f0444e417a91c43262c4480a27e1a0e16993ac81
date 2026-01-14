@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2cc59a_e0d44a09",
+        "filename": "arm-sysregs/Cargo.toml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001773
+      },
+      "writtenOn": "2026-01-14T08:44:03Z",
+      "side": 1,
+      "message": "Building the doc with `cargo doc` only yields the EL0 registers. Am I missing something?",
+      "revId": "f0444e417a91c43262c4480a27e1a0e16993ac81",
+      "serverId": "8f6f209b-db1a-4cbf-aa44-c8bc30e9bfda"
+    }
+  ]
+}
