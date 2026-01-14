@@ -8,7 +8,7 @@ use crate::{ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones
 use arm_sysregs_json::{
     Accessor, ArrayField, AstBinaryOp, AstBool, AstFunction, AstIdentifier, ConditionalField,
     ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Register, RegisterEntry,
-    Value, VectorField,
+    Value, Values, VectorField,
 };
 use log::{info, trace};
 use std::{num::ParseIntError, sync::LazyLock};
@@ -240,7 +240,10 @@ impl RegisterField {
             for field in &field.fields {
                 if bit.is_none() {
                     bit = Self::from_field_entry(&field.field, offset + range.start);
-                } else if Self::from_field_entry(&field.field, offset + range.start) != bit {
+                } else if Self::from_field_entry(&field.field, offset + range.start)
+                    .map(|r| r.key())
+                    != bit.as_ref().map(|r| r.key())
+                {
                     // If different options give a different RegisterField, ignore them all to be
                     // safe.
                     return None;
@@ -267,6 +270,7 @@ impl RegisterField {
                 writable: true,
                 array_info: None,
                 type_name: None,
+                values: field.values.clone(),
             })
         } else {
             info!(
@@ -292,6 +296,7 @@ impl RegisterField {
                         index_variable: field.index_variable.clone(),
                     }),
                     type_name: None,
+                    values: field.values.clone(),
                 })
             } else {
                 info!(
@@ -320,6 +325,9 @@ impl RegisterField {
                 writable: false,
                 array_info: None,
                 type_name: None,
+                values: Some(Values {
+                    values: vec![field.value.clone()],
+                }),
             })
         } else {
             info!(
@@ -341,6 +349,7 @@ impl RegisterField {
                 writable: true,
                 array_info: None,
                 type_name: None,
+                values: None,
             })
         } else {
             info!(
@@ -366,6 +375,7 @@ impl RegisterField {
                         index_variable: field.index_variable.clone(),
                     }),
                     type_name: None,
+                    values: field.values.clone(),
                 })
             } else {
                 info!(
