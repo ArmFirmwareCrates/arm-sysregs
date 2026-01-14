@@ -10,7 +10,7 @@ use crate::{
     RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1,
     Ttbr1El1, VbarEl1,
 };
-use crate::{CntfrqEl0, CtrEl0, Dit, PmcrEl0, TpidrEl0, TpidrroEl0};
+use crate::{CntfrqEl0, CtrEl0, Currentel, Dit, PmcrEl0, TpidrEl0, TpidrroEl0};
 #[cfg(feature = "el2")]
 use crate::{
     CnthctlEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, EsrEl2, FarEl2, GcscrEl2, HcrEl2,
@@ -93,6 +93,8 @@ pub struct SystemRegisters {
     pub csselr_el1: CsselrEl1,
     /// Fake value for the `CTR_EL0` system register.
     pub ctr_el0: CtrEl0,
+    /// Fake value for the `CurrentEL` system register.
+    pub currentel: Currentel,
     #[cfg(feature = "el1")]
     /// Fake value for the `DISR_EL1` system register.
     pub disr_el1: DisrEl1,
@@ -433,6 +435,7 @@ impl SystemRegisters {
             #[cfg(feature = "el1")]
             csselr_el1: CsselrEl1::empty(),
             ctr_el0: CtrEl0::empty(),
+            currentel: Currentel::empty(),
             #[cfg(feature = "el1")]
             disr_el1: DisrEl1::empty(),
             dit: Dit::empty(),

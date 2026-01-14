@@ -628,6 +628,26 @@ impl CtrEl0 {
     }
 }
 
+bitflags! {
+    /// `CurrentEL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Currentel: u64 {
+    }
+}
+
+impl Currentel {
+    /// Offset of the EL field.
+    pub const EL_SHIFT: u32 = 2;
+    /// Mask for the EL field.
+    pub const EL_MASK: u64 = 0b11;
+
+    /// Returns the value of the `EL` field.
+    pub const fn el(self) -> u8 {
+        ((self.bits() >> Self::EL_SHIFT) & 0b11) as u8
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `DISR_EL1` system register value.
@@ -8652,6 +8672,7 @@ read_write_sysreg!(cptr_el3, u64: CptrEl3, safe_read, fake::SYSREGS);
 #[cfg(feature = "el1")]
 read_write_sysreg!(csselr_el1, u64: CsselrEl1, safe_read, safe_write, fake::SYSREGS);
 read_sysreg!(ctr_el0, u64: CtrEl0, safe, fake::SYSREGS);
+read_sysreg!(currentel, u64: Currentel, safe, fake::SYSREGS);
 #[cfg(feature = "el1")]
 read_write_sysreg!(disr_el1: s3_0_c12_c1_1, u64: DisrEl1, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(dit: s3_3_c4_c2_5, u64: Dit, safe_read, safe_write, fake::SYSREGS);
