@@ -28,6 +28,7 @@ use crate::{
 
 /// A set of fake system registers.
 #[derive(Clone, Debug, Eq, PartialEq)]
+#[non_exhaustive]
 pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `ACTLR_EL1` system register.

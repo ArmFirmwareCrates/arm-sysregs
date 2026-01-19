@@ -81,6 +81,7 @@ pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> 
         "
 /// A set of fake system registers.
 #[derive(Clone, Debug, Eq, PartialEq)]
+#[non_exhaustive]
 pub struct SystemRegisters {
 "
         .as_bytes(),
