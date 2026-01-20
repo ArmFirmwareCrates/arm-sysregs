@@ -276,6 +276,28 @@ impl CnthctlEl2 {
     }
 }
 
+bitflags! {
+    /// `CNTPCT_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpctEl0: u64 {
+    }
+}
+
+impl CntpctEl0 {
+    /// Offset of the `PhysicalCount` field.
+    pub const PHYSICALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `PhysicalCount` field.
+    pub const PHYSICALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `PhysicalCount` field.
+    pub const fn physicalcount(self) -> u64 {
+        ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CNTVOFF_EL2` system register value.
@@ -2958,6 +2980,320 @@ impl IdAa64dfr1El1 {
     /// Returns the value of the `ABL_CMPs` field.
     pub const fn abl_cmps(self) -> u8 {
         ((self.bits() >> Self::ABL_CMPS_SHIFT) & 0b11111111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ID_AA64ISAR1_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64isar1El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IdAa64isar1El1 {
+    /// Offset of the `DPB` field.
+    pub const DPB_SHIFT: u32 = 0;
+    /// Mask for the `DPB` field.
+    pub const DPB_MASK: u64 = 0b1111;
+    /// Offset of the `APA` field.
+    pub const APA_SHIFT: u32 = 4;
+    /// Mask for the `APA` field.
+    pub const APA_MASK: u64 = 0b1111;
+    /// Offset of the `API` field.
+    pub const API_SHIFT: u32 = 8;
+    /// Mask for the `API` field.
+    pub const API_MASK: u64 = 0b1111;
+    /// Offset of the `JSCVT` field.
+    pub const JSCVT_SHIFT: u32 = 12;
+    /// Mask for the `JSCVT` field.
+    pub const JSCVT_MASK: u64 = 0b1111;
+    /// Offset of the `FCMA` field.
+    pub const FCMA_SHIFT: u32 = 16;
+    /// Mask for the `FCMA` field.
+    pub const FCMA_MASK: u64 = 0b1111;
+    /// Offset of the `LRCPC` field.
+    pub const LRCPC_SHIFT: u32 = 20;
+    /// Mask for the `LRCPC` field.
+    pub const LRCPC_MASK: u64 = 0b1111;
+    /// Offset of the `GPA` field.
+    pub const GPA_SHIFT: u32 = 24;
+    /// Mask for the `GPA` field.
+    pub const GPA_MASK: u64 = 0b1111;
+    /// Offset of the `GPI` field.
+    pub const GPI_SHIFT: u32 = 28;
+    /// Mask for the `GPI` field.
+    pub const GPI_MASK: u64 = 0b1111;
+    /// Offset of the `FRINTTS` field.
+    pub const FRINTTS_SHIFT: u32 = 32;
+    /// Mask for the `FRINTTS` field.
+    pub const FRINTTS_MASK: u64 = 0b1111;
+    /// Offset of the `SB` field.
+    pub const SB_SHIFT: u32 = 36;
+    /// Mask for the `SB` field.
+    pub const SB_MASK: u64 = 0b1111;
+    /// Offset of the `SPECRES` field.
+    pub const SPECRES_SHIFT: u32 = 40;
+    /// Mask for the `SPECRES` field.
+    pub const SPECRES_MASK: u64 = 0b1111;
+    /// Offset of the `BF16` field.
+    pub const BF16_SHIFT: u32 = 44;
+    /// Mask for the `BF16` field.
+    pub const BF16_MASK: u64 = 0b1111;
+    /// Offset of the `DGH` field.
+    pub const DGH_SHIFT: u32 = 48;
+    /// Mask for the `DGH` field.
+    pub const DGH_MASK: u64 = 0b1111;
+    /// Offset of the `I8MM` field.
+    pub const I8MM_SHIFT: u32 = 52;
+    /// Mask for the `I8MM` field.
+    pub const I8MM_MASK: u64 = 0b1111;
+    /// Offset of the `XS` field.
+    pub const XS_SHIFT: u32 = 56;
+    /// Mask for the `XS` field.
+    pub const XS_MASK: u64 = 0b1111;
+    /// Offset of the `LS64` field.
+    pub const LS64_SHIFT: u32 = 60;
+    /// Mask for the `LS64` field.
+    pub const LS64_MASK: u64 = 0b1111;
+
+    /// Returns the value of the `DPB` field.
+    pub const fn dpb(self) -> u8 {
+        ((self.bits() >> Self::DPB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `APA` field.
+    pub const fn apa(self) -> u8 {
+        ((self.bits() >> Self::APA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `API` field.
+    pub const fn api(self) -> u8 {
+        ((self.bits() >> Self::API_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `JSCVT` field.
+    pub const fn jscvt(self) -> u8 {
+        ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `FCMA` field.
+    pub const fn fcma(self) -> u8 {
+        ((self.bits() >> Self::FCMA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `LRCPC` field.
+    pub const fn lrcpc(self) -> u8 {
+        ((self.bits() >> Self::LRCPC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `GPA` field.
+    pub const fn gpa(self) -> u8 {
+        ((self.bits() >> Self::GPA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `GPI` field.
+    pub const fn gpi(self) -> u8 {
+        ((self.bits() >> Self::GPI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `FRINTTS` field.
+    pub const fn frintts(self) -> u8 {
+        ((self.bits() >> Self::FRINTTS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SB` field.
+    pub const fn sb(self) -> u8 {
+        ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SPECRES` field.
+    pub const fn specres(self) -> u8 {
+        ((self.bits() >> Self::SPECRES_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BF16` field.
+    pub const fn bf16(self) -> u8 {
+        ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `DGH` field.
+    pub const fn dgh(self) -> u8 {
+        ((self.bits() >> Self::DGH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `I8MM` field.
+    pub const fn i8mm(self) -> u8 {
+        ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `XS` field.
+    pub const fn xs(self) -> u8 {
+        ((self.bits() >> Self::XS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `LS64` field.
+    pub const fn ls64(self) -> u8 {
+        ((self.bits() >> Self::LS64_SHIFT) & 0b1111) as u8
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ID_AA64ISAR2_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64isar2El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IdAa64isar2El1 {
+    /// Offset of the `WFxT` field.
+    pub const WFXT_SHIFT: u32 = 0;
+    /// Mask for the `WFxT` field.
+    pub const WFXT_MASK: u64 = 0b1111;
+    /// Offset of the `RPRES` field.
+    pub const RPRES_SHIFT: u32 = 4;
+    /// Mask for the `RPRES` field.
+    pub const RPRES_MASK: u64 = 0b1111;
+    /// Offset of the `GPA3` field.
+    pub const GPA3_SHIFT: u32 = 8;
+    /// Mask for the `GPA3` field.
+    pub const GPA3_MASK: u64 = 0b1111;
+    /// Offset of the `APA3` field.
+    pub const APA3_SHIFT: u32 = 12;
+    /// Mask for the `APA3` field.
+    pub const APA3_MASK: u64 = 0b1111;
+    /// Offset of the `MOPS` field.
+    pub const MOPS_SHIFT: u32 = 16;
+    /// Mask for the `MOPS` field.
+    pub const MOPS_MASK: u64 = 0b1111;
+    /// Offset of the `BC` field.
+    pub const BC_SHIFT: u32 = 20;
+    /// Mask for the `BC` field.
+    pub const BC_MASK: u64 = 0b1111;
+    /// Offset of the `PAC_frac` field.
+    pub const PAC_FRAC_SHIFT: u32 = 24;
+    /// Mask for the `PAC_frac` field.
+    pub const PAC_FRAC_MASK: u64 = 0b1111;
+    /// Offset of the `CLRBHB` field.
+    pub const CLRBHB_SHIFT: u32 = 28;
+    /// Mask for the `CLRBHB` field.
+    pub const CLRBHB_MASK: u64 = 0b1111;
+    /// Offset of the `SYSREG_128` field.
+    pub const SYSREG_128_SHIFT: u32 = 32;
+    /// Mask for the `SYSREG_128` field.
+    pub const SYSREG_128_MASK: u64 = 0b1111;
+    /// Offset of the `SYSINSTR_128` field.
+    pub const SYSINSTR_128_SHIFT: u32 = 36;
+    /// Mask for the `SYSINSTR_128` field.
+    pub const SYSINSTR_128_MASK: u64 = 0b1111;
+    /// Offset of the `PRFMSLC` field.
+    pub const PRFMSLC_SHIFT: u32 = 40;
+    /// Mask for the `PRFMSLC` field.
+    pub const PRFMSLC_MASK: u64 = 0b1111;
+    /// Offset of the `PCDPHINT` field.
+    pub const PCDPHINT_SHIFT: u32 = 44;
+    /// Mask for the `PCDPHINT` field.
+    pub const PCDPHINT_MASK: u64 = 0b1111;
+    /// Offset of the `RPRFM` field.
+    pub const RPRFM_SHIFT: u32 = 48;
+    /// Mask for the `RPRFM` field.
+    pub const RPRFM_MASK: u64 = 0b1111;
+    /// Offset of the `CSSC` field.
+    pub const CSSC_SHIFT: u32 = 52;
+    /// Mask for the `CSSC` field.
+    pub const CSSC_MASK: u64 = 0b1111;
+    /// Offset of the `LUT` field.
+    pub const LUT_SHIFT: u32 = 56;
+    /// Mask for the `LUT` field.
+    pub const LUT_MASK: u64 = 0b1111;
+    /// Offset of the `ATS1A` field.
+    pub const ATS1A_SHIFT: u32 = 60;
+    /// Mask for the `ATS1A` field.
+    pub const ATS1A_MASK: u64 = 0b1111;
+
+    /// Returns the value of the `WFxT` field.
+    pub const fn wfxt(self) -> u8 {
+        ((self.bits() >> Self::WFXT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `RPRES` field.
+    pub const fn rpres(self) -> u8 {
+        ((self.bits() >> Self::RPRES_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `GPA3` field.
+    pub const fn gpa3(self) -> u8 {
+        ((self.bits() >> Self::GPA3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `APA3` field.
+    pub const fn apa3(self) -> u8 {
+        ((self.bits() >> Self::APA3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MOPS` field.
+    pub const fn mops(self) -> u8 {
+        ((self.bits() >> Self::MOPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BC` field.
+    pub const fn bc(self) -> u8 {
+        ((self.bits() >> Self::BC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PAC_frac` field.
+    pub const fn pac_frac(self) -> u8 {
+        ((self.bits() >> Self::PAC_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CLRBHB` field.
+    pub const fn clrbhb(self) -> u8 {
+        ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SYSREG_128` field.
+    pub const fn sysreg_128(self) -> u8 {
+        ((self.bits() >> Self::SYSREG_128_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SYSINSTR_128` field.
+    pub const fn sysinstr_128(self) -> u8 {
+        ((self.bits() >> Self::SYSINSTR_128_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PRFMSLC` field.
+    pub const fn prfmslc(self) -> u8 {
+        ((self.bits() >> Self::PRFMSLC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PCDPHINT` field.
+    pub const fn pcdphint(self) -> u8 {
+        ((self.bits() >> Self::PCDPHINT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `RPRFM` field.
+    pub const fn rprfm(self) -> u8 {
+        ((self.bits() >> Self::RPRFM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CSSC` field.
+    pub const fn cssc(self) -> u8 {
+        ((self.bits() >> Self::CSSC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `LUT` field.
+    pub const fn lut(self) -> u8 {
+        ((self.bits() >> Self::LUT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `ATS1A` field.
+    pub const fn ats1a(self) -> u8 {
+        ((self.bits() >> Self::ATS1A_SHIFT) & 0b1111) as u8
     }
 }
 
@@ -5962,6 +6298,63 @@ impl ScrEl3 {
     }
 }
 
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `SCTLR2_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Sctlr2El3: u64 {
+        /// `EMEC` bit.
+        const EMEC = 1 << 1;
+        /// `EnADERR` bit.
+        const ENADERR = 1 << 3;
+        /// `EnANERR` bit.
+        const ENANERR = 1 << 4;
+        /// `EnPACM` bit.
+        const ENPACM = 1 << 7;
+        /// `CPTA` bit.
+        const CPTA = 1 << 9;
+        /// `CPTM` bit.
+        const CPTM = 1 << 11;
+        /// `DTZ` bit.
+        const DTZ = 1 << 14;
+        /// `TEIS` bit.
+        const TEIS = 1 << 15;
+        /// `TEOS` bit.
+        const TEOS = 1 << 16;
+        /// `VT` bit.
+        const VT = 1 << 17;
+        /// `BTD` bit.
+        const BTD = 1 << 24;
+    }
+}
+
+#[cfg(feature = "el3")]
+impl Sctlr2El3 {
+    /// Offset of the `EMEC` field.
+    pub const EMEC_SHIFT: u32 = 1;
+    /// Offset of the `EnADERR` field.
+    pub const ENADERR_SHIFT: u32 = 3;
+    /// Offset of the `EnANERR` field.
+    pub const ENANERR_SHIFT: u32 = 4;
+    /// Offset of the `EnPACM` field.
+    pub const ENPACM_SHIFT: u32 = 7;
+    /// Offset of the `CPTA` field.
+    pub const CPTA_SHIFT: u32 = 9;
+    /// Offset of the `CPTM` field.
+    pub const CPTM_SHIFT: u32 = 11;
+    /// Offset of the `DTZ` field.
+    pub const DTZ_SHIFT: u32 = 14;
+    /// Offset of the `TEIS` field.
+    pub const TEIS_SHIFT: u32 = 15;
+    /// Offset of the `TEOS` field.
+    pub const TEOS_SHIFT: u32 = 16;
+    /// Offset of the `VT` field.
+    pub const VT_SHIFT: u32 = 17;
+    /// Offset of the `BTD` field.
+    pub const BTD_SHIFT: u32 = 24;
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `SCTLR_EL1` system register value.
@@ -8814,6 +9207,7 @@ read_sysreg!(clidr_el1, u64: ClidrEl1, safe, fake::SYSREGS);
 read_write_sysreg!(cntfrq_el0, u64: CntfrqEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(feature = "el2")]
 read_write_sysreg!(cnthctl_el2, u64: CnthctlEl2, safe_read, safe_write, fake::SYSREGS);
+read_sysreg!(cntpct_el0, u64: CntpctEl0, safe, fake::SYSREGS);
 #[cfg(feature = "el2")]
 read_write_sysreg!(cntvoff_el2, u64: CntvoffEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(feature = "el1")]
@@ -8899,6 +9293,10 @@ read_sysreg!(id_aa64dfr0_el1, u64: IdAa64dfr0El1, safe, fake::SYSREGS);
 #[cfg(feature = "el1")]
 read_sysreg!(id_aa64dfr1_el1, u64: IdAa64dfr1El1, safe, fake::SYSREGS);
 #[cfg(feature = "el1")]
+read_sysreg!(id_aa64isar1_el1, u64: IdAa64isar1El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
+read_sysreg!(id_aa64isar2_el1, u64: IdAa64isar2El1, safe, fake::SYSREGS);
+#[cfg(feature = "el1")]
 read_sysreg!(id_aa64mmfr0_el1, u64: IdAa64mmfr0El1, safe, fake::SYSREGS);
 #[cfg(feature = "el1")]
 read_sysreg!(id_aa64mmfr1_el1, u64: IdAa64mmfr1El1, safe, fake::SYSREGS);
@@ -8970,6 +9368,8 @@ read_write_sysreg!(pmcr_el0: s3_3_c9_c12_0, u64: PmcrEl0, safe_read, safe_write,
 read_write_sysreg!(rgsr_el1: s3_0_c1_c0_5, u64: RgsrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(feature = "el3")]
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
+read_write_sysreg!(sctlr2_el3: s3_6_c1_c0_3, u64: Sctlr2El3, safe_read, fake::SYSREGS);
 #[cfg(feature = "el1")]
 read_write_sysreg!(sctlr_el1, u64: SctlrEl1, safe_read, fake::SYSREGS);
 #[cfg(feature = "el2")]

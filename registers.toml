@@ -27,6 +27,8 @@ LoUU = "Level of Unification Uniprocessor for the cache hierarchy."
 LoUIS = "Level of Unification Inner Shareable for the cache hierarchy."
 Ctype = "Cache type."
 
+[registers.CNTPCT_EL0]
+
 [registers.CNTFRQ_EL0]
 write = "safe"
 
@@ -170,6 +172,8 @@ write = "safe"
 
 [registers.ID_AA64DFR0_EL1]
 [registers.ID_AA64DFR1_EL1]
+[registers.ID_AA64ISAR1_EL1]
+[registers.ID_AA64ISAR2_EL1]
 [registers.ID_AA64MMFR0_EL1]
 [registers.ID_AA64MMFR1_EL1]
 [registers.ID_AA64MMFR2_EL1]
@@ -341,6 +345,7 @@ IESB = "Enable Implicit Error Synchronization events."
 EnIB = "Enable pointer authentication using APIBKey_EL1."
 EnIA = "Enable pointer authentication using APIAKey_EL1."
 
+[registers.SCTLR2_EL3]
 [registers.SMCR_EL3]
 [registers.SP_EL1]
 [registers.SP_EL2]

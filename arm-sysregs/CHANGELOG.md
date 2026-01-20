@@ -6,6 +6,7 @@
 
 - Added `CurrentEL` register.
 - Added `GPCCR_EL3` and `GPTBR_EL3` registers.
+- Added `CNTPCT_EL0`, `ID_AA64ISAR1_EL1`, `ID_AA64ISAR2_EL1` and `SCTLR2_EL3` registers.
 - Marked fake `SystemRegisters` struct as `#[non_exhaustive]`.
 
 ### Other changes

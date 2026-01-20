@@ -5,12 +5,12 @@
 use crate::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1,
     ElrEl1, EsrEl1, FarEl1, GcrEl1, GcscrEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1,
-    IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1,
-    IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1,
-    RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1,
-    Ttbr1El1, VbarEl1,
+    IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1,
+    IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1,
+    MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1,
+    Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
-use crate::{CntfrqEl0, CtrEl0, Currentel, Dit, PmcrEl0, TpidrEl0, TpidrroEl0};
+use crate::{CntfrqEl0, CntpctEl0, CtrEl0, Currentel, Dit, PmcrEl0, TpidrEl0, TpidrroEl0};
 #[cfg(feature = "el2")]
 use crate::{
     CnthctlEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, EsrEl2, FarEl2, GcscrEl2, HcrEl2,
@@ -22,8 +22,8 @@ use crate::{
 };
 #[cfg(feature = "el3")]
 use crate::{
-    CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, SctlrEl3,
-    SmcrEl3, SpsrEl3, TcrEl3, Ttbr0El3, ZcrEl3,
+    CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, Sctlr2El3,
+    SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -71,6 +71,8 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `CNTHCTL_EL2` system register.
     pub cnthctl_el2: CnthctlEl2,
+    /// Fake value for the `CNTPCT_EL0` system register.
+    pub cntpct_el0: CntpctEl0,
     #[cfg(feature = "el2")]
     /// Fake value for the `CNTVOFF_EL2` system register.
     pub cntvoff_el2: CntvoffEl2,
@@ -192,6 +194,12 @@ pub struct SystemRegisters {
     /// Fake value for the `ID_AA64DFR1_EL1` system register.
     pub id_aa64dfr1_el1: IdAa64dfr1El1,
     #[cfg(feature = "el1")]
+    /// Fake value for the `ID_AA64ISAR1_EL1` system register.
+    pub id_aa64isar1_el1: IdAa64isar1El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ID_AA64ISAR2_EL1` system register.
+    pub id_aa64isar2_el1: IdAa64isar2El1,
+    #[cfg(feature = "el1")]
     /// Fake value for the `ID_AA64MMFR0_EL1` system register.
     pub id_aa64mmfr0_el1: IdAa64mmfr0El1,
     #[cfg(feature = "el1")]
@@ -292,6 +300,9 @@ pub struct SystemRegisters {
     #[cfg(feature = "el3")]
     /// Fake value for the `SCR_EL3` system register.
     pub scr_el3: ScrEl3,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `SCTLR2_EL3` system register.
+    pub sctlr2_el3: Sctlr2El3,
     #[cfg(feature = "el1")]
     /// Fake value for the `SCTLR_EL1` system register.
     pub sctlr_el1: SctlrEl1,
@@ -427,6 +438,7 @@ impl SystemRegisters {
             cntfrq_el0: CntfrqEl0::empty(),
             #[cfg(feature = "el2")]
             cnthctl_el2: CnthctlEl2::empty(),
+            cntpct_el0: CntpctEl0::empty(),
             #[cfg(feature = "el2")]
             cntvoff_el2: CntvoffEl2::empty(),
             #[cfg(feature = "el1")]
@@ -507,6 +519,10 @@ impl SystemRegisters {
             #[cfg(feature = "el1")]
             id_aa64dfr1_el1: IdAa64dfr1El1::empty(),
             #[cfg(feature = "el1")]
+            id_aa64isar1_el1: IdAa64isar1El1::empty(),
+            #[cfg(feature = "el1")]
+            id_aa64isar2_el1: IdAa64isar2El1::empty(),
+            #[cfg(feature = "el1")]
             id_aa64mmfr0_el1: IdAa64mmfr0El1::empty(),
             #[cfg(feature = "el1")]
             id_aa64mmfr1_el1: IdAa64mmfr1El1::empty(),
@@ -573,6 +589,8 @@ impl SystemRegisters {
             rgsr_el1: RgsrEl1::empty(),
             #[cfg(feature = "el3")]
             scr_el3: ScrEl3::empty(),
+            #[cfg(feature = "el3")]
+            sctlr2_el3: Sctlr2El3::empty(),
             #[cfg(feature = "el1")]
             sctlr_el1: SctlrEl1::empty(),
             #[cfg(feature = "el2")]
