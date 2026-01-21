@@ -4,7 +4,9 @@
 //! Logic for converting from a parsed JSON system register `RegisterEntry` to the `RegisterInfo`
 //! intermediate representation.
 
-use crate::{ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
+use crate::{
+    AArch32Encoding, ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones,
+};
 use arm_sysregs_json::{
     Accessor, ArrayField, AstBinaryOp, AstBool, AstFunction, AstIdentifier, ConditionalField,
     ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Register, RegisterEntry,
@@ -105,11 +107,12 @@ impl RegisterInfo {
         fields.sort_by_key(|field| field.index);
         fields.dedup();
 
-        let exception_level = if register.name.ends_with("_EL3") {
+        let exception_level = if register.name.ends_with("_EL3") || register.name.ends_with("_mon")
+        {
             ExceptionLevel::El3
-        } else if register.name.ends_with("_EL2") {
+        } else if register.name.ends_with("_EL2") || register.name.ends_with("_hyp") {
             ExceptionLevel::El2
-        } else if register.name.ends_with("_EL1") {
+        } else if register.name.ends_with("_EL1") || register.name.ends_with("_svc") {
             ExceptionLevel::El1
         } else if register.name.ends_with("_EL0") {
             ExceptionLevel::El0
@@ -120,33 +123,70 @@ impl RegisterInfo {
 
         let mut writable = false;
         let mut readable = false;
+        let mut aarch64 = false;
+        let mut aarch32 = false;
         let mut width = 0;
         let mut assembly_name = None;
+        let mut aarch32_encoding = None;
         for accessor in &register.accessors {
             match accessor {
                 Accessor::SystemAccessor(system_accessor) => {
                     match system_accessor.name.as_str() {
                         "A32.MRC" => {
+                            aarch32 = true;
+                            aarch32_encoding =
+                                AArch32Encoding::single_from_encoding(&system_accessor.encoding[0]);
                             readable = true;
                             width = 32;
                         }
                         "A32.MCR" => {
+                            aarch32 = true;
+                            aarch32_encoding =
+                                AArch32Encoding::single_from_encoding(&system_accessor.encoding[0]);
+                            writable = true;
+                            width = 32;
+                        }
+                        "A32.MRRC" => {
+                            aarch32 = true;
+                            aarch32_encoding =
+                                AArch32Encoding::double_from_encoding(&system_accessor.encoding[0]);
+                            readable = true;
+                            width = 64;
+                        }
+                        "A32.MCRR" => {
+                            aarch32 = true;
+                            aarch32_encoding =
+                                AArch32Encoding::double_from_encoding(&system_accessor.encoding[0]);
+                            writable = true;
+                            width = 64;
+                        }
+                        "A32.MRSbanked" => {
+                            aarch32 = true;
+                            readable = true;
+                            width = 32;
+                        }
+                        "A32.MSRbanked" => {
+                            aarch32 = true;
                             writable = true;
                             width = 32;
                         }
                         "A64.MRS" => {
+                            aarch64 = true;
                             readable = true;
                             width = 64;
                         }
                         "A64.MSRregister" => {
+                            aarch64 = true;
                             writable = true;
                             width = 64;
                         }
                         "A64.MRRS" => {
+                            aarch64 = true;
                             readable = true;
                             width = 128;
                         }
                         "A64.MSRRregister" => {
+                            aarch64 = true;
                             writable = true;
                             width = 128;
                         }
@@ -167,6 +207,8 @@ impl RegisterInfo {
             name: register.name.clone(),
             description: None,
             width,
+            aarch32,
+            aarch64,
             fields,
             res1,
             read: readable.then_some(Safety::Safe),
@@ -174,6 +216,7 @@ impl RegisterInfo {
             write_safety_doc: None,
             derive_debug: true,
             assembly_name,
+            aarch32_encoding,
             has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
             exception_level,
         }
@@ -191,6 +234,30 @@ fn encoding_to_assembly_name(encoding: &Encoding) -> Option<String> {
     let crn = parse_binary_value(encoding.encodings.get("CRn")?).ok()?;
     let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
     Some(format!("s{op0}_{op1}_c{crn}_c{crm}_{op2}"))
+}
+
+impl AArch32Encoding {
+    fn single_from_encoding(encoding: &Encoding) -> Option<Self> {
+        let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
+        let crn = parse_binary_value(encoding.encodings.get("CRn")?).ok()?;
+        let coproc = parse_binary_value(encoding.encodings.get("coproc")?).ok()?;
+        let opc1 = parse_binary_value(encoding.encodings.get("opc1")?).ok()?;
+        let opc2 = parse_binary_value(encoding.encodings.get("opc2")?).ok()?;
+        Some(Self::Single {
+            crm,
+            crn,
+            coproc,
+            opc1,
+            opc2,
+        })
+    }
+
+    fn double_from_encoding(encoding: &Encoding) -> Option<Self> {
+        let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
+        let coproc = parse_binary_value(encoding.encodings.get("coproc")?).ok()?;
+        let opc1 = parse_binary_value(encoding.encodings.get("opc1")?).ok()?;
+        Some(Self::Double { crm, coproc, opc1 })
+    }
 }
 
 impl RegisterField {

@@ -3,7 +3,7 @@
 
 //! Logic for writing out a Rust source file with system register types and accessors.
 
-use crate::{ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
+use crate::{AArch32Encoding, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
 use std::io::{self, Write};
 
 const RESERVED_NAMES: &[&str] = &["extend", "type"];
@@ -19,7 +19,9 @@ pub fn write_lib(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> i
 #![cfg_attr(not(any(test, feature = \"fakes\")), no_std)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
-#[cfg(not(any(test, feature = \"fakes\")))]
+#[cfg(all(not(any(test, feature = \"fakes\")), target_arch = \"arm\"))]
+mod aarch32;
+#[cfg(all(not(any(test, feature = \"fakes\")), target_arch = \"aarch64\"))]
 mod aarch64;
 #[cfg(any(test, feature = \"fakes\"))]
 pub mod fake;
@@ -363,8 +365,59 @@ impl RegisterInfo {
         Ok(())
     }
 
+    fn cfg_guard(&self) -> Option<&'static str> {
+        match (&self.aarch32, self.aarch64) {
+            (false, true) => match self.exception_level {
+                ExceptionLevel::El0 => {
+                    Some("#[cfg(any(test, feature = \"fakes\", target_arch = \"aarch64\"))]")
+                }
+                ExceptionLevel::El1 => Some(
+                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"aarch64\"), feature = \"el1\"))]",
+                ),
+                ExceptionLevel::El2 => Some(
+                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"aarch64\"), feature = \"el2\"))]",
+                ),
+                ExceptionLevel::El3 => Some(
+                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"aarch64\"), feature = \"el3\"))]",
+                ),
+            },
+            (false, false) => match self.exception_level {
+                ExceptionLevel::El0 => Some("#[cfg(any(test, feature = \"fakes\"))]"),
+                ExceptionLevel::El1 => {
+                    Some("#[cfg(all(any(test, feature = \"fakes\"), feature = \"el1\"))]")
+                }
+                ExceptionLevel::El2 => {
+                    Some("#[cfg(all(any(test, feature = \"fakes\"), feature = \"el2\"))]")
+                }
+                ExceptionLevel::El3 => {
+                    Some("#[cfg(all(any(test, feature = \"fakes\"), feature = \"el3\"))]")
+                }
+            },
+            (true, true) => match self.exception_level {
+                ExceptionLevel::El0 => None,
+                ExceptionLevel::El1 => Some("#[cfg(feature = \"el1\")]"),
+                ExceptionLevel::El2 => Some("#[cfg(feature = \"el2\")]"),
+                ExceptionLevel::El3 => Some("#[cfg(feature = \"el3\")]"),
+            },
+            (true, false) => match self.exception_level {
+                ExceptionLevel::El0 => {
+                    Some("#[cfg(any(test, feature = \"fakes\", target_arch = \"arm\"))]")
+                }
+                ExceptionLevel::El1 => Some(
+                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"arm\"), feature = \"el1\"))]",
+                ),
+                ExceptionLevel::El2 => Some(
+                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"arm\"), feature = \"el2\"))]",
+                ),
+                ExceptionLevel::El3 => Some(
+                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"arm\"), feature = \"el3\"))]",
+                ),
+            },
+        }
+    }
+
     fn write_accessor(&self, mut writer: impl Write) -> io::Result<()> {
-        if let Some(guard) = self.exception_level.cfg_guard() {
+        if let Some(guard) = self.cfg_guard() {
             writeln!(writer, "{guard}")?;
         }
         let register_type = if self.use_struct() {
@@ -372,11 +425,25 @@ impl RegisterInfo {
         } else {
             format!("u{}", self.width)
         };
-        let register_assembly_name = self
-            .assembly_name
-            .as_ref()
-            .map(|register_name| format!(": {register_name}"))
-            .unwrap_or_default();
+        let register_assembly_name = if let Some(aarch32) = &self.aarch32_encoding {
+            match aarch32 {
+                AArch32Encoding::Single {
+                    crm,
+                    crn,
+                    coproc,
+                    opc1,
+                    opc2,
+                } => format!(": (p{coproc}, {opc1}, c{crm}, c{crn}, {opc2})"),
+                AArch32Encoding::Double { crm, coproc, opc1 } => {
+                    format!(": (p{coproc}, {opc1}, c{crm})")
+                }
+            }
+        } else {
+            self.assembly_name
+                .as_ref()
+                .map(|register_name| format!(": {register_name}"))
+                .unwrap_or_default()
+        };
         match (self.read, self.write) {
             (None, None) => {}
             (None, Some(write_safety)) => {

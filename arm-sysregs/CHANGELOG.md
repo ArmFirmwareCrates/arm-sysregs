@@ -6,6 +6,10 @@
 
 - Fixed `IdAa64mmfr0El1::FGT2_SUPPORTED` definition.
 
+### New features
+
+- Added AArch32 support to sysregs macros.
+
 ## 0.2.0
 
 ### Breaking changes

@@ -221,6 +221,10 @@ struct RegisterInfo {
     /// The description of the register, if available.
     pub description: Option<String>,
     pub width: u32,
+    /// The register is available from AArch32 state.
+    pub aarch32: bool,
+    /// The register is available from AArch64 state.
+    pub aarch64: bool,
     pub fields: Vec<RegisterField>,
     /// All the bits which are RES1.
     pub res1: u64,
@@ -229,12 +233,29 @@ struct RegisterInfo {
     pub write_safety_doc: Option<String>,
     pub derive_debug: bool,
     pub assembly_name: Option<String>,
+    pub aarch32_encoding: Option<AArch32Encoding>,
     /// The register has conditions beyond just AArch64 and having certain exception levels.
     ///
     /// For example, it might require certain CPU features.
     pub has_special_conditions: bool,
     /// The lowest exception level at which this system register is accessible.
     pub exception_level: ExceptionLevel,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+enum AArch32Encoding {
+    Single {
+        crm: u8,
+        crn: u8,
+        coproc: u8,
+        opc1: u8,
+        opc2: u8,
+    },
+    Double {
+        crm: u8,
+        coproc: u8,
+        opc1: u8,
+    },
 }
 
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]

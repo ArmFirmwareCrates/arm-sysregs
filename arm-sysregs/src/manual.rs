@@ -3,11 +3,12 @@
 
 //! Manually implemented methods for system register types.
 
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+use crate::read_mpidr_el1;
 #[cfg(feature = "el1")]
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MpidrEl1, SpsrEl1,
-    read_mpidr_el1,
 };
 #[cfg(feature = "el2")]
 use crate::{EsrEl2, SpsrEl2};
@@ -281,6 +282,7 @@ impl MpidrEl1 {
     ///
     /// This assumes that the MPIDR_EL1 values of all CPUs in a system have the same values for the
     /// MT and U bits.
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     pub fn from_psci_mpidr(psci_mpidr: u64) -> Self {
         let mpidr_el1 = read_mpidr_el1();
         Self::from_bits_retain(psci_mpidr) | (mpidr_el1 & (Self::MT | Self::U))
