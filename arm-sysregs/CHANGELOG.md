@@ -9,6 +9,7 @@
 ### New features
 
 - Added AArch32 support to sysregs macros.
+- Added many AArch32 system registers.
 
 ## 0.2.0
 

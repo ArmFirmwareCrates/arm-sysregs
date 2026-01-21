@@ -20,6 +20,243 @@ pub use manual::*;
 #[doc(hidden)]
 pub use paste as _paste;
 
+bitflags! {
+    /// `AMCFGR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcfgr: u32 {
+        /// `HDBG` bit.
+        const HDBG = 1 << 24;
+    }
+}
+
+impl Amcfgr {
+    /// Offset of the `N` field.
+    pub const N_SHIFT: u32 = 0;
+    /// Mask for the `N` field.
+    pub const N_MASK: u32 = 0b11111111;
+    /// Offset of the `SIZE` field.
+    pub const SIZE_SHIFT: u32 = 8;
+    /// Mask for the `SIZE` field.
+    pub const SIZE_MASK: u32 = 0b111111;
+    /// Offset of the `HDBG` field.
+    pub const HDBG_SHIFT: u32 = 24;
+    /// Offset of the `NCG` field.
+    pub const NCG_SHIFT: u32 = 28;
+    /// Mask for the `NCG` field.
+    pub const NCG_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `N` field.
+    pub const fn n(self) -> u8 {
+        ((self.bits() >> Self::N_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `SIZE` field.
+    pub const fn size(self) -> u8 {
+        ((self.bits() >> Self::SIZE_SHIFT) & 0b111111) as u8
+    }
+
+    /// Returns the value of the `NCG` field.
+    pub const fn ncg(self) -> u8 {
+        ((self.bits() >> Self::NCG_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `AMCGCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcgcr: u32 {
+    }
+}
+
+impl Amcgcr {
+    /// Offset of the `CG0NC` field.
+    pub const CG0NC_SHIFT: u32 = 0;
+    /// Mask for the `CG0NC` field.
+    pub const CG0NC_MASK: u32 = 0b11111111;
+    /// Offset of the `CG1NC` field.
+    pub const CG1NC_SHIFT: u32 = 8;
+    /// Mask for the `CG1NC` field.
+    pub const CG1NC_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the `CG0NC` field.
+    pub const fn cg0nc(self) -> u8 {
+        ((self.bits() >> Self::CG0NC_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `CG1NC` field.
+    pub const fn cg1nc(self) -> u8 {
+        ((self.bits() >> Self::CG1NC_SHIFT) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
+    /// `AMCNTENCLR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenclr0: u32 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+    }
+}
+
+impl Amcntenclr0 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCNTENCLR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenclr1: u32 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<n>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<n>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<n>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<n>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<n>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<n>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<n>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<n>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<n>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<n>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<n>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<n>` bit 15.
+        const P15 = 1 << 15;
+    }
+}
+
+impl Amcntenclr1 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCNTENSET0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenset0: u32 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+    }
+}
+
+impl Amcntenset0 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCNTENSET1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenset1: u32 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<n>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<n>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<n>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<n>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<n>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<n>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<n>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<n>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<n>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<n>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<n>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<n>` bit 15.
+        const P15 = 1 << 15;
+    }
+}
+
+impl Amcntenset1 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcr: u32 {
+        /// `HDBG` bit.
+        const HDBG = 1 << 10;
+        /// `CG1RZ` bit.
+        const CG1RZ = 1 << 17;
+    }
+}
+
+impl Amcr {
+    /// Offset of the `HDBG` field.
+    pub const HDBG_SHIFT: u32 = 10;
+    /// Offset of the `CG1RZ` field.
+    pub const CG1RZ_SHIFT: u32 = 17;
+}
+
+bitflags! {
+    /// `AMUSERENR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amuserenr: u32 {
+        /// `EN` bit.
+        const EN = 1 << 0;
+    }
+}
+
+impl Amuserenr {
+    /// Offset of the `EN` field.
+    pub const EN_SHIFT: u32 = 0;
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `APIAKeyHi_EL1` system register value.
@@ -68,6 +305,55 @@ impl ApiakeyloEl1 {
     }
 }
 
+bitflags! {
+    /// `CCSIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ccsidr: u32 {
+    }
+}
+
+impl Ccsidr {
+    /// Offset of the `LineSize` field.
+    pub const LINESIZE_SHIFT: u32 = 0;
+    /// Mask for the `LineSize` field.
+    pub const LINESIZE_MASK: u32 = 0b111;
+    /// Offset of the `NumSets` field.
+    pub const NUMSETS_SHIFT: u32 = 13;
+    /// Mask for the `NumSets` field.
+    pub const NUMSETS_MASK: u32 = 0b111111111111111;
+
+    /// Returns the value of the `LineSize` field.
+    pub const fn linesize(self) -> u8 {
+        ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `NumSets` field.
+    pub const fn numsets(self) -> u16 {
+        ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111) as u16
+    }
+}
+
+bitflags! {
+    /// `CCSIDR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ccsidr2: u32 {
+    }
+}
+
+impl Ccsidr2 {
+    /// Offset of the `NumSets` field.
+    pub const NUMSETS_SHIFT: u32 = 0;
+    /// Mask for the `NumSets` field.
+    pub const NUMSETS_MASK: u32 = 0b111111111111111111111111;
+
+    /// Returns the value of the `NumSets` field.
+    pub const fn numsets(self) -> u32 {
+        ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111111111111) as u32
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `CCSIDR_EL1` system register value.
@@ -87,6 +373,63 @@ impl CcsidrEl1 {
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
         ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
+    }
+}
+
+bitflags! {
+    /// `CLIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Clidr: u32 {
+    }
+}
+
+impl Clidr {
+    /// Offset of the `Ctype<n>` field.
+    pub const CTYPE_SHIFT: u32 = 0;
+    /// Mask for the `Ctype<n>` field.
+    pub const CTYPE_MASK: u32 = 0b111;
+    /// Offset of the `LoUIS` field.
+    pub const LOUIS_SHIFT: u32 = 21;
+    /// Mask for the `LoUIS` field.
+    pub const LOUIS_MASK: u32 = 0b111;
+    /// Offset of the `LoC` field.
+    pub const LOC_SHIFT: u32 = 24;
+    /// Mask for the `LoC` field.
+    pub const LOC_MASK: u32 = 0b111;
+    /// Offset of the `LoUU` field.
+    pub const LOUU_SHIFT: u32 = 27;
+    /// Mask for the `LoUU` field.
+    pub const LOUU_MASK: u32 = 0b111;
+    /// Offset of the `ICB` field.
+    pub const ICB_SHIFT: u32 = 30;
+    /// Mask for the `ICB` field.
+    pub const ICB_MASK: u32 = 0b11;
+
+    /// Returns the value of the given `Ctype<n>` field.
+    pub const fn ctype(self, n: u32) -> u8 {
+        assert!(n >= 1 && n < 8);
+        ((self.bits() >> (Self::CTYPE_SHIFT + (n - 1) * 3)) & 0b111) as u8
+    }
+
+    /// Returns the value of the `LoUIS` field.
+    pub const fn louis(self) -> u8 {
+        ((self.bits() >> Self::LOUIS_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `LoC` field.
+    pub const fn loc(self) -> u8 {
+        ((self.bits() >> Self::LOC_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `LoUU` field.
+    pub const fn louu(self) -> u8 {
+        ((self.bits() >> Self::LOUU_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `ICB` field.
+    pub const fn icb(self) -> u8 {
+        ((self.bits() >> Self::ICB_SHIFT) & 0b11) as u8
     }
 }
 
@@ -173,6 +516,26 @@ impl ClidrEl1 {
 }
 
 bitflags! {
+    /// `CNTFRQ` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntfrq: u32 {
+    }
+}
+
+impl Cntfrq {
+    /// Offset of the `ClockFreq` field.
+    pub const CLOCKFREQ_SHIFT: u32 = 0;
+    /// Mask for the `ClockFreq` field.
+    pub const CLOCKFREQ_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ClockFreq` field.
+    pub const fn clockfreq(self) -> u32 {
+        ((self.bits() >> Self::CLOCKFREQ_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
     /// `CNTFRQ_EL0` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -189,6 +552,46 @@ impl CntfrqEl0 {
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
         ((self.bits() >> Self::CLOCKFREQ_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CNTHCTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cnthctl: u32 {
+        /// `PL1PCTEN` bit.
+        const PL1PCTEN = 1 << 0;
+        /// `PL1PCEN` bit.
+        const PL1PCEN = 1 << 1;
+        /// `EVNTEN` bit.
+        const EVNTEN = 1 << 2;
+        /// `EVNTDIR` bit.
+        const EVNTDIR = 1 << 3;
+        /// `EVNTIS` bit.
+        const EVNTIS = 1 << 17;
+    }
+}
+
+impl Cnthctl {
+    /// Offset of the `PL1PCTEN` field.
+    pub const PL1PCTEN_SHIFT: u32 = 0;
+    /// Offset of the `PL1PCEN` field.
+    pub const PL1PCEN_SHIFT: u32 = 1;
+    /// Offset of the `EVNTEN` field.
+    pub const EVNTEN_SHIFT: u32 = 2;
+    /// Offset of the `EVNTDIR` field.
+    pub const EVNTDIR_SHIFT: u32 = 3;
+    /// Offset of the `EVNTI` field.
+    pub const EVNTI_SHIFT: u32 = 4;
+    /// Mask for the `EVNTI` field.
+    pub const EVNTI_MASK: u32 = 0b1111;
+    /// Offset of the `EVNTIS` field.
+    pub const EVNTIS_SHIFT: u32 = 17;
+
+    /// Returns the value of the `EVNTI` field.
+    pub const fn evnti(self) -> u8 {
+        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
     }
 }
 
@@ -279,6 +682,358 @@ impl CnthctlEl2 {
 }
 
 bitflags! {
+    /// `CNTHPS_CTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpsCtl: u32 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CnthpsCtl {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `CNTHPS_CVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpsCval: u64 {
+    }
+}
+
+impl CnthpsCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTHPS_TVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpsTval: u32 {
+    }
+}
+
+impl CnthpsTval {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CNTHP_CTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpCtl: u32 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CnthpCtl {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `CNTHP_CVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpCval: u64 {
+    }
+}
+
+impl CnthpCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTHP_TVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpTval: u32 {
+    }
+}
+
+impl CnthpTval {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CNTHVS_CTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvsCtl: u32 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CnthvsCtl {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `CNTHVS_CVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvsCval: u64 {
+    }
+}
+
+impl CnthvsCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTHVS_TVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvsTval: u32 {
+    }
+}
+
+impl CnthvsTval {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CNTHV_CTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvCtl: u32 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CnthvCtl {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `CNTHV_CVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvCval: u64 {
+    }
+}
+
+impl CnthvCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTHV_TVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvTval: u32 {
+    }
+}
+
+impl CnthvTval {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CNTKCTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntkctl: u32 {
+        /// `PL0PCTEN` bit.
+        const PL0PCTEN = 1 << 0;
+        /// `PL0VCTEN` bit.
+        const PL0VCTEN = 1 << 1;
+        /// `EVNTEN` bit.
+        const EVNTEN = 1 << 2;
+        /// `EVNTDIR` bit.
+        const EVNTDIR = 1 << 3;
+        /// `PL0VTEN` bit.
+        const PL0VTEN = 1 << 8;
+        /// `PL0PTEN` bit.
+        const PL0PTEN = 1 << 9;
+        /// `EVNTIS` bit.
+        const EVNTIS = 1 << 17;
+    }
+}
+
+impl Cntkctl {
+    /// Offset of the `PL0PCTEN` field.
+    pub const PL0PCTEN_SHIFT: u32 = 0;
+    /// Offset of the `PL0VCTEN` field.
+    pub const PL0VCTEN_SHIFT: u32 = 1;
+    /// Offset of the `EVNTEN` field.
+    pub const EVNTEN_SHIFT: u32 = 2;
+    /// Offset of the `EVNTDIR` field.
+    pub const EVNTDIR_SHIFT: u32 = 3;
+    /// Offset of the `EVNTI` field.
+    pub const EVNTI_SHIFT: u32 = 4;
+    /// Mask for the `EVNTI` field.
+    pub const EVNTI_MASK: u32 = 0b1111;
+    /// Offset of the `PL0VTEN` field.
+    pub const PL0VTEN_SHIFT: u32 = 8;
+    /// Offset of the `PL0PTEN` field.
+    pub const PL0PTEN_SHIFT: u32 = 9;
+    /// Offset of the `EVNTIS` field.
+    pub const EVNTIS_SHIFT: u32 = 17;
+
+    /// Returns the value of the `EVNTI` field.
+    pub const fn evnti(self) -> u8 {
+        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `CNTPCT` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntpct: u64 {
+    }
+}
+
+impl Cntpct {
+    /// Offset of the `PhysicalCount` field.
+    pub const PHYSICALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `PhysicalCount` field.
+    pub const PHYSICALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `PhysicalCount` field.
+    pub const fn physicalcount(self) -> u64 {
+        ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTPCTSS` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntpctss: u64 {
+    }
+}
+
+impl Cntpctss {
+    /// Offset of the `SSPhysicalCount` field.
+    pub const SSPHYSICALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `SSPhysicalCount` field.
+    pub const SSPHYSICALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `SSPhysicalCount` field.
+    pub const fn ssphysicalcount(self) -> u64 {
+        ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
     /// `CNTPCT_EL0` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -296,6 +1051,137 @@ impl CntpctEl0 {
     /// Returns the value of the `PhysicalCount` field.
     pub const fn physicalcount(self) -> u64 {
         ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTP_CTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpCtl: u32 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CntpCtl {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `CNTP_CVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpCval: u64 {
+    }
+}
+
+impl CntpCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTP_TVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpTval: u32 {
+    }
+}
+
+impl CntpTval {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CNTVCT` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntvct: u64 {
+    }
+}
+
+impl Cntvct {
+    /// Offset of the `VirtualCount` field.
+    pub const VIRTUALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `VirtualCount` field.
+    pub const VIRTUALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `VirtualCount` field.
+    pub const fn virtualcount(self) -> u64 {
+        ((self.bits() >> Self::VIRTUALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTVCTSS` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntvctss: u64 {
+    }
+}
+
+impl Cntvctss {
+    /// Offset of the `SSVirtualCount` field.
+    pub const SSVIRTUALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `SSVirtualCount` field.
+    pub const SSVIRTUALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `SSVirtualCount` field.
+    pub const fn ssvirtualcount(self) -> u64 {
+        ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTVOFF` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cntvoff: u64 {
+    }
+}
+
+impl Cntvoff {
+    /// Offset of the `VOffset` field.
+    pub const VOFFSET_SHIFT: u32 = 0;
+    /// Mask for the `VOffset` field.
+    pub const VOFFSET_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `VOffset` field.
+    pub const fn voffset(self) -> u64 {
+        ((self.bits() >> Self::VOFFSET_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
 }
@@ -321,6 +1207,91 @@ impl CntvoffEl2 {
     pub const fn voffset(self) -> u64 {
         ((self.bits() >> Self::VOFFSET_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTV_CTL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvCtl: u32 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CntvCtl {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `CNTV_CVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvCval: u64 {
+    }
+}
+
+impl CntvCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `CNTV_TVAL` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvTval: u32 {
+    }
+}
+
+impl CntvTval {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CONTEXTIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Contextidr: u32 {
+    }
+}
+
+impl Contextidr {
+    /// Offset of the `ASID` field.
+    pub const ASID_SHIFT: u32 = 0;
+    /// Mask for the `ASID` field.
+    pub const ASID_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the `ASID` field.
+    pub const fn asid(self) -> u8 {
+        ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
     }
 }
 
@@ -365,6 +1336,43 @@ impl ContextidrEl2 {
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
         ((self.bits() >> Self::PROCID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `CPACR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Cpacr: u32 {
+        /// `TRCDIS` bit.
+        const TRCDIS = 1 << 28;
+        /// `ASEDIS` bit.
+        const ASEDIS = 1 << 31;
+    }
+}
+
+impl Cpacr {
+    /// Offset of the `cp10` field.
+    pub const CP10_SHIFT: u32 = 20;
+    /// Mask for the `cp10` field.
+    pub const CP10_MASK: u32 = 0b11;
+    /// Offset of the `cp11` field.
+    pub const CP11_SHIFT: u32 = 22;
+    /// Mask for the `cp11` field.
+    pub const CP11_MASK: u32 = 0b11;
+    /// Offset of the `TRCDIS` field.
+    pub const TRCDIS_SHIFT: u32 = 28;
+    /// Offset of the `ASEDIS` field.
+    pub const ASEDIS_SHIFT: u32 = 31;
+
+    /// Returns the value of the `cp10` field.
+    pub const fn cp10(self) -> u8 {
+        ((self.bits() >> Self::CP10_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `cp11` field.
+    pub const fn cp11(self) -> u8 {
+        ((self.bits() >> Self::CP11_SHIFT) & 0b11) as u8
     }
 }
 
@@ -543,6 +1551,30 @@ impl CptrEl3 {
     pub const TCPAC_SHIFT: u32 = 31;
 }
 
+bitflags! {
+    /// `CSSELR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Csselr: u32 {
+        /// `InD` bit.
+        const IND = 1 << 0;
+    }
+}
+
+impl Csselr {
+    /// Offset of the `InD` field.
+    pub const IND_SHIFT: u32 = 0;
+    /// Offset of the `Level` field.
+    pub const LEVEL_SHIFT: u32 = 1;
+    /// Mask for the `Level` field.
+    pub const LEVEL_MASK: u32 = 0b111;
+
+    /// Returns the value of the `Level` field.
+    pub const fn level(self) -> u8 {
+        ((self.bits() >> Self::LEVEL_SHIFT) & 0b111) as u8
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `CSSELR_EL1` system register value.
@@ -570,6 +1602,72 @@ impl CsselrEl1 {
     /// Returns the value of the `Level` field.
     pub const fn level(self) -> u8 {
         ((self.bits() >> Self::LEVEL_SHIFT) & 0b111) as u8
+    }
+}
+
+bitflags! {
+    /// `CTR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ctr: u32 {
+        /// RES1 bits in the `CTR` register.
+        const RES1 = 0b10000000000000000000000000000000;
+        /// `IDC` bit.
+        const IDC = 1 << 28;
+        /// `DIC` bit.
+        const DIC = 1 << 29;
+    }
+}
+
+impl Ctr {
+    /// Offset of the `IminLine` field.
+    pub const IMINLINE_SHIFT: u32 = 0;
+    /// Mask for the `IminLine` field.
+    pub const IMINLINE_MASK: u32 = 0b1111;
+    /// Offset of the `L1Ip` field.
+    pub const L1IP_SHIFT: u32 = 14;
+    /// Mask for the `L1Ip` field.
+    pub const L1IP_MASK: u32 = 0b11;
+    /// Offset of the `DminLine` field.
+    pub const DMINLINE_SHIFT: u32 = 16;
+    /// Mask for the `DminLine` field.
+    pub const DMINLINE_MASK: u32 = 0b1111;
+    /// Offset of the `ERG` field.
+    pub const ERG_SHIFT: u32 = 20;
+    /// Mask for the `ERG` field.
+    pub const ERG_MASK: u32 = 0b1111;
+    /// Offset of the `CWG` field.
+    pub const CWG_SHIFT: u32 = 24;
+    /// Mask for the `CWG` field.
+    pub const CWG_MASK: u32 = 0b1111;
+    /// Offset of the `IDC` field.
+    pub const IDC_SHIFT: u32 = 28;
+    /// Offset of the `DIC` field.
+    pub const DIC_SHIFT: u32 = 29;
+
+    /// Returns the value of the `IminLine` field.
+    pub const fn iminline(self) -> u8 {
+        ((self.bits() >> Self::IMINLINE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1Ip` field.
+    pub const fn l1ip(self) -> u8 {
+        ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `DminLine` field.
+    pub const fn dminline(self) -> u8 {
+        ((self.bits() >> Self::DMINLINE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `ERG` field.
+    pub const fn erg(self) -> u8 {
+        ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CWG` field.
+    pub const fn cwg(self) -> u8 {
+        ((self.bits() >> Self::CWG_SHIFT) & 0b1111) as u8
     }
 }
 
@@ -672,6 +1770,868 @@ impl Currentel {
     }
 }
 
+bitflags! {
+    /// `DACR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dacr: u32 {
+    }
+}
+
+impl Dacr {
+    /// Offset of the `D<n>` field.
+    pub const D_SHIFT: u32 = 0;
+    /// Mask for the `D<n>` field.
+    pub const D_MASK: u32 = 0b11;
+
+    /// Returns the value of the given `D<n>` field.
+    pub const fn d(self, n: u32) -> u8 {
+        assert!(n < 16);
+        ((self.bits() >> (Self::D_SHIFT + (n - 0) * 2)) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGAUTHSTATUS` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgauthstatus: u32 {
+    }
+}
+
+impl Dbgauthstatus {
+    /// Offset of the `NSID` field.
+    pub const NSID_SHIFT: u32 = 0;
+    /// Mask for the `NSID` field.
+    pub const NSID_MASK: u32 = 0b11;
+    /// Offset of the `NSNID` field.
+    pub const NSNID_SHIFT: u32 = 2;
+    /// Mask for the `NSNID` field.
+    pub const NSNID_MASK: u32 = 0b11;
+    /// Offset of the `SID` field.
+    pub const SID_SHIFT: u32 = 4;
+    /// Mask for the `SID` field.
+    pub const SID_MASK: u32 = 0b11;
+    /// Offset of the `SNID` field.
+    pub const SNID_SHIFT: u32 = 6;
+    /// Mask for the `SNID` field.
+    pub const SNID_MASK: u32 = 0b11;
+
+    /// Returns the value of the `NSID` field.
+    pub const fn nsid(self) -> u8 {
+        ((self.bits() >> Self::NSID_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `NSNID` field.
+    pub const fn nsnid(self) -> u8 {
+        ((self.bits() >> Self::NSNID_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `SID` field.
+    pub const fn sid(self) -> u8 {
+        ((self.bits() >> Self::SID_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `SNID` field.
+    pub const fn snid(self) -> u8 {
+        ((self.bits() >> Self::SNID_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGCLAIMCLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgclaimclr: u32 {
+        /// `CLAIM<m>` bit 0.
+        const CLAIM0 = 1 << 0;
+        /// `CLAIM<m>` bit 1.
+        const CLAIM1 = 1 << 1;
+        /// `CLAIM<m>` bit 2.
+        const CLAIM2 = 1 << 2;
+        /// `CLAIM<m>` bit 3.
+        const CLAIM3 = 1 << 3;
+        /// `CLAIM<m>` bit 4.
+        const CLAIM4 = 1 << 4;
+        /// `CLAIM<m>` bit 5.
+        const CLAIM5 = 1 << 5;
+        /// `CLAIM<m>` bit 6.
+        const CLAIM6 = 1 << 6;
+        /// `CLAIM<m>` bit 7.
+        const CLAIM7 = 1 << 7;
+    }
+}
+
+impl Dbgclaimclr {
+    /// Offset of the `CLAIM<m>` field.
+    pub const CLAIM_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `DBGCLAIMSET` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgclaimset: u32 {
+        /// `CLAIM<m>` bit 0.
+        const CLAIM0 = 1 << 0;
+        /// `CLAIM<m>` bit 1.
+        const CLAIM1 = 1 << 1;
+        /// `CLAIM<m>` bit 2.
+        const CLAIM2 = 1 << 2;
+        /// `CLAIM<m>` bit 3.
+        const CLAIM3 = 1 << 3;
+        /// `CLAIM<m>` bit 4.
+        const CLAIM4 = 1 << 4;
+        /// `CLAIM<m>` bit 5.
+        const CLAIM5 = 1 << 5;
+        /// `CLAIM<m>` bit 6.
+        const CLAIM6 = 1 << 6;
+        /// `CLAIM<m>` bit 7.
+        const CLAIM7 = 1 << 7;
+    }
+}
+
+impl Dbgclaimset {
+    /// Offset of the `CLAIM<m>` field.
+    pub const CLAIM_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `DBGDCCINT` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdccint: u32 {
+        /// `TX` bit.
+        const TX = 1 << 29;
+        /// `RX` bit.
+        const RX = 1 << 30;
+    }
+}
+
+impl Dbgdccint {
+    /// Offset of the `TX` field.
+    pub const TX_SHIFT: u32 = 29;
+    /// Offset of the `RX` field.
+    pub const RX_SHIFT: u32 = 30;
+}
+
+bitflags! {
+    /// `DBGDEVID` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdevid: u32 {
+    }
+}
+
+impl Dbgdevid {
+    /// Offset of the `PCSample` field.
+    pub const PCSAMPLE_SHIFT: u32 = 0;
+    /// Mask for the `PCSample` field.
+    pub const PCSAMPLE_MASK: u32 = 0b1111;
+    /// Offset of the `WPAddrMask` field.
+    pub const WPADDRMASK_SHIFT: u32 = 4;
+    /// Mask for the `WPAddrMask` field.
+    pub const WPADDRMASK_MASK: u32 = 0b1111;
+    /// Offset of the `BPAddrMask` field.
+    pub const BPADDRMASK_SHIFT: u32 = 8;
+    /// Mask for the `BPAddrMask` field.
+    pub const BPADDRMASK_MASK: u32 = 0b1111;
+    /// Offset of the `VectorCatch` field.
+    pub const VECTORCATCH_SHIFT: u32 = 12;
+    /// Mask for the `VectorCatch` field.
+    pub const VECTORCATCH_MASK: u32 = 0b1111;
+    /// Offset of the `VirtExtns` field.
+    pub const VIRTEXTNS_SHIFT: u32 = 16;
+    /// Mask for the `VirtExtns` field.
+    pub const VIRTEXTNS_MASK: u32 = 0b1111;
+    /// Offset of the `DoubleLock` field.
+    pub const DOUBLELOCK_SHIFT: u32 = 20;
+    /// Mask for the `DoubleLock` field.
+    pub const DOUBLELOCK_MASK: u32 = 0b1111;
+    /// Offset of the `AuxRegs` field.
+    pub const AUXREGS_SHIFT: u32 = 24;
+    /// Mask for the `AuxRegs` field.
+    pub const AUXREGS_MASK: u32 = 0b1111;
+    /// Offset of the `CIDMask` field.
+    pub const CIDMASK_SHIFT: u32 = 28;
+    /// Mask for the `CIDMask` field.
+    pub const CIDMASK_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `PCSample` field.
+    pub const fn pcsample(self) -> u8 {
+        ((self.bits() >> Self::PCSAMPLE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `WPAddrMask` field.
+    pub const fn wpaddrmask(self) -> u8 {
+        ((self.bits() >> Self::WPADDRMASK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BPAddrMask` field.
+    pub const fn bpaddrmask(self) -> u8 {
+        ((self.bits() >> Self::BPADDRMASK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `VectorCatch` field.
+    pub const fn vectorcatch(self) -> u8 {
+        ((self.bits() >> Self::VECTORCATCH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `VirtExtns` field.
+    pub const fn virtextns(self) -> u8 {
+        ((self.bits() >> Self::VIRTEXTNS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `DoubleLock` field.
+    pub const fn doublelock(self) -> u8 {
+        ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `AuxRegs` field.
+    pub const fn auxregs(self) -> u8 {
+        ((self.bits() >> Self::AUXREGS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CIDMask` field.
+    pub const fn cidmask(self) -> u8 {
+        ((self.bits() >> Self::CIDMASK_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGDEVID1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdevid1: u32 {
+    }
+}
+
+impl Dbgdevid1 {
+    /// Offset of the `PCSROffset` field.
+    pub const PCSROFFSET_SHIFT: u32 = 0;
+    /// Mask for the `PCSROffset` field.
+    pub const PCSROFFSET_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `PCSROffset` field.
+    pub const fn pcsroffset(self) -> u8 {
+        ((self.bits() >> Self::PCSROFFSET_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGDIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdidr: u32 {
+        /// RES1 bits in the `DBGDIDR` register.
+        const RES1 = 0b1000000000000000;
+        /// `SE_imp` bit.
+        const SE_IMP = 1 << 12;
+        /// `nSUHD_imp` bit.
+        const NSUHD_IMP = 1 << 14;
+    }
+}
+
+impl Dbgdidr {
+    /// Offset of the `SE_imp` field.
+    pub const SE_IMP_SHIFT: u32 = 12;
+    /// Offset of the `nSUHD_imp` field.
+    pub const NSUHD_IMP_SHIFT: u32 = 14;
+    /// Offset of the `Version` field.
+    pub const VERSION_SHIFT: u32 = 16;
+    /// Mask for the `Version` field.
+    pub const VERSION_MASK: u32 = 0b1111;
+    /// Offset of the `CTX_CMPs` field.
+    pub const CTX_CMPS_SHIFT: u32 = 20;
+    /// Mask for the `CTX_CMPs` field.
+    pub const CTX_CMPS_MASK: u32 = 0b1111;
+    /// Offset of the `BRPs` field.
+    pub const BRPS_SHIFT: u32 = 24;
+    /// Mask for the `BRPs` field.
+    pub const BRPS_MASK: u32 = 0b1111;
+    /// Offset of the `WRPs` field.
+    pub const WRPS_SHIFT: u32 = 28;
+    /// Mask for the `WRPs` field.
+    pub const WRPS_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `Version` field.
+    pub const fn version(self) -> u8 {
+        ((self.bits() >> Self::VERSION_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CTX_CMPs` field.
+    pub const fn ctx_cmps(self) -> u8 {
+        ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BRPs` field.
+    pub const fn brps(self) -> u8 {
+        ((self.bits() >> Self::BRPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `WRPs` field.
+    pub const fn wrps(self) -> u8 {
+        ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGDRAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdrar: u64 {
+    }
+}
+
+impl Dbgdrar {
+    /// Offset of the `Valid` field.
+    pub const VALID_SHIFT: u32 = 0;
+    /// Mask for the `Valid` field.
+    pub const VALID_MASK: u64 = 0b11;
+    /// Offset of the `ROMADDR[47:12]` field.
+    pub const ROMADDR_47_12_SHIFT: u32 = 12;
+    /// Mask for the `ROMADDR[47:12]` field.
+    pub const ROMADDR_47_12_MASK: u64 = 0b111111111111111111111111111111111111;
+
+    /// Returns the value of the `Valid` field.
+    pub const fn valid(self) -> u8 {
+        ((self.bits() >> Self::VALID_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `ROMADDR[47:12]` field.
+    pub const fn romaddr_47_12(self) -> u64 {
+        ((self.bits() >> Self::ROMADDR_47_12_SHIFT) & 0b111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `DBGDSCRext` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdscrext: u32 {
+        /// `ERR` bit.
+        const ERR = 1 << 6;
+        /// `UDCCdis` bit.
+        const UDCCDIS = 1 << 12;
+        /// `HDE` bit.
+        const HDE = 1 << 14;
+        /// `MDBGen` bit.
+        const MDBGEN = 1 << 15;
+        /// `SPIDdis` bit.
+        const SPIDDIS = 1 << 16;
+        /// `SPNIDdis` bit.
+        const SPNIDDIS = 1 << 17;
+        /// `NS` bit.
+        const NS = 1 << 18;
+        /// `SC2` bit.
+        const SC2 = 1 << 19;
+        /// `TDA` bit.
+        const TDA = 1 << 21;
+        /// `TXU` bit.
+        const TXU = 1 << 26;
+        /// `RXO` bit.
+        const RXO = 1 << 27;
+        /// `TXfull` bit.
+        const TXFULL = 1 << 29;
+        /// `RXfull` bit.
+        const RXFULL = 1 << 30;
+        /// `TFO` bit.
+        const TFO = 1 << 31;
+    }
+}
+
+impl Dbgdscrext {
+    /// Offset of the `MOE` field.
+    pub const MOE_SHIFT: u32 = 2;
+    /// Mask for the `MOE` field.
+    pub const MOE_MASK: u32 = 0b1111;
+    /// Offset of the `ERR` field.
+    pub const ERR_SHIFT: u32 = 6;
+    /// Offset of the `UDCCdis` field.
+    pub const UDCCDIS_SHIFT: u32 = 12;
+    /// Offset of the `HDE` field.
+    pub const HDE_SHIFT: u32 = 14;
+    /// Offset of the `MDBGen` field.
+    pub const MDBGEN_SHIFT: u32 = 15;
+    /// Offset of the `SPIDdis` field.
+    pub const SPIDDIS_SHIFT: u32 = 16;
+    /// Offset of the `SPNIDdis` field.
+    pub const SPNIDDIS_SHIFT: u32 = 17;
+    /// Offset of the `NS` field.
+    pub const NS_SHIFT: u32 = 18;
+    /// Offset of the `SC2` field.
+    pub const SC2_SHIFT: u32 = 19;
+    /// Offset of the `TDA` field.
+    pub const TDA_SHIFT: u32 = 21;
+    /// Offset of the `INTdis` field.
+    pub const INTDIS_SHIFT: u32 = 22;
+    /// Mask for the `INTdis` field.
+    pub const INTDIS_MASK: u32 = 0b11;
+    /// Offset of the `TXU` field.
+    pub const TXU_SHIFT: u32 = 26;
+    /// Offset of the `RXO` field.
+    pub const RXO_SHIFT: u32 = 27;
+    /// Offset of the `TXfull` field.
+    pub const TXFULL_SHIFT: u32 = 29;
+    /// Offset of the `RXfull` field.
+    pub const RXFULL_SHIFT: u32 = 30;
+    /// Offset of the `TFO` field.
+    pub const TFO_SHIFT: u32 = 31;
+
+    /// Returns the value of the `MOE` field.
+    pub const fn moe(self) -> u8 {
+        ((self.bits() >> Self::MOE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `INTdis` field.
+    pub const fn intdis(self) -> u8 {
+        ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGDSCRint` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdscrint: u32 {
+        /// `UDCCdis` bit.
+        const UDCCDIS = 1 << 12;
+        /// `MDBGen` bit.
+        const MDBGEN = 1 << 15;
+        /// `SPIDdis` bit.
+        const SPIDDIS = 1 << 16;
+        /// `SPNIDdis` bit.
+        const SPNIDDIS = 1 << 17;
+        /// `NS` bit.
+        const NS = 1 << 18;
+        /// `TXfull` bit.
+        const TXFULL = 1 << 29;
+        /// `RXfull` bit.
+        const RXFULL = 1 << 30;
+    }
+}
+
+impl Dbgdscrint {
+    /// Offset of the `MOE` field.
+    pub const MOE_SHIFT: u32 = 2;
+    /// Mask for the `MOE` field.
+    pub const MOE_MASK: u32 = 0b1111;
+    /// Offset of the `UDCCdis` field.
+    pub const UDCCDIS_SHIFT: u32 = 12;
+    /// Offset of the `MDBGen` field.
+    pub const MDBGEN_SHIFT: u32 = 15;
+    /// Offset of the `SPIDdis` field.
+    pub const SPIDDIS_SHIFT: u32 = 16;
+    /// Offset of the `SPNIDdis` field.
+    pub const SPNIDDIS_SHIFT: u32 = 17;
+    /// Offset of the `NS` field.
+    pub const NS_SHIFT: u32 = 18;
+    /// Offset of the `TXfull` field.
+    pub const TXFULL_SHIFT: u32 = 29;
+    /// Offset of the `RXfull` field.
+    pub const RXFULL_SHIFT: u32 = 30;
+
+    /// Returns the value of the `MOE` field.
+    pub const fn moe(self) -> u8 {
+        ((self.bits() >> Self::MOE_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `DBGDTRRXext` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdtrrxext: u32 {
+    }
+}
+
+impl Dbgdtrrxext {
+    /// Offset of the `DTRRX` field.
+    pub const DTRRX_SHIFT: u32 = 0;
+    /// Mask for the `DTRRX` field.
+    pub const DTRRX_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `DTRRX` field.
+    pub const fn dtrrx(self) -> u32 {
+        ((self.bits() >> Self::DTRRX_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DBGDTRRXint` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdtrrxint: u32 {
+    }
+}
+
+impl Dbgdtrrxint {
+    /// Offset of the `DTRRX` field.
+    pub const DTRRX_SHIFT: u32 = 0;
+    /// Mask for the `DTRRX` field.
+    pub const DTRRX_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `DTRRX` field.
+    pub const fn dtrrx(self) -> u32 {
+        ((self.bits() >> Self::DTRRX_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DBGDTRTXext` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdtrtxext: u32 {
+    }
+}
+
+impl Dbgdtrtxext {
+    /// Offset of the `DTRTX` field.
+    pub const DTRTX_SHIFT: u32 = 0;
+    /// Mask for the `DTRTX` field.
+    pub const DTRTX_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `DTRTX` field.
+    pub const fn dtrtx(self) -> u32 {
+        ((self.bits() >> Self::DTRTX_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DBGDTRTXint` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgdtrtxint: u32 {
+    }
+}
+
+impl Dbgdtrtxint {
+    /// Offset of the `DTRTX` field.
+    pub const DTRTX_SHIFT: u32 = 0;
+    /// Mask for the `DTRTX` field.
+    pub const DTRTX_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `DTRTX` field.
+    pub const fn dtrtx(self) -> u32 {
+        ((self.bits() >> Self::DTRTX_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DBGOSDLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgosdlr: u32 {
+        /// `DLK` bit.
+        const DLK = 1 << 0;
+    }
+}
+
+impl Dbgosdlr {
+    /// Offset of the `DLK` field.
+    pub const DLK_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `DBGOSECCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgoseccr: u32 {
+    }
+}
+
+impl Dbgoseccr {
+    /// Offset of the `EDECCR` field.
+    pub const EDECCR_SHIFT: u32 = 0;
+    /// Mask for the `EDECCR` field.
+    pub const EDECCR_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `EDECCR` field.
+    pub const fn edeccr(self) -> u32 {
+        ((self.bits() >> Self::EDECCR_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DBGOSLAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgoslar: u32 {
+    }
+}
+
+impl Dbgoslar {
+    /// Offset of the `OSLA` field.
+    pub const OSLA_SHIFT: u32 = 0;
+    /// Mask for the `OSLA` field.
+    pub const OSLA_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `OSLA` field.
+    pub const fn osla(self) -> u32 {
+        ((self.bits() >> Self::OSLA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DBGOSLSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgoslsr: u32 {
+        /// `OSLK` bit.
+        const OSLK = 1 << 1;
+        /// `nTT` bit.
+        const NTT = 1 << 2;
+    }
+}
+
+impl Dbgoslsr {
+    /// Offset of the `OSLK` field.
+    pub const OSLK_SHIFT: u32 = 1;
+    /// Offset of the `nTT` field.
+    pub const NTT_SHIFT: u32 = 2;
+}
+
+bitflags! {
+    /// `DBGPRCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgprcr: u32 {
+        /// `CORENPDRQ` bit.
+        const CORENPDRQ = 1 << 0;
+    }
+}
+
+impl Dbgprcr {
+    /// Offset of the `CORENPDRQ` field.
+    pub const CORENPDRQ_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `DBGVCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dbgvcr: u32 {
+        /// `SU` bit.
+        const SU = 1 << 1;
+        /// `U` bit.
+        const U = 1 << 1;
+        /// `S` bit.
+        const S = 1 << 2;
+        /// `SS` bit.
+        const SS = 1 << 2;
+        /// `P` bit.
+        const P = 1 << 3;
+        /// `SP` bit.
+        const SP = 1 << 3;
+        /// `D` bit.
+        const D = 1 << 4;
+        /// `SD` bit.
+        const SD = 1 << 4;
+        /// `I` bit.
+        const I = 1 << 6;
+        /// `SI` bit.
+        const SI = 1 << 6;
+        /// `F` bit.
+        const F = 1 << 7;
+        /// `SF` bit.
+        const SF = 1 << 7;
+        /// `MS` bit.
+        const MS = 1 << 10;
+        /// `MP` bit.
+        const MP = 1 << 11;
+        /// `MD` bit.
+        const MD = 1 << 12;
+        /// `MI` bit.
+        const MI = 1 << 14;
+        /// `MF` bit.
+        const MF = 1 << 15;
+        /// `NSU` bit.
+        const NSU = 1 << 25;
+        /// `NSS` bit.
+        const NSS = 1 << 26;
+        /// `NSP` bit.
+        const NSP = 1 << 27;
+        /// `NSD` bit.
+        const NSD = 1 << 28;
+        /// `NSI` bit.
+        const NSI = 1 << 30;
+        /// `NSF` bit.
+        const NSF = 1 << 31;
+    }
+}
+
+impl Dbgvcr {
+    /// Offset of the `SU` field.
+    pub const SU_SHIFT: u32 = 1;
+    /// Offset of the `U` field.
+    pub const U_SHIFT: u32 = 1;
+    /// Offset of the `S` field.
+    pub const S_SHIFT: u32 = 2;
+    /// Offset of the `SS` field.
+    pub const SS_SHIFT: u32 = 2;
+    /// Offset of the `P` field.
+    pub const P_SHIFT: u32 = 3;
+    /// Offset of the `SP` field.
+    pub const SP_SHIFT: u32 = 3;
+    /// Offset of the `D` field.
+    pub const D_SHIFT: u32 = 4;
+    /// Offset of the `SD` field.
+    pub const SD_SHIFT: u32 = 4;
+    /// Offset of the `I` field.
+    pub const I_SHIFT: u32 = 6;
+    /// Offset of the `SI` field.
+    pub const SI_SHIFT: u32 = 6;
+    /// Offset of the `F` field.
+    pub const F_SHIFT: u32 = 7;
+    /// Offset of the `SF` field.
+    pub const SF_SHIFT: u32 = 7;
+    /// Offset of the `MS` field.
+    pub const MS_SHIFT: u32 = 10;
+    /// Offset of the `MP` field.
+    pub const MP_SHIFT: u32 = 11;
+    /// Offset of the `MD` field.
+    pub const MD_SHIFT: u32 = 12;
+    /// Offset of the `MI` field.
+    pub const MI_SHIFT: u32 = 14;
+    /// Offset of the `MF` field.
+    pub const MF_SHIFT: u32 = 15;
+    /// Offset of the `NSU` field.
+    pub const NSU_SHIFT: u32 = 25;
+    /// Offset of the `NSS` field.
+    pub const NSS_SHIFT: u32 = 26;
+    /// Offset of the `NSP` field.
+    pub const NSP_SHIFT: u32 = 27;
+    /// Offset of the `NSD` field.
+    pub const NSD_SHIFT: u32 = 28;
+    /// Offset of the `NSI` field.
+    pub const NSI_SHIFT: u32 = 30;
+    /// Offset of the `NSF` field.
+    pub const NSF_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `DFAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dfar: u32 {
+    }
+}
+
+impl Dfar {
+    /// Offset of the `VA` field.
+    pub const VA_SHIFT: u32 = 0;
+    /// Mask for the `VA` field.
+    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `VA` field.
+    pub const fn va(self) -> u32 {
+        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DFSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dfsr: u32 {
+        /// `LPAE` bit.
+        const LPAE = 1 << 9;
+        /// `WnR` bit.
+        const WNR = 1 << 11;
+        /// `ExT` bit.
+        const EXT = 1 << 12;
+        /// `CM` bit.
+        const CM = 1 << 13;
+        /// `FnV` bit.
+        const FNV = 1 << 16;
+    }
+}
+
+impl Dfsr {
+    /// Offset of the `STATUS` field.
+    pub const STATUS_SHIFT: u32 = 0;
+    /// Mask for the `STATUS` field.
+    pub const STATUS_MASK: u32 = 0b111111;
+    /// Offset of the `Domain` field.
+    pub const DOMAIN_SHIFT: u32 = 4;
+    /// Mask for the `Domain` field.
+    pub const DOMAIN_MASK: u32 = 0b1111;
+    /// Offset of the `LPAE` field.
+    pub const LPAE_SHIFT: u32 = 9;
+    /// Offset of the `WnR` field.
+    pub const WNR_SHIFT: u32 = 11;
+    /// Offset of the `ExT` field.
+    pub const EXT_SHIFT: u32 = 12;
+    /// Offset of the `CM` field.
+    pub const CM_SHIFT: u32 = 13;
+    /// Offset of the `AET` field.
+    pub const AET_SHIFT: u32 = 14;
+    /// Mask for the `AET` field.
+    pub const AET_MASK: u32 = 0b11;
+    /// Offset of the `FnV` field.
+    pub const FNV_SHIFT: u32 = 16;
+
+    /// Returns the value of the `STATUS` field.
+    pub const fn status(self) -> u8 {
+        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+    }
+
+    /// Returns the value of the `Domain` field.
+    pub const fn domain(self) -> u8 {
+        ((self.bits() >> Self::DOMAIN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `AET` field.
+    pub const fn aet(self) -> u8 {
+        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `DISR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Disr: u32 {
+        /// `EA` bit.
+        const EA = 1 << 9;
+        /// `LPAE` bit.
+        const LPAE = 1 << 9;
+        /// `ExT` bit.
+        const EXT = 1 << 12;
+        /// `A` bit.
+        const A = 1 << 31;
+    }
+}
+
+impl Disr {
+    /// Offset of the `DFSC` field.
+    pub const DFSC_SHIFT: u32 = 0;
+    /// Mask for the `DFSC` field.
+    pub const DFSC_MASK: u32 = 0b111111;
+    /// Offset of the `STATUS` field.
+    pub const STATUS_SHIFT: u32 = 0;
+    /// Mask for the `STATUS` field.
+    pub const STATUS_MASK: u32 = 0b111111;
+    /// Offset of the `EA` field.
+    pub const EA_SHIFT: u32 = 9;
+    /// Offset of the `LPAE` field.
+    pub const LPAE_SHIFT: u32 = 9;
+    /// Offset of the `ExT` field.
+    pub const EXT_SHIFT: u32 = 12;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 31;
+
+    /// Returns the value of the `DFSC` field.
+    pub const fn dfsc(self) -> u8 {
+        ((self.bits() >> Self::DFSC_SHIFT) & 0b111111) as u8
+    }
+
+    /// Returns the value of the `STATUS` field.
+    pub const fn status(self) -> u8 {
+        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `DISR_EL1` system register value.
@@ -749,6 +2709,134 @@ impl Dit {
     pub const DIT_SHIFT: u32 = 24;
 }
 
+bitflags! {
+    /// `DLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dlr: u32 {
+    }
+}
+
+impl Dlr {
+    /// Offset of the `ADDR` field.
+    pub const ADDR_SHIFT: u32 = 0;
+    /// Mask for the `ADDR` field.
+    pub const ADDR_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ADDR` field.
+    pub const fn addr(self) -> u32 {
+        ((self.bits() >> Self::ADDR_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `DSPSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dspsr: u32 {
+        /// `T` bit.
+        const T = 1 << 5;
+        /// `F` bit.
+        const F = 1 << 6;
+        /// `I` bit.
+        const I = 1 << 7;
+        /// `A` bit.
+        const A = 1 << 8;
+        /// `E` bit.
+        const E = 1 << 9;
+        /// `IL` bit.
+        const IL = 1 << 20;
+        /// `SS` bit.
+        const SS = 1 << 21;
+        /// `PAN` bit.
+        const PAN = 1 << 22;
+        /// `SSBS` bit.
+        const SSBS = 1 << 23;
+        /// `DIT` bit.
+        const DIT = 1 << 24;
+        /// `Q` bit.
+        const Q = 1 << 27;
+        /// `V` bit.
+        const V = 1 << 28;
+        /// `C` bit.
+        const C = 1 << 29;
+        /// `Z` bit.
+        const Z = 1 << 30;
+        /// `N` bit.
+        const N = 1 << 31;
+    }
+}
+
+impl Dspsr {
+    /// Offset of the `M[4:0]` field.
+    pub const M_4_0_SHIFT: u32 = 0;
+    /// Mask for the `M[4:0]` field.
+    pub const M_4_0_MASK: u32 = 0b11111;
+    /// Offset of the `T` field.
+    pub const T_SHIFT: u32 = 5;
+    /// Offset of the `F` field.
+    pub const F_SHIFT: u32 = 6;
+    /// Offset of the `I` field.
+    pub const I_SHIFT: u32 = 7;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 8;
+    /// Offset of the `E` field.
+    pub const E_SHIFT: u32 = 9;
+    /// Offset of the `GE` field.
+    pub const GE_SHIFT: u32 = 16;
+    /// Mask for the `GE` field.
+    pub const GE_MASK: u32 = 0b1111;
+    /// Offset of the `IL` field.
+    pub const IL_SHIFT: u32 = 20;
+    /// Offset of the `SS` field.
+    pub const SS_SHIFT: u32 = 21;
+    /// Offset of the `PAN` field.
+    pub const PAN_SHIFT: u32 = 22;
+    /// Offset of the `SSBS` field.
+    pub const SSBS_SHIFT: u32 = 23;
+    /// Offset of the `DIT` field.
+    pub const DIT_SHIFT: u32 = 24;
+    /// Offset of the `Q` field.
+    pub const Q_SHIFT: u32 = 27;
+    /// Offset of the `V` field.
+    pub const V_SHIFT: u32 = 28;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 29;
+    /// Offset of the `Z` field.
+    pub const Z_SHIFT: u32 = 30;
+    /// Offset of the `N` field.
+    pub const N_SHIFT: u32 = 31;
+
+    /// Returns the value of the `M[4:0]` field.
+    pub const fn m_4_0(self) -> u8 {
+        ((self.bits() >> Self::M_4_0_SHIFT) & 0b11111) as u8
+    }
+
+    /// Returns the value of the `GE` field.
+    pub const fn ge(self) -> u8 {
+        ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `DSPSR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Dspsr2: u32 {
+        /// `PPEND` bit.
+        const PPEND = 1 << 1;
+        /// `UINJ` bit.
+        const UINJ = 1 << 4;
+    }
+}
+
+impl Dspsr2 {
+    /// Offset of the `PPEND` field.
+    pub const PPEND_SHIFT: u32 = 1;
+    /// Offset of the `UINJ` field.
+    pub const UINJ_SHIFT: u32 = 4;
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ELR_EL1` system register value.
@@ -792,6 +2880,368 @@ impl ElrEl2 {
     pub const fn addr(self) -> u64 {
         ((self.bits() >> Self::ADDR_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `ELR_hyp` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct ElrHyp: u32 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl ElrHyp {
+    /// Offset of the `ADDR` field.
+    pub const ADDR_SHIFT: u32 = 0;
+    /// Mask for the `ADDR` field.
+    pub const ADDR_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ADDR` field.
+    pub const fn addr(self) -> u32 {
+        ((self.bits() >> Self::ADDR_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERRIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erridr: u32 {
+    }
+}
+
+impl Erridr {
+    /// Offset of the `NUM` field.
+    pub const NUM_SHIFT: u32 = 0;
+    /// Mask for the `NUM` field.
+    pub const NUM_MASK: u32 = 0b1111111111111111;
+
+    /// Returns the value of the `NUM` field.
+    pub const fn num(self) -> u16 {
+        ((self.bits() >> Self::NUM_SHIFT) & 0b1111111111111111) as u16
+    }
+}
+
+bitflags! {
+    /// `ERRSELR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Errselr: u32 {
+    }
+}
+
+impl Errselr {
+    /// Offset of the `SEL` field.
+    pub const SEL_SHIFT: u32 = 0;
+    /// Mask for the `SEL` field.
+    pub const SEL_MASK: u32 = 0b1111111111111111;
+
+    /// Returns the value of the `SEL` field.
+    pub const fn sel(self) -> u16 {
+        ((self.bits() >> Self::SEL_SHIFT) & 0b1111111111111111) as u16
+    }
+}
+
+bitflags! {
+    /// `ERXADDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxaddr: u32 {
+    }
+}
+
+impl Erxaddr {
+    /// Offset of the `ERRnADDRlo` field.
+    pub const ERRNADDRLO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnADDRlo` field.
+    pub const ERRNADDRLO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnADDRlo` field.
+    pub const fn errnaddrlo(self) -> u32 {
+        ((self.bits() >> Self::ERRNADDRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXADDR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxaddr2: u32 {
+    }
+}
+
+impl Erxaddr2 {
+    /// Offset of the `ERRnADDRhi` field.
+    pub const ERRNADDRHI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnADDRhi` field.
+    pub const ERRNADDRHI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnADDRhi` field.
+    pub const fn errnaddrhi(self) -> u32 {
+        ((self.bits() >> Self::ERRNADDRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXCTLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxctlr: u32 {
+    }
+}
+
+impl Erxctlr {
+    /// Offset of the `ERRnCTLRlo` field.
+    pub const ERRNCTLRLO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnCTLRlo` field.
+    pub const ERRNCTLRLO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnCTLRlo` field.
+    pub const fn errnctlrlo(self) -> u32 {
+        ((self.bits() >> Self::ERRNCTLRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXCTLR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxctlr2: u32 {
+    }
+}
+
+impl Erxctlr2 {
+    /// Offset of the `ERRnCTLRhi` field.
+    pub const ERRNCTLRHI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnCTLRhi` field.
+    pub const ERRNCTLRHI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnCTLRhi` field.
+    pub const fn errnctlrhi(self) -> u32 {
+        ((self.bits() >> Self::ERRNCTLRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXFR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxfr: u32 {
+    }
+}
+
+impl Erxfr {
+    /// Offset of the `ERRnFRlo` field.
+    pub const ERRNFRLO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnFRlo` field.
+    pub const ERRNFRLO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnFRlo` field.
+    pub const fn errnfrlo(self) -> u32 {
+        ((self.bits() >> Self::ERRNFRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXFR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxfr2: u32 {
+    }
+}
+
+impl Erxfr2 {
+    /// Offset of the `ERRnFRhi` field.
+    pub const ERRNFRHI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnFRhi` field.
+    pub const ERRNFRHI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnFRhi` field.
+    pub const fn errnfrhi(self) -> u32 {
+        ((self.bits() >> Self::ERRNFRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc0: u32 {
+    }
+}
+
+impl Erxmisc0 {
+    /// Offset of the `ERRnMISC0lo` field.
+    pub const ERRNMISC0LO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC0lo` field.
+    pub const ERRNMISC0LO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC0lo` field.
+    pub const fn errnmisc0lo(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC0LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc1: u32 {
+    }
+}
+
+impl Erxmisc1 {
+    /// Offset of the `ERRnMISC0hi` field.
+    pub const ERRNMISC0HI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC0hi` field.
+    pub const ERRNMISC0HI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC0hi` field.
+    pub const fn errnmisc0hi(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC0HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc2: u32 {
+    }
+}
+
+impl Erxmisc2 {
+    /// Offset of the `ERRnMISC1lo` field.
+    pub const ERRNMISC1LO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC1lo` field.
+    pub const ERRNMISC1LO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC1lo` field.
+    pub const fn errnmisc1lo(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC1LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc3: u32 {
+    }
+}
+
+impl Erxmisc3 {
+    /// Offset of the `ERRnMISC1hi` field.
+    pub const ERRNMISC1HI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC1hi` field.
+    pub const ERRNMISC1HI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC1hi` field.
+    pub const fn errnmisc1hi(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC1HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC4` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc4: u32 {
+    }
+}
+
+impl Erxmisc4 {
+    /// Offset of the `ERRnMISC2lo` field.
+    pub const ERRNMISC2LO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC2lo` field.
+    pub const ERRNMISC2LO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC2lo` field.
+    pub const fn errnmisc2lo(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC2LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC5` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc5: u32 {
+    }
+}
+
+impl Erxmisc5 {
+    /// Offset of the `ERRnMISC2hi` field.
+    pub const ERRNMISC2HI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC2hi` field.
+    pub const ERRNMISC2HI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC2hi` field.
+    pub const fn errnmisc2hi(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC2HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC6` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc6: u32 {
+    }
+}
+
+impl Erxmisc6 {
+    /// Offset of the `ERRnMISC3lo` field.
+    pub const ERRNMISC3LO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC3lo` field.
+    pub const ERRNMISC3LO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC3lo` field.
+    pub const fn errnmisc3lo(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC3LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXMISC7` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxmisc7: u32 {
+    }
+}
+
+impl Erxmisc7 {
+    /// Offset of the `ERRnMISC3hi` field.
+    pub const ERRNMISC3HI_SHIFT: u32 = 0;
+    /// Mask for the `ERRnMISC3hi` field.
+    pub const ERRNMISC3HI_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnMISC3hi` field.
+    pub const fn errnmisc3hi(self) -> u32 {
+        ((self.bits() >> Self::ERRNMISC3HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `ERXSTATUS` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Erxstatus: u32 {
+    }
+}
+
+impl Erxstatus {
+    /// Offset of the `ERRnSTATUSlo` field.
+    pub const ERRNSTATUSLO_SHIFT: u32 = 0;
+    /// Mask for the `ERRnSTATUSlo` field.
+    pub const ERRNSTATUSLO_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ERRnSTATUSlo` field.
+    pub const fn errnstatuslo(self) -> u32 {
+        ((self.bits() >> Self::ERRNSTATUSLO_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
 }
 
@@ -1226,6 +3676,218 @@ impl GptbrEl3 {
     }
 }
 
+bitflags! {
+    /// `HCPTR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hcptr: u32 {
+        /// RES1 bits in the `HCPTR` register.
+        const RES1 = 0b11001111111111;
+        /// `TCP10` bit.
+        const TCP10 = 1 << 10;
+        /// `TCP11` bit.
+        const TCP11 = 1 << 11;
+        /// `TASE` bit.
+        const TASE = 1 << 15;
+        /// `TTA` bit.
+        const TTA = 1 << 20;
+        /// `TAM` bit.
+        const TAM = 1 << 30;
+        /// `TCPAC` bit.
+        const TCPAC = 1 << 31;
+    }
+}
+
+impl Hcptr {
+    /// Offset of the `TCP10` field.
+    pub const TCP10_SHIFT: u32 = 10;
+    /// Offset of the `TCP11` field.
+    pub const TCP11_SHIFT: u32 = 11;
+    /// Offset of the `TASE` field.
+    pub const TASE_SHIFT: u32 = 15;
+    /// Offset of the `TTA` field.
+    pub const TTA_SHIFT: u32 = 20;
+    /// Offset of the `TAM` field.
+    pub const TAM_SHIFT: u32 = 30;
+    /// Offset of the `TCPAC` field.
+    pub const TCPAC_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `HCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hcr: u32 {
+        /// `VM` bit.
+        const VM = 1 << 0;
+        /// `SWIO` bit.
+        const SWIO = 1 << 1;
+        /// `PTW` bit.
+        const PTW = 1 << 2;
+        /// `FMO` bit.
+        const FMO = 1 << 3;
+        /// `IMO` bit.
+        const IMO = 1 << 4;
+        /// `AMO` bit.
+        const AMO = 1 << 5;
+        /// `VF` bit.
+        const VF = 1 << 6;
+        /// `VI` bit.
+        const VI = 1 << 7;
+        /// `VA` bit.
+        const VA = 1 << 8;
+        /// `FB` bit.
+        const FB = 1 << 9;
+        /// `DC` bit.
+        const DC = 1 << 12;
+        /// `TWI` bit.
+        const TWI = 1 << 13;
+        /// `TWE` bit.
+        const TWE = 1 << 14;
+        /// `TID0` bit.
+        const TID0 = 1 << 15;
+        /// `TID1` bit.
+        const TID1 = 1 << 16;
+        /// `TID2` bit.
+        const TID2 = 1 << 17;
+        /// `TID3` bit.
+        const TID3 = 1 << 18;
+        /// `TSC` bit.
+        const TSC = 1 << 19;
+        /// `TIDCP` bit.
+        const TIDCP = 1 << 20;
+        /// `TAC` bit.
+        const TAC = 1 << 21;
+        /// `TSW` bit.
+        const TSW = 1 << 22;
+        /// `TPC` bit.
+        const TPC = 1 << 23;
+        /// `TPU` bit.
+        const TPU = 1 << 24;
+        /// `TTLB` bit.
+        const TTLB = 1 << 25;
+        /// `TVM` bit.
+        const TVM = 1 << 26;
+        /// `TGE` bit.
+        const TGE = 1 << 27;
+        /// `HCD` bit.
+        const HCD = 1 << 29;
+        /// `TRVM` bit.
+        const TRVM = 1 << 30;
+    }
+}
+
+impl Hcr {
+    /// Offset of the `VM` field.
+    pub const VM_SHIFT: u32 = 0;
+    /// Offset of the `SWIO` field.
+    pub const SWIO_SHIFT: u32 = 1;
+    /// Offset of the `PTW` field.
+    pub const PTW_SHIFT: u32 = 2;
+    /// Offset of the `FMO` field.
+    pub const FMO_SHIFT: u32 = 3;
+    /// Offset of the `IMO` field.
+    pub const IMO_SHIFT: u32 = 4;
+    /// Offset of the `AMO` field.
+    pub const AMO_SHIFT: u32 = 5;
+    /// Offset of the `VF` field.
+    pub const VF_SHIFT: u32 = 6;
+    /// Offset of the `VI` field.
+    pub const VI_SHIFT: u32 = 7;
+    /// Offset of the `VA` field.
+    pub const VA_SHIFT: u32 = 8;
+    /// Offset of the `FB` field.
+    pub const FB_SHIFT: u32 = 9;
+    /// Offset of the `BSU` field.
+    pub const BSU_SHIFT: u32 = 10;
+    /// Mask for the `BSU` field.
+    pub const BSU_MASK: u32 = 0b11;
+    /// Offset of the `DC` field.
+    pub const DC_SHIFT: u32 = 12;
+    /// Offset of the `TWI` field.
+    pub const TWI_SHIFT: u32 = 13;
+    /// Offset of the `TWE` field.
+    pub const TWE_SHIFT: u32 = 14;
+    /// Offset of the `TID0` field.
+    pub const TID0_SHIFT: u32 = 15;
+    /// Offset of the `TID1` field.
+    pub const TID1_SHIFT: u32 = 16;
+    /// Offset of the `TID2` field.
+    pub const TID2_SHIFT: u32 = 17;
+    /// Offset of the `TID3` field.
+    pub const TID3_SHIFT: u32 = 18;
+    /// Offset of the `TSC` field.
+    pub const TSC_SHIFT: u32 = 19;
+    /// Offset of the `TIDCP` field.
+    pub const TIDCP_SHIFT: u32 = 20;
+    /// Offset of the `TAC` field.
+    pub const TAC_SHIFT: u32 = 21;
+    /// Offset of the `TSW` field.
+    pub const TSW_SHIFT: u32 = 22;
+    /// Offset of the `TPC` field.
+    pub const TPC_SHIFT: u32 = 23;
+    /// Offset of the `TPU` field.
+    pub const TPU_SHIFT: u32 = 24;
+    /// Offset of the `TTLB` field.
+    pub const TTLB_SHIFT: u32 = 25;
+    /// Offset of the `TVM` field.
+    pub const TVM_SHIFT: u32 = 26;
+    /// Offset of the `TGE` field.
+    pub const TGE_SHIFT: u32 = 27;
+    /// Offset of the `HCD` field.
+    pub const HCD_SHIFT: u32 = 29;
+    /// Offset of the `TRVM` field.
+    pub const TRVM_SHIFT: u32 = 30;
+
+    /// Returns the value of the `BSU` field.
+    pub const fn bsu(self) -> u8 {
+        ((self.bits() >> Self::BSU_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `HCR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hcr2: u32 {
+        /// `CD` bit.
+        const CD = 1 << 0;
+        /// `ID` bit.
+        const ID = 1 << 1;
+        /// `TERR` bit.
+        const TERR = 1 << 4;
+        /// `TEA` bit.
+        const TEA = 1 << 5;
+        /// `TID4` bit.
+        const TID4 = 1 << 17;
+        /// `TICAB` bit.
+        const TICAB = 1 << 18;
+        /// `TOCU` bit.
+        const TOCU = 1 << 20;
+        /// `TTLBIS` bit.
+        const TTLBIS = 1 << 22;
+    }
+}
+
+impl Hcr2 {
+    /// Offset of the `CD` field.
+    pub const CD_SHIFT: u32 = 0;
+    /// Offset of the `ID` field.
+    pub const ID_SHIFT: u32 = 1;
+    /// Offset of the `TERR` field.
+    pub const TERR_SHIFT: u32 = 4;
+    /// Offset of the `TEA` field.
+    pub const TEA_SHIFT: u32 = 5;
+    /// Offset of the `TID4` field.
+    pub const TID4_SHIFT: u32 = 17;
+    /// Offset of the `TICAB` field.
+    pub const TICAB_SHIFT: u32 = 18;
+    /// Offset of the `TOCU` field.
+    pub const TOCU_SHIFT: u32 = 20;
+    /// Offset of the `TTLBIS` field.
+    pub const TTLBIS_SHIFT: u32 = 22;
+}
+
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HCRX_EL2` system register value.
@@ -1641,6 +4303,102 @@ impl HcrEl2 {
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `HDCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hdcr: u32 {
+        /// `TPMCR` bit.
+        const TPMCR = 1 << 5;
+        /// `TPM` bit.
+        const TPM = 1 << 6;
+        /// `HPME` bit.
+        const HPME = 1 << 7;
+        /// `TDE` bit.
+        const TDE = 1 << 8;
+        /// `TDA` bit.
+        const TDA = 1 << 9;
+        /// `TDOSA` bit.
+        const TDOSA = 1 << 10;
+        /// `TDRA` bit.
+        const TDRA = 1 << 11;
+        /// `HPMD` bit.
+        const HPMD = 1 << 17;
+        /// `TTRF` bit.
+        const TTRF = 1 << 19;
+        /// `HCCD` bit.
+        const HCCD = 1 << 23;
+        /// `HLP` bit.
+        const HLP = 1 << 26;
+        /// `TDCC` bit.
+        const TDCC = 1 << 27;
+        /// `MTPME` bit.
+        const MTPME = 1 << 28;
+        /// `HPMFZO` bit.
+        const HPMFZO = 1 << 29;
+    }
+}
+
+impl Hdcr {
+    /// Offset of the `HPMN` field.
+    pub const HPMN_SHIFT: u32 = 0;
+    /// Mask for the `HPMN` field.
+    pub const HPMN_MASK: u32 = 0b11111;
+    /// Offset of the `TPMCR` field.
+    pub const TPMCR_SHIFT: u32 = 5;
+    /// Offset of the `TPM` field.
+    pub const TPM_SHIFT: u32 = 6;
+    /// Offset of the `HPME` field.
+    pub const HPME_SHIFT: u32 = 7;
+    /// Offset of the `TDE` field.
+    pub const TDE_SHIFT: u32 = 8;
+    /// Offset of the `TDA` field.
+    pub const TDA_SHIFT: u32 = 9;
+    /// Offset of the `TDOSA` field.
+    pub const TDOSA_SHIFT: u32 = 10;
+    /// Offset of the `TDRA` field.
+    pub const TDRA_SHIFT: u32 = 11;
+    /// Offset of the `HPMD` field.
+    pub const HPMD_SHIFT: u32 = 17;
+    /// Offset of the `TTRF` field.
+    pub const TTRF_SHIFT: u32 = 19;
+    /// Offset of the `HCCD` field.
+    pub const HCCD_SHIFT: u32 = 23;
+    /// Offset of the `HLP` field.
+    pub const HLP_SHIFT: u32 = 26;
+    /// Offset of the `TDCC` field.
+    pub const TDCC_SHIFT: u32 = 27;
+    /// Offset of the `MTPME` field.
+    pub const MTPME_SHIFT: u32 = 28;
+    /// Offset of the `HPMFZO` field.
+    pub const HPMFZO_SHIFT: u32 = 29;
+
+    /// Returns the value of the `HPMN` field.
+    pub const fn hpmn(self) -> u8 {
+        ((self.bits() >> Self::HPMN_SHIFT) & 0b11111) as u8
+    }
+}
+
+bitflags! {
+    /// `HDFAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hdfar: u32 {
+    }
+}
+
+impl Hdfar {
+    /// Offset of the `VA` field.
+    pub const VA_SHIFT: u32 = 0;
+    /// Mask for the `VA` field.
+    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `VA` field.
+    pub const fn va(self) -> u32 {
+        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
 }
 
@@ -2466,6 +5224,88 @@ impl HfgwtrEl2 {
     pub const NAMAIR2_EL1_SHIFT: u32 = 63;
 }
 
+bitflags! {
+    /// `HIFAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hifar: u32 {
+    }
+}
+
+impl Hifar {
+    /// Offset of the `VA` field.
+    pub const VA_SHIFT: u32 = 0;
+    /// Mask for the `VA` field.
+    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `VA` field.
+    pub const fn va(self) -> u32 {
+        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `HMAIR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hmair0: u32 {
+    }
+}
+
+impl Hmair0 {
+    /// Offset of the `Attr<n>` field.
+    pub const ATTR_SHIFT: u32 = 0;
+    /// Mask for the `Attr<n>` field.
+    pub const ATTR_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the given `Attr<n>` field.
+    pub const fn attr(self, n: u32) -> u8 {
+        assert!(n < 4);
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
+    /// `HMAIR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hmair1: u32 {
+    }
+}
+
+impl Hmair1 {
+    /// Offset of the `Attr<n>` field.
+    pub const ATTR_SHIFT: u32 = 0;
+    /// Mask for the `Attr<n>` field.
+    pub const ATTR_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the given `Attr<n>` field.
+    pub const fn attr(self, n: u32) -> u8 {
+        assert!(n >= 4 && n < 8);
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
+    /// `HPFAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hpfar: u32 {
+    }
+}
+
+impl Hpfar {
+    /// Offset of the `FIPA[39:12]` field.
+    pub const FIPA_39_12_SHIFT: u32 = 4;
+    /// Mask for the `FIPA[39:12]` field.
+    pub const FIPA_39_12_MASK: u32 = 0b1111111111111111111111111111;
+
+    /// Returns the value of the `FIPA[39:12]` field.
+    pub const fn fipa_39_12(self) -> u32 {
+        ((self.bits() >> Self::FIPA_39_12_SHIFT) & 0b1111111111111111111111111111) as u32
+    }
+}
+
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HPFAR_EL2` system register value.
@@ -2489,6 +5329,285 @@ impl HpfarEl2 {
     /// Returns the value of the `FIPA` field.
     pub const fn fipa(self) -> u64 {
         ((self.bits() >> Self::FIPA_SHIFT) & 0b11111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `HRMR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hrmr: u32 {
+        /// `AA64` bit.
+        const AA64 = 1 << 0;
+        /// `RR` bit.
+        const RR = 1 << 1;
+    }
+}
+
+impl Hrmr {
+    /// Offset of the `AA64` field.
+    pub const AA64_SHIFT: u32 = 0;
+    /// Offset of the `RR` field.
+    pub const RR_SHIFT: u32 = 1;
+}
+
+bitflags! {
+    /// `HSCTLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hsctlr: u32 {
+        /// RES1 bits in the `HSCTLR` register.
+        const RES1 = 0b110000110001010000100000000000;
+        /// `M` bit.
+        const M = 1 << 0;
+        /// `A` bit.
+        const A = 1 << 1;
+        /// `C` bit.
+        const C = 1 << 2;
+        /// `nTLSMD` bit.
+        const NTLSMD = 1 << 3;
+        /// `LSMAOE` bit.
+        const LSMAOE = 1 << 4;
+        /// `CP15BEN` bit.
+        const CP15BEN = 1 << 5;
+        /// `ITD` bit.
+        const ITD = 1 << 7;
+        /// `SED` bit.
+        const SED = 1 << 8;
+        /// `I` bit.
+        const I = 1 << 12;
+        /// `WXN` bit.
+        const WXN = 1 << 19;
+        /// `TE` bit.
+        const TE = 1 << 30;
+        /// `DSSBS` bit.
+        const DSSBS = 1 << 31;
+    }
+}
+
+impl Hsctlr {
+    /// Offset of the `M` field.
+    pub const M_SHIFT: u32 = 0;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 1;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 2;
+    /// Offset of the `nTLSMD` field.
+    pub const NTLSMD_SHIFT: u32 = 3;
+    /// Offset of the `LSMAOE` field.
+    pub const LSMAOE_SHIFT: u32 = 4;
+    /// Offset of the `CP15BEN` field.
+    pub const CP15BEN_SHIFT: u32 = 5;
+    /// Offset of the `ITD` field.
+    pub const ITD_SHIFT: u32 = 7;
+    /// Offset of the `SED` field.
+    pub const SED_SHIFT: u32 = 8;
+    /// Offset of the `I` field.
+    pub const I_SHIFT: u32 = 12;
+    /// Offset of the `WXN` field.
+    pub const WXN_SHIFT: u32 = 19;
+    /// Offset of the `TE` field.
+    pub const TE_SHIFT: u32 = 30;
+    /// Offset of the `DSSBS` field.
+    pub const DSSBS_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `HSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hsr: u32 {
+        /// `IL` bit.
+        const IL = 1 << 25;
+    }
+}
+
+impl Hsr {
+    /// Offset of the `ISS` field.
+    pub const ISS_SHIFT: u32 = 0;
+    /// Mask for the `ISS` field.
+    pub const ISS_MASK: u32 = 0b1111111111111111111111111;
+    /// Offset of the `IL` field.
+    pub const IL_SHIFT: u32 = 25;
+    /// Offset of the `EC` field.
+    pub const EC_SHIFT: u32 = 26;
+    /// Mask for the `EC` field.
+    pub const EC_MASK: u32 = 0b111111;
+
+    /// Returns the value of the `ISS` field.
+    pub const fn iss(self) -> u32 {
+        ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
+    }
+
+    /// Returns the value of the `EC` field.
+    pub const fn ec(self) -> u8 {
+        ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
+    }
+}
+
+bitflags! {
+    /// `HTCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Htcr: u32 {
+        /// RES1 bits in the `HTCR` register.
+        const RES1 = 0b10000000100000000000000000000000;
+        /// `HPD` bit.
+        const HPD = 1 << 24;
+        /// `HWU59` bit.
+        const HWU59 = 1 << 25;
+        /// `HWU60` bit.
+        const HWU60 = 1 << 26;
+        /// `HWU61` bit.
+        const HWU61 = 1 << 27;
+        /// `HWU62` bit.
+        const HWU62 = 1 << 28;
+    }
+}
+
+impl Htcr {
+    /// Offset of the `T0SZ` field.
+    pub const T0SZ_SHIFT: u32 = 0;
+    /// Mask for the `T0SZ` field.
+    pub const T0SZ_MASK: u32 = 0b111;
+    /// Offset of the `IRGN0` field.
+    pub const IRGN0_SHIFT: u32 = 8;
+    /// Mask for the `IRGN0` field.
+    pub const IRGN0_MASK: u32 = 0b11;
+    /// Offset of the `ORGN0` field.
+    pub const ORGN0_SHIFT: u32 = 10;
+    /// Mask for the `ORGN0` field.
+    pub const ORGN0_MASK: u32 = 0b11;
+    /// Offset of the `SH0` field.
+    pub const SH0_SHIFT: u32 = 12;
+    /// Mask for the `SH0` field.
+    pub const SH0_MASK: u32 = 0b11;
+    /// Offset of the `HPD` field.
+    pub const HPD_SHIFT: u32 = 24;
+    /// Offset of the `HWU59` field.
+    pub const HWU59_SHIFT: u32 = 25;
+    /// Offset of the `HWU60` field.
+    pub const HWU60_SHIFT: u32 = 26;
+    /// Offset of the `HWU61` field.
+    pub const HWU61_SHIFT: u32 = 27;
+    /// Offset of the `HWU62` field.
+    pub const HWU62_SHIFT: u32 = 28;
+
+    /// Returns the value of the `T0SZ` field.
+    pub const fn t0sz(self) -> u8 {
+        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `IRGN0` field.
+    pub const fn irgn0(self) -> u8 {
+        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `ORGN0` field.
+    pub const fn orgn0(self) -> u8 {
+        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `SH0` field.
+    pub const fn sh0(self) -> u8 {
+        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `HTPIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Htpidr: u32 {
+    }
+}
+
+impl Htpidr {
+    /// Offset of the `TID` field.
+    pub const TID_SHIFT: u32 = 0;
+    /// Mask for the `TID` field.
+    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TID` field.
+    pub const fn tid(self) -> u32 {
+        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `HTRFCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Htrfcr: u32 {
+        /// `E0HTRE` bit.
+        const E0HTRE = 1 << 0;
+        /// `E2TRE` bit.
+        const E2TRE = 1 << 1;
+        /// `CX` bit.
+        const CX = 1 << 3;
+    }
+}
+
+impl Htrfcr {
+    /// Offset of the `E0HTRE` field.
+    pub const E0HTRE_SHIFT: u32 = 0;
+    /// Offset of the `E2TRE` field.
+    pub const E2TRE_SHIFT: u32 = 1;
+    /// Offset of the `CX` field.
+    pub const CX_SHIFT: u32 = 3;
+    /// Offset of the `TS` field.
+    pub const TS_SHIFT: u32 = 5;
+    /// Mask for the `TS` field.
+    pub const TS_MASK: u32 = 0b11;
+
+    /// Returns the value of the `TS` field.
+    pub const fn ts(self) -> u8 {
+        ((self.bits() >> Self::TS_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `HTTBR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Httbr: u64 {
+        /// `CnP` bit.
+        const CNP = 1 << 0;
+    }
+}
+
+impl Httbr {
+    /// Offset of the `CnP` field.
+    pub const CNP_SHIFT: u32 = 0;
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 1;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
+            as u64
+    }
+}
+
+bitflags! {
+    /// `HVBAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Hvbar: u32 {
+    }
+}
+
+impl Hvbar {
+    /// Offset of the `VBA` field.
+    pub const VBA_SHIFT: u32 = 5;
+    /// Mask for the `VBA` field.
+    pub const VBA_MASK: u32 = 0b111111111111111111111111111;
+
+    /// Returns the value of the `VBA` field.
+    pub const fn vba(self) -> u32 {
+        ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
     }
 }
 
@@ -4325,6 +7444,1404 @@ impl IdAa64smfr0El1 {
     }
 }
 
+bitflags! {
+    /// `ID_DFR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdDfr0: u32 {
+    }
+}
+
+impl IdDfr0 {
+    /// Offset of the `CopDbg` field.
+    pub const COPDBG_SHIFT: u32 = 0;
+    /// Mask for the `CopDbg` field.
+    pub const COPDBG_MASK: u32 = 0b1111;
+    /// Offset of the `CopSDbg` field.
+    pub const COPSDBG_SHIFT: u32 = 4;
+    /// Mask for the `CopSDbg` field.
+    pub const COPSDBG_MASK: u32 = 0b1111;
+    /// Offset of the `MMapDbg` field.
+    pub const MMAPDBG_SHIFT: u32 = 8;
+    /// Mask for the `MMapDbg` field.
+    pub const MMAPDBG_MASK: u32 = 0b1111;
+    /// Offset of the `CopTrc` field.
+    pub const COPTRC_SHIFT: u32 = 12;
+    /// Mask for the `CopTrc` field.
+    pub const COPTRC_MASK: u32 = 0b1111;
+    /// Offset of the `MMapTrc` field.
+    pub const MMAPTRC_SHIFT: u32 = 16;
+    /// Mask for the `MMapTrc` field.
+    pub const MMAPTRC_MASK: u32 = 0b1111;
+    /// Offset of the `MProfDbg` field.
+    pub const MPROFDBG_SHIFT: u32 = 20;
+    /// Mask for the `MProfDbg` field.
+    pub const MPROFDBG_MASK: u32 = 0b1111;
+    /// Offset of the `PerfMon` field.
+    pub const PERFMON_SHIFT: u32 = 24;
+    /// Mask for the `PerfMon` field.
+    pub const PERFMON_MASK: u32 = 0b1111;
+    /// Offset of the `TraceFilt` field.
+    pub const TRACEFILT_SHIFT: u32 = 28;
+    /// Mask for the `TraceFilt` field.
+    pub const TRACEFILT_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `CopDbg` field.
+    pub const fn copdbg(self) -> u8 {
+        ((self.bits() >> Self::COPDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CopSDbg` field.
+    pub const fn copsdbg(self) -> u8 {
+        ((self.bits() >> Self::COPSDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MMapDbg` field.
+    pub const fn mmapdbg(self) -> u8 {
+        ((self.bits() >> Self::MMAPDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CopTrc` field.
+    pub const fn coptrc(self) -> u8 {
+        ((self.bits() >> Self::COPTRC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MMapTrc` field.
+    pub const fn mmaptrc(self) -> u8 {
+        ((self.bits() >> Self::MMAPTRC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MProfDbg` field.
+    pub const fn mprofdbg(self) -> u8 {
+        ((self.bits() >> Self::MPROFDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PerfMon` field.
+    pub const fn perfmon(self) -> u8 {
+        ((self.bits() >> Self::PERFMON_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `TraceFilt` field.
+    pub const fn tracefilt(self) -> u8 {
+        ((self.bits() >> Self::TRACEFILT_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_DFR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdDfr1: u32 {
+    }
+}
+
+impl IdDfr1 {
+    /// Offset of the `MTPMU` field.
+    pub const MTPMU_SHIFT: u32 = 0;
+    /// Mask for the `MTPMU` field.
+    pub const MTPMU_MASK: u32 = 0b1111;
+    /// Offset of the `HPMN0` field.
+    pub const HPMN0_SHIFT: u32 = 4;
+    /// Mask for the `HPMN0` field.
+    pub const HPMN0_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `MTPMU` field.
+    pub const fn mtpmu(self) -> u8 {
+        ((self.bits() >> Self::MTPMU_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `HPMN0` field.
+    pub const fn hpmn0(self) -> u8 {
+        ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar0: u32 {
+    }
+}
+
+impl IdIsar0 {
+    /// Offset of the `Swap` field.
+    pub const SWAP_SHIFT: u32 = 0;
+    /// Mask for the `Swap` field.
+    pub const SWAP_MASK: u32 = 0b1111;
+    /// Offset of the `BitCount` field.
+    pub const BITCOUNT_SHIFT: u32 = 4;
+    /// Mask for the `BitCount` field.
+    pub const BITCOUNT_MASK: u32 = 0b1111;
+    /// Offset of the `BitField` field.
+    pub const BITFIELD_SHIFT: u32 = 8;
+    /// Mask for the `BitField` field.
+    pub const BITFIELD_MASK: u32 = 0b1111;
+    /// Offset of the `CmpBranch` field.
+    pub const CMPBRANCH_SHIFT: u32 = 12;
+    /// Mask for the `CmpBranch` field.
+    pub const CMPBRANCH_MASK: u32 = 0b1111;
+    /// Offset of the `Coproc` field.
+    pub const COPROC_SHIFT: u32 = 16;
+    /// Mask for the `Coproc` field.
+    pub const COPROC_MASK: u32 = 0b1111;
+    /// Offset of the `Debug` field.
+    pub const DEBUG_SHIFT: u32 = 20;
+    /// Mask for the `Debug` field.
+    pub const DEBUG_MASK: u32 = 0b1111;
+    /// Offset of the `Divide` field.
+    pub const DIVIDE_SHIFT: u32 = 24;
+    /// Mask for the `Divide` field.
+    pub const DIVIDE_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `Swap` field.
+    pub const fn swap(self) -> u8 {
+        ((self.bits() >> Self::SWAP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BitCount` field.
+    pub const fn bitcount(self) -> u8 {
+        ((self.bits() >> Self::BITCOUNT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BitField` field.
+    pub const fn bitfield(self) -> u8 {
+        ((self.bits() >> Self::BITFIELD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CmpBranch` field.
+    pub const fn cmpbranch(self) -> u8 {
+        ((self.bits() >> Self::CMPBRANCH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Coproc` field.
+    pub const fn coproc(self) -> u8 {
+        ((self.bits() >> Self::COPROC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Debug` field.
+    pub const fn debug(self) -> u8 {
+        ((self.bits() >> Self::DEBUG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Divide` field.
+    pub const fn divide(self) -> u8 {
+        ((self.bits() >> Self::DIVIDE_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar1: u32 {
+    }
+}
+
+impl IdIsar1 {
+    /// Offset of the `Endian` field.
+    pub const ENDIAN_SHIFT: u32 = 0;
+    /// Mask for the `Endian` field.
+    pub const ENDIAN_MASK: u32 = 0b1111;
+    /// Offset of the `Except` field.
+    pub const EXCEPT_SHIFT: u32 = 4;
+    /// Mask for the `Except` field.
+    pub const EXCEPT_MASK: u32 = 0b1111;
+    /// Offset of the `Except_AR` field.
+    pub const EXCEPT_AR_SHIFT: u32 = 8;
+    /// Mask for the `Except_AR` field.
+    pub const EXCEPT_AR_MASK: u32 = 0b1111;
+    /// Offset of the `Extend` field.
+    pub const EXTEND_SHIFT: u32 = 12;
+    /// Mask for the `Extend` field.
+    pub const EXTEND_MASK: u32 = 0b1111;
+    /// Offset of the `IfThen` field.
+    pub const IFTHEN_SHIFT: u32 = 16;
+    /// Mask for the `IfThen` field.
+    pub const IFTHEN_MASK: u32 = 0b1111;
+    /// Offset of the `Immediate` field.
+    pub const IMMEDIATE_SHIFT: u32 = 20;
+    /// Mask for the `Immediate` field.
+    pub const IMMEDIATE_MASK: u32 = 0b1111;
+    /// Offset of the `Interwork` field.
+    pub const INTERWORK_SHIFT: u32 = 24;
+    /// Mask for the `Interwork` field.
+    pub const INTERWORK_MASK: u32 = 0b1111;
+    /// Offset of the `Jazelle` field.
+    pub const JAZELLE_SHIFT: u32 = 28;
+    /// Mask for the `Jazelle` field.
+    pub const JAZELLE_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `Endian` field.
+    pub const fn endian(self) -> u8 {
+        ((self.bits() >> Self::ENDIAN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Except` field.
+    pub const fn except(self) -> u8 {
+        ((self.bits() >> Self::EXCEPT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Except_AR` field.
+    pub const fn except_ar(self) -> u8 {
+        ((self.bits() >> Self::EXCEPT_AR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Extend` field.
+    pub const fn extend_(self) -> u8 {
+        ((self.bits() >> Self::EXTEND_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `IfThen` field.
+    pub const fn ifthen(self) -> u8 {
+        ((self.bits() >> Self::IFTHEN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Immediate` field.
+    pub const fn immediate(self) -> u8 {
+        ((self.bits() >> Self::IMMEDIATE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Interwork` field.
+    pub const fn interwork(self) -> u8 {
+        ((self.bits() >> Self::INTERWORK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Jazelle` field.
+    pub const fn jazelle(self) -> u8 {
+        ((self.bits() >> Self::JAZELLE_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar2: u32 {
+    }
+}
+
+impl IdIsar2 {
+    /// Offset of the `LoadStore` field.
+    pub const LOADSTORE_SHIFT: u32 = 0;
+    /// Mask for the `LoadStore` field.
+    pub const LOADSTORE_MASK: u32 = 0b1111;
+    /// Offset of the `MemHint` field.
+    pub const MEMHINT_SHIFT: u32 = 4;
+    /// Mask for the `MemHint` field.
+    pub const MEMHINT_MASK: u32 = 0b1111;
+    /// Offset of the `MultiAccessInt` field.
+    pub const MULTIACCESSINT_SHIFT: u32 = 8;
+    /// Mask for the `MultiAccessInt` field.
+    pub const MULTIACCESSINT_MASK: u32 = 0b1111;
+    /// Offset of the `Mult` field.
+    pub const MULT_SHIFT: u32 = 12;
+    /// Mask for the `Mult` field.
+    pub const MULT_MASK: u32 = 0b1111;
+    /// Offset of the `MultS` field.
+    pub const MULTS_SHIFT: u32 = 16;
+    /// Mask for the `MultS` field.
+    pub const MULTS_MASK: u32 = 0b1111;
+    /// Offset of the `MultU` field.
+    pub const MULTU_SHIFT: u32 = 20;
+    /// Mask for the `MultU` field.
+    pub const MULTU_MASK: u32 = 0b1111;
+    /// Offset of the `PSR_AR` field.
+    pub const PSR_AR_SHIFT: u32 = 24;
+    /// Mask for the `PSR_AR` field.
+    pub const PSR_AR_MASK: u32 = 0b1111;
+    /// Offset of the `Reversal` field.
+    pub const REVERSAL_SHIFT: u32 = 28;
+    /// Mask for the `Reversal` field.
+    pub const REVERSAL_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `LoadStore` field.
+    pub const fn loadstore(self) -> u8 {
+        ((self.bits() >> Self::LOADSTORE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MemHint` field.
+    pub const fn memhint(self) -> u8 {
+        ((self.bits() >> Self::MEMHINT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MultiAccessInt` field.
+    pub const fn multiaccessint(self) -> u8 {
+        ((self.bits() >> Self::MULTIACCESSINT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Mult` field.
+    pub const fn mult(self) -> u8 {
+        ((self.bits() >> Self::MULT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MultS` field.
+    pub const fn mults(self) -> u8 {
+        ((self.bits() >> Self::MULTS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MultU` field.
+    pub const fn multu(self) -> u8 {
+        ((self.bits() >> Self::MULTU_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PSR_AR` field.
+    pub const fn psr_ar(self) -> u8 {
+        ((self.bits() >> Self::PSR_AR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Reversal` field.
+    pub const fn reversal(self) -> u8 {
+        ((self.bits() >> Self::REVERSAL_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar3: u32 {
+    }
+}
+
+impl IdIsar3 {
+    /// Offset of the `Saturate` field.
+    pub const SATURATE_SHIFT: u32 = 0;
+    /// Mask for the `Saturate` field.
+    pub const SATURATE_MASK: u32 = 0b1111;
+    /// Offset of the `SIMD` field.
+    pub const SIMD_SHIFT: u32 = 4;
+    /// Mask for the `SIMD` field.
+    pub const SIMD_MASK: u32 = 0b1111;
+    /// Offset of the `SVC` field.
+    pub const SVC_SHIFT: u32 = 8;
+    /// Mask for the `SVC` field.
+    pub const SVC_MASK: u32 = 0b1111;
+    /// Offset of the `SynchPrim` field.
+    pub const SYNCHPRIM_SHIFT: u32 = 12;
+    /// Mask for the `SynchPrim` field.
+    pub const SYNCHPRIM_MASK: u32 = 0b1111;
+    /// Offset of the `TabBranch` field.
+    pub const TABBRANCH_SHIFT: u32 = 16;
+    /// Mask for the `TabBranch` field.
+    pub const TABBRANCH_MASK: u32 = 0b1111;
+    /// Offset of the `T32Copy` field.
+    pub const T32COPY_SHIFT: u32 = 20;
+    /// Mask for the `T32Copy` field.
+    pub const T32COPY_MASK: u32 = 0b1111;
+    /// Offset of the `TrueNOP` field.
+    pub const TRUENOP_SHIFT: u32 = 24;
+    /// Mask for the `TrueNOP` field.
+    pub const TRUENOP_MASK: u32 = 0b1111;
+    /// Offset of the `T32EE` field.
+    pub const T32EE_SHIFT: u32 = 28;
+    /// Mask for the `T32EE` field.
+    pub const T32EE_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `Saturate` field.
+    pub const fn saturate(self) -> u8 {
+        ((self.bits() >> Self::SATURATE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SIMD` field.
+    pub const fn simd(self) -> u8 {
+        ((self.bits() >> Self::SIMD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SVC` field.
+    pub const fn svc(self) -> u8 {
+        ((self.bits() >> Self::SVC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SynchPrim` field.
+    pub const fn synchprim(self) -> u8 {
+        ((self.bits() >> Self::SYNCHPRIM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `TabBranch` field.
+    pub const fn tabbranch(self) -> u8 {
+        ((self.bits() >> Self::TABBRANCH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `T32Copy` field.
+    pub const fn t32copy(self) -> u8 {
+        ((self.bits() >> Self::T32COPY_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `TrueNOP` field.
+    pub const fn truenop(self) -> u8 {
+        ((self.bits() >> Self::TRUENOP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `T32EE` field.
+    pub const fn t32ee(self) -> u8 {
+        ((self.bits() >> Self::T32EE_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR4` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar4: u32 {
+    }
+}
+
+impl IdIsar4 {
+    /// Offset of the `Unpriv` field.
+    pub const UNPRIV_SHIFT: u32 = 0;
+    /// Mask for the `Unpriv` field.
+    pub const UNPRIV_MASK: u32 = 0b1111;
+    /// Offset of the `WithShifts` field.
+    pub const WITHSHIFTS_SHIFT: u32 = 4;
+    /// Mask for the `WithShifts` field.
+    pub const WITHSHIFTS_MASK: u32 = 0b1111;
+    /// Offset of the `Writeback` field.
+    pub const WRITEBACK_SHIFT: u32 = 8;
+    /// Mask for the `Writeback` field.
+    pub const WRITEBACK_MASK: u32 = 0b1111;
+    /// Offset of the `SMC` field.
+    pub const SMC_SHIFT: u32 = 12;
+    /// Mask for the `SMC` field.
+    pub const SMC_MASK: u32 = 0b1111;
+    /// Offset of the `Barrier` field.
+    pub const BARRIER_SHIFT: u32 = 16;
+    /// Mask for the `Barrier` field.
+    pub const BARRIER_MASK: u32 = 0b1111;
+    /// Offset of the `SynchPrim_frac` field.
+    pub const SYNCHPRIM_FRAC_SHIFT: u32 = 20;
+    /// Mask for the `SynchPrim_frac` field.
+    pub const SYNCHPRIM_FRAC_MASK: u32 = 0b1111;
+    /// Offset of the `PSR_M` field.
+    pub const PSR_M_SHIFT: u32 = 24;
+    /// Mask for the `PSR_M` field.
+    pub const PSR_M_MASK: u32 = 0b1111;
+    /// Offset of the `SWP_frac` field.
+    pub const SWP_FRAC_SHIFT: u32 = 28;
+    /// Mask for the `SWP_frac` field.
+    pub const SWP_FRAC_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `Unpriv` field.
+    pub const fn unpriv(self) -> u8 {
+        ((self.bits() >> Self::UNPRIV_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `WithShifts` field.
+    pub const fn withshifts(self) -> u8 {
+        ((self.bits() >> Self::WITHSHIFTS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Writeback` field.
+    pub const fn writeback(self) -> u8 {
+        ((self.bits() >> Self::WRITEBACK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SMC` field.
+    pub const fn smc(self) -> u8 {
+        ((self.bits() >> Self::SMC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Barrier` field.
+    pub const fn barrier(self) -> u8 {
+        ((self.bits() >> Self::BARRIER_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SynchPrim_frac` field.
+    pub const fn synchprim_frac(self) -> u8 {
+        ((self.bits() >> Self::SYNCHPRIM_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PSR_M` field.
+    pub const fn psr_m(self) -> u8 {
+        ((self.bits() >> Self::PSR_M_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SWP_frac` field.
+    pub const fn swp_frac(self) -> u8 {
+        ((self.bits() >> Self::SWP_FRAC_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR5` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar5: u32 {
+    }
+}
+
+impl IdIsar5 {
+    /// Offset of the `SEVL` field.
+    pub const SEVL_SHIFT: u32 = 0;
+    /// Mask for the `SEVL` field.
+    pub const SEVL_MASK: u32 = 0b1111;
+    /// Offset of the `AES` field.
+    pub const AES_SHIFT: u32 = 4;
+    /// Mask for the `AES` field.
+    pub const AES_MASK: u32 = 0b1111;
+    /// Offset of the `SHA1` field.
+    pub const SHA1_SHIFT: u32 = 8;
+    /// Mask for the `SHA1` field.
+    pub const SHA1_MASK: u32 = 0b1111;
+    /// Offset of the `SHA2` field.
+    pub const SHA2_SHIFT: u32 = 12;
+    /// Mask for the `SHA2` field.
+    pub const SHA2_MASK: u32 = 0b1111;
+    /// Offset of the `CRC32` field.
+    pub const CRC32_SHIFT: u32 = 16;
+    /// Mask for the `CRC32` field.
+    pub const CRC32_MASK: u32 = 0b1111;
+    /// Offset of the `RDM` field.
+    pub const RDM_SHIFT: u32 = 24;
+    /// Mask for the `RDM` field.
+    pub const RDM_MASK: u32 = 0b1111;
+    /// Offset of the `VCMA` field.
+    pub const VCMA_SHIFT: u32 = 28;
+    /// Mask for the `VCMA` field.
+    pub const VCMA_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `SEVL` field.
+    pub const fn sevl(self) -> u8 {
+        ((self.bits() >> Self::SEVL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `AES` field.
+    pub const fn aes(self) -> u8 {
+        ((self.bits() >> Self::AES_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SHA1` field.
+    pub const fn sha1(self) -> u8 {
+        ((self.bits() >> Self::SHA1_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SHA2` field.
+    pub const fn sha2(self) -> u8 {
+        ((self.bits() >> Self::SHA2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CRC32` field.
+    pub const fn crc32(self) -> u8 {
+        ((self.bits() >> Self::CRC32_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `RDM` field.
+    pub const fn rdm(self) -> u8 {
+        ((self.bits() >> Self::RDM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `VCMA` field.
+    pub const fn vcma(self) -> u8 {
+        ((self.bits() >> Self::VCMA_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_ISAR6` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdIsar6: u32 {
+    }
+}
+
+impl IdIsar6 {
+    /// Offset of the `JSCVT` field.
+    pub const JSCVT_SHIFT: u32 = 0;
+    /// Mask for the `JSCVT` field.
+    pub const JSCVT_MASK: u32 = 0b1111;
+    /// Offset of the `DP` field.
+    pub const DP_SHIFT: u32 = 4;
+    /// Mask for the `DP` field.
+    pub const DP_MASK: u32 = 0b1111;
+    /// Offset of the `FHM` field.
+    pub const FHM_SHIFT: u32 = 8;
+    /// Mask for the `FHM` field.
+    pub const FHM_MASK: u32 = 0b1111;
+    /// Offset of the `SB` field.
+    pub const SB_SHIFT: u32 = 12;
+    /// Mask for the `SB` field.
+    pub const SB_MASK: u32 = 0b1111;
+    /// Offset of the `SPECRES` field.
+    pub const SPECRES_SHIFT: u32 = 16;
+    /// Mask for the `SPECRES` field.
+    pub const SPECRES_MASK: u32 = 0b1111;
+    /// Offset of the `BF16` field.
+    pub const BF16_SHIFT: u32 = 20;
+    /// Mask for the `BF16` field.
+    pub const BF16_MASK: u32 = 0b1111;
+    /// Offset of the `I8MM` field.
+    pub const I8MM_SHIFT: u32 = 24;
+    /// Mask for the `I8MM` field.
+    pub const I8MM_MASK: u32 = 0b1111;
+    /// Offset of the `CLRBHB` field.
+    pub const CLRBHB_SHIFT: u32 = 28;
+    /// Mask for the `CLRBHB` field.
+    pub const CLRBHB_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `JSCVT` field.
+    pub const fn jscvt(self) -> u8 {
+        ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `DP` field.
+    pub const fn dp(self) -> u8 {
+        ((self.bits() >> Self::DP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `FHM` field.
+    pub const fn fhm(self) -> u8 {
+        ((self.bits() >> Self::FHM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SB` field.
+    pub const fn sb(self) -> u8 {
+        ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SPECRES` field.
+    pub const fn specres(self) -> u8 {
+        ((self.bits() >> Self::SPECRES_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BF16` field.
+    pub const fn bf16(self) -> u8 {
+        ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `I8MM` field.
+    pub const fn i8mm(self) -> u8 {
+        ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CLRBHB` field.
+    pub const fn clrbhb(self) -> u8 {
+        ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_MMFR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdMmfr0: u32 {
+    }
+}
+
+impl IdMmfr0 {
+    /// Offset of the `VMSA` field.
+    pub const VMSA_SHIFT: u32 = 0;
+    /// Mask for the `VMSA` field.
+    pub const VMSA_MASK: u32 = 0b1111;
+    /// Offset of the `PMSA` field.
+    pub const PMSA_SHIFT: u32 = 4;
+    /// Mask for the `PMSA` field.
+    pub const PMSA_MASK: u32 = 0b1111;
+    /// Offset of the `OuterShr` field.
+    pub const OUTERSHR_SHIFT: u32 = 8;
+    /// Mask for the `OuterShr` field.
+    pub const OUTERSHR_MASK: u32 = 0b1111;
+    /// Offset of the `ShareLvl` field.
+    pub const SHARELVL_SHIFT: u32 = 12;
+    /// Mask for the `ShareLvl` field.
+    pub const SHARELVL_MASK: u32 = 0b1111;
+    /// Offset of the `TCM` field.
+    pub const TCM_SHIFT: u32 = 16;
+    /// Mask for the `TCM` field.
+    pub const TCM_MASK: u32 = 0b1111;
+    /// Offset of the `AuxReg` field.
+    pub const AUXREG_SHIFT: u32 = 20;
+    /// Mask for the `AuxReg` field.
+    pub const AUXREG_MASK: u32 = 0b1111;
+    /// Offset of the `FCSE` field.
+    pub const FCSE_SHIFT: u32 = 24;
+    /// Mask for the `FCSE` field.
+    pub const FCSE_MASK: u32 = 0b1111;
+    /// Offset of the `InnerShr` field.
+    pub const INNERSHR_SHIFT: u32 = 28;
+    /// Mask for the `InnerShr` field.
+    pub const INNERSHR_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `VMSA` field.
+    pub const fn vmsa(self) -> u8 {
+        ((self.bits() >> Self::VMSA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PMSA` field.
+    pub const fn pmsa(self) -> u8 {
+        ((self.bits() >> Self::PMSA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `OuterShr` field.
+    pub const fn outershr(self) -> u8 {
+        ((self.bits() >> Self::OUTERSHR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `ShareLvl` field.
+    pub const fn sharelvl(self) -> u8 {
+        ((self.bits() >> Self::SHARELVL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `TCM` field.
+    pub const fn tcm(self) -> u8 {
+        ((self.bits() >> Self::TCM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `AuxReg` field.
+    pub const fn auxreg(self) -> u8 {
+        ((self.bits() >> Self::AUXREG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `FCSE` field.
+    pub const fn fcse(self) -> u8 {
+        ((self.bits() >> Self::FCSE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `InnerShr` field.
+    pub const fn innershr(self) -> u8 {
+        ((self.bits() >> Self::INNERSHR_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_MMFR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdMmfr1: u32 {
+    }
+}
+
+impl IdMmfr1 {
+    /// Offset of the `L1HvdVA` field.
+    pub const L1HVDVA_SHIFT: u32 = 0;
+    /// Mask for the `L1HvdVA` field.
+    pub const L1HVDVA_MASK: u32 = 0b1111;
+    /// Offset of the `L1UniVA` field.
+    pub const L1UNIVA_SHIFT: u32 = 4;
+    /// Mask for the `L1UniVA` field.
+    pub const L1UNIVA_MASK: u32 = 0b1111;
+    /// Offset of the `L1HvdSW` field.
+    pub const L1HVDSW_SHIFT: u32 = 8;
+    /// Mask for the `L1HvdSW` field.
+    pub const L1HVDSW_MASK: u32 = 0b1111;
+    /// Offset of the `L1UniSW` field.
+    pub const L1UNISW_SHIFT: u32 = 12;
+    /// Mask for the `L1UniSW` field.
+    pub const L1UNISW_MASK: u32 = 0b1111;
+    /// Offset of the `L1Hvd` field.
+    pub const L1HVD_SHIFT: u32 = 16;
+    /// Mask for the `L1Hvd` field.
+    pub const L1HVD_MASK: u32 = 0b1111;
+    /// Offset of the `L1Uni` field.
+    pub const L1UNI_SHIFT: u32 = 20;
+    /// Mask for the `L1Uni` field.
+    pub const L1UNI_MASK: u32 = 0b1111;
+    /// Offset of the `L1TstCln` field.
+    pub const L1TSTCLN_SHIFT: u32 = 24;
+    /// Mask for the `L1TstCln` field.
+    pub const L1TSTCLN_MASK: u32 = 0b1111;
+    /// Offset of the `BPred` field.
+    pub const BPRED_SHIFT: u32 = 28;
+    /// Mask for the `BPred` field.
+    pub const BPRED_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `L1HvdVA` field.
+    pub const fn l1hvdva(self) -> u8 {
+        ((self.bits() >> Self::L1HVDVA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1UniVA` field.
+    pub const fn l1univa(self) -> u8 {
+        ((self.bits() >> Self::L1UNIVA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1HvdSW` field.
+    pub const fn l1hvdsw(self) -> u8 {
+        ((self.bits() >> Self::L1HVDSW_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1UniSW` field.
+    pub const fn l1unisw(self) -> u8 {
+        ((self.bits() >> Self::L1UNISW_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1Hvd` field.
+    pub const fn l1hvd(self) -> u8 {
+        ((self.bits() >> Self::L1HVD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1Uni` field.
+    pub const fn l1uni(self) -> u8 {
+        ((self.bits() >> Self::L1UNI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1TstCln` field.
+    pub const fn l1tstcln(self) -> u8 {
+        ((self.bits() >> Self::L1TSTCLN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BPred` field.
+    pub const fn bpred(self) -> u8 {
+        ((self.bits() >> Self::BPRED_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_MMFR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdMmfr2: u32 {
+    }
+}
+
+impl IdMmfr2 {
+    /// Offset of the `L1HvdFG` field.
+    pub const L1HVDFG_SHIFT: u32 = 0;
+    /// Mask for the `L1HvdFG` field.
+    pub const L1HVDFG_MASK: u32 = 0b1111;
+    /// Offset of the `L1HvdBG` field.
+    pub const L1HVDBG_SHIFT: u32 = 4;
+    /// Mask for the `L1HvdBG` field.
+    pub const L1HVDBG_MASK: u32 = 0b1111;
+    /// Offset of the `L1HvdRng` field.
+    pub const L1HVDRNG_SHIFT: u32 = 8;
+    /// Mask for the `L1HvdRng` field.
+    pub const L1HVDRNG_MASK: u32 = 0b1111;
+    /// Offset of the `HvdTLB` field.
+    pub const HVDTLB_SHIFT: u32 = 12;
+    /// Mask for the `HvdTLB` field.
+    pub const HVDTLB_MASK: u32 = 0b1111;
+    /// Offset of the `UniTLB` field.
+    pub const UNITLB_SHIFT: u32 = 16;
+    /// Mask for the `UniTLB` field.
+    pub const UNITLB_MASK: u32 = 0b1111;
+    /// Offset of the `MemBarr` field.
+    pub const MEMBARR_SHIFT: u32 = 20;
+    /// Mask for the `MemBarr` field.
+    pub const MEMBARR_MASK: u32 = 0b1111;
+    /// Offset of the `WFIStall` field.
+    pub const WFISTALL_SHIFT: u32 = 24;
+    /// Mask for the `WFIStall` field.
+    pub const WFISTALL_MASK: u32 = 0b1111;
+    /// Offset of the `HWAccFlg` field.
+    pub const HWACCFLG_SHIFT: u32 = 28;
+    /// Mask for the `HWAccFlg` field.
+    pub const HWACCFLG_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `L1HvdFG` field.
+    pub const fn l1hvdfg(self) -> u8 {
+        ((self.bits() >> Self::L1HVDFG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1HvdBG` field.
+    pub const fn l1hvdbg(self) -> u8 {
+        ((self.bits() >> Self::L1HVDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `L1HvdRng` field.
+    pub const fn l1hvdrng(self) -> u8 {
+        ((self.bits() >> Self::L1HVDRNG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `HvdTLB` field.
+    pub const fn hvdtlb(self) -> u8 {
+        ((self.bits() >> Self::HVDTLB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `UniTLB` field.
+    pub const fn unitlb(self) -> u8 {
+        ((self.bits() >> Self::UNITLB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MemBarr` field.
+    pub const fn membarr(self) -> u8 {
+        ((self.bits() >> Self::MEMBARR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `WFIStall` field.
+    pub const fn wfistall(self) -> u8 {
+        ((self.bits() >> Self::WFISTALL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `HWAccFlg` field.
+    pub const fn hwaccflg(self) -> u8 {
+        ((self.bits() >> Self::HWACCFLG_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_MMFR3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdMmfr3: u32 {
+    }
+}
+
+impl IdMmfr3 {
+    /// Offset of the `CMaintVA` field.
+    pub const CMAINTVA_SHIFT: u32 = 0;
+    /// Mask for the `CMaintVA` field.
+    pub const CMAINTVA_MASK: u32 = 0b1111;
+    /// Offset of the `CMaintSW` field.
+    pub const CMAINTSW_SHIFT: u32 = 4;
+    /// Mask for the `CMaintSW` field.
+    pub const CMAINTSW_MASK: u32 = 0b1111;
+    /// Offset of the `BPMaint` field.
+    pub const BPMAINT_SHIFT: u32 = 8;
+    /// Mask for the `BPMaint` field.
+    pub const BPMAINT_MASK: u32 = 0b1111;
+    /// Offset of the `MaintBcst` field.
+    pub const MAINTBCST_SHIFT: u32 = 12;
+    /// Mask for the `MaintBcst` field.
+    pub const MAINTBCST_MASK: u32 = 0b1111;
+    /// Offset of the `PAN` field.
+    pub const PAN_SHIFT: u32 = 16;
+    /// Mask for the `PAN` field.
+    pub const PAN_MASK: u32 = 0b1111;
+    /// Offset of the `CohWalk` field.
+    pub const COHWALK_SHIFT: u32 = 20;
+    /// Mask for the `CohWalk` field.
+    pub const COHWALK_MASK: u32 = 0b1111;
+    /// Offset of the `CMemSz` field.
+    pub const CMEMSZ_SHIFT: u32 = 24;
+    /// Mask for the `CMemSz` field.
+    pub const CMEMSZ_MASK: u32 = 0b1111;
+    /// Offset of the `Supersec` field.
+    pub const SUPERSEC_SHIFT: u32 = 28;
+    /// Mask for the `Supersec` field.
+    pub const SUPERSEC_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `CMaintVA` field.
+    pub const fn cmaintva(self) -> u8 {
+        ((self.bits() >> Self::CMAINTVA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CMaintSW` field.
+    pub const fn cmaintsw(self) -> u8 {
+        ((self.bits() >> Self::CMAINTSW_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `BPMaint` field.
+    pub const fn bpmaint(self) -> u8 {
+        ((self.bits() >> Self::BPMAINT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MaintBcst` field.
+    pub const fn maintbcst(self) -> u8 {
+        ((self.bits() >> Self::MAINTBCST_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PAN` field.
+    pub const fn pan(self) -> u8 {
+        ((self.bits() >> Self::PAN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CohWalk` field.
+    pub const fn cohwalk(self) -> u8 {
+        ((self.bits() >> Self::COHWALK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CMemSz` field.
+    pub const fn cmemsz(self) -> u8 {
+        ((self.bits() >> Self::CMEMSZ_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Supersec` field.
+    pub const fn supersec(self) -> u8 {
+        ((self.bits() >> Self::SUPERSEC_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_MMFR4` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdMmfr4: u32 {
+    }
+}
+
+impl IdMmfr4 {
+    /// Offset of the `SpecSEI` field.
+    pub const SPECSEI_SHIFT: u32 = 0;
+    /// Mask for the `SpecSEI` field.
+    pub const SPECSEI_MASK: u32 = 0b1111;
+    /// Offset of the `AC2` field.
+    pub const AC2_SHIFT: u32 = 4;
+    /// Mask for the `AC2` field.
+    pub const AC2_MASK: u32 = 0b1111;
+    /// Offset of the `XNX` field.
+    pub const XNX_SHIFT: u32 = 8;
+    /// Mask for the `XNX` field.
+    pub const XNX_MASK: u32 = 0b1111;
+    /// Offset of the `CnP` field.
+    pub const CNP_SHIFT: u32 = 12;
+    /// Mask for the `CnP` field.
+    pub const CNP_MASK: u32 = 0b1111;
+    /// Offset of the `HPDS` field.
+    pub const HPDS_SHIFT: u32 = 16;
+    /// Mask for the `HPDS` field.
+    pub const HPDS_MASK: u32 = 0b1111;
+    /// Offset of the `LSM` field.
+    pub const LSM_SHIFT: u32 = 20;
+    /// Mask for the `LSM` field.
+    pub const LSM_MASK: u32 = 0b1111;
+    /// Offset of the `CCIDX` field.
+    pub const CCIDX_SHIFT: u32 = 24;
+    /// Mask for the `CCIDX` field.
+    pub const CCIDX_MASK: u32 = 0b1111;
+    /// Offset of the `EVT` field.
+    pub const EVT_SHIFT: u32 = 28;
+    /// Mask for the `EVT` field.
+    pub const EVT_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `SpecSEI` field.
+    pub const fn specsei(self) -> u8 {
+        ((self.bits() >> Self::SPECSEI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `AC2` field.
+    pub const fn ac2(self) -> u8 {
+        ((self.bits() >> Self::AC2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `XNX` field.
+    pub const fn xnx(self) -> u8 {
+        ((self.bits() >> Self::XNX_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CnP` field.
+    pub const fn cnp(self) -> u8 {
+        ((self.bits() >> Self::CNP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `HPDS` field.
+    pub const fn hpds(self) -> u8 {
+        ((self.bits() >> Self::HPDS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `LSM` field.
+    pub const fn lsm(self) -> u8 {
+        ((self.bits() >> Self::LSM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CCIDX` field.
+    pub const fn ccidx(self) -> u8 {
+        ((self.bits() >> Self::CCIDX_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `EVT` field.
+    pub const fn evt(self) -> u8 {
+        ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_MMFR5` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdMmfr5: u32 {
+    }
+}
+
+impl IdMmfr5 {
+    /// Offset of the `ETS` field.
+    pub const ETS_SHIFT: u32 = 0;
+    /// Mask for the `ETS` field.
+    pub const ETS_MASK: u32 = 0b1111;
+    /// Offset of the `nTLBPA` field.
+    pub const NTLBPA_SHIFT: u32 = 4;
+    /// Mask for the `nTLBPA` field.
+    pub const NTLBPA_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `ETS` field.
+    pub const fn ets(self) -> u8 {
+        ((self.bits() >> Self::ETS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `nTLBPA` field.
+    pub const fn ntlbpa(self) -> u8 {
+        ((self.bits() >> Self::NTLBPA_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_PFR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdPfr0: u32 {
+    }
+}
+
+impl IdPfr0 {
+    /// Offset of the `State0` field.
+    pub const STATE0_SHIFT: u32 = 0;
+    /// Mask for the `State0` field.
+    pub const STATE0_MASK: u32 = 0b1111;
+    /// Offset of the `State1` field.
+    pub const STATE1_SHIFT: u32 = 4;
+    /// Mask for the `State1` field.
+    pub const STATE1_MASK: u32 = 0b1111;
+    /// Offset of the `State2` field.
+    pub const STATE2_SHIFT: u32 = 8;
+    /// Mask for the `State2` field.
+    pub const STATE2_MASK: u32 = 0b1111;
+    /// Offset of the `State3` field.
+    pub const STATE3_SHIFT: u32 = 12;
+    /// Mask for the `State3` field.
+    pub const STATE3_MASK: u32 = 0b1111;
+    /// Offset of the `CSV2` field.
+    pub const CSV2_SHIFT: u32 = 16;
+    /// Mask for the `CSV2` field.
+    pub const CSV2_MASK: u32 = 0b1111;
+    /// Offset of the `AMU` field.
+    pub const AMU_SHIFT: u32 = 20;
+    /// Mask for the `AMU` field.
+    pub const AMU_MASK: u32 = 0b1111;
+    /// Offset of the `DIT` field.
+    pub const DIT_SHIFT: u32 = 24;
+    /// Mask for the `DIT` field.
+    pub const DIT_MASK: u32 = 0b1111;
+    /// Offset of the `RAS` field.
+    pub const RAS_SHIFT: u32 = 28;
+    /// Mask for the `RAS` field.
+    pub const RAS_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `State0` field.
+    pub const fn state0(self) -> u8 {
+        ((self.bits() >> Self::STATE0_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `State1` field.
+    pub const fn state1(self) -> u8 {
+        ((self.bits() >> Self::STATE1_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `State2` field.
+    pub const fn state2(self) -> u8 {
+        ((self.bits() >> Self::STATE2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `State3` field.
+    pub const fn state3(self) -> u8 {
+        ((self.bits() >> Self::STATE3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `CSV2` field.
+    pub const fn csv2(self) -> u8 {
+        ((self.bits() >> Self::CSV2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `AMU` field.
+    pub const fn amu(self) -> u8 {
+        ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `DIT` field.
+    pub const fn dit(self) -> u8 {
+        ((self.bits() >> Self::DIT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `RAS` field.
+    pub const fn ras(self) -> u8 {
+        ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_PFR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdPfr1: u32 {
+    }
+}
+
+impl IdPfr1 {
+    /// Offset of the `ProgMod` field.
+    pub const PROGMOD_SHIFT: u32 = 0;
+    /// Mask for the `ProgMod` field.
+    pub const PROGMOD_MASK: u32 = 0b1111;
+    /// Offset of the `Security` field.
+    pub const SECURITY_SHIFT: u32 = 4;
+    /// Mask for the `Security` field.
+    pub const SECURITY_MASK: u32 = 0b1111;
+    /// Offset of the `MProgMod` field.
+    pub const MPROGMOD_SHIFT: u32 = 8;
+    /// Mask for the `MProgMod` field.
+    pub const MPROGMOD_MASK: u32 = 0b1111;
+    /// Offset of the `Virtualization` field.
+    pub const VIRTUALIZATION_SHIFT: u32 = 12;
+    /// Mask for the `Virtualization` field.
+    pub const VIRTUALIZATION_MASK: u32 = 0b1111;
+    /// Offset of the `GenTimer` field.
+    pub const GENTIMER_SHIFT: u32 = 16;
+    /// Mask for the `GenTimer` field.
+    pub const GENTIMER_MASK: u32 = 0b1111;
+    /// Offset of the `Sec_frac` field.
+    pub const SEC_FRAC_SHIFT: u32 = 20;
+    /// Mask for the `Sec_frac` field.
+    pub const SEC_FRAC_MASK: u32 = 0b1111;
+    /// Offset of the `Virt_frac` field.
+    pub const VIRT_FRAC_SHIFT: u32 = 24;
+    /// Mask for the `Virt_frac` field.
+    pub const VIRT_FRAC_MASK: u32 = 0b1111;
+    /// Offset of the `GIC` field.
+    pub const GIC_SHIFT: u32 = 28;
+    /// Mask for the `GIC` field.
+    pub const GIC_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `ProgMod` field.
+    pub const fn progmod(self) -> u8 {
+        ((self.bits() >> Self::PROGMOD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Security` field.
+    pub const fn security(self) -> u8 {
+        ((self.bits() >> Self::SECURITY_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `MProgMod` field.
+    pub const fn mprogmod(self) -> u8 {
+        ((self.bits() >> Self::MPROGMOD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Virtualization` field.
+    pub const fn virtualization(self) -> u8 {
+        ((self.bits() >> Self::VIRTUALIZATION_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `GenTimer` field.
+    pub const fn gentimer(self) -> u8 {
+        ((self.bits() >> Self::GENTIMER_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Sec_frac` field.
+    pub const fn sec_frac(self) -> u8 {
+        ((self.bits() >> Self::SEC_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Virt_frac` field.
+    pub const fn virt_frac(self) -> u8 {
+        ((self.bits() >> Self::VIRT_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `GIC` field.
+    pub const fn gic(self) -> u8 {
+        ((self.bits() >> Self::GIC_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `ID_PFR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdPfr2: u32 {
+    }
+}
+
+impl IdPfr2 {
+    /// Offset of the `CSV3` field.
+    pub const CSV3_SHIFT: u32 = 0;
+    /// Mask for the `CSV3` field.
+    pub const CSV3_MASK: u32 = 0b1111;
+    /// Offset of the `SSBS` field.
+    pub const SSBS_SHIFT: u32 = 4;
+    /// Mask for the `SSBS` field.
+    pub const SSBS_MASK: u32 = 0b1111;
+    /// Offset of the `RAS_frac` field.
+    pub const RAS_FRAC_SHIFT: u32 = 8;
+    /// Mask for the `RAS_frac` field.
+    pub const RAS_FRAC_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `CSV3` field.
+    pub const fn csv3(self) -> u8 {
+        ((self.bits() >> Self::CSV3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SSBS` field.
+    pub const fn ssbs(self) -> u8 {
+        ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `RAS_frac` field.
+    pub const fn ras_frac(self) -> u8 {
+        ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `IFAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ifar: u32 {
+    }
+}
+
+impl Ifar {
+    /// Offset of the `VA` field.
+    pub const VA_SHIFT: u32 = 0;
+    /// Mask for the `VA` field.
+    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `VA` field.
+    pub const fn va(self) -> u32 {
+        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `IFSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ifsr: u32 {
+        /// `LPAE` bit.
+        const LPAE = 1 << 9;
+        /// `ExT` bit.
+        const EXT = 1 << 12;
+        /// `FnV` bit.
+        const FNV = 1 << 16;
+    }
+}
+
+impl Ifsr {
+    /// Offset of the `STATUS` field.
+    pub const STATUS_SHIFT: u32 = 0;
+    /// Mask for the `STATUS` field.
+    pub const STATUS_MASK: u32 = 0b111111;
+    /// Offset of the `LPAE` field.
+    pub const LPAE_SHIFT: u32 = 9;
+    /// Offset of the `ExT` field.
+    pub const EXT_SHIFT: u32 = 12;
+    /// Offset of the `FnV` field.
+    pub const FNV_SHIFT: u32 = 16;
+
+    /// Returns the value of the `STATUS` field.
+    pub const fn status(self) -> u8 {
+        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+    }
+}
+
+bitflags! {
+    /// `ISR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Isr: u32 {
+        /// `F` bit.
+        const F = 1 << 6;
+        /// `I` bit.
+        const I = 1 << 7;
+        /// `A` bit.
+        const A = 1 << 8;
+    }
+}
+
+impl Isr {
+    /// Offset of the `F` field.
+    pub const F_SHIFT: u32 = 6;
+    /// Offset of the `I` field.
+    pub const I_SHIFT: u32 = 7;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 8;
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ISR_EL1` system register value.
@@ -4356,6 +8873,48 @@ impl IsrEl1 {
     pub const FS_SHIFT: u32 = 9;
     /// Offset of the `IS` field.
     pub const IS_SHIFT: u32 = 10;
+}
+
+bitflags! {
+    /// `MAIR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Mair0: u32 {
+    }
+}
+
+impl Mair0 {
+    /// Offset of the `Attr<n>` field.
+    pub const ATTR_SHIFT: u32 = 0;
+    /// Mask for the `Attr<n>` field.
+    pub const ATTR_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the given `Attr<n>` field.
+    pub const fn attr(self, n: u32) -> u8 {
+        assert!(n < 4);
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
+    /// `MAIR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Mair1: u32 {
+    }
+}
+
+impl Mair1 {
+    /// Offset of the `Attr<n>` field.
+    pub const ATTR_SHIFT: u32 = 0;
+    /// Mask for the `Attr<n>` field.
+    pub const ATTR_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the given `Attr<n>` field.
+    pub const fn attr(self, n: u32) -> u8 {
+        assert!(n >= 4 && n < 8);
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & 0b11111111) as u8
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -4904,6 +9463,62 @@ impl MdscrEl1 {
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
         ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `MIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Midr: u32 {
+    }
+}
+
+impl Midr {
+    /// Offset of the `Revision` field.
+    pub const REVISION_SHIFT: u32 = 0;
+    /// Mask for the `Revision` field.
+    pub const REVISION_MASK: u32 = 0b1111;
+    /// Offset of the `PartNum` field.
+    pub const PARTNUM_SHIFT: u32 = 4;
+    /// Mask for the `PartNum` field.
+    pub const PARTNUM_MASK: u32 = 0b111111111111;
+    /// Offset of the `Architecture` field.
+    pub const ARCHITECTURE_SHIFT: u32 = 16;
+    /// Mask for the `Architecture` field.
+    pub const ARCHITECTURE_MASK: u32 = 0b1111;
+    /// Offset of the `Variant` field.
+    pub const VARIANT_SHIFT: u32 = 20;
+    /// Mask for the `Variant` field.
+    pub const VARIANT_MASK: u32 = 0b1111;
+    /// Offset of the `Implementer` field.
+    pub const IMPLEMENTER_SHIFT: u32 = 24;
+    /// Mask for the `Implementer` field.
+    pub const IMPLEMENTER_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the `Revision` field.
+    pub const fn revision(self) -> u8 {
+        ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PartNum` field.
+    pub const fn partnum(self) -> u16 {
+        ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+    }
+
+    /// Returns the value of the `Architecture` field.
+    pub const fn architecture(self) -> u8 {
+        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Variant` field.
+    pub const fn variant(self) -> u8 {
+        ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Implementer` field.
+    pub const fn implementer(self) -> u8 {
+        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
     }
 }
 
@@ -5788,6 +10403,56 @@ impl MpamvpmvEl2 {
     pub const VPM_V_SHIFT: u32 = 0;
 }
 
+bitflags! {
+    /// `MPIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Mpidr: u32 {
+        /// `MT` bit.
+        const MT = 1 << 24;
+        /// `U` bit.
+        const U = 1 << 30;
+        /// `M` bit.
+        const M = 1 << 31;
+    }
+}
+
+impl Mpidr {
+    /// Offset of the `Aff0` field.
+    pub const AFF0_SHIFT: u32 = 0;
+    /// Mask for the `Aff0` field.
+    pub const AFF0_MASK: u32 = 0b11111111;
+    /// Offset of the `Aff1` field.
+    pub const AFF1_SHIFT: u32 = 8;
+    /// Mask for the `Aff1` field.
+    pub const AFF1_MASK: u32 = 0b11111111;
+    /// Offset of the `Aff2` field.
+    pub const AFF2_SHIFT: u32 = 16;
+    /// Mask for the `Aff2` field.
+    pub const AFF2_MASK: u32 = 0b11111111;
+    /// Offset of the `MT` field.
+    pub const MT_SHIFT: u32 = 24;
+    /// Offset of the `U` field.
+    pub const U_SHIFT: u32 = 30;
+    /// Offset of the `M` field.
+    pub const M_SHIFT: u32 = 31;
+
+    /// Returns the value of the `Aff0` field.
+    pub const fn aff0(self) -> u8 {
+        ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `Aff1` field.
+    pub const fn aff1(self) -> u8 {
+        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `Aff2` field.
+    pub const fn aff2(self) -> u8 {
+        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `MPIDR_EL1` system register value.
@@ -5844,6 +10509,181 @@ impl MpidrEl1 {
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
+    /// `MVBAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Mvbar: u32 {
+    }
+}
+
+impl Mvbar {
+    /// Offset of the `Reserved` field.
+    pub const RESERVED_SHIFT: u32 = 0;
+    /// Mask for the `Reserved` field.
+    pub const RESERVED_MASK: u32 = 0b11111;
+    /// Offset of the `VBA` field.
+    pub const VBA_SHIFT: u32 = 5;
+    /// Mask for the `VBA` field.
+    pub const VBA_MASK: u32 = 0b111111111111111111111111111;
+
+    /// Returns the value of the `Reserved` field.
+    pub const fn reserved(self) -> u8 {
+        ((self.bits() >> Self::RESERVED_SHIFT) & 0b11111) as u8
+    }
+
+    /// Returns the value of the `VBA` field.
+    pub const fn vba(self) -> u32 {
+        ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `NMRR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Nmrr: u32 {
+    }
+}
+
+impl Nmrr {
+    /// Offset of the `IR<n>` field.
+    pub const IR_SHIFT: u32 = 0;
+    /// Mask for the `IR<n>` field.
+    pub const IR_MASK: u32 = 0b11;
+    /// Offset of the `OR<n>` field.
+    pub const OR_SHIFT: u32 = 16;
+    /// Mask for the `OR<n>` field.
+    pub const OR_MASK: u32 = 0b11;
+
+    /// Returns the value of the given `IR<n>` field.
+    pub const fn ir(self, n: u32) -> u8 {
+        assert!(n < 8);
+        ((self.bits() >> (Self::IR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+    }
+
+    /// Returns the value of the given `OR<n>` field.
+    pub const fn or(self, n: u32) -> u8 {
+        assert!(n < 8);
+        ((self.bits() >> (Self::OR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `NSACR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Nsacr: u32 {
+        /// `cp10` bit.
+        const CP10 = 1 << 10;
+        /// `cp11` bit.
+        const CP11 = 1 << 11;
+        /// `NSASEDIS` bit.
+        const NSASEDIS = 1 << 15;
+        /// `NSTRCDIS` bit.
+        const NSTRCDIS = 1 << 20;
+    }
+}
+
+impl Nsacr {
+    /// Offset of the `cp10` field.
+    pub const CP10_SHIFT: u32 = 10;
+    /// Offset of the `cp11` field.
+    pub const CP11_SHIFT: u32 = 11;
+    /// Offset of the `NSASEDIS` field.
+    pub const NSASEDIS_SHIFT: u32 = 15;
+    /// Offset of the `NSTRCDIS` field.
+    pub const NSTRCDIS_SHIFT: u32 = 20;
+}
+
+bitflags! {
+    /// `PAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Par: u64 {
+        /// `F` bit.
+        const F = 1 << 0;
+        /// `SS` bit.
+        const SS = 1 << 1;
+        /// `FS[5]` bit.
+        const FS_5 = 1 << 6;
+        /// `S2WLK` bit.
+        const S2WLK = 1 << 8;
+        /// `FSTAGE` bit.
+        const FSTAGE = 1 << 9;
+        /// `NS` bit.
+        const NS = 1 << 9;
+        /// `NOS` bit.
+        const NOS = 1 << 10;
+        /// `LPAE` bit.
+        const LPAE = 1 << 11;
+    }
+}
+
+impl Par {
+    /// Offset of the `F` field.
+    pub const F_SHIFT: u32 = 0;
+    /// Offset of the `FST` field.
+    pub const FST_SHIFT: u32 = 1;
+    /// Mask for the `FST` field.
+    pub const FST_MASK: u64 = 0b111111;
+    /// Offset of the `FS[4:0]` field.
+    pub const FS_4_0_SHIFT: u32 = 1;
+    /// Mask for the `FS[4:0]` field.
+    pub const FS_4_0_MASK: u64 = 0b11111;
+    /// Offset of the `SS` field.
+    pub const SS_SHIFT: u32 = 1;
+    /// Offset of the `Outer[1:0]` field.
+    pub const OUTER_1_0_SHIFT: u32 = 2;
+    /// Mask for the `Outer[1:0]` field.
+    pub const OUTER_1_0_MASK: u64 = 0b11;
+    /// Offset of the `Inner[2:0]` field.
+    pub const INNER_2_0_SHIFT: u32 = 4;
+    /// Mask for the `Inner[2:0]` field.
+    pub const INNER_2_0_MASK: u64 = 0b111;
+    /// Offset of the `FS[5]` field.
+    pub const FS_5_SHIFT: u32 = 6;
+    /// Offset of the `S2WLK` field.
+    pub const S2WLK_SHIFT: u32 = 8;
+    /// Offset of the `FSTAGE` field.
+    pub const FSTAGE_SHIFT: u32 = 9;
+    /// Offset of the `NS` field.
+    pub const NS_SHIFT: u32 = 9;
+    /// Offset of the `NOS` field.
+    pub const NOS_SHIFT: u32 = 10;
+    /// Offset of the `LPAE` field.
+    pub const LPAE_SHIFT: u32 = 11;
+    /// Offset of the `ATTR` field.
+    pub const ATTR_SHIFT: u32 = 56;
+    /// Mask for the `ATTR` field.
+    pub const ATTR_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `FST` field.
+    pub const fn fst(self) -> u8 {
+        ((self.bits() >> Self::FST_SHIFT) & 0b111111) as u8
+    }
+
+    /// Returns the value of the `FS[4:0]` field.
+    pub const fn fs_4_0(self) -> u8 {
+        ((self.bits() >> Self::FS_4_0_SHIFT) & 0b11111) as u8
+    }
+
+    /// Returns the value of the `Outer[1:0]` field.
+    pub const fn outer_1_0(self) -> u8 {
+        ((self.bits() >> Self::OUTER_1_0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `Inner[2:0]` field.
+    pub const fn inner_2_0(self) -> u8 {
+        ((self.bits() >> Self::INNER_2_0_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `ATTR` field.
+    pub const fn attr(self) -> u8 {
+        ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
     }
 }
 
@@ -5944,6 +10784,602 @@ impl ParEl1 {
 }
 
 bitflags! {
+    /// `PMCCFILTR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmccfiltr: u32 {
+        /// `RLU` bit.
+        const RLU = 1 << 21;
+        /// `NSH` bit.
+        const NSH = 1 << 27;
+        /// `NSU` bit.
+        const NSU = 1 << 28;
+        /// `NSK` bit.
+        const NSK = 1 << 29;
+        /// `U` bit.
+        const U = 1 << 30;
+        /// `P` bit.
+        const P = 1 << 31;
+    }
+}
+
+impl Pmccfiltr {
+    /// Offset of the `RLU` field.
+    pub const RLU_SHIFT: u32 = 21;
+    /// Offset of the `NSH` field.
+    pub const NSH_SHIFT: u32 = 27;
+    /// Offset of the `NSU` field.
+    pub const NSU_SHIFT: u32 = 28;
+    /// Offset of the `NSK` field.
+    pub const NSK_SHIFT: u32 = 29;
+    /// Offset of the `U` field.
+    pub const U_SHIFT: u32 = 30;
+    /// Offset of the `P` field.
+    pub const P_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMCCNTR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmccntr: u64 {
+    }
+}
+
+impl Pmccntr {
+    /// Offset of the `CCNT` field.
+    pub const CCNT_SHIFT: u32 = 0;
+    /// Mask for the `CCNT` field.
+    pub const CCNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CCNT` field.
+    pub const fn ccnt(self) -> u64 {
+        ((self.bits() >> Self::CCNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `PMCEID0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmceid0: u32 {
+        /// `ID<n>` bit 0.
+        const ID0 = 1 << 0;
+        /// `ID<n>` bit 1.
+        const ID1 = 1 << 1;
+        /// `ID<n>` bit 2.
+        const ID2 = 1 << 2;
+        /// `ID<n>` bit 3.
+        const ID3 = 1 << 3;
+        /// `ID<n>` bit 4.
+        const ID4 = 1 << 4;
+        /// `ID<n>` bit 5.
+        const ID5 = 1 << 5;
+        /// `ID<n>` bit 6.
+        const ID6 = 1 << 6;
+        /// `ID<n>` bit 7.
+        const ID7 = 1 << 7;
+        /// `ID<n>` bit 8.
+        const ID8 = 1 << 8;
+        /// `ID<n>` bit 9.
+        const ID9 = 1 << 9;
+        /// `ID<n>` bit 10.
+        const ID10 = 1 << 10;
+        /// `ID<n>` bit 11.
+        const ID11 = 1 << 11;
+        /// `ID<n>` bit 12.
+        const ID12 = 1 << 12;
+        /// `ID<n>` bit 13.
+        const ID13 = 1 << 13;
+        /// `ID<n>` bit 14.
+        const ID14 = 1 << 14;
+        /// `ID<n>` bit 15.
+        const ID15 = 1 << 15;
+        /// `ID<n>` bit 16.
+        const ID16 = 1 << 16;
+        /// `ID<n>` bit 17.
+        const ID17 = 1 << 17;
+        /// `ID<n>` bit 18.
+        const ID18 = 1 << 18;
+        /// `ID<n>` bit 19.
+        const ID19 = 1 << 19;
+        /// `ID<n>` bit 20.
+        const ID20 = 1 << 20;
+        /// `ID<n>` bit 21.
+        const ID21 = 1 << 21;
+        /// `ID<n>` bit 22.
+        const ID22 = 1 << 22;
+        /// `ID<n>` bit 23.
+        const ID23 = 1 << 23;
+        /// `ID<n>` bit 24.
+        const ID24 = 1 << 24;
+        /// `ID<n>` bit 25.
+        const ID25 = 1 << 25;
+        /// `ID<n>` bit 26.
+        const ID26 = 1 << 26;
+        /// `ID<n>` bit 27.
+        const ID27 = 1 << 27;
+        /// `ID<n>` bit 28.
+        const ID28 = 1 << 28;
+        /// `ID<n>` bit 29.
+        const ID29 = 1 << 29;
+        /// `ID<n>` bit 30.
+        const ID30 = 1 << 30;
+        /// `ID<n>` bit 31.
+        const ID31 = 1 << 31;
+    }
+}
+
+impl Pmceid0 {
+    /// Offset of the `ID<n>` field.
+    pub const ID_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `PMCEID1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmceid1: u32 {
+        /// `ID<n>` bit 0.
+        const ID0 = 1 << 0;
+        /// `ID<n>` bit 1.
+        const ID1 = 1 << 1;
+        /// `ID<n>` bit 2.
+        const ID2 = 1 << 2;
+        /// `ID<n>` bit 3.
+        const ID3 = 1 << 3;
+        /// `ID<n>` bit 4.
+        const ID4 = 1 << 4;
+        /// `ID<n>` bit 5.
+        const ID5 = 1 << 5;
+        /// `ID<n>` bit 6.
+        const ID6 = 1 << 6;
+        /// `ID<n>` bit 7.
+        const ID7 = 1 << 7;
+        /// `ID<n>` bit 8.
+        const ID8 = 1 << 8;
+        /// `ID<n>` bit 9.
+        const ID9 = 1 << 9;
+        /// `ID<n>` bit 10.
+        const ID10 = 1 << 10;
+        /// `ID<n>` bit 11.
+        const ID11 = 1 << 11;
+        /// `ID<n>` bit 12.
+        const ID12 = 1 << 12;
+        /// `ID<n>` bit 13.
+        const ID13 = 1 << 13;
+        /// `ID<n>` bit 14.
+        const ID14 = 1 << 14;
+        /// `ID<n>` bit 15.
+        const ID15 = 1 << 15;
+        /// `ID<n>` bit 16.
+        const ID16 = 1 << 16;
+        /// `ID<n>` bit 17.
+        const ID17 = 1 << 17;
+        /// `ID<n>` bit 18.
+        const ID18 = 1 << 18;
+        /// `ID<n>` bit 19.
+        const ID19 = 1 << 19;
+        /// `ID<n>` bit 20.
+        const ID20 = 1 << 20;
+        /// `ID<n>` bit 21.
+        const ID21 = 1 << 21;
+        /// `ID<n>` bit 22.
+        const ID22 = 1 << 22;
+        /// `ID<n>` bit 23.
+        const ID23 = 1 << 23;
+        /// `ID<n>` bit 24.
+        const ID24 = 1 << 24;
+        /// `ID<n>` bit 25.
+        const ID25 = 1 << 25;
+        /// `ID<n>` bit 26.
+        const ID26 = 1 << 26;
+        /// `ID<n>` bit 27.
+        const ID27 = 1 << 27;
+        /// `ID<n>` bit 28.
+        const ID28 = 1 << 28;
+        /// `ID<n>` bit 29.
+        const ID29 = 1 << 29;
+        /// `ID<n>` bit 30.
+        const ID30 = 1 << 30;
+        /// `ID<n>` bit 31.
+        const ID31 = 1 << 31;
+    }
+}
+
+impl Pmceid1 {
+    /// Offset of the `ID<n>` field.
+    pub const ID_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `PMCEID2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmceid2: u32 {
+        /// `IDhi<n>` bit 0.
+        const IDHI0 = 1 << 0;
+        /// `IDhi<n>` bit 1.
+        const IDHI1 = 1 << 1;
+        /// `IDhi<n>` bit 2.
+        const IDHI2 = 1 << 2;
+        /// `IDhi<n>` bit 3.
+        const IDHI3 = 1 << 3;
+        /// `IDhi<n>` bit 4.
+        const IDHI4 = 1 << 4;
+        /// `IDhi<n>` bit 5.
+        const IDHI5 = 1 << 5;
+        /// `IDhi<n>` bit 6.
+        const IDHI6 = 1 << 6;
+        /// `IDhi<n>` bit 7.
+        const IDHI7 = 1 << 7;
+        /// `IDhi<n>` bit 8.
+        const IDHI8 = 1 << 8;
+        /// `IDhi<n>` bit 9.
+        const IDHI9 = 1 << 9;
+        /// `IDhi<n>` bit 10.
+        const IDHI10 = 1 << 10;
+        /// `IDhi<n>` bit 11.
+        const IDHI11 = 1 << 11;
+        /// `IDhi<n>` bit 12.
+        const IDHI12 = 1 << 12;
+        /// `IDhi<n>` bit 13.
+        const IDHI13 = 1 << 13;
+        /// `IDhi<n>` bit 14.
+        const IDHI14 = 1 << 14;
+        /// `IDhi<n>` bit 15.
+        const IDHI15 = 1 << 15;
+        /// `IDhi<n>` bit 16.
+        const IDHI16 = 1 << 16;
+        /// `IDhi<n>` bit 17.
+        const IDHI17 = 1 << 17;
+        /// `IDhi<n>` bit 18.
+        const IDHI18 = 1 << 18;
+        /// `IDhi<n>` bit 19.
+        const IDHI19 = 1 << 19;
+        /// `IDhi<n>` bit 20.
+        const IDHI20 = 1 << 20;
+        /// `IDhi<n>` bit 21.
+        const IDHI21 = 1 << 21;
+        /// `IDhi<n>` bit 22.
+        const IDHI22 = 1 << 22;
+        /// `IDhi<n>` bit 23.
+        const IDHI23 = 1 << 23;
+        /// `IDhi<n>` bit 24.
+        const IDHI24 = 1 << 24;
+        /// `IDhi<n>` bit 25.
+        const IDHI25 = 1 << 25;
+        /// `IDhi<n>` bit 26.
+        const IDHI26 = 1 << 26;
+        /// `IDhi<n>` bit 27.
+        const IDHI27 = 1 << 27;
+        /// `IDhi<n>` bit 28.
+        const IDHI28 = 1 << 28;
+        /// `IDhi<n>` bit 29.
+        const IDHI29 = 1 << 29;
+        /// `IDhi<n>` bit 30.
+        const IDHI30 = 1 << 30;
+        /// `IDhi<n>` bit 31.
+        const IDHI31 = 1 << 31;
+    }
+}
+
+impl Pmceid2 {
+    /// Offset of the `IDhi<n>` field.
+    pub const IDHI_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `PMCEID3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmceid3: u32 {
+        /// `IDhi<n>` bit 0.
+        const IDHI0 = 1 << 0;
+        /// `IDhi<n>` bit 1.
+        const IDHI1 = 1 << 1;
+        /// `IDhi<n>` bit 2.
+        const IDHI2 = 1 << 2;
+        /// `IDhi<n>` bit 3.
+        const IDHI3 = 1 << 3;
+        /// `IDhi<n>` bit 4.
+        const IDHI4 = 1 << 4;
+        /// `IDhi<n>` bit 5.
+        const IDHI5 = 1 << 5;
+        /// `IDhi<n>` bit 6.
+        const IDHI6 = 1 << 6;
+        /// `IDhi<n>` bit 7.
+        const IDHI7 = 1 << 7;
+        /// `IDhi<n>` bit 8.
+        const IDHI8 = 1 << 8;
+        /// `IDhi<n>` bit 9.
+        const IDHI9 = 1 << 9;
+        /// `IDhi<n>` bit 10.
+        const IDHI10 = 1 << 10;
+        /// `IDhi<n>` bit 11.
+        const IDHI11 = 1 << 11;
+        /// `IDhi<n>` bit 12.
+        const IDHI12 = 1 << 12;
+        /// `IDhi<n>` bit 13.
+        const IDHI13 = 1 << 13;
+        /// `IDhi<n>` bit 14.
+        const IDHI14 = 1 << 14;
+        /// `IDhi<n>` bit 15.
+        const IDHI15 = 1 << 15;
+        /// `IDhi<n>` bit 16.
+        const IDHI16 = 1 << 16;
+        /// `IDhi<n>` bit 17.
+        const IDHI17 = 1 << 17;
+        /// `IDhi<n>` bit 18.
+        const IDHI18 = 1 << 18;
+        /// `IDhi<n>` bit 19.
+        const IDHI19 = 1 << 19;
+        /// `IDhi<n>` bit 20.
+        const IDHI20 = 1 << 20;
+        /// `IDhi<n>` bit 21.
+        const IDHI21 = 1 << 21;
+        /// `IDhi<n>` bit 22.
+        const IDHI22 = 1 << 22;
+        /// `IDhi<n>` bit 23.
+        const IDHI23 = 1 << 23;
+        /// `IDhi<n>` bit 24.
+        const IDHI24 = 1 << 24;
+        /// `IDhi<n>` bit 25.
+        const IDHI25 = 1 << 25;
+        /// `IDhi<n>` bit 26.
+        const IDHI26 = 1 << 26;
+        /// `IDhi<n>` bit 27.
+        const IDHI27 = 1 << 27;
+        /// `IDhi<n>` bit 28.
+        const IDHI28 = 1 << 28;
+        /// `IDhi<n>` bit 29.
+        const IDHI29 = 1 << 29;
+        /// `IDhi<n>` bit 30.
+        const IDHI30 = 1 << 30;
+        /// `IDhi<n>` bit 31.
+        const IDHI31 = 1 << 31;
+    }
+}
+
+impl Pmceid3 {
+    /// Offset of the `IDhi<n>` field.
+    pub const IDHI_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `PMCNTENCLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmcntenclr: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+        /// `C` bit.
+        const C = 1 << 31;
+    }
+}
+
+impl Pmcntenclr {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMCNTENSET` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmcntenset: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+        /// `C` bit.
+        const C = 1 << 31;
+    }
+}
+
+impl Pmcntenset {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmcr: u32 {
+        /// `E` bit.
+        const E = 1 << 0;
+        /// `P` bit.
+        const P = 1 << 1;
+        /// `C` bit.
+        const C = 1 << 2;
+        /// `D` bit.
+        const D = 1 << 3;
+        /// `X` bit.
+        const X = 1 << 4;
+        /// `DP` bit.
+        const DP = 1 << 5;
+        /// `LC` bit.
+        const LC = 1 << 6;
+        /// `LP` bit.
+        const LP = 1 << 7;
+        /// `FZO` bit.
+        const FZO = 1 << 9;
+    }
+}
+
+impl Pmcr {
+    /// Offset of the `E` field.
+    pub const E_SHIFT: u32 = 0;
+    /// Offset of the `P` field.
+    pub const P_SHIFT: u32 = 1;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 2;
+    /// Offset of the `D` field.
+    pub const D_SHIFT: u32 = 3;
+    /// Offset of the `X` field.
+    pub const X_SHIFT: u32 = 4;
+    /// Offset of the `DP` field.
+    pub const DP_SHIFT: u32 = 5;
+    /// Offset of the `LC` field.
+    pub const LC_SHIFT: u32 = 6;
+    /// Offset of the `LP` field.
+    pub const LP_SHIFT: u32 = 7;
+    /// Offset of the `FZO` field.
+    pub const FZO_SHIFT: u32 = 9;
+    /// Offset of the `N` field.
+    pub const N_SHIFT: u32 = 11;
+    /// Mask for the `N` field.
+    pub const N_MASK: u32 = 0b11111;
+    /// Offset of the `IDCODE` field.
+    pub const IDCODE_SHIFT: u32 = 16;
+    /// Mask for the `IDCODE` field.
+    pub const IDCODE_MASK: u32 = 0b11111111;
+    /// Offset of the `IMP` field.
+    pub const IMP_SHIFT: u32 = 24;
+    /// Mask for the `IMP` field.
+    pub const IMP_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the `N` field.
+    pub const fn n(self) -> u8 {
+        ((self.bits() >> Self::N_SHIFT) & 0b11111) as u8
+    }
+
+    /// Returns the value of the `IDCODE` field.
+    pub const fn idcode(self) -> u8 {
+        ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `IMP` field.
+    pub const fn imp(self) -> u8 {
+        ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
     /// `PMCR_EL0` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -6021,6 +11457,579 @@ impl PmcrEl0 {
     }
 }
 
+bitflags! {
+    /// `PMINTENCLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmintenclr: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+        /// `C` bit.
+        const C = 1 << 31;
+    }
+}
+
+impl Pmintenclr {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMINTENSET` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmintenset: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+        /// `C` bit.
+        const C = 1 << 31;
+    }
+}
+
+impl Pmintenset {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMMIR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmmir: u32 {
+    }
+}
+
+impl Pmmir {
+    /// Offset of the `SLOTS` field.
+    pub const SLOTS_SHIFT: u32 = 0;
+    /// Mask for the `SLOTS` field.
+    pub const SLOTS_MASK: u32 = 0b11111111;
+    /// Offset of the `BUS_SLOTS` field.
+    pub const BUS_SLOTS_SHIFT: u32 = 8;
+    /// Mask for the `BUS_SLOTS` field.
+    pub const BUS_SLOTS_MASK: u32 = 0b11111111;
+    /// Offset of the `BUS_WIDTH` field.
+    pub const BUS_WIDTH_SHIFT: u32 = 16;
+    /// Mask for the `BUS_WIDTH` field.
+    pub const BUS_WIDTH_MASK: u32 = 0b1111;
+    /// Offset of the `THWIDTH` field.
+    pub const THWIDTH_SHIFT: u32 = 20;
+    /// Mask for the `THWIDTH` field.
+    pub const THWIDTH_MASK: u32 = 0b1111;
+    /// Offset of the `EDGE` field.
+    pub const EDGE_SHIFT: u32 = 24;
+    /// Mask for the `EDGE` field.
+    pub const EDGE_MASK: u32 = 0b1111;
+
+    /// Returns the value of the `SLOTS` field.
+    pub const fn slots(self) -> u8 {
+        ((self.bits() >> Self::SLOTS_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `BUS_SLOTS` field.
+    pub const fn bus_slots(self) -> u8 {
+        ((self.bits() >> Self::BUS_SLOTS_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `BUS_WIDTH` field.
+    pub const fn bus_width(self) -> u8 {
+        ((self.bits() >> Self::BUS_WIDTH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `THWIDTH` field.
+    pub const fn thwidth(self) -> u8 {
+        ((self.bits() >> Self::THWIDTH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `EDGE` field.
+    pub const fn edge(self) -> u8 {
+        ((self.bits() >> Self::EDGE_SHIFT) & 0b1111) as u8
+    }
+}
+
+bitflags! {
+    /// `PMOVSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmovsr: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+        /// `C` bit.
+        const C = 1 << 31;
+    }
+}
+
+impl Pmovsr {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMOVSSET` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmovsset: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+        /// `C` bit.
+        const C = 1 << 31;
+    }
+}
+
+impl Pmovsset {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 31;
+}
+
+bitflags! {
+    /// `PMSELR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmselr: u32 {
+    }
+}
+
+impl Pmselr {
+    /// Offset of the `SEL` field.
+    pub const SEL_SHIFT: u32 = 0;
+    /// Mask for the `SEL` field.
+    pub const SEL_MASK: u32 = 0b11111;
+
+    /// Returns the value of the `SEL` field.
+    pub const fn sel(self) -> u8 {
+        ((self.bits() >> Self::SEL_SHIFT) & 0b11111) as u8
+    }
+}
+
+bitflags! {
+    /// `PMSWINC` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmswinc: u32 {
+        /// `P<m>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<m>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<m>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<m>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<m>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<m>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<m>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<m>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<m>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<m>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<m>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<m>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<m>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<m>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<m>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<m>` bit 15.
+        const P15 = 1 << 15;
+        /// `P<m>` bit 16.
+        const P16 = 1 << 16;
+        /// `P<m>` bit 17.
+        const P17 = 1 << 17;
+        /// `P<m>` bit 18.
+        const P18 = 1 << 18;
+        /// `P<m>` bit 19.
+        const P19 = 1 << 19;
+        /// `P<m>` bit 20.
+        const P20 = 1 << 20;
+        /// `P<m>` bit 21.
+        const P21 = 1 << 21;
+        /// `P<m>` bit 22.
+        const P22 = 1 << 22;
+        /// `P<m>` bit 23.
+        const P23 = 1 << 23;
+        /// `P<m>` bit 24.
+        const P24 = 1 << 24;
+        /// `P<m>` bit 25.
+        const P25 = 1 << 25;
+        /// `P<m>` bit 26.
+        const P26 = 1 << 26;
+        /// `P<m>` bit 27.
+        const P27 = 1 << 27;
+        /// `P<m>` bit 28.
+        const P28 = 1 << 28;
+        /// `P<m>` bit 29.
+        const P29 = 1 << 29;
+        /// `P<m>` bit 30.
+        const P30 = 1 << 30;
+    }
+}
+
+impl Pmswinc {
+    /// Offset of the `P<m>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `PMUSERENR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmuserenr: u32 {
+        /// `EN` bit.
+        const EN = 1 << 0;
+        /// `SW` bit.
+        const SW = 1 << 1;
+        /// `CR` bit.
+        const CR = 1 << 2;
+        /// `ER` bit.
+        const ER = 1 << 3;
+        /// `TID` bit.
+        const TID = 1 << 6;
+    }
+}
+
+impl Pmuserenr {
+    /// Offset of the `EN` field.
+    pub const EN_SHIFT: u32 = 0;
+    /// Offset of the `SW` field.
+    pub const SW_SHIFT: u32 = 1;
+    /// Offset of the `CR` field.
+    pub const CR_SHIFT: u32 = 2;
+    /// Offset of the `ER` field.
+    pub const ER_SHIFT: u32 = 3;
+    /// Offset of the `TID` field.
+    pub const TID_SHIFT: u32 = 6;
+}
+
+bitflags! {
+    /// `PMXEVTYPER` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pmxevtyper: u32 {
+    }
+}
+
+impl Pmxevtyper {
+    /// Offset of the `ETR` field.
+    pub const ETR_SHIFT: u32 = 0;
+    /// Mask for the `ETR` field.
+    pub const ETR_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `ETR` field.
+    pub const fn etr(self) -> u32 {
+        ((self.bits() >> Self::ETR_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `PRRR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Prrr: u32 {
+        /// `DS0` bit.
+        const DS0 = 1 << 16;
+        /// `DS1` bit.
+        const DS1 = 1 << 17;
+        /// `NS0` bit.
+        const NS0 = 1 << 18;
+        /// `NS1` bit.
+        const NS1 = 1 << 19;
+        /// `NOS<n>` bit 0.
+        const NOS0 = 1 << 24;
+        /// `NOS<n>` bit 1.
+        const NOS1 = 1 << 25;
+        /// `NOS<n>` bit 2.
+        const NOS2 = 1 << 26;
+        /// `NOS<n>` bit 3.
+        const NOS3 = 1 << 27;
+        /// `NOS<n>` bit 4.
+        const NOS4 = 1 << 28;
+        /// `NOS<n>` bit 5.
+        const NOS5 = 1 << 29;
+        /// `NOS<n>` bit 6.
+        const NOS6 = 1 << 30;
+        /// `NOS<n>` bit 7.
+        const NOS7 = 1 << 31;
+    }
+}
+
+impl Prrr {
+    /// Offset of the `TR<n>` field.
+    pub const TR_SHIFT: u32 = 0;
+    /// Mask for the `TR<n>` field.
+    pub const TR_MASK: u32 = 0b11;
+    /// Offset of the `DS0` field.
+    pub const DS0_SHIFT: u32 = 16;
+    /// Offset of the `DS1` field.
+    pub const DS1_SHIFT: u32 = 17;
+    /// Offset of the `NS0` field.
+    pub const NS0_SHIFT: u32 = 18;
+    /// Offset of the `NS1` field.
+    pub const NS1_SHIFT: u32 = 19;
+    /// Offset of the `NOS<n>` field.
+    pub const NOS_SHIFT: u32 = 24;
+
+    /// Returns the value of the given `TR<n>` field.
+    pub const fn tr(self, n: u32) -> u8 {
+        assert!(n < 8);
+        ((self.bits() >> (Self::TR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `RGSR_EL1` system register value.
@@ -6050,6 +12059,110 @@ impl RgsrEl1 {
     pub const fn seed(self) -> u16 {
         ((self.bits() >> Self::SEED_SHIFT) & 0b1111111111111111) as u16
     }
+}
+
+bitflags! {
+    /// `RMR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Rmr: u32 {
+        /// `AA64` bit.
+        const AA64 = 1 << 0;
+        /// `RR` bit.
+        const RR = 1 << 1;
+    }
+}
+
+impl Rmr {
+    /// Offset of the `AA64` field.
+    pub const AA64_SHIFT: u32 = 0;
+    /// Offset of the `RR` field.
+    pub const RR_SHIFT: u32 = 1;
+}
+
+bitflags! {
+    /// `RVBAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Rvbar: u32 {
+        /// RES1 bits in the `RVBAR` register.
+        const RES1 = 0b1;
+    }
+}
+
+impl Rvbar {
+    /// Offset of the `ResetAddress` field.
+    pub const RESETADDRESS_SHIFT: u32 = 1;
+    /// Mask for the `ResetAddress` field.
+    pub const RESETADDRESS_MASK: u32 = 0b1111111111111111111111111111111;
+
+    /// Returns the value of the `ResetAddress` field.
+    pub const fn resetaddress(self) -> u32 {
+        ((self.bits() >> Self::RESETADDRESS_SHIFT) & 0b1111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `SCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Scr: u32 {
+        /// `NS` bit.
+        const NS = 1 << 0;
+        /// `IRQ` bit.
+        const IRQ = 1 << 1;
+        /// `FIQ` bit.
+        const FIQ = 1 << 2;
+        /// `EA` bit.
+        const EA = 1 << 3;
+        /// `FW` bit.
+        const FW = 1 << 4;
+        /// `AW` bit.
+        const AW = 1 << 5;
+        /// `nET` bit.
+        const NET = 1 << 6;
+        /// `SCD` bit.
+        const SCD = 1 << 7;
+        /// `HCE` bit.
+        const HCE = 1 << 8;
+        /// `SIF` bit.
+        const SIF = 1 << 9;
+        /// `TWI` bit.
+        const TWI = 1 << 12;
+        /// `TWE` bit.
+        const TWE = 1 << 13;
+        /// `TERR` bit.
+        const TERR = 1 << 15;
+    }
+}
+
+impl Scr {
+    /// Offset of the `NS` field.
+    pub const NS_SHIFT: u32 = 0;
+    /// Offset of the `IRQ` field.
+    pub const IRQ_SHIFT: u32 = 1;
+    /// Offset of the `FIQ` field.
+    pub const FIQ_SHIFT: u32 = 2;
+    /// Offset of the `EA` field.
+    pub const EA_SHIFT: u32 = 3;
+    /// Offset of the `FW` field.
+    pub const FW_SHIFT: u32 = 4;
+    /// Offset of the `AW` field.
+    pub const AW_SHIFT: u32 = 5;
+    /// Offset of the `nET` field.
+    pub const NET_SHIFT: u32 = 6;
+    /// Offset of the `SCD` field.
+    pub const SCD_SHIFT: u32 = 7;
+    /// Offset of the `HCE` field.
+    pub const HCE_SHIFT: u32 = 8;
+    /// Offset of the `SIF` field.
+    pub const SIF_SHIFT: u32 = 9;
+    /// Offset of the `TWI` field.
+    pub const TWI_SHIFT: u32 = 12;
+    /// Offset of the `TWE` field.
+    pub const TWE_SHIFT: u32 = 13;
+    /// Offset of the `TERR` field.
+    pub const TERR_SHIFT: u32 = 15;
 }
 
 #[cfg(feature = "el3")]
@@ -6298,6 +12411,107 @@ impl ScrEl3 {
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
     }
+}
+
+bitflags! {
+    /// `SCTLR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Sctlr: u32 {
+        /// RES1 bits in the `SCTLR` register.
+        const RES1 = 0b10000000000100000000000;
+        /// `M` bit.
+        const M = 1 << 0;
+        /// `A` bit.
+        const A = 1 << 1;
+        /// `C` bit.
+        const C = 1 << 2;
+        /// `nTLSMD` bit.
+        const NTLSMD = 1 << 3;
+        /// `LSMAOE` bit.
+        const LSMAOE = 1 << 4;
+        /// `CP15BEN` bit.
+        const CP15BEN = 1 << 5;
+        /// `UNK` bit.
+        const UNK = 1 << 6;
+        /// `ITD` bit.
+        const ITD = 1 << 7;
+        /// `SED` bit.
+        const SED = 1 << 8;
+        /// `EnRCTX` bit.
+        const ENRCTX = 1 << 10;
+        /// `I` bit.
+        const I = 1 << 12;
+        /// `V` bit.
+        const V = 1 << 13;
+        /// `nTWI` bit.
+        const NTWI = 1 << 16;
+        /// `nTWE` bit.
+        const NTWE = 1 << 18;
+        /// `WXN` bit.
+        const WXN = 1 << 19;
+        /// `UWXN` bit.
+        const UWXN = 1 << 20;
+        /// `SPAN` bit.
+        const SPAN = 1 << 23;
+        /// `EE` bit.
+        const EE = 1 << 25;
+        /// `TRE` bit.
+        const TRE = 1 << 28;
+        /// `AFE` bit.
+        const AFE = 1 << 29;
+        /// `TE` bit.
+        const TE = 1 << 30;
+        /// `DSSBS` bit.
+        const DSSBS = 1 << 31;
+    }
+}
+
+impl Sctlr {
+    /// Offset of the `M` field.
+    pub const M_SHIFT: u32 = 0;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 1;
+    /// Offset of the `C` field.
+    pub const C_SHIFT: u32 = 2;
+    /// Offset of the `nTLSMD` field.
+    pub const NTLSMD_SHIFT: u32 = 3;
+    /// Offset of the `LSMAOE` field.
+    pub const LSMAOE_SHIFT: u32 = 4;
+    /// Offset of the `CP15BEN` field.
+    pub const CP15BEN_SHIFT: u32 = 5;
+    /// Offset of the `UNK` field.
+    pub const UNK_SHIFT: u32 = 6;
+    /// Offset of the `ITD` field.
+    pub const ITD_SHIFT: u32 = 7;
+    /// Offset of the `SED` field.
+    pub const SED_SHIFT: u32 = 8;
+    /// Offset of the `EnRCTX` field.
+    pub const ENRCTX_SHIFT: u32 = 10;
+    /// Offset of the `I` field.
+    pub const I_SHIFT: u32 = 12;
+    /// Offset of the `V` field.
+    pub const V_SHIFT: u32 = 13;
+    /// Offset of the `nTWI` field.
+    pub const NTWI_SHIFT: u32 = 16;
+    /// Offset of the `nTWE` field.
+    pub const NTWE_SHIFT: u32 = 18;
+    /// Offset of the `WXN` field.
+    pub const WXN_SHIFT: u32 = 19;
+    /// Offset of the `UWXN` field.
+    pub const UWXN_SHIFT: u32 = 20;
+    /// Offset of the `SPAN` field.
+    pub const SPAN_SHIFT: u32 = 23;
+    /// Offset of the `EE` field.
+    pub const EE_SHIFT: u32 = 25;
+    /// Offset of the `TRE` field.
+    pub const TRE_SHIFT: u32 = 28;
+    /// Offset of the `AFE` field.
+    pub const AFE_SHIFT: u32 = 29;
+    /// Offset of the `TE` field.
+    pub const TE_SHIFT: u32 = 30;
+    /// Offset of the `DSSBS` field.
+    pub const DSSBS_SHIFT: u32 = 31;
 }
 
 #[cfg(feature = "el3")]
@@ -6927,6 +13141,77 @@ impl SctlrEl3 {
     pub const fn tcf(self) -> u8 {
         ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
     }
+}
+
+bitflags! {
+    /// `SDCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Sdcr: u32 {
+        /// `SPME` bit.
+        const SPME = 1 << 17;
+        /// `STE` bit.
+        const STE = 1 << 18;
+        /// `TTRF` bit.
+        const TTRF = 1 << 19;
+        /// `EDAD` bit.
+        const EDAD = 1 << 20;
+        /// `EPMAD` bit.
+        const EPMAD = 1 << 21;
+        /// `SCCD` bit.
+        const SCCD = 1 << 23;
+        /// `TDCC` bit.
+        const TDCC = 1 << 27;
+        /// `MTPME` bit.
+        const MTPME = 1 << 28;
+    }
+}
+
+impl Sdcr {
+    /// Offset of the `SPD` field.
+    pub const SPD_SHIFT: u32 = 14;
+    /// Mask for the `SPD` field.
+    pub const SPD_MASK: u32 = 0b11;
+    /// Offset of the `SPME` field.
+    pub const SPME_SHIFT: u32 = 17;
+    /// Offset of the `STE` field.
+    pub const STE_SHIFT: u32 = 18;
+    /// Offset of the `TTRF` field.
+    pub const TTRF_SHIFT: u32 = 19;
+    /// Offset of the `EDAD` field.
+    pub const EDAD_SHIFT: u32 = 20;
+    /// Offset of the `EPMAD` field.
+    pub const EPMAD_SHIFT: u32 = 21;
+    /// Offset of the `SCCD` field.
+    pub const SCCD_SHIFT: u32 = 23;
+    /// Offset of the `TDCC` field.
+    pub const TDCC_SHIFT: u32 = 27;
+    /// Offset of the `MTPME` field.
+    pub const MTPME_SHIFT: u32 = 28;
+
+    /// Returns the value of the `SPD` field.
+    pub const fn spd(self) -> u8 {
+        ((self.bits() >> Self::SPD_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `SDER` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Sder: u32 {
+        /// `SUIDEN` bit.
+        const SUIDEN = 1 << 0;
+        /// `SUNIDEN` bit.
+        const SUNIDEN = 1 << 1;
+    }
+}
+
+impl Sder {
+    /// Offset of the `SUIDEN` field.
+    pub const SUIDEN_SHIFT: u32 = 0;
+    /// Offset of the `SUNIDEN` field.
+    pub const SUNIDEN_SHIFT: u32 = 1;
 }
 
 #[cfg(feature = "el3")]
@@ -8394,6 +14679,41 @@ impl TfsrEl2 {
 }
 
 bitflags! {
+    /// `TLBTR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Tlbtr: u32 {
+        /// `nU` bit.
+        const NU = 1 << 0;
+    }
+}
+
+impl Tlbtr {
+    /// Offset of the `nU` field.
+    pub const NU_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `TPIDRPRW` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Tpidrprw: u32 {
+    }
+}
+
+impl Tpidrprw {
+    /// Offset of the `TID` field.
+    pub const TID_SHIFT: u32 = 0;
+    /// Mask for the `TID` field.
+    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TID` field.
+    pub const fn tid(self) -> u32 {
+        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
     /// `TPIDRRO_EL0` system register value.
     #[derive(Clone, Copy, Debug, Eq, PartialEq)]
     #[repr(transparent)]
@@ -8412,6 +14732,46 @@ impl TpidrroEl0 {
     pub const fn threadid(self) -> u64 {
         ((self.bits() >> Self::THREADID_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `TPIDRURO` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Tpidruro: u32 {
+    }
+}
+
+impl Tpidruro {
+    /// Offset of the `TID` field.
+    pub const TID_SHIFT: u32 = 0;
+    /// Mask for the `TID` field.
+    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TID` field.
+    pub const fn tid(self) -> u32 {
+        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+}
+
+bitflags! {
+    /// `TPIDRURW` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Tpidrurw: u32 {
+    }
+}
+
+impl Tpidrurw {
+    /// Offset of the `TID` field.
+    pub const TID_SHIFT: u32 = 0;
+    /// Mask for the `TID` field.
+    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TID` field.
+    pub const fn tid(self) -> u32 {
+        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
 }
 
@@ -8482,6 +14842,269 @@ impl TpidrEl2 {
     pub const fn threadid(self) -> u64 {
         ((self.bits() >> Self::THREADID_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+}
+
+bitflags! {
+    /// `TRFCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Trfcr: u32 {
+        /// `E0TRE` bit.
+        const E0TRE = 1 << 0;
+        /// `E1TRE` bit.
+        const E1TRE = 1 << 1;
+    }
+}
+
+impl Trfcr {
+    /// Offset of the `E0TRE` field.
+    pub const E0TRE_SHIFT: u32 = 0;
+    /// Offset of the `E1TRE` field.
+    pub const E1TRE_SHIFT: u32 = 1;
+    /// Offset of the `TS` field.
+    pub const TS_SHIFT: u32 = 5;
+    /// Mask for the `TS` field.
+    pub const TS_MASK: u32 = 0b11;
+
+    /// Returns the value of the `TS` field.
+    pub const fn ts(self) -> u8 {
+        ((self.bits() >> Self::TS_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `TTBCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ttbcr: u32 {
+        /// `PD0` bit.
+        const PD0 = 1 << 4;
+        /// `PD1` bit.
+        const PD1 = 1 << 5;
+        /// `T2E` bit.
+        const T2E = 1 << 6;
+        /// `EPD0` bit.
+        const EPD0 = 1 << 7;
+        /// `A1` bit.
+        const A1 = 1 << 22;
+        /// `EPD1` bit.
+        const EPD1 = 1 << 23;
+        /// `EAE` bit.
+        const EAE = 1 << 31;
+    }
+}
+
+impl Ttbcr {
+    /// Offset of the `N` field.
+    pub const N_SHIFT: u32 = 0;
+    /// Mask for the `N` field.
+    pub const N_MASK: u32 = 0b111;
+    /// Offset of the `T0SZ` field.
+    pub const T0SZ_SHIFT: u32 = 0;
+    /// Mask for the `T0SZ` field.
+    pub const T0SZ_MASK: u32 = 0b111;
+    /// Offset of the `PD0` field.
+    pub const PD0_SHIFT: u32 = 4;
+    /// Offset of the `PD1` field.
+    pub const PD1_SHIFT: u32 = 5;
+    /// Offset of the `T2E` field.
+    pub const T2E_SHIFT: u32 = 6;
+    /// Offset of the `EPD0` field.
+    pub const EPD0_SHIFT: u32 = 7;
+    /// Offset of the `IRGN0` field.
+    pub const IRGN0_SHIFT: u32 = 8;
+    /// Mask for the `IRGN0` field.
+    pub const IRGN0_MASK: u32 = 0b11;
+    /// Offset of the `ORGN0` field.
+    pub const ORGN0_SHIFT: u32 = 10;
+    /// Mask for the `ORGN0` field.
+    pub const ORGN0_MASK: u32 = 0b11;
+    /// Offset of the `SH0` field.
+    pub const SH0_SHIFT: u32 = 12;
+    /// Mask for the `SH0` field.
+    pub const SH0_MASK: u32 = 0b11;
+    /// Offset of the `T1SZ` field.
+    pub const T1SZ_SHIFT: u32 = 16;
+    /// Mask for the `T1SZ` field.
+    pub const T1SZ_MASK: u32 = 0b111;
+    /// Offset of the `A1` field.
+    pub const A1_SHIFT: u32 = 22;
+    /// Offset of the `EPD1` field.
+    pub const EPD1_SHIFT: u32 = 23;
+    /// Offset of the `IRGN1` field.
+    pub const IRGN1_SHIFT: u32 = 24;
+    /// Mask for the `IRGN1` field.
+    pub const IRGN1_MASK: u32 = 0b11;
+    /// Offset of the `ORGN1` field.
+    pub const ORGN1_SHIFT: u32 = 26;
+    /// Mask for the `ORGN1` field.
+    pub const ORGN1_MASK: u32 = 0b11;
+    /// Offset of the `SH1` field.
+    pub const SH1_SHIFT: u32 = 28;
+    /// Mask for the `SH1` field.
+    pub const SH1_MASK: u32 = 0b11;
+    /// Offset of the `EAE` field.
+    pub const EAE_SHIFT: u32 = 31;
+
+    /// Returns the value of the `N` field.
+    pub const fn n(self) -> u8 {
+        ((self.bits() >> Self::N_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `T0SZ` field.
+    pub const fn t0sz(self) -> u8 {
+        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `IRGN0` field.
+    pub const fn irgn0(self) -> u8 {
+        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `ORGN0` field.
+    pub const fn orgn0(self) -> u8 {
+        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `SH0` field.
+    pub const fn sh0(self) -> u8 {
+        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `T1SZ` field.
+    pub const fn t1sz(self) -> u8 {
+        ((self.bits() >> Self::T1SZ_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `IRGN1` field.
+    pub const fn irgn1(self) -> u8 {
+        ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `ORGN1` field.
+    pub const fn orgn1(self) -> u8 {
+        ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `SH1` field.
+    pub const fn sh1(self) -> u8 {
+        ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `TTBCR2` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ttbcr2: u32 {
+        /// `HPD0` bit.
+        const HPD0 = 1 << 9;
+        /// `HPD1` bit.
+        const HPD1 = 1 << 10;
+        /// `HWU059` bit.
+        const HWU059 = 1 << 11;
+        /// `HWU060` bit.
+        const HWU060 = 1 << 12;
+        /// `HWU061` bit.
+        const HWU061 = 1 << 13;
+        /// `HWU062` bit.
+        const HWU062 = 1 << 14;
+        /// `HWU159` bit.
+        const HWU159 = 1 << 15;
+        /// `HWU160` bit.
+        const HWU160 = 1 << 16;
+        /// `HWU161` bit.
+        const HWU161 = 1 << 17;
+        /// `HWU162` bit.
+        const HWU162 = 1 << 18;
+    }
+}
+
+impl Ttbcr2 {
+    /// Offset of the `HPD0` field.
+    pub const HPD0_SHIFT: u32 = 9;
+    /// Offset of the `HPD1` field.
+    pub const HPD1_SHIFT: u32 = 10;
+    /// Offset of the `HWU059` field.
+    pub const HWU059_SHIFT: u32 = 11;
+    /// Offset of the `HWU060` field.
+    pub const HWU060_SHIFT: u32 = 12;
+    /// Offset of the `HWU061` field.
+    pub const HWU061_SHIFT: u32 = 13;
+    /// Offset of the `HWU062` field.
+    pub const HWU062_SHIFT: u32 = 14;
+    /// Offset of the `HWU159` field.
+    pub const HWU159_SHIFT: u32 = 15;
+    /// Offset of the `HWU160` field.
+    pub const HWU160_SHIFT: u32 = 16;
+    /// Offset of the `HWU161` field.
+    pub const HWU161_SHIFT: u32 = 17;
+    /// Offset of the `HWU162` field.
+    pub const HWU162_SHIFT: u32 = 18;
+}
+
+bitflags! {
+    /// `TTBR0` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ttbr0: u64 {
+        /// `CnP` bit.
+        const CNP = 1 << 0;
+        /// `S` bit.
+        const S = 1 << 1;
+        /// `IMP` bit.
+        const IMP = 1 << 2;
+        /// `NOS` bit.
+        const NOS = 1 << 5;
+    }
+}
+
+impl Ttbr0 {
+    /// Offset of the `CnP` field.
+    pub const CNP_SHIFT: u32 = 0;
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 1;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    /// Offset of the `S` field.
+    pub const S_SHIFT: u32 = 1;
+    /// Offset of the `IMP` field.
+    pub const IMP_SHIFT: u32 = 2;
+    /// Offset of the `RGN` field.
+    pub const RGN_SHIFT: u32 = 3;
+    /// Mask for the `RGN` field.
+    pub const RGN_MASK: u64 = 0b11;
+    /// Offset of the `NOS` field.
+    pub const NOS_SHIFT: u32 = 5;
+    /// Offset of the `TTB0` field.
+    pub const TTB0_SHIFT: u32 = 7;
+    /// Mask for the `TTB0` field.
+    pub const TTB0_MASK: u64 = 0b1111111111111111111111111;
+    /// Offset of the `ASID` field.
+    pub const ASID_SHIFT: u32 = 48;
+    /// Mask for the `ASID` field.
+    pub const ASID_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
+            as u64
+    }
+
+    /// Returns the value of the `RGN` field.
+    pub const fn rgn(self) -> u8 {
+        ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `TTB0` field.
+    pub const fn ttb0(self) -> u32 {
+        ((self.bits() >> Self::TTB0_SHIFT) & 0b1111111111111111111111111) as u32
+    }
+
+    /// Returns the value of the `ASID` field.
+    pub const fn asid(self) -> u8 {
+        ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
     }
 }
 
@@ -8601,6 +15224,70 @@ impl Ttbr0El3 {
     }
 }
 
+bitflags! {
+    /// `TTBR1` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Ttbr1: u64 {
+        /// `CnP` bit.
+        const CNP = 1 << 0;
+        /// `S` bit.
+        const S = 1 << 1;
+        /// `IMP` bit.
+        const IMP = 1 << 2;
+        /// `NOS` bit.
+        const NOS = 1 << 5;
+    }
+}
+
+impl Ttbr1 {
+    /// Offset of the `CnP` field.
+    pub const CNP_SHIFT: u32 = 0;
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 1;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    /// Offset of the `S` field.
+    pub const S_SHIFT: u32 = 1;
+    /// Offset of the `IMP` field.
+    pub const IMP_SHIFT: u32 = 2;
+    /// Offset of the `RGN` field.
+    pub const RGN_SHIFT: u32 = 3;
+    /// Mask for the `RGN` field.
+    pub const RGN_MASK: u64 = 0b11;
+    /// Offset of the `NOS` field.
+    pub const NOS_SHIFT: u32 = 5;
+    /// Offset of the `TTB1` field.
+    pub const TTB1_SHIFT: u32 = 7;
+    /// Mask for the `TTB1` field.
+    pub const TTB1_MASK: u64 = 0b1111111111111111111111111;
+    /// Offset of the `ASID` field.
+    pub const ASID_SHIFT: u32 = 48;
+    /// Mask for the `ASID` field.
+    pub const ASID_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
+            as u64
+    }
+
+    /// Returns the value of the `RGN` field.
+    pub const fn rgn(self) -> u8 {
+        ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `TTB1` field.
+    pub const fn ttb1(self) -> u32 {
+        ((self.bits() >> Self::TTB1_SHIFT) & 0b1111111111111111111111111) as u32
+    }
+
+    /// Returns the value of the `ASID` field.
+    pub const fn asid(self) -> u8 {
+        ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TTBR1_EL1` system register value.
@@ -8691,6 +15378,26 @@ impl Ttbr1El2 {
     }
 }
 
+bitflags! {
+    /// `VBAR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vbar: u32 {
+    }
+}
+
+impl Vbar {
+    /// Offset of the `VBA` field.
+    pub const VBA_SHIFT: u32 = 5;
+    /// Mask for the `VBA` field.
+    pub const VBA_MASK: u32 = 0b111111111111111111111111111;
+
+    /// Returns the value of the `VBA` field.
+    pub const fn vba(self) -> u32 {
+        ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+    }
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `VBAR_EL1` system register value.
@@ -8742,6 +15449,71 @@ impl VbarEl2 {
     pub const fn vba(self) -> u64 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b11111111111111111111111111111111111111111111111111111)
             as u64
+    }
+}
+
+bitflags! {
+    /// `VDFSR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vdfsr: u32 {
+        /// `ExT` bit.
+        const EXT = 1 << 12;
+    }
+}
+
+impl Vdfsr {
+    /// Offset of the `ExT` field.
+    pub const EXT_SHIFT: u32 = 12;
+    /// Offset of the `AET` field.
+    pub const AET_SHIFT: u32 = 14;
+    /// Mask for the `AET` field.
+    pub const AET_MASK: u32 = 0b11;
+
+    /// Returns the value of the `AET` field.
+    pub const fn aet(self) -> u8 {
+        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `VDISR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vdisr: u32 {
+        /// `LPAE` bit.
+        const LPAE = 1 << 9;
+        /// `ExT` bit.
+        const EXT = 1 << 12;
+        /// `A` bit.
+        const A = 1 << 31;
+    }
+}
+
+impl Vdisr {
+    /// Offset of the `STATUS` field.
+    pub const STATUS_SHIFT: u32 = 0;
+    /// Mask for the `STATUS` field.
+    pub const STATUS_MASK: u32 = 0b111111;
+    /// Offset of the `LPAE` field.
+    pub const LPAE_SHIFT: u32 = 9;
+    /// Offset of the `ExT` field.
+    pub const EXT_SHIFT: u32 = 12;
+    /// Offset of the `AET` field.
+    pub const AET_SHIFT: u32 = 14;
+    /// Mask for the `AET` field.
+    pub const AET_MASK: u32 = 0b11;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 31;
+
+    /// Returns the value of the `STATUS` field.
+    pub const fn status(self) -> u8 {
+        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+    }
+
+    /// Returns the value of the `AET` field.
+    pub const fn aet(self) -> u8 {
+        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
     }
 }
 
@@ -8801,6 +15573,56 @@ impl VdisrEl2 {
     }
 }
 
+bitflags! {
+    /// `VMPIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vmpidr: u32 {
+        /// `MT` bit.
+        const MT = 1 << 24;
+        /// `U` bit.
+        const U = 1 << 30;
+        /// `M` bit.
+        const M = 1 << 31;
+    }
+}
+
+impl Vmpidr {
+    /// Offset of the `Aff0` field.
+    pub const AFF0_SHIFT: u32 = 0;
+    /// Mask for the `Aff0` field.
+    pub const AFF0_MASK: u32 = 0b11111111;
+    /// Offset of the `Aff1` field.
+    pub const AFF1_SHIFT: u32 = 8;
+    /// Mask for the `Aff1` field.
+    pub const AFF1_MASK: u32 = 0b11111111;
+    /// Offset of the `Aff2` field.
+    pub const AFF2_SHIFT: u32 = 16;
+    /// Mask for the `Aff2` field.
+    pub const AFF2_MASK: u32 = 0b11111111;
+    /// Offset of the `MT` field.
+    pub const MT_SHIFT: u32 = 24;
+    /// Offset of the `U` field.
+    pub const U_SHIFT: u32 = 30;
+    /// Offset of the `M` field.
+    pub const M_SHIFT: u32 = 31;
+
+    /// Returns the value of the `Aff0` field.
+    pub const fn aff0(self) -> u8 {
+        ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `Aff1` field.
+    pub const fn aff1(self) -> u8 {
+        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Returns the value of the `Aff2` field.
+    pub const fn aff2(self) -> u8 {
+        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+}
+
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VMPIDR_EL2` system register value.
@@ -8857,6 +15679,62 @@ impl VmpidrEl2 {
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+}
+
+bitflags! {
+    /// `VPIDR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vpidr: u32 {
+    }
+}
+
+impl Vpidr {
+    /// Offset of the `Revision` field.
+    pub const REVISION_SHIFT: u32 = 0;
+    /// Mask for the `Revision` field.
+    pub const REVISION_MASK: u32 = 0b1111;
+    /// Offset of the `PartNum` field.
+    pub const PARTNUM_SHIFT: u32 = 4;
+    /// Mask for the `PartNum` field.
+    pub const PARTNUM_MASK: u32 = 0b111111111111;
+    /// Offset of the `Architecture` field.
+    pub const ARCHITECTURE_SHIFT: u32 = 16;
+    /// Mask for the `Architecture` field.
+    pub const ARCHITECTURE_MASK: u32 = 0b1111;
+    /// Offset of the `Variant` field.
+    pub const VARIANT_SHIFT: u32 = 20;
+    /// Mask for the `Variant` field.
+    pub const VARIANT_MASK: u32 = 0b1111;
+    /// Offset of the `Implementer` field.
+    pub const IMPLEMENTER_SHIFT: u32 = 24;
+    /// Mask for the `Implementer` field.
+    pub const IMPLEMENTER_MASK: u32 = 0b11111111;
+
+    /// Returns the value of the `Revision` field.
+    pub const fn revision(self) -> u8 {
+        ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `PartNum` field.
+    pub const fn partnum(self) -> u16 {
+        ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+    }
+
+    /// Returns the value of the `Architecture` field.
+    pub const fn architecture(self) -> u8 {
+        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Variant` field.
+    pub const fn variant(self) -> u8 {
+        ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `Implementer` field.
+    pub const fn implementer(self) -> u8 {
+        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
     }
 }
 
@@ -8954,6 +15832,84 @@ impl VsesrEl2 {
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+}
+
+bitflags! {
+    /// `VTCR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vtcr: u32 {
+        /// RES1 bits in the `VTCR` register.
+        const RES1 = 0b10000000000000000000000000000000;
+        /// `S` bit.
+        const S = 1 << 4;
+        /// `HWU59` bit.
+        const HWU59 = 1 << 25;
+        /// `HWU60` bit.
+        const HWU60 = 1 << 26;
+        /// `HWU61` bit.
+        const HWU61 = 1 << 27;
+        /// `HWU62` bit.
+        const HWU62 = 1 << 28;
+    }
+}
+
+impl Vtcr {
+    /// Offset of the `T0SZ` field.
+    pub const T0SZ_SHIFT: u32 = 0;
+    /// Mask for the `T0SZ` field.
+    pub const T0SZ_MASK: u32 = 0b1111;
+    /// Offset of the `S` field.
+    pub const S_SHIFT: u32 = 4;
+    /// Offset of the `SL0` field.
+    pub const SL0_SHIFT: u32 = 6;
+    /// Mask for the `SL0` field.
+    pub const SL0_MASK: u32 = 0b11;
+    /// Offset of the `IRGN0` field.
+    pub const IRGN0_SHIFT: u32 = 8;
+    /// Mask for the `IRGN0` field.
+    pub const IRGN0_MASK: u32 = 0b11;
+    /// Offset of the `ORGN0` field.
+    pub const ORGN0_SHIFT: u32 = 10;
+    /// Mask for the `ORGN0` field.
+    pub const ORGN0_MASK: u32 = 0b11;
+    /// Offset of the `SH0` field.
+    pub const SH0_SHIFT: u32 = 12;
+    /// Mask for the `SH0` field.
+    pub const SH0_MASK: u32 = 0b11;
+    /// Offset of the `HWU59` field.
+    pub const HWU59_SHIFT: u32 = 25;
+    /// Offset of the `HWU60` field.
+    pub const HWU60_SHIFT: u32 = 26;
+    /// Offset of the `HWU61` field.
+    pub const HWU61_SHIFT: u32 = 27;
+    /// Offset of the `HWU62` field.
+    pub const HWU62_SHIFT: u32 = 28;
+
+    /// Returns the value of the `T0SZ` field.
+    pub const fn t0sz(self) -> u8 {
+        ((self.bits() >> Self::T0SZ_SHIFT) & 0b1111) as u8
+    }
+
+    /// Returns the value of the `SL0` field.
+    pub const fn sl0(self) -> u8 {
+        ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `IRGN0` field.
+    pub const fn irgn0(self) -> u8 {
+        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `ORGN0` field.
+    pub const fn orgn0(self) -> u8 {
+        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `SH0` field.
+    pub const fn sh0(self) -> u8 {
+        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
     }
 }
 
@@ -9115,6 +16071,40 @@ impl VtcrEl2 {
     }
 }
 
+bitflags! {
+    /// `VTTBR` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Vttbr: u64 {
+        /// `CnP` bit.
+        const CNP = 1 << 0;
+    }
+}
+
+impl Vttbr {
+    /// Offset of the `CnP` field.
+    pub const CNP_SHIFT: u32 = 0;
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 1;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    /// Offset of the `VMID` field.
+    pub const VMID_SHIFT: u32 = 48;
+    /// Mask for the `VMID` field.
+    pub const VMID_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
+            as u64
+    }
+
+    /// Returns the value of the `VMID` field.
+    pub const fn vmid(self) -> u8 {
+        ((self.bits() >> Self::VMID_SHIFT) & 0b11111111) as u8
+    }
+}
+
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VTTBR_EL2` system register value.
@@ -9182,10 +16172,16 @@ impl ZcrEl3 {
     }
 }
 
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(actlr: (p15, 0, c0, c1, 1), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(actlr2: (p15, 0, c0, c1, 3), u32, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(actlr_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(actlr_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(adfsr: (p15, 0, c1, c5, 0), u32, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(afsr0_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9194,50 +16190,236 @@ read_write_sysreg!(afsr0_el2, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(afsr1_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(afsr1_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(aidr: (p15, 1, c0, c0, 7), u32, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(aifsr: (p15, 0, c1, c5, 1), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amair0: (p15, 0, c3, c10, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amair1: (p15, 0, c3, c10, 1), u32, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(amair_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(amair_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(amcfgr: (p15, 0, c2, c13, 1), u32: Amcfgr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(amcgcr: (p15, 0, c2, c13, 2), u32: Amcgcr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amcntenclr0: (p15, 0, c2, c13, 4), u32: Amcntenclr0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amcntenclr1: (p15, 0, c3, c13, 0), u32: Amcntenclr1, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amcntenset0: (p15, 0, c2, c13, 5), u32: Amcntenset0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amcntenset1: (p15, 0, c3, c13, 1), u32: Amcntenset1, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amcr: (p15, 0, c2, c13, 0), u32: Amcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amuserenr: (p15, 0, c2, c13, 3), u32: Amuserenr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(apiakeyhi_el1: s3_0_c2_c1_1, u64: ApiakeyhiEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(apiakeylo_el1: s3_0_c2_c1_0, u64: ApiakeyloEl1, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(ccsidr: (p15, 1, c0, c0, 0), u32: Ccsidr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(ccsidr2: (p15, 1, c0, c0, 2), u32: Ccsidr2, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(ccsidr_el1, u64: CcsidrEl1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(clidr: (p15, 1, c0, c0, 1), u32: Clidr, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(clidr_el1, u64: ClidrEl1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntfrq: (p15, 0, c0, c14, 0), u32: Cntfrq, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(cntfrq_el0, u64: CntfrqEl0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthctl: (p15, 4, c1, c14, 0), u32: Cnthctl, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(cnthctl_el2, u64: CnthctlEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthps_ctl: (p15, 0, c2, c14, 1), u32: CnthpsCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthps_cval: (p15, 2, c14), u64: CnthpsCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthps_tval: (p15, 0, c2, c14, 0), u32: CnthpsTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthp_ctl: (p15, 0, c2, c14, 1), u32: CnthpCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthp_cval: (p15, 2, c14), u64: CnthpCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthp_tval: (p15, 0, c2, c14, 0), u32: CnthpTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthvs_ctl: (p15, 0, c3, c14, 1), u32: CnthvsCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthvs_cval: (p15, 3, c14), u64: CnthvsCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthvs_tval: (p15, 0, c3, c14, 0), u32: CnthvsTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthv_ctl: (p15, 0, c3, c14, 1), u32: CnthvCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthv_cval: (p15, 3, c14), u64: CnthvCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cnthv_tval: (p15, 0, c3, c14, 0), u32: CnthvTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntkctl: (p15, 0, c1, c14, 0), u32: Cntkctl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(cntpct: (p15, 0, c14), u64: Cntpct, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(cntpctss: (p15, 8, c14), u64: Cntpctss, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_sysreg!(cntpct_el0, u64: CntpctEl0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntp_ctl: (p15, 0, c2, c14, 1), u32: CntpCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntp_cval: (p15, 2, c14), u64: CntpCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntp_tval: (p15, 0, c2, c14, 0), u32: CntpTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(cntvct: (p15, 1, c14), u64: Cntvct, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(cntvctss: (p15, 9, c14), u64: Cntvctss, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntvoff: (p15, 4, c14), u64: Cntvoff, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(cntvoff_el2, u64: CntvoffEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntv_ctl: (p15, 0, c3, c14, 1), u32: CntvCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntv_cval: (p15, 3, c14), u64: CntvCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cntv_tval: (p15, 0, c3, c14, 0), u32: CntvTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(contextidr: (p15, 0, c0, c13, 1), u32: Contextidr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(contextidr_el1, u64: ContextidrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(contextidr_el2: s3_4_c13_c0_1, u64: ContextidrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(cpacr: (p15, 0, c0, c1, 2), u32: Cpacr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(cpacr_el1, u64: CpacrEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(cptr_el2, u64: CptrEl2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(cptr_el3, u64: CptrEl3, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(csselr: (p15, 2, c0, c0, 0), u32: Csselr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(csselr_el1, u64: CsselrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(ctr: (p15, 0, c0, c0, 1), u32: Ctr, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_sysreg!(ctr_el0, u64: CtrEl0, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_sysreg!(currentel, u64: Currentel, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dacr: (p15, 0, c0, c3, 0), u32: Dacr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgauthstatus: (p14, 0, c14, c7, 6), u32: Dbgauthstatus, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgclaimclr: (p14, 0, c9, c7, 6), u32: Dbgclaimclr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgclaimset: (p14, 0, c8, c7, 6), u32: Dbgclaimset, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgdccint: (p14, 0, c2, c0, 0), u32: Dbgdccint, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdevid: (p14, 0, c2, c7, 7), u32: Dbgdevid, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdevid1: (p14, 0, c1, c7, 7), u32: Dbgdevid1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdevid2: (p14, 0, c0, c7, 7), u32, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdidr: (p14, 0, c0, c0, 0), u32: Dbgdidr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdrar: (p14, 0, c1), u64: Dbgdrar, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdsar: (p14, 0, c2), u64, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgdscrext: (p14, 0, c2, c0, 2), u32: Dbgdscrext, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdscrint: (p14, 0, c1, c0, 0), u32: Dbgdscrint, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgdtrrxext: (p14, 0, c0, c0, 2), u32: Dbgdtrrxext, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgdtrrxint: (p14, 0, c5, c0, 0), u32: Dbgdtrrxint, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgdtrtxext: (p14, 0, c3, c0, 2), u32: Dbgdtrtxext, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+write_sysreg!(dbgdtrtxint: (p14, 0, c5, c0, 0), u32: Dbgdtrtxint, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgosdlr: (p14, 0, c3, c1, 4), u32: Dbgosdlr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgoseccr: (p14, 0, c6, c0, 2), u32: Dbgoseccr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+write_sysreg!(dbgoslar: (p14, 0, c0, c1, 4), u32: Dbgoslar, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(dbgoslsr: (p14, 0, c1, c1, 4), u32: Dbgoslsr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgprcr: (p14, 0, c4, c1, 4), u32: Dbgprcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgvcr: (p14, 0, c7, c0, 0), u32: Dbgvcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dbgwfar: (p14, 0, c6, c0, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dfar: (p15, 0, c0, c6, 0), u32: Dfar, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dfsr: (p15, 0, c0, c5, 0), u32: Dfsr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(disr: (p15, 0, c1, c12, 1), u32: Disr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(disr_el1: s3_0_c12_c1_1, u64: DisrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(dit: s3_3_c4_c2_5, u64: Dit, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dlr: (p15, 3, c5, c4, 1), u32: Dlr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dspsr: (p15, 3, c5, c4, 0), u32: Dspsr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(dspsr2: (p15, 3, c5, c4, 2), u32: Dspsr2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(elr_el1, u64: ElrEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(elr_el2, u64: ElrEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "arm"), feature = "el2"))]
+read_write_sysreg!(elr_hyp, u32: ElrHyp, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(erridr: (p15, 0, c3, c5, 0), u32: Erridr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(errselr: (p15, 0, c3, c5, 1), u32: Errselr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxaddr: (p15, 0, c4, c5, 3), u32: Erxaddr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxaddr2: (p15, 0, c4, c5, 7), u32: Erxaddr2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxctlr: (p15, 0, c4, c5, 1), u32: Erxctlr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxctlr2: (p15, 0, c4, c5, 5), u32: Erxctlr2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(erxfr: (p15, 0, c4, c5, 0), u32: Erxfr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(erxfr2: (p15, 0, c4, c5, 4), u32: Erxfr2, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc0: (p15, 0, c5, c5, 0), u32: Erxmisc0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc1: (p15, 0, c5, c5, 1), u32: Erxmisc1, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc2: (p15, 0, c5, c5, 4), u32: Erxmisc2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc3: (p15, 0, c5, c5, 5), u32: Erxmisc3, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc4: (p15, 0, c5, c5, 2), u32: Erxmisc4, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc5: (p15, 0, c5, c5, 3), u32: Erxmisc5, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc6: (p15, 0, c5, c5, 6), u32: Erxmisc6, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxmisc7: (p15, 0, c5, c5, 7), u32: Erxmisc7, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(erxstatus: (p15, 0, c4, c5, 2), u32: Erxstatus, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(esr_el1, u64: EsrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9248,6 +16430,8 @@ read_write_sysreg!(esr_el3, u64: EsrEl3, safe_read, safe_write, fake::SYSREGS);
 read_write_sysreg!(far_el1, u64: FarEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(far_el2, u64: FarEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(fcseidr: (p15, 0, c0, c13, 0), u32, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(gcr_el1: s3_0_c1_c0_6, u64: GcrEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
@@ -9258,12 +16442,36 @@ read_write_sysreg!(gcscr_el2: s3_4_c2_c5_0, u64: GcscrEl2, safe_read, fake::SYSR
 read_write_sysreg!(gpccr_el3: s3_6_c2_c1_6, u64: GpccrEl3, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(gptbr_el3: s3_6_c2_c1_4, u64: GptbrEl3, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hacr: (p15, 4, c1, c1, 7), u32, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hacr_el2, u64, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hactlr: (p15, 4, c0, c1, 1), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hactlr2: (p15, 4, c0, c1, 3), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hadfsr: (p15, 4, c1, c5, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(haifsr: (p15, 4, c1, c5, 1), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hamair0: (p15, 4, c3, c10, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hamair1: (p15, 4, c3, c10, 1), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hcptr: (p15, 4, c1, c1, 2), u32: Hcptr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hcr: (p15, 4, c1, c1, 0), u32: Hcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hcr2: (p15, 4, c1, c1, 4), u32: Hcr2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hcrx_el2: s3_4_c1_c2_2, u64: HcrxEl2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hcr_el2, u64: HcrEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hdcr: (p15, 4, c1, c1, 1), u32: Hdcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hdfar: (p15, 4, c0, c6, 0), u32: Hdfar, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hdfgrtr2_el2: s3_4_c3_c1_0, u64: Hdfgrtr2El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9276,10 +16484,36 @@ read_write_sysreg!(hfgrtr2_el2: s3_4_c3_c1_2, u64: Hfgrtr2El2, safe_read, fake::
 read_write_sysreg!(hfgwtr2_el2: s3_4_c3_c1_3, u64: Hfgwtr2El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hfgwtr_el2: s3_4_c1_c1_5, u64: HfgwtrEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hifar: (p15, 4, c0, c6, 2), u32: Hifar, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hmair0: (p15, 4, c2, c10, 0), u32: Hmair0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hmair1: (p15, 4, c2, c10, 1), u32: Hmair1, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hpfar: (p15, 4, c0, c6, 4), u32: Hpfar, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hpfar_el2, u64: HpfarEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hrmr: (p15, 4, c0, c12, 2), u32: Hrmr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hsctlr: (p15, 4, c0, c1, 0), u32: Hsctlr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hsr: (p15, 4, c2, c5, 0), u32: Hsr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hstr: (p15, 4, c1, c1, 3), u32, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hstr_el2, u64, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(htcr: (p15, 4, c0, c2, 2), u32: Htcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(htpidr: (p15, 4, c0, c13, 2), u32: Htpidr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(htrfcr: (p15, 4, c2, c1, 1), u32: Htrfcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(httbr: (p15, 4, c2), u64: Httbr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(hvbar: (p15, 4, c0, c12, 0), u32: Hvbar, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(icc_sre_el1: s3_0_c12_c12_5, u64: IccSreEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9317,8 +16551,62 @@ read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64pfr1_el1, u64: IdAa64pfr1El1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(id_aa64smfr0_el1, u64: IdAa64smfr0El1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_afr0: (p15, 0, c1, c0, 3), u32, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_dfr0: (p15, 0, c1, c0, 2), u32: IdDfr0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_dfr1: (p15, 0, c3, c0, 5), u32: IdDfr1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar0: (p15, 0, c2, c0, 0), u32: IdIsar0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar1: (p15, 0, c2, c0, 1), u32: IdIsar1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar2: (p15, 0, c2, c0, 2), u32: IdIsar2, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar3: (p15, 0, c2, c0, 3), u32: IdIsar3, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar4: (p15, 0, c2, c0, 4), u32: IdIsar4, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar5: (p15, 0, c2, c0, 5), u32: IdIsar5, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_isar6: (p15, 0, c2, c0, 7), u32: IdIsar6, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_mmfr0: (p15, 0, c1, c0, 4), u32: IdMmfr0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_mmfr1: (p15, 0, c1, c0, 5), u32: IdMmfr1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_mmfr2: (p15, 0, c1, c0, 6), u32: IdMmfr2, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_mmfr3: (p15, 0, c1, c0, 7), u32: IdMmfr3, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_mmfr4: (p15, 0, c2, c0, 6), u32: IdMmfr4, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_mmfr5: (p15, 0, c3, c0, 6), u32: IdMmfr5, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_pfr0: (p15, 0, c1, c0, 0), u32: IdPfr0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_pfr1: (p15, 0, c1, c0, 1), u32: IdPfr1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(id_pfr2: (p15, 0, c3, c0, 4), u32: IdPfr2, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(ifar: (p15, 0, c0, c6, 2), u32: Ifar, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(ifsr: (p15, 0, c0, c5, 1), u32: Ifsr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(isr: (p15, 0, c1, c12, 0), u32: Isr, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(isr_el1, u64: IsrEl1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(jidr: (p14, 7, c0, c0, 0), u32, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(jmcr: (p14, 7, c0, c2, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(joscr: (p14, 7, c0, c1, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(mair0: (p15, 0, c2, c10, 0), u32: Mair0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(mair1: (p15, 0, c2, c10, 1), u32: Mair1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(mair_el1, u64: MairEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9338,6 +16626,8 @@ read_write_sysreg!(mdcr_el2, u64: MdcrEl2, safe_read, safe_write, fake::SYSREGS)
 read_write_sysreg!(mdcr_el3, u64: MdcrEl3, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(mdscr_el1, u64: MdscrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(midr: (p15, 0, c0, c0, 0), u32: Midr, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(midr_el1, u64: MidrEl1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9366,16 +16656,74 @@ read_write_sysreg!(mpamvpm6_el2: s3_4_c10_c6_6, u64: Mpamvpm6El2, safe_read, fak
 read_write_sysreg!(mpamvpm7_el2: s3_4_c10_c6_7, u64: Mpamvpm7El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(mpamvpmv_el2: s3_4_c10_c4_1, u64: MpamvpmvEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(mpidr: (p15, 0, c0, c0, 5), u32: Mpidr, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(mpidr_el1, u64: MpidrEl1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(mvbar: (p15, 0, c0, c12, 1), u32: Mvbar, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(nmrr: (p15, 0, c2, c10, 1), u32: Nmrr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(nsacr: (p15, 0, c1, c1, 2), u32: Nsacr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(par: (p15, 0, c7), u64: Par, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(par_el1, u64: ParEl1, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmccfiltr: (p15, 0, c15, c14, 7), u32: Pmccfiltr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmccntr: (p15, 0, c9), u64: Pmccntr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(pmceid0: (p15, 0, c12, c9, 6), u32: Pmceid0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(pmceid1: (p15, 0, c12, c9, 7), u32: Pmceid1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(pmceid2: (p15, 0, c14, c9, 4), u32: Pmceid2, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(pmceid3: (p15, 0, c14, c9, 5), u32: Pmceid3, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmcntenclr: (p15, 0, c12, c9, 2), u32: Pmcntenclr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmcntenset: (p15, 0, c12, c9, 1), u32: Pmcntenset, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmcr: (p15, 0, c12, c9, 0), u32: Pmcr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(pmcr_el0: s3_3_c9_c12_0, u64: PmcrEl0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmintenclr: (p15, 0, c14, c9, 2), u32: Pmintenclr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmintenset: (p15, 0, c14, c9, 1), u32: Pmintenset, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(pmmir: (p15, 0, c14, c9, 6), u32: Pmmir, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmovsr: (p15, 0, c12, c9, 3), u32: Pmovsr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmovsset: (p15, 0, c14, c9, 3), u32: Pmovsset, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmselr: (p15, 0, c12, c9, 5), u32: Pmselr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+write_sysreg!(pmswinc: (p15, 0, c12, c9, 4), u32: Pmswinc, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmuserenr: (p15, 0, c14, c9, 0), u32: Pmuserenr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(pmxevtyper: (p15, 0, c13, c9, 1), u32: Pmxevtyper, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(prrr: (p15, 0, c2, c10, 0), u32: Prrr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(revidr: (p15, 0, c0, c0, 6), u32, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(rgsr_el1: s3_0_c1_c0_5, u64: RgsrEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(rmr: (p15, 0, c0, c12, 2), u32: Rmr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(rvbar: (p15, 0, c0, c12, 1), u32: Rvbar, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(scr: (p15, 0, c1, c1, 0), u32: Scr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(sctlr: (p15, 0, c0, c1, 0), u32: Sctlr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(sctlr2_el3: s3_6_c1_c0_3, u64: Sctlr2El3, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
@@ -9389,6 +16737,10 @@ read_write_sysreg! {
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 system control register.
     sctlr_el3, u64: SctlrEl3, safe_read, fake::SYSREGS
 }
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(sdcr: (p15, 0, c3, c1, 1), u32: Sdcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(sder: (p15, 0, c1, c1, 1), u32: Sder, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(smcr_el3: s3_6_c1_c2_6, u64: SmcrEl3, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
@@ -9401,6 +16753,8 @@ read_write_sysreg!(spsr_el3, u64: SpsrEl3, safe_read, fake::SYSREGS);
 read_write_sysreg!(sp_el1, u64: SpEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(sp_el2, u64: SpEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(tcmtr: (p15, 0, c0, c0, 2), u32, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(tcr2_el1: s3_0_c2_c0_3, u64: Tcr2El1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
@@ -9422,14 +16776,30 @@ read_write_sysreg!(tfsre0_el1: s3_0_c5_c6_1, u64: Tfsre0El1, safe_read, safe_wri
 read_write_sysreg!(tfsr_el1: s3_0_c5_c6_0, u64: TfsrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(tfsr_el2: s3_4_c5_c6_0, u64: TfsrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(tlbtr: (p15, 0, c0, c0, 3), u32: Tlbtr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(tpidrprw: (p15, 0, c0, c13, 4), u32: Tpidrprw, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(tpidrro_el0, u64: TpidrroEl0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(tpidruro: (p15, 0, c0, c13, 3), u32: Tpidruro, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(tpidrurw: (p15, 0, c0, c13, 2), u32: Tpidrurw, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(tpidr_el0, u64: TpidrEl0, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(tpidr_el1, u64: TpidrEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(tpidr_el2, u64: TpidrEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(trfcr: (p15, 0, c2, c1, 1), u32: Trfcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(ttbcr: (p15, 0, c0, c2, 2), u32: Ttbcr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(ttbcr2: (p15, 0, c0, c2, 3), u32: Ttbcr2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(ttbr0: (p15, 0, c2), u64: Ttbr0, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg! {
     /// # Safety
@@ -9451,6 +16821,8 @@ read_write_sysreg! {
     /// The base address must point to a valid and properly aligned translation table.
     ttbr0_el3, u64: Ttbr0El3, safe_read, fake::SYSREGS
 }
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(ttbr1: (p15, 1, c2), u64: Ttbr1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg! {
     /// # Safety
@@ -9465,6 +16837,8 @@ read_write_sysreg! {
     /// The base address must point to a valid and properly aligned translation table.
     ttbr1_el2, u64: Ttbr1El2, safe_read, fake::SYSREGS
 }
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vbar: (p15, 0, c0, c12, 0), u32: Vbar, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg! {
     /// # Safety
@@ -9479,16 +16853,28 @@ read_write_sysreg! {
     /// The base address must point to a valid exception vector.
     vbar_el2, u64: VbarEl2, safe_read, fake::SYSREGS
 }
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vdfsr: (p15, 4, c2, c5, 3), u32: Vdfsr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vdisr: (p15, 0, c1, c12, 1), u32: Vdisr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(vdisr_el2: s3_4_c12_c1_1, u64: VdisrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vmpidr: (p15, 0, c0, c0, 5), u32: Vmpidr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(vmpidr_el2, u64: VmpidrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vpidr: (p15, 0, c0, c0, 0), u32: Vpidr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(vpidr_el2, u64: VpidrEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(vsesr_el2: s3_4_c5_c2_3, u64: VsesrEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vtcr: (p15, 4, c1, c2, 2), u32: Vtcr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(vtcr_el2, u64: VtcrEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(vttbr: (p15, 6, c2), u64: Vttbr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg! {
     /// # Safety
