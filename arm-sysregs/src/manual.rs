@@ -144,7 +144,7 @@ impl IdAa64dfr1El1 {
 #[cfg(feature = "el1")]
 impl IdAa64mmfr0El1 {
     const FGT_SUPPORTED: u8 = 0b0001;
-    const FGT2_SUPPORTED: u8 = 0b0001;
+    const FGT2_SUPPORTED: u8 = 0b0010;
 
     /// Indicates whether Fine Grain Traps Extension is implemented.
     pub fn is_feat_fgt_present(self) -> bool {

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Bugfixes
+
+- Fixed `IdAa64mmfr0El1::FGT2_SUPPORTED` definition.
+
 ## 0.2.0
 
 ### Breaking changes
