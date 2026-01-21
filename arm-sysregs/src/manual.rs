@@ -430,7 +430,8 @@ pub enum StackPointer {
 }
 
 /// Allowed Shareability attributes.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[repr(u8)]
 pub enum Shareability {
     /// Non-shareable.
     Non = 0b00,
@@ -441,7 +442,8 @@ pub enum Shareability {
 }
 
 /// Allowed Cacheability attributes.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[repr(u8)]
 pub enum Cacheability {
     /// Normal memory, Non-cacheable.
     Non = 0b00,

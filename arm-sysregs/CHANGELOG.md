@@ -4,7 +4,8 @@
 
 ### Breaking changes
 
-- Added CurrentEL register.
+- Added `CurrentEL` register.
+- Added `GPCCR_EL3` and `GPTBR_EL3` registers.
 - Marked fake `SystemRegisters` struct as `#[non_exhaustive]`.
 
 ### Other changes

@@ -1143,19 +1143,19 @@ impl GpccrEl3 {
     }
 
     /// Returns the value of the `IRGN` field.
-    pub const fn irgn(self) -> crate::manual::Cacheability {
+    pub fn irgn(self) -> crate::manual::Cacheability {
         crate::manual::Cacheability::try_from(((self.bits() >> Self::IRGN_SHIFT) & 0b11) as u8)
             .unwrap()
     }
 
     /// Returns the value of the `ORGN` field.
-    pub const fn orgn(self) -> crate::manual::Cacheability {
+    pub fn orgn(self) -> crate::manual::Cacheability {
         crate::manual::Cacheability::try_from(((self.bits() >> Self::ORGN_SHIFT) & 0b11) as u8)
             .unwrap()
     }
 
     /// Returns the value of the `SH` field.
-    pub const fn sh(self) -> crate::manual::Shareability {
+    pub fn sh(self) -> crate::manual::Shareability {
         crate::manual::Shareability::try_from(((self.bits() >> Self::SH_SHIFT) & 0b11) as u8)
             .unwrap()
     }

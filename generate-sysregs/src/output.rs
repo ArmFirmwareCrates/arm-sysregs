@@ -333,7 +333,7 @@ impl RegisterInfo {
                 }
                 writeln!(
                     writer,
-                    "    pub const fn {}(self) -> {} {{",
+                    "    pub {constness}fn {}(self) -> {} {{",
                     field.function_name(),
                     field_type
                 )?;
