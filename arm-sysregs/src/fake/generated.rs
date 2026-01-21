@@ -22,8 +22,8 @@ use crate::{
 };
 #[cfg(feature = "el3")]
 use crate::{
-    CptrEl3, EsrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, SctlrEl3, SmcrEl3, SpsrEl3,
-    TcrEl3, Ttbr0El3, ZcrEl3,
+    CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, SctlrEl3,
+    SmcrEl3, SpsrEl3, TcrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -131,6 +131,12 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `GCSCR_EL2` system register.
     pub gcscr_el2: GcscrEl2,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `GPCCR_EL3` system register.
+    pub gpccr_el3: GpccrEl3,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `GPTBR_EL3` system register.
+    pub gptbr_el3: GptbrEl3,
     #[cfg(feature = "el2")]
     /// Fake value for the `HACR_EL2` system register.
     pub hacr_el2: u64,
@@ -460,6 +466,10 @@ impl SystemRegisters {
             gcscr_el1: GcscrEl1::empty(),
             #[cfg(feature = "el2")]
             gcscr_el2: GcscrEl2::empty(),
+            #[cfg(feature = "el3")]
+            gpccr_el3: GpccrEl3::empty(),
+            #[cfg(feature = "el3")]
+            gptbr_el3: GptbrEl3::empty(),
             #[cfg(feature = "el2")]
             hacr_el2: 0,
             #[cfg(feature = "el2")]

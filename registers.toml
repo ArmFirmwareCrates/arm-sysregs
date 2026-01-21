@@ -106,6 +106,14 @@ description = "Guarded Control Stack Control register."
 [registers.GCSCR_EL2.field_descriptions]
 EXLOCKEN = "Exception state lock enable."
 
+[registers.GPCCR_EL3]
+[registers.GPCCR_EL3.types]
+SH = "crate::manual::Shareability"
+IRGN = "crate::manual::Cacheability"
+ORGN = "crate::manual::Cacheability"
+
+[registers.GPTBR_EL3]
+
 [registers.HACR_EL2]
 [registers.HCR_EL2.field_descriptions]
 TGE = "Trap general exceptions to EL2."

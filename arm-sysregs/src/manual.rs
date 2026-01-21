@@ -429,6 +429,30 @@ pub enum StackPointer {
     ElX = 1,
 }
 
+/// Allowed Shareability attributes.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Shareability {
+    /// Non-shareable.
+    Non = 0b00,
+    /// Outer-shareable.
+    Outer = 0b10,
+    /// Inner-shareable.
+    Inner = 0b11,
+}
+
+/// Allowed Cacheability attributes.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Cacheability {
+    /// Normal memory, Non-cacheable.
+    Non = 0b00,
+    /// Normal memory, Write-Back Read-Allocate Write-Allocate Cacheable.
+    WriteBackAllocate = 0b01,
+    /// Normal memory, Write-Through Read-Allocate No Write-Allocate Cacheable.
+    WriteThrough = 0b10,
+    /// Normal memory, Write-Back Read-Allocate No Write-Allocate Cacheable.
+    WriteBackNoAllocate = 0b11,
+}
+
 #[cfg(test)]
 mod tests {
     #[cfg(feature = "el1")]

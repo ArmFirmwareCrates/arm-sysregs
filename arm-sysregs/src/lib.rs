@@ -1045,6 +1045,163 @@ impl GcscrEl2 {
     pub const STREN_SHIFT: u32 = 9;
 }
 
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `GPCCR_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct GpccrEl3: u64 {
+        /// `PPS3` bit.
+        const PPS3 = 1 << 3;
+        /// `RLPAD` bit.
+        const RLPAD = 1 << 5;
+        /// `NSPAD` bit.
+        const NSPAD = 1 << 6;
+        /// `SPAD` bit.
+        const SPAD = 1 << 7;
+        /// `GPC` bit.
+        const GPC = 1 << 16;
+        /// `GPCP` bit.
+        const GPCP = 1 << 17;
+        /// `TBGPCD` bit.
+        const TBGPCD = 1 << 18;
+        /// `NSO` bit.
+        const NSO = 1 << 19;
+        /// `APPSAA` bit.
+        const APPSAA = 1 << 24;
+        /// `SA` bit.
+        const SA = 1 << 25;
+        /// `NSP` bit.
+        const NSP = 1 << 26;
+        /// `NA6` bit.
+        const NA6 = 1 << 27;
+        /// `NA7` bit.
+        const NA7 = 1 << 28;
+        /// `GPCBW` bit.
+        const GPCBW = 1 << 29;
+    }
+}
+
+#[cfg(feature = "el3")]
+impl GpccrEl3 {
+    /// Offset of the `PPS` field.
+    pub const PPS_SHIFT: u32 = 0;
+    /// Mask for the `PPS` field.
+    pub const PPS_MASK: u64 = 0b111;
+    /// Offset of the `PPS3` field.
+    pub const PPS3_SHIFT: u32 = 3;
+    /// Offset of the `RLPAD` field.
+    pub const RLPAD_SHIFT: u32 = 5;
+    /// Offset of the `NSPAD` field.
+    pub const NSPAD_SHIFT: u32 = 6;
+    /// Offset of the `SPAD` field.
+    pub const SPAD_SHIFT: u32 = 7;
+    /// Offset of the `IRGN` field.
+    pub const IRGN_SHIFT: u32 = 8;
+    /// Mask for the `IRGN` field.
+    pub const IRGN_MASK: u64 = 0b11;
+    /// Offset of the `ORGN` field.
+    pub const ORGN_SHIFT: u32 = 10;
+    /// Mask for the `ORGN` field.
+    pub const ORGN_MASK: u64 = 0b11;
+    /// Offset of the `SH` field.
+    pub const SH_SHIFT: u32 = 12;
+    /// Mask for the `SH` field.
+    pub const SH_MASK: u64 = 0b11;
+    /// Offset of the `PGS` field.
+    pub const PGS_SHIFT: u32 = 14;
+    /// Mask for the `PGS` field.
+    pub const PGS_MASK: u64 = 0b11;
+    /// Offset of the `GPC` field.
+    pub const GPC_SHIFT: u32 = 16;
+    /// Offset of the `GPCP` field.
+    pub const GPCP_SHIFT: u32 = 17;
+    /// Offset of the `TBGPCD` field.
+    pub const TBGPCD_SHIFT: u32 = 18;
+    /// Offset of the `NSO` field.
+    pub const NSO_SHIFT: u32 = 19;
+    /// Offset of the `L0GPTSZ` field.
+    pub const L0GPTSZ_SHIFT: u32 = 20;
+    /// Mask for the `L0GPTSZ` field.
+    pub const L0GPTSZ_MASK: u64 = 0b1111;
+    /// Offset of the `APPSAA` field.
+    pub const APPSAA_SHIFT: u32 = 24;
+    /// Offset of the `SA` field.
+    pub const SA_SHIFT: u32 = 25;
+    /// Offset of the `NSP` field.
+    pub const NSP_SHIFT: u32 = 26;
+    /// Offset of the `NA6` field.
+    pub const NA6_SHIFT: u32 = 27;
+    /// Offset of the `NA7` field.
+    pub const NA7_SHIFT: u32 = 28;
+    /// Offset of the `GPCBW` field.
+    pub const GPCBW_SHIFT: u32 = 29;
+
+    /// Returns the value of the `PPS` field.
+    pub const fn pps(self) -> u8 {
+        ((self.bits() >> Self::PPS_SHIFT) & 0b111) as u8
+    }
+
+    /// Returns the value of the `IRGN` field.
+    pub const fn irgn(self) -> crate::manual::Cacheability {
+        crate::manual::Cacheability::try_from(((self.bits() >> Self::IRGN_SHIFT) & 0b11) as u8)
+            .unwrap()
+    }
+
+    /// Returns the value of the `ORGN` field.
+    pub const fn orgn(self) -> crate::manual::Cacheability {
+        crate::manual::Cacheability::try_from(((self.bits() >> Self::ORGN_SHIFT) & 0b11) as u8)
+            .unwrap()
+    }
+
+    /// Returns the value of the `SH` field.
+    pub const fn sh(self) -> crate::manual::Shareability {
+        crate::manual::Shareability::try_from(((self.bits() >> Self::SH_SHIFT) & 0b11) as u8)
+            .unwrap()
+    }
+
+    /// Returns the value of the `PGS` field.
+    pub const fn pgs(self) -> u8 {
+        ((self.bits() >> Self::PGS_SHIFT) & 0b11) as u8
+    }
+
+    /// Returns the value of the `L0GPTSZ` field.
+    pub const fn l0gptsz(self) -> u8 {
+        ((self.bits() >> Self::L0GPTSZ_SHIFT) & 0b1111) as u8
+    }
+}
+
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `GPTBR_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct GptbrEl3: u64 {
+    }
+}
+
+#[cfg(feature = "el3")]
+impl GptbrEl3 {
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 0;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b1111111111111111111111111111111111111111;
+    /// Offset of the `BADDR[43:40]` field.
+    pub const BADDR_43_40_SHIFT: u32 = 40;
+    /// Mask for the `BADDR[43:40]` field.
+    pub const BADDR_43_40_MASK: u64 = 0b1111;
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        ((self.bits() >> Self::BADDR_SHIFT) & 0b1111111111111111111111111111111111111111) as u64
+    }
+
+    /// Returns the value of the `BADDR[43:40]` field.
+    pub const fn baddr_43_40(self) -> u8 {
+        ((self.bits() >> Self::BADDR_43_40_SHIFT) & 0b1111) as u8
+    }
+}
+
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HCRX_EL2` system register value.
@@ -8696,6 +8853,10 @@ read_write_sysreg!(gcr_el1: s3_0_c1_c0_6, u64: GcrEl1, safe_read, fake::SYSREGS)
 read_write_sysreg!(gcscr_el1: s3_0_c2_c5_0, u64: GcscrEl1, safe_read, fake::SYSREGS);
 #[cfg(feature = "el2")]
 read_write_sysreg!(gcscr_el2: s3_4_c2_c5_0, u64: GcscrEl2, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
+read_write_sysreg!(gpccr_el3: s3_6_c2_c1_6, u64: GpccrEl3, safe_read, fake::SYSREGS);
+#[cfg(feature = "el3")]
+read_write_sysreg!(gptbr_el3: s3_6_c2_c1_4, u64: GptbrEl3, safe_read, fake::SYSREGS);
 #[cfg(feature = "el2")]
 read_write_sysreg!(hacr_el2, u64, safe_read, fake::SYSREGS);
 #[cfg(feature = "el2")]
