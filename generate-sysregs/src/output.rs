@@ -160,9 +160,12 @@ impl RegisterInfo {
             writeln!(writer, "    /// {description}")?;
         }
         if self.derive_debug {
-            writeln!(writer, "    #[derive(Clone, Copy, Debug, Eq, PartialEq)]")?;
+            writeln!(
+                writer,
+                "    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]"
+            )?;
         } else {
-            writeln!(writer, "    #[derive(Clone, Copy, Eq, PartialEq)]")?;
+            writeln!(writer, "    #[derive(Clone, Copy, Eq, Default, PartialEq)]")?;
         }
         writeln!(writer, "    #[repr(transparent)]")?;
         writeln!(

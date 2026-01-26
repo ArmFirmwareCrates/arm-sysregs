@@ -22,7 +22,7 @@ pub use paste as _paste;
 
 bitflags! {
     /// `AMCFGR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcfgr: u32 {
         /// `HDBG` bit.
@@ -64,7 +64,7 @@ impl Amcfgr {
 
 bitflags! {
     /// `AMCGCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcgcr: u32 {
     }
@@ -93,7 +93,7 @@ impl Amcgcr {
 
 bitflags! {
     /// `AMCNTENCLR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcntenclr0: u32 {
         /// `P<n>` bit 0.
@@ -114,7 +114,7 @@ impl Amcntenclr0 {
 
 bitflags! {
     /// `AMCNTENCLR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcntenclr1: u32 {
         /// `P<n>` bit 0.
@@ -159,7 +159,7 @@ impl Amcntenclr1 {
 
 bitflags! {
     /// `AMCNTENSET0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcntenset0: u32 {
         /// `P<n>` bit 0.
@@ -180,7 +180,7 @@ impl Amcntenset0 {
 
 bitflags! {
     /// `AMCNTENSET1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcntenset1: u32 {
         /// `P<n>` bit 0.
@@ -225,7 +225,7 @@ impl Amcntenset1 {
 
 bitflags! {
     /// `AMCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amcr: u32 {
         /// `HDBG` bit.
@@ -244,7 +244,7 @@ impl Amcr {
 
 bitflags! {
     /// `AMUSERENR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Amuserenr: u32 {
         /// `EN` bit.
@@ -260,7 +260,7 @@ impl Amuserenr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `APIAKeyHi_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ApiakeyhiEl1: u64 {
     }
@@ -284,7 +284,7 @@ impl ApiakeyhiEl1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `APIAKeyLo_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ApiakeyloEl1: u64 {
     }
@@ -307,7 +307,7 @@ impl ApiakeyloEl1 {
 
 bitflags! {
     /// `CCSIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ccsidr: u32 {
     }
@@ -336,7 +336,7 @@ impl Ccsidr {
 
 bitflags! {
     /// `CCSIDR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ccsidr2: u32 {
     }
@@ -357,7 +357,7 @@ impl Ccsidr2 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `CCSIDR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CcsidrEl1: u64 {
     }
@@ -378,7 +378,7 @@ impl CcsidrEl1 {
 
 bitflags! {
     /// `CLIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Clidr: u32 {
     }
@@ -438,7 +438,7 @@ bitflags! {
     /// `CLIDR_EL1` system register value.
     ///
     /// Cache Level ID.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ClidrEl1: u64 {
     }
@@ -517,7 +517,7 @@ impl ClidrEl1 {
 
 bitflags! {
     /// `CNTFRQ` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntfrq: u32 {
     }
@@ -537,7 +537,7 @@ impl Cntfrq {
 
 bitflags! {
     /// `CNTFRQ_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntfrqEl0: u64 {
     }
@@ -557,7 +557,7 @@ impl CntfrqEl0 {
 
 bitflags! {
     /// `CNTHCTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cnthctl: u32 {
         /// `PL1PCTEN` bit.
@@ -598,7 +598,7 @@ impl Cnthctl {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CNTHCTL_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthctlEl2: u64 {
         /// `EL0PCTEN` bit.
@@ -683,7 +683,7 @@ impl CnthctlEl2 {
 
 bitflags! {
     /// `CNTHPS_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthpsCtl: u32 {
         /// `ENABLE` bit.
@@ -706,7 +706,7 @@ impl CnthpsCtl {
 
 bitflags! {
     /// `CNTHPS_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthpsCval: u64 {
     }
@@ -728,7 +728,7 @@ impl CnthpsCval {
 
 bitflags! {
     /// `CNTHPS_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthpsTval: u32 {
     }
@@ -748,7 +748,7 @@ impl CnthpsTval {
 
 bitflags! {
     /// `CNTHP_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthpCtl: u32 {
         /// `ENABLE` bit.
@@ -771,7 +771,7 @@ impl CnthpCtl {
 
 bitflags! {
     /// `CNTHP_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthpCval: u64 {
     }
@@ -793,7 +793,7 @@ impl CnthpCval {
 
 bitflags! {
     /// `CNTHP_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthpTval: u32 {
     }
@@ -813,7 +813,7 @@ impl CnthpTval {
 
 bitflags! {
     /// `CNTHVS_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthvsCtl: u32 {
         /// `ENABLE` bit.
@@ -836,7 +836,7 @@ impl CnthvsCtl {
 
 bitflags! {
     /// `CNTHVS_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthvsCval: u64 {
     }
@@ -858,7 +858,7 @@ impl CnthvsCval {
 
 bitflags! {
     /// `CNTHVS_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthvsTval: u32 {
     }
@@ -878,7 +878,7 @@ impl CnthvsTval {
 
 bitflags! {
     /// `CNTHV_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthvCtl: u32 {
         /// `ENABLE` bit.
@@ -901,7 +901,7 @@ impl CnthvCtl {
 
 bitflags! {
     /// `CNTHV_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthvCval: u64 {
     }
@@ -923,7 +923,7 @@ impl CnthvCval {
 
 bitflags! {
     /// `CNTHV_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthvTval: u32 {
     }
@@ -943,7 +943,7 @@ impl CnthvTval {
 
 bitflags! {
     /// `CNTKCTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntkctl: u32 {
         /// `PL0PCTEN` bit.
@@ -991,7 +991,7 @@ impl Cntkctl {
 
 bitflags! {
     /// `CNTPCT` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntpct: u64 {
     }
@@ -1013,7 +1013,7 @@ impl Cntpct {
 
 bitflags! {
     /// `CNTPCTSS` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntpctss: u64 {
     }
@@ -1035,7 +1035,7 @@ impl Cntpctss {
 
 bitflags! {
     /// `CNTPCT_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntpctEl0: u64 {
     }
@@ -1057,7 +1057,7 @@ impl CntpctEl0 {
 
 bitflags! {
     /// `CNTP_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntpCtl: u32 {
         /// `ENABLE` bit.
@@ -1080,7 +1080,7 @@ impl CntpCtl {
 
 bitflags! {
     /// `CNTP_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntpCval: u64 {
     }
@@ -1102,7 +1102,7 @@ impl CntpCval {
 
 bitflags! {
     /// `CNTP_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntpTval: u32 {
     }
@@ -1122,7 +1122,7 @@ impl CntpTval {
 
 bitflags! {
     /// `CNTVCT` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntvct: u64 {
     }
@@ -1144,7 +1144,7 @@ impl Cntvct {
 
 bitflags! {
     /// `CNTVCTSS` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntvctss: u64 {
     }
@@ -1166,7 +1166,7 @@ impl Cntvctss {
 
 bitflags! {
     /// `CNTVOFF` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cntvoff: u64 {
     }
@@ -1189,7 +1189,7 @@ impl Cntvoff {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CNTVOFF_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntvoffEl2: u64 {
     }
@@ -1212,7 +1212,7 @@ impl CntvoffEl2 {
 
 bitflags! {
     /// `CNTV_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntvCtl: u32 {
         /// `ENABLE` bit.
@@ -1235,7 +1235,7 @@ impl CntvCtl {
 
 bitflags! {
     /// `CNTV_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntvCval: u64 {
     }
@@ -1257,7 +1257,7 @@ impl CntvCval {
 
 bitflags! {
     /// `CNTV_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntvTval: u32 {
     }
@@ -1277,7 +1277,7 @@ impl CntvTval {
 
 bitflags! {
     /// `CONTEXTIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Contextidr: u32 {
     }
@@ -1298,7 +1298,7 @@ impl Contextidr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `CONTEXTIDR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ContextidrEl1: u64 {
     }
@@ -1320,7 +1320,7 @@ impl ContextidrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CONTEXTIDR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ContextidrEl2: u64 {
     }
@@ -1341,7 +1341,7 @@ impl ContextidrEl2 {
 
 bitflags! {
     /// `CPACR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Cpacr: u32 {
         /// `TRCDIS` bit.
@@ -1379,7 +1379,7 @@ impl Cpacr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `CPACR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CpacrEl1: u64 {
         /// `TTA` bit.
@@ -1443,7 +1443,7 @@ impl CpacrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CPTR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CptrEl2: u64 {
         /// RES1 bits in the `CPTR_EL2` register.
@@ -1517,7 +1517,7 @@ impl CptrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `CPTR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CptrEl3: u64 {
         /// Do not trap execution of SVE instructions.
@@ -1553,7 +1553,7 @@ impl CptrEl3 {
 
 bitflags! {
     /// `CSSELR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Csselr: u32 {
         /// `InD` bit.
@@ -1578,7 +1578,7 @@ impl Csselr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `CSSELR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CsselrEl1: u64 {
         /// Instruction not Data bit.
@@ -1607,7 +1607,7 @@ impl CsselrEl1 {
 
 bitflags! {
     /// `CTR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ctr: u32 {
         /// RES1 bits in the `CTR` register.
@@ -1675,7 +1675,7 @@ bitflags! {
     /// `CTR_EL0` system register value.
     ///
     /// Cache Type Register.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CtrEl0: u64 {
         /// RES1 bits in the `CTR_EL0` register.
@@ -1752,7 +1752,7 @@ impl CtrEl0 {
 
 bitflags! {
     /// `CurrentEL` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Currentel: u64 {
     }
@@ -1772,7 +1772,7 @@ impl Currentel {
 
 bitflags! {
     /// `DACR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dacr: u32 {
     }
@@ -1793,7 +1793,7 @@ impl Dacr {
 
 bitflags! {
     /// `DBGAUTHSTATUS` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgauthstatus: u32 {
     }
@@ -1840,7 +1840,7 @@ impl Dbgauthstatus {
 
 bitflags! {
     /// `DBGCLAIMCLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgclaimclr: u32 {
         /// `CLAIM<m>` bit 0.
@@ -1869,7 +1869,7 @@ impl Dbgclaimclr {
 
 bitflags! {
     /// `DBGCLAIMSET` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgclaimset: u32 {
         /// `CLAIM<m>` bit 0.
@@ -1898,7 +1898,7 @@ impl Dbgclaimset {
 
 bitflags! {
     /// `DBGDCCINT` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdccint: u32 {
         /// `TX` bit.
@@ -1917,7 +1917,7 @@ impl Dbgdccint {
 
 bitflags! {
     /// `DBGDEVID` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdevid: u32 {
     }
@@ -2000,7 +2000,7 @@ impl Dbgdevid {
 
 bitflags! {
     /// `DBGDEVID1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdevid1: u32 {
     }
@@ -2020,7 +2020,7 @@ impl Dbgdevid1 {
 
 bitflags! {
     /// `DBGDIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdidr: u32 {
         /// RES1 bits in the `DBGDIDR` register.
@@ -2077,7 +2077,7 @@ impl Dbgdidr {
 
 bitflags! {
     /// `DBGDRAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdrar: u64 {
     }
@@ -2106,7 +2106,7 @@ impl Dbgdrar {
 
 bitflags! {
     /// `DBGDSCRext` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdscrext: u32 {
         /// `ERR` bit.
@@ -2191,7 +2191,7 @@ impl Dbgdscrext {
 
 bitflags! {
     /// `DBGDSCRint` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdscrint: u32 {
         /// `UDCCdis` bit.
@@ -2239,7 +2239,7 @@ impl Dbgdscrint {
 
 bitflags! {
     /// `DBGDTRRXext` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdtrrxext: u32 {
     }
@@ -2259,7 +2259,7 @@ impl Dbgdtrrxext {
 
 bitflags! {
     /// `DBGDTRRXint` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdtrrxint: u32 {
     }
@@ -2279,7 +2279,7 @@ impl Dbgdtrrxint {
 
 bitflags! {
     /// `DBGDTRTXext` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdtrtxext: u32 {
     }
@@ -2299,7 +2299,7 @@ impl Dbgdtrtxext {
 
 bitflags! {
     /// `DBGDTRTXint` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgdtrtxint: u32 {
     }
@@ -2319,7 +2319,7 @@ impl Dbgdtrtxint {
 
 bitflags! {
     /// `DBGOSDLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgosdlr: u32 {
         /// `DLK` bit.
@@ -2334,7 +2334,7 @@ impl Dbgosdlr {
 
 bitflags! {
     /// `DBGOSECCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgoseccr: u32 {
     }
@@ -2354,7 +2354,7 @@ impl Dbgoseccr {
 
 bitflags! {
     /// `DBGOSLAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgoslar: u32 {
     }
@@ -2374,7 +2374,7 @@ impl Dbgoslar {
 
 bitflags! {
     /// `DBGOSLSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgoslsr: u32 {
         /// `OSLK` bit.
@@ -2393,7 +2393,7 @@ impl Dbgoslsr {
 
 bitflags! {
     /// `DBGPRCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgprcr: u32 {
         /// `CORENPDRQ` bit.
@@ -2408,7 +2408,7 @@ impl Dbgprcr {
 
 bitflags! {
     /// `DBGVCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dbgvcr: u32 {
         /// `SU` bit.
@@ -2511,7 +2511,7 @@ impl Dbgvcr {
 
 bitflags! {
     /// `DFAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dfar: u32 {
     }
@@ -2531,7 +2531,7 @@ impl Dfar {
 
 bitflags! {
     /// `DFSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dfsr: u32 {
         /// `LPAE` bit.
@@ -2589,7 +2589,7 @@ impl Dfsr {
 
 bitflags! {
     /// `DISR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Disr: u32 {
         /// `EA` bit.
@@ -2635,7 +2635,7 @@ impl Disr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `DISR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct DisrEl1: u64 {
         /// `WnR` bit.
@@ -2696,7 +2696,7 @@ bitflags! {
     /// `DIT` system register value.
     ///
     /// Data Independent Timing.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dit: u64 {
         /// Enable data independent timing.
@@ -2711,7 +2711,7 @@ impl Dit {
 
 bitflags! {
     /// `DLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dlr: u32 {
     }
@@ -2731,7 +2731,7 @@ impl Dlr {
 
 bitflags! {
     /// `DSPSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dspsr: u32 {
         /// `T` bit.
@@ -2820,7 +2820,7 @@ impl Dspsr {
 
 bitflags! {
     /// `DSPSR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dspsr2: u32 {
         /// `PPEND` bit.
@@ -2840,7 +2840,7 @@ impl Dspsr2 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ELR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ElrEl1: u64 {
     }
@@ -2863,7 +2863,7 @@ impl ElrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `ELR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ElrEl2: u64 {
     }
@@ -2886,7 +2886,7 @@ impl ElrEl2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `ELR_hyp` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ElrHyp: u32 {
     }
@@ -2907,7 +2907,7 @@ impl ElrHyp {
 
 bitflags! {
     /// `ERRIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erridr: u32 {
     }
@@ -2927,7 +2927,7 @@ impl Erridr {
 
 bitflags! {
     /// `ERRSELR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Errselr: u32 {
     }
@@ -2947,7 +2947,7 @@ impl Errselr {
 
 bitflags! {
     /// `ERXADDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxaddr: u32 {
     }
@@ -2967,7 +2967,7 @@ impl Erxaddr {
 
 bitflags! {
     /// `ERXADDR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxaddr2: u32 {
     }
@@ -2987,7 +2987,7 @@ impl Erxaddr2 {
 
 bitflags! {
     /// `ERXCTLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxctlr: u32 {
     }
@@ -3007,7 +3007,7 @@ impl Erxctlr {
 
 bitflags! {
     /// `ERXCTLR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxctlr2: u32 {
     }
@@ -3027,7 +3027,7 @@ impl Erxctlr2 {
 
 bitflags! {
     /// `ERXFR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxfr: u32 {
     }
@@ -3047,7 +3047,7 @@ impl Erxfr {
 
 bitflags! {
     /// `ERXFR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxfr2: u32 {
     }
@@ -3067,7 +3067,7 @@ impl Erxfr2 {
 
 bitflags! {
     /// `ERXMISC0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc0: u32 {
     }
@@ -3087,7 +3087,7 @@ impl Erxmisc0 {
 
 bitflags! {
     /// `ERXMISC1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc1: u32 {
     }
@@ -3107,7 +3107,7 @@ impl Erxmisc1 {
 
 bitflags! {
     /// `ERXMISC2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc2: u32 {
     }
@@ -3127,7 +3127,7 @@ impl Erxmisc2 {
 
 bitflags! {
     /// `ERXMISC3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc3: u32 {
     }
@@ -3147,7 +3147,7 @@ impl Erxmisc3 {
 
 bitflags! {
     /// `ERXMISC4` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc4: u32 {
     }
@@ -3167,7 +3167,7 @@ impl Erxmisc4 {
 
 bitflags! {
     /// `ERXMISC5` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc5: u32 {
     }
@@ -3187,7 +3187,7 @@ impl Erxmisc5 {
 
 bitflags! {
     /// `ERXMISC6` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc6: u32 {
     }
@@ -3207,7 +3207,7 @@ impl Erxmisc6 {
 
 bitflags! {
     /// `ERXMISC7` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxmisc7: u32 {
     }
@@ -3227,7 +3227,7 @@ impl Erxmisc7 {
 
 bitflags! {
     /// `ERXSTATUS` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Erxstatus: u32 {
     }
@@ -3248,7 +3248,7 @@ impl Erxstatus {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ESR_EL1` system register value.
-    #[derive(Clone, Copy, Eq, PartialEq)]
+    #[derive(Clone, Copy, Eq, Default, PartialEq)]
     #[repr(transparent)]
     pub struct EsrEl1: u64 {
         /// `IL` bit.
@@ -3292,7 +3292,7 @@ impl EsrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `ESR_EL2` system register value.
-    #[derive(Clone, Copy, Eq, PartialEq)]
+    #[derive(Clone, Copy, Eq, Default, PartialEq)]
     #[repr(transparent)]
     pub struct EsrEl2: u64 {
         /// 32-bit instruction length.
@@ -3336,7 +3336,7 @@ impl EsrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `ESR_EL3` system register value.
-    #[derive(Clone, Copy, Eq, PartialEq)]
+    #[derive(Clone, Copy, Eq, Default, PartialEq)]
     #[repr(transparent)]
     pub struct EsrEl3: u64 {
         /// 32-bit instruction length.
@@ -3380,7 +3380,7 @@ impl EsrEl3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `FAR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct FarEl1: u64 {
     }
@@ -3403,7 +3403,7 @@ impl FarEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `FAR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct FarEl2: u64 {
     }
@@ -3426,7 +3426,7 @@ impl FarEl2 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `GCR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GcrEl1: u64 {
         /// `RRND` bit.
@@ -3454,7 +3454,7 @@ bitflags! {
     /// `GCSCR_EL1` system register value.
     ///
     /// Guarded Control Stack Control register.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GcscrEl1: u64 {
         /// `PCRSEL` bit.
@@ -3489,7 +3489,7 @@ bitflags! {
     /// `GCSCR_EL2` system register value.
     ///
     /// Guarded Control Stack Control register.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GcscrEl2: u64 {
         /// `PCRSEL` bit.
@@ -3522,7 +3522,7 @@ impl GcscrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `GPCCR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GpccrEl3: u64 {
         /// `PPS3` bit.
@@ -3648,7 +3648,7 @@ impl GpccrEl3 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `GPTBR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct GptbrEl3: u64 {
     }
@@ -3678,7 +3678,7 @@ impl GptbrEl3 {
 
 bitflags! {
     /// `HCPTR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hcptr: u32 {
         /// RES1 bits in the `HCPTR` register.
@@ -3715,7 +3715,7 @@ impl Hcptr {
 
 bitflags! {
     /// `HCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hcr: u32 {
         /// `VM` bit.
@@ -3847,7 +3847,7 @@ impl Hcr {
 
 bitflags! {
     /// `HCR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hcr2: u32 {
         /// `CD` bit.
@@ -3893,7 +3893,7 @@ bitflags! {
     /// `HCRX_EL2` system register value.
     ///
     /// Extended Hypervisor Configuration Register.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct HcrxEl2: u64 {
         /// Do not trap execution of an ST64BV0 instruction at EL0 or EL1 to EL2.
@@ -4054,7 +4054,7 @@ impl HcrxEl2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct HcrEl2: u64 {
         /// `VM` bit.
@@ -4308,7 +4308,7 @@ impl HcrEl2 {
 
 bitflags! {
     /// `HDCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hdcr: u32 {
         /// `TPMCR` bit.
@@ -4384,7 +4384,7 @@ impl Hdcr {
 
 bitflags! {
     /// `HDFAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hdfar: u32 {
     }
@@ -4405,7 +4405,7 @@ impl Hdfar {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HDFGRTR2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hdfgrtr2El2: u64 {
         /// `nPMECR_EL1` bit.
@@ -4514,7 +4514,7 @@ impl Hdfgrtr2El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HDFGWTR2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hdfgwtr2El2: u64 {
         /// `nPMECR_EL1` bit.
@@ -4615,7 +4615,7 @@ impl Hdfgwtr2El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HFGITR2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hfgitr2El2: u64 {
         /// `TSBCSYNC` bit.
@@ -4688,7 +4688,7 @@ impl Hfgitr2El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HFGRTR2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hfgrtr2El2: u64 {
         /// `nPFAR_EL1` bit.
@@ -4855,7 +4855,7 @@ impl Hfgrtr2El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HFGWTR2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hfgwtr2El2: u64 {
         /// `nPFAR_EL1` bit.
@@ -5014,7 +5014,7 @@ impl Hfgwtr2El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HFGWTR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct HfgwtrEl2: u64 {
         /// `AFSR0_EL1` bit.
@@ -5226,7 +5226,7 @@ impl HfgwtrEl2 {
 
 bitflags! {
     /// `HIFAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hifar: u32 {
     }
@@ -5246,7 +5246,7 @@ impl Hifar {
 
 bitflags! {
     /// `HMAIR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hmair0: u32 {
     }
@@ -5267,7 +5267,7 @@ impl Hmair0 {
 
 bitflags! {
     /// `HMAIR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hmair1: u32 {
     }
@@ -5288,7 +5288,7 @@ impl Hmair1 {
 
 bitflags! {
     /// `HPFAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hpfar: u32 {
     }
@@ -5309,7 +5309,7 @@ impl Hpfar {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `HPFAR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct HpfarEl2: u64 {
         /// `NS` bit.
@@ -5334,7 +5334,7 @@ impl HpfarEl2 {
 
 bitflags! {
     /// `HRMR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hrmr: u32 {
         /// `AA64` bit.
@@ -5353,7 +5353,7 @@ impl Hrmr {
 
 bitflags! {
     /// `HSCTLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hsctlr: u32 {
         /// RES1 bits in the `HSCTLR` register.
@@ -5414,7 +5414,7 @@ impl Hsctlr {
 
 bitflags! {
     /// `HSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hsr: u32 {
         /// `IL` bit.
@@ -5447,7 +5447,7 @@ impl Hsr {
 
 bitflags! {
     /// `HTCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Htcr: u32 {
         /// RES1 bits in the `HTCR` register.
@@ -5516,7 +5516,7 @@ impl Htcr {
 
 bitflags! {
     /// `HTPIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Htpidr: u32 {
     }
@@ -5536,7 +5536,7 @@ impl Htpidr {
 
 bitflags! {
     /// `HTRFCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Htrfcr: u32 {
         /// `E0HTRE` bit.
@@ -5568,7 +5568,7 @@ impl Htrfcr {
 
 bitflags! {
     /// `HTTBR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Httbr: u64 {
         /// `CnP` bit.
@@ -5593,7 +5593,7 @@ impl Httbr {
 
 bitflags! {
     /// `HVBAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Hvbar: u32 {
     }
@@ -5614,7 +5614,7 @@ impl Hvbar {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ICC_SRE_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IccSreEl1: u64 {
         /// Enable the system register interface.
@@ -5639,7 +5639,7 @@ impl IccSreEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `ICC_SRE_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IccSreEl2: u64 {
         /// Enable the system register interface.
@@ -5668,7 +5668,7 @@ impl IccSreEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `ICC_SRE_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IccSreEl3: u64 {
         /// Enable the system register interface.
@@ -5697,7 +5697,7 @@ impl IccSreEl3 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `ICH_HCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IchHcrEl2: u64 {
         /// `En` bit.
@@ -5779,7 +5779,7 @@ impl IchHcrEl2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `ICH_VMCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IchVmcrEl2: u64 {
         /// `EN` bit.
@@ -5838,7 +5838,7 @@ impl IchVmcrEl2 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64DFR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64dfr0El1: u64 {
     }
@@ -5995,7 +5995,7 @@ impl IdAa64dfr0El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64DFR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64dfr1El1: u64 {
     }
@@ -6107,7 +6107,7 @@ impl IdAa64dfr1El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64ISAR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64isar1El1: u64 {
     }
@@ -6264,7 +6264,7 @@ impl IdAa64isar1El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64ISAR2_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64isar2El1: u64 {
     }
@@ -6421,7 +6421,7 @@ impl IdAa64isar2El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64mmfr0El1: u64 {
     }
@@ -6560,7 +6560,7 @@ impl IdAa64mmfr0El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64mmfr1El1: u64 {
     }
@@ -6717,7 +6717,7 @@ impl IdAa64mmfr1El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR2_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64mmfr2El1: u64 {
     }
@@ -6865,7 +6865,7 @@ impl IdAa64mmfr2El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64MMFR3_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64mmfr3El1: u64 {
     }
@@ -7013,7 +7013,7 @@ impl IdAa64mmfr3El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64PFR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64pfr0El1: u64 {
     }
@@ -7170,7 +7170,7 @@ impl IdAa64pfr0El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64PFR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64pfr1El1: u64 {
     }
@@ -7318,7 +7318,7 @@ impl IdAa64pfr1El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ID_AA64SMFR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdAa64smfr0El1: u64 {
         /// `SMOP4` bit.
@@ -7446,7 +7446,7 @@ impl IdAa64smfr0El1 {
 
 bitflags! {
     /// `ID_DFR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdDfr0: u32 {
     }
@@ -7529,7 +7529,7 @@ impl IdDfr0 {
 
 bitflags! {
     /// `ID_DFR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdDfr1: u32 {
     }
@@ -7558,7 +7558,7 @@ impl IdDfr1 {
 
 bitflags! {
     /// `ID_ISAR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar0: u32 {
     }
@@ -7632,7 +7632,7 @@ impl IdIsar0 {
 
 bitflags! {
     /// `ID_ISAR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar1: u32 {
     }
@@ -7715,7 +7715,7 @@ impl IdIsar1 {
 
 bitflags! {
     /// `ID_ISAR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar2: u32 {
     }
@@ -7798,7 +7798,7 @@ impl IdIsar2 {
 
 bitflags! {
     /// `ID_ISAR3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar3: u32 {
     }
@@ -7881,7 +7881,7 @@ impl IdIsar3 {
 
 bitflags! {
     /// `ID_ISAR4` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar4: u32 {
     }
@@ -7964,7 +7964,7 @@ impl IdIsar4 {
 
 bitflags! {
     /// `ID_ISAR5` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar5: u32 {
     }
@@ -8038,7 +8038,7 @@ impl IdIsar5 {
 
 bitflags! {
     /// `ID_ISAR6` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdIsar6: u32 {
     }
@@ -8121,7 +8121,7 @@ impl IdIsar6 {
 
 bitflags! {
     /// `ID_MMFR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdMmfr0: u32 {
     }
@@ -8204,7 +8204,7 @@ impl IdMmfr0 {
 
 bitflags! {
     /// `ID_MMFR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdMmfr1: u32 {
     }
@@ -8287,7 +8287,7 @@ impl IdMmfr1 {
 
 bitflags! {
     /// `ID_MMFR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdMmfr2: u32 {
     }
@@ -8370,7 +8370,7 @@ impl IdMmfr2 {
 
 bitflags! {
     /// `ID_MMFR3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdMmfr3: u32 {
     }
@@ -8453,7 +8453,7 @@ impl IdMmfr3 {
 
 bitflags! {
     /// `ID_MMFR4` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdMmfr4: u32 {
     }
@@ -8536,7 +8536,7 @@ impl IdMmfr4 {
 
 bitflags! {
     /// `ID_MMFR5` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdMmfr5: u32 {
     }
@@ -8565,7 +8565,7 @@ impl IdMmfr5 {
 
 bitflags! {
     /// `ID_PFR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdPfr0: u32 {
     }
@@ -8648,7 +8648,7 @@ impl IdPfr0 {
 
 bitflags! {
     /// `ID_PFR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdPfr1: u32 {
     }
@@ -8731,7 +8731,7 @@ impl IdPfr1 {
 
 bitflags! {
     /// `ID_PFR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IdPfr2: u32 {
     }
@@ -8769,7 +8769,7 @@ impl IdPfr2 {
 
 bitflags! {
     /// `IFAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ifar: u32 {
     }
@@ -8789,7 +8789,7 @@ impl Ifar {
 
 bitflags! {
     /// `IFSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ifsr: u32 {
         /// `LPAE` bit.
@@ -8821,7 +8821,7 @@ impl Ifsr {
 
 bitflags! {
     /// `ISR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Isr: u32 {
         /// `F` bit.
@@ -8845,7 +8845,7 @@ impl Isr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `ISR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct IsrEl1: u64 {
         /// `F` bit.
@@ -8877,7 +8877,7 @@ impl IsrEl1 {
 
 bitflags! {
     /// `MAIR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mair0: u32 {
     }
@@ -8898,7 +8898,7 @@ impl Mair0 {
 
 bitflags! {
     /// `MAIR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mair1: u32 {
     }
@@ -8920,7 +8920,7 @@ impl Mair1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `MAIR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MairEl1: u64 {
     }
@@ -8943,7 +8943,7 @@ impl MairEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MAIR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MairEl2: u64 {
     }
@@ -8966,7 +8966,7 @@ impl MairEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `MAIR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MairEl3: u64 {
     }
@@ -8989,7 +8989,7 @@ impl MairEl3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `MDCCINT_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MdccintEl1: u64 {
         /// `TX` bit.
@@ -9010,7 +9010,7 @@ impl MdccintEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MDCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MdcrEl2: u64 {
         /// `TPMCR` bit.
@@ -9144,7 +9144,7 @@ impl MdcrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `MDCR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MdcrEl3: u64 {
         /// Realm Trace enable. Enables tracing in Realm state.
@@ -9375,7 +9375,7 @@ impl MdcrEl3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `MDSCR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MdscrEl1: u64 {
         /// `SS` bit.
@@ -9468,7 +9468,7 @@ impl MdscrEl1 {
 
 bitflags! {
     /// `MIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Midr: u32 {
     }
@@ -9525,7 +9525,7 @@ impl Midr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `MIDR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MidrEl1: u64 {
     }
@@ -9583,7 +9583,7 @@ impl MidrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAM2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpam2El2: u64 {
         /// `TRAPMPAM1EL1` bit.
@@ -9702,7 +9702,7 @@ bitflags! {
     /// `MPAM3_EL3` system register value.
     ///
     /// Holds information to generate MPAM labels for memory requests when executing at EL3.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpam3El3: u64 {
         /// `RT_ALTSP_NS` bit.
@@ -9819,7 +9819,7 @@ impl Mpam3El3 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMHCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MpamhcrEl2: u64 {
         /// `EL0_VPMEN` bit.
@@ -9866,7 +9866,7 @@ bitflags! {
     /// `MPAMIDR_EL1` system register value.
     ///
     /// Indicates the maximum PARTID and PMG values supported in the implementation and the support for other optional features.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MpamidrEl1: u64 {
         /// Indicates support for MPAM virtualization.
@@ -9935,7 +9935,7 @@ impl MpamidrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM0_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm0El2: u64 {
     }
@@ -9984,7 +9984,7 @@ impl Mpamvpm0El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM1_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm1El2: u64 {
     }
@@ -10033,7 +10033,7 @@ impl Mpamvpm1El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm2El2: u64 {
     }
@@ -10082,7 +10082,7 @@ impl Mpamvpm2El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM3_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm3El2: u64 {
     }
@@ -10131,7 +10131,7 @@ impl Mpamvpm3El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM4_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm4El2: u64 {
     }
@@ -10180,7 +10180,7 @@ impl Mpamvpm4El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM5_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm5El2: u64 {
     }
@@ -10229,7 +10229,7 @@ impl Mpamvpm5El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM6_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm6El2: u64 {
     }
@@ -10278,7 +10278,7 @@ impl Mpamvpm6El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPM7_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpamvpm7El2: u64 {
     }
@@ -10327,7 +10327,7 @@ impl Mpamvpm7El2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `MPAMVPMV_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MpamvpmvEl2: u64 {
         /// `VPM_V<m>` bit 0.
@@ -10405,7 +10405,7 @@ impl MpamvpmvEl2 {
 
 bitflags! {
     /// `MPIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mpidr: u32 {
         /// `MT` bit.
@@ -10456,7 +10456,7 @@ impl Mpidr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `MPIDR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct MpidrEl1: u64 {
         /// RES1 bits in the `MPIDR_EL1` register.
@@ -10514,7 +10514,7 @@ impl MpidrEl1 {
 
 bitflags! {
     /// `MVBAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Mvbar: u32 {
     }
@@ -10543,7 +10543,7 @@ impl Mvbar {
 
 bitflags! {
     /// `NMRR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Nmrr: u32 {
     }
@@ -10574,7 +10574,7 @@ impl Nmrr {
 
 bitflags! {
     /// `NSACR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Nsacr: u32 {
         /// `cp10` bit.
@@ -10601,7 +10601,7 @@ impl Nsacr {
 
 bitflags! {
     /// `PAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Par: u64 {
         /// `F` bit.
@@ -10690,7 +10690,7 @@ impl Par {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `PAR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ParEl1: u64 {
         /// RES1 bits in the `PAR_EL1` register.
@@ -10785,7 +10785,7 @@ impl ParEl1 {
 
 bitflags! {
     /// `PMCCFILTR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmccfiltr: u32 {
         /// `RLU` bit.
@@ -10820,7 +10820,7 @@ impl Pmccfiltr {
 
 bitflags! {
     /// `PMCCNTR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmccntr: u64 {
     }
@@ -10841,7 +10841,7 @@ impl Pmccntr {
 
 bitflags! {
     /// `PMCEID0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmceid0: u32 {
         /// `ID<n>` bit 0.
@@ -10918,7 +10918,7 @@ impl Pmceid0 {
 
 bitflags! {
     /// `PMCEID1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmceid1: u32 {
         /// `ID<n>` bit 0.
@@ -10995,7 +10995,7 @@ impl Pmceid1 {
 
 bitflags! {
     /// `PMCEID2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmceid2: u32 {
         /// `IDhi<n>` bit 0.
@@ -11072,7 +11072,7 @@ impl Pmceid2 {
 
 bitflags! {
     /// `PMCEID3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmceid3: u32 {
         /// `IDhi<n>` bit 0.
@@ -11149,7 +11149,7 @@ impl Pmceid3 {
 
 bitflags! {
     /// `PMCNTENCLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmcntenclr: u32 {
         /// `P<m>` bit 0.
@@ -11228,7 +11228,7 @@ impl Pmcntenclr {
 
 bitflags! {
     /// `PMCNTENSET` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmcntenset: u32 {
         /// `P<m>` bit 0.
@@ -11307,7 +11307,7 @@ impl Pmcntenset {
 
 bitflags! {
     /// `PMCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmcr: u32 {
         /// `E` bit.
@@ -11381,7 +11381,7 @@ impl Pmcr {
 
 bitflags! {
     /// `PMCR_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct PmcrEl0: u64 {
         /// Enable. Affected counters are enabled by PMCNTENSET_EL0.
@@ -11459,7 +11459,7 @@ impl PmcrEl0 {
 
 bitflags! {
     /// `PMINTENCLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmintenclr: u32 {
         /// `P<m>` bit 0.
@@ -11538,7 +11538,7 @@ impl Pmintenclr {
 
 bitflags! {
     /// `PMINTENSET` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmintenset: u32 {
         /// `P<m>` bit 0.
@@ -11617,7 +11617,7 @@ impl Pmintenset {
 
 bitflags! {
     /// `PMMIR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmmir: u32 {
     }
@@ -11673,7 +11673,7 @@ impl Pmmir {
 
 bitflags! {
     /// `PMOVSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmovsr: u32 {
         /// `P<m>` bit 0.
@@ -11752,7 +11752,7 @@ impl Pmovsr {
 
 bitflags! {
     /// `PMOVSSET` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmovsset: u32 {
         /// `P<m>` bit 0.
@@ -11831,7 +11831,7 @@ impl Pmovsset {
 
 bitflags! {
     /// `PMSELR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmselr: u32 {
     }
@@ -11851,7 +11851,7 @@ impl Pmselr {
 
 bitflags! {
     /// `PMSWINC` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmswinc: u32 {
         /// `P<m>` bit 0.
@@ -11926,7 +11926,7 @@ impl Pmswinc {
 
 bitflags! {
     /// `PMUSERENR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmuserenr: u32 {
         /// `EN` bit.
@@ -11957,7 +11957,7 @@ impl Pmuserenr {
 
 bitflags! {
     /// `PMXEVTYPER` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Pmxevtyper: u32 {
     }
@@ -11977,7 +11977,7 @@ impl Pmxevtyper {
 
 bitflags! {
     /// `PRRR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Prrr: u32 {
         /// `DS0` bit.
@@ -12033,7 +12033,7 @@ impl Prrr {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `RGSR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct RgsrEl1: u64 {
     }
@@ -12063,7 +12063,7 @@ impl RgsrEl1 {
 
 bitflags! {
     /// `RMR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Rmr: u32 {
         /// `AA64` bit.
@@ -12082,7 +12082,7 @@ impl Rmr {
 
 bitflags! {
     /// `RVBAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Rvbar: u32 {
         /// RES1 bits in the `RVBAR` register.
@@ -12104,7 +12104,7 @@ impl Rvbar {
 
 bitflags! {
     /// `SCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Scr: u32 {
         /// `NS` bit.
@@ -12168,7 +12168,7 @@ impl Scr {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `SCR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ScrEl3: u64 {
         /// RES1 bits in the `SCR_EL3` register.
@@ -12415,7 +12415,7 @@ impl ScrEl3 {
 
 bitflags! {
     /// `SCTLR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Sctlr: u32 {
         /// RES1 bits in the `SCTLR` register.
@@ -12517,7 +12517,7 @@ impl Sctlr {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `SCTLR2_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Sctlr2El3: u64 {
         /// `EMEC` bit.
@@ -12574,7 +12574,7 @@ impl Sctlr2El3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `SCTLR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SctlrEl1: u64 {
         /// `M` bit.
@@ -12810,7 +12810,7 @@ impl SctlrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `SCTLR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SctlrEl2: u64 {
         /// `M` bit.
@@ -13038,7 +13038,7 @@ impl SctlrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `SCTLR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SctlrEl3: u64 {
         /// RES1 bits in the `SCTLR_EL3` register.
@@ -13145,7 +13145,7 @@ impl SctlrEl3 {
 
 bitflags! {
     /// `SDCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Sdcr: u32 {
         /// `SPME` bit.
@@ -13197,7 +13197,7 @@ impl Sdcr {
 
 bitflags! {
     /// `SDER` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Sder: u32 {
         /// `SUIDEN` bit.
@@ -13217,7 +13217,7 @@ impl Sder {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `SMCR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SmcrEl3: u64 {
         /// `EZT0` bit.
@@ -13247,7 +13247,7 @@ impl SmcrEl3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `SPSR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpsrEl1: u64 {
         /// `M[4]` bit.
@@ -13387,7 +13387,7 @@ impl SpsrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `SPSR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpsrEl2: u64 {
         /// `M[4]` bit.
@@ -13527,7 +13527,7 @@ impl SpsrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `SPSR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpsrEl3: u64 {
         /// `M[4]` bit.
@@ -13667,7 +13667,7 @@ impl SpsrEl3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `SP_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpEl1: u64 {
     }
@@ -13691,7 +13691,7 @@ impl SpEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `SP_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct SpEl2: u64 {
     }
@@ -13715,7 +13715,7 @@ impl SpEl2 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TCR2_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tcr2El1: u64 {
         /// `PnCH` bit.
@@ -13827,7 +13827,7 @@ impl Tcr2El1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `TCR2_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tcr2El2: u64 {
         /// `PnCH` bit.
@@ -13939,7 +13939,7 @@ impl Tcr2El2 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TCR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TcrEl1: u64 {
         /// `EPD0` bit.
@@ -14167,7 +14167,7 @@ impl TcrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `TCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TcrEl2: u64 {
         /// RES1 bits in the `TCR_EL2` register.
@@ -14443,7 +14443,7 @@ impl TcrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `TCR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TcrEl3: u64 {
         /// RES1 bits in the `TCR_EL3` register.
@@ -14618,7 +14618,7 @@ impl TcrEl3 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TFSRE0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tfsre0El1: u64 {
         /// `TF0` bit.
@@ -14639,7 +14639,7 @@ impl Tfsre0El1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TFSR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TfsrEl1: u64 {
         /// `TF0` bit.
@@ -14660,7 +14660,7 @@ impl TfsrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `TFSR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TfsrEl2: u64 {
         /// `TF0` bit.
@@ -14680,7 +14680,7 @@ impl TfsrEl2 {
 
 bitflags! {
     /// `TLBTR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tlbtr: u32 {
         /// `nU` bit.
@@ -14695,7 +14695,7 @@ impl Tlbtr {
 
 bitflags! {
     /// `TPIDRPRW` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tpidrprw: u32 {
     }
@@ -14715,7 +14715,7 @@ impl Tpidrprw {
 
 bitflags! {
     /// `TPIDRRO_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TpidrroEl0: u64 {
     }
@@ -14737,7 +14737,7 @@ impl TpidrroEl0 {
 
 bitflags! {
     /// `TPIDRURO` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tpidruro: u32 {
     }
@@ -14757,7 +14757,7 @@ impl Tpidruro {
 
 bitflags! {
     /// `TPIDRURW` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Tpidrurw: u32 {
     }
@@ -14777,7 +14777,7 @@ impl Tpidrurw {
 
 bitflags! {
     /// `TPIDR_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TpidrEl0: u64 {
     }
@@ -14800,7 +14800,7 @@ impl TpidrEl0 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TPIDR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TpidrEl1: u64 {
     }
@@ -14824,7 +14824,7 @@ impl TpidrEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `TPIDR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct TpidrEl2: u64 {
     }
@@ -14847,7 +14847,7 @@ impl TpidrEl2 {
 
 bitflags! {
     /// `TRFCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Trfcr: u32 {
         /// `E0TRE` bit.
@@ -14875,7 +14875,7 @@ impl Trfcr {
 
 bitflags! {
     /// `TTBCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbcr: u32 {
         /// `PD0` bit.
@@ -14995,7 +14995,7 @@ impl Ttbcr {
 
 bitflags! {
     /// `TTBCR2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbcr2: u32 {
         /// `HPD0` bit.
@@ -15046,7 +15046,7 @@ impl Ttbcr2 {
 
 bitflags! {
     /// `TTBR0` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr0: u64 {
         /// `CnP` bit.
@@ -15111,7 +15111,7 @@ impl Ttbr0 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TTBR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr0El1: u64 {
         /// `CnP` bit.
@@ -15156,7 +15156,7 @@ impl Ttbr0El1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `TTBR0_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr0El2: u64 {
         /// `CnP` bit.
@@ -15201,7 +15201,7 @@ impl Ttbr0El2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `TTBR0_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr0El3: u64 {
         /// `CnP` bit.
@@ -15226,7 +15226,7 @@ impl Ttbr0El3 {
 
 bitflags! {
     /// `TTBR1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr1: u64 {
         /// `CnP` bit.
@@ -15291,7 +15291,7 @@ impl Ttbr1 {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TTBR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr1El1: u64 {
         /// `CnP` bit.
@@ -15336,7 +15336,7 @@ impl Ttbr1El1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `TTBR1_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Ttbr1El2: u64 {
         /// `CnP` bit.
@@ -15380,7 +15380,7 @@ impl Ttbr1El2 {
 
 bitflags! {
     /// `VBAR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vbar: u32 {
     }
@@ -15401,7 +15401,7 @@ impl Vbar {
 #[cfg(feature = "el1")]
 bitflags! {
     /// `VBAR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VbarEl1: u64 {
         /// `UT` bit.
@@ -15428,7 +15428,7 @@ impl VbarEl1 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VBAR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VbarEl2: u64 {
         /// `UT` bit.
@@ -15454,7 +15454,7 @@ impl VbarEl2 {
 
 bitflags! {
     /// `VDFSR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vdfsr: u32 {
         /// `ExT` bit.
@@ -15478,7 +15478,7 @@ impl Vdfsr {
 
 bitflags! {
     /// `VDISR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vdisr: u32 {
         /// `LPAE` bit.
@@ -15520,7 +15520,7 @@ impl Vdisr {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VDISR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VdisrEl2: u64 {
         /// `LPAE` bit.
@@ -15575,7 +15575,7 @@ impl VdisrEl2 {
 
 bitflags! {
     /// `VMPIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vmpidr: u32 {
         /// `MT` bit.
@@ -15626,7 +15626,7 @@ impl Vmpidr {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VMPIDR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VmpidrEl2: u64 {
         /// RES1 bits in the `VMPIDR_EL2` register.
@@ -15684,7 +15684,7 @@ impl VmpidrEl2 {
 
 bitflags! {
     /// `VPIDR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vpidr: u32 {
     }
@@ -15741,7 +15741,7 @@ impl Vpidr {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VPIDR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VpidrEl2: u64 {
     }
@@ -15799,7 +15799,7 @@ impl VpidrEl2 {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VSESR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VsesrEl2: u64 {
         /// `ExT` bit.
@@ -15837,7 +15837,7 @@ impl VsesrEl2 {
 
 bitflags! {
     /// `VTCR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vtcr: u32 {
         /// RES1 bits in the `VTCR` register.
@@ -15916,7 +15916,7 @@ impl Vtcr {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VTCR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VtcrEl2: u64 {
         /// RES1 bits in the `VTCR_EL2` register.
@@ -16073,7 +16073,7 @@ impl VtcrEl2 {
 
 bitflags! {
     /// `VTTBR` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Vttbr: u64 {
         /// `CnP` bit.
@@ -16108,7 +16108,7 @@ impl Vttbr {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `VTTBR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct VttbrEl2: u64 {
         /// `CnP` bit.
@@ -16153,7 +16153,7 @@ impl VttbrEl2 {
 #[cfg(feature = "el3")]
 bitflags! {
     /// `ZCR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct ZcrEl3: u64 {
     }

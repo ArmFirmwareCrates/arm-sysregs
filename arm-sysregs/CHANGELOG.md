@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Register structs now implement `Default`.
+
 ## 0.2.1
 
 ### Bugfixes
