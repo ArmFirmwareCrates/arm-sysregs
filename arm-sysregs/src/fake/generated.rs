@@ -33,11 +33,12 @@ use crate::{
 #[cfg(feature = "el2")]
 use crate::{
     CnthctlEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2, GcscrEl2,
-    HcrEl2, HcrxEl2, Hdfgrtr2El2, Hdfgwtr2El2, Hfgitr2El2, Hfgrtr2El2, Hfgwtr2El2, HfgwtrEl2,
-    HpfarEl2, IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2,
-    Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2,
-    Mpamvpm7El2, MpamvpmvEl2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2,
-    Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    HafgrtrEl2, HcrEl2, HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2, Hfgitr2El2,
+    HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2,
+    IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2,
+    Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, SctlrEl2, SpEl2,
+    SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2,
+    VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el3")]
 use crate::{
@@ -364,6 +365,9 @@ pub struct SystemRegisters {
     pub hactlr2: u32,
     /// Fake value for the `HADFSR` system register.
     pub hadfsr: u32,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `HAFGRTR_EL2` system register.
+    pub hafgrtr_el2: HafgrtrEl2,
     /// Fake value for the `HAIFSR` system register.
     pub haifsr: u32,
     /// Fake value for the `HAMAIR0` system register.
@@ -390,14 +394,26 @@ pub struct SystemRegisters {
     /// Fake value for the `HDFGRTR2_EL2` system register.
     pub hdfgrtr2_el2: Hdfgrtr2El2,
     #[cfg(feature = "el2")]
+    /// Fake value for the `HDFGRTR_EL2` system register.
+    pub hdfgrtr_el2: HdfgrtrEl2,
+    #[cfg(feature = "el2")]
     /// Fake value for the `HDFGWTR2_EL2` system register.
     pub hdfgwtr2_el2: Hdfgwtr2El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `HDFGWTR_EL2` system register.
+    pub hdfgwtr_el2: HdfgwtrEl2,
     #[cfg(feature = "el2")]
     /// Fake value for the `HFGITR2_EL2` system register.
     pub hfgitr2_el2: Hfgitr2El2,
     #[cfg(feature = "el2")]
+    /// Fake value for the `HFGITR_EL2` system register.
+    pub hfgitr_el2: HfgitrEl2,
+    #[cfg(feature = "el2")]
     /// Fake value for the `HFGRTR2_EL2` system register.
     pub hfgrtr2_el2: Hfgrtr2El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `HFGRTR_EL2` system register.
+    pub hfgrtr_el2: HfgrtrEl2,
     #[cfg(feature = "el2")]
     /// Fake value for the `HFGWTR2_EL2` system register.
     pub hfgwtr2_el2: Hfgwtr2El2,
@@ -1002,6 +1018,8 @@ impl SystemRegisters {
             hactlr: 0,
             hactlr2: 0,
             hadfsr: 0,
+            #[cfg(feature = "el2")]
+            hafgrtr_el2: HafgrtrEl2::empty(),
             haifsr: 0,
             hamair0: 0,
             hamair1: 0,
@@ -1017,11 +1035,19 @@ impl SystemRegisters {
             #[cfg(feature = "el2")]
             hdfgrtr2_el2: Hdfgrtr2El2::empty(),
             #[cfg(feature = "el2")]
+            hdfgrtr_el2: HdfgrtrEl2::empty(),
+            #[cfg(feature = "el2")]
             hdfgwtr2_el2: Hdfgwtr2El2::empty(),
+            #[cfg(feature = "el2")]
+            hdfgwtr_el2: HdfgwtrEl2::empty(),
             #[cfg(feature = "el2")]
             hfgitr2_el2: Hfgitr2El2::empty(),
             #[cfg(feature = "el2")]
+            hfgitr_el2: HfgitrEl2::empty(),
+            #[cfg(feature = "el2")]
             hfgrtr2_el2: Hfgrtr2El2::empty(),
+            #[cfg(feature = "el2")]
+            hfgrtr_el2: HfgrtrEl2::empty(),
             #[cfg(feature = "el2")]
             hfgwtr2_el2: Hfgwtr2El2::empty(),
             #[cfg(feature = "el2")]

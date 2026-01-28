@@ -5062,6 +5062,29 @@ impl GptbrEl3 {
     }
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `HAFGRTR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HafgrtrEl2: u64 {
+        /// `AMEVCNTR0<x>_EL0` bit 0.
+        const AMEVCNTR00_EL0 = 1 << 1;
+        /// `AMEVCNTR0<x>_EL0` bit 1.
+        const AMEVCNTR01_EL0 = 1 << 2;
+        /// `AMEVCNTR0<x>_EL0` bit 2.
+        const AMEVCNTR02_EL0 = 1 << 3;
+        /// `AMEVCNTR0<x>_EL0` bit 3.
+        const AMEVCNTR03_EL0 = 1 << 4;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl HafgrtrEl2 {
+    /// Offset of the `AMEVCNTR0<x>_EL0` field.
+    pub const AMEVCNTR0_EL0_SHIFT: u32 = 1;
+}
+
 bitflags! {
     /// `HCPTR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -5944,6 +5967,247 @@ impl Hdfgrtr2El2 {
 
 #[cfg(feature = "el2")]
 bitflags! {
+    /// `HDFGRTR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HdfgrtrEl2: u64 {
+        /// `DBGBCRn_EL1` bit.
+        const DBGBCRN_EL1 = 1 << 0;
+        /// `DBGBVRn_EL1` bit.
+        const DBGBVRN_EL1 = 1 << 1;
+        /// `DBGWCRn_EL1` bit.
+        const DBGWCRN_EL1 = 1 << 2;
+        /// `DBGWVRn_EL1` bit.
+        const DBGWVRN_EL1 = 1 << 3;
+        /// `MDSCR_EL1` bit.
+        const MDSCR_EL1 = 1 << 4;
+        /// `DBGCLAIM` bit.
+        const DBGCLAIM = 1 << 5;
+        /// `DBGAUTHSTATUS_EL1` bit.
+        const DBGAUTHSTATUS_EL1 = 1 << 6;
+        /// `DBGPRCR_EL1` bit.
+        const DBGPRCR_EL1 = 1 << 7;
+        /// `OSLSR_EL1` bit.
+        const OSLSR_EL1 = 1 << 9;
+        /// `OSECCR_EL1` bit.
+        const OSECCR_EL1 = 1 << 10;
+        /// `OSDLR_EL1` bit.
+        const OSDLR_EL1 = 1 << 11;
+        /// `PMEVCNTRn_EL0` bit.
+        const PMEVCNTRN_EL0 = 1 << 12;
+        /// `PMEVTYPERn_EL0` bit.
+        const PMEVTYPERN_EL0 = 1 << 13;
+        /// `PMCCFILTR_EL0` bit.
+        const PMCCFILTR_EL0 = 1 << 14;
+        /// `PMCCNTR_EL0` bit.
+        const PMCCNTR_EL0 = 1 << 15;
+        /// `PMCNTEN` bit.
+        const PMCNTEN = 1 << 16;
+        /// `PMINTEN` bit.
+        const PMINTEN = 1 << 17;
+        /// `PMOVS` bit.
+        const PMOVS = 1 << 18;
+        /// `PMSELR_EL0` bit.
+        const PMSELR_EL0 = 1 << 19;
+        /// `PMMIR_EL1` bit.
+        const PMMIR_EL1 = 1 << 22;
+        /// `PMBLIMITR_EL1` bit.
+        const PMBLIMITR_EL1 = 1 << 23;
+        /// `PMBPTR_EL1` bit.
+        const PMBPTR_EL1 = 1 << 24;
+        /// `PMBSR_EL1` bit.
+        const PMBSR_EL1 = 1 << 25;
+        /// `PMSCR_EL1` bit.
+        const PMSCR_EL1 = 1 << 26;
+        /// `PMSEVFR_EL1` bit.
+        const PMSEVFR_EL1 = 1 << 27;
+        /// `PMSFCR_EL1` bit.
+        const PMSFCR_EL1 = 1 << 28;
+        /// `PMSICR_EL1` bit.
+        const PMSICR_EL1 = 1 << 29;
+        /// `PMSIDR_EL1` bit.
+        const PMSIDR_EL1 = 1 << 30;
+        /// `PMSIRR_EL1` bit.
+        const PMSIRR_EL1 = 1 << 31;
+        /// `PMSLATFR_EL1` bit.
+        const PMSLATFR_EL1 = 1 << 32;
+        /// `TRC` bit.
+        const TRC = 1 << 33;
+        /// `TRCAUTHSTATUS` bit.
+        const TRCAUTHSTATUS = 1 << 34;
+        /// `TRCAUXCTLR` bit.
+        const TRCAUXCTLR = 1 << 35;
+        /// `TRCCLAIM` bit.
+        const TRCCLAIM = 1 << 36;
+        /// `TRCCNTVRn` bit.
+        const TRCCNTVRN = 1 << 37;
+        /// `TRCID` bit.
+        const TRCID = 1 << 40;
+        /// `TRCIMSPECn` bit.
+        const TRCIMSPECN = 1 << 41;
+        /// `TRCOSLSR` bit.
+        const TRCOSLSR = 1 << 43;
+        /// `TRCPRGCTLR` bit.
+        const TRCPRGCTLR = 1 << 44;
+        /// `TRCSEQSTR` bit.
+        const TRCSEQSTR = 1 << 45;
+        /// `TRCSSCSRn` bit.
+        const TRCSSCSRN = 1 << 46;
+        /// `TRCSTATR` bit.
+        const TRCSTATR = 1 << 47;
+        /// `TRCVICTLR` bit.
+        const TRCVICTLR = 1 << 48;
+        /// `TRBBASER_EL1` bit.
+        const TRBBASER_EL1 = 1 << 50;
+        /// `TRBIDR_EL1` bit.
+        const TRBIDR_EL1 = 1 << 51;
+        /// `TRBLIMITR_EL1` bit.
+        const TRBLIMITR_EL1 = 1 << 52;
+        /// `TRBMAR_EL1` bit.
+        const TRBMAR_EL1 = 1 << 53;
+        /// `TRBPTR_EL1` bit.
+        const TRBPTR_EL1 = 1 << 54;
+        /// `TRBSR_EL1` bit.
+        const TRBSR_EL1 = 1 << 55;
+        /// `TRBTRG_EL1` bit.
+        const TRBTRG_EL1 = 1 << 56;
+        /// `PMUSERENR_EL0` bit.
+        const PMUSERENR_EL0 = 1 << 57;
+        /// `PMCEIDn_EL0` bit.
+        const PMCEIDN_EL0 = 1 << 58;
+        /// `nBRBIDR` bit.
+        const NBRBIDR = 1 << 59;
+        /// `nBRBCTL` bit.
+        const NBRBCTL = 1 << 60;
+        /// `nBRBDATA` bit.
+        const NBRBDATA = 1 << 61;
+        /// `nPMSNEVFR_EL1` bit.
+        const NPMSNEVFR_EL1 = 1 << 62;
+        /// `PMBIDR_EL1` bit.
+        const PMBIDR_EL1 = 1 << 63;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl HdfgrtrEl2 {
+    /// Offset of the `DBGBCRn_EL1` field.
+    pub const DBGBCRN_EL1_SHIFT: u32 = 0;
+    /// Offset of the `DBGBVRn_EL1` field.
+    pub const DBGBVRN_EL1_SHIFT: u32 = 1;
+    /// Offset of the `DBGWCRn_EL1` field.
+    pub const DBGWCRN_EL1_SHIFT: u32 = 2;
+    /// Offset of the `DBGWVRn_EL1` field.
+    pub const DBGWVRN_EL1_SHIFT: u32 = 3;
+    /// Offset of the `MDSCR_EL1` field.
+    pub const MDSCR_EL1_SHIFT: u32 = 4;
+    /// Offset of the `DBGCLAIM` field.
+    pub const DBGCLAIM_SHIFT: u32 = 5;
+    /// Offset of the `DBGAUTHSTATUS_EL1` field.
+    pub const DBGAUTHSTATUS_EL1_SHIFT: u32 = 6;
+    /// Offset of the `DBGPRCR_EL1` field.
+    pub const DBGPRCR_EL1_SHIFT: u32 = 7;
+    /// Offset of the `OSLSR_EL1` field.
+    pub const OSLSR_EL1_SHIFT: u32 = 9;
+    /// Offset of the `OSECCR_EL1` field.
+    pub const OSECCR_EL1_SHIFT: u32 = 10;
+    /// Offset of the `OSDLR_EL1` field.
+    pub const OSDLR_EL1_SHIFT: u32 = 11;
+    /// Offset of the `PMEVCNTRn_EL0` field.
+    pub const PMEVCNTRN_EL0_SHIFT: u32 = 12;
+    /// Offset of the `PMEVTYPERn_EL0` field.
+    pub const PMEVTYPERN_EL0_SHIFT: u32 = 13;
+    /// Offset of the `PMCCFILTR_EL0` field.
+    pub const PMCCFILTR_EL0_SHIFT: u32 = 14;
+    /// Offset of the `PMCCNTR_EL0` field.
+    pub const PMCCNTR_EL0_SHIFT: u32 = 15;
+    /// Offset of the `PMCNTEN` field.
+    pub const PMCNTEN_SHIFT: u32 = 16;
+    /// Offset of the `PMINTEN` field.
+    pub const PMINTEN_SHIFT: u32 = 17;
+    /// Offset of the `PMOVS` field.
+    pub const PMOVS_SHIFT: u32 = 18;
+    /// Offset of the `PMSELR_EL0` field.
+    pub const PMSELR_EL0_SHIFT: u32 = 19;
+    /// Offset of the `PMMIR_EL1` field.
+    pub const PMMIR_EL1_SHIFT: u32 = 22;
+    /// Offset of the `PMBLIMITR_EL1` field.
+    pub const PMBLIMITR_EL1_SHIFT: u32 = 23;
+    /// Offset of the `PMBPTR_EL1` field.
+    pub const PMBPTR_EL1_SHIFT: u32 = 24;
+    /// Offset of the `PMBSR_EL1` field.
+    pub const PMBSR_EL1_SHIFT: u32 = 25;
+    /// Offset of the `PMSCR_EL1` field.
+    pub const PMSCR_EL1_SHIFT: u32 = 26;
+    /// Offset of the `PMSEVFR_EL1` field.
+    pub const PMSEVFR_EL1_SHIFT: u32 = 27;
+    /// Offset of the `PMSFCR_EL1` field.
+    pub const PMSFCR_EL1_SHIFT: u32 = 28;
+    /// Offset of the `PMSICR_EL1` field.
+    pub const PMSICR_EL1_SHIFT: u32 = 29;
+    /// Offset of the `PMSIDR_EL1` field.
+    pub const PMSIDR_EL1_SHIFT: u32 = 30;
+    /// Offset of the `PMSIRR_EL1` field.
+    pub const PMSIRR_EL1_SHIFT: u32 = 31;
+    /// Offset of the `PMSLATFR_EL1` field.
+    pub const PMSLATFR_EL1_SHIFT: u32 = 32;
+    /// Offset of the `TRC` field.
+    pub const TRC_SHIFT: u32 = 33;
+    /// Offset of the `TRCAUTHSTATUS` field.
+    pub const TRCAUTHSTATUS_SHIFT: u32 = 34;
+    /// Offset of the `TRCAUXCTLR` field.
+    pub const TRCAUXCTLR_SHIFT: u32 = 35;
+    /// Offset of the `TRCCLAIM` field.
+    pub const TRCCLAIM_SHIFT: u32 = 36;
+    /// Offset of the `TRCCNTVRn` field.
+    pub const TRCCNTVRN_SHIFT: u32 = 37;
+    /// Offset of the `TRCID` field.
+    pub const TRCID_SHIFT: u32 = 40;
+    /// Offset of the `TRCIMSPECn` field.
+    pub const TRCIMSPECN_SHIFT: u32 = 41;
+    /// Offset of the `TRCOSLSR` field.
+    pub const TRCOSLSR_SHIFT: u32 = 43;
+    /// Offset of the `TRCPRGCTLR` field.
+    pub const TRCPRGCTLR_SHIFT: u32 = 44;
+    /// Offset of the `TRCSEQSTR` field.
+    pub const TRCSEQSTR_SHIFT: u32 = 45;
+    /// Offset of the `TRCSSCSRn` field.
+    pub const TRCSSCSRN_SHIFT: u32 = 46;
+    /// Offset of the `TRCSTATR` field.
+    pub const TRCSTATR_SHIFT: u32 = 47;
+    /// Offset of the `TRCVICTLR` field.
+    pub const TRCVICTLR_SHIFT: u32 = 48;
+    /// Offset of the `TRBBASER_EL1` field.
+    pub const TRBBASER_EL1_SHIFT: u32 = 50;
+    /// Offset of the `TRBIDR_EL1` field.
+    pub const TRBIDR_EL1_SHIFT: u32 = 51;
+    /// Offset of the `TRBLIMITR_EL1` field.
+    pub const TRBLIMITR_EL1_SHIFT: u32 = 52;
+    /// Offset of the `TRBMAR_EL1` field.
+    pub const TRBMAR_EL1_SHIFT: u32 = 53;
+    /// Offset of the `TRBPTR_EL1` field.
+    pub const TRBPTR_EL1_SHIFT: u32 = 54;
+    /// Offset of the `TRBSR_EL1` field.
+    pub const TRBSR_EL1_SHIFT: u32 = 55;
+    /// Offset of the `TRBTRG_EL1` field.
+    pub const TRBTRG_EL1_SHIFT: u32 = 56;
+    /// Offset of the `PMUSERENR_EL0` field.
+    pub const PMUSERENR_EL0_SHIFT: u32 = 57;
+    /// Offset of the `PMCEIDn_EL0` field.
+    pub const PMCEIDN_EL0_SHIFT: u32 = 58;
+    /// Offset of the `nBRBIDR` field.
+    pub const NBRBIDR_SHIFT: u32 = 59;
+    /// Offset of the `nBRBCTL` field.
+    pub const NBRBCTL_SHIFT: u32 = 60;
+    /// Offset of the `nBRBDATA` field.
+    pub const NBRBDATA_SHIFT: u32 = 61;
+    /// Offset of the `nPMSNEVFR_EL1` field.
+    pub const NPMSNEVFR_EL1_SHIFT: u32 = 62;
+    /// Offset of the `PMBIDR_EL1` field.
+    pub const PMBIDR_EL1_SHIFT: u32 = 63;
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
     /// `HDFGWTR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -6045,6 +6309,219 @@ impl Hdfgwtr2El2 {
 
 #[cfg(feature = "el2")]
 bitflags! {
+    /// `HDFGWTR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HdfgwtrEl2: u64 {
+        /// `DBGBCRn_EL1` bit.
+        const DBGBCRN_EL1 = 1 << 0;
+        /// `DBGBVRn_EL1` bit.
+        const DBGBVRN_EL1 = 1 << 1;
+        /// `DBGWCRn_EL1` bit.
+        const DBGWCRN_EL1 = 1 << 2;
+        /// `DBGWVRn_EL1` bit.
+        const DBGWVRN_EL1 = 1 << 3;
+        /// `MDSCR_EL1` bit.
+        const MDSCR_EL1 = 1 << 4;
+        /// `DBGCLAIM` bit.
+        const DBGCLAIM = 1 << 5;
+        /// `DBGPRCR_EL1` bit.
+        const DBGPRCR_EL1 = 1 << 7;
+        /// `OSLAR_EL1` bit.
+        const OSLAR_EL1 = 1 << 8;
+        /// `OSECCR_EL1` bit.
+        const OSECCR_EL1 = 1 << 10;
+        /// `OSDLR_EL1` bit.
+        const OSDLR_EL1 = 1 << 11;
+        /// `PMEVCNTRn_EL0` bit.
+        const PMEVCNTRN_EL0 = 1 << 12;
+        /// `PMEVTYPERn_EL0` bit.
+        const PMEVTYPERN_EL0 = 1 << 13;
+        /// `PMCCFILTR_EL0` bit.
+        const PMCCFILTR_EL0 = 1 << 14;
+        /// `PMCCNTR_EL0` bit.
+        const PMCCNTR_EL0 = 1 << 15;
+        /// `PMCNTEN` bit.
+        const PMCNTEN = 1 << 16;
+        /// `PMINTEN` bit.
+        const PMINTEN = 1 << 17;
+        /// `PMOVS` bit.
+        const PMOVS = 1 << 18;
+        /// `PMSELR_EL0` bit.
+        const PMSELR_EL0 = 1 << 19;
+        /// `PMSWINC_EL0` bit.
+        const PMSWINC_EL0 = 1 << 20;
+        /// `PMCR_EL0` bit.
+        const PMCR_EL0 = 1 << 21;
+        /// `PMBLIMITR_EL1` bit.
+        const PMBLIMITR_EL1 = 1 << 23;
+        /// `PMBPTR_EL1` bit.
+        const PMBPTR_EL1 = 1 << 24;
+        /// `PMBSR_EL1` bit.
+        const PMBSR_EL1 = 1 << 25;
+        /// `PMSCR_EL1` bit.
+        const PMSCR_EL1 = 1 << 26;
+        /// `PMSEVFR_EL1` bit.
+        const PMSEVFR_EL1 = 1 << 27;
+        /// `PMSFCR_EL1` bit.
+        const PMSFCR_EL1 = 1 << 28;
+        /// `PMSICR_EL1` bit.
+        const PMSICR_EL1 = 1 << 29;
+        /// `PMSIRR_EL1` bit.
+        const PMSIRR_EL1 = 1 << 31;
+        /// `PMSLATFR_EL1` bit.
+        const PMSLATFR_EL1 = 1 << 32;
+        /// `TRC` bit.
+        const TRC = 1 << 33;
+        /// `TRCAUXCTLR` bit.
+        const TRCAUXCTLR = 1 << 35;
+        /// `TRCCLAIM` bit.
+        const TRCCLAIM = 1 << 36;
+        /// `TRCCNTVRn` bit.
+        const TRCCNTVRN = 1 << 37;
+        /// `TRCIMSPECn` bit.
+        const TRCIMSPECN = 1 << 41;
+        /// `TRCOSLAR` bit.
+        const TRCOSLAR = 1 << 42;
+        /// `TRCPRGCTLR` bit.
+        const TRCPRGCTLR = 1 << 44;
+        /// `TRCSEQSTR` bit.
+        const TRCSEQSTR = 1 << 45;
+        /// `TRCSSCSRn` bit.
+        const TRCSSCSRN = 1 << 46;
+        /// `TRCVICTLR` bit.
+        const TRCVICTLR = 1 << 48;
+        /// `TRFCR_EL1` bit.
+        const TRFCR_EL1 = 1 << 49;
+        /// `TRBBASER_EL1` bit.
+        const TRBBASER_EL1 = 1 << 50;
+        /// `TRBLIMITR_EL1` bit.
+        const TRBLIMITR_EL1 = 1 << 52;
+        /// `TRBMAR_EL1` bit.
+        const TRBMAR_EL1 = 1 << 53;
+        /// `TRBPTR_EL1` bit.
+        const TRBPTR_EL1 = 1 << 54;
+        /// `TRBSR_EL1` bit.
+        const TRBSR_EL1 = 1 << 55;
+        /// `TRBTRG_EL1` bit.
+        const TRBTRG_EL1 = 1 << 56;
+        /// `PMUSERENR_EL0` bit.
+        const PMUSERENR_EL0 = 1 << 57;
+        /// `nBRBCTL` bit.
+        const NBRBCTL = 1 << 60;
+        /// `nBRBDATA` bit.
+        const NBRBDATA = 1 << 61;
+        /// `nPMSNEVFR_EL1` bit.
+        const NPMSNEVFR_EL1 = 1 << 62;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl HdfgwtrEl2 {
+    /// Offset of the `DBGBCRn_EL1` field.
+    pub const DBGBCRN_EL1_SHIFT: u32 = 0;
+    /// Offset of the `DBGBVRn_EL1` field.
+    pub const DBGBVRN_EL1_SHIFT: u32 = 1;
+    /// Offset of the `DBGWCRn_EL1` field.
+    pub const DBGWCRN_EL1_SHIFT: u32 = 2;
+    /// Offset of the `DBGWVRn_EL1` field.
+    pub const DBGWVRN_EL1_SHIFT: u32 = 3;
+    /// Offset of the `MDSCR_EL1` field.
+    pub const MDSCR_EL1_SHIFT: u32 = 4;
+    /// Offset of the `DBGCLAIM` field.
+    pub const DBGCLAIM_SHIFT: u32 = 5;
+    /// Offset of the `DBGPRCR_EL1` field.
+    pub const DBGPRCR_EL1_SHIFT: u32 = 7;
+    /// Offset of the `OSLAR_EL1` field.
+    pub const OSLAR_EL1_SHIFT: u32 = 8;
+    /// Offset of the `OSECCR_EL1` field.
+    pub const OSECCR_EL1_SHIFT: u32 = 10;
+    /// Offset of the `OSDLR_EL1` field.
+    pub const OSDLR_EL1_SHIFT: u32 = 11;
+    /// Offset of the `PMEVCNTRn_EL0` field.
+    pub const PMEVCNTRN_EL0_SHIFT: u32 = 12;
+    /// Offset of the `PMEVTYPERn_EL0` field.
+    pub const PMEVTYPERN_EL0_SHIFT: u32 = 13;
+    /// Offset of the `PMCCFILTR_EL0` field.
+    pub const PMCCFILTR_EL0_SHIFT: u32 = 14;
+    /// Offset of the `PMCCNTR_EL0` field.
+    pub const PMCCNTR_EL0_SHIFT: u32 = 15;
+    /// Offset of the `PMCNTEN` field.
+    pub const PMCNTEN_SHIFT: u32 = 16;
+    /// Offset of the `PMINTEN` field.
+    pub const PMINTEN_SHIFT: u32 = 17;
+    /// Offset of the `PMOVS` field.
+    pub const PMOVS_SHIFT: u32 = 18;
+    /// Offset of the `PMSELR_EL0` field.
+    pub const PMSELR_EL0_SHIFT: u32 = 19;
+    /// Offset of the `PMSWINC_EL0` field.
+    pub const PMSWINC_EL0_SHIFT: u32 = 20;
+    /// Offset of the `PMCR_EL0` field.
+    pub const PMCR_EL0_SHIFT: u32 = 21;
+    /// Offset of the `PMBLIMITR_EL1` field.
+    pub const PMBLIMITR_EL1_SHIFT: u32 = 23;
+    /// Offset of the `PMBPTR_EL1` field.
+    pub const PMBPTR_EL1_SHIFT: u32 = 24;
+    /// Offset of the `PMBSR_EL1` field.
+    pub const PMBSR_EL1_SHIFT: u32 = 25;
+    /// Offset of the `PMSCR_EL1` field.
+    pub const PMSCR_EL1_SHIFT: u32 = 26;
+    /// Offset of the `PMSEVFR_EL1` field.
+    pub const PMSEVFR_EL1_SHIFT: u32 = 27;
+    /// Offset of the `PMSFCR_EL1` field.
+    pub const PMSFCR_EL1_SHIFT: u32 = 28;
+    /// Offset of the `PMSICR_EL1` field.
+    pub const PMSICR_EL1_SHIFT: u32 = 29;
+    /// Offset of the `PMSIRR_EL1` field.
+    pub const PMSIRR_EL1_SHIFT: u32 = 31;
+    /// Offset of the `PMSLATFR_EL1` field.
+    pub const PMSLATFR_EL1_SHIFT: u32 = 32;
+    /// Offset of the `TRC` field.
+    pub const TRC_SHIFT: u32 = 33;
+    /// Offset of the `TRCAUXCTLR` field.
+    pub const TRCAUXCTLR_SHIFT: u32 = 35;
+    /// Offset of the `TRCCLAIM` field.
+    pub const TRCCLAIM_SHIFT: u32 = 36;
+    /// Offset of the `TRCCNTVRn` field.
+    pub const TRCCNTVRN_SHIFT: u32 = 37;
+    /// Offset of the `TRCIMSPECn` field.
+    pub const TRCIMSPECN_SHIFT: u32 = 41;
+    /// Offset of the `TRCOSLAR` field.
+    pub const TRCOSLAR_SHIFT: u32 = 42;
+    /// Offset of the `TRCPRGCTLR` field.
+    pub const TRCPRGCTLR_SHIFT: u32 = 44;
+    /// Offset of the `TRCSEQSTR` field.
+    pub const TRCSEQSTR_SHIFT: u32 = 45;
+    /// Offset of the `TRCSSCSRn` field.
+    pub const TRCSSCSRN_SHIFT: u32 = 46;
+    /// Offset of the `TRCVICTLR` field.
+    pub const TRCVICTLR_SHIFT: u32 = 48;
+    /// Offset of the `TRFCR_EL1` field.
+    pub const TRFCR_EL1_SHIFT: u32 = 49;
+    /// Offset of the `TRBBASER_EL1` field.
+    pub const TRBBASER_EL1_SHIFT: u32 = 50;
+    /// Offset of the `TRBLIMITR_EL1` field.
+    pub const TRBLIMITR_EL1_SHIFT: u32 = 52;
+    /// Offset of the `TRBMAR_EL1` field.
+    pub const TRBMAR_EL1_SHIFT: u32 = 53;
+    /// Offset of the `TRBPTR_EL1` field.
+    pub const TRBPTR_EL1_SHIFT: u32 = 54;
+    /// Offset of the `TRBSR_EL1` field.
+    pub const TRBSR_EL1_SHIFT: u32 = 55;
+    /// Offset of the `TRBTRG_EL1` field.
+    pub const TRBTRG_EL1_SHIFT: u32 = 56;
+    /// Offset of the `PMUSERENR_EL0` field.
+    pub const PMUSERENR_EL0_SHIFT: u32 = 57;
+    /// Offset of the `nBRBCTL` field.
+    pub const NBRBCTL_SHIFT: u32 = 60;
+    /// Offset of the `nBRBDATA` field.
+    pub const NBRBDATA_SHIFT: u32 = 61;
+    /// Offset of the `nPMSNEVFR_EL1` field.
+    pub const NPMSNEVFR_EL1_SHIFT: u32 = 62;
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
     /// `HFGITR2_EL2` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -6114,6 +6591,271 @@ impl Hfgitr2El2 {
     pub const PLBIPERMAE1_SHIFT: u32 = 13;
     /// Offset of the `DCGBVA` field.
     pub const DCGBVA_SHIFT: u32 = 14;
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `HFGITR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HfgitrEl2: u64 {
+        /// `ICIALLUIS` bit.
+        const ICIALLUIS = 1 << 0;
+        /// `ICIALLU` bit.
+        const ICIALLU = 1 << 1;
+        /// `ICIVAU` bit.
+        const ICIVAU = 1 << 2;
+        /// `DCIVAC` bit.
+        const DCIVAC = 1 << 3;
+        /// `DCISW` bit.
+        const DCISW = 1 << 4;
+        /// `DCCSW` bit.
+        const DCCSW = 1 << 5;
+        /// `DCCISW` bit.
+        const DCCISW = 1 << 6;
+        /// `DCCVAU` bit.
+        const DCCVAU = 1 << 7;
+        /// `DCCVAP` bit.
+        const DCCVAP = 1 << 8;
+        /// `DCCVADP` bit.
+        const DCCVADP = 1 << 9;
+        /// `DCCIVAC` bit.
+        const DCCIVAC = 1 << 10;
+        /// `DCZVA` bit.
+        const DCZVA = 1 << 11;
+        /// `ATS1E1R` bit.
+        const ATS1E1R = 1 << 12;
+        /// `ATS1E1W` bit.
+        const ATS1E1W = 1 << 13;
+        /// `ATS1E0R` bit.
+        const ATS1E0R = 1 << 14;
+        /// `ATS1E0W` bit.
+        const ATS1E0W = 1 << 15;
+        /// `ATS1E1RP` bit.
+        const ATS1E1RP = 1 << 16;
+        /// `ATS1E1WP` bit.
+        const ATS1E1WP = 1 << 17;
+        /// `TLBIVMALLE1OS` bit.
+        const TLBIVMALLE1OS = 1 << 18;
+        /// `TLBIVAE1OS` bit.
+        const TLBIVAE1OS = 1 << 19;
+        /// `TLBIASIDE1OS` bit.
+        const TLBIASIDE1OS = 1 << 20;
+        /// `TLBIVAAE1OS` bit.
+        const TLBIVAAE1OS = 1 << 21;
+        /// `TLBIVALE1OS` bit.
+        const TLBIVALE1OS = 1 << 22;
+        /// `TLBIVAALE1OS` bit.
+        const TLBIVAALE1OS = 1 << 23;
+        /// `TLBIRVAE1OS` bit.
+        const TLBIRVAE1OS = 1 << 24;
+        /// `TLBIRVAAE1OS` bit.
+        const TLBIRVAAE1OS = 1 << 25;
+        /// `TLBIRVALE1OS` bit.
+        const TLBIRVALE1OS = 1 << 26;
+        /// `TLBIRVAALE1OS` bit.
+        const TLBIRVAALE1OS = 1 << 27;
+        /// `TLBIVMALLE1IS` bit.
+        const TLBIVMALLE1IS = 1 << 28;
+        /// `TLBIVAE1IS` bit.
+        const TLBIVAE1IS = 1 << 29;
+        /// `TLBIASIDE1IS` bit.
+        const TLBIASIDE1IS = 1 << 30;
+        /// `TLBIVAAE1IS` bit.
+        const TLBIVAAE1IS = 1 << 31;
+        /// `TLBIVALE1IS` bit.
+        const TLBIVALE1IS = 1 << 32;
+        /// `TLBIVAALE1IS` bit.
+        const TLBIVAALE1IS = 1 << 33;
+        /// `TLBIRVAE1IS` bit.
+        const TLBIRVAE1IS = 1 << 34;
+        /// `TLBIRVAAE1IS` bit.
+        const TLBIRVAAE1IS = 1 << 35;
+        /// `TLBIRVALE1IS` bit.
+        const TLBIRVALE1IS = 1 << 36;
+        /// `TLBIRVAALE1IS` bit.
+        const TLBIRVAALE1IS = 1 << 37;
+        /// `TLBIRVAE1` bit.
+        const TLBIRVAE1 = 1 << 38;
+        /// `TLBIRVAAE1` bit.
+        const TLBIRVAAE1 = 1 << 39;
+        /// `TLBIRVALE1` bit.
+        const TLBIRVALE1 = 1 << 40;
+        /// `TLBIRVAALE1` bit.
+        const TLBIRVAALE1 = 1 << 41;
+        /// `TLBIVMALLE1` bit.
+        const TLBIVMALLE1 = 1 << 42;
+        /// `TLBIVAE1` bit.
+        const TLBIVAE1 = 1 << 43;
+        /// `TLBIASIDE1` bit.
+        const TLBIASIDE1 = 1 << 44;
+        /// `TLBIVAAE1` bit.
+        const TLBIVAAE1 = 1 << 45;
+        /// `TLBIVALE1` bit.
+        const TLBIVALE1 = 1 << 46;
+        /// `TLBIVAALE1` bit.
+        const TLBIVAALE1 = 1 << 47;
+        /// `CFPRCTX` bit.
+        const CFPRCTX = 1 << 48;
+        /// `DVPRCTX` bit.
+        const DVPRCTX = 1 << 49;
+        /// `CPPRCTX` bit.
+        const CPPRCTX = 1 << 50;
+        /// `ERET` bit.
+        const ERET = 1 << 51;
+        /// `SVC_EL0` bit.
+        const SVC_EL0 = 1 << 52;
+        /// `SVC_EL1` bit.
+        const SVC_EL1 = 1 << 53;
+        /// `DCCVAC` bit.
+        const DCCVAC = 1 << 54;
+        /// `nBRBINJ` bit.
+        const NBRBINJ = 1 << 55;
+        /// `nBRBIALL` bit.
+        const NBRBIALL = 1 << 56;
+        /// `nGCSPUSHM_EL1` bit.
+        const NGCSPUSHM_EL1 = 1 << 57;
+        /// `nGCSSTR_EL1` bit.
+        const NGCSSTR_EL1 = 1 << 58;
+        /// `nGCSEPP` bit.
+        const NGCSEPP = 1 << 59;
+        /// `COSPRCTX` bit.
+        const COSPRCTX = 1 << 60;
+        /// `ATS1E1A` bit.
+        const ATS1E1A = 1 << 62;
+        /// `PSBCSYNC` bit.
+        const PSBCSYNC = 1 << 63;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl HfgitrEl2 {
+    /// Offset of the `ICIALLUIS` field.
+    pub const ICIALLUIS_SHIFT: u32 = 0;
+    /// Offset of the `ICIALLU` field.
+    pub const ICIALLU_SHIFT: u32 = 1;
+    /// Offset of the `ICIVAU` field.
+    pub const ICIVAU_SHIFT: u32 = 2;
+    /// Offset of the `DCIVAC` field.
+    pub const DCIVAC_SHIFT: u32 = 3;
+    /// Offset of the `DCISW` field.
+    pub const DCISW_SHIFT: u32 = 4;
+    /// Offset of the `DCCSW` field.
+    pub const DCCSW_SHIFT: u32 = 5;
+    /// Offset of the `DCCISW` field.
+    pub const DCCISW_SHIFT: u32 = 6;
+    /// Offset of the `DCCVAU` field.
+    pub const DCCVAU_SHIFT: u32 = 7;
+    /// Offset of the `DCCVAP` field.
+    pub const DCCVAP_SHIFT: u32 = 8;
+    /// Offset of the `DCCVADP` field.
+    pub const DCCVADP_SHIFT: u32 = 9;
+    /// Offset of the `DCCIVAC` field.
+    pub const DCCIVAC_SHIFT: u32 = 10;
+    /// Offset of the `DCZVA` field.
+    pub const DCZVA_SHIFT: u32 = 11;
+    /// Offset of the `ATS1E1R` field.
+    pub const ATS1E1R_SHIFT: u32 = 12;
+    /// Offset of the `ATS1E1W` field.
+    pub const ATS1E1W_SHIFT: u32 = 13;
+    /// Offset of the `ATS1E0R` field.
+    pub const ATS1E0R_SHIFT: u32 = 14;
+    /// Offset of the `ATS1E0W` field.
+    pub const ATS1E0W_SHIFT: u32 = 15;
+    /// Offset of the `ATS1E1RP` field.
+    pub const ATS1E1RP_SHIFT: u32 = 16;
+    /// Offset of the `ATS1E1WP` field.
+    pub const ATS1E1WP_SHIFT: u32 = 17;
+    /// Offset of the `TLBIVMALLE1OS` field.
+    pub const TLBIVMALLE1OS_SHIFT: u32 = 18;
+    /// Offset of the `TLBIVAE1OS` field.
+    pub const TLBIVAE1OS_SHIFT: u32 = 19;
+    /// Offset of the `TLBIASIDE1OS` field.
+    pub const TLBIASIDE1OS_SHIFT: u32 = 20;
+    /// Offset of the `TLBIVAAE1OS` field.
+    pub const TLBIVAAE1OS_SHIFT: u32 = 21;
+    /// Offset of the `TLBIVALE1OS` field.
+    pub const TLBIVALE1OS_SHIFT: u32 = 22;
+    /// Offset of the `TLBIVAALE1OS` field.
+    pub const TLBIVAALE1OS_SHIFT: u32 = 23;
+    /// Offset of the `TLBIRVAE1OS` field.
+    pub const TLBIRVAE1OS_SHIFT: u32 = 24;
+    /// Offset of the `TLBIRVAAE1OS` field.
+    pub const TLBIRVAAE1OS_SHIFT: u32 = 25;
+    /// Offset of the `TLBIRVALE1OS` field.
+    pub const TLBIRVALE1OS_SHIFT: u32 = 26;
+    /// Offset of the `TLBIRVAALE1OS` field.
+    pub const TLBIRVAALE1OS_SHIFT: u32 = 27;
+    /// Offset of the `TLBIVMALLE1IS` field.
+    pub const TLBIVMALLE1IS_SHIFT: u32 = 28;
+    /// Offset of the `TLBIVAE1IS` field.
+    pub const TLBIVAE1IS_SHIFT: u32 = 29;
+    /// Offset of the `TLBIASIDE1IS` field.
+    pub const TLBIASIDE1IS_SHIFT: u32 = 30;
+    /// Offset of the `TLBIVAAE1IS` field.
+    pub const TLBIVAAE1IS_SHIFT: u32 = 31;
+    /// Offset of the `TLBIVALE1IS` field.
+    pub const TLBIVALE1IS_SHIFT: u32 = 32;
+    /// Offset of the `TLBIVAALE1IS` field.
+    pub const TLBIVAALE1IS_SHIFT: u32 = 33;
+    /// Offset of the `TLBIRVAE1IS` field.
+    pub const TLBIRVAE1IS_SHIFT: u32 = 34;
+    /// Offset of the `TLBIRVAAE1IS` field.
+    pub const TLBIRVAAE1IS_SHIFT: u32 = 35;
+    /// Offset of the `TLBIRVALE1IS` field.
+    pub const TLBIRVALE1IS_SHIFT: u32 = 36;
+    /// Offset of the `TLBIRVAALE1IS` field.
+    pub const TLBIRVAALE1IS_SHIFT: u32 = 37;
+    /// Offset of the `TLBIRVAE1` field.
+    pub const TLBIRVAE1_SHIFT: u32 = 38;
+    /// Offset of the `TLBIRVAAE1` field.
+    pub const TLBIRVAAE1_SHIFT: u32 = 39;
+    /// Offset of the `TLBIRVALE1` field.
+    pub const TLBIRVALE1_SHIFT: u32 = 40;
+    /// Offset of the `TLBIRVAALE1` field.
+    pub const TLBIRVAALE1_SHIFT: u32 = 41;
+    /// Offset of the `TLBIVMALLE1` field.
+    pub const TLBIVMALLE1_SHIFT: u32 = 42;
+    /// Offset of the `TLBIVAE1` field.
+    pub const TLBIVAE1_SHIFT: u32 = 43;
+    /// Offset of the `TLBIASIDE1` field.
+    pub const TLBIASIDE1_SHIFT: u32 = 44;
+    /// Offset of the `TLBIVAAE1` field.
+    pub const TLBIVAAE1_SHIFT: u32 = 45;
+    /// Offset of the `TLBIVALE1` field.
+    pub const TLBIVALE1_SHIFT: u32 = 46;
+    /// Offset of the `TLBIVAALE1` field.
+    pub const TLBIVAALE1_SHIFT: u32 = 47;
+    /// Offset of the `CFPRCTX` field.
+    pub const CFPRCTX_SHIFT: u32 = 48;
+    /// Offset of the `DVPRCTX` field.
+    pub const DVPRCTX_SHIFT: u32 = 49;
+    /// Offset of the `CPPRCTX` field.
+    pub const CPPRCTX_SHIFT: u32 = 50;
+    /// Offset of the `ERET` field.
+    pub const ERET_SHIFT: u32 = 51;
+    /// Offset of the `SVC_EL0` field.
+    pub const SVC_EL0_SHIFT: u32 = 52;
+    /// Offset of the `SVC_EL1` field.
+    pub const SVC_EL1_SHIFT: u32 = 53;
+    /// Offset of the `DCCVAC` field.
+    pub const DCCVAC_SHIFT: u32 = 54;
+    /// Offset of the `nBRBINJ` field.
+    pub const NBRBINJ_SHIFT: u32 = 55;
+    /// Offset of the `nBRBIALL` field.
+    pub const NBRBIALL_SHIFT: u32 = 56;
+    /// Offset of the `nGCSPUSHM_EL1` field.
+    pub const NGCSPUSHM_EL1_SHIFT: u32 = 57;
+    /// Offset of the `nGCSSTR_EL1` field.
+    pub const NGCSSTR_EL1_SHIFT: u32 = 58;
+    /// Offset of the `nGCSEPP` field.
+    pub const NGCSEPP_SHIFT: u32 = 59;
+    /// Offset of the `COSPRCTX` field.
+    pub const COSPRCTX_SHIFT: u32 = 60;
+    /// Offset of the `ATS1E1A` field.
+    pub const ATS1E1A_SHIFT: u32 = 62;
+    /// Offset of the `PSBCSYNC` field.
+    pub const PSBCSYNC_SHIFT: u32 = 63;
 }
 
 #[cfg(feature = "el2")]
@@ -6299,6 +7041,271 @@ impl Hfgrtr2El2 {
             (self.bits() & !(Self::NAFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
         );
     }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `HFGRTR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HfgrtrEl2: u64 {
+        /// `AFSR0_EL1` bit.
+        const AFSR0_EL1 = 1 << 0;
+        /// `AFSR1_EL1` bit.
+        const AFSR1_EL1 = 1 << 1;
+        /// `AIDR_EL1` bit.
+        const AIDR_EL1 = 1 << 2;
+        /// `AMAIR_EL1` bit.
+        const AMAIR_EL1 = 1 << 3;
+        /// `APDAKey` bit.
+        const APDAKEY = 1 << 4;
+        /// `APDBKey` bit.
+        const APDBKEY = 1 << 5;
+        /// `APGAKey` bit.
+        const APGAKEY = 1 << 6;
+        /// `APIAKey` bit.
+        const APIAKEY = 1 << 7;
+        /// `APIBKey` bit.
+        const APIBKEY = 1 << 8;
+        /// `CCSIDR_EL1` bit.
+        const CCSIDR_EL1 = 1 << 9;
+        /// `CLIDR_EL1` bit.
+        const CLIDR_EL1 = 1 << 10;
+        /// `CONTEXTIDR_EL1` bit.
+        const CONTEXTIDR_EL1 = 1 << 11;
+        /// `CPACR_EL1` bit.
+        const CPACR_EL1 = 1 << 12;
+        /// `CSSELR_EL1` bit.
+        const CSSELR_EL1 = 1 << 13;
+        /// `CTR_EL0` bit.
+        const CTR_EL0 = 1 << 14;
+        /// `DCZID_EL0` bit.
+        const DCZID_EL0 = 1 << 15;
+        /// `ESR_EL1` bit.
+        const ESR_EL1 = 1 << 16;
+        /// `FAR_EL1` bit.
+        const FAR_EL1 = 1 << 17;
+        /// `ISR_EL1` bit.
+        const ISR_EL1 = 1 << 18;
+        /// `LORC_EL1` bit.
+        const LORC_EL1 = 1 << 19;
+        /// `LOREA_EL1` bit.
+        const LOREA_EL1 = 1 << 20;
+        /// `LORID_EL1` bit.
+        const LORID_EL1 = 1 << 21;
+        /// `LORN_EL1` bit.
+        const LORN_EL1 = 1 << 22;
+        /// `LORSA_EL1` bit.
+        const LORSA_EL1 = 1 << 23;
+        /// `MAIR_EL1` bit.
+        const MAIR_EL1 = 1 << 24;
+        /// `MIDR_EL1` bit.
+        const MIDR_EL1 = 1 << 25;
+        /// `MPIDR_EL1` bit.
+        const MPIDR_EL1 = 1 << 26;
+        /// `PAR_EL1` bit.
+        const PAR_EL1 = 1 << 27;
+        /// `REVIDR_EL1` bit.
+        const REVIDR_EL1 = 1 << 28;
+        /// `SCTLR_EL1` bit.
+        const SCTLR_EL1 = 1 << 29;
+        /// `SCXTNUM_EL1` bit.
+        const SCXTNUM_EL1 = 1 << 30;
+        /// `SCXTNUM_EL0` bit.
+        const SCXTNUM_EL0 = 1 << 31;
+        /// `TCR_EL1` bit.
+        const TCR_EL1 = 1 << 32;
+        /// `TPIDR_EL1` bit.
+        const TPIDR_EL1 = 1 << 33;
+        /// `TPIDRRO_EL0` bit.
+        const TPIDRRO_EL0 = 1 << 34;
+        /// `TPIDR_EL0` bit.
+        const TPIDR_EL0 = 1 << 35;
+        /// `TTBR0_EL1` bit.
+        const TTBR0_EL1 = 1 << 36;
+        /// `TTBR1_EL1` bit.
+        const TTBR1_EL1 = 1 << 37;
+        /// `VBAR_EL1` bit.
+        const VBAR_EL1 = 1 << 38;
+        /// `ICC_IGRPENn_EL1` bit.
+        const ICC_IGRPENN_EL1 = 1 << 39;
+        /// `ERRIDR_EL1` bit.
+        const ERRIDR_EL1 = 1 << 40;
+        /// `ERRSELR_EL1` bit.
+        const ERRSELR_EL1 = 1 << 41;
+        /// `ERXFR_EL1` bit.
+        const ERXFR_EL1 = 1 << 42;
+        /// `ERXCTLR_EL1` bit.
+        const ERXCTLR_EL1 = 1 << 43;
+        /// `ERXSTATUS_EL1` bit.
+        const ERXSTATUS_EL1 = 1 << 44;
+        /// `ERXMISCn_EL1` bit.
+        const ERXMISCN_EL1 = 1 << 45;
+        /// `ERXPFGF_EL1` bit.
+        const ERXPFGF_EL1 = 1 << 46;
+        /// `ERXPFGCTL_EL1` bit.
+        const ERXPFGCTL_EL1 = 1 << 47;
+        /// `ERXPFGCDN_EL1` bit.
+        const ERXPFGCDN_EL1 = 1 << 48;
+        /// `ERXADDR_EL1` bit.
+        const ERXADDR_EL1 = 1 << 49;
+        /// `nACCDATA_EL1` bit.
+        const NACCDATA_EL1 = 1 << 50;
+        /// `nGCS_EL0` bit.
+        const NGCS_EL0 = 1 << 52;
+        /// `nGCS_EL1` bit.
+        const NGCS_EL1 = 1 << 53;
+        /// `nSMPRI_EL1` bit.
+        const NSMPRI_EL1 = 1 << 54;
+        /// `nTPIDR2_EL0` bit.
+        const NTPIDR2_EL0 = 1 << 55;
+        /// `nRCWMASK_EL1` bit.
+        const NRCWMASK_EL1 = 1 << 56;
+        /// `nPIRE0_EL1` bit.
+        const NPIRE0_EL1 = 1 << 57;
+        /// `nPIR_EL1` bit.
+        const NPIR_EL1 = 1 << 58;
+        /// `nPOR_EL0` bit.
+        const NPOR_EL0 = 1 << 59;
+        /// `nPOR_EL1` bit.
+        const NPOR_EL1 = 1 << 60;
+        /// `nS2POR_EL1` bit.
+        const NS2POR_EL1 = 1 << 61;
+        /// `nMAIR2_EL1` bit.
+        const NMAIR2_EL1 = 1 << 62;
+        /// `nAMAIR2_EL1` bit.
+        const NAMAIR2_EL1 = 1 << 63;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl HfgrtrEl2 {
+    /// Offset of the `AFSR0_EL1` field.
+    pub const AFSR0_EL1_SHIFT: u32 = 0;
+    /// Offset of the `AFSR1_EL1` field.
+    pub const AFSR1_EL1_SHIFT: u32 = 1;
+    /// Offset of the `AIDR_EL1` field.
+    pub const AIDR_EL1_SHIFT: u32 = 2;
+    /// Offset of the `AMAIR_EL1` field.
+    pub const AMAIR_EL1_SHIFT: u32 = 3;
+    /// Offset of the `APDAKey` field.
+    pub const APDAKEY_SHIFT: u32 = 4;
+    /// Offset of the `APDBKey` field.
+    pub const APDBKEY_SHIFT: u32 = 5;
+    /// Offset of the `APGAKey` field.
+    pub const APGAKEY_SHIFT: u32 = 6;
+    /// Offset of the `APIAKey` field.
+    pub const APIAKEY_SHIFT: u32 = 7;
+    /// Offset of the `APIBKey` field.
+    pub const APIBKEY_SHIFT: u32 = 8;
+    /// Offset of the `CCSIDR_EL1` field.
+    pub const CCSIDR_EL1_SHIFT: u32 = 9;
+    /// Offset of the `CLIDR_EL1` field.
+    pub const CLIDR_EL1_SHIFT: u32 = 10;
+    /// Offset of the `CONTEXTIDR_EL1` field.
+    pub const CONTEXTIDR_EL1_SHIFT: u32 = 11;
+    /// Offset of the `CPACR_EL1` field.
+    pub const CPACR_EL1_SHIFT: u32 = 12;
+    /// Offset of the `CSSELR_EL1` field.
+    pub const CSSELR_EL1_SHIFT: u32 = 13;
+    /// Offset of the `CTR_EL0` field.
+    pub const CTR_EL0_SHIFT: u32 = 14;
+    /// Offset of the `DCZID_EL0` field.
+    pub const DCZID_EL0_SHIFT: u32 = 15;
+    /// Offset of the `ESR_EL1` field.
+    pub const ESR_EL1_SHIFT: u32 = 16;
+    /// Offset of the `FAR_EL1` field.
+    pub const FAR_EL1_SHIFT: u32 = 17;
+    /// Offset of the `ISR_EL1` field.
+    pub const ISR_EL1_SHIFT: u32 = 18;
+    /// Offset of the `LORC_EL1` field.
+    pub const LORC_EL1_SHIFT: u32 = 19;
+    /// Offset of the `LOREA_EL1` field.
+    pub const LOREA_EL1_SHIFT: u32 = 20;
+    /// Offset of the `LORID_EL1` field.
+    pub const LORID_EL1_SHIFT: u32 = 21;
+    /// Offset of the `LORN_EL1` field.
+    pub const LORN_EL1_SHIFT: u32 = 22;
+    /// Offset of the `LORSA_EL1` field.
+    pub const LORSA_EL1_SHIFT: u32 = 23;
+    /// Offset of the `MAIR_EL1` field.
+    pub const MAIR_EL1_SHIFT: u32 = 24;
+    /// Offset of the `MIDR_EL1` field.
+    pub const MIDR_EL1_SHIFT: u32 = 25;
+    /// Offset of the `MPIDR_EL1` field.
+    pub const MPIDR_EL1_SHIFT: u32 = 26;
+    /// Offset of the `PAR_EL1` field.
+    pub const PAR_EL1_SHIFT: u32 = 27;
+    /// Offset of the `REVIDR_EL1` field.
+    pub const REVIDR_EL1_SHIFT: u32 = 28;
+    /// Offset of the `SCTLR_EL1` field.
+    pub const SCTLR_EL1_SHIFT: u32 = 29;
+    /// Offset of the `SCXTNUM_EL1` field.
+    pub const SCXTNUM_EL1_SHIFT: u32 = 30;
+    /// Offset of the `SCXTNUM_EL0` field.
+    pub const SCXTNUM_EL0_SHIFT: u32 = 31;
+    /// Offset of the `TCR_EL1` field.
+    pub const TCR_EL1_SHIFT: u32 = 32;
+    /// Offset of the `TPIDR_EL1` field.
+    pub const TPIDR_EL1_SHIFT: u32 = 33;
+    /// Offset of the `TPIDRRO_EL0` field.
+    pub const TPIDRRO_EL0_SHIFT: u32 = 34;
+    /// Offset of the `TPIDR_EL0` field.
+    pub const TPIDR_EL0_SHIFT: u32 = 35;
+    /// Offset of the `TTBR0_EL1` field.
+    pub const TTBR0_EL1_SHIFT: u32 = 36;
+    /// Offset of the `TTBR1_EL1` field.
+    pub const TTBR1_EL1_SHIFT: u32 = 37;
+    /// Offset of the `VBAR_EL1` field.
+    pub const VBAR_EL1_SHIFT: u32 = 38;
+    /// Offset of the `ICC_IGRPENn_EL1` field.
+    pub const ICC_IGRPENN_EL1_SHIFT: u32 = 39;
+    /// Offset of the `ERRIDR_EL1` field.
+    pub const ERRIDR_EL1_SHIFT: u32 = 40;
+    /// Offset of the `ERRSELR_EL1` field.
+    pub const ERRSELR_EL1_SHIFT: u32 = 41;
+    /// Offset of the `ERXFR_EL1` field.
+    pub const ERXFR_EL1_SHIFT: u32 = 42;
+    /// Offset of the `ERXCTLR_EL1` field.
+    pub const ERXCTLR_EL1_SHIFT: u32 = 43;
+    /// Offset of the `ERXSTATUS_EL1` field.
+    pub const ERXSTATUS_EL1_SHIFT: u32 = 44;
+    /// Offset of the `ERXMISCn_EL1` field.
+    pub const ERXMISCN_EL1_SHIFT: u32 = 45;
+    /// Offset of the `ERXPFGF_EL1` field.
+    pub const ERXPFGF_EL1_SHIFT: u32 = 46;
+    /// Offset of the `ERXPFGCTL_EL1` field.
+    pub const ERXPFGCTL_EL1_SHIFT: u32 = 47;
+    /// Offset of the `ERXPFGCDN_EL1` field.
+    pub const ERXPFGCDN_EL1_SHIFT: u32 = 48;
+    /// Offset of the `ERXADDR_EL1` field.
+    pub const ERXADDR_EL1_SHIFT: u32 = 49;
+    /// Offset of the `nACCDATA_EL1` field.
+    pub const NACCDATA_EL1_SHIFT: u32 = 50;
+    /// Offset of the `nGCS_EL0` field.
+    pub const NGCS_EL0_SHIFT: u32 = 52;
+    /// Offset of the `nGCS_EL1` field.
+    pub const NGCS_EL1_SHIFT: u32 = 53;
+    /// Offset of the `nSMPRI_EL1` field.
+    pub const NSMPRI_EL1_SHIFT: u32 = 54;
+    /// Offset of the `nTPIDR2_EL0` field.
+    pub const NTPIDR2_EL0_SHIFT: u32 = 55;
+    /// Offset of the `nRCWMASK_EL1` field.
+    pub const NRCWMASK_EL1_SHIFT: u32 = 56;
+    /// Offset of the `nPIRE0_EL1` field.
+    pub const NPIRE0_EL1_SHIFT: u32 = 57;
+    /// Offset of the `nPIR_EL1` field.
+    pub const NPIR_EL1_SHIFT: u32 = 58;
+    /// Offset of the `nPOR_EL0` field.
+    pub const NPOR_EL0_SHIFT: u32 = 59;
+    /// Offset of the `nPOR_EL1` field.
+    pub const NPOR_EL1_SHIFT: u32 = 60;
+    /// Offset of the `nS2POR_EL1` field.
+    pub const NS2POR_EL1_SHIFT: u32 = 61;
+    /// Offset of the `nMAIR2_EL1` field.
+    pub const NMAIR2_EL1_SHIFT: u32 = 62;
+    /// Offset of the `nAMAIR2_EL1` field.
+    pub const NAMAIR2_EL1_SHIFT: u32 = 63;
 }
 
 #[cfg(feature = "el2")]
@@ -22989,6 +23996,8 @@ read_write_sysreg!(hactlr: (p15, 4, c0, c1, 1), u32, safe_read, fake::SYSREGS);
 read_write_sysreg!(hactlr2: (p15, 4, c0, c1, 3), u32, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(hadfsr: (p15, 4, c1, c5, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(hafgrtr_el2: s3_4_c3_c1_6, u64: HafgrtrEl2, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(haifsr: (p15, 4, c1, c5, 1), u32, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -23012,11 +24021,19 @@ read_write_sysreg!(hdfar: (p15, 4, c0, c6, 0), u32: Hdfar, safe_read, fake::SYSR
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hdfgrtr2_el2: s3_4_c3_c1_0, u64: Hdfgrtr2El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(hdfgrtr_el2: s3_4_c3_c1_4, u64: HdfgrtrEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hdfgwtr2_el2: s3_4_c3_c1_1, u64: Hdfgwtr2El2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(hdfgwtr_el2: s3_4_c3_c1_5, u64: HdfgwtrEl2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hfgitr2_el2: s3_4_c3_c1_7, u64: Hfgitr2El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(hfgitr_el2: s3_4_c1_c1_6, u64: HfgitrEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hfgrtr2_el2: s3_4_c3_c1_2, u64: Hfgrtr2El2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(hfgrtr_el2: s3_4_c1_c1_4, u64: HfgrtrEl2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(hfgwtr2_el2: s3_4_c3_c1_3, u64: Hfgwtr2El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
