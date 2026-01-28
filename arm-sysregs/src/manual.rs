@@ -16,7 +16,7 @@ use crate::{EsrEl2, SpsrEl2};
 use crate::{EsrEl3, MdcrEl3, SmcrEl3, SpsrEl3};
 #[cfg(feature = "el1")]
 use core::fmt::{self, Debug, Formatter};
-use num_enum::TryFromPrimitive;
+use num_enum::{IntoPrimitive, TryFromPrimitive};
 
 #[cfg(feature = "el1")]
 impl ClidrEl1 {
@@ -363,7 +363,7 @@ impl SpsrEl3 {
 }
 
 /// Cache type enum.
-#[derive(Clone, Copy, Debug, Eq, PartialEq, TryFromPrimitive)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, TryFromPrimitive, IntoPrimitive)]
 #[repr(u8)]
 pub enum CacheType {
     /// No cache.
@@ -408,7 +408,7 @@ impl From<CacheLevel> for u64 {
 }
 
 /// An AArch64 exception level.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
 #[repr(u8)]
 pub enum ExceptionLevel {
     /// Exception level 0.
@@ -422,7 +422,7 @@ pub enum ExceptionLevel {
 }
 
 /// Values for SPSEL.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
 #[repr(u8)]
 pub enum StackPointer {
     /// Use SP_EL0.
@@ -432,7 +432,7 @@ pub enum StackPointer {
 }
 
 /// Allowed Shareability attributes.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
 #[repr(u8)]
 pub enum Shareability {
     /// Non-shareable.
@@ -444,7 +444,7 @@ pub enum Shareability {
 }
 
 /// Allowed Cacheability attributes.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive)]
+#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
 #[repr(u8)]
 pub enum Cacheability {
     /// Normal memory, Non-cacheable.

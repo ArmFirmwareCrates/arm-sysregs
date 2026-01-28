@@ -249,14 +249,9 @@ impl RegisterInfo {
         }
 
         // Methods to access fields.
-        let mut first = true;
         for field in &self.fields {
             if field.width <= 1 {
                 continue;
-            }
-
-            if first {
-                first = false;
             }
 
             writeln!(writer)?;
@@ -361,6 +356,80 @@ impl RegisterInfo {
 
                 writeln!(writer, "    }}")?;
             }
+
+            // Emit a `set_<field>()` method.
+            writeln!(writer)?;
+            writeln!(
+                writer,
+                "    /// Sets the value of the `{}` field.",
+                field.name
+            )?;
+            if let Some(description) = &field.description {
+                writeln!(writer, "    ///")?;
+                writeln!(writer, "    /// {description}")?;
+            }
+
+            if let Some(array_info) = &field.array_info {
+                writeln!(
+                    writer,
+                    "    pub {constness}fn set_{}(&mut self, {}: u32, value: {field_type}) {{",
+                    field.function_name().replace(&array_info.placeholder(), ""),
+                    array_info.index_variable,
+                )?;
+                if array_info.indices.start > 0 {
+                    writeln!(
+                        writer,
+                        "        assert!({} >= {} && {} < {});",
+                        array_info.index_variable,
+                        array_info.indices.start,
+                        array_info.index_variable,
+                        array_info.indices.end,
+                    )?;
+                } else {
+                    writeln!(
+                        writer,
+                        "        assert!({} < {});",
+                        array_info.index_variable, array_info.indices.end,
+                    )?;
+                }
+
+                writeln!(
+                    writer,
+                    "        let offset = Self::{}_SHIFT + ({} - {}) * {};",
+                    field.constant_name(),
+                    array_info.index_variable,
+                    array_info.indices.start,
+                    field.width,
+                )?;
+            } else {
+                writeln!(
+                    writer,
+                    "    pub {constness}fn set_{}(&mut self, value: {field_type}) {{",
+                    field.function_name()
+                )?;
+                writeln!(
+                    writer,
+                    "        let offset = Self::{}_SHIFT;",
+                    field.constant_name(),
+                )?;
+            }
+
+            if use_custom_type {
+                writeln!(writer, "        let value: {int_ty} = value.into();")?;
+            }
+            writeln!(
+                writer,
+                "        assert!(value & (Self::{}_MASK as {int_ty}) == value);",
+                field.constant_name(),
+            )?;
+            writeln!(
+                writer,
+                "        *self = Self::from_bits_retain((self.bits() & !(Self::{}_MASK << offset)) | ((value as u{}) << offset));",
+                field.constant_name(),
+                self.width,
+            )?;
+
+            writeln!(writer, "    }}")?;
         }
 
         writeln!(writer, "}}")?;

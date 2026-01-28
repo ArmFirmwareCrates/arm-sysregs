@@ -51,14 +51,41 @@ impl Amcfgr {
         ((self.bits() >> Self::N_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `N` field.
+    pub const fn set_n(&mut self, value: u8) {
+        let offset = Self::N_SHIFT;
+        assert!(value & (Self::N_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::N_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SIZE` field.
     pub const fn size(self) -> u8 {
         ((self.bits() >> Self::SIZE_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `SIZE` field.
+    pub const fn set_size(&mut self, value: u8) {
+        let offset = Self::SIZE_SHIFT;
+        assert!(value & (Self::SIZE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SIZE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `NCG` field.
     pub const fn ncg(self) -> u8 {
         ((self.bits() >> Self::NCG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `NCG` field.
+    pub const fn set_ncg(&mut self, value: u8) {
+        let offset = Self::NCG_SHIFT;
+        assert!(value & (Self::NCG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NCG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -85,9 +112,27 @@ impl Amcgcr {
         ((self.bits() >> Self::CG0NC_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `CG0NC` field.
+    pub const fn set_cg0nc(&mut self, value: u8) {
+        let offset = Self::CG0NC_SHIFT;
+        assert!(value & (Self::CG0NC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CG0NC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CG1NC` field.
     pub const fn cg1nc(self) -> u8 {
         ((self.bits() >> Self::CG1NC_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `CG1NC` field.
+    pub const fn set_cg1nc(&mut self, value: u8) {
+        let offset = Self::CG1NC_SHIFT;
+        assert!(value & (Self::CG1NC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CG1NC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -279,6 +324,15 @@ impl ApiakeyhiEl1 {
         ((self.bits() >> Self::APIAKEYHI_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `APIAKeyHi` field.
+    pub const fn set_apiakeyhi(&mut self, value: u64) {
+        let offset = Self::APIAKEYHI_SHIFT;
+        assert!(value & (Self::APIAKEYHI_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::APIAKEYHI_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -302,6 +356,15 @@ impl ApiakeyloEl1 {
     pub const fn apiakeylo(self) -> u64 {
         ((self.bits() >> Self::APIAKEYLO_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `APIAKeyLo` field.
+    pub const fn set_apiakeylo(&mut self, value: u64) {
+        let offset = Self::APIAKEYLO_SHIFT;
+        assert!(value & (Self::APIAKEYLO_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::APIAKEYLO_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -328,9 +391,27 @@ impl Ccsidr {
         ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `LineSize` field.
+    pub const fn set_linesize(&mut self, value: u8) {
+        let offset = Self::LINESIZE_SHIFT;
+        assert!(value & (Self::LINESIZE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LINESIZE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `NumSets` field.
     pub const fn numsets(self) -> u16 {
         ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111) as u16
+    }
+
+    /// Sets the value of the `NumSets` field.
+    pub const fn set_numsets(&mut self, value: u16) {
+        let offset = Self::NUMSETS_SHIFT;
+        assert!(value & (Self::NUMSETS_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NUMSETS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -351,6 +432,15 @@ impl Ccsidr2 {
     /// Returns the value of the `NumSets` field.
     pub const fn numsets(self) -> u32 {
         ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `NumSets` field.
+    pub const fn set_numsets(&mut self, value: u32) {
+        let offset = Self::NUMSETS_SHIFT;
+        assert!(value & (Self::NUMSETS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NUMSETS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -373,6 +463,15 @@ impl CcsidrEl1 {
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
         ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `LineSize` field.
+    pub const fn set_linesize(&mut self, value: u8) {
+        let offset = Self::LINESIZE_SHIFT;
+        assert!(value & (Self::LINESIZE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LINESIZE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -412,9 +511,28 @@ impl Clidr {
         ((self.bits() >> (Self::CTYPE_SHIFT + (n - 1) * 3)) & 0b111) as u8
     }
 
+    /// Sets the value of the `Ctype<n>` field.
+    pub const fn set_ctype(&mut self, n: u32, value: u8) {
+        assert!(n >= 1 && n < 8);
+        let offset = Self::CTYPE_SHIFT + (n - 1) * 3;
+        assert!(value & (Self::CTYPE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CTYPE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `LoUIS` field.
     pub const fn louis(self) -> u8 {
         ((self.bits() >> Self::LOUIS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `LoUIS` field.
+    pub const fn set_louis(&mut self, value: u8) {
+        let offset = Self::LOUIS_SHIFT;
+        assert!(value & (Self::LOUIS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOUIS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `LoC` field.
@@ -422,14 +540,41 @@ impl Clidr {
         ((self.bits() >> Self::LOC_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `LoC` field.
+    pub const fn set_loc(&mut self, value: u8) {
+        let offset = Self::LOC_SHIFT;
+        assert!(value & (Self::LOC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `LoUU` field.
     pub const fn louu(self) -> u8 {
         ((self.bits() >> Self::LOUU_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `LoUU` field.
+    pub const fn set_louu(&mut self, value: u8) {
+        let offset = Self::LOUU_SHIFT;
+        assert!(value & (Self::LOUU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOUU_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `ICB` field.
     pub const fn icb(self) -> u8 {
         ((self.bits() >> Self::ICB_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `ICB` field.
+    pub const fn set_icb(&mut self, value: u8) {
+        let offset = Self::ICB_SHIFT;
+        assert!(value & (Self::ICB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ICB_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -480,11 +625,33 @@ impl ClidrEl1 {
         .unwrap()
     }
 
+    /// Sets the value of the `Ctype<n>` field.
+    pub fn set_ctype(&mut self, n: u32, value: crate::manual::CacheType) {
+        assert!(n >= 1 && n < 8);
+        let offset = Self::CTYPE_SHIFT + (n - 1) * 3;
+        let value: u8 = value.into();
+        assert!(value & (Self::CTYPE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CTYPE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `LoUIS` field.
     ///
     /// Level of Unification Inner Shareable for the cache hierarchy.
     pub const fn louis(self) -> u8 {
         ((self.bits() >> Self::LOUIS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `LoUIS` field.
+    ///
+    /// Level of Unification Inner Shareable for the cache hierarchy.
+    pub const fn set_louis(&mut self, value: u8) {
+        let offset = Self::LOUIS_SHIFT;
+        assert!(value & (Self::LOUIS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOUIS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `LoC` field.
@@ -494,11 +661,33 @@ impl ClidrEl1 {
         ((self.bits() >> Self::LOC_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `LoC` field.
+    ///
+    /// Level of Coherence for the cache hierarchy.
+    pub const fn set_loc(&mut self, value: u8) {
+        let offset = Self::LOC_SHIFT;
+        assert!(value & (Self::LOC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `LoUU` field.
     ///
     /// Level of Unification Uniprocessor for the cache hierarchy.
     pub const fn louu(self) -> u8 {
         ((self.bits() >> Self::LOUU_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `LoUU` field.
+    ///
+    /// Level of Unification Uniprocessor for the cache hierarchy.
+    pub const fn set_louu(&mut self, value: u8) {
+        let offset = Self::LOUU_SHIFT;
+        assert!(value & (Self::LOUU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOUU_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ICB` field.
@@ -508,10 +697,31 @@ impl ClidrEl1 {
         ((self.bits() >> Self::ICB_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `ICB` field.
+    ///
+    /// Inner cache boundary level.
+    pub const fn set_icb(&mut self, value: u8) {
+        let offset = Self::ICB_SHIFT;
+        assert!(value & (Self::ICB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ICB_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the given `Ttype<n>` field.
     pub const fn ttype(self, n: u32) -> u8 {
         assert!(n >= 1 && n < 8);
         ((self.bits() >> (Self::TTYPE_SHIFT + (n - 1) * 2)) & 0b11) as u8
+    }
+
+    /// Sets the value of the `Ttype<n>` field.
+    pub const fn set_ttype(&mut self, n: u32, value: u8) {
+        assert!(n >= 1 && n < 8);
+        let offset = Self::TTYPE_SHIFT + (n - 1) * 2;
+        assert!(value & (Self::TTYPE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TTYPE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -533,6 +743,15 @@ impl Cntfrq {
     pub const fn clockfreq(self) -> u32 {
         ((self.bits() >> Self::CLOCKFREQ_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ClockFreq` field.
+    pub const fn set_clockfreq(&mut self, value: u32) {
+        let offset = Self::CLOCKFREQ_SHIFT;
+        assert!(value & (Self::CLOCKFREQ_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CLOCKFREQ_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -552,6 +771,15 @@ impl CntfrqEl0 {
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
         ((self.bits() >> Self::CLOCKFREQ_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ClockFreq` field.
+    pub const fn set_clockfreq(&mut self, value: u32) {
+        let offset = Self::CLOCKFREQ_SHIFT;
+        assert!(value & (Self::CLOCKFREQ_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CLOCKFREQ_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -592,6 +820,15 @@ impl Cnthctl {
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
         ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `EVNTI` field.
+    pub const fn set_evnti(&mut self, value: u8) {
+        let offset = Self::EVNTI_SHIFT;
+        assert!(value & (Self::EVNTI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -679,6 +916,15 @@ impl CnthctlEl2 {
     pub const fn evnti(self) -> u8 {
         ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
     }
+
+    /// Sets the value of the `EVNTI` field.
+    pub const fn set_evnti(&mut self, value: u8) {
+        let offset = Self::EVNTI_SHIFT;
+        assert!(value & (Self::EVNTI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -724,6 +970,15 @@ impl CnthpsCval {
         ((self.bits() >> Self::COMPAREVALUE_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -743,6 +998,15 @@ impl CnthpsTval {
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
         ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -789,6 +1053,15 @@ impl CnthpCval {
         ((self.bits() >> Self::COMPAREVALUE_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -808,6 +1081,15 @@ impl CnthpTval {
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
         ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -854,6 +1136,15 @@ impl CnthvsCval {
         ((self.bits() >> Self::COMPAREVALUE_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -873,6 +1164,15 @@ impl CnthvsTval {
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
         ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -919,6 +1219,15 @@ impl CnthvCval {
         ((self.bits() >> Self::COMPAREVALUE_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -938,6 +1247,15 @@ impl CnthvTval {
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
         ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -987,6 +1305,15 @@ impl Cntkctl {
     pub const fn evnti(self) -> u8 {
         ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
     }
+
+    /// Sets the value of the `EVNTI` field.
+    pub const fn set_evnti(&mut self, value: u8) {
+        let offset = Self::EVNTI_SHIFT;
+        assert!(value & (Self::EVNTI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1008,6 +1335,15 @@ impl Cntpct {
     pub const fn physicalcount(self) -> u64 {
         ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `PhysicalCount` field.
+    pub const fn set_physicalcount(&mut self, value: u64) {
+        let offset = Self::PHYSICALCOUNT_SHIFT;
+        assert!(value & (Self::PHYSICALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1031,6 +1367,15 @@ impl Cntpctss {
         ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `SSPhysicalCount` field.
+    pub const fn set_ssphysicalcount(&mut self, value: u64) {
+        let offset = Self::SSPHYSICALCOUNT_SHIFT;
+        assert!(value & (Self::SSPHYSICALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SSPHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1052,6 +1397,15 @@ impl CntpctEl0 {
     pub const fn physicalcount(self) -> u64 {
         ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `PhysicalCount` field.
+    pub const fn set_physicalcount(&mut self, value: u64) {
+        let offset = Self::PHYSICALCOUNT_SHIFT;
+        assert!(value & (Self::PHYSICALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1098,6 +1452,15 @@ impl CntpCval {
         ((self.bits() >> Self::COMPAREVALUE_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1117,6 +1480,15 @@ impl CntpTval {
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
         ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -1140,6 +1512,15 @@ impl Cntvct {
         ((self.bits() >> Self::VIRTUALCOUNT_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `VirtualCount` field.
+    pub const fn set_virtualcount(&mut self, value: u64) {
+        let offset = Self::VIRTUALCOUNT_SHIFT;
+        assert!(value & (Self::VIRTUALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1162,6 +1543,15 @@ impl Cntvctss {
         ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `SSVirtualCount` field.
+    pub const fn set_ssvirtualcount(&mut self, value: u64) {
+        let offset = Self::SSVIRTUALCOUNT_SHIFT;
+        assert!(value & (Self::SSVIRTUALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SSVIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1183,6 +1573,15 @@ impl Cntvoff {
     pub const fn voffset(self) -> u64 {
         ((self.bits() >> Self::VOFFSET_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `VOffset` field.
+    pub const fn set_voffset(&mut self, value: u64) {
+        let offset = Self::VOFFSET_SHIFT;
+        assert!(value & (Self::VOFFSET_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VOFFSET_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1207,6 +1606,15 @@ impl CntvoffEl2 {
     pub const fn voffset(self) -> u64 {
         ((self.bits() >> Self::VOFFSET_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `VOffset` field.
+    pub const fn set_voffset(&mut self, value: u64) {
+        let offset = Self::VOFFSET_SHIFT;
+        assert!(value & (Self::VOFFSET_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VOFFSET_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1253,6 +1661,15 @@ impl CntvCval {
         ((self.bits() >> Self::COMPAREVALUE_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1273,6 +1690,15 @@ impl CntvTval {
     pub const fn timervalue(self) -> u32 {
         ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1292,6 +1718,15 @@ impl Contextidr {
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u8) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -1315,6 +1750,15 @@ impl ContextidrEl1 {
     pub const fn procid(self) -> u32 {
         ((self.bits() >> Self::PROCID_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `PROCID` field.
+    pub const fn set_procid(&mut self, value: u32) {
+        let offset = Self::PROCID_SHIFT;
+        assert!(value & (Self::PROCID_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PROCID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -1336,6 +1780,15 @@ impl ContextidrEl2 {
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
         ((self.bits() >> Self::PROCID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `PROCID` field.
+    pub const fn set_procid(&mut self, value: u32) {
+        let offset = Self::PROCID_SHIFT;
+        assert!(value & (Self::PROCID_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PROCID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1370,9 +1823,27 @@ impl Cpacr {
         ((self.bits() >> Self::CP10_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `cp10` field.
+    pub const fn set_cp10(&mut self, value: u8) {
+        let offset = Self::CP10_SHIFT;
+        assert!(value & (Self::CP10_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CP10_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `cp11` field.
     pub const fn cp11(self) -> u8 {
         ((self.bits() >> Self::CP11_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `cp11` field.
+    pub const fn set_cp11(&mut self, value: u8) {
+        let offset = Self::CP11_SHIFT;
+        assert!(value & (Self::CP11_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CP11_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -1429,14 +1900,41 @@ impl CpacrEl1 {
         ((self.bits() >> Self::ZEN_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ZEN` field.
+    pub const fn set_zen(&mut self, value: u8) {
+        let offset = Self::ZEN_SHIFT;
+        assert!(value & (Self::ZEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ZEN_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
         ((self.bits() >> Self::FPEN_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `FPEN` field.
+    pub const fn set_fpen(&mut self, value: u8) {
+        let offset = Self::FPEN_SHIFT;
+        assert!(value & (Self::FPEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FPEN_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
         ((self.bits() >> Self::SMEN_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SMEN` field.
+    pub const fn set_smen(&mut self, value: u8) {
+        let offset = Self::SMEN_SHIFT;
+        assert!(value & (Self::SMEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SMEN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1503,14 +2001,41 @@ impl CptrEl2 {
         ((self.bits() >> Self::ZEN_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ZEN` field.
+    pub const fn set_zen(&mut self, value: u8) {
+        let offset = Self::ZEN_SHIFT;
+        assert!(value & (Self::ZEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ZEN_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
         ((self.bits() >> Self::FPEN_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `FPEN` field.
+    pub const fn set_fpen(&mut self, value: u8) {
+        let offset = Self::FPEN_SHIFT;
+        assert!(value & (Self::FPEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FPEN_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
         ((self.bits() >> Self::SMEN_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SMEN` field.
+    pub const fn set_smen(&mut self, value: u8) {
+        let offset = Self::SMEN_SHIFT;
+        assert!(value & (Self::SMEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SMEN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1573,6 +2098,15 @@ impl Csselr {
     pub const fn level(self) -> u8 {
         ((self.bits() >> Self::LEVEL_SHIFT) & 0b111) as u8
     }
+
+    /// Sets the value of the `Level` field.
+    pub const fn set_level(&mut self, value: u8) {
+        let offset = Self::LEVEL_SHIFT;
+        assert!(value & (Self::LEVEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LEVEL_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -1602,6 +2136,15 @@ impl CsselrEl1 {
     /// Returns the value of the `Level` field.
     pub const fn level(self) -> u8 {
         ((self.bits() >> Self::LEVEL_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `Level` field.
+    pub const fn set_level(&mut self, value: u8) {
+        let offset = Self::LEVEL_SHIFT;
+        assert!(value & (Self::LEVEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LEVEL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1650,9 +2193,27 @@ impl Ctr {
         ((self.bits() >> Self::IMINLINE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `IminLine` field.
+    pub const fn set_iminline(&mut self, value: u8) {
+        let offset = Self::IMINLINE_SHIFT;
+        assert!(value & (Self::IMINLINE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMINLINE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
         ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `L1Ip` field.
+    pub const fn set_l1ip(&mut self, value: u8) {
+        let offset = Self::L1IP_SHIFT;
+        assert!(value & (Self::L1IP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1IP_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `DminLine` field.
@@ -1660,14 +2221,41 @@ impl Ctr {
         ((self.bits() >> Self::DMINLINE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DminLine` field.
+    pub const fn set_dminline(&mut self, value: u8) {
+        let offset = Self::DMINLINE_SHIFT;
+        assert!(value & (Self::DMINLINE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DMINLINE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
         ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `ERG` field.
+    pub const fn set_erg(&mut self, value: u8) {
+        let offset = Self::ERG_SHIFT;
+        assert!(value & (Self::ERG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERG_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CWG` field.
     pub const fn cwg(self) -> u8 {
         ((self.bits() >> Self::CWG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CWG` field.
+    pub const fn set_cwg(&mut self, value: u8) {
+        let offset = Self::CWG_SHIFT;
+        assert!(value & (Self::CWG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CWG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -1722,9 +2310,27 @@ impl CtrEl0 {
         ((self.bits() >> Self::IMINLINE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `IminLine` field.
+    pub const fn set_iminline(&mut self, value: u8) {
+        let offset = Self::IMINLINE_SHIFT;
+        assert!(value & (Self::IMINLINE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMINLINE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
         ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `L1Ip` field.
+    pub const fn set_l1ip(&mut self, value: u8) {
+        let offset = Self::L1IP_SHIFT;
+        assert!(value & (Self::L1IP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1IP_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `DminLine` field.
@@ -1734,9 +2340,29 @@ impl CtrEl0 {
         ((self.bits() >> Self::DMINLINE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DminLine` field.
+    ///
+    /// Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE.
+    pub const fn set_dminline(&mut self, value: u8) {
+        let offset = Self::DMINLINE_SHIFT;
+        assert!(value & (Self::DMINLINE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DMINLINE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
         ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ERG` field.
+    pub const fn set_erg(&mut self, value: u8) {
+        let offset = Self::ERG_SHIFT;
+        assert!(value & (Self::ERG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERG_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `CWG` field.
@@ -1744,9 +2370,27 @@ impl CtrEl0 {
         ((self.bits() >> Self::CWG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CWG` field.
+    pub const fn set_cwg(&mut self, value: u8) {
+        let offset = Self::CWG_SHIFT;
+        assert!(value & (Self::CWG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CWG_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TminLine` field.
     pub const fn tminline(self) -> u8 {
         ((self.bits() >> Self::TMINLINE_SHIFT) & 0b111111) as u8
+    }
+
+    /// Sets the value of the `TminLine` field.
+    pub const fn set_tminline(&mut self, value: u8) {
+        let offset = Self::TMINLINE_SHIFT;
+        assert!(value & (Self::TMINLINE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TMINLINE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -1768,6 +2412,15 @@ impl Currentel {
     pub const fn el(self) -> u8 {
         ((self.bits() >> Self::EL_SHIFT) & 0b11) as u8
     }
+
+    /// Sets the value of the `EL` field.
+    pub const fn set_el(&mut self, value: u8) {
+        let offset = Self::EL_SHIFT;
+        assert!(value & (Self::EL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EL_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -1788,6 +2441,16 @@ impl Dacr {
     pub const fn d(self, n: u32) -> u8 {
         assert!(n < 16);
         ((self.bits() >> (Self::D_SHIFT + (n - 0) * 2)) & 0b11) as u8
+    }
+
+    /// Sets the value of the `D<n>` field.
+    pub const fn set_d(&mut self, n: u32, value: u8) {
+        assert!(n < 16);
+        let offset = Self::D_SHIFT + (n - 0) * 2;
+        assert!(value & (Self::D_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::D_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -1822,9 +2485,27 @@ impl Dbgauthstatus {
         ((self.bits() >> Self::NSID_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `NSID` field.
+    pub const fn set_nsid(&mut self, value: u8) {
+        let offset = Self::NSID_SHIFT;
+        assert!(value & (Self::NSID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NSID_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `NSNID` field.
     pub const fn nsnid(self) -> u8 {
         ((self.bits() >> Self::NSNID_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `NSNID` field.
+    pub const fn set_nsnid(&mut self, value: u8) {
+        let offset = Self::NSNID_SHIFT;
+        assert!(value & (Self::NSNID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NSNID_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `SID` field.
@@ -1832,9 +2513,27 @@ impl Dbgauthstatus {
         ((self.bits() >> Self::SID_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SID` field.
+    pub const fn set_sid(&mut self, value: u8) {
+        let offset = Self::SID_SHIFT;
+        assert!(value & (Self::SID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SID_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SNID` field.
     pub const fn snid(self) -> u8 {
         ((self.bits() >> Self::SNID_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SNID` field.
+    pub const fn set_snid(&mut self, value: u8) {
+        let offset = Self::SNID_SHIFT;
+        assert!(value & (Self::SNID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SNID_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -1962,9 +2661,27 @@ impl Dbgdevid {
         ((self.bits() >> Self::PCSAMPLE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PCSample` field.
+    pub const fn set_pcsample(&mut self, value: u8) {
+        let offset = Self::PCSAMPLE_SHIFT;
+        assert!(value & (Self::PCSAMPLE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PCSAMPLE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `WPAddrMask` field.
     pub const fn wpaddrmask(self) -> u8 {
         ((self.bits() >> Self::WPADDRMASK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `WPAddrMask` field.
+    pub const fn set_wpaddrmask(&mut self, value: u8) {
+        let offset = Self::WPADDRMASK_SHIFT;
+        assert!(value & (Self::WPADDRMASK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WPADDRMASK_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `BPAddrMask` field.
@@ -1972,9 +2689,27 @@ impl Dbgdevid {
         ((self.bits() >> Self::BPADDRMASK_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BPAddrMask` field.
+    pub const fn set_bpaddrmask(&mut self, value: u8) {
+        let offset = Self::BPADDRMASK_SHIFT;
+        assert!(value & (Self::BPADDRMASK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BPADDRMASK_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `VectorCatch` field.
     pub const fn vectorcatch(self) -> u8 {
         ((self.bits() >> Self::VECTORCATCH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `VectorCatch` field.
+    pub const fn set_vectorcatch(&mut self, value: u8) {
+        let offset = Self::VECTORCATCH_SHIFT;
+        assert!(value & (Self::VECTORCATCH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VECTORCATCH_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `VirtExtns` field.
@@ -1982,9 +2717,27 @@ impl Dbgdevid {
         ((self.bits() >> Self::VIRTEXTNS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `VirtExtns` field.
+    pub const fn set_virtextns(&mut self, value: u8) {
+        let offset = Self::VIRTEXTNS_SHIFT;
+        assert!(value & (Self::VIRTEXTNS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VIRTEXTNS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
         ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `DoubleLock` field.
+    pub const fn set_doublelock(&mut self, value: u8) {
+        let offset = Self::DOUBLELOCK_SHIFT;
+        assert!(value & (Self::DOUBLELOCK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DOUBLELOCK_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `AuxRegs` field.
@@ -1992,9 +2745,27 @@ impl Dbgdevid {
         ((self.bits() >> Self::AUXREGS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `AuxRegs` field.
+    pub const fn set_auxregs(&mut self, value: u8) {
+        let offset = Self::AUXREGS_SHIFT;
+        assert!(value & (Self::AUXREGS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AUXREGS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CIDMask` field.
     pub const fn cidmask(self) -> u8 {
         ((self.bits() >> Self::CIDMASK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CIDMask` field.
+    pub const fn set_cidmask(&mut self, value: u8) {
+        let offset = Self::CIDMASK_SHIFT;
+        assert!(value & (Self::CIDMASK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CIDMASK_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2015,6 +2786,15 @@ impl Dbgdevid1 {
     /// Returns the value of the `PCSROffset` field.
     pub const fn pcsroffset(self) -> u8 {
         ((self.bits() >> Self::PCSROFFSET_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `PCSROffset` field.
+    pub const fn set_pcsroffset(&mut self, value: u8) {
+        let offset = Self::PCSROFFSET_SHIFT;
+        assert!(value & (Self::PCSROFFSET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PCSROFFSET_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2059,9 +2839,27 @@ impl Dbgdidr {
         ((self.bits() >> Self::VERSION_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Version` field.
+    pub const fn set_version(&mut self, value: u8) {
+        let offset = Self::VERSION_SHIFT;
+        assert!(value & (Self::VERSION_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VERSION_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
         ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CTX_CMPs` field.
+    pub const fn set_ctx_cmps(&mut self, value: u8) {
+        let offset = Self::CTX_CMPS_SHIFT;
+        assert!(value & (Self::CTX_CMPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CTX_CMPS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `BRPs` field.
@@ -2069,9 +2867,27 @@ impl Dbgdidr {
         ((self.bits() >> Self::BRPS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BRPs` field.
+    pub const fn set_brps(&mut self, value: u8) {
+        let offset = Self::BRPS_SHIFT;
+        assert!(value & (Self::BRPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BRPS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
         ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `WRPs` field.
+    pub const fn set_wrps(&mut self, value: u8) {
+        let offset = Self::WRPS_SHIFT;
+        assert!(value & (Self::WRPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WRPS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2098,9 +2914,27 @@ impl Dbgdrar {
         ((self.bits() >> Self::VALID_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `Valid` field.
+    pub const fn set_valid(&mut self, value: u8) {
+        let offset = Self::VALID_SHIFT;
+        assert!(value & (Self::VALID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VALID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ROMADDR[47:12]` field.
     pub const fn romaddr_47_12(self) -> u64 {
         ((self.bits() >> Self::ROMADDR_47_12_SHIFT) & 0b111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ROMADDR[47:12]` field.
+    pub const fn set_romaddr_47_12(&mut self, value: u64) {
+        let offset = Self::ROMADDR_47_12_SHIFT;
+        assert!(value & (Self::ROMADDR_47_12_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ROMADDR_47_12_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -2183,9 +3017,27 @@ impl Dbgdscrext {
         ((self.bits() >> Self::MOE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MOE` field.
+    pub const fn set_moe(&mut self, value: u8) {
+        let offset = Self::MOE_SHIFT;
+        assert!(value & (Self::MOE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MOE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
         ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `INTdis` field.
+    pub const fn set_intdis(&mut self, value: u8) {
+        let offset = Self::INTDIS_SHIFT;
+        assert!(value & (Self::INTDIS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INTDIS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2235,6 +3087,15 @@ impl Dbgdscrint {
     pub const fn moe(self) -> u8 {
         ((self.bits() >> Self::MOE_SHIFT) & 0b1111) as u8
     }
+
+    /// Sets the value of the `MOE` field.
+    pub const fn set_moe(&mut self, value: u8) {
+        let offset = Self::MOE_SHIFT;
+        assert!(value & (Self::MOE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MOE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2254,6 +3115,15 @@ impl Dbgdtrrxext {
     /// Returns the value of the `DTRRX` field.
     pub const fn dtrrx(self) -> u32 {
         ((self.bits() >> Self::DTRRX_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `DTRRX` field.
+    pub const fn set_dtrrx(&mut self, value: u32) {
+        let offset = Self::DTRRX_SHIFT;
+        assert!(value & (Self::DTRRX_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DTRRX_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2275,6 +3145,15 @@ impl Dbgdtrrxint {
     pub const fn dtrrx(self) -> u32 {
         ((self.bits() >> Self::DTRRX_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `DTRRX` field.
+    pub const fn set_dtrrx(&mut self, value: u32) {
+        let offset = Self::DTRRX_SHIFT;
+        assert!(value & (Self::DTRRX_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DTRRX_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2295,6 +3174,15 @@ impl Dbgdtrtxext {
     pub const fn dtrtx(self) -> u32 {
         ((self.bits() >> Self::DTRTX_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `DTRTX` field.
+    pub const fn set_dtrtx(&mut self, value: u32) {
+        let offset = Self::DTRTX_SHIFT;
+        assert!(value & (Self::DTRTX_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DTRTX_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2314,6 +3202,15 @@ impl Dbgdtrtxint {
     /// Returns the value of the `DTRTX` field.
     pub const fn dtrtx(self) -> u32 {
         ((self.bits() >> Self::DTRTX_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `DTRTX` field.
+    pub const fn set_dtrtx(&mut self, value: u32) {
+        let offset = Self::DTRTX_SHIFT;
+        assert!(value & (Self::DTRTX_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DTRTX_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2350,6 +3247,15 @@ impl Dbgoseccr {
     pub const fn edeccr(self) -> u32 {
         ((self.bits() >> Self::EDECCR_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `EDECCR` field.
+    pub const fn set_edeccr(&mut self, value: u32) {
+        let offset = Self::EDECCR_SHIFT;
+        assert!(value & (Self::EDECCR_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EDECCR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2369,6 +3275,15 @@ impl Dbgoslar {
     /// Returns the value of the `OSLA` field.
     pub const fn osla(self) -> u32 {
         ((self.bits() >> Self::OSLA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `OSLA` field.
+    pub const fn set_osla(&mut self, value: u32) {
+        let offset = Self::OSLA_SHIFT;
+        assert!(value & (Self::OSLA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::OSLA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2527,6 +3442,15 @@ impl Dfar {
     pub const fn va(self) -> u32 {
         ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `VA` field.
+    pub const fn set_va(&mut self, value: u32) {
+        let offset = Self::VA_SHIFT;
+        assert!(value & (Self::VA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2576,14 +3500,41 @@ impl Dfsr {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `STATUS` field.
+    pub const fn set_status(&mut self, value: u8) {
+        let offset = Self::STATUS_SHIFT;
+        assert!(value & (Self::STATUS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Domain` field.
     pub const fn domain(self) -> u8 {
         ((self.bits() >> Self::DOMAIN_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Domain` field.
+    pub const fn set_domain(&mut self, value: u8) {
+        let offset = Self::DOMAIN_SHIFT;
+        assert!(value & (Self::DOMAIN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DOMAIN_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `AET` field.
+    pub const fn set_aet(&mut self, value: u8) {
+        let offset = Self::AET_SHIFT;
+        assert!(value & (Self::AET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AET_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2626,9 +3577,27 @@ impl Disr {
         ((self.bits() >> Self::DFSC_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `DFSC` field.
+    pub const fn set_dfsc(&mut self, value: u8) {
+        let offset = Self::DFSC_SHIFT;
+        assert!(value & (Self::DFSC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DFSC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+    }
+
+    /// Sets the value of the `STATUS` field.
+    pub const fn set_status(&mut self, value: u8) {
+        let offset = Self::STATUS_SHIFT;
+        assert!(value & (Self::STATUS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2681,14 +3650,41 @@ impl DisrEl1 {
         ((self.bits() >> Self::DFSC_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `DFSC` field.
+    pub const fn set_dfsc(&mut self, value: u8) {
+        let offset = Self::DFSC_SHIFT;
+        assert!(value & (Self::DFSC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DFSC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `AET` field.
+    pub const fn set_aet(&mut self, value: u8) {
+        let offset = Self::AET_SHIFT;
+        assert!(value & (Self::AET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AET_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `WU` field.
     pub const fn wu(self) -> u8 {
         ((self.bits() >> Self::WU_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `WU` field.
+    pub const fn set_wu(&mut self, value: u8) {
+        let offset = Self::WU_SHIFT;
+        assert!(value & (Self::WU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WU_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -2726,6 +3722,15 @@ impl Dlr {
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u32 {
         ((self.bits() >> Self::ADDR_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ADDR` field.
+    pub const fn set_addr(&mut self, value: u32) {
+        let offset = Self::ADDR_SHIFT;
+        assert!(value & (Self::ADDR_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2812,9 +3817,27 @@ impl Dspsr {
         ((self.bits() >> Self::M_4_0_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `M[4:0]` field.
+    pub const fn set_m_4_0(&mut self, value: u8) {
+        let offset = Self::M_4_0_SHIFT;
+        assert!(value & (Self::M_4_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::M_4_0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `GE` field.
+    pub const fn set_ge(&mut self, value: u8) {
+        let offset = Self::GE_SHIFT;
+        assert!(value & (Self::GE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2858,6 +3881,15 @@ impl ElrEl1 {
         ((self.bits() >> Self::ADDR_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `ADDR` field.
+    pub const fn set_addr(&mut self, value: u64) {
+        let offset = Self::ADDR_SHIFT;
+        assert!(value & (Self::ADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -2881,6 +3913,15 @@ impl ElrEl2 {
         ((self.bits() >> Self::ADDR_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `ADDR` field.
+    pub const fn set_addr(&mut self, value: u64) {
+        let offset = Self::ADDR_SHIFT;
+        assert!(value & (Self::ADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -2903,6 +3944,15 @@ impl ElrHyp {
     pub const fn addr(self) -> u32 {
         ((self.bits() >> Self::ADDR_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ADDR` field.
+    pub const fn set_addr(&mut self, value: u32) {
+        let offset = Self::ADDR_SHIFT;
+        assert!(value & (Self::ADDR_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2922,6 +3972,15 @@ impl Erridr {
     /// Returns the value of the `NUM` field.
     pub const fn num(self) -> u16 {
         ((self.bits() >> Self::NUM_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `NUM` field.
+    pub const fn set_num(&mut self, value: u16) {
+        let offset = Self::NUM_SHIFT;
+        assert!(value & (Self::NUM_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NUM_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2943,6 +4002,15 @@ impl Errselr {
     pub const fn sel(self) -> u16 {
         ((self.bits() >> Self::SEL_SHIFT) & 0b1111111111111111) as u16
     }
+
+    /// Sets the value of the `SEL` field.
+    pub const fn set_sel(&mut self, value: u16) {
+        let offset = Self::SEL_SHIFT;
+        assert!(value & (Self::SEL_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEL_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -2962,6 +4030,15 @@ impl Erxaddr {
     /// Returns the value of the `ERRnADDRlo` field.
     pub const fn errnaddrlo(self) -> u32 {
         ((self.bits() >> Self::ERRNADDRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnADDRlo` field.
+    pub const fn set_errnaddrlo(&mut self, value: u32) {
+        let offset = Self::ERRNADDRLO_SHIFT;
+        assert!(value & (Self::ERRNADDRLO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNADDRLO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -2983,6 +4060,15 @@ impl Erxaddr2 {
     pub const fn errnaddrhi(self) -> u32 {
         ((self.bits() >> Self::ERRNADDRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnADDRhi` field.
+    pub const fn set_errnaddrhi(&mut self, value: u32) {
+        let offset = Self::ERRNADDRHI_SHIFT;
+        assert!(value & (Self::ERRNADDRHI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNADDRHI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3002,6 +4088,15 @@ impl Erxctlr {
     /// Returns the value of the `ERRnCTLRlo` field.
     pub const fn errnctlrlo(self) -> u32 {
         ((self.bits() >> Self::ERRNCTLRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnCTLRlo` field.
+    pub const fn set_errnctlrlo(&mut self, value: u32) {
+        let offset = Self::ERRNCTLRLO_SHIFT;
+        assert!(value & (Self::ERRNCTLRLO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNCTLRLO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3023,6 +4118,15 @@ impl Erxctlr2 {
     pub const fn errnctlrhi(self) -> u32 {
         ((self.bits() >> Self::ERRNCTLRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnCTLRhi` field.
+    pub const fn set_errnctlrhi(&mut self, value: u32) {
+        let offset = Self::ERRNCTLRHI_SHIFT;
+        assert!(value & (Self::ERRNCTLRHI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNCTLRHI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3042,6 +4146,15 @@ impl Erxfr {
     /// Returns the value of the `ERRnFRlo` field.
     pub const fn errnfrlo(self) -> u32 {
         ((self.bits() >> Self::ERRNFRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnFRlo` field.
+    pub const fn set_errnfrlo(&mut self, value: u32) {
+        let offset = Self::ERRNFRLO_SHIFT;
+        assert!(value & (Self::ERRNFRLO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNFRLO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3063,6 +4176,15 @@ impl Erxfr2 {
     pub const fn errnfrhi(self) -> u32 {
         ((self.bits() >> Self::ERRNFRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnFRhi` field.
+    pub const fn set_errnfrhi(&mut self, value: u32) {
+        let offset = Self::ERRNFRHI_SHIFT;
+        assert!(value & (Self::ERRNFRHI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNFRHI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3082,6 +4204,15 @@ impl Erxmisc0 {
     /// Returns the value of the `ERRnMISC0lo` field.
     pub const fn errnmisc0lo(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC0LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnMISC0lo` field.
+    pub const fn set_errnmisc0lo(&mut self, value: u32) {
+        let offset = Self::ERRNMISC0LO_SHIFT;
+        assert!(value & (Self::ERRNMISC0LO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC0LO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3103,6 +4234,15 @@ impl Erxmisc1 {
     pub const fn errnmisc0hi(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC0HI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnMISC0hi` field.
+    pub const fn set_errnmisc0hi(&mut self, value: u32) {
+        let offset = Self::ERRNMISC0HI_SHIFT;
+        assert!(value & (Self::ERRNMISC0HI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC0HI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3122,6 +4262,15 @@ impl Erxmisc2 {
     /// Returns the value of the `ERRnMISC1lo` field.
     pub const fn errnmisc1lo(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC1LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnMISC1lo` field.
+    pub const fn set_errnmisc1lo(&mut self, value: u32) {
+        let offset = Self::ERRNMISC1LO_SHIFT;
+        assert!(value & (Self::ERRNMISC1LO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC1LO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3143,6 +4292,15 @@ impl Erxmisc3 {
     pub const fn errnmisc1hi(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC1HI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnMISC1hi` field.
+    pub const fn set_errnmisc1hi(&mut self, value: u32) {
+        let offset = Self::ERRNMISC1HI_SHIFT;
+        assert!(value & (Self::ERRNMISC1HI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC1HI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3162,6 +4320,15 @@ impl Erxmisc4 {
     /// Returns the value of the `ERRnMISC2lo` field.
     pub const fn errnmisc2lo(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC2LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnMISC2lo` field.
+    pub const fn set_errnmisc2lo(&mut self, value: u32) {
+        let offset = Self::ERRNMISC2LO_SHIFT;
+        assert!(value & (Self::ERRNMISC2LO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC2LO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3183,6 +4350,15 @@ impl Erxmisc5 {
     pub const fn errnmisc2hi(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC2HI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnMISC2hi` field.
+    pub const fn set_errnmisc2hi(&mut self, value: u32) {
+        let offset = Self::ERRNMISC2HI_SHIFT;
+        assert!(value & (Self::ERRNMISC2HI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC2HI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3202,6 +4378,15 @@ impl Erxmisc6 {
     /// Returns the value of the `ERRnMISC3lo` field.
     pub const fn errnmisc3lo(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC3LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnMISC3lo` field.
+    pub const fn set_errnmisc3lo(&mut self, value: u32) {
+        let offset = Self::ERRNMISC3LO_SHIFT;
+        assert!(value & (Self::ERRNMISC3LO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC3LO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3223,6 +4408,15 @@ impl Erxmisc7 {
     pub const fn errnmisc3hi(self) -> u32 {
         ((self.bits() >> Self::ERRNMISC3HI_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ERRnMISC3hi` field.
+    pub const fn set_errnmisc3hi(&mut self, value: u32) {
+        let offset = Self::ERRNMISC3HI_SHIFT;
+        assert!(value & (Self::ERRNMISC3HI_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNMISC3HI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -3242,6 +4436,15 @@ impl Erxstatus {
     /// Returns the value of the `ERRnSTATUSlo` field.
     pub const fn errnstatuslo(self) -> u32 {
         ((self.bits() >> Self::ERRNSTATUSLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ERRnSTATUSlo` field.
+    pub const fn set_errnstatuslo(&mut self, value: u32) {
+        let offset = Self::ERRNSTATUSLO_SHIFT;
+        assert!(value & (Self::ERRNSTATUSLO_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERRNSTATUSLO_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -3278,14 +4481,41 @@ impl EsrEl1 {
         ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `ISS` field.
+    pub const fn set_iss(&mut self, value: u32) {
+        let offset = Self::ISS_SHIFT;
+        assert!(value & (Self::ISS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `EC` field.
+    pub const fn set_ec(&mut self, value: u8) {
+        let offset = Self::EC_SHIFT;
+        assert!(value & (Self::EC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
         ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ISS2` field.
+    pub const fn set_iss2(&mut self, value: u32) {
+        let offset = Self::ISS2_SHIFT;
+        assert!(value & (Self::ISS2_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS2_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3322,14 +4552,41 @@ impl EsrEl2 {
         ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `ISS` field.
+    pub const fn set_iss(&mut self, value: u32) {
+        let offset = Self::ISS_SHIFT;
+        assert!(value & (Self::ISS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `EC` field.
+    pub const fn set_ec(&mut self, value: u8) {
+        let offset = Self::EC_SHIFT;
+        assert!(value & (Self::EC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
         ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ISS2` field.
+    pub const fn set_iss2(&mut self, value: u32) {
+        let offset = Self::ISS2_SHIFT;
+        assert!(value & (Self::ISS2_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS2_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3366,14 +4623,41 @@ impl EsrEl3 {
         ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `ISS` field.
+    pub const fn set_iss(&mut self, value: u32) {
+        let offset = Self::ISS_SHIFT;
+        assert!(value & (Self::ISS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `EC` field.
+    pub const fn set_ec(&mut self, value: u8) {
+        let offset = Self::EC_SHIFT;
+        assert!(value & (Self::EC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
         ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ISS2` field.
+    pub const fn set_iss2(&mut self, value: u32) {
+        let offset = Self::ISS2_SHIFT;
+        assert!(value & (Self::ISS2_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS2_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3398,6 +4682,15 @@ impl FarEl1 {
         ((self.bits() >> Self::VA_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `VA` field.
+    pub const fn set_va(&mut self, value: u64) {
+        let offset = Self::VA_SHIFT;
+        assert!(value & (Self::VA_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -3420,6 +4713,15 @@ impl FarEl2 {
     pub const fn va(self) -> u64 {
         ((self.bits() >> Self::VA_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `VA` field.
+    pub const fn set_va(&mut self, value: u64) {
+        let offset = Self::VA_SHIFT;
+        assert!(value & (Self::VA_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VA_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3446,6 +4748,15 @@ impl GcrEl1 {
     /// Returns the value of the `Exclude` field.
     pub const fn exclude(self) -> u16 {
         ((self.bits() >> Self::EXCLUDE_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `Exclude` field.
+    pub const fn set_exclude(&mut self, value: u16) {
+        let offset = Self::EXCLUDE_SHIFT;
+        assert!(value & (Self::EXCLUDE_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EXCLUDE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3616,10 +4927,29 @@ impl GpccrEl3 {
         ((self.bits() >> Self::PPS_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `PPS` field.
+    pub const fn set_pps(&mut self, value: u8) {
+        let offset = Self::PPS_SHIFT;
+        assert!(value & (Self::PPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PPS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IRGN` field.
     pub fn irgn(self) -> crate::manual::Cacheability {
         crate::manual::Cacheability::try_from(((self.bits() >> Self::IRGN_SHIFT) & 0b11) as u8)
             .unwrap()
+    }
+
+    /// Sets the value of the `IRGN` field.
+    pub fn set_irgn(&mut self, value: crate::manual::Cacheability) {
+        let offset = Self::IRGN_SHIFT;
+        let value: u8 = value.into();
+        assert!(value & (Self::IRGN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ORGN` field.
@@ -3628,10 +4958,30 @@ impl GpccrEl3 {
             .unwrap()
     }
 
+    /// Sets the value of the `ORGN` field.
+    pub fn set_orgn(&mut self, value: crate::manual::Cacheability) {
+        let offset = Self::ORGN_SHIFT;
+        let value: u8 = value.into();
+        assert!(value & (Self::ORGN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SH` field.
     pub fn sh(self) -> crate::manual::Shareability {
         crate::manual::Shareability::try_from(((self.bits() >> Self::SH_SHIFT) & 0b11) as u8)
             .unwrap()
+    }
+
+    /// Sets the value of the `SH` field.
+    pub fn set_sh(&mut self, value: crate::manual::Shareability) {
+        let offset = Self::SH_SHIFT;
+        let value: u8 = value.into();
+        assert!(value & (Self::SH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PGS` field.
@@ -3639,9 +4989,27 @@ impl GpccrEl3 {
         ((self.bits() >> Self::PGS_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `PGS` field.
+    pub const fn set_pgs(&mut self, value: u8) {
+        let offset = Self::PGS_SHIFT;
+        assert!(value & (Self::PGS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PGS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `L0GPTSZ` field.
     pub const fn l0gptsz(self) -> u8 {
         ((self.bits() >> Self::L0GPTSZ_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `L0GPTSZ` field.
+    pub const fn set_l0gptsz(&mut self, value: u8) {
+        let offset = Self::L0GPTSZ_SHIFT;
+        assert!(value & (Self::L0GPTSZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L0GPTSZ_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3670,9 +5038,27 @@ impl GptbrEl3 {
         ((self.bits() >> Self::BADDR_SHIFT) & 0b1111111111111111111111111111111111111111) as u64
     }
 
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & (Self::BADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BADDR[43:40]` field.
     pub const fn baddr_43_40(self) -> u8 {
         ((self.bits() >> Self::BADDR_43_40_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BADDR[43:40]` field.
+    pub const fn set_baddr_43_40(&mut self, value: u8) {
+        let offset = Self::BADDR_43_40_SHIFT;
+        assert!(value & (Self::BADDR_43_40_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_43_40_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -3842,6 +5228,15 @@ impl Hcr {
     /// Returns the value of the `BSU` field.
     pub const fn bsu(self) -> u8 {
         ((self.bits() >> Self::BSU_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `BSU` field.
+    pub const fn set_bsu(&mut self, value: u8) {
+        let offset = Self::BSU_SHIFT;
+        assert!(value & (Self::BSU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BSU_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -4300,9 +5695,27 @@ impl HcrEl2 {
         ((self.bits() >> Self::BSU_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `BSU` field.
+    pub const fn set_bsu(&mut self, value: u8) {
+        let offset = Self::BSU_SHIFT;
+        assert!(value & (Self::BSU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BSU_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TWEDEL` field.
+    pub const fn set_twedel(&mut self, value: u8) {
+        let offset = Self::TWEDEL_SHIFT;
+        assert!(value & (Self::TWEDEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -4380,6 +5793,15 @@ impl Hdcr {
     pub const fn hpmn(self) -> u8 {
         ((self.bits() >> Self::HPMN_SHIFT) & 0b11111) as u8
     }
+
+    /// Sets the value of the `HPMN` field.
+    pub const fn set_hpmn(&mut self, value: u8) {
+        let offset = Self::HPMN_SHIFT;
+        assert!(value & (Self::HPMN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HPMN_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -4399,6 +5821,15 @@ impl Hdfar {
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
         ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `VA` field.
+    pub const fn set_va(&mut self, value: u32) {
+        let offset = Self::VA_SHIFT;
+        assert!(value & (Self::VA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -4846,9 +6277,27 @@ impl Hfgrtr2El2 {
         ((self.bits() >> Self::NFGDTN_EL1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `nFGDTn_EL1` field.
+    pub const fn set_nfgdtn_el1(&mut self, value: u8) {
+        let offset = Self::NFGDTN_EL1_SHIFT;
+        assert!(value & (Self::NFGDTN_EL1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
         ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `nAFGDTn_EL1` field.
+    pub const fn set_nafgdtn_el1(&mut self, value: u8) {
+        let offset = Self::NAFGDTN_EL1_SHIFT;
+        assert!(value & (Self::NAFGDTN_EL1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NAFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -5005,9 +6454,27 @@ impl Hfgwtr2El2 {
         ((self.bits() >> Self::NFGDTN_EL1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `nFGDTn_EL1` field.
+    pub const fn set_nfgdtn_el1(&mut self, value: u8) {
+        let offset = Self::NFGDTN_EL1_SHIFT;
+        assert!(value & (Self::NFGDTN_EL1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
         ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `nAFGDTn_EL1` field.
+    pub const fn set_nafgdtn_el1(&mut self, value: u8) {
+        let offset = Self::NAFGDTN_EL1_SHIFT;
+        assert!(value & (Self::NAFGDTN_EL1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NAFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -5242,6 +6709,15 @@ impl Hifar {
     pub const fn va(self) -> u32 {
         ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `VA` field.
+    pub const fn set_va(&mut self, value: u32) {
+        let offset = Self::VA_SHIFT;
+        assert!(value & (Self::VA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -5262,6 +6738,16 @@ impl Hmair0 {
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 4);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n < 4);
+        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -5284,6 +6770,16 @@ impl Hmair1 {
         assert!(n >= 4 && n < 8);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & 0b11111111) as u8
     }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n >= 4 && n < 8);
+        let offset = Self::ATTR_SHIFT + (n - 4) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -5303,6 +6799,15 @@ impl Hpfar {
     /// Returns the value of the `FIPA[39:12]` field.
     pub const fn fipa_39_12(self) -> u32 {
         ((self.bits() >> Self::FIPA_39_12_SHIFT) & 0b1111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `FIPA[39:12]` field.
+    pub const fn set_fipa_39_12(&mut self, value: u32) {
+        let offset = Self::FIPA_39_12_SHIFT;
+        assert!(value & (Self::FIPA_39_12_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FIPA_39_12_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -5329,6 +6834,15 @@ impl HpfarEl2 {
     /// Returns the value of the `FIPA` field.
     pub const fn fipa(self) -> u64 {
         ((self.bits() >> Self::FIPA_SHIFT) & 0b11111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `FIPA` field.
+    pub const fn set_fipa(&mut self, value: u64) {
+        let offset = Self::FIPA_SHIFT;
+        assert!(value & (Self::FIPA_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FIPA_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -5439,9 +6953,27 @@ impl Hsr {
         ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `ISS` field.
+    pub const fn set_iss(&mut self, value: u32) {
+        let offset = Self::ISS_SHIFT;
+        assert!(value & (Self::ISS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
+    }
+
+    /// Sets the value of the `EC` field.
+    pub const fn set_ec(&mut self, value: u8) {
+        let offset = Self::EC_SHIFT;
+        assert!(value & (Self::EC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -5498,9 +7030,27 @@ impl Htcr {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -5508,9 +7058,27 @@ impl Htcr {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -5531,6 +7099,15 @@ impl Htpidr {
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
         ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TID` field.
+    pub const fn set_tid(&mut self, value: u32) {
+        let offset = Self::TID_SHIFT;
+        assert!(value & (Self::TID_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -5564,6 +7141,15 @@ impl Htrfcr {
     pub const fn ts(self) -> u8 {
         ((self.bits() >> Self::TS_SHIFT) & 0b11) as u8
     }
+
+    /// Sets the value of the `TS` field.
+    pub const fn set_ts(&mut self, value: u8) {
+        let offset = Self::TS_SHIFT;
+        assert!(value & (Self::TS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -5589,6 +7175,15 @@ impl Httbr {
         ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
             as u64
     }
+
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & (Self::BADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -5608,6 +7203,15 @@ impl Hvbar {
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `VBA` field.
+    pub const fn set_vba(&mut self, value: u32) {
+        let offset = Self::VBA_SHIFT;
+        assert!(value & (Self::VBA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -5774,6 +7378,15 @@ impl IchHcrEl2 {
     pub const fn eoicount(self) -> u8 {
         ((self.bits() >> Self::EOICOUNT_SHIFT) & 0b11111) as u8
     }
+
+    /// Sets the value of the `EOIcount` field.
+    pub const fn set_eoicount(&mut self, value: u8) {
+        let offset = Self::EOICOUNT_SHIFT;
+        assert!(value & (Self::EOICOUNT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EOICOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -5829,9 +7442,27 @@ impl IchVmcrEl2 {
         ((self.bits() >> Self::VBPR1_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `VBPR1` field.
+    pub const fn set_vbpr1(&mut self, value: u8) {
+        let offset = Self::VBPR1_SHIFT;
+        assert!(value & (Self::VBPR1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBPR1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VBPR0` field.
     pub const fn vbpr0(self) -> u8 {
         ((self.bits() >> Self::VBPR0_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `VBPR0` field.
+    pub const fn set_vbpr0(&mut self, value: u8) {
+        let offset = Self::VBPR0_SHIFT;
+        assert!(value & (Self::VBPR0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBPR0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -5916,9 +7547,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::DEBUGVER_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DebugVer` field.
+    pub const fn set_debugver(&mut self, value: u8) {
+        let offset = Self::DEBUGVER_SHIFT;
+        assert!(value & (Self::DEBUGVER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DEBUGVER_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TraceVer` field.
     pub const fn tracever(self) -> u8 {
         ((self.bits() >> Self::TRACEVER_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TraceVer` field.
+    pub const fn set_tracever(&mut self, value: u8) {
+        let offset = Self::TRACEVER_SHIFT;
+        assert!(value & (Self::TRACEVER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TRACEVER_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMUVer` field.
@@ -5926,9 +7575,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::PMUVER_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PMUVer` field.
+    pub const fn set_pmuver(&mut self, value: u8) {
+        let offset = Self::PMUVER_SHIFT;
+        assert!(value & (Self::PMUVER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMUVER_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
         ((self.bits() >> Self::BRPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BRPs` field.
+    pub const fn set_brps(&mut self, value: u8) {
+        let offset = Self::BRPS_SHIFT;
+        assert!(value & (Self::BRPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BRPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMSS` field.
@@ -5936,9 +7603,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::PMSS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PMSS` field.
+    pub const fn set_pmss(&mut self, value: u8) {
+        let offset = Self::PMSS_SHIFT;
+        assert!(value & (Self::PMSS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMSS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
         ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `WRPs` field.
+    pub const fn set_wrps(&mut self, value: u8) {
+        let offset = Self::WRPS_SHIFT;
+        assert!(value & (Self::WRPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WRPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SEBEP` field.
@@ -5946,9 +7631,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::SEBEP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SEBEP` field.
+    pub const fn set_sebep(&mut self, value: u8) {
+        let offset = Self::SEBEP_SHIFT;
+        assert!(value & (Self::SEBEP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEBEP_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
         ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CTX_CMPs` field.
+    pub const fn set_ctx_cmps(&mut self, value: u8) {
+        let offset = Self::CTX_CMPS_SHIFT;
+        assert!(value & (Self::CTX_CMPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CTX_CMPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMSVer` field.
@@ -5956,9 +7659,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::PMSVER_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PMSVer` field.
+    pub const fn set_pmsver(&mut self, value: u8) {
+        let offset = Self::PMSVER_SHIFT;
+        assert!(value & (Self::PMSVER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMSVER_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
         ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `DoubleLock` field.
+    pub const fn set_doublelock(&mut self, value: u8) {
+        let offset = Self::DOUBLELOCK_SHIFT;
+        assert!(value & (Self::DOUBLELOCK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DOUBLELOCK_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TraceFilt` field.
@@ -5966,9 +7687,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::TRACEFILT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TraceFilt` field.
+    pub const fn set_tracefilt(&mut self, value: u8) {
+        let offset = Self::TRACEFILT_SHIFT;
+        assert!(value & (Self::TRACEFILT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TRACEFILT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TraceBuffer` field.
     pub const fn tracebuffer(self) -> u8 {
         ((self.bits() >> Self::TRACEBUFFER_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TraceBuffer` field.
+    pub const fn set_tracebuffer(&mut self, value: u8) {
+        let offset = Self::TRACEBUFFER_SHIFT;
+        assert!(value & (Self::TRACEBUFFER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TRACEBUFFER_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `MTPMU` field.
@@ -5976,9 +7715,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::MTPMU_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MTPMU` field.
+    pub const fn set_mtpmu(&mut self, value: u8) {
+        let offset = Self::MTPMU_SHIFT;
+        assert!(value & (Self::MTPMU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MTPMU_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BRBE` field.
     pub const fn brbe(self) -> u8 {
         ((self.bits() >> Self::BRBE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BRBE` field.
+    pub const fn set_brbe(&mut self, value: u8) {
+        let offset = Self::BRBE_SHIFT;
+        assert!(value & (Self::BRBE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BRBE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ExtTrcBuff` field.
@@ -5986,9 +7743,27 @@ impl IdAa64dfr0El1 {
         ((self.bits() >> Self::EXTTRCBUFF_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `ExtTrcBuff` field.
+    pub const fn set_exttrcbuff(&mut self, value: u8) {
+        let offset = Self::EXTTRCBUFF_SHIFT;
+        assert!(value & (Self::EXTTRCBUFF_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EXTTRCBUFF_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
         ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `HPMN0` field.
+    pub const fn set_hpmn0(&mut self, value: u8) {
+        let offset = Self::HPMN0_SHIFT;
+        assert!(value & (Self::HPMN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HPMN0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6053,9 +7828,27 @@ impl IdAa64dfr1El1 {
         ((self.bits() >> Self::SYSPMUID_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `SYSPMUID` field.
+    pub const fn set_syspmuid(&mut self, value: u8) {
+        let offset = Self::SYSPMUID_SHIFT;
+        assert!(value & (Self::SYSPMUID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SYSPMUID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
         ((self.bits() >> Self::BRPS_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `BRPs` field.
+    pub const fn set_brps(&mut self, value: u8) {
+        let offset = Self::BRPS_SHIFT;
+        assert!(value & (Self::BRPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BRPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `WRPs` field.
@@ -6063,9 +7856,27 @@ impl IdAa64dfr1El1 {
         ((self.bits() >> Self::WRPS_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `WRPs` field.
+    pub const fn set_wrps(&mut self, value: u8) {
+        let offset = Self::WRPS_SHIFT;
+        assert!(value & (Self::WRPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WRPS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
         ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `CTX_CMPs` field.
+    pub const fn set_ctx_cmps(&mut self, value: u8) {
+        let offset = Self::CTX_CMPS_SHIFT;
+        assert!(value & (Self::CTX_CMPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CTX_CMPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SPMU` field.
@@ -6073,9 +7884,27 @@ impl IdAa64dfr1El1 {
         ((self.bits() >> Self::SPMU_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SPMU` field.
+    pub const fn set_spmu(&mut self, value: u8) {
+        let offset = Self::SPMU_SHIFT;
+        assert!(value & (Self::SPMU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPMU_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMICNTR` field.
     pub const fn pmicntr(self) -> u8 {
         ((self.bits() >> Self::PMICNTR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `PMICNTR` field.
+    pub const fn set_pmicntr(&mut self, value: u8) {
+        let offset = Self::PMICNTR_SHIFT;
+        assert!(value & (Self::PMICNTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMICNTR_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ABLE` field.
@@ -6083,9 +7912,27 @@ impl IdAa64dfr1El1 {
         ((self.bits() >> Self::ABLE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `ABLE` field.
+    pub const fn set_able(&mut self, value: u8) {
+        let offset = Self::ABLE_SHIFT;
+        assert!(value & (Self::ABLE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ABLE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ITE` field.
     pub const fn ite(self) -> u8 {
         ((self.bits() >> Self::ITE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ITE` field.
+    pub const fn set_ite(&mut self, value: u8) {
+        let offset = Self::ITE_SHIFT;
+        assert!(value & (Self::ITE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ITE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `EBEP` field.
@@ -6093,14 +7940,41 @@ impl IdAa64dfr1El1 {
         ((self.bits() >> Self::EBEP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `EBEP` field.
+    pub const fn set_ebep(&mut self, value: u8) {
+        let offset = Self::EBEP_SHIFT;
+        assert!(value & (Self::EBEP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EBEP_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `DPFZS` field.
     pub const fn dpfzs(self) -> u8 {
         ((self.bits() >> Self::DPFZS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DPFZS` field.
+    pub const fn set_dpfzs(&mut self, value: u8) {
+        let offset = Self::DPFZS_SHIFT;
+        assert!(value & (Self::DPFZS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DPFZS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ABL_CMPs` field.
     pub const fn abl_cmps(self) -> u8 {
         ((self.bits() >> Self::ABL_CMPS_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `ABL_CMPs` field.
+    pub const fn set_abl_cmps(&mut self, value: u8) {
+        let offset = Self::ABL_CMPS_SHIFT;
+        assert!(value & (Self::ABL_CMPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ABL_CMPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6185,9 +8059,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::DPB_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DPB` field.
+    pub const fn set_dpb(&mut self, value: u8) {
+        let offset = Self::DPB_SHIFT;
+        assert!(value & (Self::DPB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DPB_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `APA` field.
     pub const fn apa(self) -> u8 {
         ((self.bits() >> Self::APA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `APA` field.
+    pub const fn set_apa(&mut self, value: u8) {
+        let offset = Self::APA_SHIFT;
+        assert!(value & (Self::APA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::APA_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `API` field.
@@ -6195,9 +8087,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::API_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `API` field.
+    pub const fn set_api(&mut self, value: u8) {
+        let offset = Self::API_SHIFT;
+        assert!(value & (Self::API_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::API_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `JSCVT` field.
     pub const fn jscvt(self) -> u8 {
         ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `JSCVT` field.
+    pub const fn set_jscvt(&mut self, value: u8) {
+        let offset = Self::JSCVT_SHIFT;
+        assert!(value & (Self::JSCVT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::JSCVT_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `FCMA` field.
@@ -6205,9 +8115,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::FCMA_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FCMA` field.
+    pub const fn set_fcma(&mut self, value: u8) {
+        let offset = Self::FCMA_SHIFT;
+        assert!(value & (Self::FCMA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FCMA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `LRCPC` field.
     pub const fn lrcpc(self) -> u8 {
         ((self.bits() >> Self::LRCPC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `LRCPC` field.
+    pub const fn set_lrcpc(&mut self, value: u8) {
+        let offset = Self::LRCPC_SHIFT;
+        assert!(value & (Self::LRCPC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LRCPC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `GPA` field.
@@ -6215,9 +8143,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::GPA_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `GPA` field.
+    pub const fn set_gpa(&mut self, value: u8) {
+        let offset = Self::GPA_SHIFT;
+        assert!(value & (Self::GPA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GPA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `GPI` field.
     pub const fn gpi(self) -> u8 {
         ((self.bits() >> Self::GPI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `GPI` field.
+    pub const fn set_gpi(&mut self, value: u8) {
+        let offset = Self::GPI_SHIFT;
+        assert!(value & (Self::GPI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GPI_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `FRINTTS` field.
@@ -6225,9 +8171,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::FRINTTS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FRINTTS` field.
+    pub const fn set_frintts(&mut self, value: u8) {
+        let offset = Self::FRINTTS_SHIFT;
+        assert!(value & (Self::FRINTTS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FRINTTS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SB` field.
     pub const fn sb(self) -> u8 {
         ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SB` field.
+    pub const fn set_sb(&mut self, value: u8) {
+        let offset = Self::SB_SHIFT;
+        assert!(value & (Self::SB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SPECRES` field.
@@ -6235,9 +8199,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::SPECRES_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SPECRES` field.
+    pub const fn set_specres(&mut self, value: u8) {
+        let offset = Self::SPECRES_SHIFT;
+        assert!(value & (Self::SPECRES_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPECRES_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BF16` field.
     pub const fn bf16(self) -> u8 {
         ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BF16` field.
+    pub const fn set_bf16(&mut self, value: u8) {
+        let offset = Self::BF16_SHIFT;
+        assert!(value & (Self::BF16_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BF16_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `DGH` field.
@@ -6245,9 +8227,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::DGH_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DGH` field.
+    pub const fn set_dgh(&mut self, value: u8) {
+        let offset = Self::DGH_SHIFT;
+        assert!(value & (Self::DGH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DGH_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `I8MM` field.
     pub const fn i8mm(self) -> u8 {
         ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `I8MM` field.
+    pub const fn set_i8mm(&mut self, value: u8) {
+        let offset = Self::I8MM_SHIFT;
+        assert!(value & (Self::I8MM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::I8MM_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `XS` field.
@@ -6255,9 +8255,27 @@ impl IdAa64isar1El1 {
         ((self.bits() >> Self::XS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `XS` field.
+    pub const fn set_xs(&mut self, value: u8) {
+        let offset = Self::XS_SHIFT;
+        assert!(value & (Self::XS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::XS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `LS64` field.
     pub const fn ls64(self) -> u8 {
         ((self.bits() >> Self::LS64_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `LS64` field.
+    pub const fn set_ls64(&mut self, value: u8) {
+        let offset = Self::LS64_SHIFT;
+        assert!(value & (Self::LS64_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LS64_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6342,9 +8360,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::WFXT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `WFxT` field.
+    pub const fn set_wfxt(&mut self, value: u8) {
+        let offset = Self::WFXT_SHIFT;
+        assert!(value & (Self::WFXT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WFXT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `RPRES` field.
     pub const fn rpres(self) -> u8 {
         ((self.bits() >> Self::RPRES_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `RPRES` field.
+    pub const fn set_rpres(&mut self, value: u8) {
+        let offset = Self::RPRES_SHIFT;
+        assert!(value & (Self::RPRES_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RPRES_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `GPA3` field.
@@ -6352,9 +8388,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::GPA3_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `GPA3` field.
+    pub const fn set_gpa3(&mut self, value: u8) {
+        let offset = Self::GPA3_SHIFT;
+        assert!(value & (Self::GPA3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GPA3_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `APA3` field.
     pub const fn apa3(self) -> u8 {
         ((self.bits() >> Self::APA3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `APA3` field.
+    pub const fn set_apa3(&mut self, value: u8) {
+        let offset = Self::APA3_SHIFT;
+        assert!(value & (Self::APA3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::APA3_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `MOPS` field.
@@ -6362,9 +8416,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::MOPS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MOPS` field.
+    pub const fn set_mops(&mut self, value: u8) {
+        let offset = Self::MOPS_SHIFT;
+        assert!(value & (Self::MOPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MOPS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BC` field.
     pub const fn bc(self) -> u8 {
         ((self.bits() >> Self::BC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BC` field.
+    pub const fn set_bc(&mut self, value: u8) {
+        let offset = Self::BC_SHIFT;
+        assert!(value & (Self::BC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PAC_frac` field.
@@ -6372,9 +8444,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::PAC_FRAC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PAC_frac` field.
+    pub const fn set_pac_frac(&mut self, value: u8) {
+        let offset = Self::PAC_FRAC_SHIFT;
+        assert!(value & (Self::PAC_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PAC_FRAC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CLRBHB` field.
     pub const fn clrbhb(self) -> u8 {
         ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CLRBHB` field.
+    pub const fn set_clrbhb(&mut self, value: u8) {
+        let offset = Self::CLRBHB_SHIFT;
+        assert!(value & (Self::CLRBHB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CLRBHB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SYSREG_128` field.
@@ -6382,9 +8472,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::SYSREG_128_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SYSREG_128` field.
+    pub const fn set_sysreg_128(&mut self, value: u8) {
+        let offset = Self::SYSREG_128_SHIFT;
+        assert!(value & (Self::SYSREG_128_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SYSREG_128_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SYSINSTR_128` field.
     pub const fn sysinstr_128(self) -> u8 {
         ((self.bits() >> Self::SYSINSTR_128_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SYSINSTR_128` field.
+    pub const fn set_sysinstr_128(&mut self, value: u8) {
+        let offset = Self::SYSINSTR_128_SHIFT;
+        assert!(value & (Self::SYSINSTR_128_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SYSINSTR_128_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PRFMSLC` field.
@@ -6392,9 +8500,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::PRFMSLC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PRFMSLC` field.
+    pub const fn set_prfmslc(&mut self, value: u8) {
+        let offset = Self::PRFMSLC_SHIFT;
+        assert!(value & (Self::PRFMSLC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PRFMSLC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PCDPHINT` field.
     pub const fn pcdphint(self) -> u8 {
         ((self.bits() >> Self::PCDPHINT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `PCDPHINT` field.
+    pub const fn set_pcdphint(&mut self, value: u8) {
+        let offset = Self::PCDPHINT_SHIFT;
+        assert!(value & (Self::PCDPHINT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PCDPHINT_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `RPRFM` field.
@@ -6402,9 +8528,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::RPRFM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `RPRFM` field.
+    pub const fn set_rprfm(&mut self, value: u8) {
+        let offset = Self::RPRFM_SHIFT;
+        assert!(value & (Self::RPRFM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RPRFM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CSSC` field.
     pub const fn cssc(self) -> u8 {
         ((self.bits() >> Self::CSSC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CSSC` field.
+    pub const fn set_cssc(&mut self, value: u8) {
+        let offset = Self::CSSC_SHIFT;
+        assert!(value & (Self::CSSC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CSSC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `LUT` field.
@@ -6412,9 +8556,27 @@ impl IdAa64isar2El1 {
         ((self.bits() >> Self::LUT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `LUT` field.
+    pub const fn set_lut(&mut self, value: u8) {
+        let offset = Self::LUT_SHIFT;
+        assert!(value & (Self::LUT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LUT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ATS1A` field.
     pub const fn ats1a(self) -> u8 {
         ((self.bits() >> Self::ATS1A_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ATS1A` field.
+    pub const fn set_ats1a(&mut self, value: u8) {
+        let offset = Self::ATS1A_SHIFT;
+        assert!(value & (Self::ATS1A_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATS1A_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6491,9 +8653,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::PARANGE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PARange` field.
+    pub const fn set_parange(&mut self, value: u8) {
+        let offset = Self::PARANGE_SHIFT;
+        assert!(value & (Self::PARANGE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARANGE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASIDBits` field.
     pub const fn asidbits(self) -> u8 {
         ((self.bits() >> Self::ASIDBITS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ASIDBits` field.
+    pub const fn set_asidbits(&mut self, value: u8) {
+        let offset = Self::ASIDBITS_SHIFT;
+        assert!(value & (Self::ASIDBITS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASIDBITS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `BigEnd` field.
@@ -6501,9 +8681,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::BIGEND_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BigEnd` field.
+    pub const fn set_bigend(&mut self, value: u8) {
+        let offset = Self::BIGEND_SHIFT;
+        assert!(value & (Self::BIGEND_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BIGEND_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SNSMem` field.
     pub const fn snsmem(self) -> u8 {
         ((self.bits() >> Self::SNSMEM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SNSMem` field.
+    pub const fn set_snsmem(&mut self, value: u8) {
+        let offset = Self::SNSMEM_SHIFT;
+        assert!(value & (Self::SNSMEM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SNSMEM_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `BigEndEL0` field.
@@ -6511,9 +8709,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::BIGENDEL0_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BigEndEL0` field.
+    pub const fn set_bigendel0(&mut self, value: u8) {
+        let offset = Self::BIGENDEL0_SHIFT;
+        assert!(value & (Self::BIGENDEL0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BIGENDEL0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TGran16` field.
     pub const fn tgran16(self) -> u8 {
         ((self.bits() >> Self::TGRAN16_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TGran16` field.
+    pub const fn set_tgran16(&mut self, value: u8) {
+        let offset = Self::TGRAN16_SHIFT;
+        assert!(value & (Self::TGRAN16_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TGRAN16_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TGran64` field.
@@ -6521,9 +8737,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::TGRAN64_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TGran64` field.
+    pub const fn set_tgran64(&mut self, value: u8) {
+        let offset = Self::TGRAN64_SHIFT;
+        assert!(value & (Self::TGRAN64_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TGRAN64_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TGran4` field.
     pub const fn tgran4(self) -> u8 {
         ((self.bits() >> Self::TGRAN4_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TGran4` field.
+    pub const fn set_tgran4(&mut self, value: u8) {
+        let offset = Self::TGRAN4_SHIFT;
+        assert!(value & (Self::TGRAN4_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TGRAN4_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TGran16_2` field.
@@ -6531,9 +8765,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::TGRAN16_2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TGran16_2` field.
+    pub const fn set_tgran16_2(&mut self, value: u8) {
+        let offset = Self::TGRAN16_2_SHIFT;
+        assert!(value & (Self::TGRAN16_2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TGRAN16_2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TGran64_2` field.
     pub const fn tgran64_2(self) -> u8 {
         ((self.bits() >> Self::TGRAN64_2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TGran64_2` field.
+    pub const fn set_tgran64_2(&mut self, value: u8) {
+        let offset = Self::TGRAN64_2_SHIFT;
+        assert!(value & (Self::TGRAN64_2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TGRAN64_2_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TGran4_2` field.
@@ -6541,9 +8793,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::TGRAN4_2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TGran4_2` field.
+    pub const fn set_tgran4_2(&mut self, value: u8) {
+        let offset = Self::TGRAN4_2_SHIFT;
+        assert!(value & (Self::TGRAN4_2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TGRAN4_2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ExS` field.
     pub const fn exs(self) -> u8 {
         ((self.bits() >> Self::EXS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ExS` field.
+    pub const fn set_exs(&mut self, value: u8) {
+        let offset = Self::EXS_SHIFT;
+        assert!(value & (Self::EXS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EXS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `FGT` field.
@@ -6551,9 +8821,27 @@ impl IdAa64mmfr0El1 {
         ((self.bits() >> Self::FGT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FGT` field.
+    pub const fn set_fgt(&mut self, value: u8) {
+        let offset = Self::FGT_SHIFT;
+        assert!(value & (Self::FGT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FGT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ECV` field.
     pub const fn ecv(self) -> u8 {
         ((self.bits() >> Self::ECV_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ECV` field.
+    pub const fn set_ecv(&mut self, value: u8) {
+        let offset = Self::ECV_SHIFT;
+        assert!(value & (Self::ECV_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ECV_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6638,9 +8926,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::HAFDBS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `HAFDBS` field.
+    pub const fn set_hafdbs(&mut self, value: u8) {
+        let offset = Self::HAFDBS_SHIFT;
+        assert!(value & (Self::HAFDBS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HAFDBS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VMIDBits` field.
     pub const fn vmidbits(self) -> u8 {
         ((self.bits() >> Self::VMIDBITS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `VMIDBits` field.
+    pub const fn set_vmidbits(&mut self, value: u8) {
+        let offset = Self::VMIDBITS_SHIFT;
+        assert!(value & (Self::VMIDBITS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VMIDBITS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `VH` field.
@@ -6648,9 +8954,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::VH_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `VH` field.
+    pub const fn set_vh(&mut self, value: u8) {
+        let offset = Self::VH_SHIFT;
+        assert!(value & (Self::VH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VH_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `HPDS` field.
     pub const fn hpds(self) -> u8 {
         ((self.bits() >> Self::HPDS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `HPDS` field.
+    pub const fn set_hpds(&mut self, value: u8) {
+        let offset = Self::HPDS_SHIFT;
+        assert!(value & (Self::HPDS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HPDS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `LO` field.
@@ -6658,9 +8982,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::LO_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `LO` field.
+    pub const fn set_lo(&mut self, value: u8) {
+        let offset = Self::LO_SHIFT;
+        assert!(value & (Self::LO_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LO_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PAN` field.
     pub const fn pan(self) -> u8 {
         ((self.bits() >> Self::PAN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `PAN` field.
+    pub const fn set_pan(&mut self, value: u8) {
+        let offset = Self::PAN_SHIFT;
+        assert!(value & (Self::PAN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PAN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SpecSEI` field.
@@ -6668,9 +9010,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::SPECSEI_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SpecSEI` field.
+    pub const fn set_specsei(&mut self, value: u8) {
+        let offset = Self::SPECSEI_SHIFT;
+        assert!(value & (Self::SPECSEI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPECSEI_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `XNX` field.
     pub const fn xnx(self) -> u8 {
         ((self.bits() >> Self::XNX_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `XNX` field.
+    pub const fn set_xnx(&mut self, value: u8) {
+        let offset = Self::XNX_SHIFT;
+        assert!(value & (Self::XNX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::XNX_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TWED` field.
@@ -6678,9 +9038,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::TWED_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TWED` field.
+    pub const fn set_twed(&mut self, value: u8) {
+        let offset = Self::TWED_SHIFT;
+        assert!(value & (Self::TWED_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TWED_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ETS` field.
     pub const fn ets(self) -> u8 {
         ((self.bits() >> Self::ETS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ETS` field.
+    pub const fn set_ets(&mut self, value: u8) {
+        let offset = Self::ETS_SHIFT;
+        assert!(value & (Self::ETS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ETS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `HCX` field.
@@ -6688,9 +9066,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::HCX_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `HCX` field.
+    pub const fn set_hcx(&mut self, value: u8) {
+        let offset = Self::HCX_SHIFT;
+        assert!(value & (Self::HCX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HCX_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `AFP` field.
     pub const fn afp(self) -> u8 {
         ((self.bits() >> Self::AFP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AFP` field.
+    pub const fn set_afp(&mut self, value: u8) {
+        let offset = Self::AFP_SHIFT;
+        assert!(value & (Self::AFP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFP_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `nTLBPA` field.
@@ -6698,9 +9094,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::NTLBPA_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `nTLBPA` field.
+    pub const fn set_ntlbpa(&mut self, value: u8) {
+        let offset = Self::NTLBPA_SHIFT;
+        assert!(value & (Self::NTLBPA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NTLBPA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TIDCP1` field.
     pub const fn tidcp1(self) -> u8 {
         ((self.bits() >> Self::TIDCP1_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TIDCP1` field.
+    pub const fn set_tidcp1(&mut self, value: u8) {
+        let offset = Self::TIDCP1_SHIFT;
+        assert!(value & (Self::TIDCP1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIDCP1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `CMOW` field.
@@ -6708,9 +9122,27 @@ impl IdAa64mmfr1El1 {
         ((self.bits() >> Self::CMOW_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CMOW` field.
+    pub const fn set_cmow(&mut self, value: u8) {
+        let offset = Self::CMOW_SHIFT;
+        assert!(value & (Self::CMOW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CMOW_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ECBHB` field.
     pub const fn ecbhb(self) -> u8 {
         ((self.bits() >> Self::ECBHB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ECBHB` field.
+    pub const fn set_ecbhb(&mut self, value: u8) {
+        let offset = Self::ECBHB_SHIFT;
+        assert!(value & (Self::ECBHB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ECBHB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6791,9 +9223,27 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::CNP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CnP` field.
+    pub const fn set_cnp(&mut self, value: u8) {
+        let offset = Self::CNP_SHIFT;
+        assert!(value & (Self::CNP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CNP_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `UAO` field.
     pub const fn uao(self) -> u8 {
         ((self.bits() >> Self::UAO_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `UAO` field.
+    pub const fn set_uao(&mut self, value: u8) {
+        let offset = Self::UAO_SHIFT;
+        assert!(value & (Self::UAO_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::UAO_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `LSM` field.
@@ -6801,9 +9251,27 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::LSM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `LSM` field.
+    pub const fn set_lsm(&mut self, value: u8) {
+        let offset = Self::LSM_SHIFT;
+        assert!(value & (Self::LSM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LSM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IESB` field.
     pub const fn iesb(self) -> u8 {
         ((self.bits() >> Self::IESB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `IESB` field.
+    pub const fn set_iesb(&mut self, value: u8) {
+        let offset = Self::IESB_SHIFT;
+        assert!(value & (Self::IESB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IESB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `VARange` field.
@@ -6811,9 +9279,27 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::VARANGE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `VARange` field.
+    pub const fn set_varange(&mut self, value: u8) {
+        let offset = Self::VARANGE_SHIFT;
+        assert!(value & (Self::VARANGE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VARANGE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CCIDX` field.
     pub const fn ccidx(self) -> u8 {
         ((self.bits() >> Self::CCIDX_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CCIDX` field.
+    pub const fn set_ccidx(&mut self, value: u8) {
+        let offset = Self::CCIDX_SHIFT;
+        assert!(value & (Self::CCIDX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CCIDX_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `NV` field.
@@ -6821,9 +9307,27 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::NV_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `NV` field.
+    pub const fn set_nv(&mut self, value: u8) {
+        let offset = Self::NV_SHIFT;
+        assert!(value & (Self::NV_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NV_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ST` field.
     pub const fn st(self) -> u8 {
         ((self.bits() >> Self::ST_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ST` field.
+    pub const fn set_st(&mut self, value: u8) {
+        let offset = Self::ST_SHIFT;
+        assert!(value & (Self::ST_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ST_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `AT` field.
@@ -6831,9 +9335,27 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::AT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `AT` field.
+    pub const fn set_at(&mut self, value: u8) {
+        let offset = Self::AT_SHIFT;
+        assert!(value & (Self::AT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IDS` field.
     pub const fn ids(self) -> u8 {
         ((self.bits() >> Self::IDS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `IDS` field.
+    pub const fn set_ids(&mut self, value: u8) {
+        let offset = Self::IDS_SHIFT;
+        assert!(value & (Self::IDS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IDS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `FWB` field.
@@ -6841,9 +9363,27 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::FWB_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FWB` field.
+    pub const fn set_fwb(&mut self, value: u8) {
+        let offset = Self::FWB_SHIFT;
+        assert!(value & (Self::FWB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FWB_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TTL` field.
     pub const fn ttl(self) -> u8 {
         ((self.bits() >> Self::TTL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TTL` field.
+    pub const fn set_ttl(&mut self, value: u8) {
+        let offset = Self::TTL_SHIFT;
+        assert!(value & (Self::TTL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TTL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `BBM` field.
@@ -6851,14 +9391,41 @@ impl IdAa64mmfr2El1 {
         ((self.bits() >> Self::BBM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BBM` field.
+    pub const fn set_bbm(&mut self, value: u8) {
+        let offset = Self::BBM_SHIFT;
+        assert!(value & (Self::BBM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BBM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
         ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `EVT` field.
+    pub const fn set_evt(&mut self, value: u8) {
+        let offset = Self::EVT_SHIFT;
+        assert!(value & (Self::EVT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `E0PD` field.
     pub const fn e0pd(self) -> u8 {
         ((self.bits() >> Self::E0PD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `E0PD` field.
+    pub const fn set_e0pd(&mut self, value: u8) {
+        let offset = Self::E0PD_SHIFT;
+        assert!(value & (Self::E0PD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::E0PD_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -6939,9 +9506,27 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::TCRX_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TCRX` field.
+    pub const fn set_tcrx(&mut self, value: u8) {
+        let offset = Self::TCRX_SHIFT;
+        assert!(value & (Self::TCRX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCRX_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SCTLRX` field.
     pub const fn sctlrx(self) -> u8 {
         ((self.bits() >> Self::SCTLRX_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SCTLRX` field.
+    pub const fn set_sctlrx(&mut self, value: u8) {
+        let offset = Self::SCTLRX_SHIFT;
+        assert!(value & (Self::SCTLRX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SCTLRX_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `S1PIE` field.
@@ -6949,9 +9534,27 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::S1PIE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `S1PIE` field.
+    pub const fn set_s1pie(&mut self, value: u8) {
+        let offset = Self::S1PIE_SHIFT;
+        assert!(value & (Self::S1PIE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::S1PIE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `S2PIE` field.
     pub const fn s2pie(self) -> u8 {
         ((self.bits() >> Self::S2PIE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `S2PIE` field.
+    pub const fn set_s2pie(&mut self, value: u8) {
+        let offset = Self::S2PIE_SHIFT;
+        assert!(value & (Self::S2PIE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::S2PIE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `S1POE` field.
@@ -6959,9 +9562,27 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::S1POE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `S1POE` field.
+    pub const fn set_s1poe(&mut self, value: u8) {
+        let offset = Self::S1POE_SHIFT;
+        assert!(value & (Self::S1POE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::S1POE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `S2POE` field.
     pub const fn s2poe(self) -> u8 {
         ((self.bits() >> Self::S2POE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `S2POE` field.
+    pub const fn set_s2poe(&mut self, value: u8) {
+        let offset = Self::S2POE_SHIFT;
+        assert!(value & (Self::S2POE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::S2POE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `AIE` field.
@@ -6969,9 +9590,27 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::AIE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `AIE` field.
+    pub const fn set_aie(&mut self, value: u8) {
+        let offset = Self::AIE_SHIFT;
+        assert!(value & (Self::AIE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AIE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `MEC` field.
     pub const fn mec(self) -> u8 {
         ((self.bits() >> Self::MEC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MEC` field.
+    pub const fn set_mec(&mut self, value: u8) {
+        let offset = Self::MEC_SHIFT;
+        assert!(value & (Self::MEC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MEC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `D128` field.
@@ -6979,9 +9618,27 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::D128_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `D128` field.
+    pub const fn set_d128(&mut self, value: u8) {
+        let offset = Self::D128_SHIFT;
+        assert!(value & (Self::D128_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::D128_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `D128_2` field.
     pub const fn d128_2(self) -> u8 {
         ((self.bits() >> Self::D128_2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `D128_2` field.
+    pub const fn set_d128_2(&mut self, value: u8) {
+        let offset = Self::D128_2_SHIFT;
+        assert!(value & (Self::D128_2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::D128_2_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SNERR` field.
@@ -6989,9 +9646,27 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::SNERR_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SNERR` field.
+    pub const fn set_snerr(&mut self, value: u8) {
+        let offset = Self::SNERR_SHIFT;
+        assert!(value & (Self::SNERR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SNERR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ANERR` field.
     pub const fn anerr(self) -> u8 {
         ((self.bits() >> Self::ANERR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ANERR` field.
+    pub const fn set_anerr(&mut self, value: u8) {
+        let offset = Self::ANERR_SHIFT;
+        assert!(value & (Self::ANERR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ANERR_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SDERR` field.
@@ -6999,14 +9674,41 @@ impl IdAa64mmfr3El1 {
         ((self.bits() >> Self::SDERR_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SDERR` field.
+    pub const fn set_sderr(&mut self, value: u8) {
+        let offset = Self::SDERR_SHIFT;
+        assert!(value & (Self::SDERR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SDERR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ADERR` field.
     pub const fn aderr(self) -> u8 {
         ((self.bits() >> Self::ADERR_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `ADERR` field.
+    pub const fn set_aderr(&mut self, value: u8) {
+        let offset = Self::ADERR_SHIFT;
+        assert!(value & (Self::ADERR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ADERR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Spec_FPACC` field.
     pub const fn spec_fpacc(self) -> u8 {
         ((self.bits() >> Self::SPEC_FPACC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Spec_FPACC` field.
+    pub const fn set_spec_fpacc(&mut self, value: u8) {
+        let offset = Self::SPEC_FPACC_SHIFT;
+        assert!(value & (Self::SPEC_FPACC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPEC_FPACC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -7091,9 +9793,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::EL0_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `EL0` field.
+    pub const fn set_el0(&mut self, value: u8) {
+        let offset = Self::EL0_SHIFT;
+        assert!(value & (Self::EL0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EL0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `EL1` field.
     pub const fn el1(self) -> u8 {
         ((self.bits() >> Self::EL1_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `EL1` field.
+    pub const fn set_el1(&mut self, value: u8) {
+        let offset = Self::EL1_SHIFT;
+        assert!(value & (Self::EL1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EL1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `EL2` field.
@@ -7101,9 +9821,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::EL2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `EL2` field.
+    pub const fn set_el2(&mut self, value: u8) {
+        let offset = Self::EL2_SHIFT;
+        assert!(value & (Self::EL2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EL2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `EL3` field.
     pub const fn el3(self) -> u8 {
         ((self.bits() >> Self::EL3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `EL3` field.
+    pub const fn set_el3(&mut self, value: u8) {
+        let offset = Self::EL3_SHIFT;
+        assert!(value & (Self::EL3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EL3_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `FP` field.
@@ -7111,9 +9849,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::FP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FP` field.
+    pub const fn set_fp(&mut self, value: u8) {
+        let offset = Self::FP_SHIFT;
+        assert!(value & (Self::FP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FP_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `AdvSIMD` field.
     pub const fn advsimd(self) -> u8 {
         ((self.bits() >> Self::ADVSIMD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AdvSIMD` field.
+    pub const fn set_advsimd(&mut self, value: u8) {
+        let offset = Self::ADVSIMD_SHIFT;
+        assert!(value & (Self::ADVSIMD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ADVSIMD_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `GIC` field.
@@ -7121,9 +9877,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::GIC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `GIC` field.
+    pub const fn set_gic(&mut self, value: u8) {
+        let offset = Self::GIC_SHIFT;
+        assert!(value & (Self::GIC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GIC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
         ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `RAS` field.
+    pub const fn set_ras(&mut self, value: u8) {
+        let offset = Self::RAS_SHIFT;
+        assert!(value & (Self::RAS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RAS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SVE` field.
@@ -7131,9 +9905,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::SVE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SVE` field.
+    pub const fn set_sve(&mut self, value: u8) {
+        let offset = Self::SVE_SHIFT;
+        assert!(value & (Self::SVE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SVE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SEL2` field.
     pub const fn sel2(self) -> u8 {
         ((self.bits() >> Self::SEL2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SEL2` field.
+    pub const fn set_sel2(&mut self, value: u8) {
+        let offset = Self::SEL2_SHIFT;
+        assert!(value & (Self::SEL2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEL2_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `MPAM` field.
@@ -7141,9 +9933,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::MPAM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MPAM` field.
+    pub const fn set_mpam(&mut self, value: u8) {
+        let offset = Self::MPAM_SHIFT;
+        assert!(value & (Self::MPAM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MPAM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
         ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AMU` field.
+    pub const fn set_amu(&mut self, value: u8) {
+        let offset = Self::AMU_SHIFT;
+        assert!(value & (Self::AMU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AMU_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `DIT` field.
@@ -7151,9 +9961,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::DIT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DIT` field.
+    pub const fn set_dit(&mut self, value: u8) {
+        let offset = Self::DIT_SHIFT;
+        assert!(value & (Self::DIT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DIT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `RME` field.
     pub const fn rme(self) -> u8 {
         ((self.bits() >> Self::RME_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `RME` field.
+    pub const fn set_rme(&mut self, value: u8) {
+        let offset = Self::RME_SHIFT;
+        assert!(value & (Self::RME_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RME_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `CSV2` field.
@@ -7161,9 +9989,27 @@ impl IdAa64pfr0El1 {
         ((self.bits() >> Self::CSV2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CSV2` field.
+    pub const fn set_csv2(&mut self, value: u8) {
+        let offset = Self::CSV2_SHIFT;
+        assert!(value & (Self::CSV2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CSV2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CSV3` field.
     pub const fn csv3(self) -> u8 {
         ((self.bits() >> Self::CSV3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CSV3` field.
+    pub const fn set_csv3(&mut self, value: u8) {
+        let offset = Self::CSV3_SHIFT;
+        assert!(value & (Self::CSV3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CSV3_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -7244,9 +10090,27 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::BT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BT` field.
+    pub const fn set_bt(&mut self, value: u8) {
+        let offset = Self::BT_SHIFT;
+        assert!(value & (Self::BT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
         ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SSBS` field.
+    pub const fn set_ssbs(&mut self, value: u8) {
+        let offset = Self::SSBS_SHIFT;
+        assert!(value & (Self::SSBS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SSBS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `MTE` field.
@@ -7254,9 +10118,27 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::MTE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MTE` field.
+    pub const fn set_mte(&mut self, value: u8) {
+        let offset = Self::MTE_SHIFT;
+        assert!(value & (Self::MTE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MTE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
         ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `RAS_frac` field.
+    pub const fn set_ras_frac(&mut self, value: u8) {
+        let offset = Self::RAS_FRAC_SHIFT;
+        assert!(value & (Self::RAS_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RAS_FRAC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `MPAM_frac` field.
@@ -7264,9 +10146,27 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::MPAM_FRAC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MPAM_frac` field.
+    pub const fn set_mpam_frac(&mut self, value: u8) {
+        let offset = Self::MPAM_FRAC_SHIFT;
+        assert!(value & (Self::MPAM_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MPAM_FRAC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SME` field.
     pub const fn sme(self) -> u8 {
         ((self.bits() >> Self::SME_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SME` field.
+    pub const fn set_sme(&mut self, value: u8) {
+        let offset = Self::SME_SHIFT;
+        assert!(value & (Self::SME_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SME_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `RNDR_trap` field.
@@ -7274,9 +10174,27 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::RNDR_TRAP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `RNDR_trap` field.
+    pub const fn set_rndr_trap(&mut self, value: u8) {
+        let offset = Self::RNDR_TRAP_SHIFT;
+        assert!(value & (Self::RNDR_TRAP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RNDR_TRAP_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `CSV2_frac` field.
     pub const fn csv2_frac(self) -> u8 {
         ((self.bits() >> Self::CSV2_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CSV2_frac` field.
+    pub const fn set_csv2_frac(&mut self, value: u8) {
+        let offset = Self::CSV2_FRAC_SHIFT;
+        assert!(value & (Self::CSV2_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CSV2_FRAC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `NMI` field.
@@ -7284,9 +10202,27 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::NMI_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `NMI` field.
+    pub const fn set_nmi(&mut self, value: u8) {
+        let offset = Self::NMI_SHIFT;
+        assert!(value & (Self::NMI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NMI_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `MTE_frac` field.
     pub const fn mte_frac(self) -> u8 {
         ((self.bits() >> Self::MTE_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MTE_frac` field.
+    pub const fn set_mte_frac(&mut self, value: u8) {
+        let offset = Self::MTE_FRAC_SHIFT;
+        assert!(value & (Self::MTE_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MTE_FRAC_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `GCS` field.
@@ -7294,9 +10230,27 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::GCS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `GCS` field.
+    pub const fn set_gcs(&mut self, value: u8) {
+        let offset = Self::GCS_SHIFT;
+        assert!(value & (Self::GCS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GCS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `THE` field.
     pub const fn the(self) -> u8 {
         ((self.bits() >> Self::THE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `THE` field.
+    pub const fn set_the(&mut self, value: u8) {
+        let offset = Self::THE_SHIFT;
+        assert!(value & (Self::THE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `MTEX` field.
@@ -7304,14 +10258,41 @@ impl IdAa64pfr1El1 {
         ((self.bits() >> Self::MTEX_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MTEX` field.
+    pub const fn set_mtex(&mut self, value: u8) {
+        let offset = Self::MTEX_SHIFT;
+        assert!(value & (Self::MTEX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MTEX_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `DF2` field.
     pub const fn df2(self) -> u8 {
         ((self.bits() >> Self::DF2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DF2` field.
+    pub const fn set_df2(&mut self, value: u8) {
+        let offset = Self::DF2_SHIFT;
+        assert!(value & (Self::DF2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DF2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PFAR` field.
     pub const fn pfar(self) -> u8 {
         ((self.bits() >> Self::PFAR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `PFAR` field.
+    pub const fn set_pfar(&mut self, value: u8) {
+        let offset = Self::PFAR_SHIFT;
+        assert!(value & (Self::PFAR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PFAR_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -7428,9 +10409,27 @@ impl IdAa64smfr0El1 {
         ((self.bits() >> Self::I8I32_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `I8I32` field.
+    pub const fn set_i8i32(&mut self, value: u8) {
+        let offset = Self::I8I32_SHIFT;
+        assert!(value & (Self::I8I32_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::I8I32_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `I16I32` field.
     pub const fn i16i32(self) -> u8 {
         ((self.bits() >> Self::I16I32_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `I16I32` field.
+    pub const fn set_i16i32(&mut self, value: u8) {
+        let offset = Self::I16I32_SHIFT;
+        assert!(value & (Self::I16I32_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::I16I32_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `I16I64` field.
@@ -7438,9 +10437,27 @@ impl IdAa64smfr0El1 {
         ((self.bits() >> Self::I16I64_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `I16I64` field.
+    pub const fn set_i16i64(&mut self, value: u8) {
+        let offset = Self::I16I64_SHIFT;
+        assert!(value & (Self::I16I64_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::I16I64_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SMEver` field.
     pub const fn smever(self) -> u8 {
         ((self.bits() >> Self::SMEVER_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SMEver` field.
+    pub const fn set_smever(&mut self, value: u8) {
+        let offset = Self::SMEVER_SHIFT;
+        assert!(value & (Self::SMEVER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SMEVER_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -7491,9 +10508,27 @@ impl IdDfr0 {
         ((self.bits() >> Self::COPDBG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CopDbg` field.
+    pub const fn set_copdbg(&mut self, value: u8) {
+        let offset = Self::COPDBG_SHIFT;
+        assert!(value & (Self::COPDBG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COPDBG_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CopSDbg` field.
     pub const fn copsdbg(self) -> u8 {
         ((self.bits() >> Self::COPSDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CopSDbg` field.
+    pub const fn set_copsdbg(&mut self, value: u8) {
+        let offset = Self::COPSDBG_SHIFT;
+        assert!(value & (Self::COPSDBG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COPSDBG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `MMapDbg` field.
@@ -7501,9 +10536,27 @@ impl IdDfr0 {
         ((self.bits() >> Self::MMAPDBG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MMapDbg` field.
+    pub const fn set_mmapdbg(&mut self, value: u8) {
+        let offset = Self::MMAPDBG_SHIFT;
+        assert!(value & (Self::MMAPDBG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MMAPDBG_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CopTrc` field.
     pub const fn coptrc(self) -> u8 {
         ((self.bits() >> Self::COPTRC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CopTrc` field.
+    pub const fn set_coptrc(&mut self, value: u8) {
+        let offset = Self::COPTRC_SHIFT;
+        assert!(value & (Self::COPTRC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COPTRC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `MMapTrc` field.
@@ -7511,9 +10564,27 @@ impl IdDfr0 {
         ((self.bits() >> Self::MMAPTRC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MMapTrc` field.
+    pub const fn set_mmaptrc(&mut self, value: u8) {
+        let offset = Self::MMAPTRC_SHIFT;
+        assert!(value & (Self::MMAPTRC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MMAPTRC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `MProfDbg` field.
     pub const fn mprofdbg(self) -> u8 {
         ((self.bits() >> Self::MPROFDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MProfDbg` field.
+    pub const fn set_mprofdbg(&mut self, value: u8) {
+        let offset = Self::MPROFDBG_SHIFT;
+        assert!(value & (Self::MPROFDBG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MPROFDBG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `PerfMon` field.
@@ -7521,9 +10592,27 @@ impl IdDfr0 {
         ((self.bits() >> Self::PERFMON_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PerfMon` field.
+    pub const fn set_perfmon(&mut self, value: u8) {
+        let offset = Self::PERFMON_SHIFT;
+        assert!(value & (Self::PERFMON_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERFMON_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `TraceFilt` field.
     pub const fn tracefilt(self) -> u8 {
         ((self.bits() >> Self::TRACEFILT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TraceFilt` field.
+    pub const fn set_tracefilt(&mut self, value: u8) {
+        let offset = Self::TRACEFILT_SHIFT;
+        assert!(value & (Self::TRACEFILT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TRACEFILT_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -7550,9 +10639,27 @@ impl IdDfr1 {
         ((self.bits() >> Self::MTPMU_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MTPMU` field.
+    pub const fn set_mtpmu(&mut self, value: u8) {
+        let offset = Self::MTPMU_SHIFT;
+        assert!(value & (Self::MTPMU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MTPMU_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
         ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `HPMN0` field.
+    pub const fn set_hpmn0(&mut self, value: u8) {
+        let offset = Self::HPMN0_SHIFT;
+        assert!(value & (Self::HPMN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HPMN0_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -7599,9 +10706,27 @@ impl IdIsar0 {
         ((self.bits() >> Self::SWAP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Swap` field.
+    pub const fn set_swap(&mut self, value: u8) {
+        let offset = Self::SWAP_SHIFT;
+        assert!(value & (Self::SWAP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SWAP_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `BitCount` field.
     pub const fn bitcount(self) -> u8 {
         ((self.bits() >> Self::BITCOUNT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BitCount` field.
+    pub const fn set_bitcount(&mut self, value: u8) {
+        let offset = Self::BITCOUNT_SHIFT;
+        assert!(value & (Self::BITCOUNT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BITCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `BitField` field.
@@ -7609,9 +10734,27 @@ impl IdIsar0 {
         ((self.bits() >> Self::BITFIELD_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BitField` field.
+    pub const fn set_bitfield(&mut self, value: u8) {
+        let offset = Self::BITFIELD_SHIFT;
+        assert!(value & (Self::BITFIELD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BITFIELD_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CmpBranch` field.
     pub const fn cmpbranch(self) -> u8 {
         ((self.bits() >> Self::CMPBRANCH_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CmpBranch` field.
+    pub const fn set_cmpbranch(&mut self, value: u8) {
+        let offset = Self::CMPBRANCH_SHIFT;
+        assert!(value & (Self::CMPBRANCH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CMPBRANCH_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Coproc` field.
@@ -7619,14 +10762,41 @@ impl IdIsar0 {
         ((self.bits() >> Self::COPROC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Coproc` field.
+    pub const fn set_coproc(&mut self, value: u8) {
+        let offset = Self::COPROC_SHIFT;
+        assert!(value & (Self::COPROC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COPROC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Debug` field.
     pub const fn debug(self) -> u8 {
         ((self.bits() >> Self::DEBUG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Debug` field.
+    pub const fn set_debug(&mut self, value: u8) {
+        let offset = Self::DEBUG_SHIFT;
+        assert!(value & (Self::DEBUG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DEBUG_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Divide` field.
     pub const fn divide(self) -> u8 {
         ((self.bits() >> Self::DIVIDE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Divide` field.
+    pub const fn set_divide(&mut self, value: u8) {
+        let offset = Self::DIVIDE_SHIFT;
+        assert!(value & (Self::DIVIDE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DIVIDE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -7677,9 +10847,27 @@ impl IdIsar1 {
         ((self.bits() >> Self::ENDIAN_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Endian` field.
+    pub const fn set_endian(&mut self, value: u8) {
+        let offset = Self::ENDIAN_SHIFT;
+        assert!(value & (Self::ENDIAN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ENDIAN_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Except` field.
     pub const fn except(self) -> u8 {
         ((self.bits() >> Self::EXCEPT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Except` field.
+    pub const fn set_except(&mut self, value: u8) {
+        let offset = Self::EXCEPT_SHIFT;
+        assert!(value & (Self::EXCEPT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EXCEPT_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Except_AR` field.
@@ -7687,9 +10875,27 @@ impl IdIsar1 {
         ((self.bits() >> Self::EXCEPT_AR_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Except_AR` field.
+    pub const fn set_except_ar(&mut self, value: u8) {
+        let offset = Self::EXCEPT_AR_SHIFT;
+        assert!(value & (Self::EXCEPT_AR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EXCEPT_AR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Extend` field.
     pub const fn extend_(self) -> u8 {
         ((self.bits() >> Self::EXTEND_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Extend` field.
+    pub const fn set_extend_(&mut self, value: u8) {
+        let offset = Self::EXTEND_SHIFT;
+        assert!(value & (Self::EXTEND_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EXTEND_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `IfThen` field.
@@ -7697,9 +10903,27 @@ impl IdIsar1 {
         ((self.bits() >> Self::IFTHEN_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `IfThen` field.
+    pub const fn set_ifthen(&mut self, value: u8) {
+        let offset = Self::IFTHEN_SHIFT;
+        assert!(value & (Self::IFTHEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IFTHEN_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Immediate` field.
     pub const fn immediate(self) -> u8 {
         ((self.bits() >> Self::IMMEDIATE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Immediate` field.
+    pub const fn set_immediate(&mut self, value: u8) {
+        let offset = Self::IMMEDIATE_SHIFT;
+        assert!(value & (Self::IMMEDIATE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMMEDIATE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Interwork` field.
@@ -7707,9 +10931,27 @@ impl IdIsar1 {
         ((self.bits() >> Self::INTERWORK_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Interwork` field.
+    pub const fn set_interwork(&mut self, value: u8) {
+        let offset = Self::INTERWORK_SHIFT;
+        assert!(value & (Self::INTERWORK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INTERWORK_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Jazelle` field.
     pub const fn jazelle(self) -> u8 {
         ((self.bits() >> Self::JAZELLE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Jazelle` field.
+    pub const fn set_jazelle(&mut self, value: u8) {
+        let offset = Self::JAZELLE_SHIFT;
+        assert!(value & (Self::JAZELLE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::JAZELLE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -7760,9 +11002,27 @@ impl IdIsar2 {
         ((self.bits() >> Self::LOADSTORE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `LoadStore` field.
+    pub const fn set_loadstore(&mut self, value: u8) {
+        let offset = Self::LOADSTORE_SHIFT;
+        assert!(value & (Self::LOADSTORE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LOADSTORE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `MemHint` field.
     pub const fn memhint(self) -> u8 {
         ((self.bits() >> Self::MEMHINT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MemHint` field.
+    pub const fn set_memhint(&mut self, value: u8) {
+        let offset = Self::MEMHINT_SHIFT;
+        assert!(value & (Self::MEMHINT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MEMHINT_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `MultiAccessInt` field.
@@ -7770,9 +11030,27 @@ impl IdIsar2 {
         ((self.bits() >> Self::MULTIACCESSINT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MultiAccessInt` field.
+    pub const fn set_multiaccessint(&mut self, value: u8) {
+        let offset = Self::MULTIACCESSINT_SHIFT;
+        assert!(value & (Self::MULTIACCESSINT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MULTIACCESSINT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Mult` field.
     pub const fn mult(self) -> u8 {
         ((self.bits() >> Self::MULT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Mult` field.
+    pub const fn set_mult(&mut self, value: u8) {
+        let offset = Self::MULT_SHIFT;
+        assert!(value & (Self::MULT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MULT_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `MultS` field.
@@ -7780,9 +11058,27 @@ impl IdIsar2 {
         ((self.bits() >> Self::MULTS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MultS` field.
+    pub const fn set_mults(&mut self, value: u8) {
+        let offset = Self::MULTS_SHIFT;
+        assert!(value & (Self::MULTS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MULTS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `MultU` field.
     pub const fn multu(self) -> u8 {
         ((self.bits() >> Self::MULTU_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MultU` field.
+    pub const fn set_multu(&mut self, value: u8) {
+        let offset = Self::MULTU_SHIFT;
+        assert!(value & (Self::MULTU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MULTU_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `PSR_AR` field.
@@ -7790,9 +11086,27 @@ impl IdIsar2 {
         ((self.bits() >> Self::PSR_AR_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PSR_AR` field.
+    pub const fn set_psr_ar(&mut self, value: u8) {
+        let offset = Self::PSR_AR_SHIFT;
+        assert!(value & (Self::PSR_AR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PSR_AR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Reversal` field.
     pub const fn reversal(self) -> u8 {
         ((self.bits() >> Self::REVERSAL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Reversal` field.
+    pub const fn set_reversal(&mut self, value: u8) {
+        let offset = Self::REVERSAL_SHIFT;
+        assert!(value & (Self::REVERSAL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::REVERSAL_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -7843,9 +11157,27 @@ impl IdIsar3 {
         ((self.bits() >> Self::SATURATE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Saturate` field.
+    pub const fn set_saturate(&mut self, value: u8) {
+        let offset = Self::SATURATE_SHIFT;
+        assert!(value & (Self::SATURATE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SATURATE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SIMD` field.
     pub const fn simd(self) -> u8 {
         ((self.bits() >> Self::SIMD_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SIMD` field.
+    pub const fn set_simd(&mut self, value: u8) {
+        let offset = Self::SIMD_SHIFT;
+        assert!(value & (Self::SIMD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SIMD_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `SVC` field.
@@ -7853,9 +11185,27 @@ impl IdIsar3 {
         ((self.bits() >> Self::SVC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SVC` field.
+    pub const fn set_svc(&mut self, value: u8) {
+        let offset = Self::SVC_SHIFT;
+        assert!(value & (Self::SVC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SVC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SynchPrim` field.
     pub const fn synchprim(self) -> u8 {
         ((self.bits() >> Self::SYNCHPRIM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SynchPrim` field.
+    pub const fn set_synchprim(&mut self, value: u8) {
+        let offset = Self::SYNCHPRIM_SHIFT;
+        assert!(value & (Self::SYNCHPRIM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SYNCHPRIM_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `TabBranch` field.
@@ -7863,9 +11213,27 @@ impl IdIsar3 {
         ((self.bits() >> Self::TABBRANCH_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TabBranch` field.
+    pub const fn set_tabbranch(&mut self, value: u8) {
+        let offset = Self::TABBRANCH_SHIFT;
+        assert!(value & (Self::TABBRANCH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TABBRANCH_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `T32Copy` field.
     pub const fn t32copy(self) -> u8 {
         ((self.bits() >> Self::T32COPY_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `T32Copy` field.
+    pub const fn set_t32copy(&mut self, value: u8) {
+        let offset = Self::T32COPY_SHIFT;
+        assert!(value & (Self::T32COPY_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T32COPY_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `TrueNOP` field.
@@ -7873,9 +11241,27 @@ impl IdIsar3 {
         ((self.bits() >> Self::TRUENOP_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TrueNOP` field.
+    pub const fn set_truenop(&mut self, value: u8) {
+        let offset = Self::TRUENOP_SHIFT;
+        assert!(value & (Self::TRUENOP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TRUENOP_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `T32EE` field.
     pub const fn t32ee(self) -> u8 {
         ((self.bits() >> Self::T32EE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `T32EE` field.
+    pub const fn set_t32ee(&mut self, value: u8) {
+        let offset = Self::T32EE_SHIFT;
+        assert!(value & (Self::T32EE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T32EE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -7926,9 +11312,27 @@ impl IdIsar4 {
         ((self.bits() >> Self::UNPRIV_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Unpriv` field.
+    pub const fn set_unpriv(&mut self, value: u8) {
+        let offset = Self::UNPRIV_SHIFT;
+        assert!(value & (Self::UNPRIV_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::UNPRIV_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `WithShifts` field.
     pub const fn withshifts(self) -> u8 {
         ((self.bits() >> Self::WITHSHIFTS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `WithShifts` field.
+    pub const fn set_withshifts(&mut self, value: u8) {
+        let offset = Self::WITHSHIFTS_SHIFT;
+        assert!(value & (Self::WITHSHIFTS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WITHSHIFTS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Writeback` field.
@@ -7936,9 +11340,27 @@ impl IdIsar4 {
         ((self.bits() >> Self::WRITEBACK_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Writeback` field.
+    pub const fn set_writeback(&mut self, value: u8) {
+        let offset = Self::WRITEBACK_SHIFT;
+        assert!(value & (Self::WRITEBACK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WRITEBACK_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SMC` field.
     pub const fn smc(self) -> u8 {
         ((self.bits() >> Self::SMC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SMC` field.
+    pub const fn set_smc(&mut self, value: u8) {
+        let offset = Self::SMC_SHIFT;
+        assert!(value & (Self::SMC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SMC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Barrier` field.
@@ -7946,9 +11368,27 @@ impl IdIsar4 {
         ((self.bits() >> Self::BARRIER_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Barrier` field.
+    pub const fn set_barrier(&mut self, value: u8) {
+        let offset = Self::BARRIER_SHIFT;
+        assert!(value & (Self::BARRIER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BARRIER_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SynchPrim_frac` field.
     pub const fn synchprim_frac(self) -> u8 {
         ((self.bits() >> Self::SYNCHPRIM_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SynchPrim_frac` field.
+    pub const fn set_synchprim_frac(&mut self, value: u8) {
+        let offset = Self::SYNCHPRIM_FRAC_SHIFT;
+        assert!(value & (Self::SYNCHPRIM_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SYNCHPRIM_FRAC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `PSR_M` field.
@@ -7956,9 +11396,27 @@ impl IdIsar4 {
         ((self.bits() >> Self::PSR_M_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PSR_M` field.
+    pub const fn set_psr_m(&mut self, value: u8) {
+        let offset = Self::PSR_M_SHIFT;
+        assert!(value & (Self::PSR_M_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PSR_M_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SWP_frac` field.
     pub const fn swp_frac(self) -> u8 {
         ((self.bits() >> Self::SWP_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SWP_frac` field.
+    pub const fn set_swp_frac(&mut self, value: u8) {
+        let offset = Self::SWP_FRAC_SHIFT;
+        assert!(value & (Self::SWP_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SWP_FRAC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8005,9 +11463,27 @@ impl IdIsar5 {
         ((self.bits() >> Self::SEVL_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SEVL` field.
+    pub const fn set_sevl(&mut self, value: u8) {
+        let offset = Self::SEVL_SHIFT;
+        assert!(value & (Self::SEVL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEVL_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `AES` field.
     pub const fn aes(self) -> u8 {
         ((self.bits() >> Self::AES_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AES` field.
+    pub const fn set_aes(&mut self, value: u8) {
+        let offset = Self::AES_SHIFT;
+        assert!(value & (Self::AES_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AES_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `SHA1` field.
@@ -8015,9 +11491,27 @@ impl IdIsar5 {
         ((self.bits() >> Self::SHA1_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SHA1` field.
+    pub const fn set_sha1(&mut self, value: u8) {
+        let offset = Self::SHA1_SHIFT;
+        assert!(value & (Self::SHA1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SHA1_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SHA2` field.
     pub const fn sha2(self) -> u8 {
         ((self.bits() >> Self::SHA2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SHA2` field.
+    pub const fn set_sha2(&mut self, value: u8) {
+        let offset = Self::SHA2_SHIFT;
+        assert!(value & (Self::SHA2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SHA2_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `CRC32` field.
@@ -8025,14 +11519,41 @@ impl IdIsar5 {
         ((self.bits() >> Self::CRC32_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CRC32` field.
+    pub const fn set_crc32(&mut self, value: u8) {
+        let offset = Self::CRC32_SHIFT;
+        assert!(value & (Self::CRC32_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CRC32_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `RDM` field.
     pub const fn rdm(self) -> u8 {
         ((self.bits() >> Self::RDM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `RDM` field.
+    pub const fn set_rdm(&mut self, value: u8) {
+        let offset = Self::RDM_SHIFT;
+        assert!(value & (Self::RDM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RDM_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `VCMA` field.
     pub const fn vcma(self) -> u8 {
         ((self.bits() >> Self::VCMA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `VCMA` field.
+    pub const fn set_vcma(&mut self, value: u8) {
+        let offset = Self::VCMA_SHIFT;
+        assert!(value & (Self::VCMA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VCMA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8083,9 +11604,27 @@ impl IdIsar6 {
         ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `JSCVT` field.
+    pub const fn set_jscvt(&mut self, value: u8) {
+        let offset = Self::JSCVT_SHIFT;
+        assert!(value & (Self::JSCVT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::JSCVT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `DP` field.
     pub const fn dp(self) -> u8 {
         ((self.bits() >> Self::DP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `DP` field.
+    pub const fn set_dp(&mut self, value: u8) {
+        let offset = Self::DP_SHIFT;
+        assert!(value & (Self::DP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DP_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `FHM` field.
@@ -8093,9 +11632,27 @@ impl IdIsar6 {
         ((self.bits() >> Self::FHM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FHM` field.
+    pub const fn set_fhm(&mut self, value: u8) {
+        let offset = Self::FHM_SHIFT;
+        assert!(value & (Self::FHM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FHM_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SB` field.
     pub const fn sb(self) -> u8 {
         ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `SB` field.
+    pub const fn set_sb(&mut self, value: u8) {
+        let offset = Self::SB_SHIFT;
+        assert!(value & (Self::SB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SB_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `SPECRES` field.
@@ -8103,9 +11660,27 @@ impl IdIsar6 {
         ((self.bits() >> Self::SPECRES_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SPECRES` field.
+    pub const fn set_specres(&mut self, value: u8) {
+        let offset = Self::SPECRES_SHIFT;
+        assert!(value & (Self::SPECRES_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPECRES_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `BF16` field.
     pub const fn bf16(self) -> u8 {
         ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BF16` field.
+    pub const fn set_bf16(&mut self, value: u8) {
+        let offset = Self::BF16_SHIFT;
+        assert!(value & (Self::BF16_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BF16_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `I8MM` field.
@@ -8113,9 +11688,27 @@ impl IdIsar6 {
         ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `I8MM` field.
+    pub const fn set_i8mm(&mut self, value: u8) {
+        let offset = Self::I8MM_SHIFT;
+        assert!(value & (Self::I8MM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::I8MM_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CLRBHB` field.
     pub const fn clrbhb(self) -> u8 {
         ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CLRBHB` field.
+    pub const fn set_clrbhb(&mut self, value: u8) {
+        let offset = Self::CLRBHB_SHIFT;
+        assert!(value & (Self::CLRBHB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CLRBHB_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8166,9 +11759,27 @@ impl IdMmfr0 {
         ((self.bits() >> Self::VMSA_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `VMSA` field.
+    pub const fn set_vmsa(&mut self, value: u8) {
+        let offset = Self::VMSA_SHIFT;
+        assert!(value & (Self::VMSA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VMSA_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `PMSA` field.
     pub const fn pmsa(self) -> u8 {
         ((self.bits() >> Self::PMSA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `PMSA` field.
+    pub const fn set_pmsa(&mut self, value: u8) {
+        let offset = Self::PMSA_SHIFT;
+        assert!(value & (Self::PMSA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMSA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `OuterShr` field.
@@ -8176,9 +11787,27 @@ impl IdMmfr0 {
         ((self.bits() >> Self::OUTERSHR_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `OuterShr` field.
+    pub const fn set_outershr(&mut self, value: u8) {
+        let offset = Self::OUTERSHR_SHIFT;
+        assert!(value & (Self::OUTERSHR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::OUTERSHR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `ShareLvl` field.
     pub const fn sharelvl(self) -> u8 {
         ((self.bits() >> Self::SHARELVL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `ShareLvl` field.
+    pub const fn set_sharelvl(&mut self, value: u8) {
+        let offset = Self::SHARELVL_SHIFT;
+        assert!(value & (Self::SHARELVL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SHARELVL_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `TCM` field.
@@ -8186,9 +11815,27 @@ impl IdMmfr0 {
         ((self.bits() >> Self::TCM_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TCM` field.
+    pub const fn set_tcm(&mut self, value: u8) {
+        let offset = Self::TCM_SHIFT;
+        assert!(value & (Self::TCM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCM_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `AuxReg` field.
     pub const fn auxreg(self) -> u8 {
         ((self.bits() >> Self::AUXREG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AuxReg` field.
+    pub const fn set_auxreg(&mut self, value: u8) {
+        let offset = Self::AUXREG_SHIFT;
+        assert!(value & (Self::AUXREG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AUXREG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `FCSE` field.
@@ -8196,9 +11843,27 @@ impl IdMmfr0 {
         ((self.bits() >> Self::FCSE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `FCSE` field.
+    pub const fn set_fcse(&mut self, value: u8) {
+        let offset = Self::FCSE_SHIFT;
+        assert!(value & (Self::FCSE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FCSE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `InnerShr` field.
     pub const fn innershr(self) -> u8 {
         ((self.bits() >> Self::INNERSHR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `InnerShr` field.
+    pub const fn set_innershr(&mut self, value: u8) {
+        let offset = Self::INNERSHR_SHIFT;
+        assert!(value & (Self::INNERSHR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INNERSHR_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8249,9 +11914,27 @@ impl IdMmfr1 {
         ((self.bits() >> Self::L1HVDVA_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `L1HvdVA` field.
+    pub const fn set_l1hvdva(&mut self, value: u8) {
+        let offset = Self::L1HVDVA_SHIFT;
+        assert!(value & (Self::L1HVDVA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1HVDVA_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `L1UniVA` field.
     pub const fn l1univa(self) -> u8 {
         ((self.bits() >> Self::L1UNIVA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `L1UniVA` field.
+    pub const fn set_l1univa(&mut self, value: u8) {
+        let offset = Self::L1UNIVA_SHIFT;
+        assert!(value & (Self::L1UNIVA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1UNIVA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `L1HvdSW` field.
@@ -8259,9 +11942,27 @@ impl IdMmfr1 {
         ((self.bits() >> Self::L1HVDSW_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `L1HvdSW` field.
+    pub const fn set_l1hvdsw(&mut self, value: u8) {
+        let offset = Self::L1HVDSW_SHIFT;
+        assert!(value & (Self::L1HVDSW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1HVDSW_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `L1UniSW` field.
     pub const fn l1unisw(self) -> u8 {
         ((self.bits() >> Self::L1UNISW_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `L1UniSW` field.
+    pub const fn set_l1unisw(&mut self, value: u8) {
+        let offset = Self::L1UNISW_SHIFT;
+        assert!(value & (Self::L1UNISW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1UNISW_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `L1Hvd` field.
@@ -8269,9 +11970,27 @@ impl IdMmfr1 {
         ((self.bits() >> Self::L1HVD_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `L1Hvd` field.
+    pub const fn set_l1hvd(&mut self, value: u8) {
+        let offset = Self::L1HVD_SHIFT;
+        assert!(value & (Self::L1HVD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1HVD_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `L1Uni` field.
     pub const fn l1uni(self) -> u8 {
         ((self.bits() >> Self::L1UNI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `L1Uni` field.
+    pub const fn set_l1uni(&mut self, value: u8) {
+        let offset = Self::L1UNI_SHIFT;
+        assert!(value & (Self::L1UNI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1UNI_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `L1TstCln` field.
@@ -8279,9 +11998,27 @@ impl IdMmfr1 {
         ((self.bits() >> Self::L1TSTCLN_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `L1TstCln` field.
+    pub const fn set_l1tstcln(&mut self, value: u8) {
+        let offset = Self::L1TSTCLN_SHIFT;
+        assert!(value & (Self::L1TSTCLN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1TSTCLN_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `BPred` field.
     pub const fn bpred(self) -> u8 {
         ((self.bits() >> Self::BPRED_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `BPred` field.
+    pub const fn set_bpred(&mut self, value: u8) {
+        let offset = Self::BPRED_SHIFT;
+        assert!(value & (Self::BPRED_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BPRED_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8332,9 +12069,27 @@ impl IdMmfr2 {
         ((self.bits() >> Self::L1HVDFG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `L1HvdFG` field.
+    pub const fn set_l1hvdfg(&mut self, value: u8) {
+        let offset = Self::L1HVDFG_SHIFT;
+        assert!(value & (Self::L1HVDFG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1HVDFG_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `L1HvdBG` field.
     pub const fn l1hvdbg(self) -> u8 {
         ((self.bits() >> Self::L1HVDBG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `L1HvdBG` field.
+    pub const fn set_l1hvdbg(&mut self, value: u8) {
+        let offset = Self::L1HVDBG_SHIFT;
+        assert!(value & (Self::L1HVDBG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1HVDBG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `L1HvdRng` field.
@@ -8342,9 +12097,27 @@ impl IdMmfr2 {
         ((self.bits() >> Self::L1HVDRNG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `L1HvdRng` field.
+    pub const fn set_l1hvdrng(&mut self, value: u8) {
+        let offset = Self::L1HVDRNG_SHIFT;
+        assert!(value & (Self::L1HVDRNG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::L1HVDRNG_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `HvdTLB` field.
     pub const fn hvdtlb(self) -> u8 {
         ((self.bits() >> Self::HVDTLB_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `HvdTLB` field.
+    pub const fn set_hvdtlb(&mut self, value: u8) {
+        let offset = Self::HVDTLB_SHIFT;
+        assert!(value & (Self::HVDTLB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HVDTLB_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `UniTLB` field.
@@ -8352,9 +12125,27 @@ impl IdMmfr2 {
         ((self.bits() >> Self::UNITLB_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `UniTLB` field.
+    pub const fn set_unitlb(&mut self, value: u8) {
+        let offset = Self::UNITLB_SHIFT;
+        assert!(value & (Self::UNITLB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::UNITLB_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `MemBarr` field.
     pub const fn membarr(self) -> u8 {
         ((self.bits() >> Self::MEMBARR_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MemBarr` field.
+    pub const fn set_membarr(&mut self, value: u8) {
+        let offset = Self::MEMBARR_SHIFT;
+        assert!(value & (Self::MEMBARR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MEMBARR_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `WFIStall` field.
@@ -8362,9 +12153,27 @@ impl IdMmfr2 {
         ((self.bits() >> Self::WFISTALL_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `WFIStall` field.
+    pub const fn set_wfistall(&mut self, value: u8) {
+        let offset = Self::WFISTALL_SHIFT;
+        assert!(value & (Self::WFISTALL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::WFISTALL_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `HWAccFlg` field.
     pub const fn hwaccflg(self) -> u8 {
         ((self.bits() >> Self::HWACCFLG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `HWAccFlg` field.
+    pub const fn set_hwaccflg(&mut self, value: u8) {
+        let offset = Self::HWACCFLG_SHIFT;
+        assert!(value & (Self::HWACCFLG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HWACCFLG_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8415,9 +12224,27 @@ impl IdMmfr3 {
         ((self.bits() >> Self::CMAINTVA_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CMaintVA` field.
+    pub const fn set_cmaintva(&mut self, value: u8) {
+        let offset = Self::CMAINTVA_SHIFT;
+        assert!(value & (Self::CMAINTVA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CMAINTVA_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CMaintSW` field.
     pub const fn cmaintsw(self) -> u8 {
         ((self.bits() >> Self::CMAINTSW_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CMaintSW` field.
+    pub const fn set_cmaintsw(&mut self, value: u8) {
+        let offset = Self::CMAINTSW_SHIFT;
+        assert!(value & (Self::CMAINTSW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CMAINTSW_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `BPMaint` field.
@@ -8425,9 +12252,27 @@ impl IdMmfr3 {
         ((self.bits() >> Self::BPMAINT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BPMaint` field.
+    pub const fn set_bpmaint(&mut self, value: u8) {
+        let offset = Self::BPMAINT_SHIFT;
+        assert!(value & (Self::BPMAINT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BPMAINT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `MaintBcst` field.
     pub const fn maintbcst(self) -> u8 {
         ((self.bits() >> Self::MAINTBCST_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `MaintBcst` field.
+    pub const fn set_maintbcst(&mut self, value: u8) {
+        let offset = Self::MAINTBCST_SHIFT;
+        assert!(value & (Self::MAINTBCST_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MAINTBCST_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `PAN` field.
@@ -8435,9 +12280,27 @@ impl IdMmfr3 {
         ((self.bits() >> Self::PAN_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PAN` field.
+    pub const fn set_pan(&mut self, value: u8) {
+        let offset = Self::PAN_SHIFT;
+        assert!(value & (Self::PAN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PAN_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CohWalk` field.
     pub const fn cohwalk(self) -> u8 {
         ((self.bits() >> Self::COHWALK_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CohWalk` field.
+    pub const fn set_cohwalk(&mut self, value: u8) {
+        let offset = Self::COHWALK_SHIFT;
+        assert!(value & (Self::COHWALK_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COHWALK_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `CMemSz` field.
@@ -8445,9 +12308,27 @@ impl IdMmfr3 {
         ((self.bits() >> Self::CMEMSZ_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CMemSz` field.
+    pub const fn set_cmemsz(&mut self, value: u8) {
+        let offset = Self::CMEMSZ_SHIFT;
+        assert!(value & (Self::CMEMSZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CMEMSZ_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Supersec` field.
     pub const fn supersec(self) -> u8 {
         ((self.bits() >> Self::SUPERSEC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Supersec` field.
+    pub const fn set_supersec(&mut self, value: u8) {
+        let offset = Self::SUPERSEC_SHIFT;
+        assert!(value & (Self::SUPERSEC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SUPERSEC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8498,9 +12379,27 @@ impl IdMmfr4 {
         ((self.bits() >> Self::SPECSEI_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SpecSEI` field.
+    pub const fn set_specsei(&mut self, value: u8) {
+        let offset = Self::SPECSEI_SHIFT;
+        assert!(value & (Self::SPECSEI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPECSEI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `AC2` field.
     pub const fn ac2(self) -> u8 {
         ((self.bits() >> Self::AC2_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AC2` field.
+    pub const fn set_ac2(&mut self, value: u8) {
+        let offset = Self::AC2_SHIFT;
+        assert!(value & (Self::AC2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AC2_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `XNX` field.
@@ -8508,9 +12407,27 @@ impl IdMmfr4 {
         ((self.bits() >> Self::XNX_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `XNX` field.
+    pub const fn set_xnx(&mut self, value: u8) {
+        let offset = Self::XNX_SHIFT;
+        assert!(value & (Self::XNX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::XNX_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `CnP` field.
     pub const fn cnp(self) -> u8 {
         ((self.bits() >> Self::CNP_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `CnP` field.
+    pub const fn set_cnp(&mut self, value: u8) {
+        let offset = Self::CNP_SHIFT;
+        assert!(value & (Self::CNP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CNP_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `HPDS` field.
@@ -8518,9 +12435,27 @@ impl IdMmfr4 {
         ((self.bits() >> Self::HPDS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `HPDS` field.
+    pub const fn set_hpds(&mut self, value: u8) {
+        let offset = Self::HPDS_SHIFT;
+        assert!(value & (Self::HPDS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HPDS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `LSM` field.
     pub const fn lsm(self) -> u8 {
         ((self.bits() >> Self::LSM_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `LSM` field.
+    pub const fn set_lsm(&mut self, value: u8) {
+        let offset = Self::LSM_SHIFT;
+        assert!(value & (Self::LSM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LSM_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `CCIDX` field.
@@ -8528,9 +12463,27 @@ impl IdMmfr4 {
         ((self.bits() >> Self::CCIDX_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CCIDX` field.
+    pub const fn set_ccidx(&mut self, value: u8) {
+        let offset = Self::CCIDX_SHIFT;
+        assert!(value & (Self::CCIDX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CCIDX_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
         ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `EVT` field.
+    pub const fn set_evt(&mut self, value: u8) {
+        let offset = Self::EVT_SHIFT;
+        assert!(value & (Self::EVT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVT_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8557,9 +12510,27 @@ impl IdMmfr5 {
         ((self.bits() >> Self::ETS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `ETS` field.
+    pub const fn set_ets(&mut self, value: u8) {
+        let offset = Self::ETS_SHIFT;
+        assert!(value & (Self::ETS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ETS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `nTLBPA` field.
     pub const fn ntlbpa(self) -> u8 {
         ((self.bits() >> Self::NTLBPA_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `nTLBPA` field.
+    pub const fn set_ntlbpa(&mut self, value: u8) {
+        let offset = Self::NTLBPA_SHIFT;
+        assert!(value & (Self::NTLBPA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NTLBPA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8610,9 +12581,27 @@ impl IdPfr0 {
         ((self.bits() >> Self::STATE0_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `State0` field.
+    pub const fn set_state0(&mut self, value: u8) {
+        let offset = Self::STATE0_SHIFT;
+        assert!(value & (Self::STATE0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATE0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `State1` field.
     pub const fn state1(self) -> u8 {
         ((self.bits() >> Self::STATE1_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `State1` field.
+    pub const fn set_state1(&mut self, value: u8) {
+        let offset = Self::STATE1_SHIFT;
+        assert!(value & (Self::STATE1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATE1_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `State2` field.
@@ -8620,9 +12609,27 @@ impl IdPfr0 {
         ((self.bits() >> Self::STATE2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `State2` field.
+    pub const fn set_state2(&mut self, value: u8) {
+        let offset = Self::STATE2_SHIFT;
+        assert!(value & (Self::STATE2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATE2_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `State3` field.
     pub const fn state3(self) -> u8 {
         ((self.bits() >> Self::STATE3_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `State3` field.
+    pub const fn set_state3(&mut self, value: u8) {
+        let offset = Self::STATE3_SHIFT;
+        assert!(value & (Self::STATE3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATE3_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `CSV2` field.
@@ -8630,9 +12637,27 @@ impl IdPfr0 {
         ((self.bits() >> Self::CSV2_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CSV2` field.
+    pub const fn set_csv2(&mut self, value: u8) {
+        let offset = Self::CSV2_SHIFT;
+        assert!(value & (Self::CSV2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CSV2_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
         ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `AMU` field.
+    pub const fn set_amu(&mut self, value: u8) {
+        let offset = Self::AMU_SHIFT;
+        assert!(value & (Self::AMU_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AMU_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `DIT` field.
@@ -8640,9 +12665,27 @@ impl IdPfr0 {
         ((self.bits() >> Self::DIT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `DIT` field.
+    pub const fn set_dit(&mut self, value: u8) {
+        let offset = Self::DIT_SHIFT;
+        assert!(value & (Self::DIT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::DIT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
         ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `RAS` field.
+    pub const fn set_ras(&mut self, value: u8) {
+        let offset = Self::RAS_SHIFT;
+        assert!(value & (Self::RAS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RAS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8693,9 +12736,27 @@ impl IdPfr1 {
         ((self.bits() >> Self::PROGMOD_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `ProgMod` field.
+    pub const fn set_progmod(&mut self, value: u8) {
+        let offset = Self::PROGMOD_SHIFT;
+        assert!(value & (Self::PROGMOD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PROGMOD_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Security` field.
     pub const fn security(self) -> u8 {
         ((self.bits() >> Self::SECURITY_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Security` field.
+    pub const fn set_security(&mut self, value: u8) {
+        let offset = Self::SECURITY_SHIFT;
+        assert!(value & (Self::SECURITY_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SECURITY_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `MProgMod` field.
@@ -8703,9 +12764,27 @@ impl IdPfr1 {
         ((self.bits() >> Self::MPROGMOD_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `MProgMod` field.
+    pub const fn set_mprogmod(&mut self, value: u8) {
+        let offset = Self::MPROGMOD_SHIFT;
+        assert!(value & (Self::MPROGMOD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MPROGMOD_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Virtualization` field.
     pub const fn virtualization(self) -> u8 {
         ((self.bits() >> Self::VIRTUALIZATION_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Virtualization` field.
+    pub const fn set_virtualization(&mut self, value: u8) {
+        let offset = Self::VIRTUALIZATION_SHIFT;
+        assert!(value & (Self::VIRTUALIZATION_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VIRTUALIZATION_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `GenTimer` field.
@@ -8713,9 +12792,27 @@ impl IdPfr1 {
         ((self.bits() >> Self::GENTIMER_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `GenTimer` field.
+    pub const fn set_gentimer(&mut self, value: u8) {
+        let offset = Self::GENTIMER_SHIFT;
+        assert!(value & (Self::GENTIMER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GENTIMER_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Sec_frac` field.
     pub const fn sec_frac(self) -> u8 {
         ((self.bits() >> Self::SEC_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `Sec_frac` field.
+    pub const fn set_sec_frac(&mut self, value: u8) {
+        let offset = Self::SEC_FRAC_SHIFT;
+        assert!(value & (Self::SEC_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEC_FRAC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Virt_frac` field.
@@ -8723,9 +12820,27 @@ impl IdPfr1 {
         ((self.bits() >> Self::VIRT_FRAC_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Virt_frac` field.
+    pub const fn set_virt_frac(&mut self, value: u8) {
+        let offset = Self::VIRT_FRAC_SHIFT;
+        assert!(value & (Self::VIRT_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VIRT_FRAC_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `GIC` field.
     pub const fn gic(self) -> u8 {
         ((self.bits() >> Self::GIC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `GIC` field.
+    pub const fn set_gic(&mut self, value: u8) {
+        let offset = Self::GIC_SHIFT;
+        assert!(value & (Self::GIC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GIC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8756,14 +12871,41 @@ impl IdPfr2 {
         ((self.bits() >> Self::CSV3_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `CSV3` field.
+    pub const fn set_csv3(&mut self, value: u8) {
+        let offset = Self::CSV3_SHIFT;
+        assert!(value & (Self::CSV3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CSV3_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
         ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `SSBS` field.
+    pub const fn set_ssbs(&mut self, value: u8) {
+        let offset = Self::SSBS_SHIFT;
+        assert!(value & (Self::SSBS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SSBS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
         ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `RAS_frac` field.
+    pub const fn set_ras_frac(&mut self, value: u8) {
+        let offset = Self::RAS_FRAC_SHIFT;
+        assert!(value & (Self::RAS_FRAC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RAS_FRAC_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8784,6 +12926,15 @@ impl Ifar {
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
         ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `VA` field.
+    pub const fn set_va(&mut self, value: u32) {
+        let offset = Self::VA_SHIFT;
+        assert!(value & (Self::VA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8816,6 +12967,15 @@ impl Ifsr {
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+    }
+
+    /// Sets the value of the `STATUS` field.
+    pub const fn set_status(&mut self, value: u8) {
+        let offset = Self::STATUS_SHIFT;
+        assert!(value & (Self::STATUS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8894,6 +13054,16 @@ impl Mair0 {
         assert!(n < 4);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
     }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n < 4);
+        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -8914,6 +13084,16 @@ impl Mair1 {
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n >= 4 && n < 8);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n >= 4 && n < 8);
+        let offset = Self::ATTR_SHIFT + (n - 4) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -8938,6 +13118,16 @@ impl MairEl1 {
         assert!(n < 8);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
     }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n < 8);
+        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -8961,6 +13151,16 @@ impl MairEl2 {
         assert!(n < 8);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
     }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n < 8);
+        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el3")]
@@ -8983,6 +13183,16 @@ impl MairEl3 {
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
         ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Attr<n>` field.
+    pub const fn set_attr(&mut self, n: u32, value: u8) {
+        assert!(n < 8);
+        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9120,9 +13330,27 @@ impl MdcrEl2 {
         ((self.bits() >> Self::HPMN_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `HPMN` field.
+    pub const fn set_hpmn(&mut self, value: u8) {
+        let offset = Self::HPMN_SHIFT;
+        assert!(value & (Self::HPMN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HPMN_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `E2PB` field.
     pub const fn e2pb(self) -> u8 {
         ((self.bits() >> Self::E2PB_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `E2PB` field.
+    pub const fn set_e2pb(&mut self, value: u8) {
+        let offset = Self::E2PB_SHIFT;
+        assert!(value & (Self::E2PB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::E2PB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `E2TB` field.
@@ -9130,14 +13358,41 @@ impl MdcrEl2 {
         ((self.bits() >> Self::E2TB_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `E2TB` field.
+    pub const fn set_e2tb(&mut self, value: u8) {
+        let offset = Self::E2TB_SHIFT;
+        assert!(value & (Self::E2TB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::E2TB_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
         ((self.bits() >> Self::PMSSE_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `PMSSE` field.
+    pub const fn set_pmsse(&mut self, value: u8) {
+        let offset = Self::PMSSE_SHIFT;
+        assert!(value & (Self::PMSSE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMSSE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
         ((self.bits() >> Self::PMEE_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `PMEE` field.
+    pub const fn set_pmee(&mut self, value: u8) {
+        let offset = Self::PMEE_SHIFT;
+        assert!(value & (Self::PMEE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMEE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9326,9 +13581,27 @@ impl MdcrEl3 {
         ((self.bits() >> Self::NSPB_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `NSPB` field.
+    pub const fn set_nspb(&mut self, value: u8) {
+        let offset = Self::NSPB_SHIFT;
+        assert!(value & (Self::NSPB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NSPB_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
         ((self.bits() >> Self::SPD32_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SPD32` field.
+    pub const fn set_spd32(&mut self, value: u8) {
+        let offset = Self::SPD32_SHIFT;
+        assert!(value & (Self::SPD32_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPD32_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `NSTB` field.
@@ -9336,9 +13609,27 @@ impl MdcrEl3 {
         ((self.bits() >> Self::NSTB_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `NSTB` field.
+    pub const fn set_nstb(&mut self, value: u8) {
+        let offset = Self::NSTB_SHIFT;
+        assert!(value & (Self::NSTB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NSTB_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
         ((self.bits() >> Self::PMSSE_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `PMSSE` field.
+    pub const fn set_pmsse(&mut self, value: u8) {
+        let offset = Self::PMSSE_SHIFT;
+        assert!(value & (Self::PMSSE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMSSE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SBRBE` field.
@@ -9346,9 +13637,27 @@ impl MdcrEl3 {
         ((self.bits() >> Self::SBRBE_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SBRBE` field.
+    pub const fn set_sbrbe(&mut self, value: u8) {
+        let offset = Self::SBRBE_SHIFT;
+        assert!(value & (Self::SBRBE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SBRBE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
         ((self.bits() >> Self::PMEE_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `PMEE` field.
+    pub const fn set_pmee(&mut self, value: u8) {
+        let offset = Self::PMEE_SHIFT;
+        assert!(value & (Self::PMEE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMEE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `EPMSSAD` field.
@@ -9356,9 +13665,27 @@ impl MdcrEl3 {
         ((self.bits() >> Self::EPMSSAD_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `EPMSSAD` field.
+    pub const fn set_epmssad(&mut self, value: u8) {
+        let offset = Self::EPMSSAD_SHIFT;
+        assert!(value & (Self::EPMSSAD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EPMSSAD_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ETBAD` field.
     pub const fn etbad(self) -> u8 {
         ((self.bits() >> Self::ETBAD_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `ETBAD` field.
+    pub const fn set_etbad(&mut self, value: u8) {
+        let offset = Self::ETBAD_SHIFT;
+        assert!(value & (Self::ETBAD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ETBAD_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMSEE` field.
@@ -9366,9 +13693,27 @@ impl MdcrEl3 {
         ((self.bits() >> Self::PMSEE_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `PMSEE` field.
+    pub const fn set_pmsee(&mut self, value: u8) {
+        let offset = Self::PMSEE_SHIFT;
+        assert!(value & (Self::PMSEE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMSEE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TRBEE` field.
     pub const fn trbee(self) -> u8 {
         ((self.bits() >> Self::TRBEE_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `TRBEE` field.
+    pub const fn set_trbee(&mut self, value: u8) {
+        let offset = Self::TRBEE_SHIFT;
+        assert!(value & (Self::TRBEE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TRBEE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9464,6 +13809,15 @@ impl MdscrEl1 {
     pub const fn intdis(self) -> u8 {
         ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
     }
+
+    /// Sets the value of the `INTdis` field.
+    pub const fn set_intdis(&mut self, value: u8) {
+        let offset = Self::INTDIS_SHIFT;
+        assert!(value & (Self::INTDIS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INTDIS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -9501,9 +13855,27 @@ impl Midr {
         ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Revision` field.
+    pub const fn set_revision(&mut self, value: u8) {
+        let offset = Self::REVISION_SHIFT;
+        assert!(value & (Self::REVISION_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::REVISION_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+    }
+
+    /// Sets the value of the `PartNum` field.
+    pub const fn set_partnum(&mut self, value: u16) {
+        let offset = Self::PARTNUM_SHIFT;
+        assert!(value & (Self::PARTNUM_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Architecture` field.
@@ -9511,14 +13883,41 @@ impl Midr {
         ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Architecture` field.
+    pub const fn set_architecture(&mut self, value: u8) {
+        let offset = Self::ARCHITECTURE_SHIFT;
+        assert!(value & (Self::ARCHITECTURE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ARCHITECTURE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Variant` field.
+    pub const fn set_variant(&mut self, value: u8) {
+        let offset = Self::VARIANT_SHIFT;
+        assert!(value & (Self::VARIANT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VARIANT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Implementer` field.
+    pub const fn set_implementer(&mut self, value: u8) {
+        let offset = Self::IMPLEMENTER_SHIFT;
+        assert!(value & (Self::IMPLEMENTER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -9559,9 +13958,27 @@ impl MidrEl1 {
         ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Revision` field.
+    pub const fn set_revision(&mut self, value: u8) {
+        let offset = Self::REVISION_SHIFT;
+        assert!(value & (Self::REVISION_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::REVISION_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+    }
+
+    /// Sets the value of the `PartNum` field.
+    pub const fn set_partnum(&mut self, value: u16) {
+        let offset = Self::PARTNUM_SHIFT;
+        assert!(value & (Self::PARTNUM_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `Architecture` field.
@@ -9569,14 +13986,41 @@ impl MidrEl1 {
         ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Architecture` field.
+    pub const fn set_architecture(&mut self, value: u8) {
+        let offset = Self::ARCHITECTURE_SHIFT;
+        assert!(value & (Self::ARCHITECTURE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ARCHITECTURE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Variant` field.
+    pub const fn set_variant(&mut self, value: u8) {
+        let offset = Self::VARIANT_SHIFT;
+        assert!(value & (Self::VARIANT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VARIANT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Implementer` field.
+    pub const fn set_implementer(&mut self, value: u8) {
+        let offset = Self::IMPLEMENTER_SHIFT;
+        assert!(value & (Self::IMPLEMENTER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9661,9 +14105,27 @@ impl Mpam2El2 {
         ((self.bits() >> Self::PARTID_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PARTID` field.
+    pub const fn set_partid(&mut self, value: u16) {
+        let offset = Self::PARTID_SHIFT;
+        assert!(value & (Self::PARTID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
         ((self.bits() >> Self::PARTID_I_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PARTID_I` field.
+    pub const fn set_partid_i(&mut self, value: u16) {
+        let offset = Self::PARTID_I_SHIFT;
+        assert!(value & (Self::PARTID_I_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_I_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PARTID_D` field.
@@ -9671,9 +14133,27 @@ impl Mpam2El2 {
         ((self.bits() >> Self::PARTID_D_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PARTID_D` field.
+    pub const fn set_partid_d(&mut self, value: u16) {
+        let offset = Self::PARTID_D_SHIFT;
+        assert!(value & (Self::PARTID_D_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_D_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
         ((self.bits() >> Self::ALTPARTID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `altPARTID` field.
+    pub const fn set_altpartid(&mut self, value: u16) {
+        let offset = Self::ALTPARTID_SHIFT;
+        assert!(value & (Self::ALTPARTID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ALTPARTID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMG` field.
@@ -9681,9 +14161,27 @@ impl Mpam2El2 {
         ((self.bits() >> Self::PMG_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PMG` field.
+    pub const fn set_pmg(&mut self, value: u16) {
+        let offset = Self::PMG_SHIFT;
+        assert!(value & (Self::PMG_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMG_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
         ((self.bits() >> Self::PMG_I_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `PMG_I` field.
+    pub const fn set_pmg_i(&mut self, value: u8) {
+        let offset = Self::PMG_I_SHIFT;
+        assert!(value & (Self::PMG_I_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMG_I_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMG_D` field.
@@ -9691,9 +14189,27 @@ impl Mpam2El2 {
         ((self.bits() >> Self::PMG_D_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `PMG_D` field.
+    pub const fn set_pmg_d(&mut self, value: u8) {
+        let offset = Self::PMG_D_SHIFT;
+        assert!(value & (Self::PMG_D_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMG_D_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
         ((self.bits() >> Self::ALTPMG_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `altPMG` field.
+    pub const fn set_altpmg(&mut self, value: u16) {
+        let offset = Self::ALTPMG_SHIFT;
+        assert!(value & (Self::ALTPMG_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ALTPMG_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9780,9 +14296,27 @@ impl Mpam3El3 {
         ((self.bits() >> Self::PARTID_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PARTID` field.
+    pub const fn set_partid(&mut self, value: u16) {
+        let offset = Self::PARTID_SHIFT;
+        assert!(value & (Self::PARTID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
         ((self.bits() >> Self::PARTID_I_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PARTID_I` field.
+    pub const fn set_partid_i(&mut self, value: u16) {
+        let offset = Self::PARTID_I_SHIFT;
+        assert!(value & (Self::PARTID_I_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_I_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PARTID_D` field.
@@ -9790,9 +14324,27 @@ impl Mpam3El3 {
         ((self.bits() >> Self::PARTID_D_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PARTID_D` field.
+    pub const fn set_partid_d(&mut self, value: u16) {
+        let offset = Self::PARTID_D_SHIFT;
+        assert!(value & (Self::PARTID_D_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_D_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
         ((self.bits() >> Self::ALTPARTID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `altPARTID` field.
+    pub const fn set_altpartid(&mut self, value: u16) {
+        let offset = Self::ALTPARTID_SHIFT;
+        assert!(value & (Self::ALTPARTID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ALTPARTID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMG` field.
@@ -9800,9 +14352,27 @@ impl Mpam3El3 {
         ((self.bits() >> Self::PMG_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PMG` field.
+    pub const fn set_pmg(&mut self, value: u16) {
+        let offset = Self::PMG_SHIFT;
+        assert!(value & (Self::PMG_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMG_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
         ((self.bits() >> Self::PMG_I_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `PMG_I` field.
+    pub const fn set_pmg_i(&mut self, value: u8) {
+        let offset = Self::PMG_I_SHIFT;
+        assert!(value & (Self::PMG_I_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMG_I_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PMG_D` field.
@@ -9810,9 +14380,27 @@ impl Mpam3El3 {
         ((self.bits() >> Self::PMG_D_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `PMG_D` field.
+    pub const fn set_pmg_d(&mut self, value: u8) {
+        let offset = Self::PMG_D_SHIFT;
+        assert!(value & (Self::PMG_D_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PMG_D_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
         ((self.bits() >> Self::ALTPMG_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `altPMG` field.
+    pub const fn set_altpmg(&mut self, value: u16) {
+        let offset = Self::ALTPMG_SHIFT;
+        assert!(value & (Self::ALTPMG_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ALTPMG_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9924,11 +14512,31 @@ impl MpamidrEl1 {
         ((self.bits() >> Self::PARTID_MAX_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PARTID_MAX` field.
+    pub const fn set_partid_max(&mut self, value: u16) {
+        let offset = Self::PARTID_MAX_SHIFT;
+        assert!(value & (Self::PARTID_MAX_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTID_MAX_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VPMR_MAX` field.
     ///
     /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
     pub const fn vpmr_max(self) -> u8 {
         ((self.bits() >> Self::VPMR_MAX_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `VPMR_MAX` field.
+    ///
+    /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
+    pub const fn set_vpmr_max(&mut self, value: u8) {
+        let offset = Self::VPMR_MAX_SHIFT;
+        assert!(value & (Self::VPMR_MAX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VPMR_MAX_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -9965,9 +14573,27 @@ impl Mpamvpm0El2 {
         ((self.bits() >> Self::PHYPARTID0_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID0` field.
+    pub const fn set_phypartid0(&mut self, value: u16) {
+        let offset = Self::PHYPARTID0_SHIFT;
+        assert!(value & (Self::PHYPARTID0_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID1` field.
     pub const fn phypartid1(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID1_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID1` field.
+    pub const fn set_phypartid1(&mut self, value: u16) {
+        let offset = Self::PHYPARTID1_SHIFT;
+        assert!(value & (Self::PHYPARTID1_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID2` field.
@@ -9975,9 +14601,27 @@ impl Mpamvpm0El2 {
         ((self.bits() >> Self::PHYPARTID2_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID2` field.
+    pub const fn set_phypartid2(&mut self, value: u16) {
+        let offset = Self::PHYPARTID2_SHIFT;
+        assert!(value & (Self::PHYPARTID2_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID3` field.
     pub const fn phypartid3(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID3_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID3` field.
+    pub const fn set_phypartid3(&mut self, value: u16) {
+        let offset = Self::PHYPARTID3_SHIFT;
+        assert!(value & (Self::PHYPARTID3_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID3_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10014,9 +14658,27 @@ impl Mpamvpm1El2 {
         ((self.bits() >> Self::PHYPARTID4_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID4` field.
+    pub const fn set_phypartid4(&mut self, value: u16) {
+        let offset = Self::PHYPARTID4_SHIFT;
+        assert!(value & (Self::PHYPARTID4_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID4_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID5` field.
     pub const fn phypartid5(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID5_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID5` field.
+    pub const fn set_phypartid5(&mut self, value: u16) {
+        let offset = Self::PHYPARTID5_SHIFT;
+        assert!(value & (Self::PHYPARTID5_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID5_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID6` field.
@@ -10024,9 +14686,27 @@ impl Mpamvpm1El2 {
         ((self.bits() >> Self::PHYPARTID6_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID6` field.
+    pub const fn set_phypartid6(&mut self, value: u16) {
+        let offset = Self::PHYPARTID6_SHIFT;
+        assert!(value & (Self::PHYPARTID6_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID6_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID7` field.
     pub const fn phypartid7(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID7_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID7` field.
+    pub const fn set_phypartid7(&mut self, value: u16) {
+        let offset = Self::PHYPARTID7_SHIFT;
+        assert!(value & (Self::PHYPARTID7_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID7_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10063,9 +14743,27 @@ impl Mpamvpm2El2 {
         ((self.bits() >> Self::PHYPARTID8_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID8` field.
+    pub const fn set_phypartid8(&mut self, value: u16) {
+        let offset = Self::PHYPARTID8_SHIFT;
+        assert!(value & (Self::PHYPARTID8_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID8_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID9` field.
     pub const fn phypartid9(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID9_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID9` field.
+    pub const fn set_phypartid9(&mut self, value: u16) {
+        let offset = Self::PHYPARTID9_SHIFT;
+        assert!(value & (Self::PHYPARTID9_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID9_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID10` field.
@@ -10073,9 +14771,27 @@ impl Mpamvpm2El2 {
         ((self.bits() >> Self::PHYPARTID10_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID10` field.
+    pub const fn set_phypartid10(&mut self, value: u16) {
+        let offset = Self::PHYPARTID10_SHIFT;
+        assert!(value & (Self::PHYPARTID10_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID10_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID11` field.
     pub const fn phypartid11(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID11_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID11` field.
+    pub const fn set_phypartid11(&mut self, value: u16) {
+        let offset = Self::PHYPARTID11_SHIFT;
+        assert!(value & (Self::PHYPARTID11_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID11_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10112,9 +14828,27 @@ impl Mpamvpm3El2 {
         ((self.bits() >> Self::PHYPARTID12_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID12` field.
+    pub const fn set_phypartid12(&mut self, value: u16) {
+        let offset = Self::PHYPARTID12_SHIFT;
+        assert!(value & (Self::PHYPARTID12_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID12_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID13` field.
     pub const fn phypartid13(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID13_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID13` field.
+    pub const fn set_phypartid13(&mut self, value: u16) {
+        let offset = Self::PHYPARTID13_SHIFT;
+        assert!(value & (Self::PHYPARTID13_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID13_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID14` field.
@@ -10122,9 +14856,27 @@ impl Mpamvpm3El2 {
         ((self.bits() >> Self::PHYPARTID14_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID14` field.
+    pub const fn set_phypartid14(&mut self, value: u16) {
+        let offset = Self::PHYPARTID14_SHIFT;
+        assert!(value & (Self::PHYPARTID14_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID14_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID15` field.
     pub const fn phypartid15(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID15_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID15` field.
+    pub const fn set_phypartid15(&mut self, value: u16) {
+        let offset = Self::PHYPARTID15_SHIFT;
+        assert!(value & (Self::PHYPARTID15_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID15_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10161,9 +14913,27 @@ impl Mpamvpm4El2 {
         ((self.bits() >> Self::PHYPARTID16_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID16` field.
+    pub const fn set_phypartid16(&mut self, value: u16) {
+        let offset = Self::PHYPARTID16_SHIFT;
+        assert!(value & (Self::PHYPARTID16_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID16_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID17` field.
     pub const fn phypartid17(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID17_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID17` field.
+    pub const fn set_phypartid17(&mut self, value: u16) {
+        let offset = Self::PHYPARTID17_SHIFT;
+        assert!(value & (Self::PHYPARTID17_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID17_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID18` field.
@@ -10171,9 +14941,27 @@ impl Mpamvpm4El2 {
         ((self.bits() >> Self::PHYPARTID18_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID18` field.
+    pub const fn set_phypartid18(&mut self, value: u16) {
+        let offset = Self::PHYPARTID18_SHIFT;
+        assert!(value & (Self::PHYPARTID18_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID18_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID19` field.
     pub const fn phypartid19(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID19_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID19` field.
+    pub const fn set_phypartid19(&mut self, value: u16) {
+        let offset = Self::PHYPARTID19_SHIFT;
+        assert!(value & (Self::PHYPARTID19_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID19_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10210,9 +14998,27 @@ impl Mpamvpm5El2 {
         ((self.bits() >> Self::PHYPARTID20_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID20` field.
+    pub const fn set_phypartid20(&mut self, value: u16) {
+        let offset = Self::PHYPARTID20_SHIFT;
+        assert!(value & (Self::PHYPARTID20_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID20_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID21` field.
     pub const fn phypartid21(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID21_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID21` field.
+    pub const fn set_phypartid21(&mut self, value: u16) {
+        let offset = Self::PHYPARTID21_SHIFT;
+        assert!(value & (Self::PHYPARTID21_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID21_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID22` field.
@@ -10220,9 +15026,27 @@ impl Mpamvpm5El2 {
         ((self.bits() >> Self::PHYPARTID22_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID22` field.
+    pub const fn set_phypartid22(&mut self, value: u16) {
+        let offset = Self::PHYPARTID22_SHIFT;
+        assert!(value & (Self::PHYPARTID22_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID22_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID23` field.
     pub const fn phypartid23(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID23_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID23` field.
+    pub const fn set_phypartid23(&mut self, value: u16) {
+        let offset = Self::PHYPARTID23_SHIFT;
+        assert!(value & (Self::PHYPARTID23_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID23_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10259,9 +15083,27 @@ impl Mpamvpm6El2 {
         ((self.bits() >> Self::PHYPARTID24_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID24` field.
+    pub const fn set_phypartid24(&mut self, value: u16) {
+        let offset = Self::PHYPARTID24_SHIFT;
+        assert!(value & (Self::PHYPARTID24_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID24_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID25` field.
     pub const fn phypartid25(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID25_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID25` field.
+    pub const fn set_phypartid25(&mut self, value: u16) {
+        let offset = Self::PHYPARTID25_SHIFT;
+        assert!(value & (Self::PHYPARTID25_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID25_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID26` field.
@@ -10269,9 +15111,27 @@ impl Mpamvpm6El2 {
         ((self.bits() >> Self::PHYPARTID26_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID26` field.
+    pub const fn set_phypartid26(&mut self, value: u16) {
+        let offset = Self::PHYPARTID26_SHIFT;
+        assert!(value & (Self::PHYPARTID26_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID26_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID27` field.
     pub const fn phypartid27(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID27_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID27` field.
+    pub const fn set_phypartid27(&mut self, value: u16) {
+        let offset = Self::PHYPARTID27_SHIFT;
+        assert!(value & (Self::PHYPARTID27_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID27_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10308,9 +15168,27 @@ impl Mpamvpm7El2 {
         ((self.bits() >> Self::PHYPARTID28_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID28` field.
+    pub const fn set_phypartid28(&mut self, value: u16) {
+        let offset = Self::PHYPARTID28_SHIFT;
+        assert!(value & (Self::PHYPARTID28_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID28_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID29` field.
     pub const fn phypartid29(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID29_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID29` field.
+    pub const fn set_phypartid29(&mut self, value: u16) {
+        let offset = Self::PHYPARTID29_SHIFT;
+        assert!(value & (Self::PHYPARTID29_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID29_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PhyPARTID30` field.
@@ -10318,9 +15196,27 @@ impl Mpamvpm7El2 {
         ((self.bits() >> Self::PHYPARTID30_SHIFT) & 0b1111111111111111) as u16
     }
 
+    /// Sets the value of the `PhyPARTID30` field.
+    pub const fn set_phypartid30(&mut self, value: u16) {
+        let offset = Self::PHYPARTID30_SHIFT;
+        assert!(value & (Self::PHYPARTID30_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID30_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PhyPARTID31` field.
     pub const fn phypartid31(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID31_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `PhyPARTID31` field.
+    pub const fn set_phypartid31(&mut self, value: u16) {
+        let offset = Self::PHYPARTID31_SHIFT;
+        assert!(value & (Self::PHYPARTID31_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PHYPARTID31_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10442,14 +15338,41 @@ impl Mpidr {
         ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff0` field.
+    pub const fn set_aff0(&mut self, value: u8) {
+        let offset = Self::AFF0_SHIFT;
+        assert!(value & (Self::AFF0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff1` field.
+    pub const fn set_aff1(&mut self, value: u8) {
+        let offset = Self::AFF1_SHIFT;
+        assert!(value & (Self::AFF1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Aff2` field.
+    pub const fn set_aff2(&mut self, value: u8) {
+        let offset = Self::AFF2_SHIFT;
+        assert!(value & (Self::AFF2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -10496,9 +15419,27 @@ impl MpidrEl1 {
         ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff0` field.
+    pub const fn set_aff0(&mut self, value: u8) {
+        let offset = Self::AFF0_SHIFT;
+        assert!(value & (Self::AFF0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Aff1` field.
+    pub const fn set_aff1(&mut self, value: u8) {
+        let offset = Self::AFF1_SHIFT;
+        assert!(value & (Self::AFF1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `Aff2` field.
@@ -10506,9 +15447,27 @@ impl MpidrEl1 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff2` field.
+    pub const fn set_aff2(&mut self, value: u8) {
+        let offset = Self::AFF2_SHIFT;
+        assert!(value & (Self::AFF2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Aff3` field.
+    pub const fn set_aff3(&mut self, value: u8) {
+        let offset = Self::AFF3_SHIFT;
+        assert!(value & (Self::AFF3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10535,9 +15494,27 @@ impl Mvbar {
         ((self.bits() >> Self::RESERVED_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `Reserved` field.
+    pub const fn set_reserved(&mut self, value: u8) {
+        let offset = Self::RESERVED_SHIFT;
+        assert!(value & (Self::RESERVED_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RESERVED_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `VBA` field.
+    pub const fn set_vba(&mut self, value: u32) {
+        let offset = Self::VBA_SHIFT;
+        assert!(value & (Self::VBA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -10565,10 +15542,30 @@ impl Nmrr {
         ((self.bits() >> (Self::IR_SHIFT + (n - 0) * 2)) & 0b11) as u8
     }
 
+    /// Sets the value of the `IR<n>` field.
+    pub const fn set_ir(&mut self, n: u32, value: u8) {
+        assert!(n < 8);
+        let offset = Self::IR_SHIFT + (n - 0) * 2;
+        assert!(value & (Self::IR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the given `OR<n>` field.
     pub const fn or(self, n: u32) -> u8 {
         assert!(n < 8);
         ((self.bits() >> (Self::OR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+    }
+
+    /// Sets the value of the `OR<n>` field.
+    pub const fn set_or(&mut self, n: u32, value: u8) {
+        assert!(n < 8);
+        let offset = Self::OR_SHIFT + (n - 0) * 2;
+        assert!(value & (Self::OR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::OR_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -10666,9 +15663,27 @@ impl Par {
         ((self.bits() >> Self::FST_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `FST` field.
+    pub const fn set_fst(&mut self, value: u8) {
+        let offset = Self::FST_SHIFT;
+        assert!(value & (Self::FST_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FST_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `FS[4:0]` field.
     pub const fn fs_4_0(self) -> u8 {
         ((self.bits() >> Self::FS_4_0_SHIFT) & 0b11111) as u8
+    }
+
+    /// Sets the value of the `FS[4:0]` field.
+    pub const fn set_fs_4_0(&mut self, value: u8) {
+        let offset = Self::FS_4_0_SHIFT;
+        assert!(value & (Self::FS_4_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FS_4_0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `Outer[1:0]` field.
@@ -10676,14 +15691,41 @@ impl Par {
         ((self.bits() >> Self::OUTER_1_0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `Outer[1:0]` field.
+    pub const fn set_outer_1_0(&mut self, value: u8) {
+        let offset = Self::OUTER_1_0_SHIFT;
+        assert!(value & (Self::OUTER_1_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::OUTER_1_0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Inner[2:0]` field.
     pub const fn inner_2_0(self) -> u8 {
         ((self.bits() >> Self::INNER_2_0_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `Inner[2:0]` field.
+    pub const fn set_inner_2_0(&mut self, value: u8) {
+        let offset = Self::INNER_2_0_SHIFT;
+        assert!(value & (Self::INNER_2_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INNER_2_0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
         ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `ATTR` field.
+    pub const fn set_attr(&mut self, value: u8) {
+        let offset = Self::ATTR_SHIFT;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10762,9 +15804,27 @@ impl ParEl1 {
         ((self.bits() >> Self::FST_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `FST` field.
+    pub const fn set_fst(&mut self, value: u8) {
+        let offset = Self::FST_SHIFT;
+        assert!(value & (Self::FST_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FST_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SH` field.
     pub const fn sh(self) -> u8 {
         ((self.bits() >> Self::SH_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH` field.
+    pub const fn set_sh(&mut self, value: u8) {
+        let offset = Self::SH_SHIFT;
+        assert!(value & (Self::SH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `PA[47:12]` field.
@@ -10772,14 +15832,41 @@ impl ParEl1 {
         ((self.bits() >> Self::PA_47_12_SHIFT) & 0b111111111111111111111111111111111111) as u64
     }
 
+    /// Sets the value of the `PA[47:12]` field.
+    pub const fn set_pa_47_12(&mut self, value: u64) {
+        let offset = Self::PA_47_12_SHIFT;
+        assert!(value & (Self::PA_47_12_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PA_47_12_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PA[51:48]` field.
     pub const fn pa_51_48(self) -> u8 {
         ((self.bits() >> Self::PA_51_48_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `PA[51:48]` field.
+    pub const fn set_pa_51_48(&mut self, value: u8) {
+        let offset = Self::PA_51_48_SHIFT;
+        assert!(value & (Self::PA_51_48_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PA_51_48_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
         ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `ATTR` field.
+    pub const fn set_attr(&mut self, value: u8) {
+        let offset = Self::ATTR_SHIFT;
+        assert!(value & (Self::ATTR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -10836,6 +15923,15 @@ impl Pmccntr {
     pub const fn ccnt(self) -> u64 {
         ((self.bits() >> Self::CCNT_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CCNT` field.
+    pub const fn set_ccnt(&mut self, value: u64) {
+        let offset = Self::CCNT_SHIFT;
+        assert!(value & (Self::CCNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CCNT_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -11368,14 +16464,41 @@ impl Pmcr {
         ((self.bits() >> Self::N_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `N` field.
+    pub const fn set_n(&mut self, value: u8) {
+        let offset = Self::N_SHIFT;
+        assert!(value & (Self::N_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::N_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
         ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `IDCODE` field.
+    pub const fn set_idcode(&mut self, value: u8) {
+        let offset = Self::IDCODE_SHIFT;
+        assert!(value & (Self::IDCODE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IDCODE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
         ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `IMP` field.
+    pub const fn set_imp(&mut self, value: u8) {
+        let offset = Self::IMP_SHIFT;
+        assert!(value & (Self::IMP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMP_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -11446,14 +16569,41 @@ impl PmcrEl0 {
         ((self.bits() >> Self::N_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `N` field.
+    pub const fn set_n(&mut self, value: u8) {
+        let offset = Self::N_SHIFT;
+        assert!(value & (Self::N_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::N_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
         ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `IDCODE` field.
+    pub const fn set_idcode(&mut self, value: u8) {
+        let offset = Self::IDCODE_SHIFT;
+        assert!(value & (Self::IDCODE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IDCODE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
         ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `IMP` field.
+    pub const fn set_imp(&mut self, value: u8) {
+        let offset = Self::IMP_SHIFT;
+        assert!(value & (Self::IMP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMP_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -11650,9 +16800,27 @@ impl Pmmir {
         ((self.bits() >> Self::SLOTS_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `SLOTS` field.
+    pub const fn set_slots(&mut self, value: u8) {
+        let offset = Self::SLOTS_SHIFT;
+        assert!(value & (Self::SLOTS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SLOTS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `BUS_SLOTS` field.
     pub const fn bus_slots(self) -> u8 {
         ((self.bits() >> Self::BUS_SLOTS_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `BUS_SLOTS` field.
+    pub const fn set_bus_slots(&mut self, value: u8) {
+        let offset = Self::BUS_SLOTS_SHIFT;
+        assert!(value & (Self::BUS_SLOTS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BUS_SLOTS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `BUS_WIDTH` field.
@@ -11660,14 +16828,41 @@ impl Pmmir {
         ((self.bits() >> Self::BUS_WIDTH_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `BUS_WIDTH` field.
+    pub const fn set_bus_width(&mut self, value: u8) {
+        let offset = Self::BUS_WIDTH_SHIFT;
+        assert!(value & (Self::BUS_WIDTH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BUS_WIDTH_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `THWIDTH` field.
     pub const fn thwidth(self) -> u8 {
         ((self.bits() >> Self::THWIDTH_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `THWIDTH` field.
+    pub const fn set_thwidth(&mut self, value: u8) {
+        let offset = Self::THWIDTH_SHIFT;
+        assert!(value & (Self::THWIDTH_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THWIDTH_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `EDGE` field.
     pub const fn edge(self) -> u8 {
         ((self.bits() >> Self::EDGE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `EDGE` field.
+    pub const fn set_edge(&mut self, value: u8) {
+        let offset = Self::EDGE_SHIFT;
+        assert!(value & (Self::EDGE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EDGE_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -11847,6 +17042,15 @@ impl Pmselr {
     pub const fn sel(self) -> u8 {
         ((self.bits() >> Self::SEL_SHIFT) & 0b11111) as u8
     }
+
+    /// Sets the value of the `SEL` field.
+    pub const fn set_sel(&mut self, value: u8) {
+        let offset = Self::SEL_SHIFT;
+        assert!(value & (Self::SEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEL_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -11973,6 +17177,15 @@ impl Pmxevtyper {
     pub const fn etr(self) -> u32 {
         ((self.bits() >> Self::ETR_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `ETR` field.
+    pub const fn set_etr(&mut self, value: u32) {
+        let offset = Self::ETR_SHIFT;
+        assert!(value & (Self::ETR_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ETR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -12028,6 +17241,16 @@ impl Prrr {
         assert!(n < 8);
         ((self.bits() >> (Self::TR_SHIFT + (n - 0) * 2)) & 0b11) as u8
     }
+
+    /// Sets the value of the `TR<n>` field.
+    pub const fn set_tr(&mut self, n: u32, value: u8) {
+        assert!(n < 8);
+        let offset = Self::TR_SHIFT + (n - 0) * 2;
+        assert!(value & (Self::TR_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TR_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -12055,9 +17278,27 @@ impl RgsrEl1 {
         ((self.bits() >> Self::TAG_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `TAG` field.
+    pub const fn set_tag(&mut self, value: u8) {
+        let offset = Self::TAG_SHIFT;
+        assert!(value & (Self::TAG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TAG_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SEED` field.
     pub const fn seed(self) -> u16 {
         ((self.bits() >> Self::SEED_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `SEED` field.
+    pub const fn set_seed(&mut self, value: u16) {
+        let offset = Self::SEED_SHIFT;
+        assert!(value & (Self::SEED_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SEED_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -12099,6 +17340,15 @@ impl Rvbar {
     /// Returns the value of the `ResetAddress` field.
     pub const fn resetaddress(self) -> u32 {
         ((self.bits() >> Self::RESETADDRESS_SHIFT) & 0b1111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `ResetAddress` field.
+    pub const fn set_resetaddress(&mut self, value: u32) {
+        let offset = Self::RESETADDRESS_SHIFT;
+        assert!(value & (Self::RESETADDRESS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RESETADDRESS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -12410,6 +17660,15 @@ impl ScrEl3 {
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TWEDEL` field.
+    pub const fn set_twedel(&mut self, value: u8) {
+        let offset = Self::TWEDEL_SHIFT;
+        assert!(value & (Self::TWEDEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -12796,14 +18055,41 @@ impl SctlrEl1 {
         ((self.bits() >> Self::TCF0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TCF0` field.
+    pub const fn set_tcf0(&mut self, value: u8) {
+        let offset = Self::TCF0_SHIFT;
+        assert!(value & (Self::TCF0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCF0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
         ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TCF` field.
+    pub const fn set_tcf(&mut self, value: u8) {
+        let offset = Self::TCF_SHIFT;
+        assert!(value & (Self::TCF_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCF_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TWEDEL` field.
+    pub const fn set_twedel(&mut self, value: u8) {
+        let offset = Self::TWEDEL_SHIFT;
+        assert!(value & (Self::TWEDEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13024,14 +18310,41 @@ impl SctlrEl2 {
         ((self.bits() >> Self::TCF0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TCF0` field.
+    pub const fn set_tcf0(&mut self, value: u8) {
+        let offset = Self::TCF0_SHIFT;
+        assert!(value & (Self::TCF0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCF0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
         ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TCF` field.
+    pub const fn set_tcf(&mut self, value: u8) {
+        let offset = Self::TCF_SHIFT;
+        assert!(value & (Self::TCF_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCF_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `TWEDEL` field.
+    pub const fn set_twedel(&mut self, value: u8) {
+        let offset = Self::TWEDEL_SHIFT;
+        assert!(value & (Self::TWEDEL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13141,6 +18454,15 @@ impl SctlrEl3 {
     pub const fn tcf(self) -> u8 {
         ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
     }
+
+    /// Sets the value of the `TCF` field.
+    pub const fn set_tcf(&mut self, value: u8) {
+        let offset = Self::TCF_SHIFT;
+        assert!(value & (Self::TCF_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TCF_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -13193,6 +18515,15 @@ impl Sdcr {
     pub const fn spd(self) -> u8 {
         ((self.bits() >> Self::SPD_SHIFT) & 0b11) as u8
     }
+
+    /// Sets the value of the `SPD` field.
+    pub const fn set_spd(&mut self, value: u8) {
+        let offset = Self::SPD_SHIFT;
+        assert!(value & (Self::SPD_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SPD_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -13241,6 +18572,15 @@ impl SmcrEl3 {
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
         ((self.bits() >> Self::LEN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `LEN` field.
+    pub const fn set_len(&mut self, value: u8) {
+        let offset = Self::LEN_SHIFT;
+        assert!(value & (Self::LEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LEN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13373,14 +18713,41 @@ impl SpsrEl1 {
         ((self.bits() >> Self::M_3_0_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `M[3:0]` field.
+    pub const fn set_m_3_0(&mut self, value: u8) {
+        let offset = Self::M_3_0_SHIFT;
+        assert!(value & (Self::M_3_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::M_3_0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `BTYPE` field.
+    pub const fn set_btype(&mut self, value: u8) {
+        let offset = Self::BTYPE_SHIFT;
+        assert!(value & (Self::BTYPE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BTYPE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `GE` field.
+    pub const fn set_ge(&mut self, value: u8) {
+        let offset = Self::GE_SHIFT;
+        assert!(value & (Self::GE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13513,14 +18880,41 @@ impl SpsrEl2 {
         ((self.bits() >> Self::M_3_0_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `M[3:0]` field.
+    pub const fn set_m_3_0(&mut self, value: u8) {
+        let offset = Self::M_3_0_SHIFT;
+        assert!(value & (Self::M_3_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::M_3_0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `BTYPE` field.
+    pub const fn set_btype(&mut self, value: u8) {
+        let offset = Self::BTYPE_SHIFT;
+        assert!(value & (Self::BTYPE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BTYPE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `GE` field.
+    pub const fn set_ge(&mut self, value: u8) {
+        let offset = Self::GE_SHIFT;
+        assert!(value & (Self::GE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13653,14 +19047,41 @@ impl SpsrEl3 {
         ((self.bits() >> Self::M_3_0_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `M[3:0]` field.
+    pub const fn set_m_3_0(&mut self, value: u8) {
+        let offset = Self::M_3_0_SHIFT;
+        assert!(value & (Self::M_3_0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::M_3_0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `BTYPE` field.
+    pub const fn set_btype(&mut self, value: u8) {
+        let offset = Self::BTYPE_SHIFT;
+        assert!(value & (Self::BTYPE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BTYPE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `GE` field.
+    pub const fn set_ge(&mut self, value: u8) {
+        let offset = Self::GE_SHIFT;
+        assert!(value & (Self::GE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::GE_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13686,6 +19107,15 @@ impl SpEl1 {
         ((self.bits() >> Self::STACKPOINTER_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `StackPointer` field.
+    pub const fn set_stackpointer(&mut self, value: u64) {
+        let offset = Self::STACKPOINTER_SHIFT;
+        assert!(value & (Self::STACKPOINTER_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STACKPOINTER_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -13709,6 +19139,15 @@ impl SpEl2 {
     pub const fn stackpointer(self) -> u64 {
         ((self.bits() >> Self::STACKPOINTER_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `StackPointer` field.
+    pub const fn set_stackpointer(&mut self, value: u64) {
+        let offset = Self::STACKPOINTER_SHIFT;
+        assert!(value & (Self::STACKPOINTER_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STACKPOINTER_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13813,14 +19252,41 @@ impl Tcr2El1 {
         ((self.bits() >> Self::POIW_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `POIW` field.
+    pub const fn set_poiw(&mut self, value: u8) {
+        let offset = Self::POIW_SHIFT;
+        assert!(value & (Self::POIW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::POIW_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
         ((self.bits() >> Self::VTB0_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `VTB0` field.
+    pub const fn set_vtb0(&mut self, value: u8) {
+        let offset = Self::VTB0_SHIFT;
+        assert!(value & (Self::VTB0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VTB0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
         ((self.bits() >> Self::VTB1_SHIFT) & 0b11111) as u8
+    }
+
+    /// Sets the value of the `VTB1` field.
+    pub const fn set_vtb1(&mut self, value: u8) {
+        let offset = Self::VTB1_SHIFT;
+        assert!(value & (Self::VTB1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VTB1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -13925,14 +19391,41 @@ impl Tcr2El2 {
         ((self.bits() >> Self::POIW_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `POIW` field.
+    pub const fn set_poiw(&mut self, value: u8) {
+        let offset = Self::POIW_SHIFT;
+        assert!(value & (Self::POIW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::POIW_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
         ((self.bits() >> Self::VTB0_SHIFT) & 0b11111) as u8
     }
 
+    /// Sets the value of the `VTB0` field.
+    pub const fn set_vtb0(&mut self, value: u8) {
+        let offset = Self::VTB0_SHIFT;
+        assert!(value & (Self::VTB0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VTB0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
         ((self.bits() >> Self::VTB1_SHIFT) & 0b11111) as u8
+    }
+
+    /// Sets the value of the `VTB1` field.
+    pub const fn set_vtb1(&mut self, value: u8) {
+        let offset = Self::VTB1_SHIFT;
+        assert!(value & (Self::VTB1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VTB1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -14113,9 +19606,27 @@ impl TcrEl1 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -14123,9 +19634,27 @@ impl TcrEl1 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TG0` field.
@@ -14133,9 +19662,27 @@ impl TcrEl1 {
         ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TG0` field.
+    pub const fn set_tg0(&mut self, value: u8) {
+        let offset = Self::TG0_SHIFT;
+        assert!(value & (Self::TG0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TG0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
         ((self.bits() >> Self::T1SZ_SHIFT) & 0b111111) as u8
+    }
+
+    /// Sets the value of the `T1SZ` field.
+    pub const fn set_t1sz(&mut self, value: u8) {
+        let offset = Self::T1SZ_SHIFT;
+        assert!(value & (Self::T1SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T1SZ_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `IRGN1` field.
@@ -14143,9 +19690,27 @@ impl TcrEl1 {
         ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `IRGN1` field.
+    pub const fn set_irgn1(&mut self, value: u8) {
+        let offset = Self::IRGN1_SHIFT;
+        assert!(value & (Self::IRGN1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
         ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `ORGN1` field.
+    pub const fn set_orgn1(&mut self, value: u8) {
+        let offset = Self::ORGN1_SHIFT;
+        assert!(value & (Self::ORGN1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SH1` field.
@@ -14153,14 +19718,41 @@ impl TcrEl1 {
         ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SH1` field.
+    pub const fn set_sh1(&mut self, value: u8) {
+        let offset = Self::SH1_SHIFT;
+        assert!(value & (Self::SH1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TG1` field.
     pub const fn tg1(self) -> u8 {
         ((self.bits() >> Self::TG1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TG1` field.
+    pub const fn set_tg1(&mut self, value: u8) {
+        let offset = Self::TG1_SHIFT;
+        assert!(value & (Self::TG1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TG1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
         ((self.bits() >> Self::IPS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `IPS` field.
+    pub const fn set_ips(&mut self, value: u8) {
+        let offset = Self::IPS_SHIFT;
+        assert!(value & (Self::IPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IPS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -14379,9 +19971,27 @@ impl TcrEl2 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -14389,9 +19999,27 @@ impl TcrEl2 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TG0` field.
@@ -14399,9 +20027,27 @@ impl TcrEl2 {
         ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TG0` field.
+    pub const fn set_tg0(&mut self, value: u8) {
+        let offset = Self::TG0_SHIFT;
+        assert!(value & (Self::TG0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TG0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
         ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `PS` field.
+    pub const fn set_ps(&mut self, value: u8) {
+        let offset = Self::PS_SHIFT;
+        assert!(value & (Self::PS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `T1SZ` field.
@@ -14409,9 +20055,27 @@ impl TcrEl2 {
         ((self.bits() >> Self::T1SZ_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `T1SZ` field.
+    pub const fn set_t1sz(&mut self, value: u8) {
+        let offset = Self::T1SZ_SHIFT;
+        assert!(value & (Self::T1SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T1SZ_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
         ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `IRGN1` field.
+    pub const fn set_irgn1(&mut self, value: u8) {
+        let offset = Self::IRGN1_SHIFT;
+        assert!(value & (Self::IRGN1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ORGN1` field.
@@ -14419,9 +20083,27 @@ impl TcrEl2 {
         ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN1` field.
+    pub const fn set_orgn1(&mut self, value: u8) {
+        let offset = Self::ORGN1_SHIFT;
+        assert!(value & (Self::ORGN1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
         ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH1` field.
+    pub const fn set_sh1(&mut self, value: u8) {
+        let offset = Self::SH1_SHIFT;
+        assert!(value & (Self::SH1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TG1` field.
@@ -14429,14 +20111,41 @@ impl TcrEl2 {
         ((self.bits() >> Self::TG1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TG1` field.
+    pub const fn set_tg1(&mut self, value: u8) {
+        let offset = Self::TG1_SHIFT;
+        assert!(value & (Self::TG1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TG1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
         ((self.bits() >> Self::IPS_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `IPS` field.
+    pub const fn set_ips(&mut self, value: u8) {
+        let offset = Self::IPS_SHIFT;
+        assert!(value & (Self::IPS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IPS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
         ((self.bits() >> Self::VTB_SHIFT) & 0b11111) as u8
+    }
+
+    /// Sets the value of the `VTB` field.
+    pub const fn set_vtb(&mut self, value: u8) {
+        let offset = Self::VTB_SHIFT;
+        assert!(value & (Self::VTB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VTB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -14579,9 +20288,27 @@ impl TcrEl3 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -14589,9 +20316,27 @@ impl TcrEl3 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TG0` field.
@@ -14599,9 +20344,27 @@ impl TcrEl3 {
         ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TG0` field.
+    pub const fn set_tg0(&mut self, value: u8) {
+        let offset = Self::TG0_SHIFT;
+        assert!(value & (Self::TG0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TG0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
         ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `PS` field.
+    pub const fn set_ps(&mut self, value: u8) {
+        let offset = Self::PS_SHIFT;
+        assert!(value & (Self::PS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `POIW` field.
@@ -14609,9 +20372,27 @@ impl TcrEl3 {
         ((self.bits() >> Self::POIW_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `POIW` field.
+    pub const fn set_poiw(&mut self, value: u8) {
+        let offset = Self::POIW_SHIFT;
+        assert!(value & (Self::POIW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::POIW_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
         ((self.bits() >> Self::VTB_SHIFT) & 0b11111) as u8
+    }
+
+    /// Sets the value of the `VTB` field.
+    pub const fn set_vtb(&mut self, value: u8) {
+        let offset = Self::VTB_SHIFT;
+        assert!(value & (Self::VTB_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VTB_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -14711,6 +20492,15 @@ impl Tpidrprw {
     pub const fn tid(self) -> u32 {
         ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `TID` field.
+    pub const fn set_tid(&mut self, value: u32) {
+        let offset = Self::TID_SHIFT;
+        assert!(value & (Self::TID_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -14733,6 +20523,15 @@ impl TpidrroEl0 {
         ((self.bits() >> Self::THREADID_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `ThreadID` field.
+    pub const fn set_threadid(&mut self, value: u64) {
+        let offset = Self::THREADID_SHIFT;
+        assert!(value & (Self::THREADID_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -14753,6 +20552,15 @@ impl Tpidruro {
     pub const fn tid(self) -> u32 {
         ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
     }
+
+    /// Sets the value of the `TID` field.
+    pub const fn set_tid(&mut self, value: u32) {
+        let offset = Self::TID_SHIFT;
+        assert!(value & (Self::TID_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -14772,6 +20580,15 @@ impl Tpidrurw {
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
         ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TID` field.
+    pub const fn set_tid(&mut self, value: u32) {
+        let offset = Self::TID_SHIFT;
+        assert!(value & (Self::TID_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -14794,6 +20611,15 @@ impl TpidrEl0 {
     pub const fn threadid(self) -> u64 {
         ((self.bits() >> Self::THREADID_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ThreadID` field.
+    pub const fn set_threadid(&mut self, value: u64) {
+        let offset = Self::THREADID_SHIFT;
+        assert!(value & (Self::THREADID_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -14819,6 +20645,15 @@ impl TpidrEl1 {
         ((self.bits() >> Self::THREADID_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
     }
+
+    /// Sets the value of the `ThreadID` field.
+    pub const fn set_threadid(&mut self, value: u64) {
+        let offset = Self::THREADID_SHIFT;
+        assert!(value & (Self::THREADID_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -14842,6 +20677,15 @@ impl TpidrEl2 {
     pub const fn threadid(self) -> u64 {
         ((self.bits() >> Self::THREADID_SHIFT)
             & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ThreadID` field.
+    pub const fn set_threadid(&mut self, value: u64) {
+        let offset = Self::THREADID_SHIFT;
+        assert!(value & (Self::THREADID_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -14870,6 +20714,15 @@ impl Trfcr {
     /// Returns the value of the `TS` field.
     pub const fn ts(self) -> u8 {
         ((self.bits() >> Self::TS_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `TS` field.
+    pub const fn set_ts(&mut self, value: u8) {
+        let offset = Self::TS_SHIFT;
+        assert!(value & (Self::TS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TS_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -14952,9 +20805,27 @@ impl Ttbcr {
         ((self.bits() >> Self::N_SHIFT) & 0b111) as u8
     }
 
+    /// Sets the value of the `N` field.
+    pub const fn set_n(&mut self, value: u8) {
+        let offset = Self::N_SHIFT;
+        assert!(value & (Self::N_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::N_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `IRGN0` field.
@@ -14962,9 +20833,27 @@ impl Ttbcr {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `SH0` field.
@@ -14972,9 +20861,27 @@ impl Ttbcr {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
         ((self.bits() >> Self::T1SZ_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `T1SZ` field.
+    pub const fn set_t1sz(&mut self, value: u8) {
+        let offset = Self::T1SZ_SHIFT;
+        assert!(value & (Self::T1SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T1SZ_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `IRGN1` field.
@@ -14982,14 +20889,41 @@ impl Ttbcr {
         ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `IRGN1` field.
+    pub const fn set_irgn1(&mut self, value: u8) {
+        let offset = Self::IRGN1_SHIFT;
+        assert!(value & (Self::IRGN1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN1_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
         ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN1` field.
+    pub const fn set_orgn1(&mut self, value: u8) {
+        let offset = Self::ORGN1_SHIFT;
+        assert!(value & (Self::ORGN1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN1_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
         ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH1` field.
+    pub const fn set_sh1(&mut self, value: u8) {
+        let offset = Self::SH1_SHIFT;
+        assert!(value & (Self::SH1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH1_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -15092,9 +21026,27 @@ impl Ttbr0 {
             as u64
     }
 
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & (Self::BADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `RGN` field.
     pub const fn rgn(self) -> u8 {
         ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `RGN` field.
+    pub const fn set_rgn(&mut self, value: u8) {
+        let offset = Self::RGN_SHIFT;
+        assert!(value & (Self::RGN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RGN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TTB0` field.
@@ -15102,9 +21054,27 @@ impl Ttbr0 {
         ((self.bits() >> Self::TTB0_SHIFT) & 0b1111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `TTB0` field.
+    pub const fn set_ttb0(&mut self, value: u32) {
+        let offset = Self::TTB0_SHIFT;
+        assert!(value & (Self::TTB0_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TTB0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u8) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15142,14 +21112,41 @@ impl Ttbr0El1 {
             & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
+    /// Sets the value of the `BADDR[47:1]` field.
+    pub const fn set_baddr_47_1(&mut self, value: u64) {
+        let offset = Self::BADDR_47_1_SHIFT;
+        assert!(value & (Self::BADDR_47_1_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_47_1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SKL` field.
+    pub const fn set_skl(&mut self, value: u8) {
+        let offset = Self::SKL_SHIFT;
+        assert!(value & (Self::SKL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u16) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15187,14 +21184,41 @@ impl Ttbr0El2 {
             & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
+    /// Sets the value of the `BADDR[47:1]` field.
+    pub const fn set_baddr_47_1(&mut self, value: u64) {
+        let offset = Self::BADDR_47_1_SHIFT;
+        assert!(value & (Self::BADDR_47_1_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_47_1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SKL` field.
+    pub const fn set_skl(&mut self, value: u8) {
+        let offset = Self::SKL_SHIFT;
+        assert!(value & (Self::SKL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u16) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15221,6 +21245,15 @@ impl Ttbr0El3 {
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SKL` field.
+    pub const fn set_skl(&mut self, value: u8) {
+        let offset = Self::SKL_SHIFT;
+        assert!(value & (Self::SKL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15272,9 +21305,27 @@ impl Ttbr1 {
             as u64
     }
 
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & (Self::BADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `RGN` field.
     pub const fn rgn(self) -> u8 {
         ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `RGN` field.
+    pub const fn set_rgn(&mut self, value: u8) {
+        let offset = Self::RGN_SHIFT;
+        assert!(value & (Self::RGN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::RGN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `TTB1` field.
@@ -15282,9 +21333,27 @@ impl Ttbr1 {
         ((self.bits() >> Self::TTB1_SHIFT) & 0b1111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `TTB1` field.
+    pub const fn set_ttb1(&mut self, value: u32) {
+        let offset = Self::TTB1_SHIFT;
+        assert!(value & (Self::TTB1_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TTB1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u8) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15322,14 +21391,41 @@ impl Ttbr1El1 {
             & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
+    /// Sets the value of the `BADDR[47:1]` field.
+    pub const fn set_baddr_47_1(&mut self, value: u64) {
+        let offset = Self::BADDR_47_1_SHIFT;
+        assert!(value & (Self::BADDR_47_1_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_47_1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SKL` field.
+    pub const fn set_skl(&mut self, value: u8) {
+        let offset = Self::SKL_SHIFT;
+        assert!(value & (Self::SKL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u16) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15367,14 +21463,41 @@ impl Ttbr1El2 {
             & 0b11111111111111111111111111111111111111111111111) as u64
     }
 
+    /// Sets the value of the `BADDR[47:1]` field.
+    pub const fn set_baddr_47_1(&mut self, value: u64) {
+        let offset = Self::BADDR_47_1_SHIFT;
+        assert!(value & (Self::BADDR_47_1_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_47_1_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SKL` field.
+    pub const fn set_skl(&mut self, value: u8) {
+        let offset = Self::SKL_SHIFT;
+        assert!(value & (Self::SKL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `ASID` field.
+    pub const fn set_asid(&mut self, value: u16) {
+        let offset = Self::ASID_SHIFT;
+        assert!(value & (Self::ASID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15395,6 +21518,15 @@ impl Vbar {
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `VBA` field.
+    pub const fn set_vba(&mut self, value: u32) {
+        let offset = Self::VBA_SHIFT;
+        assert!(value & (Self::VBA_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -15423,6 +21555,15 @@ impl VbarEl1 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b11111111111111111111111111111111111111111111111111111)
             as u64
     }
+
+    /// Sets the value of the `VBA` field.
+    pub const fn set_vba(&mut self, value: u64) {
+        let offset = Self::VBA_SHIFT;
+        assert!(value & (Self::VBA_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -15450,6 +21591,15 @@ impl VbarEl2 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b11111111111111111111111111111111111111111111111111111)
             as u64
     }
+
+    /// Sets the value of the `VBA` field.
+    pub const fn set_vba(&mut self, value: u64) {
+        let offset = Self::VBA_SHIFT;
+        assert!(value & (Self::VBA_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
 }
 
 bitflags! {
@@ -15473,6 +21623,15 @@ impl Vdfsr {
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `AET` field.
+    pub const fn set_aet(&mut self, value: u8) {
+        let offset = Self::AET_SHIFT;
+        assert!(value & (Self::AET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AET_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -15511,9 +21670,27 @@ impl Vdisr {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `STATUS` field.
+    pub const fn set_status(&mut self, value: u8) {
+        let offset = Self::STATUS_SHIFT;
+        assert!(value & (Self::STATUS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `AET` field.
+    pub const fn set_aet(&mut self, value: u8) {
+        let offset = Self::AET_SHIFT;
+        assert!(value & (Self::AET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AET_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -15562,14 +21739,41 @@ impl VdisrEl2 {
         ((self.bits() >> Self::ISS_SHIFT) & 0b111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `ISS` field.
+    pub const fn set_iss(&mut self, value: u32) {
+        let offset = Self::ISS_SHIFT;
+        assert!(value & (Self::ISS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `STATUS` field.
+    pub const fn set_status(&mut self, value: u8) {
+        let offset = Self::STATUS_SHIFT;
+        assert!(value & (Self::STATUS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `AET` field.
+    pub const fn set_aet(&mut self, value: u8) {
+        let offset = Self::AET_SHIFT;
+        assert!(value & (Self::AET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AET_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15612,14 +21816,41 @@ impl Vmpidr {
         ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff0` field.
+    pub const fn set_aff0(&mut self, value: u8) {
+        let offset = Self::AFF0_SHIFT;
+        assert!(value & (Self::AFF0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff1` field.
+    pub const fn set_aff1(&mut self, value: u8) {
+        let offset = Self::AFF1_SHIFT;
+        assert!(value & (Self::AFF1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Aff2` field.
+    pub const fn set_aff2(&mut self, value: u8) {
+        let offset = Self::AFF2_SHIFT;
+        assert!(value & (Self::AFF2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -15666,9 +21897,27 @@ impl VmpidrEl2 {
         ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff0` field.
+    pub const fn set_aff0(&mut self, value: u8) {
+        let offset = Self::AFF0_SHIFT;
+        assert!(value & (Self::AFF0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Aff1` field.
+    pub const fn set_aff1(&mut self, value: u8) {
+        let offset = Self::AFF1_SHIFT;
+        assert!(value & (Self::AFF1_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `Aff2` field.
@@ -15676,9 +21925,27 @@ impl VmpidrEl2 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
     }
 
+    /// Sets the value of the `Aff2` field.
+    pub const fn set_aff2(&mut self, value: u8) {
+        let offset = Self::AFF2_SHIFT;
+        assert!(value & (Self::AFF2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Aff3` field.
+    pub const fn set_aff3(&mut self, value: u8) {
+        let offset = Self::AFF3_SHIFT;
+        assert!(value & (Self::AFF3_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15717,9 +21984,27 @@ impl Vpidr {
         ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Revision` field.
+    pub const fn set_revision(&mut self, value: u8) {
+        let offset = Self::REVISION_SHIFT;
+        assert!(value & (Self::REVISION_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::REVISION_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+    }
+
+    /// Sets the value of the `PartNum` field.
+    pub const fn set_partnum(&mut self, value: u16) {
+        let offset = Self::PARTNUM_SHIFT;
+        assert!(value & (Self::PARTNUM_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `Architecture` field.
@@ -15727,14 +22012,41 @@ impl Vpidr {
         ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Architecture` field.
+    pub const fn set_architecture(&mut self, value: u8) {
+        let offset = Self::ARCHITECTURE_SHIFT;
+        assert!(value & (Self::ARCHITECTURE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ARCHITECTURE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Variant` field.
+    pub const fn set_variant(&mut self, value: u8) {
+        let offset = Self::VARIANT_SHIFT;
+        assert!(value & (Self::VARIANT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VARIANT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Implementer` field.
+    pub const fn set_implementer(&mut self, value: u8) {
+        let offset = Self::IMPLEMENTER_SHIFT;
+        assert!(value & (Self::IMPLEMENTER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -15775,9 +22087,27 @@ impl VpidrEl2 {
         ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Revision` field.
+    pub const fn set_revision(&mut self, value: u8) {
+        let offset = Self::REVISION_SHIFT;
+        assert!(value & (Self::REVISION_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::REVISION_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+    }
+
+    /// Sets the value of the `PartNum` field.
+    pub const fn set_partnum(&mut self, value: u16) {
+        let offset = Self::PARTNUM_SHIFT;
+        assert!(value & (Self::PARTNUM_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `Architecture` field.
@@ -15785,14 +22115,41 @@ impl VpidrEl2 {
         ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Architecture` field.
+    pub const fn set_architecture(&mut self, value: u8) {
+        let offset = Self::ARCHITECTURE_SHIFT;
+        assert!(value & (Self::ARCHITECTURE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ARCHITECTURE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `Variant` field.
+    pub const fn set_variant(&mut self, value: u8) {
+        let offset = Self::VARIANT_SHIFT;
+        assert!(value & (Self::VARIANT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VARIANT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `Implementer` field.
+    pub const fn set_implementer(&mut self, value: u8) {
+        let offset = Self::IMPLEMENTER_SHIFT;
+        assert!(value & (Self::IMPLEMENTER_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15829,9 +22186,27 @@ impl VsesrEl2 {
         ((self.bits() >> Self::ISS_SHIFT) & 0b111111111111111111111111) as u32
     }
 
+    /// Sets the value of the `ISS` field.
+    pub const fn set_iss(&mut self, value: u32) {
+        let offset = Self::ISS_SHIFT;
+        assert!(value & (Self::ISS_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ISS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `AET` field.
+    pub const fn set_aet(&mut self, value: u8) {
+        let offset = Self::AET_SHIFT;
+        assert!(value & (Self::AET_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::AET_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -15892,9 +22267,27 @@ impl Vtcr {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b1111) as u8
     }
 
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
         ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SL0` field.
+    pub const fn set_sl0(&mut self, value: u8) {
+        let offset = Self::SL0_SHIFT;
+        assert!(value & (Self::SL0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SL0_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 
     /// Returns the value of the `IRGN0` field.
@@ -15902,14 +22295,41 @@ impl Vtcr {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u32) << offset),
+        );
     }
 }
 
@@ -16040,9 +22460,27 @@ impl VtcrEl2 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
     }
 
+    /// Sets the value of the `T0SZ` field.
+    pub const fn set_t0sz(&mut self, value: u8) {
+        let offset = Self::T0SZ_SHIFT;
+        assert!(value & (Self::T0SZ_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
         ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `SL0` field.
+    pub const fn set_sl0(&mut self, value: u8) {
+        let offset = Self::SL0_SHIFT;
+        assert!(value & (Self::SL0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SL0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `IRGN0` field.
@@ -16050,9 +22488,27 @@ impl VtcrEl2 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `IRGN0` field.
+    pub const fn set_irgn0(&mut self, value: u8) {
+        let offset = Self::IRGN0_SHIFT;
+        assert!(value & (Self::IRGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+    }
+
+    /// Sets the value of the `ORGN0` field.
+    pub const fn set_orgn0(&mut self, value: u8) {
+        let offset = Self::ORGN0_SHIFT;
+        assert!(value & (Self::ORGN0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 
     /// Returns the value of the `SH0` field.
@@ -16060,14 +22516,41 @@ impl VtcrEl2 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SH0` field.
+    pub const fn set_sh0(&mut self, value: u8) {
+        let offset = Self::SH0_SHIFT;
+        assert!(value & (Self::SH0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
         ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `TG0` field.
+    pub const fn set_tg0(&mut self, value: u8) {
+        let offset = Self::TG0_SHIFT;
+        assert!(value & (Self::TG0_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TG0_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
         ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `PS` field.
+    pub const fn set_ps(&mut self, value: u8) {
+        let offset = Self::PS_SHIFT;
+        assert!(value & (Self::PS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PS_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -16099,9 +22582,27 @@ impl Vttbr {
             as u64
     }
 
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & (Self::BADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u8 {
         ((self.bits() >> Self::VMID_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `VMID` field.
+    pub const fn set_vmid(&mut self, value: u8) {
+        let offset = Self::VMID_SHIFT;
+        assert!(value & (Self::VMID_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VMID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -16139,14 +22640,41 @@ impl VttbrEl2 {
             as u64
     }
 
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & (Self::BADDR_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
     }
 
+    /// Sets the value of the `SKL` field.
+    pub const fn set_skl(&mut self, value: u8) {
+        let offset = Self::SKL_SHIFT;
+        assert!(value & (Self::SKL_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u16 {
         ((self.bits() >> Self::VMID_SHIFT) & 0b1111111111111111) as u16
+    }
+
+    /// Sets the value of the `VMID` field.
+    pub const fn set_vmid(&mut self, value: u16) {
+        let offset = Self::VMID_SHIFT;
+        assert!(value & (Self::VMID_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VMID_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
@@ -16169,6 +22697,15 @@ impl ZcrEl3 {
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
         ((self.bits() >> Self::LEN_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `LEN` field.
+    pub const fn set_len(&mut self, value: u8) {
+        let offset = Self::LEN_SHIFT;
+        assert!(value & (Self::LEN_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LEN_MASK << offset)) | ((value as u64) << offset),
+        );
     }
 }
 
