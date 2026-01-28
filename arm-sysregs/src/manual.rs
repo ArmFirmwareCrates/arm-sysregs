@@ -199,6 +199,7 @@ impl IdAa64mmfr3El1 {
 impl IdAa64pfr0El1 {
     const SVE_SUPPORTED: u8 = 1;
     const MPAM_SUPPORTED: u8 = 1;
+    const AMU_SUPPORTED: u8 = 1;
 
     /// Indicates whether SVE is implemented.
     pub fn is_feat_sve_present(self) -> bool {
@@ -208,6 +209,11 @@ impl IdAa64pfr0El1 {
     /// Indicates whether MPAM Extension is implemented.
     pub fn is_feat_mpam_present(self) -> bool {
         self.mpam() == Self::MPAM_SUPPORTED
+    }
+
+    /// Indicates whether AMU Extension is implemented.
+    pub fn is_feat_amu_present(self) -> bool {
+        self.amu() >= Self::AMU_SUPPORTED
     }
 }
 
