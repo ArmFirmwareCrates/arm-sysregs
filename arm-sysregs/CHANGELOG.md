@@ -1,10 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.2.2
 
 ### New features
 
 - Register structs now implement `Default`.
+- Register structs now have setters for multibit fields.
 
 ## 0.2.1
 

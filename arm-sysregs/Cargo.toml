@@ -3,7 +3,7 @@
 
 [package]
 name = "arm-sysregs"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 description = "Armv8-A system register helper crate"
