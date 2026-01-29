@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+### New features
+
+- Added AMU feature detection for the `ID_AA64PFR0_EL1` register.
+- Added FGT feature registers.
+
 ## 0.2.2
 
 ### New features
