@@ -23,6 +23,12 @@ bitflags = "2.9.1"
 num_enum = { version = "0.7.5", default-features = false }
 paste = "1.0.14"
 
+[dev-dependencies]
+log = "0.4.29"
+
+[target.'cfg(target_arch = "aarch64")'.dev-dependencies]
+aarch64-rt = { version = "0.4.2", default-features = false }
+
 [features]
 el1 = []
 el2 = ["el1"]

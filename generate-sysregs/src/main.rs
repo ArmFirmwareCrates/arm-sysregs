@@ -10,7 +10,7 @@ use crate::{
     config::Config,
     enums::identify_enums,
     json_input::register_entries_to_register_infos,
-    output::{write_fake, write_lib},
+    output::{write_example, write_fake, write_lib},
 };
 use arm_sysregs_json::{RegisterEntry, Values};
 use clap::{Parser, Subcommand};
@@ -30,12 +30,20 @@ fn main() -> Result<(), Report> {
 
     match args.command {
         Command::Generate { output_directory } => {
-            let output_lib = File::create(output_directory.join("lib.rs"))?;
-            let output_fake = File::create(output_directory.join("fake").join("generated.rs"))?;
+            let output_lib = File::create(output_directory.join("src").join("lib.rs"))?;
+            let output_fake = File::create(
+                output_directory
+                    .join("src")
+                    .join("fake")
+                    .join("generated.rs"),
+            )?;
+            let output_example =
+                File::create(output_directory.join("examples").join("log_all.rs"))?;
 
             warn_missing(&register_infos, &config);
             write_lib(&output_lib, &register_infos)?;
             write_fake(&output_fake, &register_infos)?;
+            write_example(&output_example, &register_infos)?;
         }
         Command::Enums {
             generate_stubs,

@@ -137,6 +137,61 @@ pub struct SystemRegisters {
     Ok(())
 }
 
+pub fn write_example(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
+    writeln!(
+        writer,
+        "\
+// SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
+// SPDX-License-Identifier: MIT OR Apache-2.0
+
+//! Example to log all readable system register values.
+
+#![no_std]
+#![cfg_attr(not(any(test, feature = \"fakes\")), no_main)]
+
+#[cfg(target_arch = \"aarch64\")]
+use aarch64_rt::entry;
+#[cfg(not(any(test, feature = \"fakes\")))]
+use core::panic::PanicInfo;
+use log::info;
+
+#[cfg(target_arch = \"aarch64\")]
+entry!(entry);
+#[cfg_attr(any(test, feature = \"fakes\"), allow(unused))]
+fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {{
+"
+    )?;
+    for register in registers {
+        if register.read.is_some() {
+            if let Some(guard) = register.cfg_guard() {
+                writeln!(writer, "    {guard}")?;
+            }
+            let name = register.variable_name();
+            writeln!(
+                writer,
+                "    info!(\"{name} = {{:?}}\", arm_sysregs::read_{name}());"
+            )?;
+        }
+    }
+    writeln!(
+        writer,
+        "\
+    loop {{}}
+}}
+
+#[cfg(any(test, feature = \"fakes\"))]
+fn main() {{}}
+
+#[cfg(not(any(test, feature = \"fakes\")))]
+#[panic_handler]
+fn panic(_panic: &PanicInfo) -> ! {{
+    loop {{}}
+}}
+"
+    )?;
+    Ok(())
+}
+
 impl RegisterInfo {
     /// Whether to use a wrapper bitflags struct type for the register, rather than just a raw
     /// primitive type.
