@@ -35,6 +35,8 @@ pub struct RegisterConfig {
     pub write_safety_doc: Option<String>,
     #[serde(default)]
     pub manual_debug: bool,
+    #[serde(default)]
+    pub use_raw_name: bool,
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]

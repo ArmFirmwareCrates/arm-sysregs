@@ -161,7 +161,7 @@ fn add_details(register: &mut RegisterInfo, config: &Config) {
                 field.type_name = Some(ty.clone());
             }
         }
-        if !register.has_special_conditions {
+        if !register.has_special_conditions && !register_config.use_raw_name {
             register.assembly_name = None;
         }
     }

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Bugfixes
+
+- Fixed accessors for `ID_AA64SMFR0_EL1` and `TTBR1_EL2` raw encoding name in assembly, to avoid
+  compilation errors when the assembler doesn't recognise the system register names.
+
 ## 0.2.3
 
 ### New features

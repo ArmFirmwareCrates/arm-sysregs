@@ -385,6 +385,8 @@ write = "safe"
 [registers.ID_AA64PFR0_EL1]
 [registers.ID_AA64PFR1_EL1]
 [registers.ID_AA64SMFR0_EL1]
+use_raw_name = true
+
 [registers.ISR_EL1]
 write = "never"
 
@@ -590,6 +592,7 @@ write_safety_doc = "The base address must point to a valid and properly aligned 
 
 [registers.TTBR1_EL2]
 write_safety_doc = "The base address must point to a valid and properly aligned translation table."
+use_raw_name = true
 
 [registers.VBAR_EL1]
 write_safety_doc = "The base address must point to a valid exception vector."

@@ -24104,7 +24104,7 @@ read_sysreg!(id_aa64pfr0_el1, u64: IdAa64pfr0El1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(id_aa64pfr1_el1, u64: IdAa64pfr1El1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_sysreg!(id_aa64smfr0_el1, u64: IdAa64smfr0El1, safe, fake::SYSREGS);
+read_sysreg!(id_aa64smfr0_el1: s3_0_c0_c4_5, u64: IdAa64smfr0El1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(id_afr0: (p15, 0, c1, c0, 3), u32, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -24389,7 +24389,7 @@ read_write_sysreg! {
     /// # Safety
     ///
     /// The base address must point to a valid and properly aligned translation table.
-    ttbr1_el2, u64: Ttbr1El2, safe_read, fake::SYSREGS
+    ttbr1_el2: s3_4_c2_c0_1, u64: Ttbr1El2, safe_read, fake::SYSREGS
 }
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(vbar: (p15, 0, c0, c12, 0), u32: Vbar, safe_read, fake::SYSREGS);
