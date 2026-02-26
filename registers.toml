@@ -558,6 +558,7 @@ EnIA = "Enable pointer authentication using APIAKey_EL1."
 [registers.SPSR_EL1]
 [registers.SPSR_EL2]
 [registers.SPSR_EL3]
+[registers.SVCR]
 [registers.TCR_EL1]
 [registers.TCR_EL2]
 [registers.TCR_EL3]

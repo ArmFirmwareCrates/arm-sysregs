@@ -18,8 +18,8 @@ use crate::{
     Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2,
     Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr,
     Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder,
-    Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0, Ttbr1,
-    Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
+    Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0,
+    Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el1")]
 use crate::{
@@ -728,6 +728,8 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `SP_EL2` system register.
     pub sp_el2: SpEl2,
+    /// Fake value for the `SVCR` system register.
+    pub svcr: Svcr,
     /// Fake value for the `TCMTR` system register.
     pub tcmtr: u32,
     #[cfg(feature = "el1")]
@@ -1233,6 +1235,7 @@ impl SystemRegisters {
             sp_el1: SpEl1::empty(),
             #[cfg(feature = "el2")]
             sp_el2: SpEl2::empty(),
+            svcr: Svcr::empty(),
             tcmtr: 0,
             #[cfg(feature = "el1")]
             tcr2_el1: Tcr2El1::empty(),

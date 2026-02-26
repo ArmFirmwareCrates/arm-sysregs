@@ -20158,6 +20158,25 @@ impl SpEl2 {
     }
 }
 
+bitflags! {
+    /// `SVCR` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Svcr: u64 {
+        /// `SM` bit.
+        const SM = 1 << 0;
+        /// `ZA` bit.
+        const ZA = 1 << 1;
+    }
+}
+
+impl Svcr {
+    /// Offset of the `SM` field.
+    pub const SM_SHIFT: u32 = 0;
+    /// Offset of the `ZA` field.
+    pub const ZA_SHIFT: u32 = 1;
+}
+
 #[cfg(feature = "el1")]
 bitflags! {
     /// `TCR2_EL1` system register value.
@@ -24307,6 +24326,8 @@ read_write_sysreg!(spsr_el3, u64: SpsrEl3, safe_read, fake::SYSREGS);
 read_write_sysreg!(sp_el1, u64: SpEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(sp_el2, u64: SpEl2, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(svcr: s3_3_c4_c2_2, u64: Svcr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(tcmtr: (p15, 0, c0, c0, 2), u32, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

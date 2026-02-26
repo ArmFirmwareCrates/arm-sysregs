@@ -619,6 +619,8 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("sp_el1 = {:?}", arm_sysregs::read_sp_el1());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!("sp_el2 = {:?}", arm_sysregs::read_sp_el2());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("svcr = {:?}", arm_sysregs::read_svcr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("tcmtr = {:?}", arm_sysregs::read_tcmtr());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

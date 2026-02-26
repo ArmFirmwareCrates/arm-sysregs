@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Added SVCR register.
+
 ## 0.2.4
 
 ### Bugfixes
