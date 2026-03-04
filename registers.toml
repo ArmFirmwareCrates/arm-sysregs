@@ -226,15 +226,112 @@ LoUU = "Level of Unification Uniprocessor for the cache hierarchy."
 LoUIS = "Level of Unification Inner Shareable for the cache hierarchy."
 Ctype = "Cache type."
 
-[registers.CNTPCT_EL0]
+# D24.10 Generic Timer registers
 
 [registers.CNTFRQ_EL0]
+description = "Counter-timer Frequency Register"
 write = "safe"
 
+[registers.CNTKCTL_EL1]
+description = "Counter-timer Kernel Control Register"
+write = "safe"
 [registers.CNTHCTL_EL2]
+description = "Counter-timer Hypervisor Control Register"
 write = "safe"
 
+# Phyisical timer
+[registers.CNTPCT_EL0]
+description = "Counter-timer Physical Count Register"
+[registers.CNTPCTSS_EL0]
+description = "Counter-timer Self-Synchronized Physical Count Register"
+[registers.CNTPOFF_EL2]
+description = "Counter-timer Physical Offset Register"
+write = "safe"
+
+# Virtual timer
+[registers.CNTVCT_EL0]
+description = "Counter-timer Virtual Count Register"
+[registers.CNTVCTSS_EL0]
+description = "Counter-timer Self-Synchronized Virtual Count Register"
 [registers.CNTVOFF_EL2]
+description = "Counter-timer Virtual Offset Register"
+write = "safe"
+
+# EL1 physical timer
+[registers.CNTP_CTL_EL0]
+description = "Counter-timer Physical Timer Control Register"
+write = "safe"
+[registers.CNTP_CVAL_EL0]
+description = "Counter-timer Physical Timer CompareValue Register"
+write = "safe"
+[registers.CNTP_TVAL_EL0]
+description = "Counter-timer Physical Timer TimerValue Register"
+write = "safe"
+
+# EL2 physical timer
+[registers.CNTHP_CTL_EL2]
+description = "Counter-timer Hypervisor Physical Timer Control Register"
+write = "safe"
+[registers.CNTHP_CVAL_EL2]
+description = "Counter-timer Physical Timer CompareValue Register (EL2)"
+write = "safe"
+[registers.CNTHP_TVAL_EL2]
+description = "Counter-timer Physical Timer TimerValue Register (EL2)"
+write = "safe"
+
+# Secure EL2 physical timer
+[registers.CNTHPS_CTL_EL2]
+description = "Counter-timer Secure Physical Timer Control Register (EL2)"
+write = "safe"
+[registers.CNTHPS_CVAL_EL2]
+description = "Counter-timer Secure Physical Timer CompareValue Register (EL2)"
+write = "safe"
+[registers.CNTHPS_TVAL_EL2]
+description = "Counter-timer Secure Physical Timer TimerValue Register (EL2)"
+write = "safe"
+
+# EL3 physical timer
+[registers.CNTPS_CTL_EL1]
+description = "Counter-timer Physical Secure Timer Control Register"
+write = "safe"
+[registers.CNTPS_CVAL_EL1]
+description = "Counter-timer Physical Secure Timer CompareValue Register"
+write = "safe"
+[registers.CNTPS_TVAL_EL1]
+description = "Counter-timer Physical Secure Timer TimerValue Register"
+write = "safe"
+
+# EL1 virtual timer
+[registers.CNTV_CTL_EL0]
+description = "Counter-timer Virtual Timer Control Register"
+write = "safe"
+[registers.CNTV_CVAL_EL0]
+description = "Counter-timer Virtual Timer CompareValue Register"
+write = "safe"
+[registers.CNTV_TVAL_EL0]
+description = "Counter-timer Virtual Timer TimerValue Register"
+write = "safe"
+
+# EL2 virtual timer
+[registers.CNTHV_CTL_EL2]
+description = "Counter-timer Virtual Timer Control Register (EL2)"
+write = "safe"
+[registers.CNTHV_CVAL_EL2]
+description = "Counter-timer Virtual Timer CompareValue Register (EL2)"
+write = "safe"
+[registers.CNTHV_TVAL_EL2]
+description = "Counter-timer Virtual Timer TimerValue Register (EL2)"
+write = "safe"
+
+# Secure EL2 virtual timer
+[registers.CNTHVS_CTL_EL2]
+description = "Counter-timer Secure Virtual Timer Control Register (EL2)"
+write = "safe"
+[registers.CNTHVS_CVAL_EL2]
+description = "Counter-timer Secure Virtual Timer CompareValue Register (EL2)"
+write = "safe"
+[registers.CNTHVS_TVAL_EL2]
+description = "Counter-timer Secure Virtual Timer TimerValue Register (EL2)"
 write = "safe"
 
 [registers.CONTEXTIDR_EL1]

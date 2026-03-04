@@ -756,6 +756,8 @@ impl Cntfrq {
 
 bitflags! {
     /// `CNTFRQ_EL0` system register value.
+    ///
+    /// Counter-timer Frequency Register
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntfrqEl0: u64 {
@@ -835,6 +837,8 @@ impl Cnthctl {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CNTHCTL_EL2` system register value.
+    ///
+    /// Counter-timer Hypervisor Control Register
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CnthctlEl2: u64 {
@@ -950,6 +954,33 @@ impl CnthpsCtl {
     pub const ISTATUS_SHIFT: u32 = 2;
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHPS_CTL_EL2` system register value.
+    ///
+    /// Counter-timer Secure Physical Timer Control Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpsCtlEl2: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthpsCtlEl2 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
 bitflags! {
     /// `CNTHPS_CVAL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -959,6 +990,41 @@ bitflags! {
 }
 
 impl CnthpsCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHPS_CVAL_EL2` system register value.
+    ///
+    /// Counter-timer Secure Physical Timer CompareValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpsCvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthpsCvalEl2 {
     /// Offset of the `CompareValue` field.
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
@@ -1010,6 +1076,39 @@ impl CnthpsTval {
     }
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHPS_TVAL_EL2` system register value.
+    ///
+    /// Counter-timer Secure Physical Timer TimerValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpsTvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthpsTvalEl2 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
 bitflags! {
     /// `CNTHP_CTL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1033,6 +1132,33 @@ impl CnthpCtl {
     pub const ISTATUS_SHIFT: u32 = 2;
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHP_CTL_EL2` system register value.
+    ///
+    /// Counter-timer Hypervisor Physical Timer Control Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpCtlEl2: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthpCtlEl2 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
 bitflags! {
     /// `CNTHP_CVAL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1042,6 +1168,41 @@ bitflags! {
 }
 
 impl CnthpCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHP_CVAL_EL2` system register value.
+    ///
+    /// Counter-timer Physical Timer CompareValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpCvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthpCvalEl2 {
     /// Offset of the `CompareValue` field.
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
@@ -1093,6 +1254,39 @@ impl CnthpTval {
     }
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHP_TVAL_EL2` system register value.
+    ///
+    /// Counter-timer Physical Timer TimerValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthpTvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthpTvalEl2 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
 bitflags! {
     /// `CNTHVS_CTL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1116,6 +1310,33 @@ impl CnthvsCtl {
     pub const ISTATUS_SHIFT: u32 = 2;
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHVS_CTL_EL2` system register value.
+    ///
+    /// Counter-timer Secure Virtual Timer Control Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvsCtlEl2: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthvsCtlEl2 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
 bitflags! {
     /// `CNTHVS_CVAL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1125,6 +1346,41 @@ bitflags! {
 }
 
 impl CnthvsCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHVS_CVAL_EL2` system register value.
+    ///
+    /// Counter-timer Secure Virtual Timer CompareValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvsCvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthvsCvalEl2 {
     /// Offset of the `CompareValue` field.
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
@@ -1176,6 +1432,39 @@ impl CnthvsTval {
     }
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHVS_TVAL_EL2` system register value.
+    ///
+    /// Counter-timer Secure Virtual Timer TimerValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvsTvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthvsTvalEl2 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
 bitflags! {
     /// `CNTHV_CTL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1199,6 +1488,33 @@ impl CnthvCtl {
     pub const ISTATUS_SHIFT: u32 = 2;
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHV_CTL_EL2` system register value.
+    ///
+    /// Counter-timer Virtual Timer Control Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvCtlEl2: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthvCtlEl2 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
 bitflags! {
     /// `CNTHV_CVAL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1208,6 +1524,41 @@ bitflags! {
 }
 
 impl CnthvCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHV_CVAL_EL2` system register value.
+    ///
+    /// Counter-timer Virtual Timer CompareValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvCvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthvCvalEl2 {
     /// Offset of the `CompareValue` field.
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
@@ -1255,6 +1606,39 @@ impl CnthvTval {
         assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTHV_TVAL_EL2` system register value.
+    ///
+    /// Counter-timer Virtual Timer TimerValue Register (EL2)
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CnthvTvalEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CnthvTvalEl2 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
 }
@@ -1312,6 +1696,103 @@ impl Cntkctl {
         assert!(value & (Self::EVNTI_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `CNTKCTL_EL1` system register value.
+    ///
+    /// Counter-timer Kernel Control Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntkctlEl1: u64 {
+        /// `EL0PCTEN` bit.
+        const EL0PCTEN = 1 << 0;
+        /// `EL0VCTEN` bit.
+        const EL0VCTEN = 1 << 1;
+        /// `EVNTEN` bit.
+        const EVNTEN = 1 << 2;
+        /// `EVNTDIR` bit.
+        const EVNTDIR = 1 << 3;
+        /// `EL0VTEN` bit.
+        const EL0VTEN = 1 << 8;
+        /// `EL0PTEN` bit.
+        const EL0PTEN = 1 << 9;
+        /// `EL1PCTEN` bit.
+        const EL1PCTEN = 1 << 10;
+        /// `EL1PTEN` bit.
+        const EL1PTEN = 1 << 11;
+        /// `ECV` bit.
+        const ECV = 1 << 12;
+        /// `EL1TVT` bit.
+        const EL1TVT = 1 << 13;
+        /// `EL1TVCT` bit.
+        const EL1TVCT = 1 << 14;
+        /// `EL1NVPCT` bit.
+        const EL1NVPCT = 1 << 15;
+        /// `EL1NVVCT` bit.
+        const EL1NVVCT = 1 << 16;
+        /// `EVNTIS` bit.
+        const EVNTIS = 1 << 17;
+        /// `CNTVMASK` bit.
+        const CNTVMASK = 1 << 18;
+        /// `CNTPMASK` bit.
+        const CNTPMASK = 1 << 19;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl CntkctlEl1 {
+    /// Offset of the `EL0PCTEN` field.
+    pub const EL0PCTEN_SHIFT: u32 = 0;
+    /// Offset of the `EL0VCTEN` field.
+    pub const EL0VCTEN_SHIFT: u32 = 1;
+    /// Offset of the `EVNTEN` field.
+    pub const EVNTEN_SHIFT: u32 = 2;
+    /// Offset of the `EVNTDIR` field.
+    pub const EVNTDIR_SHIFT: u32 = 3;
+    /// Offset of the `EVNTI` field.
+    pub const EVNTI_SHIFT: u32 = 4;
+    /// Mask for the `EVNTI` field.
+    pub const EVNTI_MASK: u64 = 0b1111;
+    /// Offset of the `EL0VTEN` field.
+    pub const EL0VTEN_SHIFT: u32 = 8;
+    /// Offset of the `EL0PTEN` field.
+    pub const EL0PTEN_SHIFT: u32 = 9;
+    /// Offset of the `EL1PCTEN` field.
+    pub const EL1PCTEN_SHIFT: u32 = 10;
+    /// Offset of the `EL1PTEN` field.
+    pub const EL1PTEN_SHIFT: u32 = 11;
+    /// Offset of the `ECV` field.
+    pub const ECV_SHIFT: u32 = 12;
+    /// Offset of the `EL1TVT` field.
+    pub const EL1TVT_SHIFT: u32 = 13;
+    /// Offset of the `EL1TVCT` field.
+    pub const EL1TVCT_SHIFT: u32 = 14;
+    /// Offset of the `EL1NVPCT` field.
+    pub const EL1NVPCT_SHIFT: u32 = 15;
+    /// Offset of the `EL1NVVCT` field.
+    pub const EL1NVVCT_SHIFT: u32 = 16;
+    /// Offset of the `EVNTIS` field.
+    pub const EVNTIS_SHIFT: u32 = 17;
+    /// Offset of the `CNTVMASK` field.
+    pub const CNTVMASK_SHIFT: u32 = 18;
+    /// Offset of the `CNTPMASK` field.
+    pub const CNTPMASK_SHIFT: u32 = 19;
+
+    /// Returns the value of the `EVNTI` field.
+    pub const fn evnti(self) -> u8 {
+        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `EVNTI` field.
+    pub const fn set_evnti(&mut self, value: u8) {
+        let offset = Self::EVNTI_SHIFT;
+        assert!(value & (Self::EVNTI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u64) << offset),
         );
     }
 }
@@ -1379,7 +1860,42 @@ impl Cntpctss {
 }
 
 bitflags! {
+    /// `CNTPCTSS_EL0` system register value.
+    ///
+    /// Counter-timer Self-Synchronized Physical Count Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpctssEl0: u64 {
+    }
+}
+
+impl CntpctssEl0 {
+    /// Offset of the `SSPhysicalCount` field.
+    pub const SSPHYSICALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `SSPhysicalCount` field.
+    pub const SSPHYSICALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `SSPhysicalCount` field.
+    pub const fn ssphysicalcount(self) -> u64 {
+        ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `SSPhysicalCount` field.
+    pub const fn set_ssphysicalcount(&mut self, value: u64) {
+        let offset = Self::SSPHYSICALCOUNT_SHIFT;
+        assert!(value & (Self::SSPHYSICALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SSPHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+bitflags! {
     /// `CNTPCT_EL0` system register value.
+    ///
+    /// Counter-timer Physical Count Register
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntpctEl0: u64 {
@@ -1409,6 +1925,135 @@ impl CntpctEl0 {
     }
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `CNTPOFF_EL2` system register value.
+    ///
+    /// Counter-timer Physical Offset Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpoffEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl CntpoffEl2 {
+    /// Offset of the `PO` field.
+    pub const PO_SHIFT: u32 = 0;
+    /// Mask for the `PO` field.
+    pub const PO_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `PO` field.
+    pub const fn po(self) -> u64 {
+        ((self.bits() >> Self::PO_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `PO` field.
+    pub const fn set_po(&mut self, value: u64) {
+        let offset = Self::PO_SHIFT;
+        assert!(value & (Self::PO_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PO_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `CNTPS_CTL_EL1` system register value.
+    ///
+    /// Counter-timer Physical Secure Timer Control Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpsCtlEl1: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl CntpsCtlEl1 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `CNTPS_CVAL_EL1` system register value.
+    ///
+    /// Counter-timer Physical Secure Timer CompareValue Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpsCvalEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl CntpsCvalEl1 {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `CNTPS_TVAL_EL1` system register value.
+    ///
+    /// Counter-timer Physical Secure Timer TimerValue Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpsTvalEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl CntpsTvalEl1 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
 bitflags! {
     /// `CNTP_CTL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -1433,6 +2078,31 @@ impl CntpCtl {
 }
 
 bitflags! {
+    /// `CNTP_CTL_EL0` system register value.
+    ///
+    /// Counter-timer Physical Timer Control Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpCtlEl0: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CntpCtlEl0 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
     /// `CNTP_CVAL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -1441,6 +2111,39 @@ bitflags! {
 }
 
 impl CntpCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+bitflags! {
+    /// `CNTP_CVAL_EL0` system register value.
+    ///
+    /// Counter-timer Physical Timer CompareValue Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpCvalEl0: u64 {
+    }
+}
+
+impl CntpCvalEl0 {
     /// Offset of the `CompareValue` field.
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
@@ -1488,6 +2191,37 @@ impl CntpTval {
         assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+}
+
+bitflags! {
+    /// `CNTP_TVAL_EL0` system register value.
+    ///
+    /// Counter-timer Physical Timer TimerValue Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntpTvalEl0: u64 {
+    }
+}
+
+impl CntpTvalEl0 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
 }
@@ -1555,6 +2289,72 @@ impl Cntvctss {
 }
 
 bitflags! {
+    /// `CNTVCTSS_EL0` system register value.
+    ///
+    /// Counter-timer Self-Synchronized Virtual Count Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvctssEl0: u64 {
+    }
+}
+
+impl CntvctssEl0 {
+    /// Offset of the `SSVirtualCount` field.
+    pub const SSVIRTUALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `SSVirtualCount` field.
+    pub const SSVIRTUALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `SSVirtualCount` field.
+    pub const fn ssvirtualcount(self) -> u64 {
+        ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `SSVirtualCount` field.
+    pub const fn set_ssvirtualcount(&mut self, value: u64) {
+        let offset = Self::SSVIRTUALCOUNT_SHIFT;
+        assert!(value & (Self::SSVIRTUALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SSVIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+bitflags! {
+    /// `CNTVCT_EL0` system register value.
+    ///
+    /// Counter-timer Virtual Count Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvctEl0: u64 {
+    }
+}
+
+impl CntvctEl0 {
+    /// Offset of the `VirtualCount` field.
+    pub const VIRTUALCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `VirtualCount` field.
+    pub const VIRTUALCOUNT_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `VirtualCount` field.
+    pub const fn virtualcount(self) -> u64 {
+        ((self.bits() >> Self::VIRTUALCOUNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `VirtualCount` field.
+    pub const fn set_virtualcount(&mut self, value: u64) {
+        let offset = Self::VIRTUALCOUNT_SHIFT;
+        assert!(value & (Self::VIRTUALCOUNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+bitflags! {
     /// `CNTVOFF` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -1588,6 +2388,8 @@ impl Cntvoff {
 #[cfg(feature = "el2")]
 bitflags! {
     /// `CNTVOFF_EL2` system register value.
+    ///
+    /// Counter-timer Virtual Offset Register
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct CntvoffEl2: u64 {
@@ -1642,6 +2444,31 @@ impl CntvCtl {
 }
 
 bitflags! {
+    /// `CNTV_CTL_EL0` system register value.
+    ///
+    /// Counter-timer Virtual Timer Control Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvCtlEl0: u64 {
+        /// `ENABLE` bit.
+        const ENABLE = 1 << 0;
+        /// `IMASK` bit.
+        const IMASK = 1 << 1;
+        /// `ISTATUS` bit.
+        const ISTATUS = 1 << 2;
+    }
+}
+
+impl CntvCtlEl0 {
+    /// Offset of the `ENABLE` field.
+    pub const ENABLE_SHIFT: u32 = 0;
+    /// Offset of the `IMASK` field.
+    pub const IMASK_SHIFT: u32 = 1;
+    /// Offset of the `ISTATUS` field.
+    pub const ISTATUS_SHIFT: u32 = 2;
+}
+
+bitflags! {
     /// `CNTV_CVAL` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -1650,6 +2477,39 @@ bitflags! {
 }
 
 impl CntvCval {
+    /// Offset of the `CompareValue` field.
+    pub const COMPAREVALUE_SHIFT: u32 = 0;
+    /// Mask for the `CompareValue` field.
+    pub const COMPAREVALUE_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `CompareValue` field.
+    pub const fn comparevalue(self) -> u64 {
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `CompareValue` field.
+    pub const fn set_comparevalue(&mut self, value: u64) {
+        let offset = Self::COMPAREVALUE_SHIFT;
+        assert!(value & (Self::COMPAREVALUE_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
+bitflags! {
+    /// `CNTV_CVAL_EL0` system register value.
+    ///
+    /// Counter-timer Virtual Timer CompareValue Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvCvalEl0: u64 {
+    }
+}
+
+impl CntvCvalEl0 {
     /// Offset of the `CompareValue` field.
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
@@ -1697,6 +2557,37 @@ impl CntvTval {
         assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+}
+
+bitflags! {
+    /// `CNTV_TVAL_EL0` system register value.
+    ///
+    /// Counter-timer Virtual Timer TimerValue Register
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct CntvTvalEl0: u64 {
+    }
+}
+
+impl CntvTvalEl0 {
+    /// Offset of the `TimerValue` field.
+    pub const TIMERVALUE_SHIFT: u32 = 0;
+    /// Mask for the `TimerValue` field.
+    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+
+    /// Returns the value of the `TimerValue` field.
+    pub const fn timervalue(self) -> u32 {
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+    }
+
+    /// Sets the value of the `TimerValue` field.
+    pub const fn set_timervalue(&mut self, value: u32) {
+        let offset = Self::TIMERVALUE_SHIFT;
+        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
 }
@@ -23838,56 +24729,108 @@ read_write_sysreg!(cnthctl: (p15, 4, c1, c14, 0), u32: Cnthctl, safe_read, fake:
 read_write_sysreg!(cnthctl_el2, u64: CnthctlEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthps_ctl: (p15, 0, c2, c14, 1), u32: CnthpsCtl, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthps_ctl_el2: s3_4_c14_c5_1, u64: CnthpsCtlEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthps_cval: (p15, 2, c14), u64: CnthpsCval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthps_cval_el2: s3_4_c14_c5_2, u64: CnthpsCvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthps_tval: (p15, 0, c2, c14, 0), u32: CnthpsTval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthps_tval_el2: s3_4_c14_c5_0, u64: CnthpsTvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthp_ctl: (p15, 0, c2, c14, 1), u32: CnthpCtl, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthp_ctl_el2: s3_4_c14_c2_1, u64: CnthpCtlEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthp_cval: (p15, 2, c14), u64: CnthpCval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthp_cval_el2: s3_4_c14_c2_2, u64: CnthpCvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthp_tval: (p15, 0, c2, c14, 0), u32: CnthpTval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthp_tval_el2: s3_4_c14_c2_0, u64: CnthpTvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthvs_ctl: (p15, 0, c3, c14, 1), u32: CnthvsCtl, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthvs_ctl_el2: s3_4_c14_c4_1, u64: CnthvsCtlEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthvs_cval: (p15, 3, c14), u64: CnthvsCval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthvs_cval_el2: s3_4_c14_c4_2, u64: CnthvsCvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthvs_tval: (p15, 0, c3, c14, 0), u32: CnthvsTval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthvs_tval_el2: s3_4_c14_c4_0, u64: CnthvsTvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthv_ctl: (p15, 0, c3, c14, 1), u32: CnthvCtl, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthv_ctl_el2: s3_4_c14_c3_1, u64: CnthvCtlEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthv_cval: (p15, 3, c14), u64: CnthvCval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthv_cval_el2: s3_4_c14_c3_2, u64: CnthvCvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cnthv_tval: (p15, 0, c3, c14, 0), u32: CnthvTval, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cnthv_tval_el2: s3_4_c14_c3_0, u64: CnthvTvalEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntkctl: (p15, 0, c1, c14, 0), u32: Cntkctl, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(cntkctl_el1, u64: CntkctlEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(cntpct: (p15, 0, c14), u64: Cntpct, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(cntpctss: (p15, 8, c14), u64: Cntpctss, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(cntpctss_el0: s3_3_c14_c0_5, u64: CntpctssEl0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_sysreg!(cntpct_el0, u64: CntpctEl0, safe, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(cntpoff_el2: s3_4_c14_c0_6, u64: CntpoffEl2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(cntps_ctl_el1, u64: CntpsCtlEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(cntps_cval_el1, u64: CntpsCvalEl1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(cntps_tval_el1, u64: CntpsTvalEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntp_ctl: (p15, 0, c2, c14, 1), u32: CntpCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(cntp_ctl_el0, u64: CntpCtlEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntp_cval: (p15, 2, c14), u64: CntpCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(cntp_cval_el0, u64: CntpCvalEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntp_tval: (p15, 0, c2, c14, 0), u32: CntpTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(cntp_tval_el0, u64: CntpTvalEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(cntvct: (p15, 1, c14), u64: Cntvct, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(cntvctss: (p15, 9, c14), u64: Cntvctss, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(cntvctss_el0: s3_3_c14_c0_6, u64: CntvctssEl0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(cntvct_el0, u64: CntvctEl0, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntvoff: (p15, 4, c14), u64: Cntvoff, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(cntvoff_el2, u64: CntvoffEl2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntv_ctl: (p15, 0, c3, c14, 1), u32: CntvCtl, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(cntv_ctl_el0, u64: CntvCtlEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntv_cval: (p15, 3, c14), u64: CntvCval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(cntv_cval_el0, u64: CntvCvalEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(cntv_tval: (p15, 0, c3, c14, 0), u32: CntvTval, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(cntv_tval_el0, u64: CntvTvalEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(contextidr: (p15, 0, c0, c13, 1), u32: Contextidr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

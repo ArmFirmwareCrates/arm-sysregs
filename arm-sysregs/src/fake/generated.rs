@@ -5,40 +5,44 @@ use crate::{
     Amcfgr, Amcgcr, Amcntenclr0, Amcntenclr1, Amcntenset0, Amcntenset1, Amcr, Amuserenr, Ccsidr,
     Ccsidr2, Clidr, Cntfrq, CntfrqEl0, Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl,
     CnthpsCval, CnthpsTval, CnthvCtl, CnthvCval, CnthvTval, CnthvsCtl, CnthvsCval, CnthvsTval,
-    Cntkctl, CntpCtl, CntpCval, CntpTval, Cntpct, CntpctEl0, Cntpctss, CntvCtl, CntvCval, CntvTval,
-    Cntvct, Cntvctss, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0, Currentel, Dacr,
-    Dbgauthstatus, Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1, Dbgdidr, Dbgdrar,
-    Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint, Dbgosdlr,
-    Dbgoseccr, Dbgoslar, Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr, Dspsr2,
-    Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0, Erxmisc1,
-    Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr, Hcr2, Hdcr,
-    Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr, Httbr, Hvbar,
-    IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5, IdIsar6, IdMmfr0,
-    IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0,
-    Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2,
-    Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr,
+    Cntkctl, CntpCtl, CntpCtlEl0, CntpCval, CntpCvalEl0, CntpTval, CntpTvalEl0, Cntpct, CntpctEl0,
+    Cntpctss, CntpctssEl0, CntvCtl, CntvCtlEl0, CntvCval, CntvCvalEl0, CntvTval, CntvTvalEl0,
+    Cntvct, CntvctEl0, Cntvctss, CntvctssEl0, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0,
+    Currentel, Dacr, Dbgauthstatus, Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1,
+    Dbgdidr, Dbgdrar, Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint,
+    Dbgosdlr, Dbgoseccr, Dbgoslar, Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr,
+    Dspsr2, Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0,
+    Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr,
+    Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr,
+    Httbr, Hvbar, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5, IdIsar6,
+    IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr,
+    Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1,
+    Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr,
     Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder,
     Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0,
     Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el1")]
 use crate::{
-    ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1,
-    ElrEl1, EsrEl1, FarEl1, GcrEl1, GcscrEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1,
-    IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1,
-    IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1,
-    MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1,
-    Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
+    CntpsTvalEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1, ElrEl1, EsrEl1, FarEl1, GcrEl1,
+    GcscrEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1,
+    IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1,
+    IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1,
+    RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1,
+    Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
-    CnthctlEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2, GcscrEl2,
-    HafgrtrEl2, HcrEl2, HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2, Hfgitr2El2,
-    HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2,
-    IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2,
-    Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, SctlrEl2, SpEl2,
-    SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2,
-    VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2, CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2,
+    CnthpsTvalEl2, CnthvCtlEl2, CnthvCvalEl2, CnthvTvalEl2, CnthvsCtlEl2, CnthvsCvalEl2,
+    CnthvsTvalEl2, CntpoffEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2,
+    GcscrEl2, HafgrtrEl2, HcrEl2, HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2,
+    Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2,
+    IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2,
+    Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2,
+    SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2,
+    VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el3")]
 use crate::{
@@ -133,46 +137,109 @@ pub struct SystemRegisters {
     pub cnthctl_el2: CnthctlEl2,
     /// Fake value for the `CNTHPS_CTL` system register.
     pub cnthps_ctl: CnthpsCtl,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHPS_CTL_EL2` system register.
+    pub cnthps_ctl_el2: CnthpsCtlEl2,
     /// Fake value for the `CNTHPS_CVAL` system register.
     pub cnthps_cval: CnthpsCval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHPS_CVAL_EL2` system register.
+    pub cnthps_cval_el2: CnthpsCvalEl2,
     /// Fake value for the `CNTHPS_TVAL` system register.
     pub cnthps_tval: CnthpsTval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHPS_TVAL_EL2` system register.
+    pub cnthps_tval_el2: CnthpsTvalEl2,
     /// Fake value for the `CNTHP_CTL` system register.
     pub cnthp_ctl: CnthpCtl,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHP_CTL_EL2` system register.
+    pub cnthp_ctl_el2: CnthpCtlEl2,
     /// Fake value for the `CNTHP_CVAL` system register.
     pub cnthp_cval: CnthpCval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHP_CVAL_EL2` system register.
+    pub cnthp_cval_el2: CnthpCvalEl2,
     /// Fake value for the `CNTHP_TVAL` system register.
     pub cnthp_tval: CnthpTval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHP_TVAL_EL2` system register.
+    pub cnthp_tval_el2: CnthpTvalEl2,
     /// Fake value for the `CNTHVS_CTL` system register.
     pub cnthvs_ctl: CnthvsCtl,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHVS_CTL_EL2` system register.
+    pub cnthvs_ctl_el2: CnthvsCtlEl2,
     /// Fake value for the `CNTHVS_CVAL` system register.
     pub cnthvs_cval: CnthvsCval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHVS_CVAL_EL2` system register.
+    pub cnthvs_cval_el2: CnthvsCvalEl2,
     /// Fake value for the `CNTHVS_TVAL` system register.
     pub cnthvs_tval: CnthvsTval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHVS_TVAL_EL2` system register.
+    pub cnthvs_tval_el2: CnthvsTvalEl2,
     /// Fake value for the `CNTHV_CTL` system register.
     pub cnthv_ctl: CnthvCtl,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHV_CTL_EL2` system register.
+    pub cnthv_ctl_el2: CnthvCtlEl2,
     /// Fake value for the `CNTHV_CVAL` system register.
     pub cnthv_cval: CnthvCval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHV_CVAL_EL2` system register.
+    pub cnthv_cval_el2: CnthvCvalEl2,
     /// Fake value for the `CNTHV_TVAL` system register.
     pub cnthv_tval: CnthvTval,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTHV_TVAL_EL2` system register.
+    pub cnthv_tval_el2: CnthvTvalEl2,
     /// Fake value for the `CNTKCTL` system register.
     pub cntkctl: Cntkctl,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `CNTKCTL_EL1` system register.
+    pub cntkctl_el1: CntkctlEl1,
     /// Fake value for the `CNTPCT` system register.
     pub cntpct: Cntpct,
     /// Fake value for the `CNTPCTSS` system register.
     pub cntpctss: Cntpctss,
+    /// Fake value for the `CNTPCTSS_EL0` system register.
+    pub cntpctss_el0: CntpctssEl0,
     /// Fake value for the `CNTPCT_EL0` system register.
     pub cntpct_el0: CntpctEl0,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `CNTPOFF_EL2` system register.
+    pub cntpoff_el2: CntpoffEl2,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `CNTPS_CTL_EL1` system register.
+    pub cntps_ctl_el1: CntpsCtlEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `CNTPS_CVAL_EL1` system register.
+    pub cntps_cval_el1: CntpsCvalEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `CNTPS_TVAL_EL1` system register.
+    pub cntps_tval_el1: CntpsTvalEl1,
     /// Fake value for the `CNTP_CTL` system register.
     pub cntp_ctl: CntpCtl,
+    /// Fake value for the `CNTP_CTL_EL0` system register.
+    pub cntp_ctl_el0: CntpCtlEl0,
     /// Fake value for the `CNTP_CVAL` system register.
     pub cntp_cval: CntpCval,
+    /// Fake value for the `CNTP_CVAL_EL0` system register.
+    pub cntp_cval_el0: CntpCvalEl0,
     /// Fake value for the `CNTP_TVAL` system register.
     pub cntp_tval: CntpTval,
+    /// Fake value for the `CNTP_TVAL_EL0` system register.
+    pub cntp_tval_el0: CntpTvalEl0,
     /// Fake value for the `CNTVCT` system register.
     pub cntvct: Cntvct,
     /// Fake value for the `CNTVCTSS` system register.
     pub cntvctss: Cntvctss,
+    /// Fake value for the `CNTVCTSS_EL0` system register.
+    pub cntvctss_el0: CntvctssEl0,
+    /// Fake value for the `CNTVCT_EL0` system register.
+    pub cntvct_el0: CntvctEl0,
     /// Fake value for the `CNTVOFF` system register.
     pub cntvoff: Cntvoff,
     #[cfg(feature = "el2")]
@@ -180,10 +247,16 @@ pub struct SystemRegisters {
     pub cntvoff_el2: CntvoffEl2,
     /// Fake value for the `CNTV_CTL` system register.
     pub cntv_ctl: CntvCtl,
+    /// Fake value for the `CNTV_CTL_EL0` system register.
+    pub cntv_ctl_el0: CntvCtlEl0,
     /// Fake value for the `CNTV_CVAL` system register.
     pub cntv_cval: CntvCval,
+    /// Fake value for the `CNTV_CVAL_EL0` system register.
+    pub cntv_cval_el0: CntvCvalEl0,
     /// Fake value for the `CNTV_TVAL` system register.
     pub cntv_tval: CntvTval,
+    /// Fake value for the `CNTV_TVAL_EL0` system register.
+    pub cntv_tval_el0: CntvTvalEl0,
     /// Fake value for the `CONTEXTIDR` system register.
     pub contextidr: Contextidr,
     #[cfg(feature = "el1")]
@@ -896,32 +969,75 @@ impl SystemRegisters {
             #[cfg(feature = "el2")]
             cnthctl_el2: CnthctlEl2::empty(),
             cnthps_ctl: CnthpsCtl::empty(),
+            #[cfg(feature = "el2")]
+            cnthps_ctl_el2: CnthpsCtlEl2::empty(),
             cnthps_cval: CnthpsCval::empty(),
+            #[cfg(feature = "el2")]
+            cnthps_cval_el2: CnthpsCvalEl2::empty(),
             cnthps_tval: CnthpsTval::empty(),
+            #[cfg(feature = "el2")]
+            cnthps_tval_el2: CnthpsTvalEl2::empty(),
             cnthp_ctl: CnthpCtl::empty(),
+            #[cfg(feature = "el2")]
+            cnthp_ctl_el2: CnthpCtlEl2::empty(),
             cnthp_cval: CnthpCval::empty(),
+            #[cfg(feature = "el2")]
+            cnthp_cval_el2: CnthpCvalEl2::empty(),
             cnthp_tval: CnthpTval::empty(),
+            #[cfg(feature = "el2")]
+            cnthp_tval_el2: CnthpTvalEl2::empty(),
             cnthvs_ctl: CnthvsCtl::empty(),
+            #[cfg(feature = "el2")]
+            cnthvs_ctl_el2: CnthvsCtlEl2::empty(),
             cnthvs_cval: CnthvsCval::empty(),
+            #[cfg(feature = "el2")]
+            cnthvs_cval_el2: CnthvsCvalEl2::empty(),
             cnthvs_tval: CnthvsTval::empty(),
+            #[cfg(feature = "el2")]
+            cnthvs_tval_el2: CnthvsTvalEl2::empty(),
             cnthv_ctl: CnthvCtl::empty(),
+            #[cfg(feature = "el2")]
+            cnthv_ctl_el2: CnthvCtlEl2::empty(),
             cnthv_cval: CnthvCval::empty(),
+            #[cfg(feature = "el2")]
+            cnthv_cval_el2: CnthvCvalEl2::empty(),
             cnthv_tval: CnthvTval::empty(),
+            #[cfg(feature = "el2")]
+            cnthv_tval_el2: CnthvTvalEl2::empty(),
             cntkctl: Cntkctl::empty(),
+            #[cfg(feature = "el1")]
+            cntkctl_el1: CntkctlEl1::empty(),
             cntpct: Cntpct::empty(),
             cntpctss: Cntpctss::empty(),
+            cntpctss_el0: CntpctssEl0::empty(),
             cntpct_el0: CntpctEl0::empty(),
+            #[cfg(feature = "el2")]
+            cntpoff_el2: CntpoffEl2::empty(),
+            #[cfg(feature = "el1")]
+            cntps_ctl_el1: CntpsCtlEl1::empty(),
+            #[cfg(feature = "el1")]
+            cntps_cval_el1: CntpsCvalEl1::empty(),
+            #[cfg(feature = "el1")]
+            cntps_tval_el1: CntpsTvalEl1::empty(),
             cntp_ctl: CntpCtl::empty(),
+            cntp_ctl_el0: CntpCtlEl0::empty(),
             cntp_cval: CntpCval::empty(),
+            cntp_cval_el0: CntpCvalEl0::empty(),
             cntp_tval: CntpTval::empty(),
+            cntp_tval_el0: CntpTvalEl0::empty(),
             cntvct: Cntvct::empty(),
             cntvctss: Cntvctss::empty(),
+            cntvctss_el0: CntvctssEl0::empty(),
+            cntvct_el0: CntvctEl0::empty(),
             cntvoff: Cntvoff::empty(),
             #[cfg(feature = "el2")]
             cntvoff_el2: CntvoffEl2::empty(),
             cntv_ctl: CntvCtl::empty(),
+            cntv_ctl_el0: CntvCtlEl0::empty(),
             cntv_cval: CntvCval::empty(),
+            cntv_cval_el0: CntvCvalEl0::empty(),
             cntv_tval: CntvTval::empty(),
+            cntv_tval_el0: CntvTvalEl0::empty(),
             contextidr: Contextidr::empty(),
             #[cfg(feature = "el1")]
             contextidr_el1: ContextidrEl1::empty(),

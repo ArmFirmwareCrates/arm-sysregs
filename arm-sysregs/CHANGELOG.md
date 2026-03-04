@@ -6,6 +6,7 @@
 
 - Added SVCR register.
 - Added TPIDR_EL3 register.
+- Added Generic Timer registers.
 
 ## 0.2.4
 

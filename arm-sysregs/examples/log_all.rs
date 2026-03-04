@@ -86,56 +86,120 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("cnthctl_el2 = {:?}", arm_sysregs::read_cnthctl_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthps_ctl = {:?}", arm_sysregs::read_cnthps_ctl());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthps_ctl_el2 = {:?}", arm_sysregs::read_cnthps_ctl_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthps_cval = {:?}", arm_sysregs::read_cnthps_cval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "cnthps_cval_el2 = {:?}",
+        arm_sysregs::read_cnthps_cval_el2()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthps_tval = {:?}", arm_sysregs::read_cnthps_tval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "cnthps_tval_el2 = {:?}",
+        arm_sysregs::read_cnthps_tval_el2()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthp_ctl = {:?}", arm_sysregs::read_cnthp_ctl());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthp_ctl_el2 = {:?}", arm_sysregs::read_cnthp_ctl_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthp_cval = {:?}", arm_sysregs::read_cnthp_cval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthp_cval_el2 = {:?}", arm_sysregs::read_cnthp_cval_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthp_tval = {:?}", arm_sysregs::read_cnthp_tval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthp_tval_el2 = {:?}", arm_sysregs::read_cnthp_tval_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthvs_ctl = {:?}", arm_sysregs::read_cnthvs_ctl());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthvs_ctl_el2 = {:?}", arm_sysregs::read_cnthvs_ctl_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthvs_cval = {:?}", arm_sysregs::read_cnthvs_cval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "cnthvs_cval_el2 = {:?}",
+        arm_sysregs::read_cnthvs_cval_el2()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthvs_tval = {:?}", arm_sysregs::read_cnthvs_tval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "cnthvs_tval_el2 = {:?}",
+        arm_sysregs::read_cnthvs_tval_el2()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthv_ctl = {:?}", arm_sysregs::read_cnthv_ctl());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthv_ctl_el2 = {:?}", arm_sysregs::read_cnthv_ctl_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthv_cval = {:?}", arm_sysregs::read_cnthv_cval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthv_cval_el2 = {:?}", arm_sysregs::read_cnthv_cval_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cnthv_tval = {:?}", arm_sysregs::read_cnthv_tval());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cnthv_tval_el2 = {:?}", arm_sysregs::read_cnthv_tval_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntkctl = {:?}", arm_sysregs::read_cntkctl());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("cntkctl_el1 = {:?}", arm_sysregs::read_cntkctl_el1());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntpct = {:?}", arm_sysregs::read_cntpct());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntpctss = {:?}", arm_sysregs::read_cntpctss());
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntpctss_el0 = {:?}", arm_sysregs::read_cntpctss_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     info!("cntpct_el0 = {:?}", arm_sysregs::read_cntpct_el0());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("cntpoff_el2 = {:?}", arm_sysregs::read_cntpoff_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("cntps_ctl_el1 = {:?}", arm_sysregs::read_cntps_ctl_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("cntps_cval_el1 = {:?}", arm_sysregs::read_cntps_cval_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("cntps_tval_el1 = {:?}", arm_sysregs::read_cntps_tval_el1());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntp_ctl = {:?}", arm_sysregs::read_cntp_ctl());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntp_ctl_el0 = {:?}", arm_sysregs::read_cntp_ctl_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntp_cval = {:?}", arm_sysregs::read_cntp_cval());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntp_cval_el0 = {:?}", arm_sysregs::read_cntp_cval_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntp_tval = {:?}", arm_sysregs::read_cntp_tval());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntp_tval_el0 = {:?}", arm_sysregs::read_cntp_tval_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntvct = {:?}", arm_sysregs::read_cntvct());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntvctss = {:?}", arm_sysregs::read_cntvctss());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntvctss_el0 = {:?}", arm_sysregs::read_cntvctss_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntvct_el0 = {:?}", arm_sysregs::read_cntvct_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntvoff = {:?}", arm_sysregs::read_cntvoff());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!("cntvoff_el2 = {:?}", arm_sysregs::read_cntvoff_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntv_ctl = {:?}", arm_sysregs::read_cntv_ctl());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntv_ctl_el0 = {:?}", arm_sysregs::read_cntv_ctl_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntv_cval = {:?}", arm_sysregs::read_cntv_cval());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntv_cval_el0 = {:?}", arm_sysregs::read_cntv_cval_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("cntv_tval = {:?}", arm_sysregs::read_cntv_tval());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("cntv_tval_el0 = {:?}", arm_sysregs::read_cntv_tval_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("contextidr = {:?}", arm_sysregs::read_contextidr());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
