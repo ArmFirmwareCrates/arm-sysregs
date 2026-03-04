@@ -578,6 +578,7 @@ write = "safe"
 [registers.TPIDR_EL0]
 [registers.TPIDR_EL1]
 [registers.TPIDR_EL2]
+[registers.TPIDR_EL3]
 [registers.TPIDRRO_EL0]
 [registers.TTBR0_EL1]
 write_safety_doc = "The base address must point to a valid and properly aligned translation table."

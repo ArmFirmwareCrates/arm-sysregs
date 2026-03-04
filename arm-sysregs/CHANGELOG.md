@@ -5,6 +5,7 @@
 ### New features
 
 - Added SVCR register.
+- Added TPIDR_EL3 register.
 
 ## 0.2.4
 

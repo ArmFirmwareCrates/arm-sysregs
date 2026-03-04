@@ -43,7 +43,7 @@ use crate::{
 #[cfg(feature = "el3")]
 use crate::{
     CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccSreEl3, MairEl3, MdcrEl3, Mpam3El3, ScrEl3, Sctlr2El3,
-    SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, Ttbr0El3, ZcrEl3,
+    SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -774,6 +774,9 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `TPIDR_EL2` system register.
     pub tpidr_el2: TpidrEl2,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `TPIDR_EL3` system register.
+    pub tpidr_el3: TpidrEl3,
     /// Fake value for the `TRFCR` system register.
     pub trfcr: Trfcr,
     /// Fake value for the `TTBCR` system register.
@@ -1263,6 +1266,8 @@ impl SystemRegisters {
             tpidr_el1: TpidrEl1::empty(),
             #[cfg(feature = "el2")]
             tpidr_el2: TpidrEl2::empty(),
+            #[cfg(feature = "el3")]
+            tpidr_el3: TpidrEl3::empty(),
             trfcr: Trfcr::empty(),
             ttbcr: Ttbcr::empty(),
             ttbcr2: Ttbcr2::empty(),

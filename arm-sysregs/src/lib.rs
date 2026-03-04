@@ -21715,6 +21715,39 @@ impl TpidrEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `TPIDR_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct TpidrEl3: u64 {
+    }
+}
+
+#[cfg(feature = "el3")]
+impl TpidrEl3 {
+    /// Offset of the `ThreadID` field.
+    pub const THREADID_SHIFT: u32 = 0;
+    /// Mask for the `ThreadID` field.
+    pub const THREADID_MASK: u64 =
+        0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ThreadID` field.
+    pub const fn threadid(self) -> u64 {
+        ((self.bits() >> Self::THREADID_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ThreadID` field.
+    pub const fn set_threadid(&mut self, value: u64) {
+        let offset = Self::THREADID_SHIFT;
+        assert!(value & (Self::THREADID_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+}
+
 bitflags! {
     /// `TRFCR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -24367,6 +24400,8 @@ read_write_sysreg!(tpidr_el0, u64: TpidrEl0, safe_read, fake::SYSREGS);
 read_write_sysreg!(tpidr_el1, u64: TpidrEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(tpidr_el2, u64: TpidrEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+read_write_sysreg!(tpidr_el3, u64: TpidrEl3, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(trfcr: (p15, 0, c2, c1, 1), u32: Trfcr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]

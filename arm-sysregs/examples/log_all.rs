@@ -655,6 +655,8 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("tpidr_el1 = {:?}", arm_sysregs::read_tpidr_el1());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!("tpidr_el2 = {:?}", arm_sysregs::read_tpidr_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+    info!("tpidr_el3 = {:?}", arm_sysregs::read_tpidr_el3());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("trfcr = {:?}", arm_sysregs::read_trfcr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
