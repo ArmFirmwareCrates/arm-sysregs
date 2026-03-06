@@ -16324,6 +16324,14 @@ bitflags! {
         const GSTAPP_PLK = 1 << 8;
         /// `TRAP_MPAMIDR_EL1` bit.
         const TRAP_MPAMIDR_EL1 = 1 << 31;
+        /// `nTRAPMPAM1EL1` bit.
+        const NTRAPMPAM1EL1 = 1 << 48;
+        /// `nTRAPMPAM0EL1` bit.
+        const NTRAPMPAM0EL1 = 1 << 49;
+        /// `nTRAPMPAMSM` bit.
+        const NTRAPMPAMSM = 1 << 50;
+        /// `nTIDR` bit.
+        const NTIDR = 1 << 58;
     }
 }
 
@@ -16345,6 +16353,14 @@ impl MpamhcrEl2 {
     pub const GSTAPP_PLK_SHIFT: u32 = 8;
     /// Offset of the `TRAP_MPAMIDR_EL1` field.
     pub const TRAP_MPAMIDR_EL1_SHIFT: u32 = 31;
+    /// Offset of the `nTRAPMPAM1EL1` field.
+    pub const NTRAPMPAM1EL1_SHIFT: u32 = 48;
+    /// Offset of the `nTRAPMPAM0EL1` field.
+    pub const NTRAPMPAM0EL1_SHIFT: u32 = 49;
+    /// Offset of the `nTRAPMPAMSM` field.
+    pub const NTRAPMPAMSM_SHIFT: u32 = 50;
+    /// Offset of the `nTIDR` field.
+    pub const NTIDR_SHIFT: u32 = 58;
 }
 
 #[cfg(feature = "el1")]
