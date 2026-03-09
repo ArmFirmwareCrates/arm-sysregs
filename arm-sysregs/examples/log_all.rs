@@ -428,6 +428,22 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("httbr = {:?}", arm_sysregs::read_httbr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("hvbar = {:?}", arm_sysregs::read_hvbar());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap0r0_el1 = {:?}", arm_sysregs::read_icc_ap0r0_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap0r1_el1 = {:?}", arm_sysregs::read_icc_ap0r1_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap0r2_el1 = {:?}", arm_sysregs::read_icc_ap0r2_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap0r3_el1 = {:?}", arm_sysregs::read_icc_ap0r3_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap1r0_el1 = {:?}", arm_sysregs::read_icc_ap1r0_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap1r1_el1 = {:?}", arm_sysregs::read_icc_ap1r1_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap1r2_el1 = {:?}", arm_sysregs::read_icc_ap1r2_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("icc_ap1r3_el1 = {:?}", arm_sysregs::read_icc_ap1r3_el1());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("icc_bpr0 = {:?}", arm_sysregs::read_icc_bpr0());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

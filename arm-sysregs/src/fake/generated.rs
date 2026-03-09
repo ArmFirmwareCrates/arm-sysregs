@@ -28,13 +28,13 @@ use crate::{
 use crate::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
     CntpsTvalEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1, ElrEl1, EsrEl1, FarEl1, GcrEl1,
-    GcscrEl1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1, IccEoir0El1,
-    IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1, IccIgrpen1El1,
-    IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1, IdAa64dfr0El1,
-    IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1,
-    IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1,
-    MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1,
-    TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    GcscrEl1, IccAp1r0El1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1,
+    IccEoir0El1, IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1,
+    IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
+    IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1,
+    MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1, SctlrEl1, SpEl1, SpsrEl1,
+    Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -529,6 +529,30 @@ pub struct SystemRegisters {
     pub httbr: Httbr,
     /// Fake value for the `HVBAR` system register.
     pub hvbar: Hvbar,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP0R0_EL1` system register.
+    pub icc_ap0r0_el1: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP0R1_EL1` system register.
+    pub icc_ap0r1_el1: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP0R2_EL1` system register.
+    pub icc_ap0r2_el1: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP0R3_EL1` system register.
+    pub icc_ap0r3_el1: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP1R0_EL1` system register.
+    pub icc_ap1r0_el1: IccAp1r0El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP1R1_EL1` system register.
+    pub icc_ap1r1_el1: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP1R2_EL1` system register.
+    pub icc_ap1r2_el1: u64,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ICC_AP1R3_EL1` system register.
+    pub icc_ap1r3_el1: u64,
     /// Fake value for the `ICC_ASGI1R` system register.
     pub icc_asgi1r: IccAsgi1r,
     #[cfg(feature = "el1")]
@@ -1288,6 +1312,22 @@ impl SystemRegisters {
             htrfcr: Htrfcr::empty(),
             httbr: Httbr::empty(),
             hvbar: Hvbar::empty(),
+            #[cfg(feature = "el1")]
+            icc_ap0r0_el1: 0,
+            #[cfg(feature = "el1")]
+            icc_ap0r1_el1: 0,
+            #[cfg(feature = "el1")]
+            icc_ap0r2_el1: 0,
+            #[cfg(feature = "el1")]
+            icc_ap0r3_el1: 0,
+            #[cfg(feature = "el1")]
+            icc_ap1r0_el1: IccAp1r0El1::empty(),
+            #[cfg(feature = "el1")]
+            icc_ap1r1_el1: 0,
+            #[cfg(feature = "el1")]
+            icc_ap1r2_el1: 0,
+            #[cfg(feature = "el1")]
+            icc_ap1r3_el1: 0,
             icc_asgi1r: IccAsgi1r::empty(),
             #[cfg(feature = "el1")]
             icc_asgi1r_el1: IccAsgi1rEl1::empty(),

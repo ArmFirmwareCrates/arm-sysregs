@@ -9113,6 +9113,23 @@ impl Hvbar {
     }
 }
 
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `ICC_AP1R0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccAp1r0El1: u64 {
+        /// `NMI` bit.
+        const NMI = 1 << 63;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IccAp1r0El1 {
+    /// Offset of the `NMI` field.
+    pub const NMI_SHIFT: u32 = 63;
+}
+
 bitflags! {
     /// `ICC_ASGI1R` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -26856,6 +26873,22 @@ read_write_sysreg!(htrfcr: (p15, 4, c2, c1, 1), u32: Htrfcr, safe_read, fake::SY
 read_write_sysreg!(httbr: (p15, 4, c2), u64: Httbr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(hvbar: (p15, 4, c0, c12, 0), u32: Hvbar, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap0r0_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap0r1_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap0r2_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap0r3_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap1r0_el1, u64: IccAp1r0El1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap1r1_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap1r2_el1, u64, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(icc_ap1r3_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 write_sysreg!(icc_asgi1r: (p15, 1, c12), u64: IccAsgi1r, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

@@ -91,9 +91,10 @@ fn parse_registers(
 /// Logs warnings for any registers which are present in the config file but not the JSON file.
 fn warn_missing(register_infos: &[RegisterInfo], config: &Config) {
     for register_name in config.registers.keys() {
+        let register_name_with_index = register_name.replace("<n>", "0");
         if !register_infos
             .iter()
-            .any(|register_info| &register_info.name == register_name)
+            .any(|register_info| register_info.name == register_name_with_index)
         {
             warn!(
                 "Register {} in config file but missing from JSON input.",

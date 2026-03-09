@@ -447,6 +447,8 @@ MSCEn = "Enables execution of Memory Set and Memory Copy instructions at EL1 or 
 [registers.HSTR_EL2]
 write = "safe"
 
+[registers."ICC_AP0R<n>_EL1"]
+[registers."ICC_AP1R<n>_EL1"]
 [registers.ICC_ASGI1R_EL1]
 [registers.ICC_ASGI1R]
 [registers.ICC_BPR0_EL1]

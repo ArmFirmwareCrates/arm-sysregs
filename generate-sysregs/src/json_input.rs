@@ -4,13 +4,17 @@
 //! Logic for converting from a parsed JSON system register `RegisterEntry` to the `RegisterInfo`
 //! intermediate representation.
 
+mod conditions;
+
 use crate::{
-    AArch32Encoding, ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones,
+    AArch32Encoding, ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety,
+    json_input::conditions::{Environment, EvalValue, Evaluable},
+    ones,
 };
 use arm_sysregs_json::{
     Accessor, ArrayField, AstBinaryOp, AstBool, AstFunction, AstIdentifier, ConditionalField,
-    ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Register, RegisterEntry,
-    Value, Values, VectorField,
+    ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Fieldset, Register,
+    RegisterArray, RegisterEntry, Value, Values, VectorField,
 };
 use log::{info, trace};
 use std::{num::ParseIntError, sync::LazyLock};
@@ -71,137 +75,103 @@ pub fn register_entries_to_register_infos(
 ) -> Vec<RegisterInfo> {
     registers
         .iter()
-        .filter_map(|register| match register {
-            RegisterEntry::Register(register) => filter
-                .map(|filter| {
-                    filter
-                        .iter()
-                        .any(|filter_entry| register.name == **filter_entry)
-                })
-                .unwrap_or(true)
-                .then(|| RegisterInfo::from_json_register(register)),
-            _ => None,
+        .flat_map(|register| match register {
+            RegisterEntry::RegisterArray(register_array) => {
+                if filter
+                    .map(|filter| {
+                        filter
+                            .iter()
+                            .any(|filter_entry| register_array.name == **filter_entry)
+                    })
+                    .unwrap_or(true)
+                {
+                    RegisterInfo::from_json_register_array(register_array)
+                } else {
+                    Vec::new()
+                }
+            }
+            RegisterEntry::Register(register) => {
+                if filter
+                    .map(|filter| {
+                        filter
+                            .iter()
+                            .any(|filter_entry| register.name == **filter_entry)
+                    })
+                    .unwrap_or(true)
+                {
+                    vec![RegisterInfo::from_json_register(register)]
+                } else {
+                    Vec::new()
+                }
+            }
+            _ => Vec::new(),
         })
         .collect()
 }
 
 impl RegisterInfo {
+    fn from_json_register_array(register: &RegisterArray) -> Vec<RegisterInfo> {
+        if !STANDARD_CONDITIONS.contains(&register.condition) {
+            trace!("condition for {}: {:#?}", register.name, register.condition);
+        }
+        let exception_level = get_exception_level(&register.name);
+
+        let AccessorDetails {
+            readable,
+            writable,
+            aarch32,
+            aarch64,
+            width,
+            ..
+        } = AccessorDetails::from_json_accessors(&register.accessors);
+
+        register
+            .indexes
+            .iter()
+            .flat_map(|range| {
+                (range.start..range.start + range.width).map(|i| {
+                    let (fields, res1) =
+                        convert_fields(&register.fieldsets, Some((&register.index_variable, i)));
+                    let name = register
+                        .name
+                        .replace(&format!("<{}>", register.index_variable), &format!("{i}"));
+                    RegisterInfo {
+                        name,
+                        description: None,
+                        width,
+                        aarch32,
+                        aarch64,
+                        fields,
+                        res1,
+                        read: readable.then_some(Safety::Safe),
+                        write: writable.then_some(Safety::Unsafe),
+                        write_safety_doc: None,
+                        derive_debug: true,
+                        assembly_name: None,
+                        aarch32_encoding: None,
+                        has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
+                        exception_level,
+                    }
+                })
+            })
+            .collect()
+    }
+
     fn from_json_register(register: &Register) -> RegisterInfo {
         if !STANDARD_CONDITIONS.contains(&register.condition) {
             trace!("condition for {}: {:#?}", register.name, register.condition);
         }
-        let mut fields = Vec::new();
-        let mut res1 = 0;
-        for fieldset in &register.fieldsets {
-            for field_entry in &fieldset.values {
-                fields.extend(RegisterField::from_field_entry(field_entry, 0));
-                if let FieldEntry::Reserved(field) = field_entry
-                    && field.value == "RES1"
-                {
-                    for range in &field.rangeset {
-                        res1 |= ones(range.width) << range.start
-                    }
-                }
-            }
-        }
-        fields.sort_by_key(|field| field.index);
-        fields.dedup();
-
-        let exception_level = if register.name.ends_with("_EL3") || register.name.ends_with("_mon")
-        {
-            ExceptionLevel::El3
-        } else if register.name.ends_with("_EL2") || register.name.ends_with("_hyp") {
-            ExceptionLevel::El2
-        } else if register.name.ends_with("_EL1") || register.name.ends_with("_svc") {
-            ExceptionLevel::El1
-        } else if register.name.ends_with("_EL0") {
-            ExceptionLevel::El0
-        } else {
-            info!("Assuming {} is available to EL0.", register.name);
-            ExceptionLevel::El0
-        };
-
-        let mut writable = false;
-        let mut readable = false;
-        let mut aarch64 = false;
-        let mut aarch32 = false;
-        let mut width = 0;
-        let mut assembly_name = None;
-        let mut aarch32_encoding = None;
-        for accessor in &register.accessors {
-            match accessor {
-                Accessor::SystemAccessor(system_accessor) => {
-                    match system_accessor.name.as_str() {
-                        "A32.MRC" => {
-                            aarch32 = true;
-                            aarch32_encoding =
-                                AArch32Encoding::single_from_encoding(&system_accessor.encoding[0]);
-                            readable = true;
-                            width = 32;
-                        }
-                        "A32.MCR" => {
-                            aarch32 = true;
-                            aarch32_encoding =
-                                AArch32Encoding::single_from_encoding(&system_accessor.encoding[0]);
-                            writable = true;
-                            width = 32;
-                        }
-                        "A32.MRRC" => {
-                            aarch32 = true;
-                            aarch32_encoding =
-                                AArch32Encoding::double_from_encoding(&system_accessor.encoding[0]);
-                            readable = true;
-                            width = 64;
-                        }
-                        "A32.MCRR" => {
-                            aarch32 = true;
-                            aarch32_encoding =
-                                AArch32Encoding::double_from_encoding(&system_accessor.encoding[0]);
-                            writable = true;
-                            width = 64;
-                        }
-                        "A32.MRSbanked" => {
-                            aarch32 = true;
-                            readable = true;
-                            width = 32;
-                        }
-                        "A32.MSRbanked" => {
-                            aarch32 = true;
-                            writable = true;
-                            width = 32;
-                        }
-                        "A64.MRS" => {
-                            aarch64 = true;
-                            readable = true;
-                            width = 64;
-                        }
-                        "A64.MSRregister" => {
-                            aarch64 = true;
-                            writable = true;
-                            width = 64;
-                        }
-                        "A64.MRRS" => {
-                            aarch64 = true;
-                            readable = true;
-                            width = 128;
-                        }
-                        "A64.MSRRregister" => {
-                            aarch64 = true;
-                            writable = true;
-                            width = 128;
-                        }
-                        other_name => {
-                            log::info!("Unexpected system accessor name {other_name}.");
-                        }
-                    }
-
-                    if assembly_name.is_none() {
-                        assembly_name = encoding_to_assembly_name(&system_accessor.encoding[0]);
-                    }
-                }
-                _ => {}
-            }
-        }
+        let (fields, res1) = convert_fields(&register.fieldsets, None);
+        let exception_level = get_exception_level(&register.name);
+        let AccessorDetails {
+            readable,
+            writable,
+            aarch32,
+            aarch64,
+            width,
+            assembly_name,
+            aarch32_encoding,
+        } = AccessorDetails::from_json_accessors(&register.accessors);
 
         RegisterInfo {
             name: register.name.clone(),
@@ -219,6 +189,144 @@ impl RegisterInfo {
             aarch32_encoding,
             has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
             exception_level,
+        }
+    }
+}
+
+fn convert_fields(
+    fieldsets: &[Fieldset],
+    index_value: Option<(&str, u32)>,
+) -> (Vec<RegisterField>, u64) {
+    let mut fields = Vec::new();
+    let mut res1 = 0;
+    for fieldset in fieldsets {
+        for field_entry in &fieldset.values {
+            fields.extend(RegisterField::from_field_entry(field_entry, 0, index_value));
+            if let FieldEntry::Reserved(field) = field_entry
+                && field.value == "RES1"
+            {
+                for range in &field.rangeset {
+                    res1 |= ones(range.width) << range.start
+                }
+            }
+        }
+    }
+    fields.sort_by_key(|field| field.index);
+    fields.dedup();
+
+    (fields, res1)
+}
+
+fn get_exception_level(name: &str) -> ExceptionLevel {
+    if name.ends_with("_EL3") || name.ends_with("_mon") {
+        ExceptionLevel::El3
+    } else if name.ends_with("_EL2") || name.ends_with("_hyp") {
+        ExceptionLevel::El2
+    } else if name.ends_with("_EL1") || name.ends_with("_svc") {
+        ExceptionLevel::El1
+    } else if name.ends_with("_EL0") {
+        ExceptionLevel::El0
+    } else {
+        info!("Assuming {} is available to EL0.", name);
+        ExceptionLevel::El0
+    }
+}
+
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
+struct AccessorDetails {
+    readable: bool,
+    writable: bool,
+    aarch32: bool,
+    aarch64: bool,
+    width: u32,
+    assembly_name: Option<String>,
+    aarch32_encoding: Option<AArch32Encoding>,
+}
+
+impl AccessorDetails {
+    fn from_json_accessors(accessors: &[Accessor]) -> Self {
+        let mut details = Self::default();
+        for accessor in accessors {
+            match accessor {
+                Accessor::SystemAccessorArray(system_accessor_array) => {
+                    details.add_from_name(
+                        &system_accessor_array.name,
+                        &system_accessor_array.encoding[0],
+                    );
+                }
+                Accessor::SystemAccessor(system_accessor) => {
+                    details.add_from_name(&system_accessor.name, &system_accessor.encoding[0]);
+                }
+                _ => {}
+            }
+        }
+
+        details
+    }
+
+    fn add_from_name(&mut self, name: &str, encoding: &Encoding) {
+        match name {
+            "A32.MRC" => {
+                self.aarch32 = true;
+                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding);
+                self.readable = true;
+                self.width = 32;
+            }
+            "A32.MCR" => {
+                self.aarch32 = true;
+                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding);
+                self.writable = true;
+                self.width = 32;
+            }
+            "A32.MRRC" => {
+                self.aarch32 = true;
+                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding);
+                self.readable = true;
+                self.width = 64;
+            }
+            "A32.MCRR" => {
+                self.aarch32 = true;
+                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding);
+                self.writable = true;
+                self.width = 64;
+            }
+            "A32.MRSbanked" => {
+                self.aarch32 = true;
+                self.readable = true;
+                self.width = 32;
+            }
+            "A32.MSRbanked" => {
+                self.aarch32 = true;
+                self.writable = true;
+                self.width = 32;
+            }
+            "A64.MRS" => {
+                self.aarch64 = true;
+                self.readable = true;
+                self.width = 64;
+            }
+            "A64.MSRregister" => {
+                self.aarch64 = true;
+                self.writable = true;
+                self.width = 64;
+            }
+            "A64.MRRS" => {
+                self.aarch64 = true;
+                self.readable = true;
+                self.width = 128;
+            }
+            "A64.MSRRregister" => {
+                self.aarch64 = true;
+                self.writable = true;
+                self.width = 128;
+            }
+            other_name => {
+                log::info!("Unexpected system accessor name {other_name}.");
+            }
+        }
+
+        if self.assembly_name.is_none() {
+            self.assembly_name = encoding_to_assembly_name(&encoding);
         }
     }
 }
@@ -261,7 +369,11 @@ impl AArch32Encoding {
 }
 
 impl RegisterField {
-    fn from_field_entry(field_entry: &FieldEntry, offset: u32) -> Option<Self> {
+    fn from_field_entry(
+        field_entry: &FieldEntry,
+        offset: u32,
+        index_value: Option<(&str, u32)>,
+    ) -> Option<Self> {
         match field_entry {
             FieldEntry::Field(field) => {
                 trace!("  Field: {:?} {:?}", field.name, field.rangeset);
@@ -277,7 +389,7 @@ impl RegisterField {
             }
             FieldEntry::ConditionalField(field) => {
                 trace!("  Conditional field: {:?} {:?}", field.name, field.rangeset);
-                Self::from_conditional_field(field, offset)
+                Self::from_conditional_field(field, offset, index_value)
             }
             FieldEntry::Array(field) => {
                 info!(
@@ -301,13 +413,27 @@ impl RegisterField {
         }
     }
 
-    fn from_conditional_field(field: &ConditionalField, offset: u32) -> Option<Self> {
+    fn from_conditional_field(
+        field: &ConditionalField,
+        offset: u32,
+        index_value: Option<(&str, u32)>,
+    ) -> Option<Self> {
         if let [range] = field.rangeset.as_slice() {
+            let environment = Environment {
+                variables: index_value
+                    .into_iter()
+                    .map(|(name, value)| (name.to_owned(), EvalValue::Integer(value.into())))
+                    .collect(),
+            };
             let mut bit = None;
             for field in &field.fields {
+                if !field.condition.eval(&environment).unwrap().could_be_true() {
+                    // Skip the field.
+                    continue;
+                }
                 if bit.is_none() {
-                    bit = Self::from_field_entry(&field.field, offset + range.start);
-                } else if Self::from_field_entry(&field.field, offset + range.start)
+                    bit = Self::from_field_entry(&field.field, offset + range.start, index_value);
+                } else if Self::from_field_entry(&field.field, offset + range.start, index_value)
                     .map(|r| r.key())
                     != bit.as_ref().map(|r| r.key())
                 {
