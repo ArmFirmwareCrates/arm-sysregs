@@ -8,6 +8,7 @@
 - Added TPIDR_EL3 register.
 - Added Generic Timer registers.
 - Added GIC registers.
+- Added more fields to `MpamhcrEl2`.
 
 ## 0.2.4
 
