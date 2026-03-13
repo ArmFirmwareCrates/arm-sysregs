@@ -10048,6 +10048,33 @@ impl IccHppir1El1 {
 }
 
 bitflags! {
+    /// `ICC_HSRE` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccHsre: u32 {
+        /// `SRE` bit.
+        const SRE = 1 << 0;
+        /// `DFB` bit.
+        const DFB = 1 << 1;
+        /// `DIB` bit.
+        const DIB = 1 << 2;
+        /// `Enable` bit.
+        const ENABLE = 1 << 3;
+    }
+}
+
+impl IccHsre {
+    /// Offset of the `SRE` field.
+    pub const SRE_SHIFT: u32 = 0;
+    /// Offset of the `DFB` field.
+    pub const DFB_SHIFT: u32 = 1;
+    /// Offset of the `DIB` field.
+    pub const DIB_SHIFT: u32 = 2;
+    /// Offset of the `Enable` field.
+    pub const ENABLE_SHIFT: u32 = 3;
+}
+
+bitflags! {
     /// `ICC_IAR0` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -10250,6 +10277,147 @@ impl IccIgrpen1El3 {
     pub const ENABLEGRP1NS_SHIFT: u32 = 0;
     /// Offset of the `EnableGrp1S` field.
     pub const ENABLEGRP1S_SHIFT: u32 = 1;
+}
+
+bitflags! {
+    /// `ICC_MCTLR` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccMctlr: u32 {
+        /// `CBPR_EL1S` bit.
+        const CBPR_EL1S = 1 << 0;
+        /// `CBPR_EL1NS` bit.
+        const CBPR_EL1NS = 1 << 1;
+        /// `EOImode_EL3` bit.
+        const EOIMODE_EL3 = 1 << 2;
+        /// `EOImode_EL1S` bit.
+        const EOIMODE_EL1S = 1 << 3;
+        /// `EOImode_EL1NS` bit.
+        const EOIMODE_EL1NS = 1 << 4;
+        /// `RM` bit.
+        const RM = 1 << 5;
+        /// `PMHE` bit.
+        const PMHE = 1 << 6;
+        /// `SEIS` bit.
+        const SEIS = 1 << 14;
+        /// `A3V` bit.
+        const A3V = 1 << 15;
+        /// `nDS` bit.
+        const NDS = 1 << 17;
+        /// `RSS` bit.
+        const RSS = 1 << 18;
+        /// `ExtRange` bit.
+        const EXTRANGE = 1 << 19;
+    }
+}
+
+impl IccMctlr {
+    /// Offset of the `CBPR_EL1S` field.
+    pub const CBPR_EL1S_SHIFT: u32 = 0;
+    /// Offset of the `CBPR_EL1NS` field.
+    pub const CBPR_EL1NS_SHIFT: u32 = 1;
+    /// Offset of the `EOImode_EL3` field.
+    pub const EOIMODE_EL3_SHIFT: u32 = 2;
+    /// Offset of the `EOImode_EL1S` field.
+    pub const EOIMODE_EL1S_SHIFT: u32 = 3;
+    /// Offset of the `EOImode_EL1NS` field.
+    pub const EOIMODE_EL1NS_SHIFT: u32 = 4;
+    /// Offset of the `RM` field.
+    pub const RM_SHIFT: u32 = 5;
+    /// Offset of the `PMHE` field.
+    pub const PMHE_SHIFT: u32 = 6;
+    /// Offset of the `PRIbits` field.
+    pub const PRIBITS_SHIFT: u32 = 8;
+    /// Mask for the `PRIbits` field.
+    pub const PRIBITS_MASK: u32 = 0b111;
+    /// Offset of the `IDbits` field.
+    pub const IDBITS_SHIFT: u32 = 11;
+    /// Mask for the `IDbits` field.
+    pub const IDBITS_MASK: u32 = 0b111;
+    /// Offset of the `SEIS` field.
+    pub const SEIS_SHIFT: u32 = 14;
+    /// Offset of the `A3V` field.
+    pub const A3V_SHIFT: u32 = 15;
+    /// Offset of the `nDS` field.
+    pub const NDS_SHIFT: u32 = 17;
+    /// Offset of the `RSS` field.
+    pub const RSS_SHIFT: u32 = 18;
+    /// Offset of the `ExtRange` field.
+    pub const EXTRANGE_SHIFT: u32 = 19;
+
+    /// Returns the value of the `PRIbits` field.
+    pub const fn pribits(self) -> u8 {
+        ((self.bits() >> Self::PRIBITS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `PRIbits` field.
+    pub const fn set_pribits(&mut self, value: u8) {
+        let offset = Self::PRIBITS_SHIFT;
+        assert!(value & (Self::PRIBITS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PRIBITS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns the value of the `IDbits` field.
+    pub const fn idbits(self) -> u8 {
+        ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
+    }
+
+    /// Sets the value of the `IDbits` field.
+    pub const fn set_idbits(&mut self, value: u8) {
+        let offset = Self::IDBITS_SHIFT;
+        assert!(value & (Self::IDBITS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::IDBITS_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+}
+
+bitflags! {
+    /// `ICC_MGRPEN1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccMgrpen1: u32 {
+        /// `EnableGrp1NS` bit.
+        const ENABLEGRP1NS = 1 << 0;
+        /// `EnableGrp1S` bit.
+        const ENABLEGRP1S = 1 << 1;
+    }
+}
+
+impl IccMgrpen1 {
+    /// Offset of the `EnableGrp1NS` field.
+    pub const ENABLEGRP1NS_SHIFT: u32 = 0;
+    /// Offset of the `EnableGrp1S` field.
+    pub const ENABLEGRP1S_SHIFT: u32 = 1;
+}
+
+bitflags! {
+    /// `ICC_MSRE` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccMsre: u32 {
+        /// `SRE` bit.
+        const SRE = 1 << 0;
+        /// `DFB` bit.
+        const DFB = 1 << 1;
+        /// `DIB` bit.
+        const DIB = 1 << 2;
+        /// `Enable` bit.
+        const ENABLE = 1 << 3;
+    }
+}
+
+impl IccMsre {
+    /// Offset of the `SRE` field.
+    pub const SRE_SHIFT: u32 = 0;
+    /// Offset of the `DFB` field.
+    pub const DFB_SHIFT: u32 = 1;
+    /// Offset of the `DIB` field.
+    pub const DIB_SHIFT: u32 = 2;
+    /// Offset of the `Enable` field.
+    pub const ENABLE_SHIFT: u32 = 3;
 }
 
 #[cfg(feature = "el1")]
@@ -10905,6 +11073,29 @@ impl IccSgi1rEl1 {
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
     }
+}
+
+bitflags! {
+    /// `ICC_SRE` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IccSre: u32 {
+        /// `SRE` bit.
+        const SRE = 1 << 0;
+        /// `DFB` bit.
+        const DFB = 1 << 1;
+        /// `DIB` bit.
+        const DIB = 1 << 2;
+    }
+}
+
+impl IccSre {
+    /// Offset of the `SRE` field.
+    pub const SRE_SHIFT: u32 = 0;
+    /// Offset of the `DFB` field.
+    pub const DFB_SHIFT: u32 = 1;
+    /// Offset of the `DIB` field.
+    pub const DIB_SHIFT: u32 = 2;
 }
 
 #[cfg(feature = "el1")]
@@ -26890,35 +27081,35 @@ read_write_sysreg!(icc_ap1r2_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(icc_ap1r3_el1, u64, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-write_sysreg!(icc_asgi1r: (p15, 1, c12), u64: IccAsgi1r, fake::SYSREGS);
+write_sysreg!(icc_asgi1r: (p15, 1, c12), u64: IccAsgi1r, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-write_sysreg!(icc_asgi1r_el1: s3_0_c12_c11_6, u64: IccAsgi1rEl1, fake::SYSREGS);
+write_sysreg!(icc_asgi1r_el1: s3_0_c12_c11_6, u64: IccAsgi1rEl1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(icc_bpr0: (p15, 0, c8, c12, 3), u32: IccBpr0, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_bpr0: (p15, 0, c8, c12, 3), u32: IccBpr0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_write_sysreg!(icc_bpr0_el1: s3_0_c12_c8_3, u64: IccBpr0El1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_bpr0_el1: s3_0_c12_c8_3, u64: IccBpr0El1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(icc_bpr1: (p15, 0, c12, c12, 3), u32: IccBpr1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_bpr1: (p15, 0, c12, c12, 3), u32: IccBpr1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_write_sysreg!(icc_bpr1_el1: s3_0_c12_c12_3, u64: IccBpr1El1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_bpr1_el1: s3_0_c12_c12_3, u64: IccBpr1El1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(icc_ctlr: (p15, 0, c12, c12, 4), u32: IccCtlr, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_ctlr: (p15, 0, c12, c12, 4), u32: IccCtlr, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_write_sysreg!(icc_ctlr_el1: s3_0_c12_c12_4, u64: IccCtlrEl1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_ctlr_el1: s3_0_c12_c12_4, u64: IccCtlrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
-read_write_sysreg!(icc_ctlr_el3: s3_6_c12_c12_4, u64: IccCtlrEl3, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_ctlr_el3: s3_6_c12_c12_4, u64: IccCtlrEl3, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-write_sysreg!(icc_dir: (p15, 0, c11, c12, 1), u32: IccDir, fake::SYSREGS);
+write_sysreg!(icc_dir: (p15, 0, c11, c12, 1), u32: IccDir, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-write_sysreg!(icc_dir_el1: s3_0_c12_c11_1, u64: IccDirEl1, fake::SYSREGS);
+write_sysreg!(icc_dir_el1: s3_0_c12_c11_1, u64: IccDirEl1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-write_sysreg!(icc_eoir0: (p15, 0, c8, c12, 1), u32: IccEoir0, fake::SYSREGS);
+write_sysreg!(icc_eoir0: (p15, 0, c8, c12, 1), u32: IccEoir0, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-write_sysreg!(icc_eoir0_el1: s3_0_c12_c8_1, u64: IccEoir0El1, fake::SYSREGS);
+write_sysreg!(icc_eoir0_el1: s3_0_c12_c8_1, u64: IccEoir0El1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-write_sysreg!(icc_eoir1: (p15, 0, c12, c12, 1), u32: IccEoir1, fake::SYSREGS);
+write_sysreg!(icc_eoir1: (p15, 0, c12, c12, 1), u32: IccEoir1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-write_sysreg!(icc_eoir1_el1: s3_0_c12_c12_1, u64: IccEoir1El1, fake::SYSREGS);
+write_sysreg!(icc_eoir1_el1: s3_0_c12_c12_1, u64: IccEoir1El1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(icc_hppir0: (p15, 0, c8, c12, 2), u32: IccHppir0, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
@@ -26928,6 +27119,8 @@ read_sysreg!(icc_hppir1: (p15, 0, c12, c12, 2), u32: IccHppir1, safe, fake::SYSR
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(icc_hppir1_el1: s3_0_c12_c12_2, u64: IccHppir1El1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(icc_hsre: (p15, 4, c9, c12, 5), u32: IccHsre, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(icc_iar0: (p15, 0, c8, c12, 0), u32: IccIar0, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(icc_iar0_el1: s3_0_c12_c8_0, u64: IccIar0El1, safe, fake::SYSREGS);
@@ -26936,33 +27129,41 @@ read_sysreg!(icc_iar1: (p15, 0, c12, c12, 0), u32: IccIar1, safe, fake::SYSREGS)
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(icc_iar1_el1: s3_0_c12_c12_0, u64: IccIar1El1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(icc_igrpen0: (p15, 0, c12, c12, 6), u32: IccIgrpen0, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_igrpen0: (p15, 0, c12, c12, 6), u32: IccIgrpen0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_write_sysreg!(icc_igrpen0_el1: s3_0_c12_c12_6, u64: IccIgrpen0El1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_igrpen0_el1: s3_0_c12_c12_6, u64: IccIgrpen0El1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(icc_igrpen1: (p15, 0, c12, c12, 7), u32: IccIgrpen1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_igrpen1: (p15, 0, c12, c12, 7), u32: IccIgrpen1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_write_sysreg!(icc_igrpen1_el1: s3_0_c12_c12_7, u64: IccIgrpen1El1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_igrpen1_el1: s3_0_c12_c12_7, u64: IccIgrpen1El1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
-read_write_sysreg!(icc_igrpen1_el3: s3_6_c12_c12_7, u64: IccIgrpen1El3, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_igrpen1_el3: s3_6_c12_c12_7, u64: IccIgrpen1El3, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(icc_mctlr: (p15, 6, c12, c12, 4), u32: IccMctlr, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(icc_mgrpen1: (p15, 6, c12, c12, 7), u32: IccMgrpen1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(icc_msre: (p15, 6, c12, c12, 5), u32: IccMsre, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(icc_nmiar1_el1: s3_0_c12_c9_5, u64: IccNmiar1El1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(icc_pmr: (p15, 0, c6, c4, 0), u32: IccPmr, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_pmr: (p15, 0, c6, c4, 0), u32: IccPmr, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-read_write_sysreg!(icc_pmr_el1: s3_0_c4_c6_0, u64: IccPmrEl1, safe_read, fake::SYSREGS);
+read_write_sysreg!(icc_pmr_el1: s3_0_c4_c6_0, u64: IccPmrEl1, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(icc_rpr: (p15, 0, c11, c12, 3), u32: IccRpr, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(icc_rpr_el1: s3_0_c12_c11_3, u64: IccRprEl1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-write_sysreg!(icc_sgi0r: (p15, 2, c12), u64: IccSgi0r, fake::SYSREGS);
+write_sysreg!(icc_sgi0r: (p15, 2, c12), u64: IccSgi0r, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-write_sysreg!(icc_sgi0r_el1: s3_0_c12_c11_7, u64: IccSgi0rEl1, fake::SYSREGS);
+write_sysreg!(icc_sgi0r_el1: s3_0_c12_c11_7, u64: IccSgi0rEl1, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-write_sysreg!(icc_sgi1r: (p15, 0, c12), u64: IccSgi1r, fake::SYSREGS);
+write_sysreg!(icc_sgi1r: (p15, 0, c12), u64: IccSgi1r, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-write_sysreg!(icc_sgi1r_el1: s3_0_c12_c11_5, u64: IccSgi1rEl1, fake::SYSREGS);
+write_sysreg!(icc_sgi1r_el1: s3_0_c12_c11_5, u64: IccSgi1rEl1, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(icc_sre: (p15, 0, c12, c12, 5), u32: IccSre, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(icc_sre_el1: s3_0_c12_c12_5, u64: IccSreEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]

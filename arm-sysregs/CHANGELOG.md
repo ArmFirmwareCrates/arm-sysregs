@@ -4,6 +4,17 @@
 
 ### New features
 
+- Added more GIC registers.
+- Made some GIC registers safe to write.
+
+### Bugfixes
+
+- Fixed compilation error for output of `read_write_sysregs!` on AArch32 in some cases.
+
+## 0.2.5
+
+### New features
+
 - Added SVCR register.
 - Added TPIDR_EL3 register.
 - Added Generic Timer registers.

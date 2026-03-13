@@ -15,14 +15,14 @@ use crate::{
     Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr,
     Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr,
     Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1, IccHppir0,
-    IccHppir1, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccPmr, IccRpr, IccSgi0r, IccSgi1r,
-    IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5, IdIsar6, IdMmfr0,
-    IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0,
-    Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2,
-    Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr,
-    Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder,
-    Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0,
-    Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
+    IccHppir1, IccHsre, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccMctlr, IccMgrpen1, IccMsre,
+    IccPmr, IccRpr, IccSgi0r, IccSgi1r, IccSre, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3,
+    IdIsar4, IdIsar5, IdIsar6, IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0,
+    IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr,
+    Pmccntr, Pmceid0, Pmceid1, Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr,
+    Pmintenset, Pmmir, Pmovsr, Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar,
+    Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr,
+    Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el1")]
 use crate::{
@@ -601,6 +601,8 @@ pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `ICC_HPPIR1_EL1` system register.
     pub icc_hppir1_el1: IccHppir1El1,
+    /// Fake value for the `ICC_HSRE` system register.
+    pub icc_hsre: IccHsre,
     /// Fake value for the `ICC_IAR0` system register.
     pub icc_iar0: IccIar0,
     #[cfg(feature = "el1")]
@@ -624,6 +626,12 @@ pub struct SystemRegisters {
     #[cfg(feature = "el3")]
     /// Fake value for the `ICC_IGRPEN1_EL3` system register.
     pub icc_igrpen1_el3: IccIgrpen1El3,
+    /// Fake value for the `ICC_MCTLR` system register.
+    pub icc_mctlr: IccMctlr,
+    /// Fake value for the `ICC_MGRPEN1` system register.
+    pub icc_mgrpen1: IccMgrpen1,
+    /// Fake value for the `ICC_MSRE` system register.
+    pub icc_msre: IccMsre,
     #[cfg(feature = "el1")]
     /// Fake value for the `ICC_NMIAR1_EL1` system register.
     pub icc_nmiar1_el1: IccNmiar1El1,
@@ -647,6 +655,8 @@ pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `ICC_SGI1R_EL1` system register.
     pub icc_sgi1r_el1: IccSgi1rEl1,
+    /// Fake value for the `ICC_SRE` system register.
+    pub icc_sre: IccSre,
     #[cfg(feature = "el1")]
     /// Fake value for the `ICC_SRE_EL1` system register.
     pub icc_sre_el1: IccSreEl1,
@@ -1357,6 +1367,7 @@ impl SystemRegisters {
             icc_hppir1: IccHppir1::empty(),
             #[cfg(feature = "el1")]
             icc_hppir1_el1: IccHppir1El1::empty(),
+            icc_hsre: IccHsre::empty(),
             icc_iar0: IccIar0::empty(),
             #[cfg(feature = "el1")]
             icc_iar0_el1: IccIar0El1::empty(),
@@ -1371,6 +1382,9 @@ impl SystemRegisters {
             icc_igrpen1_el1: IccIgrpen1El1::empty(),
             #[cfg(feature = "el3")]
             icc_igrpen1_el3: IccIgrpen1El3::empty(),
+            icc_mctlr: IccMctlr::empty(),
+            icc_mgrpen1: IccMgrpen1::empty(),
+            icc_msre: IccMsre::empty(),
             #[cfg(feature = "el1")]
             icc_nmiar1_el1: IccNmiar1El1::empty(),
             icc_pmr: IccPmr::empty(),
@@ -1385,6 +1399,7 @@ impl SystemRegisters {
             icc_sgi1r: IccSgi1r::empty(),
             #[cfg(feature = "el1")]
             icc_sgi1r_el1: IccSgi1rEl1::empty(),
+            icc_sre: IccSre::empty(),
             #[cfg(feature = "el1")]
             icc_sre_el1: IccSreEl1::empty(),
             #[cfg(feature = "el2")]
