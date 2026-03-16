@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
+// This file is generated, do not edit manually.
+
 use crate::{
     Amcfgr, Amcgcr, Amcntenclr0, Amcntenclr1, Amcntenset0, Amcntenset1, Amcr, Amuserenr, Ccsidr,
     Ccsidr2, Clidr, Cntfrq, CntfrqEl0, Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl,

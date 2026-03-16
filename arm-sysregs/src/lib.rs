@@ -3,6 +3,8 @@
 
 //! Access to Arm CPU system registers.
 
+// This file is generated, do not edit manually.
+
 #![cfg_attr(not(any(test, feature = "fakes")), no_std)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 

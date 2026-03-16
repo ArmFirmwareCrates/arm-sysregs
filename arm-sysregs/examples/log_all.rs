@@ -3,6 +3,8 @@
 
 //! Example to log all readable system register values.
 
+// This file is generated, do not edit manually.
+
 #![no_std]
 #![cfg_attr(not(any(test, feature = "fakes")), no_main)]
 

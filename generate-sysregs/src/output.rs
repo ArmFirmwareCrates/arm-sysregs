@@ -16,6 +16,8 @@ pub fn write_lib(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> i
 
 //! Access to Arm CPU system registers.
 
+// This file is generated, do not edit manually.
+
 #![cfg_attr(not(any(test, feature = \"fakes\")), no_std)]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
@@ -56,6 +58,8 @@ pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> 
         "\
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
 // SPDX-License-Identifier: MIT OR Apache-2.0
+
+// This file is generated, do not edit manually.
 
 "
         .as_bytes(),
@@ -145,6 +149,8 @@ pub fn write_example(mut writer: impl Write + Copy, registers: &[RegisterInfo]) 
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
 //! Example to log all readable system register values.
+
+// This file is generated, do not edit manually.
 
 #![no_std]
 #![cfg_attr(not(any(test, feature = \"fakes\")), no_main)]
