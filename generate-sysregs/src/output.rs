@@ -149,13 +149,13 @@ pub fn write_example(mut writer: impl Write + Copy, registers: &[RegisterInfo]) 
 #![no_std]
 #![cfg_attr(not(any(test, feature = \"fakes\")), no_main)]
 
-#[cfg(target_arch = \"aarch64\")]
+#[cfg(all(target_arch = \"aarch64\", target_os = \"none\"))]
 use aarch64_rt::entry;
 #[cfg(not(any(test, feature = \"fakes\")))]
 use core::panic::PanicInfo;
 use log::info;
 
-#[cfg(target_arch = \"aarch64\")]
+#[cfg(all(target_arch = \"aarch64\", target_os = \"none\"))]
 entry!(entry);
 #[cfg_attr(any(test, feature = \"fakes\"), allow(unused))]
 fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {{
