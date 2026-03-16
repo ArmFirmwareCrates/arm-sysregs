@@ -60,6 +60,12 @@ impl Amcfgr {
         );
     }
 
+    /// Returns a copy with the `N` field set to the given value.
+    pub const fn with_n(mut self, value: u8) -> Self {
+        self.set_n(value);
+        self
+    }
+
     /// Returns the value of the `SIZE` field.
     pub const fn size(self) -> u8 {
         ((self.bits() >> Self::SIZE_SHIFT) & 0b111111) as u8
@@ -74,6 +80,12 @@ impl Amcfgr {
         );
     }
 
+    /// Returns a copy with the `SIZE` field set to the given value.
+    pub const fn with_size(mut self, value: u8) -> Self {
+        self.set_size(value);
+        self
+    }
+
     /// Returns the value of the `NCG` field.
     pub const fn ncg(self) -> u8 {
         ((self.bits() >> Self::NCG_SHIFT) & 0b1111) as u8
@@ -86,6 +98,12 @@ impl Amcfgr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NCG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `NCG` field set to the given value.
+    pub const fn with_ncg(mut self, value: u8) -> Self {
+        self.set_ncg(value);
+        self
     }
 }
 
@@ -121,6 +139,12 @@ impl Amcgcr {
         );
     }
 
+    /// Returns a copy with the `CG0NC` field set to the given value.
+    pub const fn with_cg0nc(mut self, value: u8) -> Self {
+        self.set_cg0nc(value);
+        self
+    }
+
     /// Returns the value of the `CG1NC` field.
     pub const fn cg1nc(self) -> u8 {
         ((self.bits() >> Self::CG1NC_SHIFT) & 0b11111111) as u8
@@ -133,6 +157,12 @@ impl Amcgcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CG1NC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CG1NC` field set to the given value.
+    pub const fn with_cg1nc(mut self, value: u8) -> Self {
+        self.set_cg1nc(value);
+        self
     }
 }
 
@@ -333,6 +363,12 @@ impl ApiakeyhiEl1 {
             (self.bits() & !(Self::APIAKEYHI_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `APIAKeyHi` field set to the given value.
+    pub const fn with_apiakeyhi(mut self, value: u64) -> Self {
+        self.set_apiakeyhi(value);
+        self
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -365,6 +401,12 @@ impl ApiakeyloEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::APIAKEYLO_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `APIAKeyLo` field set to the given value.
+    pub const fn with_apiakeylo(mut self, value: u64) -> Self {
+        self.set_apiakeylo(value);
+        self
     }
 }
 
@@ -400,6 +442,12 @@ impl Ccsidr {
         );
     }
 
+    /// Returns a copy with the `LineSize` field set to the given value.
+    pub const fn with_linesize(mut self, value: u8) -> Self {
+        self.set_linesize(value);
+        self
+    }
+
     /// Returns the value of the `NumSets` field.
     pub const fn numsets(self) -> u16 {
         ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111) as u16
@@ -412,6 +460,12 @@ impl Ccsidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NUMSETS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `NumSets` field set to the given value.
+    pub const fn with_numsets(mut self, value: u16) -> Self {
+        self.set_numsets(value);
+        self
     }
 }
 
@@ -441,6 +495,12 @@ impl Ccsidr2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NUMSETS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `NumSets` field set to the given value.
+    pub const fn with_numsets(mut self, value: u32) -> Self {
+        self.set_numsets(value);
+        self
     }
 }
 
@@ -472,6 +532,12 @@ impl CcsidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LINESIZE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LineSize` field set to the given value.
+    pub const fn with_linesize(mut self, value: u8) -> Self {
+        self.set_linesize(value);
+        self
     }
 }
 
@@ -521,6 +587,12 @@ impl Clidr {
         );
     }
 
+    /// Returns a copy with the `Ctype<n>` field set to the given value.
+    pub const fn with_ctype(mut self, n: u32, value: u8) -> Self {
+        self.set_ctype(n, value);
+        self
+    }
+
     /// Returns the value of the `LoUIS` field.
     pub const fn louis(self) -> u8 {
         ((self.bits() >> Self::LOUIS_SHIFT) & 0b111) as u8
@@ -533,6 +605,12 @@ impl Clidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LOUIS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `LoUIS` field set to the given value.
+    pub const fn with_louis(mut self, value: u8) -> Self {
+        self.set_louis(value);
+        self
     }
 
     /// Returns the value of the `LoC` field.
@@ -549,6 +627,12 @@ impl Clidr {
         );
     }
 
+    /// Returns a copy with the `LoC` field set to the given value.
+    pub const fn with_loc(mut self, value: u8) -> Self {
+        self.set_loc(value);
+        self
+    }
+
     /// Returns the value of the `LoUU` field.
     pub const fn louu(self) -> u8 {
         ((self.bits() >> Self::LOUU_SHIFT) & 0b111) as u8
@@ -563,6 +647,12 @@ impl Clidr {
         );
     }
 
+    /// Returns a copy with the `LoUU` field set to the given value.
+    pub const fn with_louu(mut self, value: u8) -> Self {
+        self.set_louu(value);
+        self
+    }
+
     /// Returns the value of the `ICB` field.
     pub const fn icb(self) -> u8 {
         ((self.bits() >> Self::ICB_SHIFT) & 0b11) as u8
@@ -575,6 +665,12 @@ impl Clidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ICB_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ICB` field set to the given value.
+    pub const fn with_icb(mut self, value: u8) -> Self {
+        self.set_icb(value);
+        self
     }
 }
 
@@ -636,6 +732,12 @@ impl ClidrEl1 {
         );
     }
 
+    /// Returns a copy with the `Ctype<n>` field set to the given value.
+    pub fn with_ctype(mut self, n: u32, value: crate::manual::CacheType) -> Self {
+        self.set_ctype(n, value);
+        self
+    }
+
     /// Returns the value of the `LoUIS` field.
     ///
     /// Level of Unification Inner Shareable for the cache hierarchy.
@@ -652,6 +754,14 @@ impl ClidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LOUIS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LoUIS` field set to the given value.
+    ///
+    /// Level of Unification Inner Shareable for the cache hierarchy.
+    pub const fn with_louis(mut self, value: u8) -> Self {
+        self.set_louis(value);
+        self
     }
 
     /// Returns the value of the `LoC` field.
@@ -672,6 +782,14 @@ impl ClidrEl1 {
         );
     }
 
+    /// Returns a copy with the `LoC` field set to the given value.
+    ///
+    /// Level of Coherence for the cache hierarchy.
+    pub const fn with_loc(mut self, value: u8) -> Self {
+        self.set_loc(value);
+        self
+    }
+
     /// Returns the value of the `LoUU` field.
     ///
     /// Level of Unification Uniprocessor for the cache hierarchy.
@@ -688,6 +806,14 @@ impl ClidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LOUU_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LoUU` field set to the given value.
+    ///
+    /// Level of Unification Uniprocessor for the cache hierarchy.
+    pub const fn with_louu(mut self, value: u8) -> Self {
+        self.set_louu(value);
+        self
     }
 
     /// Returns the value of the `ICB` field.
@@ -708,6 +834,14 @@ impl ClidrEl1 {
         );
     }
 
+    /// Returns a copy with the `ICB` field set to the given value.
+    ///
+    /// Inner cache boundary level.
+    pub const fn with_icb(mut self, value: u8) -> Self {
+        self.set_icb(value);
+        self
+    }
+
     /// Returns the value of the given `Ttype<n>` field.
     pub const fn ttype(self, n: u32) -> u8 {
         assert!(n >= 1 && n < 8);
@@ -722,6 +856,12 @@ impl ClidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TTYPE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Ttype<n>` field set to the given value.
+    pub const fn with_ttype(mut self, n: u32, value: u8) -> Self {
+        self.set_ttype(n, value);
+        self
     }
 }
 
@@ -751,6 +891,12 @@ impl Cntfrq {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CLOCKFREQ_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ClockFreq` field set to the given value.
+    pub const fn with_clockfreq(mut self, value: u32) -> Self {
+        self.set_clockfreq(value);
+        self
     }
 }
 
@@ -782,6 +928,12 @@ impl CntfrqEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CLOCKFREQ_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ClockFreq` field set to the given value.
+    pub const fn with_clockfreq(mut self, value: u32) -> Self {
+        self.set_clockfreq(value);
+        self
     }
 }
 
@@ -831,6 +983,12 @@ impl Cnthctl {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `EVNTI` field set to the given value.
+    pub const fn with_evnti(mut self, value: u8) -> Self {
+        self.set_evnti(value);
+        self
     }
 }
 
@@ -929,6 +1087,12 @@ impl CnthctlEl2 {
             (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `EVNTI` field set to the given value.
+    pub const fn with_evnti(mut self, value: u8) -> Self {
+        self.set_evnti(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1010,6 +1174,12 @@ impl CnthpsCval {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -1045,6 +1215,12 @@ impl CnthpsCvalEl2 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1073,6 +1249,12 @@ impl CnthpsTval {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1106,6 +1288,12 @@ impl CnthpsTvalEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1188,6 +1376,12 @@ impl CnthpCval {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -1223,6 +1417,12 @@ impl CnthpCvalEl2 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1251,6 +1451,12 @@ impl CnthpTval {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1284,6 +1490,12 @@ impl CnthpTvalEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1366,6 +1578,12 @@ impl CnthvsCval {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -1401,6 +1619,12 @@ impl CnthvsCvalEl2 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1429,6 +1653,12 @@ impl CnthvsTval {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1462,6 +1692,12 @@ impl CnthvsTvalEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1544,6 +1780,12 @@ impl CnthvCval {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -1579,6 +1821,12 @@ impl CnthvCvalEl2 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1607,6 +1855,12 @@ impl CnthvTval {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1640,6 +1894,12 @@ impl CnthvTvalEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -1697,6 +1957,12 @@ impl Cntkctl {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `EVNTI` field set to the given value.
+    pub const fn with_evnti(mut self, value: u8) -> Self {
+        self.set_evnti(value);
+        self
     }
 }
 
@@ -1795,6 +2061,12 @@ impl CntkctlEl1 {
             (self.bits() & !(Self::EVNTI_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `EVNTI` field set to the given value.
+    pub const fn with_evnti(mut self, value: u8) -> Self {
+        self.set_evnti(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1826,6 +2098,12 @@ impl Cntpct {
             (self.bits() & !(Self::PHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `PhysicalCount` field set to the given value.
+    pub const fn with_physicalcount(mut self, value: u64) -> Self {
+        self.set_physicalcount(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1856,6 +2134,12 @@ impl Cntpctss {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SSPHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SSPhysicalCount` field set to the given value.
+    pub const fn with_ssphysicalcount(mut self, value: u64) -> Self {
+        self.set_ssphysicalcount(value);
+        self
     }
 }
 
@@ -1890,6 +2174,12 @@ impl CntpctssEl0 {
             (self.bits() & !(Self::SSPHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `SSPhysicalCount` field set to the given value.
+    pub const fn with_ssphysicalcount(mut self, value: u64) -> Self {
+        self.set_ssphysicalcount(value);
+        self
+    }
 }
 
 bitflags! {
@@ -1922,6 +2212,12 @@ impl CntpctEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYSICALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhysicalCount` field set to the given value.
+    pub const fn with_physicalcount(mut self, value: u64) -> Self {
+        self.set_physicalcount(value);
+        self
     }
 }
 
@@ -1956,6 +2252,12 @@ impl CntpoffEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PO_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PO` field set to the given value.
+    pub const fn with_po(mut self, value: u64) -> Self {
+        self.set_po(value);
+        self
     }
 }
 
@@ -2019,6 +2321,12 @@ impl CntpsCvalEl1 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -2051,6 +2359,12 @@ impl CntpsTvalEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -2131,6 +2445,12 @@ impl CntpCval {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2164,6 +2484,12 @@ impl CntpCvalEl0 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2192,6 +2518,12 @@ impl CntpTval {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -2224,6 +2556,12 @@ impl CntpTvalEl0 {
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2255,6 +2593,12 @@ impl Cntvct {
             (self.bits() & !(Self::VIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `VirtualCount` field set to the given value.
+    pub const fn with_virtualcount(mut self, value: u64) -> Self {
+        self.set_virtualcount(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2285,6 +2629,12 @@ impl Cntvctss {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SSVIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SSVirtualCount` field set to the given value.
+    pub const fn with_ssvirtualcount(mut self, value: u64) -> Self {
+        self.set_ssvirtualcount(value);
+        self
     }
 }
 
@@ -2319,6 +2669,12 @@ impl CntvctssEl0 {
             (self.bits() & !(Self::SSVIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `SSVirtualCount` field set to the given value.
+    pub const fn with_ssvirtualcount(mut self, value: u64) -> Self {
+        self.set_ssvirtualcount(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2352,6 +2708,12 @@ impl CntvctEl0 {
             (self.bits() & !(Self::VIRTUALCOUNT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `VirtualCount` field set to the given value.
+    pub const fn with_virtualcount(mut self, value: u64) -> Self {
+        self.set_virtualcount(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2382,6 +2744,12 @@ impl Cntvoff {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VOFFSET_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VOffset` field set to the given value.
+    pub const fn with_voffset(mut self, value: u64) -> Self {
+        self.set_voffset(value);
+        self
     }
 }
 
@@ -2417,6 +2785,12 @@ impl CntvoffEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VOFFSET_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VOffset` field set to the given value.
+    pub const fn with_voffset(mut self, value: u64) -> Self {
+        self.set_voffset(value);
+        self
     }
 }
 
@@ -2497,6 +2871,12 @@ impl CntvCval {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2530,6 +2910,12 @@ impl CntvCvalEl0 {
             (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `CompareValue` field set to the given value.
+    pub const fn with_comparevalue(mut self, value: u64) -> Self {
+        self.set_comparevalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2558,6 +2944,12 @@ impl CntvTval {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
     }
 }
 
@@ -2590,6 +2982,12 @@ impl CntvTvalEl0 {
             (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `TimerValue` field set to the given value.
+    pub const fn with_timervalue(mut self, value: u32) -> Self {
+        self.set_timervalue(value);
+        self
+    }
 }
 
 bitflags! {
@@ -2618,6 +3016,12 @@ impl Contextidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u8) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -2650,6 +3054,12 @@ impl ContextidrEl1 {
             (self.bits() & !(Self::PROCID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `PROCID` field set to the given value.
+    pub const fn with_procid(mut self, value: u32) -> Self {
+        self.set_procid(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -2680,6 +3090,12 @@ impl ContextidrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PROCID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PROCID` field set to the given value.
+    pub const fn with_procid(mut self, value: u32) -> Self {
+        self.set_procid(value);
+        self
     }
 }
 
@@ -2723,6 +3139,12 @@ impl Cpacr {
         );
     }
 
+    /// Returns a copy with the `cp10` field set to the given value.
+    pub const fn with_cp10(mut self, value: u8) -> Self {
+        self.set_cp10(value);
+        self
+    }
+
     /// Returns the value of the `cp11` field.
     pub const fn cp11(self) -> u8 {
         ((self.bits() >> Self::CP11_SHIFT) & 0b11) as u8
@@ -2735,6 +3157,12 @@ impl Cpacr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CP11_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `cp11` field set to the given value.
+    pub const fn with_cp11(mut self, value: u8) -> Self {
+        self.set_cp11(value);
+        self
     }
 }
 
@@ -2800,6 +3228,12 @@ impl CpacrEl1 {
         );
     }
 
+    /// Returns a copy with the `ZEN` field set to the given value.
+    pub const fn with_zen(mut self, value: u8) -> Self {
+        self.set_zen(value);
+        self
+    }
+
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
         ((self.bits() >> Self::FPEN_SHIFT) & 0b11) as u8
@@ -2814,6 +3248,12 @@ impl CpacrEl1 {
         );
     }
 
+    /// Returns a copy with the `FPEN` field set to the given value.
+    pub const fn with_fpen(mut self, value: u8) -> Self {
+        self.set_fpen(value);
+        self
+    }
+
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
         ((self.bits() >> Self::SMEN_SHIFT) & 0b11) as u8
@@ -2826,6 +3266,12 @@ impl CpacrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SMEN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SMEN` field set to the given value.
+    pub const fn with_smen(mut self, value: u8) -> Self {
+        self.set_smen(value);
+        self
     }
 }
 
@@ -2901,6 +3347,12 @@ impl CptrEl2 {
         );
     }
 
+    /// Returns a copy with the `ZEN` field set to the given value.
+    pub const fn with_zen(mut self, value: u8) -> Self {
+        self.set_zen(value);
+        self
+    }
+
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
         ((self.bits() >> Self::FPEN_SHIFT) & 0b11) as u8
@@ -2915,6 +3367,12 @@ impl CptrEl2 {
         );
     }
 
+    /// Returns a copy with the `FPEN` field set to the given value.
+    pub const fn with_fpen(mut self, value: u8) -> Self {
+        self.set_fpen(value);
+        self
+    }
+
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
         ((self.bits() >> Self::SMEN_SHIFT) & 0b11) as u8
@@ -2927,6 +3385,12 @@ impl CptrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SMEN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SMEN` field set to the given value.
+    pub const fn with_smen(mut self, value: u8) -> Self {
+        self.set_smen(value);
+        self
     }
 }
 
@@ -2998,6 +3462,12 @@ impl Csselr {
             (self.bits() & !(Self::LEVEL_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `Level` field set to the given value.
+    pub const fn with_level(mut self, value: u8) -> Self {
+        self.set_level(value);
+        self
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -3036,6 +3506,12 @@ impl CsselrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LEVEL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Level` field set to the given value.
+    pub const fn with_level(mut self, value: u8) -> Self {
+        self.set_level(value);
+        self
     }
 }
 
@@ -3093,6 +3569,12 @@ impl Ctr {
         );
     }
 
+    /// Returns a copy with the `IminLine` field set to the given value.
+    pub const fn with_iminline(mut self, value: u8) -> Self {
+        self.set_iminline(value);
+        self
+    }
+
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
         ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
@@ -3105,6 +3587,12 @@ impl Ctr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L1IP_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `L1Ip` field set to the given value.
+    pub const fn with_l1ip(mut self, value: u8) -> Self {
+        self.set_l1ip(value);
+        self
     }
 
     /// Returns the value of the `DminLine` field.
@@ -3121,6 +3609,12 @@ impl Ctr {
         );
     }
 
+    /// Returns a copy with the `DminLine` field set to the given value.
+    pub const fn with_dminline(mut self, value: u8) -> Self {
+        self.set_dminline(value);
+        self
+    }
+
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
         ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
@@ -3135,6 +3629,12 @@ impl Ctr {
         );
     }
 
+    /// Returns a copy with the `ERG` field set to the given value.
+    pub const fn with_erg(mut self, value: u8) -> Self {
+        self.set_erg(value);
+        self
+    }
+
     /// Returns the value of the `CWG` field.
     pub const fn cwg(self) -> u8 {
         ((self.bits() >> Self::CWG_SHIFT) & 0b1111) as u8
@@ -3147,6 +3647,12 @@ impl Ctr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CWG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CWG` field set to the given value.
+    pub const fn with_cwg(mut self, value: u8) -> Self {
+        self.set_cwg(value);
+        self
     }
 }
 
@@ -3210,6 +3716,12 @@ impl CtrEl0 {
         );
     }
 
+    /// Returns a copy with the `IminLine` field set to the given value.
+    pub const fn with_iminline(mut self, value: u8) -> Self {
+        self.set_iminline(value);
+        self
+    }
+
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
         ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
@@ -3222,6 +3734,12 @@ impl CtrEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L1IP_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `L1Ip` field set to the given value.
+    pub const fn with_l1ip(mut self, value: u8) -> Self {
+        self.set_l1ip(value);
+        self
     }
 
     /// Returns the value of the `DminLine` field.
@@ -3242,6 +3760,14 @@ impl CtrEl0 {
         );
     }
 
+    /// Returns a copy with the `DminLine` field set to the given value.
+    ///
+    /// Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE.
+    pub const fn with_dminline(mut self, value: u8) -> Self {
+        self.set_dminline(value);
+        self
+    }
+
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
         ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
@@ -3254,6 +3780,12 @@ impl CtrEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERG_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERG` field set to the given value.
+    pub const fn with_erg(mut self, value: u8) -> Self {
+        self.set_erg(value);
+        self
     }
 
     /// Returns the value of the `CWG` field.
@@ -3270,6 +3802,12 @@ impl CtrEl0 {
         );
     }
 
+    /// Returns a copy with the `CWG` field set to the given value.
+    pub const fn with_cwg(mut self, value: u8) -> Self {
+        self.set_cwg(value);
+        self
+    }
+
     /// Returns the value of the `TminLine` field.
     pub const fn tminline(self) -> u8 {
         ((self.bits() >> Self::TMINLINE_SHIFT) & 0b111111) as u8
@@ -3282,6 +3820,12 @@ impl CtrEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TMINLINE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TminLine` field set to the given value.
+    pub const fn with_tminline(mut self, value: u8) -> Self {
+        self.set_tminline(value);
+        self
     }
 }
 
@@ -3311,6 +3855,12 @@ impl Currentel {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `EL` field set to the given value.
+    pub const fn with_el(mut self, value: u8) -> Self {
+        self.set_el(value);
+        self
     }
 }
 
@@ -3342,6 +3892,12 @@ impl Dacr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::D_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `D<n>` field set to the given value.
+    pub const fn with_d(mut self, n: u32, value: u8) -> Self {
+        self.set_d(n, value);
+        self
     }
 }
 
@@ -3385,6 +3941,12 @@ impl Dbgauthstatus {
         );
     }
 
+    /// Returns a copy with the `NSID` field set to the given value.
+    pub const fn with_nsid(mut self, value: u8) -> Self {
+        self.set_nsid(value);
+        self
+    }
+
     /// Returns the value of the `NSNID` field.
     pub const fn nsnid(self) -> u8 {
         ((self.bits() >> Self::NSNID_SHIFT) & 0b11) as u8
@@ -3397,6 +3959,12 @@ impl Dbgauthstatus {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NSNID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `NSNID` field set to the given value.
+    pub const fn with_nsnid(mut self, value: u8) -> Self {
+        self.set_nsnid(value);
+        self
     }
 
     /// Returns the value of the `SID` field.
@@ -3413,6 +3981,12 @@ impl Dbgauthstatus {
         );
     }
 
+    /// Returns a copy with the `SID` field set to the given value.
+    pub const fn with_sid(mut self, value: u8) -> Self {
+        self.set_sid(value);
+        self
+    }
+
     /// Returns the value of the `SNID` field.
     pub const fn snid(self) -> u8 {
         ((self.bits() >> Self::SNID_SHIFT) & 0b11) as u8
@@ -3425,6 +3999,12 @@ impl Dbgauthstatus {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SNID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SNID` field set to the given value.
+    pub const fn with_snid(mut self, value: u8) -> Self {
+        self.set_snid(value);
+        self
     }
 }
 
@@ -3561,6 +4141,12 @@ impl Dbgdevid {
         );
     }
 
+    /// Returns a copy with the `PCSample` field set to the given value.
+    pub const fn with_pcsample(mut self, value: u8) -> Self {
+        self.set_pcsample(value);
+        self
+    }
+
     /// Returns the value of the `WPAddrMask` field.
     pub const fn wpaddrmask(self) -> u8 {
         ((self.bits() >> Self::WPADDRMASK_SHIFT) & 0b1111) as u8
@@ -3573,6 +4159,12 @@ impl Dbgdevid {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::WPADDRMASK_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `WPAddrMask` field set to the given value.
+    pub const fn with_wpaddrmask(mut self, value: u8) -> Self {
+        self.set_wpaddrmask(value);
+        self
     }
 
     /// Returns the value of the `BPAddrMask` field.
@@ -3589,6 +4181,12 @@ impl Dbgdevid {
         );
     }
 
+    /// Returns a copy with the `BPAddrMask` field set to the given value.
+    pub const fn with_bpaddrmask(mut self, value: u8) -> Self {
+        self.set_bpaddrmask(value);
+        self
+    }
+
     /// Returns the value of the `VectorCatch` field.
     pub const fn vectorcatch(self) -> u8 {
         ((self.bits() >> Self::VECTORCATCH_SHIFT) & 0b1111) as u8
@@ -3601,6 +4199,12 @@ impl Dbgdevid {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VECTORCATCH_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VectorCatch` field set to the given value.
+    pub const fn with_vectorcatch(mut self, value: u8) -> Self {
+        self.set_vectorcatch(value);
+        self
     }
 
     /// Returns the value of the `VirtExtns` field.
@@ -3617,6 +4221,12 @@ impl Dbgdevid {
         );
     }
 
+    /// Returns a copy with the `VirtExtns` field set to the given value.
+    pub const fn with_virtextns(mut self, value: u8) -> Self {
+        self.set_virtextns(value);
+        self
+    }
+
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
         ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
@@ -3629,6 +4239,12 @@ impl Dbgdevid {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::DOUBLELOCK_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `DoubleLock` field set to the given value.
+    pub const fn with_doublelock(mut self, value: u8) -> Self {
+        self.set_doublelock(value);
+        self
     }
 
     /// Returns the value of the `AuxRegs` field.
@@ -3645,6 +4261,12 @@ impl Dbgdevid {
         );
     }
 
+    /// Returns a copy with the `AuxRegs` field set to the given value.
+    pub const fn with_auxregs(mut self, value: u8) -> Self {
+        self.set_auxregs(value);
+        self
+    }
+
     /// Returns the value of the `CIDMask` field.
     pub const fn cidmask(self) -> u8 {
         ((self.bits() >> Self::CIDMASK_SHIFT) & 0b1111) as u8
@@ -3657,6 +4279,12 @@ impl Dbgdevid {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CIDMASK_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CIDMask` field set to the given value.
+    pub const fn with_cidmask(mut self, value: u8) -> Self {
+        self.set_cidmask(value);
+        self
     }
 }
 
@@ -3686,6 +4314,12 @@ impl Dbgdevid1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PCSROFFSET_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `PCSROffset` field set to the given value.
+    pub const fn with_pcsroffset(mut self, value: u8) -> Self {
+        self.set_pcsroffset(value);
+        self
     }
 }
 
@@ -3739,6 +4373,12 @@ impl Dbgdidr {
         );
     }
 
+    /// Returns a copy with the `Version` field set to the given value.
+    pub const fn with_version(mut self, value: u8) -> Self {
+        self.set_version(value);
+        self
+    }
+
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
         ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
@@ -3751,6 +4391,12 @@ impl Dbgdidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CTX_CMPS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CTX_CMPs` field set to the given value.
+    pub const fn with_ctx_cmps(mut self, value: u8) -> Self {
+        self.set_ctx_cmps(value);
+        self
     }
 
     /// Returns the value of the `BRPs` field.
@@ -3767,6 +4413,12 @@ impl Dbgdidr {
         );
     }
 
+    /// Returns a copy with the `BRPs` field set to the given value.
+    pub const fn with_brps(mut self, value: u8) -> Self {
+        self.set_brps(value);
+        self
+    }
+
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
         ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
@@ -3779,6 +4431,12 @@ impl Dbgdidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::WRPS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `WRPs` field set to the given value.
+    pub const fn with_wrps(mut self, value: u8) -> Self {
+        self.set_wrps(value);
+        self
     }
 }
 
@@ -3814,6 +4472,12 @@ impl Dbgdrar {
         );
     }
 
+    /// Returns a copy with the `Valid` field set to the given value.
+    pub const fn with_valid(mut self, value: u8) -> Self {
+        self.set_valid(value);
+        self
+    }
+
     /// Returns the value of the `ROMADDR[47:12]` field.
     pub const fn romaddr_47_12(self) -> u64 {
         ((self.bits() >> Self::ROMADDR_47_12_SHIFT) & 0b111111111111111111111111111111111111) as u64
@@ -3826,6 +4490,12 @@ impl Dbgdrar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ROMADDR_47_12_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ROMADDR[47:12]` field set to the given value.
+    pub const fn with_romaddr_47_12(mut self, value: u64) -> Self {
+        self.set_romaddr_47_12(value);
+        self
     }
 }
 
@@ -3917,6 +4587,12 @@ impl Dbgdscrext {
         );
     }
 
+    /// Returns a copy with the `MOE` field set to the given value.
+    pub const fn with_moe(mut self, value: u8) -> Self {
+        self.set_moe(value);
+        self
+    }
+
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
         ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
@@ -3929,6 +4605,12 @@ impl Dbgdscrext {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTDIS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTdis` field set to the given value.
+    pub const fn with_intdis(mut self, value: u8) -> Self {
+        self.set_intdis(value);
+        self
     }
 }
 
@@ -3987,6 +4669,12 @@ impl Dbgdscrint {
             (self.bits() & !(Self::MOE_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `MOE` field set to the given value.
+    pub const fn with_moe(mut self, value: u8) -> Self {
+        self.set_moe(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4015,6 +4703,12 @@ impl Dbgdtrrxext {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::DTRRX_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `DTRRX` field set to the given value.
+    pub const fn with_dtrrx(mut self, value: u32) -> Self {
+        self.set_dtrrx(value);
+        self
     }
 }
 
@@ -4045,6 +4739,12 @@ impl Dbgdtrrxint {
             (self.bits() & !(Self::DTRRX_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `DTRRX` field set to the given value.
+    pub const fn with_dtrrx(mut self, value: u32) -> Self {
+        self.set_dtrrx(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4074,6 +4774,12 @@ impl Dbgdtrtxext {
             (self.bits() & !(Self::DTRTX_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `DTRTX` field set to the given value.
+    pub const fn with_dtrtx(mut self, value: u32) -> Self {
+        self.set_dtrtx(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4102,6 +4808,12 @@ impl Dbgdtrtxint {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::DTRTX_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `DTRTX` field set to the given value.
+    pub const fn with_dtrtx(mut self, value: u32) -> Self {
+        self.set_dtrtx(value);
+        self
     }
 }
 
@@ -4147,6 +4859,12 @@ impl Dbgoseccr {
             (self.bits() & !(Self::EDECCR_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `EDECCR` field set to the given value.
+    pub const fn with_edeccr(mut self, value: u32) -> Self {
+        self.set_edeccr(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4175,6 +4893,12 @@ impl Dbgoslar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::OSLA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `OSLA` field set to the given value.
+    pub const fn with_osla(mut self, value: u32) -> Self {
+        self.set_osla(value);
+        self
     }
 }
 
@@ -4342,6 +5066,12 @@ impl Dfar {
             (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `VA` field set to the given value.
+    pub const fn with_va(mut self, value: u32) -> Self {
+        self.set_va(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4400,6 +5130,12 @@ impl Dfsr {
         );
     }
 
+    /// Returns a copy with the `STATUS` field set to the given value.
+    pub const fn with_status(mut self, value: u8) -> Self {
+        self.set_status(value);
+        self
+    }
+
     /// Returns the value of the `Domain` field.
     pub const fn domain(self) -> u8 {
         ((self.bits() >> Self::DOMAIN_SHIFT) & 0b1111) as u8
@@ -4414,6 +5150,12 @@ impl Dfsr {
         );
     }
 
+    /// Returns a copy with the `Domain` field set to the given value.
+    pub const fn with_domain(mut self, value: u8) -> Self {
+        self.set_domain(value);
+        self
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
@@ -4426,6 +5168,12 @@ impl Dfsr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AET_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AET` field set to the given value.
+    pub const fn with_aet(mut self, value: u8) -> Self {
+        self.set_aet(value);
+        self
     }
 }
 
@@ -4477,6 +5225,12 @@ impl Disr {
         );
     }
 
+    /// Returns a copy with the `DFSC` field set to the given value.
+    pub const fn with_dfsc(mut self, value: u8) -> Self {
+        self.set_dfsc(value);
+        self
+    }
+
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
@@ -4489,6 +5243,12 @@ impl Disr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `STATUS` field set to the given value.
+    pub const fn with_status(mut self, value: u8) -> Self {
+        self.set_status(value);
+        self
     }
 }
 
@@ -4550,6 +5310,12 @@ impl DisrEl1 {
         );
     }
 
+    /// Returns a copy with the `DFSC` field set to the given value.
+    pub const fn with_dfsc(mut self, value: u8) -> Self {
+        self.set_dfsc(value);
+        self
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b111) as u8
@@ -4564,6 +5330,12 @@ impl DisrEl1 {
         );
     }
 
+    /// Returns a copy with the `AET` field set to the given value.
+    pub const fn with_aet(mut self, value: u8) -> Self {
+        self.set_aet(value);
+        self
+    }
+
     /// Returns the value of the `WU` field.
     pub const fn wu(self) -> u8 {
         ((self.bits() >> Self::WU_SHIFT) & 0b11) as u8
@@ -4576,6 +5348,12 @@ impl DisrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::WU_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `WU` field set to the given value.
+    pub const fn with_wu(mut self, value: u8) -> Self {
+        self.set_wu(value);
+        self
     }
 }
 
@@ -4622,6 +5400,12 @@ impl Dlr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ADDR` field set to the given value.
+    pub const fn with_addr(mut self, value: u32) -> Self {
+        self.set_addr(value);
+        self
     }
 }
 
@@ -4717,6 +5501,12 @@ impl Dspsr {
         );
     }
 
+    /// Returns a copy with the `M[4:0]` field set to the given value.
+    pub const fn with_m_4_0(mut self, value: u8) -> Self {
+        self.set_m_4_0(value);
+        self
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
@@ -4729,6 +5519,12 @@ impl Dspsr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::GE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `GE` field set to the given value.
+    pub const fn with_ge(mut self, value: u8) -> Self {
+        self.set_ge(value);
+        self
     }
 }
 
@@ -4781,6 +5577,12 @@ impl ElrEl1 {
             (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `ADDR` field set to the given value.
+    pub const fn with_addr(mut self, value: u64) -> Self {
+        self.set_addr(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -4813,6 +5615,12 @@ impl ElrEl2 {
             (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `ADDR` field set to the given value.
+    pub const fn with_addr(mut self, value: u64) -> Self {
+        self.set_addr(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -4844,6 +5652,12 @@ impl ElrHyp {
             (self.bits() & !(Self::ADDR_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ADDR` field set to the given value.
+    pub const fn with_addr(mut self, value: u32) -> Self {
+        self.set_addr(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4872,6 +5686,12 @@ impl Erridr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NUM_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `NUM` field set to the given value.
+    pub const fn with_num(mut self, value: u16) -> Self {
+        self.set_num(value);
+        self
     }
 }
 
@@ -4902,6 +5722,12 @@ impl Errselr {
             (self.bits() & !(Self::SEL_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `SEL` field set to the given value.
+    pub const fn with_sel(mut self, value: u16) -> Self {
+        self.set_sel(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4930,6 +5756,12 @@ impl Erxaddr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNADDRLO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnADDRlo` field set to the given value.
+    pub const fn with_errnaddrlo(mut self, value: u32) -> Self {
+        self.set_errnaddrlo(value);
+        self
     }
 }
 
@@ -4960,6 +5792,12 @@ impl Erxaddr2 {
             (self.bits() & !(Self::ERRNADDRHI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnADDRhi` field set to the given value.
+    pub const fn with_errnaddrhi(mut self, value: u32) -> Self {
+        self.set_errnaddrhi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -4988,6 +5826,12 @@ impl Erxctlr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNCTLRLO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnCTLRlo` field set to the given value.
+    pub const fn with_errnctlrlo(mut self, value: u32) -> Self {
+        self.set_errnctlrlo(value);
+        self
     }
 }
 
@@ -5018,6 +5862,12 @@ impl Erxctlr2 {
             (self.bits() & !(Self::ERRNCTLRHI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnCTLRhi` field set to the given value.
+    pub const fn with_errnctlrhi(mut self, value: u32) -> Self {
+        self.set_errnctlrhi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -5046,6 +5896,12 @@ impl Erxfr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNFRLO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnFRlo` field set to the given value.
+    pub const fn with_errnfrlo(mut self, value: u32) -> Self {
+        self.set_errnfrlo(value);
+        self
     }
 }
 
@@ -5076,6 +5932,12 @@ impl Erxfr2 {
             (self.bits() & !(Self::ERRNFRHI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnFRhi` field set to the given value.
+    pub const fn with_errnfrhi(mut self, value: u32) -> Self {
+        self.set_errnfrhi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -5104,6 +5966,12 @@ impl Erxmisc0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNMISC0LO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnMISC0lo` field set to the given value.
+    pub const fn with_errnmisc0lo(mut self, value: u32) -> Self {
+        self.set_errnmisc0lo(value);
+        self
     }
 }
 
@@ -5134,6 +6002,12 @@ impl Erxmisc1 {
             (self.bits() & !(Self::ERRNMISC0HI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnMISC0hi` field set to the given value.
+    pub const fn with_errnmisc0hi(mut self, value: u32) -> Self {
+        self.set_errnmisc0hi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -5162,6 +6036,12 @@ impl Erxmisc2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNMISC1LO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnMISC1lo` field set to the given value.
+    pub const fn with_errnmisc1lo(mut self, value: u32) -> Self {
+        self.set_errnmisc1lo(value);
+        self
     }
 }
 
@@ -5192,6 +6072,12 @@ impl Erxmisc3 {
             (self.bits() & !(Self::ERRNMISC1HI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnMISC1hi` field set to the given value.
+    pub const fn with_errnmisc1hi(mut self, value: u32) -> Self {
+        self.set_errnmisc1hi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -5220,6 +6106,12 @@ impl Erxmisc4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNMISC2LO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnMISC2lo` field set to the given value.
+    pub const fn with_errnmisc2lo(mut self, value: u32) -> Self {
+        self.set_errnmisc2lo(value);
+        self
     }
 }
 
@@ -5250,6 +6142,12 @@ impl Erxmisc5 {
             (self.bits() & !(Self::ERRNMISC2HI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnMISC2hi` field set to the given value.
+    pub const fn with_errnmisc2hi(mut self, value: u32) -> Self {
+        self.set_errnmisc2hi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -5278,6 +6176,12 @@ impl Erxmisc6 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNMISC3LO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnMISC3lo` field set to the given value.
+    pub const fn with_errnmisc3lo(mut self, value: u32) -> Self {
+        self.set_errnmisc3lo(value);
+        self
     }
 }
 
@@ -5308,6 +6212,12 @@ impl Erxmisc7 {
             (self.bits() & !(Self::ERRNMISC3HI_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ERRnMISC3hi` field set to the given value.
+    pub const fn with_errnmisc3hi(mut self, value: u32) -> Self {
+        self.set_errnmisc3hi(value);
+        self
+    }
 }
 
 bitflags! {
@@ -5336,6 +6246,12 @@ impl Erxstatus {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ERRNSTATUSLO_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ERRnSTATUSlo` field set to the given value.
+    pub const fn with_errnstatuslo(mut self, value: u32) -> Self {
+        self.set_errnstatuslo(value);
+        self
     }
 }
 
@@ -5381,6 +6297,12 @@ impl EsrEl1 {
         );
     }
 
+    /// Returns a copy with the `ISS` field set to the given value.
+    pub const fn with_iss(mut self, value: u32) -> Self {
+        self.set_iss(value);
+        self
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
@@ -5395,6 +6317,12 @@ impl EsrEl1 {
         );
     }
 
+    /// Returns a copy with the `EC` field set to the given value.
+    pub const fn with_ec(mut self, value: u8) -> Self {
+        self.set_ec(value);
+        self
+    }
+
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
         ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
@@ -5407,6 +6335,12 @@ impl EsrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ISS2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ISS2` field set to the given value.
+    pub const fn with_iss2(mut self, value: u32) -> Self {
+        self.set_iss2(value);
+        self
     }
 }
 
@@ -5452,6 +6386,12 @@ impl EsrEl2 {
         );
     }
 
+    /// Returns a copy with the `ISS` field set to the given value.
+    pub const fn with_iss(mut self, value: u32) -> Self {
+        self.set_iss(value);
+        self
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
@@ -5466,6 +6406,12 @@ impl EsrEl2 {
         );
     }
 
+    /// Returns a copy with the `EC` field set to the given value.
+    pub const fn with_ec(mut self, value: u8) -> Self {
+        self.set_ec(value);
+        self
+    }
+
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
         ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
@@ -5478,6 +6424,12 @@ impl EsrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ISS2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ISS2` field set to the given value.
+    pub const fn with_iss2(mut self, value: u32) -> Self {
+        self.set_iss2(value);
+        self
     }
 }
 
@@ -5523,6 +6475,12 @@ impl EsrEl3 {
         );
     }
 
+    /// Returns a copy with the `ISS` field set to the given value.
+    pub const fn with_iss(mut self, value: u32) -> Self {
+        self.set_iss(value);
+        self
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
@@ -5537,6 +6495,12 @@ impl EsrEl3 {
         );
     }
 
+    /// Returns a copy with the `EC` field set to the given value.
+    pub const fn with_ec(mut self, value: u8) -> Self {
+        self.set_ec(value);
+        self
+    }
+
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
         ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
@@ -5549,6 +6513,12 @@ impl EsrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ISS2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ISS2` field set to the given value.
+    pub const fn with_iss2(mut self, value: u32) -> Self {
+        self.set_iss2(value);
+        self
     }
 }
 
@@ -5582,6 +6552,12 @@ impl FarEl1 {
             (self.bits() & !(Self::VA_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `VA` field set to the given value.
+    pub const fn with_va(mut self, value: u64) -> Self {
+        self.set_va(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -5613,6 +6589,12 @@ impl FarEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VA_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VA` field set to the given value.
+    pub const fn with_va(mut self, value: u64) -> Self {
+        self.set_va(value);
+        self
     }
 }
 
@@ -5648,6 +6630,12 @@ impl GcrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EXCLUDE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Exclude` field set to the given value.
+    pub const fn with_exclude(mut self, value: u16) -> Self {
+        self.set_exclude(value);
+        self
     }
 }
 
@@ -5827,6 +6815,12 @@ impl GpccrEl3 {
         );
     }
 
+    /// Returns a copy with the `PPS` field set to the given value.
+    pub const fn with_pps(mut self, value: u8) -> Self {
+        self.set_pps(value);
+        self
+    }
+
     /// Returns the value of the `IRGN` field.
     pub fn irgn(self) -> crate::manual::Cacheability {
         crate::manual::Cacheability::try_from(((self.bits() >> Self::IRGN_SHIFT) & 0b11) as u8)
@@ -5841,6 +6835,12 @@ impl GpccrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IRGN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IRGN` field set to the given value.
+    pub fn with_irgn(mut self, value: crate::manual::Cacheability) -> Self {
+        self.set_irgn(value);
+        self
     }
 
     /// Returns the value of the `ORGN` field.
@@ -5859,6 +6859,12 @@ impl GpccrEl3 {
         );
     }
 
+    /// Returns a copy with the `ORGN` field set to the given value.
+    pub fn with_orgn(mut self, value: crate::manual::Cacheability) -> Self {
+        self.set_orgn(value);
+        self
+    }
+
     /// Returns the value of the `SH` field.
     pub fn sh(self) -> crate::manual::Shareability {
         crate::manual::Shareability::try_from(((self.bits() >> Self::SH_SHIFT) & 0b11) as u8)
@@ -5875,6 +6881,12 @@ impl GpccrEl3 {
         );
     }
 
+    /// Returns a copy with the `SH` field set to the given value.
+    pub fn with_sh(mut self, value: crate::manual::Shareability) -> Self {
+        self.set_sh(value);
+        self
+    }
+
     /// Returns the value of the `PGS` field.
     pub const fn pgs(self) -> u8 {
         ((self.bits() >> Self::PGS_SHIFT) & 0b11) as u8
@@ -5889,6 +6901,12 @@ impl GpccrEl3 {
         );
     }
 
+    /// Returns a copy with the `PGS` field set to the given value.
+    pub const fn with_pgs(mut self, value: u8) -> Self {
+        self.set_pgs(value);
+        self
+    }
+
     /// Returns the value of the `L0GPTSZ` field.
     pub const fn l0gptsz(self) -> u8 {
         ((self.bits() >> Self::L0GPTSZ_SHIFT) & 0b1111) as u8
@@ -5901,6 +6919,12 @@ impl GpccrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L0GPTSZ_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `L0GPTSZ` field set to the given value.
+    pub const fn with_l0gptsz(mut self, value: u8) -> Self {
+        self.set_l0gptsz(value);
+        self
     }
 }
 
@@ -5938,6 +6962,12 @@ impl GptbrEl3 {
         );
     }
 
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+
     /// Returns the value of the `BADDR[43:40]` field.
     pub const fn baddr_43_40(self) -> u8 {
         ((self.bits() >> Self::BADDR_43_40_SHIFT) & 0b1111) as u8
@@ -5950,6 +6980,12 @@ impl GptbrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BADDR_43_40_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BADDR[43:40]` field set to the given value.
+    pub const fn with_baddr_43_40(mut self, value: u8) -> Self {
+        self.set_baddr_43_40(value);
+        self
     }
 }
 
@@ -6151,6 +7187,12 @@ impl Hcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BSU_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BSU` field set to the given value.
+    pub const fn with_bsu(mut self, value: u8) -> Self {
+        self.set_bsu(value);
+        self
     }
 }
 
@@ -6618,6 +7660,12 @@ impl HcrEl2 {
         );
     }
 
+    /// Returns a copy with the `BSU` field set to the given value.
+    pub const fn with_bsu(mut self, value: u8) -> Self {
+        self.set_bsu(value);
+        self
+    }
+
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
@@ -6630,6 +7678,12 @@ impl HcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TWEDEL` field set to the given value.
+    pub const fn with_twedel(mut self, value: u8) -> Self {
+        self.set_twedel(value);
+        self
     }
 }
 
@@ -6716,6 +7770,12 @@ impl Hdcr {
             (self.bits() & !(Self::HPMN_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `HPMN` field set to the given value.
+    pub const fn with_hpmn(mut self, value: u8) -> Self {
+        self.set_hpmn(value);
+        self
+    }
 }
 
 bitflags! {
@@ -6744,6 +7804,12 @@ impl Hdfar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VA` field set to the given value.
+    pub const fn with_va(mut self, value: u32) -> Self {
+        self.set_va(value);
+        self
     }
 }
 
@@ -7919,6 +8985,12 @@ impl Hfgrtr2El2 {
         );
     }
 
+    /// Returns a copy with the `nFGDTn_EL1` field set to the given value.
+    pub const fn with_nfgdtn_el1(mut self, value: u8) -> Self {
+        self.set_nfgdtn_el1(value);
+        self
+    }
+
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
         ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & 0b11) as u8
@@ -7931,6 +9003,12 @@ impl Hfgrtr2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NAFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `nAFGDTn_EL1` field set to the given value.
+    pub const fn with_nafgdtn_el1(mut self, value: u8) -> Self {
+        self.set_nafgdtn_el1(value);
+        self
     }
 }
 
@@ -8361,6 +9439,12 @@ impl Hfgwtr2El2 {
         );
     }
 
+    /// Returns a copy with the `nFGDTn_EL1` field set to the given value.
+    pub const fn with_nfgdtn_el1(mut self, value: u8) -> Self {
+        self.set_nfgdtn_el1(value);
+        self
+    }
+
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
         ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & 0b11) as u8
@@ -8373,6 +9457,12 @@ impl Hfgwtr2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NAFGDTN_EL1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `nAFGDTn_EL1` field set to the given value.
+    pub const fn with_nafgdtn_el1(mut self, value: u8) -> Self {
+        self.set_nafgdtn_el1(value);
+        self
     }
 }
 
@@ -8616,6 +9706,12 @@ impl Hifar {
             (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `VA` field set to the given value.
+    pub const fn with_va(mut self, value: u32) -> Self {
+        self.set_va(value);
+        self
+    }
 }
 
 bitflags! {
@@ -8646,6 +9742,12 @@ impl Hmair0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
     }
 }
 
@@ -8678,6 +9780,12 @@ impl Hmair1 {
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
+    }
 }
 
 bitflags! {
@@ -8706,6 +9814,12 @@ impl Hpfar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::FIPA_39_12_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `FIPA[39:12]` field set to the given value.
+    pub const fn with_fipa_39_12(mut self, value: u32) -> Self {
+        self.set_fipa_39_12(value);
+        self
     }
 }
 
@@ -8741,6 +9855,12 @@ impl HpfarEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::FIPA_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `FIPA` field set to the given value.
+    pub const fn with_fipa(mut self, value: u64) -> Self {
+        self.set_fipa(value);
+        self
     }
 }
 
@@ -8860,6 +9980,12 @@ impl Hsr {
         );
     }
 
+    /// Returns a copy with the `ISS` field set to the given value.
+    pub const fn with_iss(mut self, value: u32) -> Self {
+        self.set_iss(value);
+        self
+    }
+
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
         ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
@@ -8872,6 +9998,12 @@ impl Hsr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `EC` field set to the given value.
+    pub const fn with_ec(mut self, value: u8) -> Self {
+        self.set_ec(value);
+        self
     }
 }
 
@@ -8937,6 +10069,12 @@ impl Htcr {
         );
     }
 
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
@@ -8949,6 +10087,12 @@ impl Htcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -8965,6 +10109,12 @@ impl Htcr {
         );
     }
 
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
@@ -8977,6 +10127,12 @@ impl Htcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
     }
 }
 
@@ -9006,6 +10162,12 @@ impl Htpidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TID` field set to the given value.
+    pub const fn with_tid(mut self, value: u32) -> Self {
+        self.set_tid(value);
+        self
     }
 }
 
@@ -9048,6 +10210,12 @@ impl Htrfcr {
             (self.bits() & !(Self::TS_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `TS` field set to the given value.
+    pub const fn with_ts(mut self, value: u8) -> Self {
+        self.set_ts(value);
+        self
+    }
 }
 
 bitflags! {
@@ -9082,6 +10250,12 @@ impl Httbr {
             (self.bits() & !(Self::BADDR_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
 }
 
 bitflags! {
@@ -9110,6 +10284,12 @@ impl Hvbar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VBA` field set to the given value.
+    pub const fn with_vba(mut self, value: u32) -> Self {
+        self.set_vba(value);
+        self
     }
 }
 
@@ -9182,6 +10362,12 @@ impl IccAsgi1r {
         );
     }
 
+    /// Returns a copy with the `TargetList` field set to the given value.
+    pub const fn with_targetlist(mut self, value: u16) -> Self {
+        self.set_targetlist(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -9194,6 +10380,12 @@ impl IccAsgi1r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `INTID` field.
@@ -9210,6 +10402,12 @@ impl IccAsgi1r {
         );
     }
 
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u8) -> Self {
+        self.set_intid(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -9222,6 +10420,12 @@ impl IccAsgi1r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 
     /// Returns the value of the `RS` field.
@@ -9238,6 +10442,12 @@ impl IccAsgi1r {
         );
     }
 
+    /// Returns a copy with the `RS` field set to the given value.
+    pub const fn with_rs(mut self, value: u8) -> Self {
+        self.set_rs(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -9250,6 +10460,12 @@ impl IccAsgi1r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -9307,6 +10523,12 @@ impl IccAsgi1rEl1 {
         );
     }
 
+    /// Returns a copy with the `TargetList` field set to the given value.
+    pub const fn with_targetlist(mut self, value: u16) -> Self {
+        self.set_targetlist(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -9319,6 +10541,12 @@ impl IccAsgi1rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `INTID` field.
@@ -9335,6 +10563,12 @@ impl IccAsgi1rEl1 {
         );
     }
 
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u8) -> Self {
+        self.set_intid(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -9347,6 +10581,12 @@ impl IccAsgi1rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 
     /// Returns the value of the `RS` field.
@@ -9363,6 +10603,12 @@ impl IccAsgi1rEl1 {
         );
     }
 
+    /// Returns a copy with the `RS` field set to the given value.
+    pub const fn with_rs(mut self, value: u8) -> Self {
+        self.set_rs(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -9375,6 +10621,12 @@ impl IccAsgi1rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -9404,6 +10656,12 @@ impl IccBpr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BINARYPOINT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BinaryPoint` field set to the given value.
+    pub const fn with_binarypoint(mut self, value: u8) -> Self {
+        self.set_binarypoint(value);
+        self
     }
 }
 
@@ -9436,6 +10694,12 @@ impl IccBpr0El1 {
             (self.bits() & !(Self::BINARYPOINT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `BinaryPoint` field set to the given value.
+    pub const fn with_binarypoint(mut self, value: u8) -> Self {
+        self.set_binarypoint(value);
+        self
+    }
 }
 
 bitflags! {
@@ -9464,6 +10728,12 @@ impl IccBpr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BINARYPOINT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BinaryPoint` field set to the given value.
+    pub const fn with_binarypoint(mut self, value: u8) -> Self {
+        self.set_binarypoint(value);
+        self
     }
 }
 
@@ -9495,6 +10765,12 @@ impl IccBpr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BINARYPOINT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BinaryPoint` field set to the given value.
+    pub const fn with_binarypoint(mut self, value: u8) -> Self {
+        self.set_binarypoint(value);
+        self
     }
 }
 
@@ -9558,6 +10834,12 @@ impl IccCtlr {
         );
     }
 
+    /// Returns a copy with the `PRIbits` field set to the given value.
+    pub const fn with_pribits(mut self, value: u8) -> Self {
+        self.set_pribits(value);
+        self
+    }
+
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
         ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
@@ -9570,6 +10852,12 @@ impl IccCtlr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IDBITS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `IDbits` field set to the given value.
+    pub const fn with_idbits(mut self, value: u8) -> Self {
+        self.set_idbits(value);
+        self
     }
 }
 
@@ -9635,6 +10923,12 @@ impl IccCtlrEl1 {
         );
     }
 
+    /// Returns a copy with the `PRIbits` field set to the given value.
+    pub const fn with_pribits(mut self, value: u8) -> Self {
+        self.set_pribits(value);
+        self
+    }
+
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
         ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
@@ -9647,6 +10941,12 @@ impl IccCtlrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IDBITS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IDbits` field set to the given value.
+    pub const fn with_idbits(mut self, value: u8) -> Self {
+        self.set_idbits(value);
+        self
     }
 }
 
@@ -9732,6 +11032,12 @@ impl IccCtlrEl3 {
         );
     }
 
+    /// Returns a copy with the `PRIbits` field set to the given value.
+    pub const fn with_pribits(mut self, value: u8) -> Self {
+        self.set_pribits(value);
+        self
+    }
+
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
         ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
@@ -9744,6 +11050,12 @@ impl IccCtlrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IDBITS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IDbits` field set to the given value.
+    pub const fn with_idbits(mut self, value: u8) -> Self {
+        self.set_idbits(value);
+        self
     }
 }
 
@@ -9773,6 +11085,12 @@ impl IccDir {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -9805,6 +11123,12 @@ impl IccDirEl1 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -9833,6 +11157,12 @@ impl IccEoir0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -9865,6 +11195,12 @@ impl IccEoir0El1 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -9893,6 +11229,12 @@ impl IccEoir1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -9925,6 +11267,12 @@ impl IccEoir1El1 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -9953,6 +11301,12 @@ impl IccHppir0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -9985,6 +11339,12 @@ impl IccHppir0El1 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -10013,6 +11373,12 @@ impl IccHppir1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -10044,6 +11410,12 @@ impl IccHppir1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -10101,6 +11473,12 @@ impl IccIar0 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -10132,6 +11510,12 @@ impl IccIar0El1 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -10160,6 +11544,12 @@ impl IccIar1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -10191,6 +11581,12 @@ impl IccIar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
     }
 }
 
@@ -10359,6 +11755,12 @@ impl IccMctlr {
         );
     }
 
+    /// Returns a copy with the `PRIbits` field set to the given value.
+    pub const fn with_pribits(mut self, value: u8) -> Self {
+        self.set_pribits(value);
+        self
+    }
+
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
         ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
@@ -10371,6 +11773,12 @@ impl IccMctlr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IDBITS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `IDbits` field set to the given value.
+    pub const fn with_idbits(mut self, value: u8) -> Self {
+        self.set_idbits(value);
+        self
     }
 }
 
@@ -10449,6 +11857,12 @@ impl IccNmiar1El1 {
             (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u32) -> Self {
+        self.set_intid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -10477,6 +11891,12 @@ impl IccPmr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PRIORITY_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Priority` field set to the given value.
+    pub const fn with_priority(mut self, value: u8) -> Self {
+        self.set_priority(value);
+        self
     }
 }
 
@@ -10509,6 +11929,12 @@ impl IccPmrEl1 {
             (self.bits() & !(Self::PRIORITY_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `Priority` field set to the given value.
+    pub const fn with_priority(mut self, value: u8) -> Self {
+        self.set_priority(value);
+        self
+    }
 }
 
 bitflags! {
@@ -10537,6 +11963,12 @@ impl IccRpr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PRIORITY_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Priority` field set to the given value.
+    pub const fn with_priority(mut self, value: u8) -> Self {
+        self.set_priority(value);
+        self
     }
 }
 
@@ -10576,6 +12008,12 @@ impl IccRprEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PRIORITY_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Priority` field set to the given value.
+    pub const fn with_priority(mut self, value: u8) -> Self {
+        self.set_priority(value);
+        self
     }
 }
 
@@ -10631,6 +12069,12 @@ impl IccSgi0r {
         );
     }
 
+    /// Returns a copy with the `TargetList` field set to the given value.
+    pub const fn with_targetlist(mut self, value: u16) -> Self {
+        self.set_targetlist(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -10643,6 +12087,12 @@ impl IccSgi0r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `INTID` field.
@@ -10659,6 +12109,12 @@ impl IccSgi0r {
         );
     }
 
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u8) -> Self {
+        self.set_intid(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -10671,6 +12127,12 @@ impl IccSgi0r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 
     /// Returns the value of the `RS` field.
@@ -10687,6 +12149,12 @@ impl IccSgi0r {
         );
     }
 
+    /// Returns a copy with the `RS` field set to the given value.
+    pub const fn with_rs(mut self, value: u8) -> Self {
+        self.set_rs(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -10699,6 +12167,12 @@ impl IccSgi0r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -10756,6 +12230,12 @@ impl IccSgi0rEl1 {
         );
     }
 
+    /// Returns a copy with the `TargetList` field set to the given value.
+    pub const fn with_targetlist(mut self, value: u16) -> Self {
+        self.set_targetlist(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -10768,6 +12248,12 @@ impl IccSgi0rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `INTID` field.
@@ -10784,6 +12270,12 @@ impl IccSgi0rEl1 {
         );
     }
 
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u8) -> Self {
+        self.set_intid(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -10796,6 +12288,12 @@ impl IccSgi0rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 
     /// Returns the value of the `RS` field.
@@ -10812,6 +12310,12 @@ impl IccSgi0rEl1 {
         );
     }
 
+    /// Returns a copy with the `RS` field set to the given value.
+    pub const fn with_rs(mut self, value: u8) -> Self {
+        self.set_rs(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -10824,6 +12328,12 @@ impl IccSgi0rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -10879,6 +12389,12 @@ impl IccSgi1r {
         );
     }
 
+    /// Returns a copy with the `TargetList` field set to the given value.
+    pub const fn with_targetlist(mut self, value: u16) -> Self {
+        self.set_targetlist(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -10891,6 +12407,12 @@ impl IccSgi1r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `INTID` field.
@@ -10907,6 +12429,12 @@ impl IccSgi1r {
         );
     }
 
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u8) -> Self {
+        self.set_intid(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -10919,6 +12447,12 @@ impl IccSgi1r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 
     /// Returns the value of the `RS` field.
@@ -10935,6 +12469,12 @@ impl IccSgi1r {
         );
     }
 
+    /// Returns a copy with the `RS` field set to the given value.
+    pub const fn with_rs(mut self, value: u8) -> Self {
+        self.set_rs(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -10947,6 +12487,12 @@ impl IccSgi1r {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -11004,6 +12550,12 @@ impl IccSgi1rEl1 {
         );
     }
 
+    /// Returns a copy with the `TargetList` field set to the given value.
+    pub const fn with_targetlist(mut self, value: u16) -> Self {
+        self.set_targetlist(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -11016,6 +12568,12 @@ impl IccSgi1rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `INTID` field.
@@ -11032,6 +12590,12 @@ impl IccSgi1rEl1 {
         );
     }
 
+    /// Returns a copy with the `INTID` field set to the given value.
+    pub const fn with_intid(mut self, value: u8) -> Self {
+        self.set_intid(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -11044,6 +12608,12 @@ impl IccSgi1rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 
     /// Returns the value of the `RS` field.
@@ -11060,6 +12630,12 @@ impl IccSgi1rEl1 {
         );
     }
 
+    /// Returns a copy with the `RS` field set to the given value.
+    pub const fn with_rs(mut self, value: u8) -> Self {
+        self.set_rs(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -11072,6 +12648,12 @@ impl IccSgi1rEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -11270,6 +12852,12 @@ impl IchHcrEl2 {
             (self.bits() & !(Self::EOICOUNT_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `EOIcount` field set to the given value.
+    pub const fn with_eoicount(mut self, value: u8) -> Self {
+        self.set_eoicount(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -11334,6 +12922,12 @@ impl IchVmcrEl2 {
         );
     }
 
+    /// Returns a copy with the `VBPR1` field set to the given value.
+    pub const fn with_vbpr1(mut self, value: u8) -> Self {
+        self.set_vbpr1(value);
+        self
+    }
+
     /// Returns the value of the `VBPR0` field.
     pub const fn vbpr0(self) -> u8 {
         ((self.bits() >> Self::VBPR0_SHIFT) & 0b111) as u8
@@ -11346,6 +12940,12 @@ impl IchVmcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VBPR0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VBPR0` field set to the given value.
+    pub const fn with_vbpr0(mut self, value: u8) -> Self {
+        self.set_vbpr0(value);
+        self
     }
 }
 
@@ -11439,6 +13039,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `DebugVer` field set to the given value.
+    pub const fn with_debugver(mut self, value: u8) -> Self {
+        self.set_debugver(value);
+        self
+    }
+
     /// Returns the value of the `TraceVer` field.
     pub const fn tracever(self) -> u8 {
         ((self.bits() >> Self::TRACEVER_SHIFT) & 0b1111) as u8
@@ -11451,6 +13057,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TRACEVER_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TraceVer` field set to the given value.
+    pub const fn with_tracever(mut self, value: u8) -> Self {
+        self.set_tracever(value);
+        self
     }
 
     /// Returns the value of the `PMUVer` field.
@@ -11467,6 +13079,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `PMUVer` field set to the given value.
+    pub const fn with_pmuver(mut self, value: u8) -> Self {
+        self.set_pmuver(value);
+        self
+    }
+
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
         ((self.bits() >> Self::BRPS_SHIFT) & 0b1111) as u8
@@ -11479,6 +13097,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BRPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BRPs` field set to the given value.
+    pub const fn with_brps(mut self, value: u8) -> Self {
+        self.set_brps(value);
+        self
     }
 
     /// Returns the value of the `PMSS` field.
@@ -11495,6 +13119,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `PMSS` field set to the given value.
+    pub const fn with_pmss(mut self, value: u8) -> Self {
+        self.set_pmss(value);
+        self
+    }
+
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
         ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
@@ -11507,6 +13137,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::WRPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `WRPs` field set to the given value.
+    pub const fn with_wrps(mut self, value: u8) -> Self {
+        self.set_wrps(value);
+        self
     }
 
     /// Returns the value of the `SEBEP` field.
@@ -11523,6 +13159,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `SEBEP` field set to the given value.
+    pub const fn with_sebep(mut self, value: u8) -> Self {
+        self.set_sebep(value);
+        self
+    }
+
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
         ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
@@ -11535,6 +13177,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CTX_CMPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CTX_CMPs` field set to the given value.
+    pub const fn with_ctx_cmps(mut self, value: u8) -> Self {
+        self.set_ctx_cmps(value);
+        self
     }
 
     /// Returns the value of the `PMSVer` field.
@@ -11551,6 +13199,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `PMSVer` field set to the given value.
+    pub const fn with_pmsver(mut self, value: u8) -> Self {
+        self.set_pmsver(value);
+        self
+    }
+
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
         ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
@@ -11563,6 +13217,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::DOUBLELOCK_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `DoubleLock` field set to the given value.
+    pub const fn with_doublelock(mut self, value: u8) -> Self {
+        self.set_doublelock(value);
+        self
     }
 
     /// Returns the value of the `TraceFilt` field.
@@ -11579,6 +13239,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `TraceFilt` field set to the given value.
+    pub const fn with_tracefilt(mut self, value: u8) -> Self {
+        self.set_tracefilt(value);
+        self
+    }
+
     /// Returns the value of the `TraceBuffer` field.
     pub const fn tracebuffer(self) -> u8 {
         ((self.bits() >> Self::TRACEBUFFER_SHIFT) & 0b1111) as u8
@@ -11591,6 +13257,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TRACEBUFFER_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TraceBuffer` field set to the given value.
+    pub const fn with_tracebuffer(mut self, value: u8) -> Self {
+        self.set_tracebuffer(value);
+        self
     }
 
     /// Returns the value of the `MTPMU` field.
@@ -11607,6 +13279,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `MTPMU` field set to the given value.
+    pub const fn with_mtpmu(mut self, value: u8) -> Self {
+        self.set_mtpmu(value);
+        self
+    }
+
     /// Returns the value of the `BRBE` field.
     pub const fn brbe(self) -> u8 {
         ((self.bits() >> Self::BRBE_SHIFT) & 0b1111) as u8
@@ -11619,6 +13297,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BRBE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BRBE` field set to the given value.
+    pub const fn with_brbe(mut self, value: u8) -> Self {
+        self.set_brbe(value);
+        self
     }
 
     /// Returns the value of the `ExtTrcBuff` field.
@@ -11635,6 +13319,12 @@ impl IdAa64dfr0El1 {
         );
     }
 
+    /// Returns a copy with the `ExtTrcBuff` field set to the given value.
+    pub const fn with_exttrcbuff(mut self, value: u8) -> Self {
+        self.set_exttrcbuff(value);
+        self
+    }
+
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
         ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
@@ -11647,6 +13337,12 @@ impl IdAa64dfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::HPMN0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `HPMN0` field set to the given value.
+    pub const fn with_hpmn0(mut self, value: u8) -> Self {
+        self.set_hpmn0(value);
+        self
     }
 }
 
@@ -11720,6 +13416,12 @@ impl IdAa64dfr1El1 {
         );
     }
 
+    /// Returns a copy with the `SYSPMUID` field set to the given value.
+    pub const fn with_syspmuid(mut self, value: u8) -> Self {
+        self.set_syspmuid(value);
+        self
+    }
+
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
         ((self.bits() >> Self::BRPS_SHIFT) & 0b11111111) as u8
@@ -11732,6 +13434,12 @@ impl IdAa64dfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BRPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BRPs` field set to the given value.
+    pub const fn with_brps(mut self, value: u8) -> Self {
+        self.set_brps(value);
+        self
     }
 
     /// Returns the value of the `WRPs` field.
@@ -11748,6 +13456,12 @@ impl IdAa64dfr1El1 {
         );
     }
 
+    /// Returns a copy with the `WRPs` field set to the given value.
+    pub const fn with_wrps(mut self, value: u8) -> Self {
+        self.set_wrps(value);
+        self
+    }
+
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
         ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b11111111) as u8
@@ -11760,6 +13474,12 @@ impl IdAa64dfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CTX_CMPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CTX_CMPs` field set to the given value.
+    pub const fn with_ctx_cmps(mut self, value: u8) -> Self {
+        self.set_ctx_cmps(value);
+        self
     }
 
     /// Returns the value of the `SPMU` field.
@@ -11776,6 +13496,12 @@ impl IdAa64dfr1El1 {
         );
     }
 
+    /// Returns a copy with the `SPMU` field set to the given value.
+    pub const fn with_spmu(mut self, value: u8) -> Self {
+        self.set_spmu(value);
+        self
+    }
+
     /// Returns the value of the `PMICNTR` field.
     pub const fn pmicntr(self) -> u8 {
         ((self.bits() >> Self::PMICNTR_SHIFT) & 0b1111) as u8
@@ -11788,6 +13514,12 @@ impl IdAa64dfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMICNTR_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMICNTR` field set to the given value.
+    pub const fn with_pmicntr(mut self, value: u8) -> Self {
+        self.set_pmicntr(value);
+        self
     }
 
     /// Returns the value of the `ABLE` field.
@@ -11804,6 +13536,12 @@ impl IdAa64dfr1El1 {
         );
     }
 
+    /// Returns a copy with the `ABLE` field set to the given value.
+    pub const fn with_able(mut self, value: u8) -> Self {
+        self.set_able(value);
+        self
+    }
+
     /// Returns the value of the `ITE` field.
     pub const fn ite(self) -> u8 {
         ((self.bits() >> Self::ITE_SHIFT) & 0b1111) as u8
@@ -11816,6 +13554,12 @@ impl IdAa64dfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ITE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ITE` field set to the given value.
+    pub const fn with_ite(mut self, value: u8) -> Self {
+        self.set_ite(value);
+        self
     }
 
     /// Returns the value of the `EBEP` field.
@@ -11832,6 +13576,12 @@ impl IdAa64dfr1El1 {
         );
     }
 
+    /// Returns a copy with the `EBEP` field set to the given value.
+    pub const fn with_ebep(mut self, value: u8) -> Self {
+        self.set_ebep(value);
+        self
+    }
+
     /// Returns the value of the `DPFZS` field.
     pub const fn dpfzs(self) -> u8 {
         ((self.bits() >> Self::DPFZS_SHIFT) & 0b1111) as u8
@@ -11846,6 +13596,12 @@ impl IdAa64dfr1El1 {
         );
     }
 
+    /// Returns a copy with the `DPFZS` field set to the given value.
+    pub const fn with_dpfzs(mut self, value: u8) -> Self {
+        self.set_dpfzs(value);
+        self
+    }
+
     /// Returns the value of the `ABL_CMPs` field.
     pub const fn abl_cmps(self) -> u8 {
         ((self.bits() >> Self::ABL_CMPS_SHIFT) & 0b11111111) as u8
@@ -11858,6 +13614,12 @@ impl IdAa64dfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ABL_CMPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ABL_CMPs` field set to the given value.
+    pub const fn with_abl_cmps(mut self, value: u8) -> Self {
+        self.set_abl_cmps(value);
+        self
     }
 }
 
@@ -11951,6 +13713,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `DPB` field set to the given value.
+    pub const fn with_dpb(mut self, value: u8) -> Self {
+        self.set_dpb(value);
+        self
+    }
+
     /// Returns the value of the `APA` field.
     pub const fn apa(self) -> u8 {
         ((self.bits() >> Self::APA_SHIFT) & 0b1111) as u8
@@ -11963,6 +13731,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::APA_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `APA` field set to the given value.
+    pub const fn with_apa(mut self, value: u8) -> Self {
+        self.set_apa(value);
+        self
     }
 
     /// Returns the value of the `API` field.
@@ -11979,6 +13753,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `API` field set to the given value.
+    pub const fn with_api(mut self, value: u8) -> Self {
+        self.set_api(value);
+        self
+    }
+
     /// Returns the value of the `JSCVT` field.
     pub const fn jscvt(self) -> u8 {
         ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
@@ -11991,6 +13771,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::JSCVT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `JSCVT` field set to the given value.
+    pub const fn with_jscvt(mut self, value: u8) -> Self {
+        self.set_jscvt(value);
+        self
     }
 
     /// Returns the value of the `FCMA` field.
@@ -12007,6 +13793,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `FCMA` field set to the given value.
+    pub const fn with_fcma(mut self, value: u8) -> Self {
+        self.set_fcma(value);
+        self
+    }
+
     /// Returns the value of the `LRCPC` field.
     pub const fn lrcpc(self) -> u8 {
         ((self.bits() >> Self::LRCPC_SHIFT) & 0b1111) as u8
@@ -12019,6 +13811,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LRCPC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LRCPC` field set to the given value.
+    pub const fn with_lrcpc(mut self, value: u8) -> Self {
+        self.set_lrcpc(value);
+        self
     }
 
     /// Returns the value of the `GPA` field.
@@ -12035,6 +13833,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `GPA` field set to the given value.
+    pub const fn with_gpa(mut self, value: u8) -> Self {
+        self.set_gpa(value);
+        self
+    }
+
     /// Returns the value of the `GPI` field.
     pub const fn gpi(self) -> u8 {
         ((self.bits() >> Self::GPI_SHIFT) & 0b1111) as u8
@@ -12047,6 +13851,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::GPI_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `GPI` field set to the given value.
+    pub const fn with_gpi(mut self, value: u8) -> Self {
+        self.set_gpi(value);
+        self
     }
 
     /// Returns the value of the `FRINTTS` field.
@@ -12063,6 +13873,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `FRINTTS` field set to the given value.
+    pub const fn with_frintts(mut self, value: u8) -> Self {
+        self.set_frintts(value);
+        self
+    }
+
     /// Returns the value of the `SB` field.
     pub const fn sb(self) -> u8 {
         ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
@@ -12075,6 +13891,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SB` field set to the given value.
+    pub const fn with_sb(mut self, value: u8) -> Self {
+        self.set_sb(value);
+        self
     }
 
     /// Returns the value of the `SPECRES` field.
@@ -12091,6 +13913,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `SPECRES` field set to the given value.
+    pub const fn with_specres(mut self, value: u8) -> Self {
+        self.set_specres(value);
+        self
+    }
+
     /// Returns the value of the `BF16` field.
     pub const fn bf16(self) -> u8 {
         ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
@@ -12103,6 +13931,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BF16_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BF16` field set to the given value.
+    pub const fn with_bf16(mut self, value: u8) -> Self {
+        self.set_bf16(value);
+        self
     }
 
     /// Returns the value of the `DGH` field.
@@ -12119,6 +13953,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `DGH` field set to the given value.
+    pub const fn with_dgh(mut self, value: u8) -> Self {
+        self.set_dgh(value);
+        self
+    }
+
     /// Returns the value of the `I8MM` field.
     pub const fn i8mm(self) -> u8 {
         ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
@@ -12131,6 +13971,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::I8MM_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `I8MM` field set to the given value.
+    pub const fn with_i8mm(mut self, value: u8) -> Self {
+        self.set_i8mm(value);
+        self
     }
 
     /// Returns the value of the `XS` field.
@@ -12147,6 +13993,12 @@ impl IdAa64isar1El1 {
         );
     }
 
+    /// Returns a copy with the `XS` field set to the given value.
+    pub const fn with_xs(mut self, value: u8) -> Self {
+        self.set_xs(value);
+        self
+    }
+
     /// Returns the value of the `LS64` field.
     pub const fn ls64(self) -> u8 {
         ((self.bits() >> Self::LS64_SHIFT) & 0b1111) as u8
@@ -12159,6 +14011,12 @@ impl IdAa64isar1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LS64_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LS64` field set to the given value.
+    pub const fn with_ls64(mut self, value: u8) -> Self {
+        self.set_ls64(value);
+        self
     }
 }
 
@@ -12252,6 +14110,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `WFxT` field set to the given value.
+    pub const fn with_wfxt(mut self, value: u8) -> Self {
+        self.set_wfxt(value);
+        self
+    }
+
     /// Returns the value of the `RPRES` field.
     pub const fn rpres(self) -> u8 {
         ((self.bits() >> Self::RPRES_SHIFT) & 0b1111) as u8
@@ -12264,6 +14128,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RPRES_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `RPRES` field set to the given value.
+    pub const fn with_rpres(mut self, value: u8) -> Self {
+        self.set_rpres(value);
+        self
     }
 
     /// Returns the value of the `GPA3` field.
@@ -12280,6 +14150,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `GPA3` field set to the given value.
+    pub const fn with_gpa3(mut self, value: u8) -> Self {
+        self.set_gpa3(value);
+        self
+    }
+
     /// Returns the value of the `APA3` field.
     pub const fn apa3(self) -> u8 {
         ((self.bits() >> Self::APA3_SHIFT) & 0b1111) as u8
@@ -12292,6 +14168,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::APA3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `APA3` field set to the given value.
+    pub const fn with_apa3(mut self, value: u8) -> Self {
+        self.set_apa3(value);
+        self
     }
 
     /// Returns the value of the `MOPS` field.
@@ -12308,6 +14190,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `MOPS` field set to the given value.
+    pub const fn with_mops(mut self, value: u8) -> Self {
+        self.set_mops(value);
+        self
+    }
+
     /// Returns the value of the `BC` field.
     pub const fn bc(self) -> u8 {
         ((self.bits() >> Self::BC_SHIFT) & 0b1111) as u8
@@ -12320,6 +14208,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `BC` field set to the given value.
+    pub const fn with_bc(mut self, value: u8) -> Self {
+        self.set_bc(value);
+        self
     }
 
     /// Returns the value of the `PAC_frac` field.
@@ -12336,6 +14230,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `PAC_frac` field set to the given value.
+    pub const fn with_pac_frac(mut self, value: u8) -> Self {
+        self.set_pac_frac(value);
+        self
+    }
+
     /// Returns the value of the `CLRBHB` field.
     pub const fn clrbhb(self) -> u8 {
         ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
@@ -12348,6 +14248,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CLRBHB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CLRBHB` field set to the given value.
+    pub const fn with_clrbhb(mut self, value: u8) -> Self {
+        self.set_clrbhb(value);
+        self
     }
 
     /// Returns the value of the `SYSREG_128` field.
@@ -12364,6 +14270,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `SYSREG_128` field set to the given value.
+    pub const fn with_sysreg_128(mut self, value: u8) -> Self {
+        self.set_sysreg_128(value);
+        self
+    }
+
     /// Returns the value of the `SYSINSTR_128` field.
     pub const fn sysinstr_128(self) -> u8 {
         ((self.bits() >> Self::SYSINSTR_128_SHIFT) & 0b1111) as u8
@@ -12376,6 +14288,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SYSINSTR_128_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SYSINSTR_128` field set to the given value.
+    pub const fn with_sysinstr_128(mut self, value: u8) -> Self {
+        self.set_sysinstr_128(value);
+        self
     }
 
     /// Returns the value of the `PRFMSLC` field.
@@ -12392,6 +14310,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `PRFMSLC` field set to the given value.
+    pub const fn with_prfmslc(mut self, value: u8) -> Self {
+        self.set_prfmslc(value);
+        self
+    }
+
     /// Returns the value of the `PCDPHINT` field.
     pub const fn pcdphint(self) -> u8 {
         ((self.bits() >> Self::PCDPHINT_SHIFT) & 0b1111) as u8
@@ -12404,6 +14328,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PCDPHINT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PCDPHINT` field set to the given value.
+    pub const fn with_pcdphint(mut self, value: u8) -> Self {
+        self.set_pcdphint(value);
+        self
     }
 
     /// Returns the value of the `RPRFM` field.
@@ -12420,6 +14350,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `RPRFM` field set to the given value.
+    pub const fn with_rprfm(mut self, value: u8) -> Self {
+        self.set_rprfm(value);
+        self
+    }
+
     /// Returns the value of the `CSSC` field.
     pub const fn cssc(self) -> u8 {
         ((self.bits() >> Self::CSSC_SHIFT) & 0b1111) as u8
@@ -12432,6 +14368,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CSSC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CSSC` field set to the given value.
+    pub const fn with_cssc(mut self, value: u8) -> Self {
+        self.set_cssc(value);
+        self
     }
 
     /// Returns the value of the `LUT` field.
@@ -12448,6 +14390,12 @@ impl IdAa64isar2El1 {
         );
     }
 
+    /// Returns a copy with the `LUT` field set to the given value.
+    pub const fn with_lut(mut self, value: u8) -> Self {
+        self.set_lut(value);
+        self
+    }
+
     /// Returns the value of the `ATS1A` field.
     pub const fn ats1a(self) -> u8 {
         ((self.bits() >> Self::ATS1A_SHIFT) & 0b1111) as u8
@@ -12460,6 +14408,12 @@ impl IdAa64isar2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATS1A_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ATS1A` field set to the given value.
+    pub const fn with_ats1a(mut self, value: u8) -> Self {
+        self.set_ats1a(value);
+        self
     }
 }
 
@@ -12545,6 +14499,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `PARange` field set to the given value.
+    pub const fn with_parange(mut self, value: u8) -> Self {
+        self.set_parange(value);
+        self
+    }
+
     /// Returns the value of the `ASIDBits` field.
     pub const fn asidbits(self) -> u8 {
         ((self.bits() >> Self::ASIDBITS_SHIFT) & 0b1111) as u8
@@ -12557,6 +14517,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASIDBITS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASIDBits` field set to the given value.
+    pub const fn with_asidbits(mut self, value: u8) -> Self {
+        self.set_asidbits(value);
+        self
     }
 
     /// Returns the value of the `BigEnd` field.
@@ -12573,6 +14539,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `BigEnd` field set to the given value.
+    pub const fn with_bigend(mut self, value: u8) -> Self {
+        self.set_bigend(value);
+        self
+    }
+
     /// Returns the value of the `SNSMem` field.
     pub const fn snsmem(self) -> u8 {
         ((self.bits() >> Self::SNSMEM_SHIFT) & 0b1111) as u8
@@ -12585,6 +14557,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SNSMEM_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SNSMem` field set to the given value.
+    pub const fn with_snsmem(mut self, value: u8) -> Self {
+        self.set_snsmem(value);
+        self
     }
 
     /// Returns the value of the `BigEndEL0` field.
@@ -12601,6 +14579,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `BigEndEL0` field set to the given value.
+    pub const fn with_bigendel0(mut self, value: u8) -> Self {
+        self.set_bigendel0(value);
+        self
+    }
+
     /// Returns the value of the `TGran16` field.
     pub const fn tgran16(self) -> u8 {
         ((self.bits() >> Self::TGRAN16_SHIFT) & 0b1111) as u8
@@ -12613,6 +14597,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TGRAN16_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TGran16` field set to the given value.
+    pub const fn with_tgran16(mut self, value: u8) -> Self {
+        self.set_tgran16(value);
+        self
     }
 
     /// Returns the value of the `TGran64` field.
@@ -12629,6 +14619,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `TGran64` field set to the given value.
+    pub const fn with_tgran64(mut self, value: u8) -> Self {
+        self.set_tgran64(value);
+        self
+    }
+
     /// Returns the value of the `TGran4` field.
     pub const fn tgran4(self) -> u8 {
         ((self.bits() >> Self::TGRAN4_SHIFT) & 0b1111) as u8
@@ -12641,6 +14637,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TGRAN4_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TGran4` field set to the given value.
+    pub const fn with_tgran4(mut self, value: u8) -> Self {
+        self.set_tgran4(value);
+        self
     }
 
     /// Returns the value of the `TGran16_2` field.
@@ -12657,6 +14659,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `TGran16_2` field set to the given value.
+    pub const fn with_tgran16_2(mut self, value: u8) -> Self {
+        self.set_tgran16_2(value);
+        self
+    }
+
     /// Returns the value of the `TGran64_2` field.
     pub const fn tgran64_2(self) -> u8 {
         ((self.bits() >> Self::TGRAN64_2_SHIFT) & 0b1111) as u8
@@ -12669,6 +14677,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TGRAN64_2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TGran64_2` field set to the given value.
+    pub const fn with_tgran64_2(mut self, value: u8) -> Self {
+        self.set_tgran64_2(value);
+        self
     }
 
     /// Returns the value of the `TGran4_2` field.
@@ -12685,6 +14699,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `TGran4_2` field set to the given value.
+    pub const fn with_tgran4_2(mut self, value: u8) -> Self {
+        self.set_tgran4_2(value);
+        self
+    }
+
     /// Returns the value of the `ExS` field.
     pub const fn exs(self) -> u8 {
         ((self.bits() >> Self::EXS_SHIFT) & 0b1111) as u8
@@ -12697,6 +14717,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EXS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ExS` field set to the given value.
+    pub const fn with_exs(mut self, value: u8) -> Self {
+        self.set_exs(value);
+        self
     }
 
     /// Returns the value of the `FGT` field.
@@ -12713,6 +14739,12 @@ impl IdAa64mmfr0El1 {
         );
     }
 
+    /// Returns a copy with the `FGT` field set to the given value.
+    pub const fn with_fgt(mut self, value: u8) -> Self {
+        self.set_fgt(value);
+        self
+    }
+
     /// Returns the value of the `ECV` field.
     pub const fn ecv(self) -> u8 {
         ((self.bits() >> Self::ECV_SHIFT) & 0b1111) as u8
@@ -12725,6 +14757,12 @@ impl IdAa64mmfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ECV_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ECV` field set to the given value.
+    pub const fn with_ecv(mut self, value: u8) -> Self {
+        self.set_ecv(value);
+        self
     }
 }
 
@@ -12818,6 +14856,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `HAFDBS` field set to the given value.
+    pub const fn with_hafdbs(mut self, value: u8) -> Self {
+        self.set_hafdbs(value);
+        self
+    }
+
     /// Returns the value of the `VMIDBits` field.
     pub const fn vmidbits(self) -> u8 {
         ((self.bits() >> Self::VMIDBITS_SHIFT) & 0b1111) as u8
@@ -12830,6 +14874,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VMIDBITS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VMIDBits` field set to the given value.
+    pub const fn with_vmidbits(mut self, value: u8) -> Self {
+        self.set_vmidbits(value);
+        self
     }
 
     /// Returns the value of the `VH` field.
@@ -12846,6 +14896,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `VH` field set to the given value.
+    pub const fn with_vh(mut self, value: u8) -> Self {
+        self.set_vh(value);
+        self
+    }
+
     /// Returns the value of the `HPDS` field.
     pub const fn hpds(self) -> u8 {
         ((self.bits() >> Self::HPDS_SHIFT) & 0b1111) as u8
@@ -12858,6 +14914,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::HPDS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `HPDS` field set to the given value.
+    pub const fn with_hpds(mut self, value: u8) -> Self {
+        self.set_hpds(value);
+        self
     }
 
     /// Returns the value of the `LO` field.
@@ -12874,6 +14936,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `LO` field set to the given value.
+    pub const fn with_lo(mut self, value: u8) -> Self {
+        self.set_lo(value);
+        self
+    }
+
     /// Returns the value of the `PAN` field.
     pub const fn pan(self) -> u8 {
         ((self.bits() >> Self::PAN_SHIFT) & 0b1111) as u8
@@ -12886,6 +14954,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PAN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PAN` field set to the given value.
+    pub const fn with_pan(mut self, value: u8) -> Self {
+        self.set_pan(value);
+        self
     }
 
     /// Returns the value of the `SpecSEI` field.
@@ -12902,6 +14976,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `SpecSEI` field set to the given value.
+    pub const fn with_specsei(mut self, value: u8) -> Self {
+        self.set_specsei(value);
+        self
+    }
+
     /// Returns the value of the `XNX` field.
     pub const fn xnx(self) -> u8 {
         ((self.bits() >> Self::XNX_SHIFT) & 0b1111) as u8
@@ -12914,6 +14994,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::XNX_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `XNX` field set to the given value.
+    pub const fn with_xnx(mut self, value: u8) -> Self {
+        self.set_xnx(value);
+        self
     }
 
     /// Returns the value of the `TWED` field.
@@ -12930,6 +15016,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `TWED` field set to the given value.
+    pub const fn with_twed(mut self, value: u8) -> Self {
+        self.set_twed(value);
+        self
+    }
+
     /// Returns the value of the `ETS` field.
     pub const fn ets(self) -> u8 {
         ((self.bits() >> Self::ETS_SHIFT) & 0b1111) as u8
@@ -12942,6 +15034,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ETS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ETS` field set to the given value.
+    pub const fn with_ets(mut self, value: u8) -> Self {
+        self.set_ets(value);
+        self
     }
 
     /// Returns the value of the `HCX` field.
@@ -12958,6 +15056,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `HCX` field set to the given value.
+    pub const fn with_hcx(mut self, value: u8) -> Self {
+        self.set_hcx(value);
+        self
+    }
+
     /// Returns the value of the `AFP` field.
     pub const fn afp(self) -> u8 {
         ((self.bits() >> Self::AFP_SHIFT) & 0b1111) as u8
@@ -12970,6 +15074,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFP_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `AFP` field set to the given value.
+    pub const fn with_afp(mut self, value: u8) -> Self {
+        self.set_afp(value);
+        self
     }
 
     /// Returns the value of the `nTLBPA` field.
@@ -12986,6 +15096,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `nTLBPA` field set to the given value.
+    pub const fn with_ntlbpa(mut self, value: u8) -> Self {
+        self.set_ntlbpa(value);
+        self
+    }
+
     /// Returns the value of the `TIDCP1` field.
     pub const fn tidcp1(self) -> u8 {
         ((self.bits() >> Self::TIDCP1_SHIFT) & 0b1111) as u8
@@ -12998,6 +15114,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIDCP1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TIDCP1` field set to the given value.
+    pub const fn with_tidcp1(mut self, value: u8) -> Self {
+        self.set_tidcp1(value);
+        self
     }
 
     /// Returns the value of the `CMOW` field.
@@ -13014,6 +15136,12 @@ impl IdAa64mmfr1El1 {
         );
     }
 
+    /// Returns a copy with the `CMOW` field set to the given value.
+    pub const fn with_cmow(mut self, value: u8) -> Self {
+        self.set_cmow(value);
+        self
+    }
+
     /// Returns the value of the `ECBHB` field.
     pub const fn ecbhb(self) -> u8 {
         ((self.bits() >> Self::ECBHB_SHIFT) & 0b1111) as u8
@@ -13026,6 +15154,12 @@ impl IdAa64mmfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ECBHB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ECBHB` field set to the given value.
+    pub const fn with_ecbhb(mut self, value: u8) -> Self {
+        self.set_ecbhb(value);
+        self
     }
 }
 
@@ -13115,6 +15249,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `CnP` field set to the given value.
+    pub const fn with_cnp(mut self, value: u8) -> Self {
+        self.set_cnp(value);
+        self
+    }
+
     /// Returns the value of the `UAO` field.
     pub const fn uao(self) -> u8 {
         ((self.bits() >> Self::UAO_SHIFT) & 0b1111) as u8
@@ -13127,6 +15267,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::UAO_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `UAO` field set to the given value.
+    pub const fn with_uao(mut self, value: u8) -> Self {
+        self.set_uao(value);
+        self
     }
 
     /// Returns the value of the `LSM` field.
@@ -13143,6 +15289,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `LSM` field set to the given value.
+    pub const fn with_lsm(mut self, value: u8) -> Self {
+        self.set_lsm(value);
+        self
+    }
+
     /// Returns the value of the `IESB` field.
     pub const fn iesb(self) -> u8 {
         ((self.bits() >> Self::IESB_SHIFT) & 0b1111) as u8
@@ -13155,6 +15307,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IESB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IESB` field set to the given value.
+    pub const fn with_iesb(mut self, value: u8) -> Self {
+        self.set_iesb(value);
+        self
     }
 
     /// Returns the value of the `VARange` field.
@@ -13171,6 +15329,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `VARange` field set to the given value.
+    pub const fn with_varange(mut self, value: u8) -> Self {
+        self.set_varange(value);
+        self
+    }
+
     /// Returns the value of the `CCIDX` field.
     pub const fn ccidx(self) -> u8 {
         ((self.bits() >> Self::CCIDX_SHIFT) & 0b1111) as u8
@@ -13183,6 +15347,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CCIDX_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CCIDX` field set to the given value.
+    pub const fn with_ccidx(mut self, value: u8) -> Self {
+        self.set_ccidx(value);
+        self
     }
 
     /// Returns the value of the `NV` field.
@@ -13199,6 +15369,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `NV` field set to the given value.
+    pub const fn with_nv(mut self, value: u8) -> Self {
+        self.set_nv(value);
+        self
+    }
+
     /// Returns the value of the `ST` field.
     pub const fn st(self) -> u8 {
         ((self.bits() >> Self::ST_SHIFT) & 0b1111) as u8
@@ -13211,6 +15387,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ST_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ST` field set to the given value.
+    pub const fn with_st(mut self, value: u8) -> Self {
+        self.set_st(value);
+        self
     }
 
     /// Returns the value of the `AT` field.
@@ -13227,6 +15409,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `AT` field set to the given value.
+    pub const fn with_at(mut self, value: u8) -> Self {
+        self.set_at(value);
+        self
+    }
+
     /// Returns the value of the `IDS` field.
     pub const fn ids(self) -> u8 {
         ((self.bits() >> Self::IDS_SHIFT) & 0b1111) as u8
@@ -13239,6 +15427,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IDS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IDS` field set to the given value.
+    pub const fn with_ids(mut self, value: u8) -> Self {
+        self.set_ids(value);
+        self
     }
 
     /// Returns the value of the `FWB` field.
@@ -13255,6 +15449,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `FWB` field set to the given value.
+    pub const fn with_fwb(mut self, value: u8) -> Self {
+        self.set_fwb(value);
+        self
+    }
+
     /// Returns the value of the `TTL` field.
     pub const fn ttl(self) -> u8 {
         ((self.bits() >> Self::TTL_SHIFT) & 0b1111) as u8
@@ -13267,6 +15467,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TTL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TTL` field set to the given value.
+    pub const fn with_ttl(mut self, value: u8) -> Self {
+        self.set_ttl(value);
+        self
     }
 
     /// Returns the value of the `BBM` field.
@@ -13283,6 +15489,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `BBM` field set to the given value.
+    pub const fn with_bbm(mut self, value: u8) -> Self {
+        self.set_bbm(value);
+        self
+    }
+
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
         ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
@@ -13297,6 +15509,12 @@ impl IdAa64mmfr2El1 {
         );
     }
 
+    /// Returns a copy with the `EVT` field set to the given value.
+    pub const fn with_evt(mut self, value: u8) -> Self {
+        self.set_evt(value);
+        self
+    }
+
     /// Returns the value of the `E0PD` field.
     pub const fn e0pd(self) -> u8 {
         ((self.bits() >> Self::E0PD_SHIFT) & 0b1111) as u8
@@ -13309,6 +15527,12 @@ impl IdAa64mmfr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::E0PD_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `E0PD` field set to the given value.
+    pub const fn with_e0pd(mut self, value: u8) -> Self {
+        self.set_e0pd(value);
+        self
     }
 }
 
@@ -13398,6 +15622,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `TCRX` field set to the given value.
+    pub const fn with_tcrx(mut self, value: u8) -> Self {
+        self.set_tcrx(value);
+        self
+    }
+
     /// Returns the value of the `SCTLRX` field.
     pub const fn sctlrx(self) -> u8 {
         ((self.bits() >> Self::SCTLRX_SHIFT) & 0b1111) as u8
@@ -13410,6 +15640,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SCTLRX_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SCTLRX` field set to the given value.
+    pub const fn with_sctlrx(mut self, value: u8) -> Self {
+        self.set_sctlrx(value);
+        self
     }
 
     /// Returns the value of the `S1PIE` field.
@@ -13426,6 +15662,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `S1PIE` field set to the given value.
+    pub const fn with_s1pie(mut self, value: u8) -> Self {
+        self.set_s1pie(value);
+        self
+    }
+
     /// Returns the value of the `S2PIE` field.
     pub const fn s2pie(self) -> u8 {
         ((self.bits() >> Self::S2PIE_SHIFT) & 0b1111) as u8
@@ -13438,6 +15680,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::S2PIE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `S2PIE` field set to the given value.
+    pub const fn with_s2pie(mut self, value: u8) -> Self {
+        self.set_s2pie(value);
+        self
     }
 
     /// Returns the value of the `S1POE` field.
@@ -13454,6 +15702,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `S1POE` field set to the given value.
+    pub const fn with_s1poe(mut self, value: u8) -> Self {
+        self.set_s1poe(value);
+        self
+    }
+
     /// Returns the value of the `S2POE` field.
     pub const fn s2poe(self) -> u8 {
         ((self.bits() >> Self::S2POE_SHIFT) & 0b1111) as u8
@@ -13466,6 +15720,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::S2POE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `S2POE` field set to the given value.
+    pub const fn with_s2poe(mut self, value: u8) -> Self {
+        self.set_s2poe(value);
+        self
     }
 
     /// Returns the value of the `AIE` field.
@@ -13482,6 +15742,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `AIE` field set to the given value.
+    pub const fn with_aie(mut self, value: u8) -> Self {
+        self.set_aie(value);
+        self
+    }
+
     /// Returns the value of the `MEC` field.
     pub const fn mec(self) -> u8 {
         ((self.bits() >> Self::MEC_SHIFT) & 0b1111) as u8
@@ -13494,6 +15760,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MEC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `MEC` field set to the given value.
+    pub const fn with_mec(mut self, value: u8) -> Self {
+        self.set_mec(value);
+        self
     }
 
     /// Returns the value of the `D128` field.
@@ -13510,6 +15782,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `D128` field set to the given value.
+    pub const fn with_d128(mut self, value: u8) -> Self {
+        self.set_d128(value);
+        self
+    }
+
     /// Returns the value of the `D128_2` field.
     pub const fn d128_2(self) -> u8 {
         ((self.bits() >> Self::D128_2_SHIFT) & 0b1111) as u8
@@ -13522,6 +15800,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::D128_2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `D128_2` field set to the given value.
+    pub const fn with_d128_2(mut self, value: u8) -> Self {
+        self.set_d128_2(value);
+        self
     }
 
     /// Returns the value of the `SNERR` field.
@@ -13538,6 +15822,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `SNERR` field set to the given value.
+    pub const fn with_snerr(mut self, value: u8) -> Self {
+        self.set_snerr(value);
+        self
+    }
+
     /// Returns the value of the `ANERR` field.
     pub const fn anerr(self) -> u8 {
         ((self.bits() >> Self::ANERR_SHIFT) & 0b1111) as u8
@@ -13550,6 +15840,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ANERR_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ANERR` field set to the given value.
+    pub const fn with_anerr(mut self, value: u8) -> Self {
+        self.set_anerr(value);
+        self
     }
 
     /// Returns the value of the `SDERR` field.
@@ -13566,6 +15862,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `SDERR` field set to the given value.
+    pub const fn with_sderr(mut self, value: u8) -> Self {
+        self.set_sderr(value);
+        self
+    }
+
     /// Returns the value of the `ADERR` field.
     pub const fn aderr(self) -> u8 {
         ((self.bits() >> Self::ADERR_SHIFT) & 0b1111) as u8
@@ -13580,6 +15882,12 @@ impl IdAa64mmfr3El1 {
         );
     }
 
+    /// Returns a copy with the `ADERR` field set to the given value.
+    pub const fn with_aderr(mut self, value: u8) -> Self {
+        self.set_aderr(value);
+        self
+    }
+
     /// Returns the value of the `Spec_FPACC` field.
     pub const fn spec_fpacc(self) -> u8 {
         ((self.bits() >> Self::SPEC_FPACC_SHIFT) & 0b1111) as u8
@@ -13592,6 +15900,12 @@ impl IdAa64mmfr3El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SPEC_FPACC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Spec_FPACC` field set to the given value.
+    pub const fn with_spec_fpacc(mut self, value: u8) -> Self {
+        self.set_spec_fpacc(value);
+        self
     }
 }
 
@@ -13685,6 +15999,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `EL0` field set to the given value.
+    pub const fn with_el0(mut self, value: u8) -> Self {
+        self.set_el0(value);
+        self
+    }
+
     /// Returns the value of the `EL1` field.
     pub const fn el1(self) -> u8 {
         ((self.bits() >> Self::EL1_SHIFT) & 0b1111) as u8
@@ -13697,6 +16017,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EL1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `EL1` field set to the given value.
+    pub const fn with_el1(mut self, value: u8) -> Self {
+        self.set_el1(value);
+        self
     }
 
     /// Returns the value of the `EL2` field.
@@ -13713,6 +16039,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `EL2` field set to the given value.
+    pub const fn with_el2(mut self, value: u8) -> Self {
+        self.set_el2(value);
+        self
+    }
+
     /// Returns the value of the `EL3` field.
     pub const fn el3(self) -> u8 {
         ((self.bits() >> Self::EL3_SHIFT) & 0b1111) as u8
@@ -13725,6 +16057,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EL3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `EL3` field set to the given value.
+    pub const fn with_el3(mut self, value: u8) -> Self {
+        self.set_el3(value);
+        self
     }
 
     /// Returns the value of the `FP` field.
@@ -13741,6 +16079,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `FP` field set to the given value.
+    pub const fn with_fp(mut self, value: u8) -> Self {
+        self.set_fp(value);
+        self
+    }
+
     /// Returns the value of the `AdvSIMD` field.
     pub const fn advsimd(self) -> u8 {
         ((self.bits() >> Self::ADVSIMD_SHIFT) & 0b1111) as u8
@@ -13753,6 +16097,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ADVSIMD_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `AdvSIMD` field set to the given value.
+    pub const fn with_advsimd(mut self, value: u8) -> Self {
+        self.set_advsimd(value);
+        self
     }
 
     /// Returns the value of the `GIC` field.
@@ -13769,6 +16119,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `GIC` field set to the given value.
+    pub const fn with_gic(mut self, value: u8) -> Self {
+        self.set_gic(value);
+        self
+    }
+
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
         ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
@@ -13781,6 +16137,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RAS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `RAS` field set to the given value.
+    pub const fn with_ras(mut self, value: u8) -> Self {
+        self.set_ras(value);
+        self
     }
 
     /// Returns the value of the `SVE` field.
@@ -13797,6 +16159,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `SVE` field set to the given value.
+    pub const fn with_sve(mut self, value: u8) -> Self {
+        self.set_sve(value);
+        self
+    }
+
     /// Returns the value of the `SEL2` field.
     pub const fn sel2(self) -> u8 {
         ((self.bits() >> Self::SEL2_SHIFT) & 0b1111) as u8
@@ -13809,6 +16177,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SEL2_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SEL2` field set to the given value.
+    pub const fn with_sel2(mut self, value: u8) -> Self {
+        self.set_sel2(value);
+        self
     }
 
     /// Returns the value of the `MPAM` field.
@@ -13825,6 +16199,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `MPAM` field set to the given value.
+    pub const fn with_mpam(mut self, value: u8) -> Self {
+        self.set_mpam(value);
+        self
+    }
+
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
         ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
@@ -13837,6 +16217,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AMU_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `AMU` field set to the given value.
+    pub const fn with_amu(mut self, value: u8) -> Self {
+        self.set_amu(value);
+        self
     }
 
     /// Returns the value of the `DIT` field.
@@ -13853,6 +16239,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `DIT` field set to the given value.
+    pub const fn with_dit(mut self, value: u8) -> Self {
+        self.set_dit(value);
+        self
+    }
+
     /// Returns the value of the `RME` field.
     pub const fn rme(self) -> u8 {
         ((self.bits() >> Self::RME_SHIFT) & 0b1111) as u8
@@ -13865,6 +16257,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RME_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `RME` field set to the given value.
+    pub const fn with_rme(mut self, value: u8) -> Self {
+        self.set_rme(value);
+        self
     }
 
     /// Returns the value of the `CSV2` field.
@@ -13881,6 +16279,12 @@ impl IdAa64pfr0El1 {
         );
     }
 
+    /// Returns a copy with the `CSV2` field set to the given value.
+    pub const fn with_csv2(mut self, value: u8) -> Self {
+        self.set_csv2(value);
+        self
+    }
+
     /// Returns the value of the `CSV3` field.
     pub const fn csv3(self) -> u8 {
         ((self.bits() >> Self::CSV3_SHIFT) & 0b1111) as u8
@@ -13893,6 +16297,12 @@ impl IdAa64pfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CSV3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CSV3` field set to the given value.
+    pub const fn with_csv3(mut self, value: u8) -> Self {
+        self.set_csv3(value);
+        self
     }
 }
 
@@ -13982,6 +16392,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `BT` field set to the given value.
+    pub const fn with_bt(mut self, value: u8) -> Self {
+        self.set_bt(value);
+        self
+    }
+
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
         ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
@@ -13994,6 +16410,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SSBS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SSBS` field set to the given value.
+    pub const fn with_ssbs(mut self, value: u8) -> Self {
+        self.set_ssbs(value);
+        self
     }
 
     /// Returns the value of the `MTE` field.
@@ -14010,6 +16432,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `MTE` field set to the given value.
+    pub const fn with_mte(mut self, value: u8) -> Self {
+        self.set_mte(value);
+        self
+    }
+
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
         ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
@@ -14022,6 +16450,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RAS_FRAC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `RAS_frac` field set to the given value.
+    pub const fn with_ras_frac(mut self, value: u8) -> Self {
+        self.set_ras_frac(value);
+        self
     }
 
     /// Returns the value of the `MPAM_frac` field.
@@ -14038,6 +16472,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `MPAM_frac` field set to the given value.
+    pub const fn with_mpam_frac(mut self, value: u8) -> Self {
+        self.set_mpam_frac(value);
+        self
+    }
+
     /// Returns the value of the `SME` field.
     pub const fn sme(self) -> u8 {
         ((self.bits() >> Self::SME_SHIFT) & 0b1111) as u8
@@ -14050,6 +16490,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SME_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SME` field set to the given value.
+    pub const fn with_sme(mut self, value: u8) -> Self {
+        self.set_sme(value);
+        self
     }
 
     /// Returns the value of the `RNDR_trap` field.
@@ -14066,6 +16512,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `RNDR_trap` field set to the given value.
+    pub const fn with_rndr_trap(mut self, value: u8) -> Self {
+        self.set_rndr_trap(value);
+        self
+    }
+
     /// Returns the value of the `CSV2_frac` field.
     pub const fn csv2_frac(self) -> u8 {
         ((self.bits() >> Self::CSV2_FRAC_SHIFT) & 0b1111) as u8
@@ -14078,6 +16530,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CSV2_FRAC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CSV2_frac` field set to the given value.
+    pub const fn with_csv2_frac(mut self, value: u8) -> Self {
+        self.set_csv2_frac(value);
+        self
     }
 
     /// Returns the value of the `NMI` field.
@@ -14094,6 +16552,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `NMI` field set to the given value.
+    pub const fn with_nmi(mut self, value: u8) -> Self {
+        self.set_nmi(value);
+        self
+    }
+
     /// Returns the value of the `MTE_frac` field.
     pub const fn mte_frac(self) -> u8 {
         ((self.bits() >> Self::MTE_FRAC_SHIFT) & 0b1111) as u8
@@ -14106,6 +16570,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MTE_FRAC_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `MTE_frac` field set to the given value.
+    pub const fn with_mte_frac(mut self, value: u8) -> Self {
+        self.set_mte_frac(value);
+        self
     }
 
     /// Returns the value of the `GCS` field.
@@ -14122,6 +16592,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `GCS` field set to the given value.
+    pub const fn with_gcs(mut self, value: u8) -> Self {
+        self.set_gcs(value);
+        self
+    }
+
     /// Returns the value of the `THE` field.
     pub const fn the(self) -> u8 {
         ((self.bits() >> Self::THE_SHIFT) & 0b1111) as u8
@@ -14134,6 +16610,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::THE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `THE` field set to the given value.
+    pub const fn with_the(mut self, value: u8) -> Self {
+        self.set_the(value);
+        self
     }
 
     /// Returns the value of the `MTEX` field.
@@ -14150,6 +16632,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `MTEX` field set to the given value.
+    pub const fn with_mtex(mut self, value: u8) -> Self {
+        self.set_mtex(value);
+        self
+    }
+
     /// Returns the value of the `DF2` field.
     pub const fn df2(self) -> u8 {
         ((self.bits() >> Self::DF2_SHIFT) & 0b1111) as u8
@@ -14164,6 +16652,12 @@ impl IdAa64pfr1El1 {
         );
     }
 
+    /// Returns a copy with the `DF2` field set to the given value.
+    pub const fn with_df2(mut self, value: u8) -> Self {
+        self.set_df2(value);
+        self
+    }
+
     /// Returns the value of the `PFAR` field.
     pub const fn pfar(self) -> u8 {
         ((self.bits() >> Self::PFAR_SHIFT) & 0b1111) as u8
@@ -14176,6 +16670,12 @@ impl IdAa64pfr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PFAR_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PFAR` field set to the given value.
+    pub const fn with_pfar(mut self, value: u8) -> Self {
+        self.set_pfar(value);
+        self
     }
 }
 
@@ -14301,6 +16801,12 @@ impl IdAa64smfr0El1 {
         );
     }
 
+    /// Returns a copy with the `I8I32` field set to the given value.
+    pub const fn with_i8i32(mut self, value: u8) -> Self {
+        self.set_i8i32(value);
+        self
+    }
+
     /// Returns the value of the `I16I32` field.
     pub const fn i16i32(self) -> u8 {
         ((self.bits() >> Self::I16I32_SHIFT) & 0b1111) as u8
@@ -14313,6 +16819,12 @@ impl IdAa64smfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::I16I32_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `I16I32` field set to the given value.
+    pub const fn with_i16i32(mut self, value: u8) -> Self {
+        self.set_i16i32(value);
+        self
     }
 
     /// Returns the value of the `I16I64` field.
@@ -14329,6 +16841,12 @@ impl IdAa64smfr0El1 {
         );
     }
 
+    /// Returns a copy with the `I16I64` field set to the given value.
+    pub const fn with_i16i64(mut self, value: u8) -> Self {
+        self.set_i16i64(value);
+        self
+    }
+
     /// Returns the value of the `SMEver` field.
     pub const fn smever(self) -> u8 {
         ((self.bits() >> Self::SMEVER_SHIFT) & 0b1111) as u8
@@ -14341,6 +16859,12 @@ impl IdAa64smfr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SMEVER_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SMEver` field set to the given value.
+    pub const fn with_smever(mut self, value: u8) -> Self {
+        self.set_smever(value);
+        self
     }
 }
 
@@ -14400,6 +16924,12 @@ impl IdDfr0 {
         );
     }
 
+    /// Returns a copy with the `CopDbg` field set to the given value.
+    pub const fn with_copdbg(mut self, value: u8) -> Self {
+        self.set_copdbg(value);
+        self
+    }
+
     /// Returns the value of the `CopSDbg` field.
     pub const fn copsdbg(self) -> u8 {
         ((self.bits() >> Self::COPSDBG_SHIFT) & 0b1111) as u8
@@ -14412,6 +16942,12 @@ impl IdDfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::COPSDBG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CopSDbg` field set to the given value.
+    pub const fn with_copsdbg(mut self, value: u8) -> Self {
+        self.set_copsdbg(value);
+        self
     }
 
     /// Returns the value of the `MMapDbg` field.
@@ -14428,6 +16964,12 @@ impl IdDfr0 {
         );
     }
 
+    /// Returns a copy with the `MMapDbg` field set to the given value.
+    pub const fn with_mmapdbg(mut self, value: u8) -> Self {
+        self.set_mmapdbg(value);
+        self
+    }
+
     /// Returns the value of the `CopTrc` field.
     pub const fn coptrc(self) -> u8 {
         ((self.bits() >> Self::COPTRC_SHIFT) & 0b1111) as u8
@@ -14440,6 +16982,12 @@ impl IdDfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::COPTRC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CopTrc` field set to the given value.
+    pub const fn with_coptrc(mut self, value: u8) -> Self {
+        self.set_coptrc(value);
+        self
     }
 
     /// Returns the value of the `MMapTrc` field.
@@ -14456,6 +17004,12 @@ impl IdDfr0 {
         );
     }
 
+    /// Returns a copy with the `MMapTrc` field set to the given value.
+    pub const fn with_mmaptrc(mut self, value: u8) -> Self {
+        self.set_mmaptrc(value);
+        self
+    }
+
     /// Returns the value of the `MProfDbg` field.
     pub const fn mprofdbg(self) -> u8 {
         ((self.bits() >> Self::MPROFDBG_SHIFT) & 0b1111) as u8
@@ -14468,6 +17022,12 @@ impl IdDfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MPROFDBG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `MProfDbg` field set to the given value.
+    pub const fn with_mprofdbg(mut self, value: u8) -> Self {
+        self.set_mprofdbg(value);
+        self
     }
 
     /// Returns the value of the `PerfMon` field.
@@ -14484,6 +17044,12 @@ impl IdDfr0 {
         );
     }
 
+    /// Returns a copy with the `PerfMon` field set to the given value.
+    pub const fn with_perfmon(mut self, value: u8) -> Self {
+        self.set_perfmon(value);
+        self
+    }
+
     /// Returns the value of the `TraceFilt` field.
     pub const fn tracefilt(self) -> u8 {
         ((self.bits() >> Self::TRACEFILT_SHIFT) & 0b1111) as u8
@@ -14496,6 +17062,12 @@ impl IdDfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TRACEFILT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TraceFilt` field set to the given value.
+    pub const fn with_tracefilt(mut self, value: u8) -> Self {
+        self.set_tracefilt(value);
+        self
     }
 }
 
@@ -14531,6 +17103,12 @@ impl IdDfr1 {
         );
     }
 
+    /// Returns a copy with the `MTPMU` field set to the given value.
+    pub const fn with_mtpmu(mut self, value: u8) -> Self {
+        self.set_mtpmu(value);
+        self
+    }
+
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
         ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
@@ -14543,6 +17121,12 @@ impl IdDfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::HPMN0_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `HPMN0` field set to the given value.
+    pub const fn with_hpmn0(mut self, value: u8) -> Self {
+        self.set_hpmn0(value);
+        self
     }
 }
 
@@ -14598,6 +17182,12 @@ impl IdIsar0 {
         );
     }
 
+    /// Returns a copy with the `Swap` field set to the given value.
+    pub const fn with_swap(mut self, value: u8) -> Self {
+        self.set_swap(value);
+        self
+    }
+
     /// Returns the value of the `BitCount` field.
     pub const fn bitcount(self) -> u8 {
         ((self.bits() >> Self::BITCOUNT_SHIFT) & 0b1111) as u8
@@ -14610,6 +17200,12 @@ impl IdIsar0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BITCOUNT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BitCount` field set to the given value.
+    pub const fn with_bitcount(mut self, value: u8) -> Self {
+        self.set_bitcount(value);
+        self
     }
 
     /// Returns the value of the `BitField` field.
@@ -14626,6 +17222,12 @@ impl IdIsar0 {
         );
     }
 
+    /// Returns a copy with the `BitField` field set to the given value.
+    pub const fn with_bitfield(mut self, value: u8) -> Self {
+        self.set_bitfield(value);
+        self
+    }
+
     /// Returns the value of the `CmpBranch` field.
     pub const fn cmpbranch(self) -> u8 {
         ((self.bits() >> Self::CMPBRANCH_SHIFT) & 0b1111) as u8
@@ -14638,6 +17240,12 @@ impl IdIsar0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CMPBRANCH_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CmpBranch` field set to the given value.
+    pub const fn with_cmpbranch(mut self, value: u8) -> Self {
+        self.set_cmpbranch(value);
+        self
     }
 
     /// Returns the value of the `Coproc` field.
@@ -14654,6 +17262,12 @@ impl IdIsar0 {
         );
     }
 
+    /// Returns a copy with the `Coproc` field set to the given value.
+    pub const fn with_coproc(mut self, value: u8) -> Self {
+        self.set_coproc(value);
+        self
+    }
+
     /// Returns the value of the `Debug` field.
     pub const fn debug(self) -> u8 {
         ((self.bits() >> Self::DEBUG_SHIFT) & 0b1111) as u8
@@ -14668,6 +17282,12 @@ impl IdIsar0 {
         );
     }
 
+    /// Returns a copy with the `Debug` field set to the given value.
+    pub const fn with_debug(mut self, value: u8) -> Self {
+        self.set_debug(value);
+        self
+    }
+
     /// Returns the value of the `Divide` field.
     pub const fn divide(self) -> u8 {
         ((self.bits() >> Self::DIVIDE_SHIFT) & 0b1111) as u8
@@ -14680,6 +17300,12 @@ impl IdIsar0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::DIVIDE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Divide` field set to the given value.
+    pub const fn with_divide(mut self, value: u8) -> Self {
+        self.set_divide(value);
+        self
     }
 }
 
@@ -14739,6 +17365,12 @@ impl IdIsar1 {
         );
     }
 
+    /// Returns a copy with the `Endian` field set to the given value.
+    pub const fn with_endian(mut self, value: u8) -> Self {
+        self.set_endian(value);
+        self
+    }
+
     /// Returns the value of the `Except` field.
     pub const fn except(self) -> u8 {
         ((self.bits() >> Self::EXCEPT_SHIFT) & 0b1111) as u8
@@ -14751,6 +17383,12 @@ impl IdIsar1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EXCEPT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Except` field set to the given value.
+    pub const fn with_except(mut self, value: u8) -> Self {
+        self.set_except(value);
+        self
     }
 
     /// Returns the value of the `Except_AR` field.
@@ -14767,6 +17405,12 @@ impl IdIsar1 {
         );
     }
 
+    /// Returns a copy with the `Except_AR` field set to the given value.
+    pub const fn with_except_ar(mut self, value: u8) -> Self {
+        self.set_except_ar(value);
+        self
+    }
+
     /// Returns the value of the `Extend` field.
     pub const fn extend_(self) -> u8 {
         ((self.bits() >> Self::EXTEND_SHIFT) & 0b1111) as u8
@@ -14779,6 +17423,12 @@ impl IdIsar1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EXTEND_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Extend` field set to the given value.
+    pub const fn with_extend_(mut self, value: u8) -> Self {
+        self.set_extend_(value);
+        self
     }
 
     /// Returns the value of the `IfThen` field.
@@ -14795,6 +17445,12 @@ impl IdIsar1 {
         );
     }
 
+    /// Returns a copy with the `IfThen` field set to the given value.
+    pub const fn with_ifthen(mut self, value: u8) -> Self {
+        self.set_ifthen(value);
+        self
+    }
+
     /// Returns the value of the `Immediate` field.
     pub const fn immediate(self) -> u8 {
         ((self.bits() >> Self::IMMEDIATE_SHIFT) & 0b1111) as u8
@@ -14807,6 +17463,12 @@ impl IdIsar1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMMEDIATE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Immediate` field set to the given value.
+    pub const fn with_immediate(mut self, value: u8) -> Self {
+        self.set_immediate(value);
+        self
     }
 
     /// Returns the value of the `Interwork` field.
@@ -14823,6 +17485,12 @@ impl IdIsar1 {
         );
     }
 
+    /// Returns a copy with the `Interwork` field set to the given value.
+    pub const fn with_interwork(mut self, value: u8) -> Self {
+        self.set_interwork(value);
+        self
+    }
+
     /// Returns the value of the `Jazelle` field.
     pub const fn jazelle(self) -> u8 {
         ((self.bits() >> Self::JAZELLE_SHIFT) & 0b1111) as u8
@@ -14835,6 +17503,12 @@ impl IdIsar1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::JAZELLE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Jazelle` field set to the given value.
+    pub const fn with_jazelle(mut self, value: u8) -> Self {
+        self.set_jazelle(value);
+        self
     }
 }
 
@@ -14894,6 +17568,12 @@ impl IdIsar2 {
         );
     }
 
+    /// Returns a copy with the `LoadStore` field set to the given value.
+    pub const fn with_loadstore(mut self, value: u8) -> Self {
+        self.set_loadstore(value);
+        self
+    }
+
     /// Returns the value of the `MemHint` field.
     pub const fn memhint(self) -> u8 {
         ((self.bits() >> Self::MEMHINT_SHIFT) & 0b1111) as u8
@@ -14906,6 +17586,12 @@ impl IdIsar2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MEMHINT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `MemHint` field set to the given value.
+    pub const fn with_memhint(mut self, value: u8) -> Self {
+        self.set_memhint(value);
+        self
     }
 
     /// Returns the value of the `MultiAccessInt` field.
@@ -14922,6 +17608,12 @@ impl IdIsar2 {
         );
     }
 
+    /// Returns a copy with the `MultiAccessInt` field set to the given value.
+    pub const fn with_multiaccessint(mut self, value: u8) -> Self {
+        self.set_multiaccessint(value);
+        self
+    }
+
     /// Returns the value of the `Mult` field.
     pub const fn mult(self) -> u8 {
         ((self.bits() >> Self::MULT_SHIFT) & 0b1111) as u8
@@ -14934,6 +17626,12 @@ impl IdIsar2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MULT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Mult` field set to the given value.
+    pub const fn with_mult(mut self, value: u8) -> Self {
+        self.set_mult(value);
+        self
     }
 
     /// Returns the value of the `MultS` field.
@@ -14950,6 +17648,12 @@ impl IdIsar2 {
         );
     }
 
+    /// Returns a copy with the `MultS` field set to the given value.
+    pub const fn with_mults(mut self, value: u8) -> Self {
+        self.set_mults(value);
+        self
+    }
+
     /// Returns the value of the `MultU` field.
     pub const fn multu(self) -> u8 {
         ((self.bits() >> Self::MULTU_SHIFT) & 0b1111) as u8
@@ -14962,6 +17666,12 @@ impl IdIsar2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MULTU_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `MultU` field set to the given value.
+    pub const fn with_multu(mut self, value: u8) -> Self {
+        self.set_multu(value);
+        self
     }
 
     /// Returns the value of the `PSR_AR` field.
@@ -14978,6 +17688,12 @@ impl IdIsar2 {
         );
     }
 
+    /// Returns a copy with the `PSR_AR` field set to the given value.
+    pub const fn with_psr_ar(mut self, value: u8) -> Self {
+        self.set_psr_ar(value);
+        self
+    }
+
     /// Returns the value of the `Reversal` field.
     pub const fn reversal(self) -> u8 {
         ((self.bits() >> Self::REVERSAL_SHIFT) & 0b1111) as u8
@@ -14990,6 +17706,12 @@ impl IdIsar2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::REVERSAL_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Reversal` field set to the given value.
+    pub const fn with_reversal(mut self, value: u8) -> Self {
+        self.set_reversal(value);
+        self
     }
 }
 
@@ -15049,6 +17771,12 @@ impl IdIsar3 {
         );
     }
 
+    /// Returns a copy with the `Saturate` field set to the given value.
+    pub const fn with_saturate(mut self, value: u8) -> Self {
+        self.set_saturate(value);
+        self
+    }
+
     /// Returns the value of the `SIMD` field.
     pub const fn simd(self) -> u8 {
         ((self.bits() >> Self::SIMD_SHIFT) & 0b1111) as u8
@@ -15061,6 +17789,12 @@ impl IdIsar3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SIMD_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SIMD` field set to the given value.
+    pub const fn with_simd(mut self, value: u8) -> Self {
+        self.set_simd(value);
+        self
     }
 
     /// Returns the value of the `SVC` field.
@@ -15077,6 +17811,12 @@ impl IdIsar3 {
         );
     }
 
+    /// Returns a copy with the `SVC` field set to the given value.
+    pub const fn with_svc(mut self, value: u8) -> Self {
+        self.set_svc(value);
+        self
+    }
+
     /// Returns the value of the `SynchPrim` field.
     pub const fn synchprim(self) -> u8 {
         ((self.bits() >> Self::SYNCHPRIM_SHIFT) & 0b1111) as u8
@@ -15089,6 +17829,12 @@ impl IdIsar3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SYNCHPRIM_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SynchPrim` field set to the given value.
+    pub const fn with_synchprim(mut self, value: u8) -> Self {
+        self.set_synchprim(value);
+        self
     }
 
     /// Returns the value of the `TabBranch` field.
@@ -15105,6 +17851,12 @@ impl IdIsar3 {
         );
     }
 
+    /// Returns a copy with the `TabBranch` field set to the given value.
+    pub const fn with_tabbranch(mut self, value: u8) -> Self {
+        self.set_tabbranch(value);
+        self
+    }
+
     /// Returns the value of the `T32Copy` field.
     pub const fn t32copy(self) -> u8 {
         ((self.bits() >> Self::T32COPY_SHIFT) & 0b1111) as u8
@@ -15117,6 +17869,12 @@ impl IdIsar3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::T32COPY_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `T32Copy` field set to the given value.
+    pub const fn with_t32copy(mut self, value: u8) -> Self {
+        self.set_t32copy(value);
+        self
     }
 
     /// Returns the value of the `TrueNOP` field.
@@ -15133,6 +17891,12 @@ impl IdIsar3 {
         );
     }
 
+    /// Returns a copy with the `TrueNOP` field set to the given value.
+    pub const fn with_truenop(mut self, value: u8) -> Self {
+        self.set_truenop(value);
+        self
+    }
+
     /// Returns the value of the `T32EE` field.
     pub const fn t32ee(self) -> u8 {
         ((self.bits() >> Self::T32EE_SHIFT) & 0b1111) as u8
@@ -15145,6 +17909,12 @@ impl IdIsar3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::T32EE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `T32EE` field set to the given value.
+    pub const fn with_t32ee(mut self, value: u8) -> Self {
+        self.set_t32ee(value);
+        self
     }
 }
 
@@ -15204,6 +17974,12 @@ impl IdIsar4 {
         );
     }
 
+    /// Returns a copy with the `Unpriv` field set to the given value.
+    pub const fn with_unpriv(mut self, value: u8) -> Self {
+        self.set_unpriv(value);
+        self
+    }
+
     /// Returns the value of the `WithShifts` field.
     pub const fn withshifts(self) -> u8 {
         ((self.bits() >> Self::WITHSHIFTS_SHIFT) & 0b1111) as u8
@@ -15216,6 +17992,12 @@ impl IdIsar4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::WITHSHIFTS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `WithShifts` field set to the given value.
+    pub const fn with_withshifts(mut self, value: u8) -> Self {
+        self.set_withshifts(value);
+        self
     }
 
     /// Returns the value of the `Writeback` field.
@@ -15232,6 +18014,12 @@ impl IdIsar4 {
         );
     }
 
+    /// Returns a copy with the `Writeback` field set to the given value.
+    pub const fn with_writeback(mut self, value: u8) -> Self {
+        self.set_writeback(value);
+        self
+    }
+
     /// Returns the value of the `SMC` field.
     pub const fn smc(self) -> u8 {
         ((self.bits() >> Self::SMC_SHIFT) & 0b1111) as u8
@@ -15244,6 +18032,12 @@ impl IdIsar4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SMC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SMC` field set to the given value.
+    pub const fn with_smc(mut self, value: u8) -> Self {
+        self.set_smc(value);
+        self
     }
 
     /// Returns the value of the `Barrier` field.
@@ -15260,6 +18054,12 @@ impl IdIsar4 {
         );
     }
 
+    /// Returns a copy with the `Barrier` field set to the given value.
+    pub const fn with_barrier(mut self, value: u8) -> Self {
+        self.set_barrier(value);
+        self
+    }
+
     /// Returns the value of the `SynchPrim_frac` field.
     pub const fn synchprim_frac(self) -> u8 {
         ((self.bits() >> Self::SYNCHPRIM_FRAC_SHIFT) & 0b1111) as u8
@@ -15272,6 +18072,12 @@ impl IdIsar4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SYNCHPRIM_FRAC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SynchPrim_frac` field set to the given value.
+    pub const fn with_synchprim_frac(mut self, value: u8) -> Self {
+        self.set_synchprim_frac(value);
+        self
     }
 
     /// Returns the value of the `PSR_M` field.
@@ -15288,6 +18094,12 @@ impl IdIsar4 {
         );
     }
 
+    /// Returns a copy with the `PSR_M` field set to the given value.
+    pub const fn with_psr_m(mut self, value: u8) -> Self {
+        self.set_psr_m(value);
+        self
+    }
+
     /// Returns the value of the `SWP_frac` field.
     pub const fn swp_frac(self) -> u8 {
         ((self.bits() >> Self::SWP_FRAC_SHIFT) & 0b1111) as u8
@@ -15300,6 +18112,12 @@ impl IdIsar4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SWP_FRAC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SWP_frac` field set to the given value.
+    pub const fn with_swp_frac(mut self, value: u8) -> Self {
+        self.set_swp_frac(value);
+        self
     }
 }
 
@@ -15355,6 +18173,12 @@ impl IdIsar5 {
         );
     }
 
+    /// Returns a copy with the `SEVL` field set to the given value.
+    pub const fn with_sevl(mut self, value: u8) -> Self {
+        self.set_sevl(value);
+        self
+    }
+
     /// Returns the value of the `AES` field.
     pub const fn aes(self) -> u8 {
         ((self.bits() >> Self::AES_SHIFT) & 0b1111) as u8
@@ -15367,6 +18191,12 @@ impl IdIsar5 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AES_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AES` field set to the given value.
+    pub const fn with_aes(mut self, value: u8) -> Self {
+        self.set_aes(value);
+        self
     }
 
     /// Returns the value of the `SHA1` field.
@@ -15383,6 +18213,12 @@ impl IdIsar5 {
         );
     }
 
+    /// Returns a copy with the `SHA1` field set to the given value.
+    pub const fn with_sha1(mut self, value: u8) -> Self {
+        self.set_sha1(value);
+        self
+    }
+
     /// Returns the value of the `SHA2` field.
     pub const fn sha2(self) -> u8 {
         ((self.bits() >> Self::SHA2_SHIFT) & 0b1111) as u8
@@ -15395,6 +18231,12 @@ impl IdIsar5 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SHA2_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SHA2` field set to the given value.
+    pub const fn with_sha2(mut self, value: u8) -> Self {
+        self.set_sha2(value);
+        self
     }
 
     /// Returns the value of the `CRC32` field.
@@ -15411,6 +18253,12 @@ impl IdIsar5 {
         );
     }
 
+    /// Returns a copy with the `CRC32` field set to the given value.
+    pub const fn with_crc32(mut self, value: u8) -> Self {
+        self.set_crc32(value);
+        self
+    }
+
     /// Returns the value of the `RDM` field.
     pub const fn rdm(self) -> u8 {
         ((self.bits() >> Self::RDM_SHIFT) & 0b1111) as u8
@@ -15425,6 +18273,12 @@ impl IdIsar5 {
         );
     }
 
+    /// Returns a copy with the `RDM` field set to the given value.
+    pub const fn with_rdm(mut self, value: u8) -> Self {
+        self.set_rdm(value);
+        self
+    }
+
     /// Returns the value of the `VCMA` field.
     pub const fn vcma(self) -> u8 {
         ((self.bits() >> Self::VCMA_SHIFT) & 0b1111) as u8
@@ -15437,6 +18291,12 @@ impl IdIsar5 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VCMA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VCMA` field set to the given value.
+    pub const fn with_vcma(mut self, value: u8) -> Self {
+        self.set_vcma(value);
+        self
     }
 }
 
@@ -15496,6 +18356,12 @@ impl IdIsar6 {
         );
     }
 
+    /// Returns a copy with the `JSCVT` field set to the given value.
+    pub const fn with_jscvt(mut self, value: u8) -> Self {
+        self.set_jscvt(value);
+        self
+    }
+
     /// Returns the value of the `DP` field.
     pub const fn dp(self) -> u8 {
         ((self.bits() >> Self::DP_SHIFT) & 0b1111) as u8
@@ -15508,6 +18374,12 @@ impl IdIsar6 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::DP_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `DP` field set to the given value.
+    pub const fn with_dp(mut self, value: u8) -> Self {
+        self.set_dp(value);
+        self
     }
 
     /// Returns the value of the `FHM` field.
@@ -15524,6 +18396,12 @@ impl IdIsar6 {
         );
     }
 
+    /// Returns a copy with the `FHM` field set to the given value.
+    pub const fn with_fhm(mut self, value: u8) -> Self {
+        self.set_fhm(value);
+        self
+    }
+
     /// Returns the value of the `SB` field.
     pub const fn sb(self) -> u8 {
         ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
@@ -15536,6 +18414,12 @@ impl IdIsar6 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SB_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SB` field set to the given value.
+    pub const fn with_sb(mut self, value: u8) -> Self {
+        self.set_sb(value);
+        self
     }
 
     /// Returns the value of the `SPECRES` field.
@@ -15552,6 +18436,12 @@ impl IdIsar6 {
         );
     }
 
+    /// Returns a copy with the `SPECRES` field set to the given value.
+    pub const fn with_specres(mut self, value: u8) -> Self {
+        self.set_specres(value);
+        self
+    }
+
     /// Returns the value of the `BF16` field.
     pub const fn bf16(self) -> u8 {
         ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
@@ -15564,6 +18454,12 @@ impl IdIsar6 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BF16_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BF16` field set to the given value.
+    pub const fn with_bf16(mut self, value: u8) -> Self {
+        self.set_bf16(value);
+        self
     }
 
     /// Returns the value of the `I8MM` field.
@@ -15580,6 +18476,12 @@ impl IdIsar6 {
         );
     }
 
+    /// Returns a copy with the `I8MM` field set to the given value.
+    pub const fn with_i8mm(mut self, value: u8) -> Self {
+        self.set_i8mm(value);
+        self
+    }
+
     /// Returns the value of the `CLRBHB` field.
     pub const fn clrbhb(self) -> u8 {
         ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
@@ -15592,6 +18494,12 @@ impl IdIsar6 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CLRBHB_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CLRBHB` field set to the given value.
+    pub const fn with_clrbhb(mut self, value: u8) -> Self {
+        self.set_clrbhb(value);
+        self
     }
 }
 
@@ -15651,6 +18559,12 @@ impl IdMmfr0 {
         );
     }
 
+    /// Returns a copy with the `VMSA` field set to the given value.
+    pub const fn with_vmsa(mut self, value: u8) -> Self {
+        self.set_vmsa(value);
+        self
+    }
+
     /// Returns the value of the `PMSA` field.
     pub const fn pmsa(self) -> u8 {
         ((self.bits() >> Self::PMSA_SHIFT) & 0b1111) as u8
@@ -15663,6 +18577,12 @@ impl IdMmfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMSA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMSA` field set to the given value.
+    pub const fn with_pmsa(mut self, value: u8) -> Self {
+        self.set_pmsa(value);
+        self
     }
 
     /// Returns the value of the `OuterShr` field.
@@ -15679,6 +18599,12 @@ impl IdMmfr0 {
         );
     }
 
+    /// Returns a copy with the `OuterShr` field set to the given value.
+    pub const fn with_outershr(mut self, value: u8) -> Self {
+        self.set_outershr(value);
+        self
+    }
+
     /// Returns the value of the `ShareLvl` field.
     pub const fn sharelvl(self) -> u8 {
         ((self.bits() >> Self::SHARELVL_SHIFT) & 0b1111) as u8
@@ -15691,6 +18617,12 @@ impl IdMmfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SHARELVL_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ShareLvl` field set to the given value.
+    pub const fn with_sharelvl(mut self, value: u8) -> Self {
+        self.set_sharelvl(value);
+        self
     }
 
     /// Returns the value of the `TCM` field.
@@ -15707,6 +18639,12 @@ impl IdMmfr0 {
         );
     }
 
+    /// Returns a copy with the `TCM` field set to the given value.
+    pub const fn with_tcm(mut self, value: u8) -> Self {
+        self.set_tcm(value);
+        self
+    }
+
     /// Returns the value of the `AuxReg` field.
     pub const fn auxreg(self) -> u8 {
         ((self.bits() >> Self::AUXREG_SHIFT) & 0b1111) as u8
@@ -15719,6 +18657,12 @@ impl IdMmfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AUXREG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AuxReg` field set to the given value.
+    pub const fn with_auxreg(mut self, value: u8) -> Self {
+        self.set_auxreg(value);
+        self
     }
 
     /// Returns the value of the `FCSE` field.
@@ -15735,6 +18679,12 @@ impl IdMmfr0 {
         );
     }
 
+    /// Returns a copy with the `FCSE` field set to the given value.
+    pub const fn with_fcse(mut self, value: u8) -> Self {
+        self.set_fcse(value);
+        self
+    }
+
     /// Returns the value of the `InnerShr` field.
     pub const fn innershr(self) -> u8 {
         ((self.bits() >> Self::INNERSHR_SHIFT) & 0b1111) as u8
@@ -15747,6 +18697,12 @@ impl IdMmfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::INNERSHR_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `InnerShr` field set to the given value.
+    pub const fn with_innershr(mut self, value: u8) -> Self {
+        self.set_innershr(value);
+        self
     }
 }
 
@@ -15806,6 +18762,12 @@ impl IdMmfr1 {
         );
     }
 
+    /// Returns a copy with the `L1HvdVA` field set to the given value.
+    pub const fn with_l1hvdva(mut self, value: u8) -> Self {
+        self.set_l1hvdva(value);
+        self
+    }
+
     /// Returns the value of the `L1UniVA` field.
     pub const fn l1univa(self) -> u8 {
         ((self.bits() >> Self::L1UNIVA_SHIFT) & 0b1111) as u8
@@ -15818,6 +18780,12 @@ impl IdMmfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L1UNIVA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `L1UniVA` field set to the given value.
+    pub const fn with_l1univa(mut self, value: u8) -> Self {
+        self.set_l1univa(value);
+        self
     }
 
     /// Returns the value of the `L1HvdSW` field.
@@ -15834,6 +18802,12 @@ impl IdMmfr1 {
         );
     }
 
+    /// Returns a copy with the `L1HvdSW` field set to the given value.
+    pub const fn with_l1hvdsw(mut self, value: u8) -> Self {
+        self.set_l1hvdsw(value);
+        self
+    }
+
     /// Returns the value of the `L1UniSW` field.
     pub const fn l1unisw(self) -> u8 {
         ((self.bits() >> Self::L1UNISW_SHIFT) & 0b1111) as u8
@@ -15846,6 +18820,12 @@ impl IdMmfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L1UNISW_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `L1UniSW` field set to the given value.
+    pub const fn with_l1unisw(mut self, value: u8) -> Self {
+        self.set_l1unisw(value);
+        self
     }
 
     /// Returns the value of the `L1Hvd` field.
@@ -15862,6 +18842,12 @@ impl IdMmfr1 {
         );
     }
 
+    /// Returns a copy with the `L1Hvd` field set to the given value.
+    pub const fn with_l1hvd(mut self, value: u8) -> Self {
+        self.set_l1hvd(value);
+        self
+    }
+
     /// Returns the value of the `L1Uni` field.
     pub const fn l1uni(self) -> u8 {
         ((self.bits() >> Self::L1UNI_SHIFT) & 0b1111) as u8
@@ -15874,6 +18860,12 @@ impl IdMmfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L1UNI_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `L1Uni` field set to the given value.
+    pub const fn with_l1uni(mut self, value: u8) -> Self {
+        self.set_l1uni(value);
+        self
     }
 
     /// Returns the value of the `L1TstCln` field.
@@ -15890,6 +18882,12 @@ impl IdMmfr1 {
         );
     }
 
+    /// Returns a copy with the `L1TstCln` field set to the given value.
+    pub const fn with_l1tstcln(mut self, value: u8) -> Self {
+        self.set_l1tstcln(value);
+        self
+    }
+
     /// Returns the value of the `BPred` field.
     pub const fn bpred(self) -> u8 {
         ((self.bits() >> Self::BPRED_SHIFT) & 0b1111) as u8
@@ -15902,6 +18900,12 @@ impl IdMmfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BPRED_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BPred` field set to the given value.
+    pub const fn with_bpred(mut self, value: u8) -> Self {
+        self.set_bpred(value);
+        self
     }
 }
 
@@ -15961,6 +18965,12 @@ impl IdMmfr2 {
         );
     }
 
+    /// Returns a copy with the `L1HvdFG` field set to the given value.
+    pub const fn with_l1hvdfg(mut self, value: u8) -> Self {
+        self.set_l1hvdfg(value);
+        self
+    }
+
     /// Returns the value of the `L1HvdBG` field.
     pub const fn l1hvdbg(self) -> u8 {
         ((self.bits() >> Self::L1HVDBG_SHIFT) & 0b1111) as u8
@@ -15973,6 +18983,12 @@ impl IdMmfr2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::L1HVDBG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `L1HvdBG` field set to the given value.
+    pub const fn with_l1hvdbg(mut self, value: u8) -> Self {
+        self.set_l1hvdbg(value);
+        self
     }
 
     /// Returns the value of the `L1HvdRng` field.
@@ -15989,6 +19005,12 @@ impl IdMmfr2 {
         );
     }
 
+    /// Returns a copy with the `L1HvdRng` field set to the given value.
+    pub const fn with_l1hvdrng(mut self, value: u8) -> Self {
+        self.set_l1hvdrng(value);
+        self
+    }
+
     /// Returns the value of the `HvdTLB` field.
     pub const fn hvdtlb(self) -> u8 {
         ((self.bits() >> Self::HVDTLB_SHIFT) & 0b1111) as u8
@@ -16001,6 +19023,12 @@ impl IdMmfr2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::HVDTLB_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `HvdTLB` field set to the given value.
+    pub const fn with_hvdtlb(mut self, value: u8) -> Self {
+        self.set_hvdtlb(value);
+        self
     }
 
     /// Returns the value of the `UniTLB` field.
@@ -16017,6 +19045,12 @@ impl IdMmfr2 {
         );
     }
 
+    /// Returns a copy with the `UniTLB` field set to the given value.
+    pub const fn with_unitlb(mut self, value: u8) -> Self {
+        self.set_unitlb(value);
+        self
+    }
+
     /// Returns the value of the `MemBarr` field.
     pub const fn membarr(self) -> u8 {
         ((self.bits() >> Self::MEMBARR_SHIFT) & 0b1111) as u8
@@ -16029,6 +19063,12 @@ impl IdMmfr2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MEMBARR_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `MemBarr` field set to the given value.
+    pub const fn with_membarr(mut self, value: u8) -> Self {
+        self.set_membarr(value);
+        self
     }
 
     /// Returns the value of the `WFIStall` field.
@@ -16045,6 +19085,12 @@ impl IdMmfr2 {
         );
     }
 
+    /// Returns a copy with the `WFIStall` field set to the given value.
+    pub const fn with_wfistall(mut self, value: u8) -> Self {
+        self.set_wfistall(value);
+        self
+    }
+
     /// Returns the value of the `HWAccFlg` field.
     pub const fn hwaccflg(self) -> u8 {
         ((self.bits() >> Self::HWACCFLG_SHIFT) & 0b1111) as u8
@@ -16057,6 +19103,12 @@ impl IdMmfr2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::HWACCFLG_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `HWAccFlg` field set to the given value.
+    pub const fn with_hwaccflg(mut self, value: u8) -> Self {
+        self.set_hwaccflg(value);
+        self
     }
 }
 
@@ -16116,6 +19168,12 @@ impl IdMmfr3 {
         );
     }
 
+    /// Returns a copy with the `CMaintVA` field set to the given value.
+    pub const fn with_cmaintva(mut self, value: u8) -> Self {
+        self.set_cmaintva(value);
+        self
+    }
+
     /// Returns the value of the `CMaintSW` field.
     pub const fn cmaintsw(self) -> u8 {
         ((self.bits() >> Self::CMAINTSW_SHIFT) & 0b1111) as u8
@@ -16128,6 +19186,12 @@ impl IdMmfr3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CMAINTSW_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CMaintSW` field set to the given value.
+    pub const fn with_cmaintsw(mut self, value: u8) -> Self {
+        self.set_cmaintsw(value);
+        self
     }
 
     /// Returns the value of the `BPMaint` field.
@@ -16144,6 +19208,12 @@ impl IdMmfr3 {
         );
     }
 
+    /// Returns a copy with the `BPMaint` field set to the given value.
+    pub const fn with_bpmaint(mut self, value: u8) -> Self {
+        self.set_bpmaint(value);
+        self
+    }
+
     /// Returns the value of the `MaintBcst` field.
     pub const fn maintbcst(self) -> u8 {
         ((self.bits() >> Self::MAINTBCST_SHIFT) & 0b1111) as u8
@@ -16156,6 +19226,12 @@ impl IdMmfr3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::MAINTBCST_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `MaintBcst` field set to the given value.
+    pub const fn with_maintbcst(mut self, value: u8) -> Self {
+        self.set_maintbcst(value);
+        self
     }
 
     /// Returns the value of the `PAN` field.
@@ -16172,6 +19248,12 @@ impl IdMmfr3 {
         );
     }
 
+    /// Returns a copy with the `PAN` field set to the given value.
+    pub const fn with_pan(mut self, value: u8) -> Self {
+        self.set_pan(value);
+        self
+    }
+
     /// Returns the value of the `CohWalk` field.
     pub const fn cohwalk(self) -> u8 {
         ((self.bits() >> Self::COHWALK_SHIFT) & 0b1111) as u8
@@ -16184,6 +19266,12 @@ impl IdMmfr3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::COHWALK_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CohWalk` field set to the given value.
+    pub const fn with_cohwalk(mut self, value: u8) -> Self {
+        self.set_cohwalk(value);
+        self
     }
 
     /// Returns the value of the `CMemSz` field.
@@ -16200,6 +19288,12 @@ impl IdMmfr3 {
         );
     }
 
+    /// Returns a copy with the `CMemSz` field set to the given value.
+    pub const fn with_cmemsz(mut self, value: u8) -> Self {
+        self.set_cmemsz(value);
+        self
+    }
+
     /// Returns the value of the `Supersec` field.
     pub const fn supersec(self) -> u8 {
         ((self.bits() >> Self::SUPERSEC_SHIFT) & 0b1111) as u8
@@ -16212,6 +19306,12 @@ impl IdMmfr3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SUPERSEC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Supersec` field set to the given value.
+    pub const fn with_supersec(mut self, value: u8) -> Self {
+        self.set_supersec(value);
+        self
     }
 }
 
@@ -16271,6 +19371,12 @@ impl IdMmfr4 {
         );
     }
 
+    /// Returns a copy with the `SpecSEI` field set to the given value.
+    pub const fn with_specsei(mut self, value: u8) -> Self {
+        self.set_specsei(value);
+        self
+    }
+
     /// Returns the value of the `AC2` field.
     pub const fn ac2(self) -> u8 {
         ((self.bits() >> Self::AC2_SHIFT) & 0b1111) as u8
@@ -16283,6 +19389,12 @@ impl IdMmfr4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AC2_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AC2` field set to the given value.
+    pub const fn with_ac2(mut self, value: u8) -> Self {
+        self.set_ac2(value);
+        self
     }
 
     /// Returns the value of the `XNX` field.
@@ -16299,6 +19411,12 @@ impl IdMmfr4 {
         );
     }
 
+    /// Returns a copy with the `XNX` field set to the given value.
+    pub const fn with_xnx(mut self, value: u8) -> Self {
+        self.set_xnx(value);
+        self
+    }
+
     /// Returns the value of the `CnP` field.
     pub const fn cnp(self) -> u8 {
         ((self.bits() >> Self::CNP_SHIFT) & 0b1111) as u8
@@ -16311,6 +19429,12 @@ impl IdMmfr4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CNP_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `CnP` field set to the given value.
+    pub const fn with_cnp(mut self, value: u8) -> Self {
+        self.set_cnp(value);
+        self
     }
 
     /// Returns the value of the `HPDS` field.
@@ -16327,6 +19451,12 @@ impl IdMmfr4 {
         );
     }
 
+    /// Returns a copy with the `HPDS` field set to the given value.
+    pub const fn with_hpds(mut self, value: u8) -> Self {
+        self.set_hpds(value);
+        self
+    }
+
     /// Returns the value of the `LSM` field.
     pub const fn lsm(self) -> u8 {
         ((self.bits() >> Self::LSM_SHIFT) & 0b1111) as u8
@@ -16339,6 +19469,12 @@ impl IdMmfr4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LSM_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `LSM` field set to the given value.
+    pub const fn with_lsm(mut self, value: u8) -> Self {
+        self.set_lsm(value);
+        self
     }
 
     /// Returns the value of the `CCIDX` field.
@@ -16355,6 +19491,12 @@ impl IdMmfr4 {
         );
     }
 
+    /// Returns a copy with the `CCIDX` field set to the given value.
+    pub const fn with_ccidx(mut self, value: u8) -> Self {
+        self.set_ccidx(value);
+        self
+    }
+
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
         ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
@@ -16367,6 +19509,12 @@ impl IdMmfr4 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EVT_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `EVT` field set to the given value.
+    pub const fn with_evt(mut self, value: u8) -> Self {
+        self.set_evt(value);
+        self
     }
 }
 
@@ -16402,6 +19550,12 @@ impl IdMmfr5 {
         );
     }
 
+    /// Returns a copy with the `ETS` field set to the given value.
+    pub const fn with_ets(mut self, value: u8) -> Self {
+        self.set_ets(value);
+        self
+    }
+
     /// Returns the value of the `nTLBPA` field.
     pub const fn ntlbpa(self) -> u8 {
         ((self.bits() >> Self::NTLBPA_SHIFT) & 0b1111) as u8
@@ -16414,6 +19568,12 @@ impl IdMmfr5 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::NTLBPA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `nTLBPA` field set to the given value.
+    pub const fn with_ntlbpa(mut self, value: u8) -> Self {
+        self.set_ntlbpa(value);
+        self
     }
 }
 
@@ -16473,6 +19633,12 @@ impl IdPfr0 {
         );
     }
 
+    /// Returns a copy with the `State0` field set to the given value.
+    pub const fn with_state0(mut self, value: u8) -> Self {
+        self.set_state0(value);
+        self
+    }
+
     /// Returns the value of the `State1` field.
     pub const fn state1(self) -> u8 {
         ((self.bits() >> Self::STATE1_SHIFT) & 0b1111) as u8
@@ -16485,6 +19651,12 @@ impl IdPfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::STATE1_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `State1` field set to the given value.
+    pub const fn with_state1(mut self, value: u8) -> Self {
+        self.set_state1(value);
+        self
     }
 
     /// Returns the value of the `State2` field.
@@ -16501,6 +19673,12 @@ impl IdPfr0 {
         );
     }
 
+    /// Returns a copy with the `State2` field set to the given value.
+    pub const fn with_state2(mut self, value: u8) -> Self {
+        self.set_state2(value);
+        self
+    }
+
     /// Returns the value of the `State3` field.
     pub const fn state3(self) -> u8 {
         ((self.bits() >> Self::STATE3_SHIFT) & 0b1111) as u8
@@ -16513,6 +19691,12 @@ impl IdPfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::STATE3_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `State3` field set to the given value.
+    pub const fn with_state3(mut self, value: u8) -> Self {
+        self.set_state3(value);
+        self
     }
 
     /// Returns the value of the `CSV2` field.
@@ -16529,6 +19713,12 @@ impl IdPfr0 {
         );
     }
 
+    /// Returns a copy with the `CSV2` field set to the given value.
+    pub const fn with_csv2(mut self, value: u8) -> Self {
+        self.set_csv2(value);
+        self
+    }
+
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
         ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
@@ -16541,6 +19731,12 @@ impl IdPfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AMU_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AMU` field set to the given value.
+    pub const fn with_amu(mut self, value: u8) -> Self {
+        self.set_amu(value);
+        self
     }
 
     /// Returns the value of the `DIT` field.
@@ -16557,6 +19753,12 @@ impl IdPfr0 {
         );
     }
 
+    /// Returns a copy with the `DIT` field set to the given value.
+    pub const fn with_dit(mut self, value: u8) -> Self {
+        self.set_dit(value);
+        self
+    }
+
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
         ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
@@ -16569,6 +19771,12 @@ impl IdPfr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RAS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `RAS` field set to the given value.
+    pub const fn with_ras(mut self, value: u8) -> Self {
+        self.set_ras(value);
+        self
     }
 }
 
@@ -16628,6 +19836,12 @@ impl IdPfr1 {
         );
     }
 
+    /// Returns a copy with the `ProgMod` field set to the given value.
+    pub const fn with_progmod(mut self, value: u8) -> Self {
+        self.set_progmod(value);
+        self
+    }
+
     /// Returns the value of the `Security` field.
     pub const fn security(self) -> u8 {
         ((self.bits() >> Self::SECURITY_SHIFT) & 0b1111) as u8
@@ -16640,6 +19854,12 @@ impl IdPfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SECURITY_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Security` field set to the given value.
+    pub const fn with_security(mut self, value: u8) -> Self {
+        self.set_security(value);
+        self
     }
 
     /// Returns the value of the `MProgMod` field.
@@ -16656,6 +19876,12 @@ impl IdPfr1 {
         );
     }
 
+    /// Returns a copy with the `MProgMod` field set to the given value.
+    pub const fn with_mprogmod(mut self, value: u8) -> Self {
+        self.set_mprogmod(value);
+        self
+    }
+
     /// Returns the value of the `Virtualization` field.
     pub const fn virtualization(self) -> u8 {
         ((self.bits() >> Self::VIRTUALIZATION_SHIFT) & 0b1111) as u8
@@ -16668,6 +19894,12 @@ impl IdPfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VIRTUALIZATION_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Virtualization` field set to the given value.
+    pub const fn with_virtualization(mut self, value: u8) -> Self {
+        self.set_virtualization(value);
+        self
     }
 
     /// Returns the value of the `GenTimer` field.
@@ -16684,6 +19916,12 @@ impl IdPfr1 {
         );
     }
 
+    /// Returns a copy with the `GenTimer` field set to the given value.
+    pub const fn with_gentimer(mut self, value: u8) -> Self {
+        self.set_gentimer(value);
+        self
+    }
+
     /// Returns the value of the `Sec_frac` field.
     pub const fn sec_frac(self) -> u8 {
         ((self.bits() >> Self::SEC_FRAC_SHIFT) & 0b1111) as u8
@@ -16696,6 +19934,12 @@ impl IdPfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SEC_FRAC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Sec_frac` field set to the given value.
+    pub const fn with_sec_frac(mut self, value: u8) -> Self {
+        self.set_sec_frac(value);
+        self
     }
 
     /// Returns the value of the `Virt_frac` field.
@@ -16712,6 +19956,12 @@ impl IdPfr1 {
         );
     }
 
+    /// Returns a copy with the `Virt_frac` field set to the given value.
+    pub const fn with_virt_frac(mut self, value: u8) -> Self {
+        self.set_virt_frac(value);
+        self
+    }
+
     /// Returns the value of the `GIC` field.
     pub const fn gic(self) -> u8 {
         ((self.bits() >> Self::GIC_SHIFT) & 0b1111) as u8
@@ -16724,6 +19974,12 @@ impl IdPfr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::GIC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `GIC` field set to the given value.
+    pub const fn with_gic(mut self, value: u8) -> Self {
+        self.set_gic(value);
+        self
     }
 }
 
@@ -16763,6 +20019,12 @@ impl IdPfr2 {
         );
     }
 
+    /// Returns a copy with the `CSV3` field set to the given value.
+    pub const fn with_csv3(mut self, value: u8) -> Self {
+        self.set_csv3(value);
+        self
+    }
+
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
         ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
@@ -16777,6 +20039,12 @@ impl IdPfr2 {
         );
     }
 
+    /// Returns a copy with the `SSBS` field set to the given value.
+    pub const fn with_ssbs(mut self, value: u8) -> Self {
+        self.set_ssbs(value);
+        self
+    }
+
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
         ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
@@ -16789,6 +20057,12 @@ impl IdPfr2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RAS_FRAC_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `RAS_frac` field set to the given value.
+    pub const fn with_ras_frac(mut self, value: u8) -> Self {
+        self.set_ras_frac(value);
+        self
     }
 }
 
@@ -16818,6 +20092,12 @@ impl Ifar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VA` field set to the given value.
+    pub const fn with_va(mut self, value: u32) -> Self {
+        self.set_va(value);
+        self
     }
 }
 
@@ -16859,6 +20139,12 @@ impl Ifsr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::STATUS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `STATUS` field set to the given value.
+    pub const fn with_status(mut self, value: u8) -> Self {
+        self.set_status(value);
+        self
     }
 }
 
@@ -16947,6 +20233,12 @@ impl Mair0 {
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
+    }
 }
 
 bitflags! {
@@ -16977,6 +20269,12 @@ impl Mair1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
     }
 }
 
@@ -17011,6 +20309,12 @@ impl MairEl1 {
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -17044,6 +20348,12 @@ impl MairEl2 {
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
+    }
 }
 
 #[cfg(feature = "el3")]
@@ -17076,6 +20386,12 @@ impl MairEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Attr<n>` field set to the given value.
+    pub const fn with_attr(mut self, n: u32, value: u8) -> Self {
+        self.set_attr(n, value);
+        self
     }
 }
 
@@ -17222,6 +20538,12 @@ impl MdcrEl2 {
         );
     }
 
+    /// Returns a copy with the `HPMN` field set to the given value.
+    pub const fn with_hpmn(mut self, value: u8) -> Self {
+        self.set_hpmn(value);
+        self
+    }
+
     /// Returns the value of the `E2PB` field.
     pub const fn e2pb(self) -> u8 {
         ((self.bits() >> Self::E2PB_SHIFT) & 0b11) as u8
@@ -17234,6 +20556,12 @@ impl MdcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::E2PB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `E2PB` field set to the given value.
+    pub const fn with_e2pb(mut self, value: u8) -> Self {
+        self.set_e2pb(value);
+        self
     }
 
     /// Returns the value of the `E2TB` field.
@@ -17250,6 +20578,12 @@ impl MdcrEl2 {
         );
     }
 
+    /// Returns a copy with the `E2TB` field set to the given value.
+    pub const fn with_e2tb(mut self, value: u8) -> Self {
+        self.set_e2tb(value);
+        self
+    }
+
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
         ((self.bits() >> Self::PMSSE_SHIFT) & 0b11) as u8
@@ -17264,6 +20598,12 @@ impl MdcrEl2 {
         );
     }
 
+    /// Returns a copy with the `PMSSE` field set to the given value.
+    pub const fn with_pmsse(mut self, value: u8) -> Self {
+        self.set_pmsse(value);
+        self
+    }
+
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
         ((self.bits() >> Self::PMEE_SHIFT) & 0b11) as u8
@@ -17276,6 +20616,12 @@ impl MdcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMEE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMEE` field set to the given value.
+    pub const fn with_pmee(mut self, value: u8) -> Self {
+        self.set_pmee(value);
+        self
     }
 }
 
@@ -17473,6 +20819,12 @@ impl MdcrEl3 {
         );
     }
 
+    /// Returns a copy with the `NSPB` field set to the given value.
+    pub const fn with_nspb(mut self, value: u8) -> Self {
+        self.set_nspb(value);
+        self
+    }
+
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
         ((self.bits() >> Self::SPD32_SHIFT) & 0b11) as u8
@@ -17485,6 +20837,12 @@ impl MdcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SPD32_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SPD32` field set to the given value.
+    pub const fn with_spd32(mut self, value: u8) -> Self {
+        self.set_spd32(value);
+        self
     }
 
     /// Returns the value of the `NSTB` field.
@@ -17501,6 +20859,12 @@ impl MdcrEl3 {
         );
     }
 
+    /// Returns a copy with the `NSTB` field set to the given value.
+    pub const fn with_nstb(mut self, value: u8) -> Self {
+        self.set_nstb(value);
+        self
+    }
+
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
         ((self.bits() >> Self::PMSSE_SHIFT) & 0b11) as u8
@@ -17513,6 +20877,12 @@ impl MdcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMSSE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMSSE` field set to the given value.
+    pub const fn with_pmsse(mut self, value: u8) -> Self {
+        self.set_pmsse(value);
+        self
     }
 
     /// Returns the value of the `SBRBE` field.
@@ -17529,6 +20899,12 @@ impl MdcrEl3 {
         );
     }
 
+    /// Returns a copy with the `SBRBE` field set to the given value.
+    pub const fn with_sbrbe(mut self, value: u8) -> Self {
+        self.set_sbrbe(value);
+        self
+    }
+
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
         ((self.bits() >> Self::PMEE_SHIFT) & 0b11) as u8
@@ -17541,6 +20917,12 @@ impl MdcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMEE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMEE` field set to the given value.
+    pub const fn with_pmee(mut self, value: u8) -> Self {
+        self.set_pmee(value);
+        self
     }
 
     /// Returns the value of the `EPMSSAD` field.
@@ -17557,6 +20939,12 @@ impl MdcrEl3 {
         );
     }
 
+    /// Returns a copy with the `EPMSSAD` field set to the given value.
+    pub const fn with_epmssad(mut self, value: u8) -> Self {
+        self.set_epmssad(value);
+        self
+    }
+
     /// Returns the value of the `ETBAD` field.
     pub const fn etbad(self) -> u8 {
         ((self.bits() >> Self::ETBAD_SHIFT) & 0b11) as u8
@@ -17569,6 +20957,12 @@ impl MdcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ETBAD_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ETBAD` field set to the given value.
+    pub const fn with_etbad(mut self, value: u8) -> Self {
+        self.set_etbad(value);
+        self
     }
 
     /// Returns the value of the `PMSEE` field.
@@ -17585,6 +20979,12 @@ impl MdcrEl3 {
         );
     }
 
+    /// Returns a copy with the `PMSEE` field set to the given value.
+    pub const fn with_pmsee(mut self, value: u8) -> Self {
+        self.set_pmsee(value);
+        self
+    }
+
     /// Returns the value of the `TRBEE` field.
     pub const fn trbee(self) -> u8 {
         ((self.bits() >> Self::TRBEE_SHIFT) & 0b11) as u8
@@ -17597,6 +20997,12 @@ impl MdcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TRBEE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TRBEE` field set to the given value.
+    pub const fn with_trbee(mut self, value: u8) -> Self {
+        self.set_trbee(value);
+        self
     }
 }
 
@@ -17701,6 +21107,12 @@ impl MdscrEl1 {
             (self.bits() & !(Self::INTDIS_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `INTdis` field set to the given value.
+    pub const fn with_intdis(mut self, value: u8) -> Self {
+        self.set_intdis(value);
+        self
+    }
 }
 
 bitflags! {
@@ -17747,6 +21159,12 @@ impl Midr {
         );
     }
 
+    /// Returns a copy with the `Revision` field set to the given value.
+    pub const fn with_revision(mut self, value: u8) -> Self {
+        self.set_revision(value);
+        self
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
@@ -17759,6 +21177,12 @@ impl Midr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `PartNum` field set to the given value.
+    pub const fn with_partnum(mut self, value: u16) -> Self {
+        self.set_partnum(value);
+        self
     }
 
     /// Returns the value of the `Architecture` field.
@@ -17775,6 +21199,12 @@ impl Midr {
         );
     }
 
+    /// Returns a copy with the `Architecture` field set to the given value.
+    pub const fn with_architecture(mut self, value: u8) -> Self {
+        self.set_architecture(value);
+        self
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
@@ -17789,6 +21219,12 @@ impl Midr {
         );
     }
 
+    /// Returns a copy with the `Variant` field set to the given value.
+    pub const fn with_variant(mut self, value: u8) -> Self {
+        self.set_variant(value);
+        self
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
@@ -17801,6 +21237,12 @@ impl Midr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Implementer` field set to the given value.
+    pub const fn with_implementer(mut self, value: u8) -> Self {
+        self.set_implementer(value);
+        self
     }
 }
 
@@ -17850,6 +21292,12 @@ impl MidrEl1 {
         );
     }
 
+    /// Returns a copy with the `Revision` field set to the given value.
+    pub const fn with_revision(mut self, value: u8) -> Self {
+        self.set_revision(value);
+        self
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
@@ -17862,6 +21310,12 @@ impl MidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PartNum` field set to the given value.
+    pub const fn with_partnum(mut self, value: u16) -> Self {
+        self.set_partnum(value);
+        self
     }
 
     /// Returns the value of the `Architecture` field.
@@ -17878,6 +21332,12 @@ impl MidrEl1 {
         );
     }
 
+    /// Returns a copy with the `Architecture` field set to the given value.
+    pub const fn with_architecture(mut self, value: u8) -> Self {
+        self.set_architecture(value);
+        self
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
@@ -17892,6 +21352,12 @@ impl MidrEl1 {
         );
     }
 
+    /// Returns a copy with the `Variant` field set to the given value.
+    pub const fn with_variant(mut self, value: u8) -> Self {
+        self.set_variant(value);
+        self
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
@@ -17904,6 +21370,12 @@ impl MidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Implementer` field set to the given value.
+    pub const fn with_implementer(mut self, value: u8) -> Self {
+        self.set_implementer(value);
+        self
     }
 }
 
@@ -17997,6 +21469,12 @@ impl Mpam2El2 {
         );
     }
 
+    /// Returns a copy with the `PARTID` field set to the given value.
+    pub const fn with_partid(mut self, value: u16) -> Self {
+        self.set_partid(value);
+        self
+    }
+
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
         ((self.bits() >> Self::PARTID_I_SHIFT) & 0b1111111111111111) as u16
@@ -18009,6 +21487,12 @@ impl Mpam2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PARTID_I_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PARTID_I` field set to the given value.
+    pub const fn with_partid_i(mut self, value: u16) -> Self {
+        self.set_partid_i(value);
+        self
     }
 
     /// Returns the value of the `PARTID_D` field.
@@ -18025,6 +21509,12 @@ impl Mpam2El2 {
         );
     }
 
+    /// Returns a copy with the `PARTID_D` field set to the given value.
+    pub const fn with_partid_d(mut self, value: u16) -> Self {
+        self.set_partid_d(value);
+        self
+    }
+
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
         ((self.bits() >> Self::ALTPARTID_SHIFT) & 0b1111111111111111) as u16
@@ -18037,6 +21527,12 @@ impl Mpam2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ALTPARTID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `altPARTID` field set to the given value.
+    pub const fn with_altpartid(mut self, value: u16) -> Self {
+        self.set_altpartid(value);
+        self
     }
 
     /// Returns the value of the `PMG` field.
@@ -18053,6 +21549,12 @@ impl Mpam2El2 {
         );
     }
 
+    /// Returns a copy with the `PMG` field set to the given value.
+    pub const fn with_pmg(mut self, value: u16) -> Self {
+        self.set_pmg(value);
+        self
+    }
+
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
         ((self.bits() >> Self::PMG_I_SHIFT) & 0b11111111) as u8
@@ -18065,6 +21567,12 @@ impl Mpam2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMG_I_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMG_I` field set to the given value.
+    pub const fn with_pmg_i(mut self, value: u8) -> Self {
+        self.set_pmg_i(value);
+        self
     }
 
     /// Returns the value of the `PMG_D` field.
@@ -18081,6 +21589,12 @@ impl Mpam2El2 {
         );
     }
 
+    /// Returns a copy with the `PMG_D` field set to the given value.
+    pub const fn with_pmg_d(mut self, value: u8) -> Self {
+        self.set_pmg_d(value);
+        self
+    }
+
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
         ((self.bits() >> Self::ALTPMG_SHIFT) & 0b1111111111111111) as u16
@@ -18093,6 +21607,12 @@ impl Mpam2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ALTPMG_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `altPMG` field set to the given value.
+    pub const fn with_altpmg(mut self, value: u16) -> Self {
+        self.set_altpmg(value);
+        self
     }
 }
 
@@ -18188,6 +21708,12 @@ impl Mpam3El3 {
         );
     }
 
+    /// Returns a copy with the `PARTID` field set to the given value.
+    pub const fn with_partid(mut self, value: u16) -> Self {
+        self.set_partid(value);
+        self
+    }
+
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
         ((self.bits() >> Self::PARTID_I_SHIFT) & 0b1111111111111111) as u16
@@ -18200,6 +21726,12 @@ impl Mpam3El3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PARTID_I_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PARTID_I` field set to the given value.
+    pub const fn with_partid_i(mut self, value: u16) -> Self {
+        self.set_partid_i(value);
+        self
     }
 
     /// Returns the value of the `PARTID_D` field.
@@ -18216,6 +21748,12 @@ impl Mpam3El3 {
         );
     }
 
+    /// Returns a copy with the `PARTID_D` field set to the given value.
+    pub const fn with_partid_d(mut self, value: u16) -> Self {
+        self.set_partid_d(value);
+        self
+    }
+
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
         ((self.bits() >> Self::ALTPARTID_SHIFT) & 0b1111111111111111) as u16
@@ -18228,6 +21766,12 @@ impl Mpam3El3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ALTPARTID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `altPARTID` field set to the given value.
+    pub const fn with_altpartid(mut self, value: u16) -> Self {
+        self.set_altpartid(value);
+        self
     }
 
     /// Returns the value of the `PMG` field.
@@ -18244,6 +21788,12 @@ impl Mpam3El3 {
         );
     }
 
+    /// Returns a copy with the `PMG` field set to the given value.
+    pub const fn with_pmg(mut self, value: u16) -> Self {
+        self.set_pmg(value);
+        self
+    }
+
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
         ((self.bits() >> Self::PMG_I_SHIFT) & 0b11111111) as u8
@@ -18256,6 +21806,12 @@ impl Mpam3El3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PMG_I_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PMG_I` field set to the given value.
+    pub const fn with_pmg_i(mut self, value: u8) -> Self {
+        self.set_pmg_i(value);
+        self
     }
 
     /// Returns the value of the `PMG_D` field.
@@ -18272,6 +21828,12 @@ impl Mpam3El3 {
         );
     }
 
+    /// Returns a copy with the `PMG_D` field set to the given value.
+    pub const fn with_pmg_d(mut self, value: u8) -> Self {
+        self.set_pmg_d(value);
+        self
+    }
+
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
         ((self.bits() >> Self::ALTPMG_SHIFT) & 0b1111111111111111) as u16
@@ -18284,6 +21846,12 @@ impl Mpam3El3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ALTPMG_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `altPMG` field set to the given value.
+    pub const fn with_altpmg(mut self, value: u16) -> Self {
+        self.set_altpmg(value);
+        self
     }
 }
 
@@ -18420,6 +21988,12 @@ impl MpamidrEl1 {
         );
     }
 
+    /// Returns a copy with the `PARTID_MAX` field set to the given value.
+    pub const fn with_partid_max(mut self, value: u16) -> Self {
+        self.set_partid_max(value);
+        self
+    }
+
     /// Returns the value of the `VPMR_MAX` field.
     ///
     /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
@@ -18436,6 +22010,14 @@ impl MpamidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VPMR_MAX_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VPMR_MAX` field set to the given value.
+    ///
+    /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
+    pub const fn with_vpmr_max(mut self, value: u8) -> Self {
+        self.set_vpmr_max(value);
+        self
     }
 }
 
@@ -18481,6 +22063,12 @@ impl Mpamvpm0El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID0` field set to the given value.
+    pub const fn with_phypartid0(mut self, value: u16) -> Self {
+        self.set_phypartid0(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID1` field.
     pub const fn phypartid1(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID1_SHIFT) & 0b1111111111111111) as u16
@@ -18493,6 +22081,12 @@ impl Mpamvpm0El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID1` field set to the given value.
+    pub const fn with_phypartid1(mut self, value: u16) -> Self {
+        self.set_phypartid1(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID2` field.
@@ -18509,6 +22103,12 @@ impl Mpamvpm0El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID2` field set to the given value.
+    pub const fn with_phypartid2(mut self, value: u16) -> Self {
+        self.set_phypartid2(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID3` field.
     pub const fn phypartid3(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID3_SHIFT) & 0b1111111111111111) as u16
@@ -18521,6 +22121,12 @@ impl Mpamvpm0El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID3` field set to the given value.
+    pub const fn with_phypartid3(mut self, value: u16) -> Self {
+        self.set_phypartid3(value);
+        self
     }
 }
 
@@ -18566,6 +22172,12 @@ impl Mpamvpm1El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID4` field set to the given value.
+    pub const fn with_phypartid4(mut self, value: u16) -> Self {
+        self.set_phypartid4(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID5` field.
     pub const fn phypartid5(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID5_SHIFT) & 0b1111111111111111) as u16
@@ -18578,6 +22190,12 @@ impl Mpamvpm1El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID5_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID5` field set to the given value.
+    pub const fn with_phypartid5(mut self, value: u16) -> Self {
+        self.set_phypartid5(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID6` field.
@@ -18594,6 +22212,12 @@ impl Mpamvpm1El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID6` field set to the given value.
+    pub const fn with_phypartid6(mut self, value: u16) -> Self {
+        self.set_phypartid6(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID7` field.
     pub const fn phypartid7(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID7_SHIFT) & 0b1111111111111111) as u16
@@ -18606,6 +22230,12 @@ impl Mpamvpm1El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID7_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID7` field set to the given value.
+    pub const fn with_phypartid7(mut self, value: u16) -> Self {
+        self.set_phypartid7(value);
+        self
     }
 }
 
@@ -18651,6 +22281,12 @@ impl Mpamvpm2El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID8` field set to the given value.
+    pub const fn with_phypartid8(mut self, value: u16) -> Self {
+        self.set_phypartid8(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID9` field.
     pub const fn phypartid9(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID9_SHIFT) & 0b1111111111111111) as u16
@@ -18663,6 +22299,12 @@ impl Mpamvpm2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID9_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID9` field set to the given value.
+    pub const fn with_phypartid9(mut self, value: u16) -> Self {
+        self.set_phypartid9(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID10` field.
@@ -18679,6 +22321,12 @@ impl Mpamvpm2El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID10` field set to the given value.
+    pub const fn with_phypartid10(mut self, value: u16) -> Self {
+        self.set_phypartid10(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID11` field.
     pub const fn phypartid11(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID11_SHIFT) & 0b1111111111111111) as u16
@@ -18691,6 +22339,12 @@ impl Mpamvpm2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID11_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID11` field set to the given value.
+    pub const fn with_phypartid11(mut self, value: u16) -> Self {
+        self.set_phypartid11(value);
+        self
     }
 }
 
@@ -18736,6 +22390,12 @@ impl Mpamvpm3El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID12` field set to the given value.
+    pub const fn with_phypartid12(mut self, value: u16) -> Self {
+        self.set_phypartid12(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID13` field.
     pub const fn phypartid13(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID13_SHIFT) & 0b1111111111111111) as u16
@@ -18748,6 +22408,12 @@ impl Mpamvpm3El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID13_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID13` field set to the given value.
+    pub const fn with_phypartid13(mut self, value: u16) -> Self {
+        self.set_phypartid13(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID14` field.
@@ -18764,6 +22430,12 @@ impl Mpamvpm3El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID14` field set to the given value.
+    pub const fn with_phypartid14(mut self, value: u16) -> Self {
+        self.set_phypartid14(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID15` field.
     pub const fn phypartid15(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID15_SHIFT) & 0b1111111111111111) as u16
@@ -18776,6 +22448,12 @@ impl Mpamvpm3El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID15_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID15` field set to the given value.
+    pub const fn with_phypartid15(mut self, value: u16) -> Self {
+        self.set_phypartid15(value);
+        self
     }
 }
 
@@ -18821,6 +22499,12 @@ impl Mpamvpm4El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID16` field set to the given value.
+    pub const fn with_phypartid16(mut self, value: u16) -> Self {
+        self.set_phypartid16(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID17` field.
     pub const fn phypartid17(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID17_SHIFT) & 0b1111111111111111) as u16
@@ -18833,6 +22517,12 @@ impl Mpamvpm4El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID17_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID17` field set to the given value.
+    pub const fn with_phypartid17(mut self, value: u16) -> Self {
+        self.set_phypartid17(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID18` field.
@@ -18849,6 +22539,12 @@ impl Mpamvpm4El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID18` field set to the given value.
+    pub const fn with_phypartid18(mut self, value: u16) -> Self {
+        self.set_phypartid18(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID19` field.
     pub const fn phypartid19(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID19_SHIFT) & 0b1111111111111111) as u16
@@ -18861,6 +22557,12 @@ impl Mpamvpm4El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID19_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID19` field set to the given value.
+    pub const fn with_phypartid19(mut self, value: u16) -> Self {
+        self.set_phypartid19(value);
+        self
     }
 }
 
@@ -18906,6 +22608,12 @@ impl Mpamvpm5El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID20` field set to the given value.
+    pub const fn with_phypartid20(mut self, value: u16) -> Self {
+        self.set_phypartid20(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID21` field.
     pub const fn phypartid21(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID21_SHIFT) & 0b1111111111111111) as u16
@@ -18918,6 +22626,12 @@ impl Mpamvpm5El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID21_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID21` field set to the given value.
+    pub const fn with_phypartid21(mut self, value: u16) -> Self {
+        self.set_phypartid21(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID22` field.
@@ -18934,6 +22648,12 @@ impl Mpamvpm5El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID22` field set to the given value.
+    pub const fn with_phypartid22(mut self, value: u16) -> Self {
+        self.set_phypartid22(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID23` field.
     pub const fn phypartid23(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID23_SHIFT) & 0b1111111111111111) as u16
@@ -18946,6 +22666,12 @@ impl Mpamvpm5El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID23_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID23` field set to the given value.
+    pub const fn with_phypartid23(mut self, value: u16) -> Self {
+        self.set_phypartid23(value);
+        self
     }
 }
 
@@ -18991,6 +22717,12 @@ impl Mpamvpm6El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID24` field set to the given value.
+    pub const fn with_phypartid24(mut self, value: u16) -> Self {
+        self.set_phypartid24(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID25` field.
     pub const fn phypartid25(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID25_SHIFT) & 0b1111111111111111) as u16
@@ -19003,6 +22735,12 @@ impl Mpamvpm6El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID25_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID25` field set to the given value.
+    pub const fn with_phypartid25(mut self, value: u16) -> Self {
+        self.set_phypartid25(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID26` field.
@@ -19019,6 +22757,12 @@ impl Mpamvpm6El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID26` field set to the given value.
+    pub const fn with_phypartid26(mut self, value: u16) -> Self {
+        self.set_phypartid26(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID27` field.
     pub const fn phypartid27(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID27_SHIFT) & 0b1111111111111111) as u16
@@ -19031,6 +22775,12 @@ impl Mpamvpm6El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID27_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID27` field set to the given value.
+    pub const fn with_phypartid27(mut self, value: u16) -> Self {
+        self.set_phypartid27(value);
+        self
     }
 }
 
@@ -19076,6 +22826,12 @@ impl Mpamvpm7El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID28` field set to the given value.
+    pub const fn with_phypartid28(mut self, value: u16) -> Self {
+        self.set_phypartid28(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID29` field.
     pub const fn phypartid29(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID29_SHIFT) & 0b1111111111111111) as u16
@@ -19088,6 +22844,12 @@ impl Mpamvpm7El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID29_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID29` field set to the given value.
+    pub const fn with_phypartid29(mut self, value: u16) -> Self {
+        self.set_phypartid29(value);
+        self
     }
 
     /// Returns the value of the `PhyPARTID30` field.
@@ -19104,6 +22866,12 @@ impl Mpamvpm7El2 {
         );
     }
 
+    /// Returns a copy with the `PhyPARTID30` field set to the given value.
+    pub const fn with_phypartid30(mut self, value: u16) -> Self {
+        self.set_phypartid30(value);
+        self
+    }
+
     /// Returns the value of the `PhyPARTID31` field.
     pub const fn phypartid31(self) -> u16 {
         ((self.bits() >> Self::PHYPARTID31_SHIFT) & 0b1111111111111111) as u16
@@ -19116,6 +22884,12 @@ impl Mpamvpm7El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PHYPARTID31_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PhyPARTID31` field set to the given value.
+    pub const fn with_phypartid31(mut self, value: u16) -> Self {
+        self.set_phypartid31(value);
+        self
     }
 }
 
@@ -19246,6 +23020,12 @@ impl Mpidr {
         );
     }
 
+    /// Returns a copy with the `Aff0` field set to the given value.
+    pub const fn with_aff0(mut self, value: u8) -> Self {
+        self.set_aff0(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -19260,6 +23040,12 @@ impl Mpidr {
         );
     }
 
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -19272,6 +23058,12 @@ impl Mpidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 }
 
@@ -19327,6 +23119,12 @@ impl MpidrEl1 {
         );
     }
 
+    /// Returns a copy with the `Aff0` field set to the given value.
+    pub const fn with_aff0(mut self, value: u8) -> Self {
+        self.set_aff0(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -19339,6 +23137,12 @@ impl MpidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `Aff2` field.
@@ -19355,6 +23159,12 @@ impl MpidrEl1 {
         );
     }
 
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -19367,6 +23177,12 @@ impl MpidrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -19402,6 +23218,12 @@ impl Mvbar {
         );
     }
 
+    /// Returns a copy with the `Reserved` field set to the given value.
+    pub const fn with_reserved(mut self, value: u8) -> Self {
+        self.set_reserved(value);
+        self
+    }
+
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
         ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
@@ -19414,6 +23236,12 @@ impl Mvbar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VBA` field set to the given value.
+    pub const fn with_vba(mut self, value: u32) -> Self {
+        self.set_vba(value);
+        self
     }
 }
 
@@ -19451,6 +23279,12 @@ impl Nmrr {
         );
     }
 
+    /// Returns a copy with the `IR<n>` field set to the given value.
+    pub const fn with_ir(mut self, n: u32, value: u8) -> Self {
+        self.set_ir(n, value);
+        self
+    }
+
     /// Returns the value of the given `OR<n>` field.
     pub const fn or(self, n: u32) -> u8 {
         assert!(n < 8);
@@ -19465,6 +23299,12 @@ impl Nmrr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::OR_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `OR<n>` field set to the given value.
+    pub const fn with_or(mut self, n: u32, value: u8) -> Self {
+        self.set_or(n, value);
+        self
     }
 }
 
@@ -19571,6 +23411,12 @@ impl Par {
         );
     }
 
+    /// Returns a copy with the `FST` field set to the given value.
+    pub const fn with_fst(mut self, value: u8) -> Self {
+        self.set_fst(value);
+        self
+    }
+
     /// Returns the value of the `FS[4:0]` field.
     pub const fn fs_4_0(self) -> u8 {
         ((self.bits() >> Self::FS_4_0_SHIFT) & 0b11111) as u8
@@ -19583,6 +23429,12 @@ impl Par {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::FS_4_0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `FS[4:0]` field set to the given value.
+    pub const fn with_fs_4_0(mut self, value: u8) -> Self {
+        self.set_fs_4_0(value);
+        self
     }
 
     /// Returns the value of the `Outer[1:0]` field.
@@ -19599,6 +23451,12 @@ impl Par {
         );
     }
 
+    /// Returns a copy with the `Outer[1:0]` field set to the given value.
+    pub const fn with_outer_1_0(mut self, value: u8) -> Self {
+        self.set_outer_1_0(value);
+        self
+    }
+
     /// Returns the value of the `Inner[2:0]` field.
     pub const fn inner_2_0(self) -> u8 {
         ((self.bits() >> Self::INNER_2_0_SHIFT) & 0b111) as u8
@@ -19613,6 +23471,12 @@ impl Par {
         );
     }
 
+    /// Returns a copy with the `Inner[2:0]` field set to the given value.
+    pub const fn with_inner_2_0(mut self, value: u8) -> Self {
+        self.set_inner_2_0(value);
+        self
+    }
+
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
         ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
@@ -19625,6 +23489,12 @@ impl Par {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ATTR` field set to the given value.
+    pub const fn with_attr(mut self, value: u8) -> Self {
+        self.set_attr(value);
+        self
     }
 }
 
@@ -19712,6 +23582,12 @@ impl ParEl1 {
         );
     }
 
+    /// Returns a copy with the `FST` field set to the given value.
+    pub const fn with_fst(mut self, value: u8) -> Self {
+        self.set_fst(value);
+        self
+    }
+
     /// Returns the value of the `SH` field.
     pub const fn sh(self) -> u8 {
         ((self.bits() >> Self::SH_SHIFT) & 0b11) as u8
@@ -19724,6 +23600,12 @@ impl ParEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH` field set to the given value.
+    pub const fn with_sh(mut self, value: u8) -> Self {
+        self.set_sh(value);
+        self
     }
 
     /// Returns the value of the `PA[47:12]` field.
@@ -19740,6 +23622,12 @@ impl ParEl1 {
         );
     }
 
+    /// Returns a copy with the `PA[47:12]` field set to the given value.
+    pub const fn with_pa_47_12(mut self, value: u64) -> Self {
+        self.set_pa_47_12(value);
+        self
+    }
+
     /// Returns the value of the `PA[51:48]` field.
     pub const fn pa_51_48(self) -> u8 {
         ((self.bits() >> Self::PA_51_48_SHIFT) & 0b1111) as u8
@@ -19754,6 +23642,12 @@ impl ParEl1 {
         );
     }
 
+    /// Returns a copy with the `PA[51:48]` field set to the given value.
+    pub const fn with_pa_51_48(mut self, value: u8) -> Self {
+        self.set_pa_51_48(value);
+        self
+    }
+
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
         ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
@@ -19766,6 +23660,12 @@ impl ParEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ATTR` field set to the given value.
+    pub const fn with_attr(mut self, value: u8) -> Self {
+        self.set_attr(value);
+        self
     }
 }
 
@@ -19831,6 +23731,12 @@ impl Pmccntr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::CCNT_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `CCNT` field set to the given value.
+    pub const fn with_ccnt(mut self, value: u64) -> Self {
+        self.set_ccnt(value);
+        self
     }
 }
 
@@ -20372,6 +24278,12 @@ impl Pmcr {
         );
     }
 
+    /// Returns a copy with the `N` field set to the given value.
+    pub const fn with_n(mut self, value: u8) -> Self {
+        self.set_n(value);
+        self
+    }
+
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
         ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
@@ -20386,6 +24298,12 @@ impl Pmcr {
         );
     }
 
+    /// Returns a copy with the `IDCODE` field set to the given value.
+    pub const fn with_idcode(mut self, value: u8) -> Self {
+        self.set_idcode(value);
+        self
+    }
+
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
         ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
@@ -20398,6 +24316,12 @@ impl Pmcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMP_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `IMP` field set to the given value.
+    pub const fn with_imp(mut self, value: u8) -> Self {
+        self.set_imp(value);
+        self
     }
 }
 
@@ -20477,6 +24401,12 @@ impl PmcrEl0 {
         );
     }
 
+    /// Returns a copy with the `N` field set to the given value.
+    pub const fn with_n(mut self, value: u8) -> Self {
+        self.set_n(value);
+        self
+    }
+
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
         ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
@@ -20491,6 +24421,12 @@ impl PmcrEl0 {
         );
     }
 
+    /// Returns a copy with the `IDCODE` field set to the given value.
+    pub const fn with_idcode(mut self, value: u8) -> Self {
+        self.set_idcode(value);
+        self
+    }
+
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
         ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
@@ -20503,6 +24439,12 @@ impl PmcrEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMP_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IMP` field set to the given value.
+    pub const fn with_imp(mut self, value: u8) -> Self {
+        self.set_imp(value);
+        self
     }
 }
 
@@ -20708,6 +24650,12 @@ impl Pmmir {
         );
     }
 
+    /// Returns a copy with the `SLOTS` field set to the given value.
+    pub const fn with_slots(mut self, value: u8) -> Self {
+        self.set_slots(value);
+        self
+    }
+
     /// Returns the value of the `BUS_SLOTS` field.
     pub const fn bus_slots(self) -> u8 {
         ((self.bits() >> Self::BUS_SLOTS_SHIFT) & 0b11111111) as u8
@@ -20720,6 +24668,12 @@ impl Pmmir {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::BUS_SLOTS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `BUS_SLOTS` field set to the given value.
+    pub const fn with_bus_slots(mut self, value: u8) -> Self {
+        self.set_bus_slots(value);
+        self
     }
 
     /// Returns the value of the `BUS_WIDTH` field.
@@ -20736,6 +24690,12 @@ impl Pmmir {
         );
     }
 
+    /// Returns a copy with the `BUS_WIDTH` field set to the given value.
+    pub const fn with_bus_width(mut self, value: u8) -> Self {
+        self.set_bus_width(value);
+        self
+    }
+
     /// Returns the value of the `THWIDTH` field.
     pub const fn thwidth(self) -> u8 {
         ((self.bits() >> Self::THWIDTH_SHIFT) & 0b1111) as u8
@@ -20750,6 +24710,12 @@ impl Pmmir {
         );
     }
 
+    /// Returns a copy with the `THWIDTH` field set to the given value.
+    pub const fn with_thwidth(mut self, value: u8) -> Self {
+        self.set_thwidth(value);
+        self
+    }
+
     /// Returns the value of the `EDGE` field.
     pub const fn edge(self) -> u8 {
         ((self.bits() >> Self::EDGE_SHIFT) & 0b1111) as u8
@@ -20762,6 +24728,12 @@ impl Pmmir {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::EDGE_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `EDGE` field set to the given value.
+    pub const fn with_edge(mut self, value: u8) -> Self {
+        self.set_edge(value);
+        self
     }
 }
 
@@ -20950,6 +24922,12 @@ impl Pmselr {
             (self.bits() & !(Self::SEL_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `SEL` field set to the given value.
+    pub const fn with_sel(mut self, value: u8) -> Self {
+        self.set_sel(value);
+        self
+    }
 }
 
 bitflags! {
@@ -21085,6 +25063,12 @@ impl Pmxevtyper {
             (self.bits() & !(Self::ETR_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `ETR` field set to the given value.
+    pub const fn with_etr(mut self, value: u32) -> Self {
+        self.set_etr(value);
+        self
+    }
 }
 
 bitflags! {
@@ -21150,6 +25134,12 @@ impl Prrr {
             (self.bits() & !(Self::TR_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `TR<n>` field set to the given value.
+    pub const fn with_tr(mut self, n: u32, value: u8) -> Self {
+        self.set_tr(n, value);
+        self
+    }
 }
 
 #[cfg(feature = "el1")]
@@ -21186,6 +25176,12 @@ impl RgsrEl1 {
         );
     }
 
+    /// Returns a copy with the `TAG` field set to the given value.
+    pub const fn with_tag(mut self, value: u8) -> Self {
+        self.set_tag(value);
+        self
+    }
+
     /// Returns the value of the `SEED` field.
     pub const fn seed(self) -> u16 {
         ((self.bits() >> Self::SEED_SHIFT) & 0b1111111111111111) as u16
@@ -21198,6 +25194,12 @@ impl RgsrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SEED_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SEED` field set to the given value.
+    pub const fn with_seed(mut self, value: u16) -> Self {
+        self.set_seed(value);
+        self
     }
 }
 
@@ -21248,6 +25250,12 @@ impl Rvbar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RESETADDRESS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ResetAddress` field set to the given value.
+    pub const fn with_resetaddress(mut self, value: u32) -> Self {
+        self.set_resetaddress(value);
+        self
     }
 }
 
@@ -21568,6 +25576,12 @@ impl ScrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TWEDEL` field set to the given value.
+    pub const fn with_twedel(mut self, value: u8) -> Self {
+        self.set_twedel(value);
+        self
     }
 }
 
@@ -21963,6 +25977,12 @@ impl SctlrEl1 {
         );
     }
 
+    /// Returns a copy with the `TCF0` field set to the given value.
+    pub const fn with_tcf0(mut self, value: u8) -> Self {
+        self.set_tcf0(value);
+        self
+    }
+
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
         ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
@@ -21977,6 +25997,12 @@ impl SctlrEl1 {
         );
     }
 
+    /// Returns a copy with the `TCF` field set to the given value.
+    pub const fn with_tcf(mut self, value: u8) -> Self {
+        self.set_tcf(value);
+        self
+    }
+
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
@@ -21989,6 +26015,12 @@ impl SctlrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TWEDEL` field set to the given value.
+    pub const fn with_twedel(mut self, value: u8) -> Self {
+        self.set_twedel(value);
+        self
     }
 }
 
@@ -22218,6 +26250,12 @@ impl SctlrEl2 {
         );
     }
 
+    /// Returns a copy with the `TCF0` field set to the given value.
+    pub const fn with_tcf0(mut self, value: u8) -> Self {
+        self.set_tcf0(value);
+        self
+    }
+
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
         ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
@@ -22232,6 +26270,12 @@ impl SctlrEl2 {
         );
     }
 
+    /// Returns a copy with the `TCF` field set to the given value.
+    pub const fn with_tcf(mut self, value: u8) -> Self {
+        self.set_tcf(value);
+        self
+    }
+
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
         ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
@@ -22244,6 +26288,12 @@ impl SctlrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TWEDEL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `TWEDEL` field set to the given value.
+    pub const fn with_twedel(mut self, value: u8) -> Self {
+        self.set_twedel(value);
+        self
     }
 }
 
@@ -22362,6 +26412,12 @@ impl SctlrEl3 {
             (self.bits() & !(Self::TCF_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `TCF` field set to the given value.
+    pub const fn with_tcf(mut self, value: u8) -> Self {
+        self.set_tcf(value);
+        self
+    }
 }
 
 bitflags! {
@@ -22423,6 +26479,12 @@ impl Sdcr {
             (self.bits() & !(Self::SPD_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `SPD` field set to the given value.
+    pub const fn with_spd(mut self, value: u8) -> Self {
+        self.set_spd(value);
+        self
+    }
 }
 
 bitflags! {
@@ -22480,6 +26542,12 @@ impl SmcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LEN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LEN` field set to the given value.
+    pub const fn with_len(mut self, value: u8) -> Self {
+        self.set_len(value);
+        self
     }
 }
 
@@ -22621,6 +26689,12 @@ impl SpsrEl1 {
         );
     }
 
+    /// Returns a copy with the `M[3:0]` field set to the given value.
+    pub const fn with_m_3_0(mut self, value: u8) -> Self {
+        self.set_m_3_0(value);
+        self
+    }
+
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
@@ -22635,6 +26709,12 @@ impl SpsrEl1 {
         );
     }
 
+    /// Returns a copy with the `BTYPE` field set to the given value.
+    pub const fn with_btype(mut self, value: u8) -> Self {
+        self.set_btype(value);
+        self
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
@@ -22647,6 +26727,12 @@ impl SpsrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::GE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `GE` field set to the given value.
+    pub const fn with_ge(mut self, value: u8) -> Self {
+        self.set_ge(value);
+        self
     }
 }
 
@@ -22788,6 +26874,12 @@ impl SpsrEl2 {
         );
     }
 
+    /// Returns a copy with the `M[3:0]` field set to the given value.
+    pub const fn with_m_3_0(mut self, value: u8) -> Self {
+        self.set_m_3_0(value);
+        self
+    }
+
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
@@ -22802,6 +26894,12 @@ impl SpsrEl2 {
         );
     }
 
+    /// Returns a copy with the `BTYPE` field set to the given value.
+    pub const fn with_btype(mut self, value: u8) -> Self {
+        self.set_btype(value);
+        self
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
@@ -22814,6 +26912,12 @@ impl SpsrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::GE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `GE` field set to the given value.
+    pub const fn with_ge(mut self, value: u8) -> Self {
+        self.set_ge(value);
+        self
     }
 }
 
@@ -22955,6 +27059,12 @@ impl SpsrEl3 {
         );
     }
 
+    /// Returns a copy with the `M[3:0]` field set to the given value.
+    pub const fn with_m_3_0(mut self, value: u8) -> Self {
+        self.set_m_3_0(value);
+        self
+    }
+
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
         ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
@@ -22969,6 +27079,12 @@ impl SpsrEl3 {
         );
     }
 
+    /// Returns a copy with the `BTYPE` field set to the given value.
+    pub const fn with_btype(mut self, value: u8) -> Self {
+        self.set_btype(value);
+        self
+    }
+
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
         ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
@@ -22981,6 +27097,12 @@ impl SpsrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::GE_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `GE` field set to the given value.
+    pub const fn with_ge(mut self, value: u8) -> Self {
+        self.set_ge(value);
+        self
     }
 }
 
@@ -23015,6 +27137,12 @@ impl SpEl1 {
             (self.bits() & !(Self::STACKPOINTER_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `StackPointer` field set to the given value.
+    pub const fn with_stackpointer(mut self, value: u64) -> Self {
+        self.set_stackpointer(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -23047,6 +27175,12 @@ impl SpEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::STACKPOINTER_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `StackPointer` field set to the given value.
+    pub const fn with_stackpointer(mut self, value: u64) -> Self {
+        self.set_stackpointer(value);
+        self
     }
 }
 
@@ -23179,6 +27313,12 @@ impl Tcr2El1 {
         );
     }
 
+    /// Returns a copy with the `POIW` field set to the given value.
+    pub const fn with_poiw(mut self, value: u8) -> Self {
+        self.set_poiw(value);
+        self
+    }
+
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
         ((self.bits() >> Self::VTB0_SHIFT) & 0b11111) as u8
@@ -23193,6 +27333,12 @@ impl Tcr2El1 {
         );
     }
 
+    /// Returns a copy with the `VTB0` field set to the given value.
+    pub const fn with_vtb0(mut self, value: u8) -> Self {
+        self.set_vtb0(value);
+        self
+    }
+
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
         ((self.bits() >> Self::VTB1_SHIFT) & 0b11111) as u8
@@ -23205,6 +27351,12 @@ impl Tcr2El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VTB1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VTB1` field set to the given value.
+    pub const fn with_vtb1(mut self, value: u8) -> Self {
+        self.set_vtb1(value);
+        self
     }
 }
 
@@ -23318,6 +27470,12 @@ impl Tcr2El2 {
         );
     }
 
+    /// Returns a copy with the `POIW` field set to the given value.
+    pub const fn with_poiw(mut self, value: u8) -> Self {
+        self.set_poiw(value);
+        self
+    }
+
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
         ((self.bits() >> Self::VTB0_SHIFT) & 0b11111) as u8
@@ -23332,6 +27490,12 @@ impl Tcr2El2 {
         );
     }
 
+    /// Returns a copy with the `VTB0` field set to the given value.
+    pub const fn with_vtb0(mut self, value: u8) -> Self {
+        self.set_vtb0(value);
+        self
+    }
+
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
         ((self.bits() >> Self::VTB1_SHIFT) & 0b11111) as u8
@@ -23344,6 +27508,12 @@ impl Tcr2El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VTB1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VTB1` field set to the given value.
+    pub const fn with_vtb1(mut self, value: u8) -> Self {
+        self.set_vtb1(value);
+        self
     }
 }
 
@@ -23533,6 +27703,12 @@ impl TcrEl1 {
         );
     }
 
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
@@ -23545,6 +27721,12 @@ impl TcrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -23561,6 +27743,12 @@ impl TcrEl1 {
         );
     }
 
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
@@ -23573,6 +27761,12 @@ impl TcrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
     }
 
     /// Returns the value of the `TG0` field.
@@ -23589,6 +27783,12 @@ impl TcrEl1 {
         );
     }
 
+    /// Returns a copy with the `TG0` field set to the given value.
+    pub const fn with_tg0(mut self, value: u8) -> Self {
+        self.set_tg0(value);
+        self
+    }
+
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
         ((self.bits() >> Self::T1SZ_SHIFT) & 0b111111) as u8
@@ -23601,6 +27801,12 @@ impl TcrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::T1SZ_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `T1SZ` field set to the given value.
+    pub const fn with_t1sz(mut self, value: u8) -> Self {
+        self.set_t1sz(value);
+        self
     }
 
     /// Returns the value of the `IRGN1` field.
@@ -23617,6 +27823,12 @@ impl TcrEl1 {
         );
     }
 
+    /// Returns a copy with the `IRGN1` field set to the given value.
+    pub const fn with_irgn1(mut self, value: u8) -> Self {
+        self.set_irgn1(value);
+        self
+    }
+
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
         ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
@@ -23629,6 +27841,12 @@ impl TcrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ORGN1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ORGN1` field set to the given value.
+    pub const fn with_orgn1(mut self, value: u8) -> Self {
+        self.set_orgn1(value);
+        self
     }
 
     /// Returns the value of the `SH1` field.
@@ -23645,6 +27863,12 @@ impl TcrEl1 {
         );
     }
 
+    /// Returns a copy with the `SH1` field set to the given value.
+    pub const fn with_sh1(mut self, value: u8) -> Self {
+        self.set_sh1(value);
+        self
+    }
+
     /// Returns the value of the `TG1` field.
     pub const fn tg1(self) -> u8 {
         ((self.bits() >> Self::TG1_SHIFT) & 0b11) as u8
@@ -23659,6 +27883,12 @@ impl TcrEl1 {
         );
     }
 
+    /// Returns a copy with the `TG1` field set to the given value.
+    pub const fn with_tg1(mut self, value: u8) -> Self {
+        self.set_tg1(value);
+        self
+    }
+
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
         ((self.bits() >> Self::IPS_SHIFT) & 0b111) as u8
@@ -23671,6 +27901,12 @@ impl TcrEl1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IPS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IPS` field set to the given value.
+    pub const fn with_ips(mut self, value: u8) -> Self {
+        self.set_ips(value);
+        self
     }
 }
 
@@ -23898,6 +28134,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
@@ -23910,6 +28152,12 @@ impl TcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -23926,6 +28174,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
@@ -23938,6 +28192,12 @@ impl TcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
     }
 
     /// Returns the value of the `TG0` field.
@@ -23954,6 +28214,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `TG0` field set to the given value.
+    pub const fn with_tg0(mut self, value: u8) -> Self {
+        self.set_tg0(value);
+        self
+    }
+
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
         ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
@@ -23966,6 +28232,12 @@ impl TcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PS` field set to the given value.
+    pub const fn with_ps(mut self, value: u8) -> Self {
+        self.set_ps(value);
+        self
     }
 
     /// Returns the value of the `T1SZ` field.
@@ -23982,6 +28254,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `T1SZ` field set to the given value.
+    pub const fn with_t1sz(mut self, value: u8) -> Self {
+        self.set_t1sz(value);
+        self
+    }
+
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
         ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
@@ -23994,6 +28272,12 @@ impl TcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IRGN1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IRGN1` field set to the given value.
+    pub const fn with_irgn1(mut self, value: u8) -> Self {
+        self.set_irgn1(value);
+        self
     }
 
     /// Returns the value of the `ORGN1` field.
@@ -24010,6 +28294,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `ORGN1` field set to the given value.
+    pub const fn with_orgn1(mut self, value: u8) -> Self {
+        self.set_orgn1(value);
+        self
+    }
+
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
         ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
@@ -24022,6 +28312,12 @@ impl TcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH1` field set to the given value.
+    pub const fn with_sh1(mut self, value: u8) -> Self {
+        self.set_sh1(value);
+        self
     }
 
     /// Returns the value of the `TG1` field.
@@ -24038,6 +28334,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `TG1` field set to the given value.
+    pub const fn with_tg1(mut self, value: u8) -> Self {
+        self.set_tg1(value);
+        self
+    }
+
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
         ((self.bits() >> Self::IPS_SHIFT) & 0b111) as u8
@@ -24052,6 +28354,12 @@ impl TcrEl2 {
         );
     }
 
+    /// Returns a copy with the `IPS` field set to the given value.
+    pub const fn with_ips(mut self, value: u8) -> Self {
+        self.set_ips(value);
+        self
+    }
+
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
         ((self.bits() >> Self::VTB_SHIFT) & 0b11111) as u8
@@ -24064,6 +28372,12 @@ impl TcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VTB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VTB` field set to the given value.
+    pub const fn with_vtb(mut self, value: u8) -> Self {
+        self.set_vtb(value);
+        self
     }
 }
 
@@ -24215,6 +28529,12 @@ impl TcrEl3 {
         );
     }
 
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
+    }
+
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
         ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
@@ -24227,6 +28547,12 @@ impl TcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IRGN0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
     }
 
     /// Returns the value of the `ORGN0` field.
@@ -24243,6 +28569,12 @@ impl TcrEl3 {
         );
     }
 
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
@@ -24255,6 +28587,12 @@ impl TcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
     }
 
     /// Returns the value of the `TG0` field.
@@ -24271,6 +28609,12 @@ impl TcrEl3 {
         );
     }
 
+    /// Returns a copy with the `TG0` field set to the given value.
+    pub const fn with_tg0(mut self, value: u8) -> Self {
+        self.set_tg0(value);
+        self
+    }
+
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
         ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
@@ -24283,6 +28627,12 @@ impl TcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PS` field set to the given value.
+    pub const fn with_ps(mut self, value: u8) -> Self {
+        self.set_ps(value);
+        self
     }
 
     /// Returns the value of the `POIW` field.
@@ -24299,6 +28649,12 @@ impl TcrEl3 {
         );
     }
 
+    /// Returns a copy with the `POIW` field set to the given value.
+    pub const fn with_poiw(mut self, value: u8) -> Self {
+        self.set_poiw(value);
+        self
+    }
+
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
         ((self.bits() >> Self::VTB_SHIFT) & 0b11111) as u8
@@ -24311,6 +28667,12 @@ impl TcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VTB_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VTB` field set to the given value.
+    pub const fn with_vtb(mut self, value: u8) -> Self {
+        self.set_vtb(value);
+        self
     }
 }
 
@@ -24419,6 +28781,12 @@ impl Tpidrprw {
             (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `TID` field set to the given value.
+    pub const fn with_tid(mut self, value: u32) -> Self {
+        self.set_tid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -24450,6 +28818,12 @@ impl TpidrroEl0 {
             (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `ThreadID` field set to the given value.
+    pub const fn with_threadid(mut self, value: u64) -> Self {
+        self.set_threadid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -24479,6 +28853,12 @@ impl Tpidruro {
             (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
         );
     }
+
+    /// Returns a copy with the `TID` field set to the given value.
+    pub const fn with_tid(mut self, value: u32) -> Self {
+        self.set_tid(value);
+        self
+    }
 }
 
 bitflags! {
@@ -24507,6 +28887,12 @@ impl Tpidrurw {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TID_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TID` field set to the given value.
+    pub const fn with_tid(mut self, value: u32) -> Self {
+        self.set_tid(value);
+        self
     }
 }
 
@@ -24538,6 +28924,12 @@ impl TpidrEl0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ThreadID` field set to the given value.
+    pub const fn with_threadid(mut self, value: u64) -> Self {
+        self.set_threadid(value);
+        self
     }
 }
 
@@ -24572,6 +28964,12 @@ impl TpidrEl1 {
             (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `ThreadID` field set to the given value.
+    pub const fn with_threadid(mut self, value: u64) -> Self {
+        self.set_threadid(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -24605,6 +29003,12 @@ impl TpidrEl2 {
             (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `ThreadID` field set to the given value.
+    pub const fn with_threadid(mut self, value: u64) -> Self {
+        self.set_threadid(value);
+        self
+    }
 }
 
 #[cfg(feature = "el3")]
@@ -24637,6 +29041,12 @@ impl TpidrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::THREADID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ThreadID` field set to the given value.
+    pub const fn with_threadid(mut self, value: u64) -> Self {
+        self.set_threadid(value);
+        self
     }
 }
 
@@ -24674,6 +29084,12 @@ impl Trfcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TS_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `TS` field set to the given value.
+    pub const fn with_ts(mut self, value: u8) -> Self {
+        self.set_ts(value);
+        self
     }
 }
 
@@ -24765,6 +29181,12 @@ impl Ttbcr {
         );
     }
 
+    /// Returns a copy with the `N` field set to the given value.
+    pub const fn with_n(mut self, value: u8) -> Self {
+        self.set_n(value);
+        self
+    }
+
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
         ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
@@ -24777,6 +29199,12 @@ impl Ttbcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::T0SZ_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
     }
 
     /// Returns the value of the `IRGN0` field.
@@ -24793,6 +29221,12 @@ impl Ttbcr {
         );
     }
 
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
+    }
+
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
@@ -24805,6 +29239,12 @@ impl Ttbcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
     }
 
     /// Returns the value of the `SH0` field.
@@ -24821,6 +29261,12 @@ impl Ttbcr {
         );
     }
 
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
+    }
+
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
         ((self.bits() >> Self::T1SZ_SHIFT) & 0b111) as u8
@@ -24833,6 +29279,12 @@ impl Ttbcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::T1SZ_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `T1SZ` field set to the given value.
+    pub const fn with_t1sz(mut self, value: u8) -> Self {
+        self.set_t1sz(value);
+        self
     }
 
     /// Returns the value of the `IRGN1` field.
@@ -24849,6 +29301,12 @@ impl Ttbcr {
         );
     }
 
+    /// Returns a copy with the `IRGN1` field set to the given value.
+    pub const fn with_irgn1(mut self, value: u8) -> Self {
+        self.set_irgn1(value);
+        self
+    }
+
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
         ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
@@ -24863,6 +29321,12 @@ impl Ttbcr {
         );
     }
 
+    /// Returns a copy with the `ORGN1` field set to the given value.
+    pub const fn with_orgn1(mut self, value: u8) -> Self {
+        self.set_orgn1(value);
+        self
+    }
+
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
         ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
@@ -24875,6 +29339,12 @@ impl Ttbcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH1_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH1` field set to the given value.
+    pub const fn with_sh1(mut self, value: u8) -> Self {
+        self.set_sh1(value);
+        self
     }
 }
 
@@ -24986,6 +29456,12 @@ impl Ttbr0 {
         );
     }
 
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+
     /// Returns the value of the `RGN` field.
     pub const fn rgn(self) -> u8 {
         ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
@@ -24998,6 +29474,12 @@ impl Ttbr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RGN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `RGN` field set to the given value.
+    pub const fn with_rgn(mut self, value: u8) -> Self {
+        self.set_rgn(value);
+        self
     }
 
     /// Returns the value of the `TTB0` field.
@@ -25014,6 +29496,12 @@ impl Ttbr0 {
         );
     }
 
+    /// Returns a copy with the `TTB0` field set to the given value.
+    pub const fn with_ttb0(mut self, value: u32) -> Self {
+        self.set_ttb0(value);
+        self
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
@@ -25026,6 +29514,12 @@ impl Ttbr0 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u8) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -25072,6 +29566,12 @@ impl Ttbr0El1 {
         );
     }
 
+    /// Returns a copy with the `BADDR[47:1]` field set to the given value.
+    pub const fn with_baddr_47_1(mut self, value: u64) -> Self {
+        self.set_baddr_47_1(value);
+        self
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
@@ -25086,6 +29586,12 @@ impl Ttbr0El1 {
         );
     }
 
+    /// Returns a copy with the `SKL` field set to the given value.
+    pub const fn with_skl(mut self, value: u8) -> Self {
+        self.set_skl(value);
+        self
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
@@ -25098,6 +29604,12 @@ impl Ttbr0El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u16) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -25144,6 +29656,12 @@ impl Ttbr0El2 {
         );
     }
 
+    /// Returns a copy with the `BADDR[47:1]` field set to the given value.
+    pub const fn with_baddr_47_1(mut self, value: u64) -> Self {
+        self.set_baddr_47_1(value);
+        self
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
@@ -25158,6 +29676,12 @@ impl Ttbr0El2 {
         );
     }
 
+    /// Returns a copy with the `SKL` field set to the given value.
+    pub const fn with_skl(mut self, value: u8) -> Self {
+        self.set_skl(value);
+        self
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
@@ -25170,6 +29694,12 @@ impl Ttbr0El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u16) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -25205,6 +29735,12 @@ impl Ttbr0El3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SKL` field set to the given value.
+    pub const fn with_skl(mut self, value: u8) -> Self {
+        self.set_skl(value);
+        self
     }
 }
 
@@ -25265,6 +29801,12 @@ impl Ttbr1 {
         );
     }
 
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+
     /// Returns the value of the `RGN` field.
     pub const fn rgn(self) -> u8 {
         ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
@@ -25277,6 +29819,12 @@ impl Ttbr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::RGN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `RGN` field set to the given value.
+    pub const fn with_rgn(mut self, value: u8) -> Self {
+        self.set_rgn(value);
+        self
     }
 
     /// Returns the value of the `TTB1` field.
@@ -25293,6 +29841,12 @@ impl Ttbr1 {
         );
     }
 
+    /// Returns a copy with the `TTB1` field set to the given value.
+    pub const fn with_ttb1(mut self, value: u32) -> Self {
+        self.set_ttb1(value);
+        self
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
@@ -25305,6 +29859,12 @@ impl Ttbr1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u8) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -25351,6 +29911,12 @@ impl Ttbr1El1 {
         );
     }
 
+    /// Returns a copy with the `BADDR[47:1]` field set to the given value.
+    pub const fn with_baddr_47_1(mut self, value: u64) -> Self {
+        self.set_baddr_47_1(value);
+        self
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
@@ -25365,6 +29931,12 @@ impl Ttbr1El1 {
         );
     }
 
+    /// Returns a copy with the `SKL` field set to the given value.
+    pub const fn with_skl(mut self, value: u8) -> Self {
+        self.set_skl(value);
+        self
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
@@ -25377,6 +29949,12 @@ impl Ttbr1El1 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u16) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -25423,6 +30001,12 @@ impl Ttbr1El2 {
         );
     }
 
+    /// Returns a copy with the `BADDR[47:1]` field set to the given value.
+    pub const fn with_baddr_47_1(mut self, value: u64) -> Self {
+        self.set_baddr_47_1(value);
+        self
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
@@ -25437,6 +30021,12 @@ impl Ttbr1El2 {
         );
     }
 
+    /// Returns a copy with the `SKL` field set to the given value.
+    pub const fn with_skl(mut self, value: u8) -> Self {
+        self.set_skl(value);
+        self
+    }
+
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
         ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
@@ -25449,6 +30039,12 @@ impl Ttbr1El2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ASID` field set to the given value.
+    pub const fn with_asid(mut self, value: u16) -> Self {
+        self.set_asid(value);
+        self
     }
 }
 
@@ -25478,6 +30074,12 @@ impl Vbar {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `VBA` field set to the given value.
+    pub const fn with_vba(mut self, value: u32) -> Self {
+        self.set_vba(value);
+        self
     }
 }
 
@@ -25515,6 +30117,12 @@ impl VbarEl1 {
             (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `VBA` field set to the given value.
+    pub const fn with_vba(mut self, value: u64) -> Self {
+        self.set_vba(value);
+        self
+    }
 }
 
 #[cfg(feature = "el2")]
@@ -25551,6 +30159,12 @@ impl VbarEl2 {
             (self.bits() & !(Self::VBA_MASK << offset)) | ((value as u64) << offset),
         );
     }
+
+    /// Returns a copy with the `VBA` field set to the given value.
+    pub const fn with_vba(mut self, value: u64) -> Self {
+        self.set_vba(value);
+        self
+    }
 }
 
 bitflags! {
@@ -25583,6 +30197,12 @@ impl Vdfsr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AET_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AET` field set to the given value.
+    pub const fn with_aet(mut self, value: u8) -> Self {
+        self.set_aet(value);
+        self
     }
 }
 
@@ -25630,6 +30250,12 @@ impl Vdisr {
         );
     }
 
+    /// Returns a copy with the `STATUS` field set to the given value.
+    pub const fn with_status(mut self, value: u8) -> Self {
+        self.set_status(value);
+        self
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
@@ -25642,6 +30268,12 @@ impl Vdisr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AET_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `AET` field set to the given value.
+    pub const fn with_aet(mut self, value: u8) -> Self {
+        self.set_aet(value);
+        self
     }
 }
 
@@ -25699,6 +30331,12 @@ impl VdisrEl2 {
         );
     }
 
+    /// Returns a copy with the `ISS` field set to the given value.
+    pub const fn with_iss(mut self, value: u32) -> Self {
+        self.set_iss(value);
+        self
+    }
+
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
         ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
@@ -25713,6 +30351,12 @@ impl VdisrEl2 {
         );
     }
 
+    /// Returns a copy with the `STATUS` field set to the given value.
+    pub const fn with_status(mut self, value: u8) -> Self {
+        self.set_status(value);
+        self
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
@@ -25725,6 +30369,12 @@ impl VdisrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AET_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `AET` field set to the given value.
+    pub const fn with_aet(mut self, value: u8) -> Self {
+        self.set_aet(value);
+        self
     }
 }
 
@@ -25776,6 +30426,12 @@ impl Vmpidr {
         );
     }
 
+    /// Returns a copy with the `Aff0` field set to the given value.
+    pub const fn with_aff0(mut self, value: u8) -> Self {
+        self.set_aff0(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -25790,6 +30446,12 @@ impl Vmpidr {
         );
     }
 
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
+    }
+
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
         ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
@@ -25802,6 +30464,12 @@ impl Vmpidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
     }
 }
 
@@ -25857,6 +30525,12 @@ impl VmpidrEl2 {
         );
     }
 
+    /// Returns a copy with the `Aff0` field set to the given value.
+    pub const fn with_aff0(mut self, value: u8) -> Self {
+        self.set_aff0(value);
+        self
+    }
+
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
         ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
@@ -25869,6 +30543,12 @@ impl VmpidrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff1` field set to the given value.
+    pub const fn with_aff1(mut self, value: u8) -> Self {
+        self.set_aff1(value);
+        self
     }
 
     /// Returns the value of the `Aff2` field.
@@ -25885,6 +30565,12 @@ impl VmpidrEl2 {
         );
     }
 
+    /// Returns a copy with the `Aff2` field set to the given value.
+    pub const fn with_aff2(mut self, value: u8) -> Self {
+        self.set_aff2(value);
+        self
+    }
+
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
         ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
@@ -25897,6 +30583,12 @@ impl VmpidrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Aff3` field set to the given value.
+    pub const fn with_aff3(mut self, value: u8) -> Self {
+        self.set_aff3(value);
+        self
     }
 }
 
@@ -25944,6 +30636,12 @@ impl Vpidr {
         );
     }
 
+    /// Returns a copy with the `Revision` field set to the given value.
+    pub const fn with_revision(mut self, value: u8) -> Self {
+        self.set_revision(value);
+        self
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
@@ -25956,6 +30654,12 @@ impl Vpidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `PartNum` field set to the given value.
+    pub const fn with_partnum(mut self, value: u16) -> Self {
+        self.set_partnum(value);
+        self
     }
 
     /// Returns the value of the `Architecture` field.
@@ -25972,6 +30676,12 @@ impl Vpidr {
         );
     }
 
+    /// Returns a copy with the `Architecture` field set to the given value.
+    pub const fn with_architecture(mut self, value: u8) -> Self {
+        self.set_architecture(value);
+        self
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
@@ -25986,6 +30696,12 @@ impl Vpidr {
         );
     }
 
+    /// Returns a copy with the `Variant` field set to the given value.
+    pub const fn with_variant(mut self, value: u8) -> Self {
+        self.set_variant(value);
+        self
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
@@ -25998,6 +30714,12 @@ impl Vpidr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `Implementer` field set to the given value.
+    pub const fn with_implementer(mut self, value: u8) -> Self {
+        self.set_implementer(value);
+        self
     }
 }
 
@@ -26047,6 +30769,12 @@ impl VpidrEl2 {
         );
     }
 
+    /// Returns a copy with the `Revision` field set to the given value.
+    pub const fn with_revision(mut self, value: u8) -> Self {
+        self.set_revision(value);
+        self
+    }
+
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
         ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
@@ -26059,6 +30787,12 @@ impl VpidrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PARTNUM_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PartNum` field set to the given value.
+    pub const fn with_partnum(mut self, value: u16) -> Self {
+        self.set_partnum(value);
+        self
     }
 
     /// Returns the value of the `Architecture` field.
@@ -26075,6 +30809,12 @@ impl VpidrEl2 {
         );
     }
 
+    /// Returns a copy with the `Architecture` field set to the given value.
+    pub const fn with_architecture(mut self, value: u8) -> Self {
+        self.set_architecture(value);
+        self
+    }
+
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
         ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
@@ -26089,6 +30829,12 @@ impl VpidrEl2 {
         );
     }
 
+    /// Returns a copy with the `Variant` field set to the given value.
+    pub const fn with_variant(mut self, value: u8) -> Self {
+        self.set_variant(value);
+        self
+    }
+
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
         ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
@@ -26101,6 +30847,12 @@ impl VpidrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IMPLEMENTER_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `Implementer` field set to the given value.
+    pub const fn with_implementer(mut self, value: u8) -> Self {
+        self.set_implementer(value);
+        self
     }
 }
 
@@ -26146,6 +30898,12 @@ impl VsesrEl2 {
         );
     }
 
+    /// Returns a copy with the `ISS` field set to the given value.
+    pub const fn with_iss(mut self, value: u32) -> Self {
+        self.set_iss(value);
+        self
+    }
+
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
         ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
@@ -26158,6 +30916,12 @@ impl VsesrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::AET_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `AET` field set to the given value.
+    pub const fn with_aet(mut self, value: u8) -> Self {
+        self.set_aet(value);
+        self
     }
 }
 
@@ -26227,6 +30991,12 @@ impl Vtcr {
         );
     }
 
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
+    }
+
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
         ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
@@ -26239,6 +31009,12 @@ impl Vtcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SL0_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SL0` field set to the given value.
+    pub const fn with_sl0(mut self, value: u8) -> Self {
+        self.set_sl0(value);
+        self
     }
 
     /// Returns the value of the `IRGN0` field.
@@ -26255,6 +31031,12 @@ impl Vtcr {
         );
     }
 
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
+    }
+
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
@@ -26269,6 +31051,12 @@ impl Vtcr {
         );
     }
 
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
+    }
+
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
         ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
@@ -26281,6 +31069,12 @@ impl Vtcr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SH0_MASK << offset)) | ((value as u32) << offset),
         );
+    }
+
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
     }
 }
 
@@ -26420,6 +31214,12 @@ impl VtcrEl2 {
         );
     }
 
+    /// Returns a copy with the `T0SZ` field set to the given value.
+    pub const fn with_t0sz(mut self, value: u8) -> Self {
+        self.set_t0sz(value);
+        self
+    }
+
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
         ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
@@ -26432,6 +31232,12 @@ impl VtcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::SL0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `SL0` field set to the given value.
+    pub const fn with_sl0(mut self, value: u8) -> Self {
+        self.set_sl0(value);
+        self
     }
 
     /// Returns the value of the `IRGN0` field.
@@ -26448,6 +31254,12 @@ impl VtcrEl2 {
         );
     }
 
+    /// Returns a copy with the `IRGN0` field set to the given value.
+    pub const fn with_irgn0(mut self, value: u8) -> Self {
+        self.set_irgn0(value);
+        self
+    }
+
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
         ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
@@ -26460,6 +31272,12 @@ impl VtcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ORGN0_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `ORGN0` field set to the given value.
+    pub const fn with_orgn0(mut self, value: u8) -> Self {
+        self.set_orgn0(value);
+        self
     }
 
     /// Returns the value of the `SH0` field.
@@ -26476,6 +31294,12 @@ impl VtcrEl2 {
         );
     }
 
+    /// Returns a copy with the `SH0` field set to the given value.
+    pub const fn with_sh0(mut self, value: u8) -> Self {
+        self.set_sh0(value);
+        self
+    }
+
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
         ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
@@ -26490,6 +31314,12 @@ impl VtcrEl2 {
         );
     }
 
+    /// Returns a copy with the `TG0` field set to the given value.
+    pub const fn with_tg0(mut self, value: u8) -> Self {
+        self.set_tg0(value);
+        self
+    }
+
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
         ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
@@ -26502,6 +31332,12 @@ impl VtcrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::PS_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `PS` field set to the given value.
+    pub const fn with_ps(mut self, value: u8) -> Self {
+        self.set_ps(value);
+        self
     }
 }
 
@@ -26542,6 +31378,12 @@ impl Vttbr {
         );
     }
 
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u8 {
         ((self.bits() >> Self::VMID_SHIFT) & 0b11111111) as u8
@@ -26554,6 +31396,12 @@ impl Vttbr {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VMID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VMID` field set to the given value.
+    pub const fn with_vmid(mut self, value: u8) -> Self {
+        self.set_vmid(value);
+        self
     }
 }
 
@@ -26600,6 +31448,12 @@ impl VttbrEl2 {
         );
     }
 
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
         ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
@@ -26614,6 +31468,12 @@ impl VttbrEl2 {
         );
     }
 
+    /// Returns a copy with the `SKL` field set to the given value.
+    pub const fn with_skl(mut self, value: u8) -> Self {
+        self.set_skl(value);
+        self
+    }
+
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u16 {
         ((self.bits() >> Self::VMID_SHIFT) & 0b1111111111111111) as u16
@@ -26626,6 +31486,12 @@ impl VttbrEl2 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::VMID_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `VMID` field set to the given value.
+    pub const fn with_vmid(mut self, value: u16) -> Self {
+        self.set_vmid(value);
+        self
     }
 }
 
@@ -26657,6 +31523,12 @@ impl ZcrEl3 {
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::LEN_MASK << offset)) | ((value as u64) << offset),
         );
+    }
+
+    /// Returns a copy with the `LEN` field set to the given value.
+    pub const fn with_len(mut self, value: u8) -> Self {
+        self.set_len(value);
+        self
     }
 }
 

@@ -485,6 +485,42 @@ impl RegisterInfo {
             )?;
 
             writeln!(writer, "    }}")?;
+
+            // Emit a `with_<field>()` method.
+            writeln!(writer)?;
+            writeln!(
+                writer,
+                "    /// Returns a copy with the `{}` field set to the given value.",
+                field.name
+            )?;
+            if let Some(description) = &field.description {
+                writeln!(writer, "    ///")?;
+                writeln!(writer, "    /// {description}")?;
+            }
+
+            if let Some(array_info) = &field.array_info {
+                let array_function_name =
+                    field.function_name().replace(&array_info.placeholder(), "");
+                writeln!(
+                    writer,
+                    "    pub {constness}fn with_{}(mut self, {}: u32, value: {field_type}) -> Self {{",
+                    array_function_name, array_info.index_variable,
+                )?;
+                writeln!(
+                    writer,
+                    "        self.set_{}({}, value);",
+                    array_function_name, array_info.index_variable,
+                )?;
+            } else {
+                writeln!(
+                    writer,
+                    "    pub {constness}fn with_{}(mut self, value: {field_type}) -> Self {{",
+                    field.function_name()
+                )?;
+                writeln!(writer, "        self.set_{}(value);", field.function_name())?;
+            }
+            writeln!(writer, "        self")?;
+            writeln!(writer, "    }}")?;
         }
 
         writeln!(writer, "}}")?;

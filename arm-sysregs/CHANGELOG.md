@@ -6,6 +6,8 @@
 
 - Added more GIC registers.
 - Made some GIC registers safe to write.
+- Added `with_*` methods to set fields taking `self` by value and returning it. This allows a less
+  verbose builder pattern for register values.
 
 ### Bugfixes
 
