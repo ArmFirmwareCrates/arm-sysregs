@@ -137,6 +137,7 @@ impl RegisterInfo {
                         .replace(&format!("<{}>", register.index_variable), &format!("{i}"));
                     RegisterInfo {
                         name,
+                        original_name: register.name.clone(),
                         description: None,
                         width,
                         aarch32,
@@ -175,6 +176,7 @@ impl RegisterInfo {
 
         RegisterInfo {
             name: register.name.clone(),
+            original_name: register.name.clone(),
             description: None,
             width,
             aarch32,
