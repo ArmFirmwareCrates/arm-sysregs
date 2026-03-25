@@ -4,27 +4,32 @@
 // This file is generated, do not edit manually.
 
 use crate::{
-    Amcfgr, Amcgcr, Amcntenclr0, Amcntenclr1, Amcntenset0, Amcntenset1, Amcr, Amuserenr, Ccsidr,
-    Ccsidr2, Clidr, Cntfrq, CntfrqEl0, Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl,
-    CnthpsCval, CnthpsTval, CnthvCtl, CnthvCval, CnthvTval, CnthvsCtl, CnthvsCval, CnthvsTval,
-    Cntkctl, CntpCtl, CntpCtlEl0, CntpCval, CntpCvalEl0, CntpTval, CntpTvalEl0, Cntpct, CntpctEl0,
-    Cntpctss, CntpctssEl0, CntvCtl, CntvCtlEl0, CntvCval, CntvCvalEl0, CntvTval, CntvTvalEl0,
-    Cntvct, CntvctEl0, Cntvctss, CntvctssEl0, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0,
-    Currentel, Dacr, Dbgauthstatus, Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1,
-    Dbgdidr, Dbgdrar, Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint,
-    Dbgosdlr, Dbgoseccr, Dbgoslar, Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr,
-    Dspsr2, Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0,
-    Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr,
-    Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr,
-    Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1, IccHppir0,
-    IccHppir1, IccHsre, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccMctlr, IccMgrpen1, IccMsre,
-    IccPmr, IccRpr, IccSgi0r, IccSgi1r, IccSre, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3,
-    IdIsar4, IdIsar5, IdIsar6, IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0,
-    IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr,
-    Pmccntr, Pmceid0, Pmceid1, Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr,
-    Pmintenset, Pmmir, Pmovsr, Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar,
-    Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr,
-    Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
+    Amcfgr, AmcfgrEl0, Amcgcr, Amcntenclr0, Amcntenclr1, Amcntenset0, Amcntenset1, Amcr, AmcrEl0,
+    Amevcntr00, Amevcntr00El0, Amevcntr01, Amevcntr01El0, Amevcntr02, Amevcntr02El0, Amevcntr03,
+    Amevcntr03El0, Amevcntr10El0, Amevcntr11El0, Amevcntr12El0, Amevcntr13El0, Amevcntr14El0,
+    Amevcntr15El0, Amevcntr16El0, Amevcntr17El0, Amevcntr18El0, Amevcntr19El0, Amevcntr110El0,
+    Amevcntr111El0, Amevcntr112El0, Amevcntr113El0, Amevcntr114El0, Amevcntr115El0, Amuserenr,
+    AmuserenrEl0, Ccsidr, Ccsidr2, Clidr, Cntfrq, CntfrqEl0, Cnthctl, CnthpCtl, CnthpCval,
+    CnthpTval, CnthpsCtl, CnthpsCval, CnthpsTval, CnthvCtl, CnthvCval, CnthvTval, CnthvsCtl,
+    CnthvsCval, CnthvsTval, Cntkctl, CntpCtl, CntpCtlEl0, CntpCval, CntpCvalEl0, CntpTval,
+    CntpTvalEl0, Cntpct, CntpctEl0, Cntpctss, CntpctssEl0, CntvCtl, CntvCtlEl0, CntvCval,
+    CntvCvalEl0, CntvTval, CntvTvalEl0, Cntvct, CntvctEl0, Cntvctss, CntvctssEl0, Cntvoff,
+    Contextidr, Cpacr, Csselr, Ctr, CtrEl0, Currentel, Dacr, Dbgauthstatus, Dbgclaimclr,
+    Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1, Dbgdidr, Dbgdrar, Dbgdscrext, Dbgdscrint,
+    Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint, Dbgosdlr, Dbgoseccr, Dbgoslar, Dbgoslsr,
+    Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr, Dspsr2, Erridr, Errselr, Erxaddr, Erxaddr2,
+    Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0, Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5,
+    Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr, Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar,
+    Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr, Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr,
+    IccDir, IccEoir0, IccEoir1, IccHppir0, IccHppir1, IccHsre, IccIar0, IccIar1, IccIgrpen0,
+    IccIgrpen1, IccMctlr, IccMgrpen1, IccMsre, IccPmr, IccRpr, IccSgi0r, IccSgi1r, IccSre, IdDfr0,
+    IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5, IdIsar6, IdMmfr0, IdMmfr1,
+    IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0, Mair1,
+    Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2, Pmceid3,
+    Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset, Pmmir, Pmovsr, Pmovsset, Pmselr,
+    Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr,
+    TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar,
+    Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el1")]
 use crate::{
@@ -100,6 +105,8 @@ pub struct SystemRegisters {
     pub amair_el2: u64,
     /// Fake value for the `AMCFGR` system register.
     pub amcfgr: Amcfgr,
+    /// Fake value for the `AMCFGR_EL0` system register.
+    pub amcfgr_el0: AmcfgrEl0,
     /// Fake value for the `AMCGCR` system register.
     pub amcgcr: Amcgcr,
     /// Fake value for the `AMCNTENCLR0` system register.
@@ -112,8 +119,60 @@ pub struct SystemRegisters {
     pub amcntenset1: Amcntenset1,
     /// Fake value for the `AMCR` system register.
     pub amcr: Amcr,
+    /// Fake value for the `AMCR_EL0` system register.
+    pub amcr_el0: AmcrEl0,
+    /// Fake value for the `AMEVCNTR00` system register.
+    pub amevcntr00: Amevcntr00,
+    /// Fake value for the `AMEVCNTR00_EL0` system register.
+    pub amevcntr00_el0: Amevcntr00El0,
+    /// Fake value for the `AMEVCNTR01` system register.
+    pub amevcntr01: Amevcntr01,
+    /// Fake value for the `AMEVCNTR01_EL0` system register.
+    pub amevcntr01_el0: Amevcntr01El0,
+    /// Fake value for the `AMEVCNTR02` system register.
+    pub amevcntr02: Amevcntr02,
+    /// Fake value for the `AMEVCNTR02_EL0` system register.
+    pub amevcntr02_el0: Amevcntr02El0,
+    /// Fake value for the `AMEVCNTR03` system register.
+    pub amevcntr03: Amevcntr03,
+    /// Fake value for the `AMEVCNTR03_EL0` system register.
+    pub amevcntr03_el0: Amevcntr03El0,
+    /// Fake value for the `AMEVCNTR10_EL0` system register.
+    pub amevcntr10_el0: Amevcntr10El0,
+    /// Fake value for the `AMEVCNTR110_EL0` system register.
+    pub amevcntr110_el0: Amevcntr110El0,
+    /// Fake value for the `AMEVCNTR111_EL0` system register.
+    pub amevcntr111_el0: Amevcntr111El0,
+    /// Fake value for the `AMEVCNTR112_EL0` system register.
+    pub amevcntr112_el0: Amevcntr112El0,
+    /// Fake value for the `AMEVCNTR113_EL0` system register.
+    pub amevcntr113_el0: Amevcntr113El0,
+    /// Fake value for the `AMEVCNTR114_EL0` system register.
+    pub amevcntr114_el0: Amevcntr114El0,
+    /// Fake value for the `AMEVCNTR115_EL0` system register.
+    pub amevcntr115_el0: Amevcntr115El0,
+    /// Fake value for the `AMEVCNTR11_EL0` system register.
+    pub amevcntr11_el0: Amevcntr11El0,
+    /// Fake value for the `AMEVCNTR12_EL0` system register.
+    pub amevcntr12_el0: Amevcntr12El0,
+    /// Fake value for the `AMEVCNTR13_EL0` system register.
+    pub amevcntr13_el0: Amevcntr13El0,
+    /// Fake value for the `AMEVCNTR14_EL0` system register.
+    pub amevcntr14_el0: Amevcntr14El0,
+    /// Fake value for the `AMEVCNTR15_EL0` system register.
+    pub amevcntr15_el0: Amevcntr15El0,
+    /// Fake value for the `AMEVCNTR16_EL0` system register.
+    pub amevcntr16_el0: Amevcntr16El0,
+    /// Fake value for the `AMEVCNTR17_EL0` system register.
+    pub amevcntr17_el0: Amevcntr17El0,
+    /// Fake value for the `AMEVCNTR18_EL0` system register.
+    pub amevcntr18_el0: Amevcntr18El0,
+    /// Fake value for the `AMEVCNTR19_EL0` system register.
+    pub amevcntr19_el0: Amevcntr19El0,
     /// Fake value for the `AMUSERENR` system register.
     pub amuserenr: Amuserenr,
+    /// Fake value for the `AMUSERENR_EL0` system register.
+    pub amuserenr_el0: AmuserenrEl0,
     #[cfg(feature = "el1")]
     /// Fake value for the `APIAKeyHi_EL1` system register.
     pub apiakeyhi_el1: ApiakeyhiEl1,
@@ -1079,13 +1138,40 @@ impl SystemRegisters {
             #[cfg(feature = "el2")]
             amair_el2: 0,
             amcfgr: Amcfgr::empty(),
+            amcfgr_el0: AmcfgrEl0::empty(),
             amcgcr: Amcgcr::empty(),
             amcntenclr0: Amcntenclr0::empty(),
             amcntenclr1: Amcntenclr1::empty(),
             amcntenset0: Amcntenset0::empty(),
             amcntenset1: Amcntenset1::empty(),
             amcr: Amcr::empty(),
+            amcr_el0: AmcrEl0::empty(),
+            amevcntr00: Amevcntr00::empty(),
+            amevcntr00_el0: Amevcntr00El0::empty(),
+            amevcntr01: Amevcntr01::empty(),
+            amevcntr01_el0: Amevcntr01El0::empty(),
+            amevcntr02: Amevcntr02::empty(),
+            amevcntr02_el0: Amevcntr02El0::empty(),
+            amevcntr03: Amevcntr03::empty(),
+            amevcntr03_el0: Amevcntr03El0::empty(),
+            amevcntr10_el0: Amevcntr10El0::empty(),
+            amevcntr110_el0: Amevcntr110El0::empty(),
+            amevcntr111_el0: Amevcntr111El0::empty(),
+            amevcntr112_el0: Amevcntr112El0::empty(),
+            amevcntr113_el0: Amevcntr113El0::empty(),
+            amevcntr114_el0: Amevcntr114El0::empty(),
+            amevcntr115_el0: Amevcntr115El0::empty(),
+            amevcntr11_el0: Amevcntr11El0::empty(),
+            amevcntr12_el0: Amevcntr12El0::empty(),
+            amevcntr13_el0: Amevcntr13El0::empty(),
+            amevcntr14_el0: Amevcntr14El0::empty(),
+            amevcntr15_el0: Amevcntr15El0::empty(),
+            amevcntr16_el0: Amevcntr16El0::empty(),
+            amevcntr17_el0: Amevcntr17El0::empty(),
+            amevcntr18_el0: Amevcntr18El0::empty(),
+            amevcntr19_el0: Amevcntr19El0::empty(),
             amuserenr: Amuserenr::empty(),
+            amuserenr_el0: AmuserenrEl0::empty(),
             #[cfg(feature = "el1")]
             apiakeyhi_el1: ApiakeyhiEl1::empty(),
             #[cfg(feature = "el1")]

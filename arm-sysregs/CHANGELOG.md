@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Added AMU registers.
+
 ## 0.2.6
 
 ### New features

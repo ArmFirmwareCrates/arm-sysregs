@@ -110,6 +110,93 @@ impl Amcfgr {
 }
 
 bitflags! {
+    /// `AMCFGR_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct AmcfgrEl0: u64 {
+        /// `HDBG` bit.
+        const HDBG = 1 << 24;
+    }
+}
+
+impl AmcfgrEl0 {
+    /// Offset of the `N` field.
+    pub const N_SHIFT: u32 = 0;
+    /// Mask for the `N` field.
+    pub const N_MASK: u64 = 0b11111111;
+    /// Offset of the `SIZE` field.
+    pub const SIZE_SHIFT: u32 = 8;
+    /// Mask for the `SIZE` field.
+    pub const SIZE_MASK: u64 = 0b111111;
+    /// Offset of the `HDBG` field.
+    pub const HDBG_SHIFT: u32 = 24;
+    /// Offset of the `NCG` field.
+    pub const NCG_SHIFT: u32 = 28;
+    /// Mask for the `NCG` field.
+    pub const NCG_MASK: u64 = 0b1111;
+
+    /// Returns the value of the `N` field.
+    pub const fn n(self) -> u8 {
+        ((self.bits() >> Self::N_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `N` field.
+    pub const fn set_n(&mut self, value: u8) {
+        let offset = Self::N_SHIFT;
+        assert!(value & (Self::N_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::N_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `N` field set to the given value.
+    pub const fn with_n(mut self, value: u8) -> Self {
+        self.set_n(value);
+        self
+    }
+
+    /// Returns the value of the `SIZE` field.
+    pub const fn size(self) -> u8 {
+        ((self.bits() >> Self::SIZE_SHIFT) & 0b111111) as u8
+    }
+
+    /// Sets the value of the `SIZE` field.
+    pub const fn set_size(&mut self, value: u8) {
+        let offset = Self::SIZE_SHIFT;
+        assert!(value & (Self::SIZE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SIZE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `SIZE` field set to the given value.
+    pub const fn with_size(mut self, value: u8) -> Self {
+        self.set_size(value);
+        self
+    }
+
+    /// Returns the value of the `NCG` field.
+    pub const fn ncg(self) -> u8 {
+        ((self.bits() >> Self::NCG_SHIFT) & 0b1111) as u8
+    }
+
+    /// Sets the value of the `NCG` field.
+    pub const fn set_ncg(&mut self, value: u8) {
+        let offset = Self::NCG_SHIFT;
+        assert!(value & (Self::NCG_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::NCG_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `NCG` field set to the given value.
+    pub const fn with_ncg(mut self, value: u8) -> Self {
+        self.set_ncg(value);
+        self
+    }
+}
+
+bitflags! {
     /// `AMCGCR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -320,6 +407,889 @@ impl Amcr {
 }
 
 bitflags! {
+    /// `AMCR_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct AmcrEl0: u64 {
+        /// `HDBG` bit.
+        const HDBG = 1 << 10;
+        /// `CG1RZ` bit.
+        const CG1RZ = 1 << 17;
+    }
+}
+
+impl AmcrEl0 {
+    /// Offset of the `HDBG` field.
+    pub const HDBG_SHIFT: u32 = 10;
+    /// Offset of the `CG1RZ` field.
+    pub const CG1RZ_SHIFT: u32 = 17;
+}
+
+bitflags! {
+    /// `AMEVCNTR00` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr00: u64 {
+    }
+}
+
+impl Amevcntr00 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR00_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr00El0: u64 {
+    }
+}
+
+impl Amevcntr00El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR01` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr01: u64 {
+    }
+}
+
+impl Amevcntr01 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR01_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr01El0: u64 {
+    }
+}
+
+impl Amevcntr01El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR02` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr02: u64 {
+    }
+}
+
+impl Amevcntr02 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR02_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr02El0: u64 {
+    }
+}
+
+impl Amevcntr02El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR03` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr03: u64 {
+    }
+}
+
+impl Amevcntr03 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR03_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr03El0: u64 {
+    }
+}
+
+impl Amevcntr03El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR10_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr10El0: u64 {
+    }
+}
+
+impl Amevcntr10El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR110_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr110El0: u64 {
+    }
+}
+
+impl Amevcntr110El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR111_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr111El0: u64 {
+    }
+}
+
+impl Amevcntr111El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR112_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr112El0: u64 {
+    }
+}
+
+impl Amevcntr112El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR113_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr113El0: u64 {
+    }
+}
+
+impl Amevcntr113El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR114_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr114El0: u64 {
+    }
+}
+
+impl Amevcntr114El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR115_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr115El0: u64 {
+    }
+}
+
+impl Amevcntr115El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR11_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr11El0: u64 {
+    }
+}
+
+impl Amevcntr11El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR12_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr12El0: u64 {
+    }
+}
+
+impl Amevcntr12El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR13_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr13El0: u64 {
+    }
+}
+
+impl Amevcntr13El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR14_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr14El0: u64 {
+    }
+}
+
+impl Amevcntr14El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR15_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr15El0: u64 {
+    }
+}
+
+impl Amevcntr15El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR16_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr16El0: u64 {
+    }
+}
+
+impl Amevcntr16El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR17_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr17El0: u64 {
+    }
+}
+
+impl Amevcntr17El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR18_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr18El0: u64 {
+    }
+}
+
+impl Amevcntr18El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVCNTR19_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntr19El0: u64 {
+    }
+}
+
+impl Amevcntr19El0 {
+    /// Offset of the `ACNT` field.
+    pub const ACNT_SHIFT: u32 = 0;
+    /// Mask for the `ACNT` field.
+    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+
+    /// Returns the value of the `ACNT` field.
+    pub const fn acnt(self) -> u64 {
+        ((self.bits() >> Self::ACNT_SHIFT)
+            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+    }
+
+    /// Sets the value of the `ACNT` field.
+    pub const fn set_acnt(&mut self, value: u64) {
+        let offset = Self::ACNT_SHIFT;
+        assert!(value & (Self::ACNT_MASK as u64) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACNT` field set to the given value.
+    pub const fn with_acnt(mut self, value: u64) -> Self {
+        self.set_acnt(value);
+        self
+    }
+}
+
+bitflags! {
     /// `AMUSERENR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -330,6 +1300,21 @@ bitflags! {
 }
 
 impl Amuserenr {
+    /// Offset of the `EN` field.
+    pub const EN_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMUSERENR_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct AmuserenrEl0: u64 {
+        /// `EN` bit.
+        const EN = 1 << 0;
+    }
+}
+
+impl AmuserenrEl0 {
     /// Offset of the `EN` field.
     pub const EN_SHIFT: u32 = 0;
 }
@@ -31566,6 +32551,8 @@ read_write_sysreg!(amair_el1, u64, safe_read, fake::SYSREGS);
 read_write_sysreg!(amair_el2, u64, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(amcfgr: (p15, 0, c2, c13, 1), u32: Amcfgr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amcfgr_el0: s3_3_c13_c2_1, u64: AmcfgrEl0, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(amcgcr: (p15, 0, c2, c13, 2), u32: Amcgcr, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -31577,9 +32564,61 @@ read_write_sysreg!(amcntenset0: (p15, 0, c2, c13, 5), u32: Amcntenset0, safe_rea
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(amcntenset1: (p15, 0, c3, c13, 1), u32: Amcntenset1, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amcr: (p15, 0, c2, c13, 0), u32: Amcr, safe_read, fake::SYSREGS);
+read_write_sysreg!(amcr: (p15, 0, c2, c13, 0), u32: Amcr, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amcr_el0: s3_3_c13_c2_0, u64: AmcrEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amuserenr: (p15, 0, c2, c13, 3), u32: Amuserenr, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr00: (p15, 0, c0), u64: Amevcntr00, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr00_el0: s3_3_c13_c4_0, u64: Amevcntr00El0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevcntr01: (p15, 1, c0), u64: Amevcntr01, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr01_el0: s3_3_c13_c4_1, u64: Amevcntr01El0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevcntr02: (p15, 2, c0), u64: Amevcntr02, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr02_el0: s3_3_c13_c4_2, u64: Amevcntr02El0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevcntr03: (p15, 3, c0), u64: Amevcntr03, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr03_el0: s3_3_c13_c4_3, u64: Amevcntr03El0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr10_el0: s3_3_c13_c12_0, u64: Amevcntr10El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr110_el0: s3_3_c13_c13_2, u64: Amevcntr110El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr111_el0: s3_3_c13_c13_3, u64: Amevcntr111El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr112_el0: s3_3_c13_c13_4, u64: Amevcntr112El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr113_el0: s3_3_c13_c13_5, u64: Amevcntr113El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr114_el0: s3_3_c13_c13_6, u64: Amevcntr114El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr115_el0: s3_3_c13_c13_7, u64: Amevcntr115El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr11_el0: s3_3_c13_c12_1, u64: Amevcntr11El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr12_el0: s3_3_c13_c12_2, u64: Amevcntr12El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr13_el0: s3_3_c13_c12_3, u64: Amevcntr13El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr14_el0: s3_3_c13_c12_4, u64: Amevcntr14El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr15_el0: s3_3_c13_c12_5, u64: Amevcntr15El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr16_el0: s3_3_c13_c12_6, u64: Amevcntr16El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr17_el0: s3_3_c13_c12_7, u64: Amevcntr17El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr18_el0: s3_3_c13_c13_0, u64: Amevcntr18El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amevcntr19_el0: s3_3_c13_c13_1, u64: Amevcntr19El0, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amuserenr: (p15, 0, c2, c13, 3), u32: Amuserenr, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amuserenr_el0: s3_3_c13_c2_3, u64: AmuserenrEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(apiakeyhi_el1: s3_0_c2_c1_1, u64: ApiakeyhiEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

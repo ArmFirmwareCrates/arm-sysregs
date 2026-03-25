@@ -5,14 +5,25 @@
 [registers.AIFSR]
 [registers.AMAIR0]
 [registers.AMAIR1]
+[registers.AMCFGR_EL0]
 [registers.AMCFGR]
 [registers.AMCGCR]
 [registers.AMCNTENCLR0]
 [registers.AMCNTENCLR1]
 [registers.AMCNTENSET0]
 [registers.AMCNTENSET1]
+[registers.AMCR_EL0]
+write = "safe"
 [registers.AMCR]
+write = "safe"
+[registers."AMEVCNTR0<n>"]
+[registers."AMEVCNTR0<n>_EL0"]
+write = "safe"
+[registers."AMEVCNTR1<n>_EL0"]
+[registers.AMUSERENR_EL0]
+write = "safe"
 [registers.AMUSERENR]
+write = "safe"
 [registers.CCSIDR]
 [registers.CCSIDR2]
 [registers.CLIDR]

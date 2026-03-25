@@ -50,6 +50,8 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("amair_el2 = {:?}", arm_sysregs::read_amair_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcfgr = {:?}", arm_sysregs::read_amcfgr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amcfgr_el0 = {:?}", arm_sysregs::read_amcfgr_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcgcr = {:?}", arm_sysregs::read_amcgcr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -62,8 +64,78 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("amcntenset1 = {:?}", arm_sysregs::read_amcntenset1());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcr = {:?}", arm_sysregs::read_amcr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amcr_el0 = {:?}", arm_sysregs::read_amcr_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevcntr00 = {:?}", arm_sysregs::read_amevcntr00());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr00_el0 = {:?}", arm_sysregs::read_amevcntr00_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevcntr01 = {:?}", arm_sysregs::read_amevcntr01());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr01_el0 = {:?}", arm_sysregs::read_amevcntr01_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevcntr02 = {:?}", arm_sysregs::read_amevcntr02());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr02_el0 = {:?}", arm_sysregs::read_amevcntr02_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevcntr03 = {:?}", arm_sysregs::read_amevcntr03());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr03_el0 = {:?}", arm_sysregs::read_amevcntr03_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr10_el0 = {:?}", arm_sysregs::read_amevcntr10_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevcntr110_el0 = {:?}",
+        arm_sysregs::read_amevcntr110_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevcntr111_el0 = {:?}",
+        arm_sysregs::read_amevcntr111_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevcntr112_el0 = {:?}",
+        arm_sysregs::read_amevcntr112_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevcntr113_el0 = {:?}",
+        arm_sysregs::read_amevcntr113_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevcntr114_el0 = {:?}",
+        arm_sysregs::read_amevcntr114_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevcntr115_el0 = {:?}",
+        arm_sysregs::read_amevcntr115_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr11_el0 = {:?}", arm_sysregs::read_amevcntr11_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr12_el0 = {:?}", arm_sysregs::read_amevcntr12_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr13_el0 = {:?}", arm_sysregs::read_amevcntr13_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr14_el0 = {:?}", arm_sysregs::read_amevcntr14_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr15_el0 = {:?}", arm_sysregs::read_amevcntr15_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr16_el0 = {:?}", arm_sysregs::read_amevcntr16_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr17_el0 = {:?}", arm_sysregs::read_amevcntr17_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr18_el0 = {:?}", arm_sysregs::read_amevcntr18_el0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amevcntr19_el0 = {:?}", arm_sysregs::read_amevcntr19_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amuserenr = {:?}", arm_sysregs::read_amuserenr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amuserenr_el0 = {:?}", arm_sysregs::read_amuserenr_el0());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!("apiakeyhi_el1 = {:?}", arm_sysregs::read_apiakeyhi_el1());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
