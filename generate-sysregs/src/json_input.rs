@@ -16,9 +16,10 @@ use arm_sysregs_json::{
     ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Fieldset, Register,
     RegisterArray, RegisterEntry, ValueEntry, Values, VectorField,
 };
-use eyre::{Report, bail};
+use eyre::{Report, bail, eyre};
 use log::{info, trace};
-use std::sync::LazyLock;
+use regex::Regex;
+use std::{collections::BTreeMap, fmt::Write, sync::LazyLock};
 
 static STANDARD_CONDITIONS: LazyLock<Vec<Expression>> = LazyLock::new(|| {
     vec![
@@ -117,20 +118,21 @@ impl RegisterInfo {
         }
         let exception_level = get_exception_level(&register.name);
 
-        let AccessorDetails {
-            readable,
-            writable,
-            aarch32,
-            aarch64,
-            width,
-            ..
-        } = AccessorDetails::from_json_accessors(&register.accessors);
-
         register
             .indexes
             .iter()
             .flat_map(|range| {
                 (range.start..range.start + range.width).map(|i| {
+                    let AccessorDetails {
+                        readable,
+                        writable,
+                        aarch32,
+                        aarch64,
+                        width,
+                        assembly_name,
+                        aarch32_encoding,
+                    } = AccessorDetails::from_json_accessors(&register.accessors, Some(i));
+
                     let (fields, res1) =
                         convert_fields(&register.fieldsets, Some((&register.index_variable, i)));
                     let name = register
@@ -149,8 +151,8 @@ impl RegisterInfo {
                         write: writable.then_some(Safety::Unsafe),
                         write_safety_doc: None,
                         derive_debug: true,
-                        assembly_name: None,
-                        aarch32_encoding: None,
+                        assembly_name,
+                        aarch32_encoding,
                         has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
                         exception_level,
                     }
@@ -173,7 +175,7 @@ impl RegisterInfo {
             width,
             assembly_name,
             aarch32_encoding,
-        } = AccessorDetails::from_json_accessors(&register.accessors);
+        } = AccessorDetails::from_json_accessors(&register.accessors, None);
 
         RegisterInfo {
             name: register.name.clone(),
@@ -247,18 +249,27 @@ struct AccessorDetails {
 }
 
 impl AccessorDetails {
-    fn from_json_accessors(accessors: &[Accessor]) -> Self {
+    fn from_json_accessors(accessors: &[Accessor], index: Option<u32>) -> Self {
         let mut details = Self::default();
         for accessor in accessors {
             match accessor {
                 Accessor::SystemAccessorArray(system_accessor_array) => {
+                    let mut values = BTreeMap::new();
+                    if let Some(index) = index {
+                        values.insert(system_accessor_array.index_variable.clone(), index);
+                    }
                     details.add_from_name(
                         &system_accessor_array.name,
                         &system_accessor_array.encoding[0],
+                        &values,
                     );
                 }
                 Accessor::SystemAccessor(system_accessor) => {
-                    details.add_from_name(&system_accessor.name, &system_accessor.encoding[0]);
+                    details.add_from_name(
+                        &system_accessor.name,
+                        &system_accessor.encoding[0],
+                        &BTreeMap::new(),
+                    );
                 }
                 _ => {}
             }
@@ -267,29 +278,29 @@ impl AccessorDetails {
         details
     }
 
-    fn add_from_name(&mut self, name: &str, encoding: &Encoding) {
+    fn add_from_name(&mut self, name: &str, encoding: &Encoding, values: &BTreeMap<String, u32>) {
         match name {
             "A32.MRC" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding);
+                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding, values);
                 self.readable = true;
                 self.width = 32;
             }
             "A32.MCR" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding);
+                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding, values);
                 self.writable = true;
                 self.width = 32;
             }
             "A32.MRRC" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding);
+                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding, values);
                 self.readable = true;
                 self.width = 64;
             }
             "A32.MCRR" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding);
+                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding, values);
                 self.writable = true;
                 self.width = 64;
             }
@@ -329,34 +340,94 @@ impl AccessorDetails {
         }
 
         if self.assembly_name.is_none() {
-            self.assembly_name = encoding_to_assembly_name(&encoding);
+            self.assembly_name = encoding_to_assembly_name(&encoding, values);
         }
     }
 }
 
-fn parse_binary_value(value_entry: &ValueEntry) -> Result<u8, Report> {
+fn parse_binary_value(
+    value_entry: &ValueEntry,
+    values: &BTreeMap<String, u32>,
+) -> Result<u8, Report> {
+    let value_pattern = Regex::new("^'([01]+)'(?::|$)").unwrap();
+    let index_pattern = Regex::new("^([a-z])\\[([0-9]+)\\](?::|$)").unwrap();
+    let slice_pattern = Regex::new("^([a-z])\\[([0-9]+):([0-9]+)\\](?::|$)").unwrap();
+
     match value_entry {
         ValueEntry::Value(value) => Ok(u8::from_str_radix(value.value.trim_matches('\''), 2)?),
+        ValueEntry::Group(group) => {
+            let mut concatenated_value = String::new();
+            let mut group_value: &str = &group.value;
+            while !group_value.is_empty() {
+                if let Some(captures) = value_pattern.captures(group_value) {
+                    group_value = &group_value[captures.get_match().end()..];
+                    concatenated_value += &captures[1];
+                } else if let Some(captures) = index_pattern.captures(group_value) {
+                    group_value = &group_value[captures.get_match().end()..];
+                    let variable = &captures[1];
+                    let bit_index = captures[2].parse::<u8>()?;
+                    let value = values
+                        .get(variable)
+                        .ok_or_else(|| eyre!("Value {} not found", variable))?;
+                    write!(concatenated_value, "{:01b}", (value >> bit_index) & 1).unwrap();
+                } else if let Some(captures) = slice_pattern.captures(group_value) {
+                    group_value = &group_value[captures.get_match().end()..];
+                    let variable = &captures[1];
+                    let high_index = captures[2].parse::<u8>()?;
+                    let low_index = captures[3].parse::<u8>()?;
+                    let value = values
+                        .get(variable)
+                        .ok_or_else(|| eyre!("Value {} not found", variable))?;
+                    let width = high_index - low_index + 1;
+                    let mask = (1 << width) - 1;
+                    write!(
+                        concatenated_value,
+                        "{:0width$b}",
+                        (value >> low_index) & mask,
+                        width = width.into(),
+                    )
+                    .unwrap();
+                } else {
+                    bail!("Unsupported group value part {group_value:?}");
+                }
+            }
+            Ok(u8::from_str_radix(&concatenated_value, 2)?)
+        }
+        ValueEntry::EquationValue(equation) => {
+            let value = values
+                .get(&equation.value)
+                .ok_or_else(|| eyre!("Value {} not found", equation.value))?;
+            let mut sliced_value = 0;
+            for range in &equation.slice {
+                sliced_value <<= range.width;
+                let mask = (1 << range.width) - 1;
+                sliced_value |= (value >> range.start) & mask;
+            }
+            Ok(sliced_value.try_into()?)
+        }
         _ => bail!("Unsupported value entry {value_entry:?}"),
     }
 }
 
-fn encoding_to_assembly_name(encoding: &Encoding) -> Option<String> {
-    let op0 = parse_binary_value(encoding.encodings.get("op0")?).ok()?;
-    let op1 = parse_binary_value(encoding.encodings.get("op1")?).ok()?;
-    let op2 = parse_binary_value(encoding.encodings.get("op2")?).ok()?;
-    let crn = parse_binary_value(encoding.encodings.get("CRn")?).ok()?;
-    let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
+fn encoding_to_assembly_name(
+    encoding: &Encoding,
+    values: &BTreeMap<String, u32>,
+) -> Option<String> {
+    let op0 = parse_binary_value(encoding.encodings.get("op0")?, values).expect("op0");
+    let op1 = parse_binary_value(encoding.encodings.get("op1")?, values).expect("op1");
+    let op2 = parse_binary_value(encoding.encodings.get("op2")?, values).expect("op2");
+    let crn = parse_binary_value(encoding.encodings.get("CRn")?, values).expect("CRn");
+    let crm = parse_binary_value(encoding.encodings.get("CRm")?, values).expect("CRm");
     Some(format!("s{op0}_{op1}_c{crn}_c{crm}_{op2}"))
 }
 
 impl AArch32Encoding {
-    fn single_from_encoding(encoding: &Encoding) -> Option<Self> {
-        let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
-        let crn = parse_binary_value(encoding.encodings.get("CRn")?).ok()?;
-        let coproc = parse_binary_value(encoding.encodings.get("coproc")?).ok()?;
-        let opc1 = parse_binary_value(encoding.encodings.get("opc1")?).ok()?;
-        let opc2 = parse_binary_value(encoding.encodings.get("opc2")?).ok()?;
+    fn single_from_encoding(encoding: &Encoding, values: &BTreeMap<String, u32>) -> Option<Self> {
+        let crm = parse_binary_value(encoding.encodings.get("CRm")?, values).expect("CRm");
+        let crn = parse_binary_value(encoding.encodings.get("CRn")?, values).expect("CRn");
+        let coproc = parse_binary_value(encoding.encodings.get("coproc")?, values).expect("coproc");
+        let opc1 = parse_binary_value(encoding.encodings.get("opc1")?, values).expect("opc1");
+        let opc2 = parse_binary_value(encoding.encodings.get("opc2")?, values).expect("opc2");
         Some(Self::Single {
             crm,
             crn,
@@ -366,10 +437,10 @@ impl AArch32Encoding {
         })
     }
 
-    fn double_from_encoding(encoding: &Encoding) -> Option<Self> {
-        let crm = parse_binary_value(encoding.encodings.get("CRm")?).ok()?;
-        let coproc = parse_binary_value(encoding.encodings.get("coproc")?).ok()?;
-        let opc1 = parse_binary_value(encoding.encodings.get("opc1")?).ok()?;
+    fn double_from_encoding(encoding: &Encoding, values: &BTreeMap<String, u32>) -> Option<Self> {
+        let crm = parse_binary_value(encoding.encodings.get("CRm")?, values).expect("CRm");
+        let coproc = parse_binary_value(encoding.encodings.get("coproc")?, values).expect("coproc");
+        let opc1 = parse_binary_value(encoding.encodings.get("opc1")?, values).expect("opc1");
         Some(Self::Double { crm, coproc, opc1 })
     }
 }
@@ -590,5 +661,72 @@ impl RegisterField {
             );
             None
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use arm_sysregs_json::{EquationValue, Group, Range, Value};
+
+    #[test]
+    fn parse_value() {
+        assert_eq!(
+            parse_binary_value(
+                &ValueEntry::Value(Value {
+                    meaning: None,
+                    value: "'0101'".to_string(),
+                }),
+                &BTreeMap::new()
+            )
+            .unwrap(),
+            0b101
+        );
+    }
+
+    #[test]
+    fn parse_value_group() {
+        let values = [("m".to_string(), 0b1100)].into_iter().collect();
+        assert_eq!(
+            parse_binary_value(
+                &ValueEntry::Group(Group {
+                    meaning: None,
+                    value: "'10':m[2]".to_string(),
+                    values: Values::default(),
+                }),
+                &values
+            )
+            .unwrap(),
+            0b101
+        );
+        assert_eq!(
+            parse_binary_value(
+                &ValueEntry::Group(Group {
+                    meaning: None,
+                    value: "'10':m[2:1]".to_string(),
+                    values: Values::default(),
+                }),
+                &values
+            )
+            .unwrap(),
+            0b1010
+        );
+    }
+
+    #[test]
+    fn parse_value_equation() {
+        let values = [("m".to_string(), 0b1100)].into_iter().collect();
+        assert_eq!(
+            parse_binary_value(
+                &ValueEntry::EquationValue(EquationValue {
+                    meaning: None,
+                    value: "m".to_string(),
+                    slice: vec![Range { start: 1, width: 2 }],
+                }),
+                &values
+            )
+            .unwrap(),
+            0b10
+        );
     }
 }
