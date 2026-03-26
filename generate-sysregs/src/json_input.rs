@@ -14,10 +14,11 @@ use crate::{
 use arm_sysregs_json::{
     Accessor, ArrayField, AstBinaryOp, AstBool, AstFunction, AstIdentifier, ConditionalField,
     ConstantField, DynamicField, Encoding, Expression, Field, FieldEntry, Fieldset, Register,
-    RegisterArray, RegisterEntry, Value, Values, VectorField,
+    RegisterArray, RegisterEntry, ValueEntry, Values, VectorField,
 };
+use eyre::{Report, bail};
 use log::{info, trace};
-use std::{num::ParseIntError, sync::LazyLock};
+use std::sync::LazyLock;
 
 static STANDARD_CONDITIONS: LazyLock<Vec<Expression>> = LazyLock::new(|| {
     vec![
@@ -333,8 +334,11 @@ impl AccessorDetails {
     }
 }
 
-fn parse_binary_value(value: &Value) -> Result<u8, ParseIntError> {
-    u8::from_str_radix(value.value.trim_matches('\''), 2)
+fn parse_binary_value(value_entry: &ValueEntry) -> Result<u8, Report> {
+    match value_entry {
+        ValueEntry::Value(value) => Ok(u8::from_str_radix(value.value.trim_matches('\''), 2)?),
+        _ => bail!("Unsupported value entry {value_entry:?}"),
+    }
 }
 
 fn encoding_to_assembly_name(encoding: &Encoding) -> Option<String> {
