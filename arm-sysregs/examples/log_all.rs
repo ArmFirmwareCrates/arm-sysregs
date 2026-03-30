@@ -54,14 +54,36 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("amcfgr_el0 = {:?}", arm_sysregs::read_amcfgr_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcgcr = {:?}", arm_sysregs::read_amcgcr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("amcgcr_el0 = {:?}", arm_sysregs::read_amcgcr_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcntenclr0 = {:?}", arm_sysregs::read_amcntenclr0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amcntenclr0_el0 = {:?}",
+        arm_sysregs::read_amcntenclr0_el0()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcntenclr1 = {:?}", arm_sysregs::read_amcntenclr1());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amcntenclr1_el0 = {:?}",
+        arm_sysregs::read_amcntenclr1_el0()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcntenset0 = {:?}", arm_sysregs::read_amcntenset0());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amcntenset0_el0 = {:?}",
+        arm_sysregs::read_amcntenset0_el0()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcntenset1 = {:?}", arm_sysregs::read_amcntenset1());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amcntenset1_el0 = {:?}",
+        arm_sysregs::read_amcntenset1_el0()
+    );
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amcr = {:?}", arm_sysregs::read_amcr());
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]

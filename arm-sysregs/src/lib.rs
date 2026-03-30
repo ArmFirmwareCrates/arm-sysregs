@@ -256,6 +256,65 @@ impl Amcgcr {
 }
 
 bitflags! {
+    /// `AMCGCR_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct AmcgcrEl0: u64 {
+    }
+}
+
+impl AmcgcrEl0 {
+    /// Offset of the `CG0NC` field.
+    pub const CG0NC_SHIFT: u32 = 0;
+    /// Mask for the `CG0NC` field.
+    pub const CG0NC_MASK: u64 = 0b11111111;
+    /// Offset of the `CG1NC` field.
+    pub const CG1NC_SHIFT: u32 = 8;
+    /// Mask for the `CG1NC` field.
+    pub const CG1NC_MASK: u64 = 0b11111111;
+
+    /// Returns the value of the `CG0NC` field.
+    pub const fn cg0nc(self) -> u8 {
+        ((self.bits() >> Self::CG0NC_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `CG0NC` field.
+    pub const fn set_cg0nc(&mut self, value: u8) {
+        let offset = Self::CG0NC_SHIFT;
+        assert!(value & (Self::CG0NC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CG0NC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `CG0NC` field set to the given value.
+    pub const fn with_cg0nc(mut self, value: u8) -> Self {
+        self.set_cg0nc(value);
+        self
+    }
+
+    /// Returns the value of the `CG1NC` field.
+    pub const fn cg1nc(self) -> u8 {
+        ((self.bits() >> Self::CG1NC_SHIFT) & 0b11111111) as u8
+    }
+
+    /// Sets the value of the `CG1NC` field.
+    pub const fn set_cg1nc(&mut self, value: u8) {
+        let offset = Self::CG1NC_SHIFT;
+        assert!(value & (Self::CG1NC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CG1NC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `CG1NC` field set to the given value.
+    pub const fn with_cg1nc(mut self, value: u8) -> Self {
+        self.set_cg1nc(value);
+        self
+    }
+}
+
+bitflags! {
     /// `AMCNTENCLR0` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -272,6 +331,27 @@ bitflags! {
 }
 
 impl Amcntenclr0 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCNTENCLR0_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenclr0El0: u64 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+    }
+}
+
+impl Amcntenclr0El0 {
     /// Offset of the `P<n>` field.
     pub const P_SHIFT: u32 = 0;
 }
@@ -322,6 +402,51 @@ impl Amcntenclr1 {
 }
 
 bitflags! {
+    /// `AMCNTENCLR1_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenclr1El0: u64 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<n>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<n>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<n>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<n>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<n>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<n>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<n>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<n>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<n>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<n>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<n>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<n>` bit 15.
+        const P15 = 1 << 15;
+    }
+}
+
+impl Amcntenclr1El0 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
     /// `AMCNTENSET0` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -338,6 +463,27 @@ bitflags! {
 }
 
 impl Amcntenset0 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCNTENSET0_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenset0El0: u64 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+    }
+}
+
+impl Amcntenset0El0 {
     /// Offset of the `P<n>` field.
     pub const P_SHIFT: u32 = 0;
 }
@@ -383,6 +529,51 @@ bitflags! {
 }
 
 impl Amcntenset1 {
+    /// Offset of the `P<n>` field.
+    pub const P_SHIFT: u32 = 0;
+}
+
+bitflags! {
+    /// `AMCNTENSET1_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcntenset1El0: u64 {
+        /// `P<n>` bit 0.
+        const P0 = 1 << 0;
+        /// `P<n>` bit 1.
+        const P1 = 1 << 1;
+        /// `P<n>` bit 2.
+        const P2 = 1 << 2;
+        /// `P<n>` bit 3.
+        const P3 = 1 << 3;
+        /// `P<n>` bit 4.
+        const P4 = 1 << 4;
+        /// `P<n>` bit 5.
+        const P5 = 1 << 5;
+        /// `P<n>` bit 6.
+        const P6 = 1 << 6;
+        /// `P<n>` bit 7.
+        const P7 = 1 << 7;
+        /// `P<n>` bit 8.
+        const P8 = 1 << 8;
+        /// `P<n>` bit 9.
+        const P9 = 1 << 9;
+        /// `P<n>` bit 10.
+        const P10 = 1 << 10;
+        /// `P<n>` bit 11.
+        const P11 = 1 << 11;
+        /// `P<n>` bit 12.
+        const P12 = 1 << 12;
+        /// `P<n>` bit 13.
+        const P13 = 1 << 13;
+        /// `P<n>` bit 14.
+        const P14 = 1 << 14;
+        /// `P<n>` bit 15.
+        const P15 = 1 << 15;
+    }
+}
+
+impl Amcntenset1El0 {
     /// Offset of the `P<n>` field.
     pub const P_SHIFT: u32 = 0;
 }
@@ -32555,14 +32746,24 @@ read_sysreg!(amcfgr: (p15, 0, c2, c13, 1), u32: Amcfgr, safe, fake::SYSREGS);
 read_sysreg!(amcfgr_el0: s3_3_c13_c2_1, u64: AmcfgrEl0, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(amcgcr: (p15, 0, c2, c13, 2), u32: Amcgcr, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amcgcr_el0: s3_3_c13_c2_2, u64: AmcgcrEl0, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amcntenclr0: (p15, 0, c2, c13, 4), u32: Amcntenclr0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amcntenclr0: (p15, 0, c2, c13, 4), u32: Amcntenclr0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amcntenclr0_el0: s3_3_c13_c2_4, u64: Amcntenclr0El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amcntenclr1: (p15, 0, c3, c13, 0), u32: Amcntenclr1, safe_read, fake::SYSREGS);
+read_write_sysreg!(amcntenclr1: (p15, 0, c3, c13, 0), u32: Amcntenclr1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amcntenclr1_el0: s3_3_c13_c3_0, u64: Amcntenclr1El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amcntenset0: (p15, 0, c2, c13, 5), u32: Amcntenset0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amcntenset0: (p15, 0, c2, c13, 5), u32: Amcntenset0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amcntenset0_el0: s3_3_c13_c2_5, u64: Amcntenset0El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amcntenset1: (p15, 0, c3, c13, 1), u32: Amcntenset1, safe_read, fake::SYSREGS);
+read_write_sysreg!(amcntenset1: (p15, 0, c3, c13, 1), u32: Amcntenset1, safe_read, safe_write, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(amcntenset1_el0: s3_3_c13_c3_1, u64: Amcntenset1El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(amcr: (p15, 0, c2, c13, 0), u32: Amcr, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]

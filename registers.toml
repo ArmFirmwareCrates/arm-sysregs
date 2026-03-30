@@ -7,11 +7,24 @@
 [registers.AMAIR1]
 [registers.AMCFGR_EL0]
 [registers.AMCFGR]
+[registers.AMCGCR_EL0]
 [registers.AMCGCR]
+[registers.AMCNTENCLR0_EL0]
+write = "safe"
 [registers.AMCNTENCLR0]
+write = "safe"
+[registers.AMCNTENCLR1_EL0]
+write = "safe"
 [registers.AMCNTENCLR1]
+write = "safe"
+[registers.AMCNTENSET0_EL0]
+write = "safe"
 [registers.AMCNTENSET0]
+write = "safe"
+[registers.AMCNTENSET1_EL0]
+write = "safe"
 [registers.AMCNTENSET1]
+write = "safe"
 [registers.AMCR_EL0]
 write = "safe"
 [registers.AMCR]
