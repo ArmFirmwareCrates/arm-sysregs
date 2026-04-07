@@ -32769,53 +32769,53 @@ read_write_sysreg!(amcr: (p15, 0, c2, c13, 0), u32: Amcr, safe_read, safe_write,
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amcr_el0: s3_3_c13_c2_0, u64: AmcrEl0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amevcntr00: (p15, 0, c0), u64: Amevcntr00, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr00: (p15, 0, c0), u64: Amevcntr00, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amevcntr00_el0: s3_3_c13_c4_0, u64: Amevcntr00El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amevcntr01: (p15, 1, c0), u64: Amevcntr01, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr01: (p15, 1, c0), u64: Amevcntr01, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amevcntr01_el0: s3_3_c13_c4_1, u64: Amevcntr01El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amevcntr02: (p15, 2, c0), u64: Amevcntr02, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr02: (p15, 2, c0), u64: Amevcntr02, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amevcntr02_el0: s3_3_c13_c4_2, u64: Amevcntr02El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
-read_write_sysreg!(amevcntr03: (p15, 3, c0), u64: Amevcntr03, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr03: (p15, 3, c0), u64: Amevcntr03, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amevcntr03_el0: s3_3_c13_c4_3, u64: Amevcntr03El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr10_el0: s3_3_c13_c12_0, u64: Amevcntr10El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr10_el0: s3_3_c13_c12_0, u64: Amevcntr10El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr110_el0: s3_3_c13_c13_2, u64: Amevcntr110El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr110_el0: s3_3_c13_c13_2, u64: Amevcntr110El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr111_el0: s3_3_c13_c13_3, u64: Amevcntr111El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr111_el0: s3_3_c13_c13_3, u64: Amevcntr111El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr112_el0: s3_3_c13_c13_4, u64: Amevcntr112El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr112_el0: s3_3_c13_c13_4, u64: Amevcntr112El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr113_el0: s3_3_c13_c13_5, u64: Amevcntr113El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr113_el0: s3_3_c13_c13_5, u64: Amevcntr113El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr114_el0: s3_3_c13_c13_6, u64: Amevcntr114El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr114_el0: s3_3_c13_c13_6, u64: Amevcntr114El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr115_el0: s3_3_c13_c13_7, u64: Amevcntr115El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr115_el0: s3_3_c13_c13_7, u64: Amevcntr115El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr11_el0: s3_3_c13_c12_1, u64: Amevcntr11El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr11_el0: s3_3_c13_c12_1, u64: Amevcntr11El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr12_el0: s3_3_c13_c12_2, u64: Amevcntr12El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr12_el0: s3_3_c13_c12_2, u64: Amevcntr12El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr13_el0: s3_3_c13_c12_3, u64: Amevcntr13El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr13_el0: s3_3_c13_c12_3, u64: Amevcntr13El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr14_el0: s3_3_c13_c12_4, u64: Amevcntr14El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr14_el0: s3_3_c13_c12_4, u64: Amevcntr14El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr15_el0: s3_3_c13_c12_5, u64: Amevcntr15El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr15_el0: s3_3_c13_c12_5, u64: Amevcntr15El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr16_el0: s3_3_c13_c12_6, u64: Amevcntr16El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr16_el0: s3_3_c13_c12_6, u64: Amevcntr16El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr17_el0: s3_3_c13_c12_7, u64: Amevcntr17El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr17_el0: s3_3_c13_c12_7, u64: Amevcntr17El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr18_el0: s3_3_c13_c13_0, u64: Amevcntr18El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr18_el0: s3_3_c13_c13_0, u64: Amevcntr18El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
-read_write_sysreg!(amevcntr19_el0: s3_3_c13_c13_1, u64: Amevcntr19El0, safe_read, fake::SYSREGS);
+read_write_sysreg!(amevcntr19_el0: s3_3_c13_c13_1, u64: Amevcntr19El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(amuserenr: (p15, 0, c2, c13, 3), u32: Amuserenr, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]

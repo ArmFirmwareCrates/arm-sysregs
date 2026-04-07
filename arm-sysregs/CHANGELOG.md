@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Bugfixes
+
+- Made functions to write `AMEVCNTR0<n>` and `AMEVCNTR1<n>_EL0` safe.
+
 ## 0.2.7
 
 ### New features

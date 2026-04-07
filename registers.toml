@@ -30,9 +30,11 @@ write = "safe"
 [registers.AMCR]
 write = "safe"
 [registers."AMEVCNTR0<n>"]
+write = "safe"
 [registers."AMEVCNTR0<n>_EL0"]
 write = "safe"
 [registers."AMEVCNTR1<n>_EL0"]
+write = "safe"
 [registers.AMUSERENR_EL0]
 write = "safe"
 [registers.AMUSERENR]
