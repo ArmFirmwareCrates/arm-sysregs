@@ -113,9 +113,12 @@ impl Evaluable for AstIdentifier {
 impl Evaluable for AstFunction {
     fn eval(&self, _environment: &Environment) -> Result<EvalValue, Report> {
         match self.name.as_str() {
-            "EffectiveHCR_EL2_E2H" | "HaveEL" | "ImpDefBool" | "IsFeatureImplemented" | "Text" => {
-                Ok(EvalValue::Unknown)
-            }
+            "EffectiveHCR_EL2_E2H"
+            | "HaveEL"
+            | "HaveSecureState"
+            | "ImpDefBool"
+            | "IsFeatureImplemented"
+            | "Text" => Ok(EvalValue::Unknown),
             name => bail!("Unsupported AST function {name}"),
         }
     }
