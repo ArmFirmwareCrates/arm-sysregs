@@ -317,7 +317,7 @@ impl RegisterInfo {
 
             writeln!(writer)?;
 
-            let int_ty = type_for_width(field.width);
+            let (int_ty, effective_width) = type_for_width(field.width);
             let constness;
             let field_type: &str;
             let use_custom_type = field.type_name.is_some();
@@ -403,12 +403,17 @@ impl RegisterInfo {
                 if use_custom_type {
                     write!(writer, "{}::try_from(", field_type)?;
                 }
+                if effective_width != self.width {
+                    write!(writer, "(")?;
+                }
                 write!(
                     writer,
-                    "((self.bits() >> Self::{0}_SHIFT) & Self::{0}_MASK) as {1}",
+                    "(self.bits() >> Self::{0}_SHIFT) & Self::{0}_MASK",
                     field.constant_name(),
-                    int_ty,
                 )?;
+                if effective_width != self.width {
+                    write!(writer, ") as {}", int_ty)?;
+                }
                 if use_custom_type {
                     write!(writer, ").unwrap()")?;
                 }
@@ -477,17 +482,32 @@ impl RegisterInfo {
             if use_custom_type {
                 writeln!(writer, "        let value: {int_ty} = value.into();")?;
             }
-            writeln!(
-                writer,
-                "        assert!(value & (Self::{}_MASK as {int_ty}) == value);",
-                field.constant_name(),
-            )?;
-            writeln!(
-                writer,
-                "        *self = Self::from_bits_retain((self.bits() & !(Self::{}_MASK << offset)) | ((value as u{}) << offset));",
-                field.constant_name(),
-                self.width,
-            )?;
+
+            if effective_width != self.width {
+                writeln!(
+                    writer,
+                    "        assert!(value & (Self::{}_MASK as {int_ty}) == value);",
+                    field.constant_name(),
+                )?;
+                writeln!(
+                    writer,
+                    "        *self = Self::from_bits_retain((self.bits() & !(Self::{}_MASK << offset)) | ((value as u{}) << offset));",
+                    field.constant_name(),
+                    self.width,
+                )?;
+            } else {
+                // Omit as u[width] if the field has the same width as the register.
+                writeln!(
+                    writer,
+                    "        assert!(value & Self::{}_MASK == value);",
+                    field.constant_name(),
+                )?;
+                writeln!(
+                    writer,
+                    "        *self = Self::from_bits_retain((self.bits() & !(Self::{}_MASK << offset)) | (value << offset));",
+                    field.constant_name(),
+                )?;
+            }
 
             writeln!(writer, "    }}")?;
 
@@ -758,16 +778,19 @@ fn uppercase_name(name: &str) -> String {
         .to_uppercase()
 }
 
-/// Returns the smallest unsigned type that can hold at least the given number of bits
-fn type_for_width(width: u32) -> &'static str {
+/// Returns the smallest unsigned type that can hold at least the given number of bits and the width
+/// of the type in bits.
+fn type_for_width(width: u32) -> (&'static str, u32) {
+    assert!(width <= 64);
+
     if width > 32 {
-        "u64"
+        ("u64", 64)
     } else if width > 16 {
-        "u32"
+        ("u32", 32)
     } else if width > 8 {
-        "u16"
+        ("u16", 16)
     } else {
-        "u8"
+        ("u8", 8)
     }
 }
 
