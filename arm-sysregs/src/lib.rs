@@ -5008,13 +5008,13 @@ impl Dacr {
     /// Returns the value of the given `D<n>` field.
     pub const fn d(self, n: u32) -> u8 {
         assert!(n < 16);
-        ((self.bits() >> (Self::D_SHIFT + (n - 0) * 2)) & Self::D_MASK) as u8
+        ((self.bits() >> (Self::D_SHIFT + n * 2)) & Self::D_MASK) as u8
     }
 
     /// Sets the value of the `D<n>` field.
     pub const fn set_d(&mut self, n: u32, value: u8) {
         assert!(n < 16);
-        let offset = Self::D_SHIFT + (n - 0) * 2;
+        let offset = Self::D_SHIFT + n * 2;
         assert!(value & (Self::D_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::D_MASK << offset)) | ((value as u32) << offset),
@@ -10859,13 +10859,13 @@ impl Hmair0 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 4);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + n * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
     pub const fn set_attr(&mut self, n: u32, value: u8) {
         assert!(n < 4);
-        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        let offset = Self::ATTR_SHIFT + n * 8;
         assert!(value & (Self::ATTR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
@@ -21320,13 +21320,13 @@ impl Mair0 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 4);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + n * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
     pub const fn set_attr(&mut self, n: u32, value: u8) {
         assert!(n < 4);
-        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        let offset = Self::ATTR_SHIFT + n * 8;
         assert!(value & (Self::ATTR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u32) << offset),
@@ -21396,13 +21396,13 @@ impl MairEl1 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + n * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
     pub const fn set_attr(&mut self, n: u32, value: u8) {
         assert!(n < 8);
-        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        let offset = Self::ATTR_SHIFT + n * 8;
         assert!(value & (Self::ATTR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
@@ -21435,13 +21435,13 @@ impl MairEl2 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + n * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
     pub const fn set_attr(&mut self, n: u32, value: u8) {
         assert!(n < 8);
-        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        let offset = Self::ATTR_SHIFT + n * 8;
         assert!(value & (Self::ATTR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
@@ -21474,13 +21474,13 @@ impl MairEl3 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + n * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
     pub const fn set_attr(&mut self, n: u32, value: u8) {
         assert!(n < 8);
-        let offset = Self::ATTR_SHIFT + (n - 0) * 8;
+        let offset = Self::ATTR_SHIFT + n * 8;
         assert!(value & (Self::ATTR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::ATTR_MASK << offset)) | ((value as u64) << offset),
@@ -24348,13 +24348,13 @@ impl Nmrr {
     /// Returns the value of the given `IR<n>` field.
     pub const fn ir(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::IR_SHIFT + (n - 0) * 2)) & Self::IR_MASK) as u8
+        ((self.bits() >> (Self::IR_SHIFT + n * 2)) & Self::IR_MASK) as u8
     }
 
     /// Sets the value of the `IR<n>` field.
     pub const fn set_ir(&mut self, n: u32, value: u8) {
         assert!(n < 8);
-        let offset = Self::IR_SHIFT + (n - 0) * 2;
+        let offset = Self::IR_SHIFT + n * 2;
         assert!(value & (Self::IR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::IR_MASK << offset)) | ((value as u32) << offset),
@@ -24370,13 +24370,13 @@ impl Nmrr {
     /// Returns the value of the given `OR<n>` field.
     pub const fn or(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::OR_SHIFT + (n - 0) * 2)) & Self::OR_MASK) as u8
+        ((self.bits() >> (Self::OR_SHIFT + n * 2)) & Self::OR_MASK) as u8
     }
 
     /// Sets the value of the `OR<n>` field.
     pub const fn set_or(&mut self, n: u32, value: u8) {
         assert!(n < 8);
-        let offset = Self::OR_SHIFT + (n - 0) * 2;
+        let offset = Self::OR_SHIFT + n * 2;
         assert!(value & (Self::OR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::OR_MASK << offset)) | ((value as u32) << offset),
@@ -26202,13 +26202,13 @@ impl Prrr {
     /// Returns the value of the given `TR<n>` field.
     pub const fn tr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::TR_SHIFT + (n - 0) * 2)) & Self::TR_MASK) as u8
+        ((self.bits() >> (Self::TR_SHIFT + n * 2)) & Self::TR_MASK) as u8
     }
 
     /// Sets the value of the `TR<n>` field.
     pub const fn set_tr(&mut self, n: u32, value: u8) {
         assert!(n < 8);
-        let offset = Self::TR_SHIFT + (n - 0) * 2;
+        let offset = Self::TR_SHIFT + n * 2;
         assert!(value & (Self::TR_MASK as u8) == value);
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TR_MASK << offset)) | ((value as u32) << offset),

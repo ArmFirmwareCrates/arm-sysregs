@@ -367,16 +367,30 @@ impl RegisterInfo {
                 if use_custom_type {
                     write!(writer, "{}::try_from(", field_type)?;
                 }
-                write!(
-                    writer,
-                    "((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) & Self::{}_MASK) as {}",
-                    field.constant_name(),
-                    array_info.index_variable,
-                    array_info.indices.start,
-                    field.width,
-                    field.constant_name(),
-                    int_ty,
-                )?;
+
+                if array_info.indices.start != 0 {
+                    write!(
+                        writer,
+                        "((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) & Self::{}_MASK) as {}",
+                        field.constant_name(),
+                        array_info.index_variable,
+                        array_info.indices.start,
+                        field.width,
+                        field.constant_name(),
+                        int_ty,
+                    )?;
+                } else {
+                    write!(
+                        writer,
+                        "((self.bits() >> (Self::{}_SHIFT + {} * {})) & Self::{}_MASK) as {}",
+                        field.constant_name(),
+                        array_info.index_variable,
+                        field.width,
+                        field.constant_name(),
+                        int_ty,
+                    )?;
+                }
+
                 if use_custom_type {
                     write!(writer, ").unwrap()")?;
                 }
@@ -458,14 +472,25 @@ impl RegisterInfo {
                     )?;
                 }
 
-                writeln!(
-                    writer,
-                    "        let offset = Self::{}_SHIFT + ({} - {}) * {};",
-                    field.constant_name(),
-                    array_info.index_variable,
-                    array_info.indices.start,
-                    field.width,
-                )?;
+                if array_info.indices.start != 0 {
+                    writeln!(
+                        writer,
+                        "        let offset = Self::{}_SHIFT + ({} - {}) * {};",
+                        field.constant_name(),
+                        array_info.index_variable,
+                        array_info.indices.start,
+                        field.width,
+                    )?;
+                } else {
+                    // Omit `- 0` from the formula if the start index is zero.
+                    writeln!(
+                        writer,
+                        "        let offset = Self::{}_SHIFT + {} * {};",
+                        field.constant_name(),
+                        array_info.index_variable,
+                        field.width,
+                    )?;
+                }
             } else {
                 writeln!(
                     writer,
