@@ -8,7 +8,7 @@ use arm_sysregs_json::{
     TypesField, Value,
 };
 use eyre::{Context, Report, bail};
-use std::{collections::BTreeMap, i64};
+use std::collections::BTreeMap;
 
 /// Environment for evaluating AST expressions.
 #[derive(Clone, Debug, Default, Eq, PartialEq)]

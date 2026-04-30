@@ -282,25 +282,25 @@ impl AccessorDetails {
         match name {
             "A32.MRC" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding, values);
+                self.aarch32_encoding = AArch32Encoding::single_from_encoding(encoding, values);
                 self.readable = true;
                 self.width = 32;
             }
             "A32.MCR" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::single_from_encoding(&encoding, values);
+                self.aarch32_encoding = AArch32Encoding::single_from_encoding(encoding, values);
                 self.writable = true;
                 self.width = 32;
             }
             "A32.MRRC" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding, values);
+                self.aarch32_encoding = AArch32Encoding::double_from_encoding(encoding, values);
                 self.readable = true;
                 self.width = 64;
             }
             "A32.MCRR" => {
                 self.aarch32 = true;
-                self.aarch32_encoding = AArch32Encoding::double_from_encoding(&encoding, values);
+                self.aarch32_encoding = AArch32Encoding::double_from_encoding(encoding, values);
                 self.writable = true;
                 self.width = 64;
             }
@@ -340,7 +340,7 @@ impl AccessorDetails {
         }
 
         if self.assembly_name.is_none() {
-            self.assembly_name = encoding_to_assembly_name(&encoding, values);
+            self.assembly_name = encoding_to_assembly_name(encoding, values);
         }
     }
 }
