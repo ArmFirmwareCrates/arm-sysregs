@@ -36,11 +36,11 @@ impl Amcfgr {
     /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 0;
     /// Mask for the `N` field.
-    pub const N_MASK: u32 = 0b11111111;
+    pub const N_MASK: u32 = 0b1111_1111;
     /// Offset of the `SIZE` field.
     pub const SIZE_SHIFT: u32 = 8;
     /// Mask for the `SIZE` field.
-    pub const SIZE_MASK: u32 = 0b111111;
+    pub const SIZE_MASK: u32 = 0b11_1111;
     /// Offset of the `HDBG` field.
     pub const HDBG_SHIFT: u32 = 24;
     /// Offset of the `NCG` field.
@@ -123,11 +123,11 @@ impl AmcfgrEl0 {
     /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 0;
     /// Mask for the `N` field.
-    pub const N_MASK: u64 = 0b11111111;
+    pub const N_MASK: u64 = 0b1111_1111;
     /// Offset of the `SIZE` field.
     pub const SIZE_SHIFT: u32 = 8;
     /// Mask for the `SIZE` field.
-    pub const SIZE_MASK: u64 = 0b111111;
+    pub const SIZE_MASK: u64 = 0b11_1111;
     /// Offset of the `HDBG` field.
     pub const HDBG_SHIFT: u32 = 24;
     /// Offset of the `NCG` field.
@@ -208,11 +208,11 @@ impl Amcgcr {
     /// Offset of the `CG0NC` field.
     pub const CG0NC_SHIFT: u32 = 0;
     /// Mask for the `CG0NC` field.
-    pub const CG0NC_MASK: u32 = 0b11111111;
+    pub const CG0NC_MASK: u32 = 0b1111_1111;
     /// Offset of the `CG1NC` field.
     pub const CG1NC_SHIFT: u32 = 8;
     /// Mask for the `CG1NC` field.
-    pub const CG1NC_MASK: u32 = 0b11111111;
+    pub const CG1NC_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `CG0NC` field.
     pub const fn cg0nc(self) -> u8 {
@@ -267,11 +267,11 @@ impl AmcgcrEl0 {
     /// Offset of the `CG0NC` field.
     pub const CG0NC_SHIFT: u32 = 0;
     /// Mask for the `CG0NC` field.
-    pub const CG0NC_MASK: u64 = 0b11111111;
+    pub const CG0NC_MASK: u64 = 0b1111_1111;
     /// Offset of the `CG1NC` field.
     pub const CG1NC_SHIFT: u32 = 8;
     /// Mask for the `CG1NC` field.
-    pub const CG1NC_MASK: u64 = 0b11111111;
+    pub const CG1NC_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `CG0NC` field.
     pub const fn cg0nc(self) -> u8 {
@@ -628,7 +628,8 @@ impl Amevcntr00 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -663,7 +664,8 @@ impl Amevcntr00El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -698,7 +700,8 @@ impl Amevcntr01 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -733,7 +736,8 @@ impl Amevcntr01El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -768,7 +772,8 @@ impl Amevcntr02 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -803,7 +808,8 @@ impl Amevcntr02El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -838,7 +844,8 @@ impl Amevcntr03 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -873,7 +880,8 @@ impl Amevcntr03El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -908,7 +916,8 @@ impl Amevcntr10El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -943,7 +952,8 @@ impl Amevcntr110El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -978,7 +988,8 @@ impl Amevcntr111El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1013,7 +1024,8 @@ impl Amevcntr112El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1048,7 +1060,8 @@ impl Amevcntr113El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1083,7 +1096,8 @@ impl Amevcntr114El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1118,7 +1132,8 @@ impl Amevcntr115El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1153,7 +1168,8 @@ impl Amevcntr11El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1188,7 +1204,8 @@ impl Amevcntr12El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1223,7 +1240,8 @@ impl Amevcntr13El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1258,7 +1276,8 @@ impl Amevcntr14El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1293,7 +1312,8 @@ impl Amevcntr15El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1328,7 +1348,8 @@ impl Amevcntr16El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1363,7 +1384,8 @@ impl Amevcntr17El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1398,7 +1420,8 @@ impl Amevcntr18El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1433,7 +1456,8 @@ impl Amevcntr19El0 {
     /// Offset of the `ACNT` field.
     pub const ACNT_SHIFT: u32 = 0;
     /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ACNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
@@ -1501,7 +1525,7 @@ impl ApiakeyhiEl1 {
     pub const APIAKEYHI_SHIFT: u32 = 0;
     /// Mask for the `APIAKeyHi` field.
     pub const APIAKEYHI_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `APIAKeyHi` field.
     pub const fn apiakeyhi(self) -> u64 {
@@ -1539,7 +1563,7 @@ impl ApiakeyloEl1 {
     pub const APIAKEYLO_SHIFT: u32 = 0;
     /// Mask for the `APIAKeyLo` field.
     pub const APIAKEYLO_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `APIAKeyLo` field.
     pub const fn apiakeylo(self) -> u64 {
@@ -1578,7 +1602,7 @@ impl Ccsidr {
     /// Offset of the `NumSets` field.
     pub const NUMSETS_SHIFT: u32 = 13;
     /// Mask for the `NumSets` field.
-    pub const NUMSETS_MASK: u32 = 0b111111111111111;
+    pub const NUMSETS_MASK: u32 = 0b111_1111_1111_1111;
 
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
@@ -1633,7 +1657,7 @@ impl Ccsidr2 {
     /// Offset of the `NumSets` field.
     pub const NUMSETS_SHIFT: u32 = 0;
     /// Mask for the `NumSets` field.
-    pub const NUMSETS_MASK: u32 = 0b111111111111111111111111;
+    pub const NUMSETS_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `NumSets` field.
     pub const fn numsets(self) -> u32 {
@@ -2029,7 +2053,7 @@ impl Cntfrq {
     /// Offset of the `ClockFreq` field.
     pub const CLOCKFREQ_SHIFT: u32 = 0;
     /// Mask for the `ClockFreq` field.
-    pub const CLOCKFREQ_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const CLOCKFREQ_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
@@ -2066,7 +2090,7 @@ impl CntfrqEl0 {
     /// Offset of the `ClockFreq` field.
     pub const CLOCKFREQ_SHIFT: u32 = 0;
     /// Mask for the `ClockFreq` field.
-    pub const CLOCKFREQ_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const CLOCKFREQ_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
@@ -2310,7 +2334,7 @@ impl CnthpsCval {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2350,7 +2374,7 @@ impl CnthpsCvalEl2 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2385,7 +2409,7 @@ impl CnthpsTval {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -2424,7 +2448,7 @@ impl CnthpsTvalEl2 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -2510,7 +2534,7 @@ impl CnthpCval {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2550,7 +2574,7 @@ impl CnthpCvalEl2 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2585,7 +2609,7 @@ impl CnthpTval {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -2624,7 +2648,7 @@ impl CnthpTvalEl2 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -2710,7 +2734,7 @@ impl CnthvsCval {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2750,7 +2774,7 @@ impl CnthvsCvalEl2 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2785,7 +2809,7 @@ impl CnthvsTval {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -2824,7 +2848,7 @@ impl CnthvsTvalEl2 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -2910,7 +2934,7 @@ impl CnthvCval {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2950,7 +2974,7 @@ impl CnthvCvalEl2 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -2985,7 +3009,7 @@ impl CnthvTval {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -3024,7 +3048,7 @@ impl CnthvTvalEl2 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -3226,7 +3250,7 @@ impl Cntpct {
     pub const PHYSICALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `PhysicalCount` field.
     pub const PHYSICALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `PhysicalCount` field.
     pub const fn physicalcount(self) -> u64 {
@@ -3262,7 +3286,7 @@ impl Cntpctss {
     pub const SSPHYSICALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `SSPhysicalCount` field.
     pub const SSPHYSICALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `SSPhysicalCount` field.
     pub const fn ssphysicalcount(self) -> u64 {
@@ -3300,7 +3324,7 @@ impl CntpctssEl0 {
     pub const SSPHYSICALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `SSPhysicalCount` field.
     pub const SSPHYSICALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `SSPhysicalCount` field.
     pub const fn ssphysicalcount(self) -> u64 {
@@ -3338,7 +3362,7 @@ impl CntpctEl0 {
     pub const PHYSICALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `PhysicalCount` field.
     pub const PHYSICALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `PhysicalCount` field.
     pub const fn physicalcount(self) -> u64 {
@@ -3377,7 +3401,8 @@ impl CntpoffEl2 {
     /// Offset of the `PO` field.
     pub const PO_SHIFT: u32 = 0;
     /// Mask for the `PO` field.
-    pub const PO_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const PO_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `PO` field.
     pub const fn po(self) -> u64 {
@@ -3443,7 +3468,7 @@ impl CntpsCvalEl1 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -3482,7 +3507,7 @@ impl CntpsTvalEl1 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -3566,7 +3591,7 @@ impl CntpCval {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -3604,7 +3629,7 @@ impl CntpCvalEl0 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -3639,7 +3664,7 @@ impl CntpTval {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -3676,7 +3701,7 @@ impl CntpTvalEl0 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -3712,7 +3737,7 @@ impl Cntvct {
     pub const VIRTUALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `VirtualCount` field.
     pub const VIRTUALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VirtualCount` field.
     pub const fn virtualcount(self) -> u64 {
@@ -3748,7 +3773,7 @@ impl Cntvctss {
     pub const SSVIRTUALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `SSVirtualCount` field.
     pub const SSVIRTUALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `SSVirtualCount` field.
     pub const fn ssvirtualcount(self) -> u64 {
@@ -3786,7 +3811,7 @@ impl CntvctssEl0 {
     pub const SSVIRTUALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `SSVirtualCount` field.
     pub const SSVIRTUALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `SSVirtualCount` field.
     pub const fn ssvirtualcount(self) -> u64 {
@@ -3824,7 +3849,7 @@ impl CntvctEl0 {
     pub const VIRTUALCOUNT_SHIFT: u32 = 0;
     /// Mask for the `VirtualCount` field.
     pub const VIRTUALCOUNT_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VirtualCount` field.
     pub const fn virtualcount(self) -> u64 {
@@ -3860,7 +3885,7 @@ impl Cntvoff {
     pub const VOFFSET_SHIFT: u32 = 0;
     /// Mask for the `VOffset` field.
     pub const VOFFSET_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VOffset` field.
     pub const fn voffset(self) -> u64 {
@@ -3900,7 +3925,7 @@ impl CntvoffEl2 {
     pub const VOFFSET_SHIFT: u32 = 0;
     /// Mask for the `VOffset` field.
     pub const VOFFSET_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VOffset` field.
     pub const fn voffset(self) -> u64 {
@@ -3984,7 +4009,7 @@ impl CntvCval {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -4022,7 +4047,7 @@ impl CntvCvalEl0 {
     pub const COMPAREVALUE_SHIFT: u32 = 0;
     /// Mask for the `CompareValue` field.
     pub const COMPAREVALUE_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
@@ -4057,7 +4082,7 @@ impl CntvTval {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -4094,7 +4119,7 @@ impl CntvTvalEl0 {
     /// Offset of the `TimerValue` field.
     pub const TIMERVALUE_SHIFT: u32 = 0;
     /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
@@ -4129,7 +4154,7 @@ impl Contextidr {
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 0;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u32 = 0b11111111;
+    pub const ASID_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
@@ -4166,7 +4191,7 @@ impl ContextidrEl1 {
     /// Offset of the `PROCID` field.
     pub const PROCID_SHIFT: u32 = 0;
     /// Mask for the `PROCID` field.
-    pub const PROCID_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const PROCID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
@@ -4203,7 +4228,7 @@ impl ContextidrEl2 {
     /// Offset of the `PROCID` field.
     pub const PROCID_SHIFT: u32 = 0;
     /// Mask for the `PROCID` field.
-    pub const PROCID_MASK: u64 = 0b11111111111111111111111111111111;
+    pub const PROCID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
@@ -4409,7 +4434,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct CptrEl2: u64 {
         /// RES1 bits in the `CPTR_EL2` register.
-        const RES1 = 0b10001011111111;
+        const RES1 = 0b10_0010_1111_1111;
         /// `TZ` bit.
         const TZ = 1 << 8;
         /// `TFP` bit.
@@ -4648,7 +4673,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Ctr: u32 {
         /// RES1 bits in the `CTR` register.
-        const RES1 = 0b10000000000000000000000000000000;
+        const RES1 = 0b1000_0000_0000_0000_0000_0000_0000_0000;
         /// `IDC` bit.
         const IDC = 1 << 28;
         /// `DIC` bit.
@@ -4791,7 +4816,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct CtrEl0: u64 {
         /// RES1 bits in the `CTR_EL0` register.
-        const RES1 = 0b10000000000000000000000000000000;
+        const RES1 = 0b1000_0000_0000_0000_0000_0000_0000_0000;
         /// `IDC` bit.
         const IDC = 1 << 28;
         /// `DIC` bit.
@@ -4827,7 +4852,7 @@ impl CtrEl0 {
     /// Offset of the `TminLine` field.
     pub const TMINLINE_SHIFT: u32 = 32;
     /// Mask for the `TminLine` field.
-    pub const TMINLINE_MASK: u64 = 0b111111;
+    pub const TMINLINE_MASK: u64 = 0b11_1111;
 
     /// Returns the value of the `IminLine` field.
     pub const fn iminline(self) -> u8 {
@@ -5456,7 +5481,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Dbgdidr: u32 {
         /// RES1 bits in the `DBGDIDR` register.
-        const RES1 = 0b1000000000000000;
+        const RES1 = 0b1000_0000_0000_0000;
         /// `SE_imp` bit.
         const SE_IMP = 1 << 12;
         /// `nSUHD_imp` bit.
@@ -5583,7 +5608,7 @@ impl Dbgdrar {
     /// Offset of the `ROMADDR[47:12]` field.
     pub const ROMADDR_47_12_SHIFT: u32 = 12;
     /// Mask for the `ROMADDR[47:12]` field.
-    pub const ROMADDR_47_12_MASK: u64 = 0b111111111111111111111111111111111111;
+    pub const ROMADDR_47_12_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `Valid` field.
     pub const fn valid(self) -> u8 {
@@ -5816,7 +5841,7 @@ impl Dbgdtrrxext {
     /// Offset of the `DTRRX` field.
     pub const DTRRX_SHIFT: u32 = 0;
     /// Mask for the `DTRRX` field.
-    pub const DTRRX_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const DTRRX_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `DTRRX` field.
     pub const fn dtrrx(self) -> u32 {
@@ -5851,7 +5876,7 @@ impl Dbgdtrrxint {
     /// Offset of the `DTRRX` field.
     pub const DTRRX_SHIFT: u32 = 0;
     /// Mask for the `DTRRX` field.
-    pub const DTRRX_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const DTRRX_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `DTRRX` field.
     pub const fn dtrrx(self) -> u32 {
@@ -5886,7 +5911,7 @@ impl Dbgdtrtxext {
     /// Offset of the `DTRTX` field.
     pub const DTRTX_SHIFT: u32 = 0;
     /// Mask for the `DTRTX` field.
-    pub const DTRTX_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const DTRTX_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `DTRTX` field.
     pub const fn dtrtx(self) -> u32 {
@@ -5921,7 +5946,7 @@ impl Dbgdtrtxint {
     /// Offset of the `DTRTX` field.
     pub const DTRTX_SHIFT: u32 = 0;
     /// Mask for the `DTRTX` field.
-    pub const DTRTX_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const DTRTX_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `DTRTX` field.
     pub const fn dtrtx(self) -> u32 {
@@ -5971,7 +5996,7 @@ impl Dbgoseccr {
     /// Offset of the `EDECCR` field.
     pub const EDECCR_SHIFT: u32 = 0;
     /// Mask for the `EDECCR` field.
-    pub const EDECCR_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const EDECCR_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `EDECCR` field.
     pub const fn edeccr(self) -> u32 {
@@ -6006,7 +6031,7 @@ impl Dbgoslar {
     /// Offset of the `OSLA` field.
     pub const OSLA_SHIFT: u32 = 0;
     /// Mask for the `OSLA` field.
-    pub const OSLA_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const OSLA_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `OSLA` field.
     pub const fn osla(self) -> u32 {
@@ -6178,7 +6203,7 @@ impl Dfar {
     /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
     /// Mask for the `VA` field.
-    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const VA_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
@@ -6222,7 +6247,7 @@ impl Dfsr {
     /// Offset of the `STATUS` field.
     pub const STATUS_SHIFT: u32 = 0;
     /// Mask for the `STATUS` field.
-    pub const STATUS_MASK: u32 = 0b111111;
+    pub const STATUS_MASK: u32 = 0b11_1111;
     /// Offset of the `Domain` field.
     pub const DOMAIN_SHIFT: u32 = 4;
     /// Mask for the `Domain` field.
@@ -6323,11 +6348,11 @@ impl Disr {
     /// Offset of the `DFSC` field.
     pub const DFSC_SHIFT: u32 = 0;
     /// Mask for the `DFSC` field.
-    pub const DFSC_MASK: u32 = 0b111111;
+    pub const DFSC_MASK: u32 = 0b11_1111;
     /// Offset of the `STATUS` field.
     pub const STATUS_SHIFT: u32 = 0;
     /// Mask for the `STATUS` field.
-    pub const STATUS_MASK: u32 = 0b111111;
+    pub const STATUS_MASK: u32 = 0b11_1111;
     /// Offset of the `EA` field.
     pub const EA_SHIFT: u32 = 9;
     /// Offset of the `LPAE` field.
@@ -6402,7 +6427,7 @@ impl DisrEl1 {
     /// Offset of the `DFSC` field.
     pub const DFSC_SHIFT: u32 = 0;
     /// Mask for the `DFSC` field.
-    pub const DFSC_MASK: u64 = 0b111111;
+    pub const DFSC_MASK: u64 = 0b11_1111;
     /// Offset of the `WnR` field.
     pub const WNR_SHIFT: u32 = 6;
     /// Offset of the `WnRV` field.
@@ -6512,7 +6537,7 @@ impl Dlr {
     /// Offset of the `ADDR` field.
     pub const ADDR_SHIFT: u32 = 0;
     /// Mask for the `ADDR` field.
-    pub const ADDR_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ADDR_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u32 {
@@ -6577,7 +6602,7 @@ impl Dspsr {
     /// Offset of the `M[4:0]` field.
     pub const M_4_0_SHIFT: u32 = 0;
     /// Mask for the `M[4:0]` field.
-    pub const M_4_0_MASK: u32 = 0b11111;
+    pub const M_4_0_MASK: u32 = 0b1_1111;
     /// Offset of the `T` field.
     pub const T_SHIFT: u32 = 5;
     /// Offset of the `F` field.
@@ -6683,7 +6708,8 @@ impl ElrEl1 {
     /// Offset of the `ADDR` field.
     pub const ADDR_SHIFT: u32 = 0;
     /// Mask for the `ADDR` field.
-    pub const ADDR_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ADDR_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
@@ -6720,7 +6746,8 @@ impl ElrEl2 {
     /// Offset of the `ADDR` field.
     pub const ADDR_SHIFT: u32 = 0;
     /// Mask for the `ADDR` field.
-    pub const ADDR_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const ADDR_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
@@ -6757,7 +6784,7 @@ impl ElrHyp {
     /// Offset of the `ADDR` field.
     pub const ADDR_SHIFT: u32 = 0;
     /// Mask for the `ADDR` field.
-    pub const ADDR_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ADDR_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u32 {
@@ -6792,7 +6819,7 @@ impl Erridr {
     /// Offset of the `NUM` field.
     pub const NUM_SHIFT: u32 = 0;
     /// Mask for the `NUM` field.
-    pub const NUM_MASK: u32 = 0b1111111111111111;
+    pub const NUM_MASK: u32 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `NUM` field.
     pub const fn num(self) -> u16 {
@@ -6827,7 +6854,7 @@ impl Errselr {
     /// Offset of the `SEL` field.
     pub const SEL_SHIFT: u32 = 0;
     /// Mask for the `SEL` field.
-    pub const SEL_MASK: u32 = 0b1111111111111111;
+    pub const SEL_MASK: u32 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `SEL` field.
     pub const fn sel(self) -> u16 {
@@ -6862,7 +6889,7 @@ impl Erxaddr {
     /// Offset of the `ERRnADDRlo` field.
     pub const ERRNADDRLO_SHIFT: u32 = 0;
     /// Mask for the `ERRnADDRlo` field.
-    pub const ERRNADDRLO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNADDRLO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnADDRlo` field.
     pub const fn errnaddrlo(self) -> u32 {
@@ -6897,7 +6924,7 @@ impl Erxaddr2 {
     /// Offset of the `ERRnADDRhi` field.
     pub const ERRNADDRHI_SHIFT: u32 = 0;
     /// Mask for the `ERRnADDRhi` field.
-    pub const ERRNADDRHI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNADDRHI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnADDRhi` field.
     pub const fn errnaddrhi(self) -> u32 {
@@ -6932,7 +6959,7 @@ impl Erxctlr {
     /// Offset of the `ERRnCTLRlo` field.
     pub const ERRNCTLRLO_SHIFT: u32 = 0;
     /// Mask for the `ERRnCTLRlo` field.
-    pub const ERRNCTLRLO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNCTLRLO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnCTLRlo` field.
     pub const fn errnctlrlo(self) -> u32 {
@@ -6967,7 +6994,7 @@ impl Erxctlr2 {
     /// Offset of the `ERRnCTLRhi` field.
     pub const ERRNCTLRHI_SHIFT: u32 = 0;
     /// Mask for the `ERRnCTLRhi` field.
-    pub const ERRNCTLRHI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNCTLRHI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnCTLRhi` field.
     pub const fn errnctlrhi(self) -> u32 {
@@ -7002,7 +7029,7 @@ impl Erxfr {
     /// Offset of the `ERRnFRlo` field.
     pub const ERRNFRLO_SHIFT: u32 = 0;
     /// Mask for the `ERRnFRlo` field.
-    pub const ERRNFRLO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNFRLO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnFRlo` field.
     pub const fn errnfrlo(self) -> u32 {
@@ -7037,7 +7064,7 @@ impl Erxfr2 {
     /// Offset of the `ERRnFRhi` field.
     pub const ERRNFRHI_SHIFT: u32 = 0;
     /// Mask for the `ERRnFRhi` field.
-    pub const ERRNFRHI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNFRHI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnFRhi` field.
     pub const fn errnfrhi(self) -> u32 {
@@ -7072,7 +7099,7 @@ impl Erxmisc0 {
     /// Offset of the `ERRnMISC0lo` field.
     pub const ERRNMISC0LO_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC0lo` field.
-    pub const ERRNMISC0LO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC0LO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC0lo` field.
     pub const fn errnmisc0lo(self) -> u32 {
@@ -7107,7 +7134,7 @@ impl Erxmisc1 {
     /// Offset of the `ERRnMISC0hi` field.
     pub const ERRNMISC0HI_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC0hi` field.
-    pub const ERRNMISC0HI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC0HI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC0hi` field.
     pub const fn errnmisc0hi(self) -> u32 {
@@ -7142,7 +7169,7 @@ impl Erxmisc2 {
     /// Offset of the `ERRnMISC1lo` field.
     pub const ERRNMISC1LO_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC1lo` field.
-    pub const ERRNMISC1LO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC1LO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC1lo` field.
     pub const fn errnmisc1lo(self) -> u32 {
@@ -7177,7 +7204,7 @@ impl Erxmisc3 {
     /// Offset of the `ERRnMISC1hi` field.
     pub const ERRNMISC1HI_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC1hi` field.
-    pub const ERRNMISC1HI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC1HI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC1hi` field.
     pub const fn errnmisc1hi(self) -> u32 {
@@ -7212,7 +7239,7 @@ impl Erxmisc4 {
     /// Offset of the `ERRnMISC2lo` field.
     pub const ERRNMISC2LO_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC2lo` field.
-    pub const ERRNMISC2LO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC2LO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC2lo` field.
     pub const fn errnmisc2lo(self) -> u32 {
@@ -7247,7 +7274,7 @@ impl Erxmisc5 {
     /// Offset of the `ERRnMISC2hi` field.
     pub const ERRNMISC2HI_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC2hi` field.
-    pub const ERRNMISC2HI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC2HI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC2hi` field.
     pub const fn errnmisc2hi(self) -> u32 {
@@ -7282,7 +7309,7 @@ impl Erxmisc6 {
     /// Offset of the `ERRnMISC3lo` field.
     pub const ERRNMISC3LO_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC3lo` field.
-    pub const ERRNMISC3LO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC3LO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC3lo` field.
     pub const fn errnmisc3lo(self) -> u32 {
@@ -7317,7 +7344,7 @@ impl Erxmisc7 {
     /// Offset of the `ERRnMISC3hi` field.
     pub const ERRNMISC3HI_SHIFT: u32 = 0;
     /// Mask for the `ERRnMISC3hi` field.
-    pub const ERRNMISC3HI_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNMISC3HI_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnMISC3hi` field.
     pub const fn errnmisc3hi(self) -> u32 {
@@ -7352,7 +7379,7 @@ impl Erxstatus {
     /// Offset of the `ERRnSTATUSlo` field.
     pub const ERRNSTATUSLO_SHIFT: u32 = 0;
     /// Mask for the `ERRnSTATUSlo` field.
-    pub const ERRNSTATUSLO_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ERRNSTATUSLO_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ERRnSTATUSlo` field.
     pub const fn errnstatuslo(self) -> u32 {
@@ -7391,17 +7418,17 @@ impl EsrEl1 {
     /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
     /// Mask for the `ISS` field.
-    pub const ISS_MASK: u64 = 0b1111111111111111111111111;
+    pub const ISS_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111;
     /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
     /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
     /// Mask for the `EC` field.
-    pub const EC_MASK: u64 = 0b111111;
+    pub const EC_MASK: u64 = 0b11_1111;
     /// Offset of the `ISS2` field.
     pub const ISS2_SHIFT: u32 = 32;
     /// Mask for the `ISS2` field.
-    pub const ISS2_MASK: u64 = 0b111111111111111111111111;
+    pub const ISS2_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -7480,17 +7507,17 @@ impl EsrEl2 {
     /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
     /// Mask for the `ISS` field.
-    pub const ISS_MASK: u64 = 0b1111111111111111111111111;
+    pub const ISS_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111;
     /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
     /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
     /// Mask for the `EC` field.
-    pub const EC_MASK: u64 = 0b111111;
+    pub const EC_MASK: u64 = 0b11_1111;
     /// Offset of the `ISS2` field.
     pub const ISS2_SHIFT: u32 = 32;
     /// Mask for the `ISS2` field.
-    pub const ISS2_MASK: u64 = 0b111111111111111111111111;
+    pub const ISS2_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -7569,17 +7596,17 @@ impl EsrEl3 {
     /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
     /// Mask for the `ISS` field.
-    pub const ISS_MASK: u64 = 0b1111111111111111111111111;
+    pub const ISS_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111;
     /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
     /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
     /// Mask for the `EC` field.
-    pub const EC_MASK: u64 = 0b111111;
+    pub const EC_MASK: u64 = 0b11_1111;
     /// Offset of the `ISS2` field.
     pub const ISS2_SHIFT: u32 = 32;
     /// Mask for the `ISS2` field.
-    pub const ISS2_MASK: u64 = 0b111111111111111111111111;
+    pub const ISS2_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -7656,7 +7683,8 @@ impl FarEl1 {
     /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
     /// Mask for the `VA` field.
-    pub const VA_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const VA_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
@@ -7692,7 +7720,8 @@ impl FarEl2 {
     /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
     /// Mask for the `VA` field.
-    pub const VA_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const VA_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
@@ -7730,7 +7759,7 @@ impl GcrEl1 {
     /// Offset of the `Exclude` field.
     pub const EXCLUDE_SHIFT: u32 = 0;
     /// Mask for the `Exclude` field.
-    pub const EXCLUDE_MASK: u64 = 0b1111111111111111;
+    pub const EXCLUDE_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `RRND` field.
     pub const RRND_SHIFT: u32 = 16;
 
@@ -8064,7 +8093,7 @@ impl GptbrEl3 {
     /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 0;
     /// Mask for the `BADDR` field.
-    pub const BADDR_MASK: u64 = 0b1111111111111111111111111111111111111111;
+    pub const BADDR_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `BADDR[43:40]` field.
     pub const BADDR_43_40_SHIFT: u32 = 40;
     /// Mask for the `BADDR[43:40]` field.
@@ -8140,7 +8169,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Hcptr: u32 {
         /// RES1 bits in the `HCPTR` register.
-        const RES1 = 0b11001111111111;
+        const RES1 = 0b11_0011_1111_1111;
         /// `TCP10` bit.
         const TCP10 = 1 << 10;
         /// `TCP11` bit.
@@ -8849,7 +8878,7 @@ impl Hdcr {
     /// Offset of the `HPMN` field.
     pub const HPMN_SHIFT: u32 = 0;
     /// Mask for the `HPMN` field.
-    pub const HPMN_MASK: u32 = 0b11111;
+    pub const HPMN_MASK: u32 = 0b1_1111;
     /// Offset of the `TPMCR` field.
     pub const TPMCR_SHIFT: u32 = 5;
     /// Offset of the `TPM` field.
@@ -8912,7 +8941,7 @@ impl Hdfar {
     /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
     /// Mask for the `VA` field.
-    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const VA_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
@@ -10820,7 +10849,7 @@ impl Hifar {
     /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
     /// Mask for the `VA` field.
-    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const VA_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
@@ -10854,7 +10883,7 @@ impl Hmair0 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u32 = 0b11111111;
+    pub const ATTR_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -10891,7 +10920,7 @@ impl Hmair1 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u32 = 0b11111111;
+    pub const ATTR_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -10928,7 +10957,7 @@ impl Hpfar {
     /// Offset of the `FIPA[39:12]` field.
     pub const FIPA_39_12_SHIFT: u32 = 4;
     /// Mask for the `FIPA[39:12]` field.
-    pub const FIPA_39_12_MASK: u32 = 0b1111111111111111111111111111;
+    pub const FIPA_39_12_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `FIPA[39:12]` field.
     pub const fn fipa_39_12(self) -> u32 {
@@ -10967,7 +10996,7 @@ impl HpfarEl2 {
     /// Offset of the `FIPA` field.
     pub const FIPA_SHIFT: u32 = 4;
     /// Mask for the `FIPA` field.
-    pub const FIPA_MASK: u64 = 0b11111111111111111111111111111111111111111111;
+    pub const FIPA_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `NS` field.
     pub const NS_SHIFT: u32 = 63;
 
@@ -11017,7 +11046,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Hsctlr: u32 {
         /// RES1 bits in the `HSCTLR` register.
-        const RES1 = 0b110000110001010000100000000000;
+        const RES1 = 0b11_0000_1100_0101_0000_1000_0000_0000;
         /// `M` bit.
         const M = 1 << 0;
         /// `A` bit.
@@ -11086,13 +11115,13 @@ impl Hsr {
     /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
     /// Mask for the `ISS` field.
-    pub const ISS_MASK: u32 = 0b1111111111111111111111111;
+    pub const ISS_MASK: u32 = 0b1_1111_1111_1111_1111_1111_1111;
     /// Offset of the `IL` field.
     pub const IL_SHIFT: u32 = 25;
     /// Offset of the `EC` field.
     pub const EC_SHIFT: u32 = 26;
     /// Mask for the `EC` field.
-    pub const EC_MASK: u32 = 0b111111;
+    pub const EC_MASK: u32 = 0b11_1111;
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
@@ -11140,7 +11169,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Htcr: u32 {
         /// RES1 bits in the `HTCR` register.
-        const RES1 = 0b10000000100000000000000000000000;
+        const RES1 = 0b1000_0000_1000_0000_0000_0000_0000_0000;
         /// `HPD` bit.
         const HPD = 1 << 24;
         /// `HWU59` bit.
@@ -11275,7 +11304,7 @@ impl Htpidr {
     /// Offset of the `TID` field.
     pub const TID_SHIFT: u32 = 0;
     /// Mask for the `TID` field.
-    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
@@ -11360,7 +11389,7 @@ impl Httbr {
     /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 1;
     /// Mask for the `BADDR` field.
-    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
@@ -11395,7 +11424,7 @@ impl Hvbar {
     /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 5;
     /// Mask for the `VBA` field.
-    pub const VBA_MASK: u32 = 0b111111111111111111111111111;
+    pub const VBA_MASK: u32 = 0b111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
@@ -11448,11 +11477,11 @@ impl IccAsgi1r {
     /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
     /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
     /// Mask for the `INTID` field.
@@ -11460,7 +11489,7 @@ impl IccAsgi1r {
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
     /// Offset of the `RS` field.
@@ -11470,7 +11499,7 @@ impl IccAsgi1r {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
@@ -11609,11 +11638,11 @@ impl IccAsgi1rEl1 {
     /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
     /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
     /// Mask for the `INTID` field.
@@ -11621,7 +11650,7 @@ impl IccAsgi1rEl1 {
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
     /// Offset of the `RS` field.
@@ -11631,7 +11660,7 @@ impl IccAsgi1rEl1 {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
@@ -12195,7 +12224,7 @@ impl IccDir {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12232,7 +12261,7 @@ impl IccDirEl1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12267,7 +12296,7 @@ impl IccEoir0 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12304,7 +12333,7 @@ impl IccEoir0El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12339,7 +12368,7 @@ impl IccEoir1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12376,7 +12405,7 @@ impl IccEoir1El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12411,7 +12440,7 @@ impl IccHppir0 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12448,7 +12477,7 @@ impl IccHppir0El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12483,7 +12512,7 @@ impl IccHppir1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12520,7 +12549,7 @@ impl IccHppir1El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12582,7 +12611,7 @@ impl IccIar0 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12619,7 +12648,7 @@ impl IccIar0El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12654,7 +12683,7 @@ impl IccIar1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u32 = 0b111111111111111111111111;
+    pub const INTID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12691,7 +12720,7 @@ impl IccIar1El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -12966,7 +12995,7 @@ impl IccNmiar1El1 {
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 0;
     /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b111111111111111111111111;
+    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
@@ -13001,7 +13030,7 @@ impl IccPmr {
     /// Offset of the `Priority` field.
     pub const PRIORITY_SHIFT: u32 = 0;
     /// Mask for the `Priority` field.
-    pub const PRIORITY_MASK: u32 = 0b11111111;
+    pub const PRIORITY_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
@@ -13038,7 +13067,7 @@ impl IccPmrEl1 {
     /// Offset of the `Priority` field.
     pub const PRIORITY_SHIFT: u32 = 0;
     /// Mask for the `Priority` field.
-    pub const PRIORITY_MASK: u64 = 0b11111111;
+    pub const PRIORITY_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
@@ -13073,7 +13102,7 @@ impl IccRpr {
     /// Offset of the `Priority` field.
     pub const PRIORITY_SHIFT: u32 = 0;
     /// Mask for the `Priority` field.
-    pub const PRIORITY_MASK: u32 = 0b11111111;
+    pub const PRIORITY_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
@@ -13114,7 +13143,7 @@ impl IccRprEl1 {
     /// Offset of the `Priority` field.
     pub const PRIORITY_SHIFT: u32 = 0;
     /// Mask for the `Priority` field.
-    pub const PRIORITY_MASK: u64 = 0b11111111;
+    pub const PRIORITY_MASK: u64 = 0b1111_1111;
     /// Offset of the `NMI_NS` field.
     pub const NMI_NS_SHIFT: u32 = 62;
     /// Offset of the `NMI` field.
@@ -13155,11 +13184,11 @@ impl IccSgi0r {
     /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
     /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
     /// Mask for the `INTID` field.
@@ -13167,7 +13196,7 @@ impl IccSgi0r {
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
     /// Offset of the `RS` field.
@@ -13177,7 +13206,7 @@ impl IccSgi0r {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
@@ -13316,11 +13345,11 @@ impl IccSgi0rEl1 {
     /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
     /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
     /// Mask for the `INTID` field.
@@ -13328,7 +13357,7 @@ impl IccSgi0rEl1 {
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
     /// Offset of the `RS` field.
@@ -13338,7 +13367,7 @@ impl IccSgi0rEl1 {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
@@ -13475,11 +13504,11 @@ impl IccSgi1r {
     /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
     /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
     /// Mask for the `INTID` field.
@@ -13487,7 +13516,7 @@ impl IccSgi1r {
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
     /// Offset of the `RS` field.
@@ -13497,7 +13526,7 @@ impl IccSgi1r {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
@@ -13636,11 +13665,11 @@ impl IccSgi1rEl1 {
     /// Offset of the `TargetList` field.
     pub const TARGETLIST_SHIFT: u32 = 0;
     /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111111111111111;
+    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 16;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `INTID` field.
     pub const INTID_SHIFT: u32 = 24;
     /// Mask for the `INTID` field.
@@ -13648,7 +13677,7 @@ impl IccSgi1rEl1 {
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 32;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `IRM` field.
     pub const IRM_SHIFT: u32 = 40;
     /// Offset of the `RS` field.
@@ -13658,7 +13687,7 @@ impl IccSgi1rEl1 {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 48;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
@@ -13961,7 +13990,7 @@ impl IchHcrEl2 {
     /// Offset of the `EOIcount` field.
     pub const EOICOUNT_SHIFT: u32 = 27;
     /// Mask for the `EOIcount` field.
-    pub const EOICOUNT_MASK: u64 = 0b11111;
+    pub const EOICOUNT_MASK: u64 = 0b1_1111;
 
     /// Returns the value of the `EOIcount` field.
     pub const fn eoicount(self) -> u8 {
@@ -14460,19 +14489,19 @@ impl IdAa64dfr1El1 {
     /// Offset of the `SYSPMUID` field.
     pub const SYSPMUID_SHIFT: u32 = 0;
     /// Mask for the `SYSPMUID` field.
-    pub const SYSPMUID_MASK: u64 = 0b11111111;
+    pub const SYSPMUID_MASK: u64 = 0b1111_1111;
     /// Offset of the `BRPs` field.
     pub const BRPS_SHIFT: u32 = 8;
     /// Mask for the `BRPs` field.
-    pub const BRPS_MASK: u64 = 0b11111111;
+    pub const BRPS_MASK: u64 = 0b1111_1111;
     /// Offset of the `WRPs` field.
     pub const WRPS_SHIFT: u32 = 16;
     /// Mask for the `WRPs` field.
-    pub const WRPS_MASK: u64 = 0b11111111;
+    pub const WRPS_MASK: u64 = 0b1111_1111;
     /// Offset of the `CTX_CMPs` field.
     pub const CTX_CMPS_SHIFT: u32 = 24;
     /// Mask for the `CTX_CMPs` field.
-    pub const CTX_CMPS_MASK: u64 = 0b11111111;
+    pub const CTX_CMPS_MASK: u64 = 0b1111_1111;
     /// Offset of the `SPMU` field.
     pub const SPMU_SHIFT: u32 = 32;
     /// Mask for the `SPMU` field.
@@ -14500,7 +14529,7 @@ impl IdAa64dfr1El1 {
     /// Offset of the `ABL_CMPs` field.
     pub const ABL_CMPS_SHIFT: u32 = 56;
     /// Mask for the `ABL_CMPs` field.
-    pub const ABL_CMPS_MASK: u64 = 0b11111111;
+    pub const ABL_CMPS_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `SYSPMUID` field.
     pub const fn syspmuid(self) -> u8 {
@@ -21178,7 +21207,7 @@ impl Ifar {
     /// Offset of the `VA` field.
     pub const VA_SHIFT: u32 = 0;
     /// Mask for the `VA` field.
-    pub const VA_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const VA_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
@@ -21218,7 +21247,7 @@ impl Ifsr {
     /// Offset of the `STATUS` field.
     pub const STATUS_SHIFT: u32 = 0;
     /// Mask for the `STATUS` field.
-    pub const STATUS_MASK: u32 = 0b111111;
+    pub const STATUS_MASK: u32 = 0b11_1111;
     /// Offset of the `LPAE` field.
     pub const LPAE_SHIFT: u32 = 9;
     /// Offset of the `ExT` field.
@@ -21315,7 +21344,7 @@ impl Mair0 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u32 = 0b11111111;
+    pub const ATTR_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -21352,7 +21381,7 @@ impl Mair1 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u32 = 0b11111111;
+    pub const ATTR_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -21391,7 +21420,7 @@ impl MairEl1 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u64 = 0b11111111;
+    pub const ATTR_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -21430,7 +21459,7 @@ impl MairEl2 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u64 = 0b11111111;
+    pub const ATTR_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -21469,7 +21498,7 @@ impl MairEl3 {
     /// Offset of the `Attr<n>` field.
     pub const ATTR_SHIFT: u32 = 0;
     /// Mask for the `Attr<n>` field.
-    pub const ATTR_MASK: u64 = 0b11111111;
+    pub const ATTR_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
@@ -21567,7 +21596,7 @@ impl MdcrEl2 {
     /// Offset of the `HPMN` field.
     pub const HPMN_SHIFT: u32 = 0;
     /// Mask for the `HPMN` field.
-    pub const HPMN_MASK: u64 = 0b11111;
+    pub const HPMN_MASK: u64 = 0b1_1111;
     /// Offset of the `TPMCR` field.
     pub const TPMCR_SHIFT: u32 = 5;
     /// Offset of the `TPM` field.
@@ -22230,7 +22259,7 @@ impl Midr {
     /// Offset of the `PartNum` field.
     pub const PARTNUM_SHIFT: u32 = 4;
     /// Mask for the `PartNum` field.
-    pub const PARTNUM_MASK: u32 = 0b111111111111;
+    pub const PARTNUM_MASK: u32 = 0b1111_1111_1111;
     /// Offset of the `Architecture` field.
     pub const ARCHITECTURE_SHIFT: u32 = 16;
     /// Mask for the `Architecture` field.
@@ -22242,7 +22271,7 @@ impl Midr {
     /// Offset of the `Implementer` field.
     pub const IMPLEMENTER_SHIFT: u32 = 24;
     /// Mask for the `Implementer` field.
-    pub const IMPLEMENTER_MASK: u32 = 0b11111111;
+    pub const IMPLEMENTER_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
@@ -22363,7 +22392,7 @@ impl MidrEl1 {
     /// Offset of the `PartNum` field.
     pub const PARTNUM_SHIFT: u32 = 4;
     /// Mask for the `PartNum` field.
-    pub const PARTNUM_MASK: u64 = 0b111111111111;
+    pub const PARTNUM_MASK: u64 = 0b1111_1111_1111;
     /// Offset of the `Architecture` field.
     pub const ARCHITECTURE_SHIFT: u32 = 16;
     /// Mask for the `Architecture` field.
@@ -22375,7 +22404,7 @@ impl MidrEl1 {
     /// Offset of the `Implementer` field.
     pub const IMPLEMENTER_SHIFT: u32 = 24;
     /// Mask for the `Implementer` field.
-    pub const IMPLEMENTER_MASK: u64 = 0b11111111;
+    pub const IMPLEMENTER_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
@@ -22508,37 +22537,37 @@ impl Mpam2El2 {
     /// Offset of the `PARTID` field.
     pub const PARTID_SHIFT: u32 = 0;
     /// Mask for the `PARTID` field.
-    pub const PARTID_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PARTID_I` field.
     pub const PARTID_I_SHIFT: u32 = 0;
     /// Mask for the `PARTID_I` field.
-    pub const PARTID_I_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_I_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PARTID_D` field.
     pub const PARTID_D_SHIFT: u32 = 16;
     /// Mask for the `PARTID_D` field.
-    pub const PARTID_D_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_D_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `altPARTID` field.
     pub const ALTPARTID_SHIFT: u32 = 16;
     /// Mask for the `altPARTID` field.
-    pub const ALTPARTID_MASK: u64 = 0b1111111111111111;
+    pub const ALTPARTID_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PMG` field.
     pub const PMG_SHIFT: u32 = 32;
     /// Mask for the `PMG` field.
-    pub const PMG_MASK: u64 = 0b1111111111111111;
+    pub const PMG_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PMG_I` field.
     pub const PMG_I_SHIFT: u32 = 32;
     /// Mask for the `PMG_I` field.
-    pub const PMG_I_MASK: u64 = 0b11111111;
+    pub const PMG_I_MASK: u64 = 0b1111_1111;
     /// Offset of the `PMG_D` field.
     pub const PMG_D_SHIFT: u32 = 40;
     /// Mask for the `PMG_D` field.
-    pub const PMG_D_MASK: u64 = 0b11111111;
+    pub const PMG_D_MASK: u64 = 0b1111_1111;
     /// Offset of the `TRAPMPAM1EL1` field.
     pub const TRAPMPAM1EL1_SHIFT: u32 = 48;
     /// Offset of the `altPMG` field.
     pub const ALTPMG_SHIFT: u32 = 48;
     /// Mask for the `altPMG` field.
-    pub const ALTPMG_MASK: u64 = 0b1111111111111111;
+    pub const ALTPMG_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `TRAPMPAM0EL1` field.
     pub const TRAPMPAM0EL1_SHIFT: u32 = 49;
     /// Offset of the `EnMPAMSM` field.
@@ -22747,35 +22776,35 @@ impl Mpam3El3 {
     /// Offset of the `PARTID` field.
     pub const PARTID_SHIFT: u32 = 0;
     /// Mask for the `PARTID` field.
-    pub const PARTID_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PARTID_I` field.
     pub const PARTID_I_SHIFT: u32 = 0;
     /// Mask for the `PARTID_I` field.
-    pub const PARTID_I_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_I_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PARTID_D` field.
     pub const PARTID_D_SHIFT: u32 = 16;
     /// Mask for the `PARTID_D` field.
-    pub const PARTID_D_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_D_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `altPARTID` field.
     pub const ALTPARTID_SHIFT: u32 = 16;
     /// Mask for the `altPARTID` field.
-    pub const ALTPARTID_MASK: u64 = 0b1111111111111111;
+    pub const ALTPARTID_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PMG` field.
     pub const PMG_SHIFT: u32 = 32;
     /// Mask for the `PMG` field.
-    pub const PMG_MASK: u64 = 0b1111111111111111;
+    pub const PMG_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PMG_I` field.
     pub const PMG_I_SHIFT: u32 = 32;
     /// Mask for the `PMG_I` field.
-    pub const PMG_I_MASK: u64 = 0b11111111;
+    pub const PMG_I_MASK: u64 = 0b1111_1111;
     /// Offset of the `PMG_D` field.
     pub const PMG_D_SHIFT: u32 = 40;
     /// Mask for the `PMG_D` field.
-    pub const PMG_D_MASK: u64 = 0b11111111;
+    pub const PMG_D_MASK: u64 = 0b1111_1111;
     /// Offset of the `altPMG` field.
     pub const ALTPMG_SHIFT: u32 = 48;
     /// Mask for the `altPMG` field.
-    pub const ALTPMG_MASK: u64 = 0b1111111111111111;
+    pub const ALTPMG_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `RT_ALTSP_NS` field.
     pub const RT_ALTSP_NS_SHIFT: u32 = 52;
     /// Offset of the `ALTSP_EL3` field.
@@ -23033,7 +23062,7 @@ impl MpamidrEl1 {
     /// Offset of the `PARTID_MAX` field.
     pub const PARTID_MAX_SHIFT: u32 = 0;
     /// Mask for the `PARTID_MAX` field.
-    pub const PARTID_MAX_MASK: u64 = 0b1111111111111111;
+    pub const PARTID_MAX_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `HAS_HCR` field.
     pub const HAS_HCR_SHIFT: u32 = 17;
     /// Offset of the `VPMR_MAX` field.
@@ -23118,19 +23147,19 @@ impl Mpamvpm0El2 {
     /// Offset of the `PhyPARTID0` field.
     pub const PHYPARTID0_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID0` field.
-    pub const PHYPARTID0_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID0_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID1` field.
     pub const PHYPARTID1_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID1` field.
-    pub const PHYPARTID1_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID1_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID2` field.
     pub const PHYPARTID2_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID2` field.
-    pub const PHYPARTID2_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID2_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID3` field.
     pub const PHYPARTID3_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID3` field.
-    pub const PHYPARTID3_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID3_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID0` field.
     pub const fn phypartid0(self) -> u16 {
@@ -23227,19 +23256,19 @@ impl Mpamvpm1El2 {
     /// Offset of the `PhyPARTID4` field.
     pub const PHYPARTID4_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID4` field.
-    pub const PHYPARTID4_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID4_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID5` field.
     pub const PHYPARTID5_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID5` field.
-    pub const PHYPARTID5_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID5_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID6` field.
     pub const PHYPARTID6_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID6` field.
-    pub const PHYPARTID6_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID6_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID7` field.
     pub const PHYPARTID7_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID7` field.
-    pub const PHYPARTID7_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID7_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID4` field.
     pub const fn phypartid4(self) -> u16 {
@@ -23336,19 +23365,19 @@ impl Mpamvpm2El2 {
     /// Offset of the `PhyPARTID8` field.
     pub const PHYPARTID8_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID8` field.
-    pub const PHYPARTID8_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID8_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID9` field.
     pub const PHYPARTID9_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID9` field.
-    pub const PHYPARTID9_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID9_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID10` field.
     pub const PHYPARTID10_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID10` field.
-    pub const PHYPARTID10_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID10_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID11` field.
     pub const PHYPARTID11_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID11` field.
-    pub const PHYPARTID11_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID11_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID8` field.
     pub const fn phypartid8(self) -> u16 {
@@ -23445,19 +23474,19 @@ impl Mpamvpm3El2 {
     /// Offset of the `PhyPARTID12` field.
     pub const PHYPARTID12_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID12` field.
-    pub const PHYPARTID12_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID12_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID13` field.
     pub const PHYPARTID13_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID13` field.
-    pub const PHYPARTID13_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID13_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID14` field.
     pub const PHYPARTID14_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID14` field.
-    pub const PHYPARTID14_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID14_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID15` field.
     pub const PHYPARTID15_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID15` field.
-    pub const PHYPARTID15_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID15_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID12` field.
     pub const fn phypartid12(self) -> u16 {
@@ -23554,19 +23583,19 @@ impl Mpamvpm4El2 {
     /// Offset of the `PhyPARTID16` field.
     pub const PHYPARTID16_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID16` field.
-    pub const PHYPARTID16_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID16_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID17` field.
     pub const PHYPARTID17_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID17` field.
-    pub const PHYPARTID17_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID17_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID18` field.
     pub const PHYPARTID18_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID18` field.
-    pub const PHYPARTID18_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID18_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID19` field.
     pub const PHYPARTID19_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID19` field.
-    pub const PHYPARTID19_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID19_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID16` field.
     pub const fn phypartid16(self) -> u16 {
@@ -23663,19 +23692,19 @@ impl Mpamvpm5El2 {
     /// Offset of the `PhyPARTID20` field.
     pub const PHYPARTID20_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID20` field.
-    pub const PHYPARTID20_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID20_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID21` field.
     pub const PHYPARTID21_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID21` field.
-    pub const PHYPARTID21_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID21_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID22` field.
     pub const PHYPARTID22_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID22` field.
-    pub const PHYPARTID22_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID22_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID23` field.
     pub const PHYPARTID23_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID23` field.
-    pub const PHYPARTID23_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID23_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID20` field.
     pub const fn phypartid20(self) -> u16 {
@@ -23772,19 +23801,19 @@ impl Mpamvpm6El2 {
     /// Offset of the `PhyPARTID24` field.
     pub const PHYPARTID24_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID24` field.
-    pub const PHYPARTID24_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID24_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID25` field.
     pub const PHYPARTID25_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID25` field.
-    pub const PHYPARTID25_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID25_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID26` field.
     pub const PHYPARTID26_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID26` field.
-    pub const PHYPARTID26_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID26_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID27` field.
     pub const PHYPARTID27_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID27` field.
-    pub const PHYPARTID27_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID27_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID24` field.
     pub const fn phypartid24(self) -> u16 {
@@ -23881,19 +23910,19 @@ impl Mpamvpm7El2 {
     /// Offset of the `PhyPARTID28` field.
     pub const PHYPARTID28_SHIFT: u32 = 0;
     /// Mask for the `PhyPARTID28` field.
-    pub const PHYPARTID28_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID28_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID29` field.
     pub const PHYPARTID29_SHIFT: u32 = 16;
     /// Mask for the `PhyPARTID29` field.
-    pub const PHYPARTID29_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID29_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID30` field.
     pub const PHYPARTID30_SHIFT: u32 = 32;
     /// Mask for the `PhyPARTID30` field.
-    pub const PHYPARTID30_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID30_MASK: u64 = 0b1111_1111_1111_1111;
     /// Offset of the `PhyPARTID31` field.
     pub const PHYPARTID31_SHIFT: u32 = 48;
     /// Mask for the `PhyPARTID31` field.
-    pub const PHYPARTID31_MASK: u64 = 0b1111111111111111;
+    pub const PHYPARTID31_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `PhyPARTID28` field.
     pub const fn phypartid28(self) -> u16 {
@@ -24073,15 +24102,15 @@ impl Mpidr {
     /// Offset of the `Aff0` field.
     pub const AFF0_SHIFT: u32 = 0;
     /// Mask for the `Aff0` field.
-    pub const AFF0_MASK: u32 = 0b11111111;
+    pub const AFF0_MASK: u32 = 0b1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 8;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u32 = 0b11111111;
+    pub const AFF1_MASK: u32 = 0b1111_1111;
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 16;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u32 = 0b11111111;
+    pub const AFF2_MASK: u32 = 0b1111_1111;
     /// Offset of the `MT` field.
     pub const MT_SHIFT: u32 = 24;
     /// Offset of the `U` field.
@@ -24157,7 +24186,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct MpidrEl1: u64 {
         /// RES1 bits in the `MPIDR_EL1` register.
-        const RES1 = 0b10000000000000000000000000000000;
+        const RES1 = 0b1000_0000_0000_0000_0000_0000_0000_0000;
         /// `MT` bit.
         const MT = 1 << 24;
         /// `U` bit.
@@ -24170,15 +24199,15 @@ impl MpidrEl1 {
     /// Offset of the `Aff0` field.
     pub const AFF0_SHIFT: u32 = 0;
     /// Mask for the `Aff0` field.
-    pub const AFF0_MASK: u64 = 0b11111111;
+    pub const AFF0_MASK: u64 = 0b1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 8;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 16;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `MT` field.
     pub const MT_SHIFT: u32 = 24;
     /// Offset of the `U` field.
@@ -24186,7 +24215,7 @@ impl MpidrEl1 {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 32;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
@@ -24281,11 +24310,11 @@ impl Mvbar {
     /// Offset of the `Reserved` field.
     pub const RESERVED_SHIFT: u32 = 0;
     /// Mask for the `Reserved` field.
-    pub const RESERVED_MASK: u32 = 0b11111;
+    pub const RESERVED_MASK: u32 = 0b1_1111;
     /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 5;
     /// Mask for the `VBA` field.
-    pub const VBA_MASK: u32 = 0b111111111111111111111111111;
+    pub const VBA_MASK: u32 = 0b111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `Reserved` field.
     pub const fn reserved(self) -> u8 {
@@ -24447,11 +24476,11 @@ impl Par {
     /// Offset of the `FST` field.
     pub const FST_SHIFT: u32 = 1;
     /// Mask for the `FST` field.
-    pub const FST_MASK: u64 = 0b111111;
+    pub const FST_MASK: u64 = 0b11_1111;
     /// Offset of the `FS[4:0]` field.
     pub const FS_4_0_SHIFT: u32 = 1;
     /// Mask for the `FS[4:0]` field.
-    pub const FS_4_0_MASK: u64 = 0b11111;
+    pub const FS_4_0_MASK: u64 = 0b1_1111;
     /// Offset of the `SS` field.
     pub const SS_SHIFT: u32 = 1;
     /// Offset of the `Outer[1:0]` field.
@@ -24477,7 +24506,7 @@ impl Par {
     /// Offset of the `ATTR` field.
     pub const ATTR_SHIFT: u32 = 56;
     /// Mask for the `ATTR` field.
-    pub const ATTR_MASK: u64 = 0b11111111;
+    pub const ATTR_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
@@ -24587,7 +24616,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct ParEl1: u64 {
         /// RES1 bits in the `PAR_EL1` register.
-        const RES1 = 0b100000000000;
+        const RES1 = 0b1000_0000_0000;
         /// `F` bit.
         const F = 1 << 0;
         /// `PTW` bit.
@@ -24616,7 +24645,7 @@ impl ParEl1 {
     /// Offset of the `FST` field.
     pub const FST_SHIFT: u32 = 1;
     /// Mask for the `FST` field.
-    pub const FST_MASK: u64 = 0b111111;
+    pub const FST_MASK: u64 = 0b11_1111;
     /// Offset of the `SH` field.
     pub const SH_SHIFT: u32 = 7;
     /// Mask for the `SH` field.
@@ -24634,7 +24663,7 @@ impl ParEl1 {
     /// Offset of the `PA[47:12]` field.
     pub const PA_47_12_SHIFT: u32 = 12;
     /// Mask for the `PA[47:12]` field.
-    pub const PA_47_12_MASK: u64 = 0b111111111111111111111111111111111111;
+    pub const PA_47_12_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `TopLevel` field.
     pub const TOPLEVEL_SHIFT: u32 = 13;
     /// Offset of the `Overlay` field.
@@ -24648,7 +24677,7 @@ impl ParEl1 {
     /// Offset of the `ATTR` field.
     pub const ATTR_SHIFT: u32 = 56;
     /// Mask for the `ATTR` field.
-    pub const ATTR_MASK: u64 = 0b11111111;
+    pub const ATTR_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
@@ -24798,7 +24827,8 @@ impl Pmccntr {
     /// Offset of the `CCNT` field.
     pub const CCNT_SHIFT: u32 = 0;
     /// Mask for the `CCNT` field.
-    pub const CCNT_MASK: u64 = 0b1111111111111111111111111111111111111111111111111111111111111111;
+    pub const CCNT_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `CCNT` field.
     pub const fn ccnt(self) -> u64 {
@@ -25335,15 +25365,15 @@ impl Pmcr {
     /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 11;
     /// Mask for the `N` field.
-    pub const N_MASK: u32 = 0b11111;
+    pub const N_MASK: u32 = 0b1_1111;
     /// Offset of the `IDCODE` field.
     pub const IDCODE_SHIFT: u32 = 16;
     /// Mask for the `IDCODE` field.
-    pub const IDCODE_MASK: u32 = 0b11111111;
+    pub const IDCODE_MASK: u32 = 0b1111_1111;
     /// Offset of the `IMP` field.
     pub const IMP_SHIFT: u32 = 24;
     /// Mask for the `IMP` field.
-    pub const IMP_MASK: u32 = 0b11111111;
+    pub const IMP_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
@@ -25456,15 +25486,15 @@ impl PmcrEl0 {
     /// Offset of the `N` field.
     pub const N_SHIFT: u32 = 11;
     /// Mask for the `N` field.
-    pub const N_MASK: u64 = 0b11111;
+    pub const N_MASK: u64 = 0b1_1111;
     /// Offset of the `IDCODE` field.
     pub const IDCODE_SHIFT: u32 = 16;
     /// Mask for the `IDCODE` field.
-    pub const IDCODE_MASK: u64 = 0b11111111;
+    pub const IDCODE_MASK: u64 = 0b1111_1111;
     /// Offset of the `IMP` field.
     pub const IMP_SHIFT: u32 = 24;
     /// Mask for the `IMP` field.
-    pub const IMP_MASK: u64 = 0b11111111;
+    pub const IMP_MASK: u64 = 0b1111_1111;
     /// Offset of the `FZS` field.
     pub const FZS_SHIFT: u32 = 32;
 
@@ -25699,11 +25729,11 @@ impl Pmmir {
     /// Offset of the `SLOTS` field.
     pub const SLOTS_SHIFT: u32 = 0;
     /// Mask for the `SLOTS` field.
-    pub const SLOTS_MASK: u32 = 0b11111111;
+    pub const SLOTS_MASK: u32 = 0b1111_1111;
     /// Offset of the `BUS_SLOTS` field.
     pub const BUS_SLOTS_SHIFT: u32 = 8;
     /// Mask for the `BUS_SLOTS` field.
-    pub const BUS_SLOTS_MASK: u32 = 0b11111111;
+    pub const BUS_SLOTS_MASK: u32 = 0b1111_1111;
     /// Offset of the `BUS_WIDTH` field.
     pub const BUS_WIDTH_SHIFT: u32 = 16;
     /// Mask for the `BUS_WIDTH` field.
@@ -25988,7 +26018,7 @@ impl Pmselr {
     /// Offset of the `SEL` field.
     pub const SEL_SHIFT: u32 = 0;
     /// Mask for the `SEL` field.
-    pub const SEL_MASK: u32 = 0b11111;
+    pub const SEL_MASK: u32 = 0b1_1111;
 
     /// Returns the value of the `SEL` field.
     pub const fn sel(self) -> u8 {
@@ -26129,7 +26159,7 @@ impl Pmxevtyper {
     /// Offset of the `ETR` field.
     pub const ETR_SHIFT: u32 = 0;
     /// Mask for the `ETR` field.
-    pub const ETR_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const ETR_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ETR` field.
     pub const fn etr(self) -> u32 {
@@ -26240,7 +26270,7 @@ impl RgsrEl1 {
     /// Offset of the `SEED` field.
     pub const SEED_SHIFT: u32 = 8;
     /// Mask for the `SEED` field.
-    pub const SEED_MASK: u64 = 0b1111111111111111;
+    pub const SEED_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `TAG` field.
     pub const fn tag(self) -> u8 {
@@ -26316,7 +26346,7 @@ impl Rvbar {
     /// Offset of the `ResetAddress` field.
     pub const RESETADDRESS_SHIFT: u32 = 1;
     /// Mask for the `ResetAddress` field.
-    pub const RESETADDRESS_MASK: u32 = 0b1111111111111111111111111111111;
+    pub const RESETADDRESS_MASK: u32 = 0b111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ResetAddress` field.
     pub const fn resetaddress(self) -> u32 {
@@ -26409,7 +26439,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct ScrEl3: u64 {
         /// RES1 bits in the `SCR_EL3` register.
-        const RES1 = 0b110000;
+        const RES1 = 0b11_0000;
         /// Non-secure.
         const NS = 1 << 0;
         /// Take physical IRQs at EL3.
@@ -26671,7 +26701,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Sctlr: u32 {
         /// RES1 bits in the `SCTLR` register.
-        const RES1 = 0b10000000000100000000000;
+        const RES1 = 0b100_0000_0000_1000_0000_0000;
         /// `M` bit.
         const M = 1 << 0;
         /// `A` bit.
@@ -27384,7 +27414,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct SctlrEl3: u64 {
         /// RES1 bits in the `SCTLR_EL3` register.
-        const RES1 = 0b110000100001010000000000110000;
+        const RES1 = 0b11_0000_1000_0101_0000_0000_0011_0000;
         /// MMU enable for EL3 stage 1 address translation.
         const M = 1 << 0;
         /// Alignment check enable.
@@ -28189,7 +28219,7 @@ impl SpEl1 {
     pub const STACKPOINTER_SHIFT: u32 = 0;
     /// Mask for the `StackPointer` field.
     pub const STACKPOINTER_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
@@ -28227,7 +28257,7 @@ impl SpEl2 {
     pub const STACKPOINTER_SHIFT: u32 = 0;
     /// Mask for the `StackPointer` field.
     pub const STACKPOINTER_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
@@ -28355,11 +28385,11 @@ impl Tcr2El1 {
     /// Offset of the `VTB0` field.
     pub const VTB0_SHIFT: u32 = 25;
     /// Mask for the `VTB0` field.
-    pub const VTB0_MASK: u64 = 0b11111;
+    pub const VTB0_MASK: u64 = 0b1_1111;
     /// Offset of the `VTB1` field.
     pub const VTB1_SHIFT: u32 = 30;
     /// Mask for the `VTB1` field.
-    pub const VTB1_MASK: u64 = 0b11111;
+    pub const VTB1_MASK: u64 = 0b1_1111;
     /// Offset of the `TVAD0` field.
     pub const TVAD0_SHIFT: u32 = 35;
     /// Offset of the `TVAD1` field.
@@ -28512,11 +28542,11 @@ impl Tcr2El2 {
     /// Offset of the `VTB0` field.
     pub const VTB0_SHIFT: u32 = 25;
     /// Mask for the `VTB0` field.
-    pub const VTB0_MASK: u64 = 0b11111;
+    pub const VTB0_MASK: u64 = 0b1_1111;
     /// Offset of the `VTB1` field.
     pub const VTB1_SHIFT: u32 = 30;
     /// Mask for the `VTB1` field.
-    pub const VTB1_MASK: u64 = 0b11111;
+    pub const VTB1_MASK: u64 = 0b1_1111;
     /// Offset of the `TVAD0` field.
     pub const TVAD0_SHIFT: u32 = 35;
     /// Offset of the `TVAD1` field.
@@ -28655,7 +28685,7 @@ impl TcrEl1 {
     /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
     /// Mask for the `T0SZ` field.
-    pub const T0SZ_MASK: u64 = 0b111111;
+    pub const T0SZ_MASK: u64 = 0b11_1111;
     /// Offset of the `EPD0` field.
     pub const EPD0_SHIFT: u32 = 7;
     /// Offset of the `IRGN0` field.
@@ -28677,7 +28707,7 @@ impl TcrEl1 {
     /// Offset of the `T1SZ` field.
     pub const T1SZ_SHIFT: u32 = 16;
     /// Mask for the `T1SZ` field.
-    pub const T1SZ_MASK: u64 = 0b111111;
+    pub const T1SZ_MASK: u64 = 0b11_1111;
     /// Offset of the `A1` field.
     pub const A1_SHIFT: u32 = 22;
     /// Offset of the `EPD1` field.
@@ -28983,7 +29013,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct TcrEl2: u64 {
         /// RES1 bits in the `TCR_EL2` register.
-        const RES1 = 0b10000000100000000000000000000000;
+        const RES1 = 0b1000_0000_1000_0000_0000_0000_0000_0000;
         /// `EPD0` bit.
         const EPD0 = 1 << 7;
         /// `TBI` bit.
@@ -29062,7 +29092,7 @@ impl TcrEl2 {
     /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
     /// Mask for the `T0SZ` field.
-    pub const T0SZ_MASK: u64 = 0b111111;
+    pub const T0SZ_MASK: u64 = 0b11_1111;
     /// Offset of the `EPD0` field.
     pub const EPD0_SHIFT: u32 = 7;
     /// Offset of the `IRGN0` field.
@@ -29088,7 +29118,7 @@ impl TcrEl2 {
     /// Offset of the `T1SZ` field.
     pub const T1SZ_SHIFT: u32 = 16;
     /// Mask for the `T1SZ` field.
-    pub const T1SZ_MASK: u64 = 0b111111;
+    pub const T1SZ_MASK: u64 = 0b11_1111;
     /// Offset of the `TBI` field.
     pub const TBI_SHIFT: u32 = 20;
     /// Offset of the `A1` field.
@@ -29426,7 +29456,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct TcrEl3: u64 {
         /// RES1 bits in the `TCR_EL3` register.
-        const RES1 = 0b10000000100000000000000000000000;
+        const RES1 = 0b1000_0000_1000_0000_0000_0000_0000_0000;
         /// `TBI` bit.
         const TBI = 1 << 20;
         /// `HA` bit.
@@ -29479,7 +29509,7 @@ impl TcrEl3 {
     /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
     /// Mask for the `T0SZ` field.
-    pub const T0SZ_MASK: u64 = 0b111111;
+    pub const T0SZ_MASK: u64 = 0b11_1111;
     /// Offset of the `IRGN0` field.
     pub const IRGN0_SHIFT: u32 = 8;
     /// Mask for the `IRGN0` field.
@@ -29549,7 +29579,7 @@ impl TcrEl3 {
     /// Offset of the `VTB` field.
     pub const VTB_SHIFT: u32 = 48;
     /// Mask for the `VTB` field.
-    pub const VTB_MASK: u64 = 0b11111;
+    pub const VTB_MASK: u64 = 0b1_1111;
     /// Offset of the `TVAD` field.
     pub const TVAD_SHIFT: u32 = 53;
 
@@ -29804,7 +29834,7 @@ impl Tpidrprw {
     /// Offset of the `TID` field.
     pub const TID_SHIFT: u32 = 0;
     /// Mask for the `TID` field.
-    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
@@ -29839,7 +29869,7 @@ impl TpidrroEl0 {
     pub const THREADID_SHIFT: u32 = 0;
     /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -29874,7 +29904,7 @@ impl Tpidruro {
     /// Offset of the `TID` field.
     pub const TID_SHIFT: u32 = 0;
     /// Mask for the `TID` field.
-    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
@@ -29908,7 +29938,7 @@ impl Tpidrurw {
     /// Offset of the `TID` field.
     pub const TID_SHIFT: u32 = 0;
     /// Mask for the `TID` field.
-    pub const TID_MASK: u32 = 0b11111111111111111111111111111111;
+    pub const TID_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
@@ -29943,7 +29973,7 @@ impl TpidrEl0 {
     pub const THREADID_SHIFT: u32 = 0;
     /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -29981,7 +30011,7 @@ impl TpidrEl1 {
     pub const THREADID_SHIFT: u32 = 0;
     /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -30019,7 +30049,7 @@ impl TpidrEl2 {
     pub const THREADID_SHIFT: u32 = 0;
     /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -30057,7 +30087,7 @@ impl TpidrEl3 {
     pub const THREADID_SHIFT: u32 = 0;
     /// Mask for the `ThreadID` field.
     pub const THREADID_MASK: u64 =
-        0b1111111111111111111111111111111111111111111111111111111111111111;
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
@@ -30451,7 +30481,7 @@ impl Ttbr0 {
     /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 1;
     /// Mask for the `BADDR` field.
-    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `S` field.
     pub const S_SHIFT: u32 = 1;
     /// Offset of the `IMP` field.
@@ -30465,11 +30495,11 @@ impl Ttbr0 {
     /// Offset of the `TTB0` field.
     pub const TTB0_SHIFT: u32 = 7;
     /// Mask for the `TTB0` field.
-    pub const TTB0_MASK: u64 = 0b1111111111111111111111111;
+    pub const TTB0_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111;
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b11111111;
+    pub const ASID_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
@@ -30570,7 +30600,7 @@ impl Ttbr0El1 {
     /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
     /// Mask for the `BADDR[47:1]` field.
-    pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_47_1_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
     /// Mask for the `SKL` field.
@@ -30578,7 +30608,7 @@ impl Ttbr0El1 {
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b1111111111111111;
+    pub const ASID_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -30659,7 +30689,7 @@ impl Ttbr0El2 {
     /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
     /// Mask for the `BADDR[47:1]` field.
-    pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_47_1_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
     /// Mask for the `SKL` field.
@@ -30667,7 +30697,7 @@ impl Ttbr0El2 {
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b1111111111111111;
+    pub const ASID_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -30793,7 +30823,7 @@ impl Ttbr1 {
     /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 1;
     /// Mask for the `BADDR` field.
-    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `S` field.
     pub const S_SHIFT: u32 = 1;
     /// Offset of the `IMP` field.
@@ -30807,11 +30837,11 @@ impl Ttbr1 {
     /// Offset of the `TTB1` field.
     pub const TTB1_SHIFT: u32 = 7;
     /// Mask for the `TTB1` field.
-    pub const TTB1_MASK: u64 = 0b1111111111111111111111111;
+    pub const TTB1_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111;
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b11111111;
+    pub const ASID_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
@@ -30912,7 +30942,7 @@ impl Ttbr1El1 {
     /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
     /// Mask for the `BADDR[47:1]` field.
-    pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_47_1_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
     /// Mask for the `SKL` field.
@@ -30920,7 +30950,7 @@ impl Ttbr1El1 {
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b1111111111111111;
+    pub const ASID_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -31001,7 +31031,7 @@ impl Ttbr1El2 {
     /// Offset of the `BADDR[47:1]` field.
     pub const BADDR_47_1_SHIFT: u32 = 1;
     /// Mask for the `BADDR[47:1]` field.
-    pub const BADDR_47_1_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_47_1_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
     /// Mask for the `SKL` field.
@@ -31009,7 +31039,7 @@ impl Ttbr1El2 {
     /// Offset of the `ASID` field.
     pub const ASID_SHIFT: u32 = 48;
     /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b1111111111111111;
+    pub const ASID_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
@@ -31084,7 +31114,7 @@ impl Vbar {
     /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 5;
     /// Mask for the `VBA` field.
-    pub const VBA_MASK: u32 = 0b111111111111111111111111111;
+    pub const VBA_MASK: u32 = 0b111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
@@ -31124,7 +31154,7 @@ impl VbarEl1 {
     /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 11;
     /// Mask for the `VBA` field.
-    pub const VBA_MASK: u64 = 0b11111111111111111111111111111111111111111111111111111;
+    pub const VBA_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
@@ -31164,7 +31194,7 @@ impl VbarEl2 {
     /// Offset of the `VBA` field.
     pub const VBA_SHIFT: u32 = 11;
     /// Mask for the `VBA` field.
-    pub const VBA_MASK: u64 = 0b11111111111111111111111111111111111111111111111111111;
+    pub const VBA_MASK: u64 = 0b1_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
@@ -31243,7 +31273,7 @@ impl Vdisr {
     /// Offset of the `STATUS` field.
     pub const STATUS_SHIFT: u32 = 0;
     /// Mask for the `STATUS` field.
-    pub const STATUS_MASK: u32 = 0b111111;
+    pub const STATUS_MASK: u32 = 0b11_1111;
     /// Offset of the `LPAE` field.
     pub const LPAE_SHIFT: u32 = 9;
     /// Offset of the `ExT` field.
@@ -31318,11 +31348,11 @@ impl VdisrEl2 {
     /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
     /// Mask for the `ISS` field.
-    pub const ISS_MASK: u64 = 0b111111111111111111111111;
+    pub const ISS_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
     /// Offset of the `STATUS` field.
     pub const STATUS_SHIFT: u32 = 0;
     /// Mask for the `STATUS` field.
-    pub const STATUS_MASK: u64 = 0b111111;
+    pub const STATUS_MASK: u64 = 0b11_1111;
     /// Offset of the `LPAE` field.
     pub const LPAE_SHIFT: u32 = 9;
     /// Offset of the `ExT` field.
@@ -31415,15 +31445,15 @@ impl Vmpidr {
     /// Offset of the `Aff0` field.
     pub const AFF0_SHIFT: u32 = 0;
     /// Mask for the `Aff0` field.
-    pub const AFF0_MASK: u32 = 0b11111111;
+    pub const AFF0_MASK: u32 = 0b1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 8;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u32 = 0b11111111;
+    pub const AFF1_MASK: u32 = 0b1111_1111;
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 16;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u32 = 0b11111111;
+    pub const AFF2_MASK: u32 = 0b1111_1111;
     /// Offset of the `MT` field.
     pub const MT_SHIFT: u32 = 24;
     /// Offset of the `U` field.
@@ -31499,7 +31529,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct VmpidrEl2: u64 {
         /// RES1 bits in the `VMPIDR_EL2` register.
-        const RES1 = 0b10000000000000000000000000000000;
+        const RES1 = 0b1000_0000_0000_0000_0000_0000_0000_0000;
         /// `MT` bit.
         const MT = 1 << 24;
         /// `U` bit.
@@ -31512,15 +31542,15 @@ impl VmpidrEl2 {
     /// Offset of the `Aff0` field.
     pub const AFF0_SHIFT: u32 = 0;
     /// Mask for the `Aff0` field.
-    pub const AFF0_MASK: u64 = 0b11111111;
+    pub const AFF0_MASK: u64 = 0b1111_1111;
     /// Offset of the `Aff1` field.
     pub const AFF1_SHIFT: u32 = 8;
     /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b11111111;
+    pub const AFF1_MASK: u64 = 0b1111_1111;
     /// Offset of the `Aff2` field.
     pub const AFF2_SHIFT: u32 = 16;
     /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b11111111;
+    pub const AFF2_MASK: u64 = 0b1111_1111;
     /// Offset of the `MT` field.
     pub const MT_SHIFT: u32 = 24;
     /// Offset of the `U` field.
@@ -31528,7 +31558,7 @@ impl VmpidrEl2 {
     /// Offset of the `Aff3` field.
     pub const AFF3_SHIFT: u32 = 32;
     /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b11111111;
+    pub const AFF3_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
@@ -31627,7 +31657,7 @@ impl Vpidr {
     /// Offset of the `PartNum` field.
     pub const PARTNUM_SHIFT: u32 = 4;
     /// Mask for the `PartNum` field.
-    pub const PARTNUM_MASK: u32 = 0b111111111111;
+    pub const PARTNUM_MASK: u32 = 0b1111_1111_1111;
     /// Offset of the `Architecture` field.
     pub const ARCHITECTURE_SHIFT: u32 = 16;
     /// Mask for the `Architecture` field.
@@ -31639,7 +31669,7 @@ impl Vpidr {
     /// Offset of the `Implementer` field.
     pub const IMPLEMENTER_SHIFT: u32 = 24;
     /// Mask for the `Implementer` field.
-    pub const IMPLEMENTER_MASK: u32 = 0b11111111;
+    pub const IMPLEMENTER_MASK: u32 = 0b1111_1111;
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
@@ -31760,7 +31790,7 @@ impl VpidrEl2 {
     /// Offset of the `PartNum` field.
     pub const PARTNUM_SHIFT: u32 = 4;
     /// Mask for the `PartNum` field.
-    pub const PARTNUM_MASK: u64 = 0b111111111111;
+    pub const PARTNUM_MASK: u64 = 0b1111_1111_1111;
     /// Offset of the `Architecture` field.
     pub const ARCHITECTURE_SHIFT: u32 = 16;
     /// Mask for the `Architecture` field.
@@ -31772,7 +31802,7 @@ impl VpidrEl2 {
     /// Offset of the `Implementer` field.
     pub const IMPLEMENTER_SHIFT: u32 = 24;
     /// Mask for the `Implementer` field.
-    pub const IMPLEMENTER_MASK: u64 = 0b11111111;
+    pub const IMPLEMENTER_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
@@ -31893,7 +31923,7 @@ impl VsesrEl2 {
     /// Offset of the `ISS` field.
     pub const ISS_SHIFT: u32 = 0;
     /// Mask for the `ISS` field.
-    pub const ISS_MASK: u64 = 0b111111111111111111111111;
+    pub const ISS_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
     /// Offset of the `ExT` field.
     pub const EXT_SHIFT: u32 = 12;
     /// Offset of the `AET` field.
@@ -31950,7 +31980,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct Vtcr: u32 {
         /// RES1 bits in the `VTCR` register.
-        const RES1 = 0b10000000000000000000000000000000;
+        const RES1 = 0b1000_0000_0000_0000_0000_0000_0000_0000;
         /// `S` bit.
         const S = 1 << 4;
         /// `HWU59` bit.
@@ -32104,7 +32134,7 @@ bitflags! {
     #[repr(transparent)]
     pub struct VtcrEl2: u64 {
         /// RES1 bits in the `VTCR_EL2` register.
-        const RES1 = 0b10000000000000000000000000000000;
+        const RES1 = 0b1000_0000_0000_0000_0000_0000_0000_0000;
         /// `VS` bit.
         const VS = 1 << 19;
         /// `HA` bit.
@@ -32153,7 +32183,7 @@ impl VtcrEl2 {
     /// Offset of the `T0SZ` field.
     pub const T0SZ_SHIFT: u32 = 0;
     /// Mask for the `T0SZ` field.
-    pub const T0SZ_MASK: u64 = 0b111111;
+    pub const T0SZ_MASK: u64 = 0b11_1111;
     /// Offset of the `SL0` field.
     pub const SL0_SHIFT: u32 = 6;
     /// Mask for the `SL0` field.
@@ -32376,11 +32406,11 @@ impl Vttbr {
     /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 1;
     /// Mask for the `BADDR` field.
-    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `VMID` field.
     pub const VMID_SHIFT: u32 = 48;
     /// Mask for the `VMID` field.
-    pub const VMID_MASK: u64 = 0b11111111;
+    pub const VMID_MASK: u64 = 0b1111_1111;
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
@@ -32441,7 +32471,7 @@ impl VttbrEl2 {
     /// Offset of the `BADDR` field.
     pub const BADDR_SHIFT: u32 = 1;
     /// Mask for the `BADDR` field.
-    pub const BADDR_MASK: u64 = 0b11111111111111111111111111111111111111111111111;
+    pub const BADDR_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
     /// Offset of the `SKL` field.
     pub const SKL_SHIFT: u32 = 1;
     /// Mask for the `SKL` field.
@@ -32449,7 +32479,7 @@ impl VttbrEl2 {
     /// Offset of the `VMID` field.
     pub const VMID_SHIFT: u32 = 48;
     /// Mask for the `VMID` field.
-    pub const VMID_MASK: u64 = 0b1111111111111111;
+    pub const VMID_MASK: u64 = 0b1111_1111_1111_1111;
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {

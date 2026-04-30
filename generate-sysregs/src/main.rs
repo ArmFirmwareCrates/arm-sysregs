@@ -320,10 +320,46 @@ const fn ones(n: u32) -> u64 {
     u64::MAX >> (64 - n)
 }
 
+/// Returns the given value as a binary literal separated at each 4 bit boundary.
+fn separated_binary_literal(n: u64) -> String {
+    if n == 0 {
+        return "0b0".to_string();
+    }
+
+    let digits = (u64::BITS - n.leading_zeros()) as usize;
+    let underscores = (digits - 1) / 4;
+    let mut out = String::with_capacity(2 + digits + underscores);
+
+    out.push_str("0b");
+
+    for i in 0..digits {
+        if i != 0 && (digits - i).is_multiple_of(4) {
+            out.push('_');
+        }
+        let shift = digits - i - 1;
+        out.push(if (n >> shift) & 1 == 1 { '1' } else { '0' });
+    }
+
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use clap::CommandFactory;
+
+    #[test]
+    fn binary_literal_string() {
+        assert_eq!("0b0", separated_binary_literal(0));
+        assert_eq!("0b1", separated_binary_literal(1));
+        assert_eq!("0b1010", separated_binary_literal(0b1010));
+        assert_eq!("0b10_1010", separated_binary_literal(0b10_1010));
+        assert_eq!("0b1010_0101_1111_0000", separated_binary_literal(0xA5F0));
+        assert_eq!(
+            "0b1000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000",
+            separated_binary_literal(1 << 63)
+        );
+    }
 
     #[test]
     fn verify_args() {

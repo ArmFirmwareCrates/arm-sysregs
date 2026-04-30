@@ -3,7 +3,10 @@
 
 //! Logic for writing out a Rust source file with system register types and accessors.
 
-use crate::{AArch32Encoding, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones};
+use crate::{
+    AArch32Encoding, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones,
+    separated_binary_literal,
+};
 use std::io::{self, Write};
 
 const RESERVED_NAMES: &[&str] = &["extend", "type"];
@@ -241,7 +244,11 @@ impl RegisterInfo {
                 "        /// RES1 bits in the `{}` register.",
                 self.name
             )?;
-            writeln!(writer, "        const RES1 = {:#b};", self.res1)?;
+            writeln!(
+                writer,
+                "        const RES1 = {};",
+                separated_binary_literal(self.res1)
+            )?;
         }
         for field in &self.fields {
             if field.width == 1 {
@@ -301,10 +308,10 @@ impl RegisterInfo {
                 writeln!(writer, "    /// Mask for the `{}` field.", field.name)?;
                 writeln!(
                     writer,
-                    "    pub const {}_MASK: u{} = {:#b};",
+                    "    pub const {}_MASK: u{} = {};",
                     constant_name,
                     self.width,
-                    ones(field.width)
+                    separated_binary_literal(ones(field.width))
                 )?;
             }
         }
