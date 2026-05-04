@@ -369,12 +369,12 @@ impl RegisterInfo {
                 }
                 write!(
                     writer,
-                    "((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) & {:#b}) as {}",
+                    "((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) & Self::{}_MASK) as {}",
                     field.constant_name(),
                     array_info.index_variable,
                     array_info.indices.start,
                     field.width,
-                    ones(field.width),
+                    field.constant_name(),
                     int_ty,
                 )?;
                 if use_custom_type {
@@ -405,9 +405,8 @@ impl RegisterInfo {
                 }
                 write!(
                     writer,
-                    "((self.bits() >> Self::{}_SHIFT) & {:#b}) as {}",
+                    "((self.bits() >> Self::{0}_SHIFT) & Self::{0}_MASK) as {1}",
                     field.constant_name(),
-                    ones(field.width),
                     int_ty,
                 )?;
                 if use_custom_type {

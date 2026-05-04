@@ -50,7 +50,7 @@ impl Amcfgr {
 
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
-        ((self.bits() >> Self::N_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::N_SHIFT) & Self::N_MASK) as u8
     }
 
     /// Sets the value of the `N` field.
@@ -70,7 +70,7 @@ impl Amcfgr {
 
     /// Returns the value of the `SIZE` field.
     pub const fn size(self) -> u8 {
-        ((self.bits() >> Self::SIZE_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::SIZE_SHIFT) & Self::SIZE_MASK) as u8
     }
 
     /// Sets the value of the `SIZE` field.
@@ -90,7 +90,7 @@ impl Amcfgr {
 
     /// Returns the value of the `NCG` field.
     pub const fn ncg(self) -> u8 {
-        ((self.bits() >> Self::NCG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::NCG_SHIFT) & Self::NCG_MASK) as u8
     }
 
     /// Sets the value of the `NCG` field.
@@ -137,7 +137,7 @@ impl AmcfgrEl0 {
 
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
-        ((self.bits() >> Self::N_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::N_SHIFT) & Self::N_MASK) as u8
     }
 
     /// Sets the value of the `N` field.
@@ -157,7 +157,7 @@ impl AmcfgrEl0 {
 
     /// Returns the value of the `SIZE` field.
     pub const fn size(self) -> u8 {
-        ((self.bits() >> Self::SIZE_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::SIZE_SHIFT) & Self::SIZE_MASK) as u8
     }
 
     /// Sets the value of the `SIZE` field.
@@ -177,7 +177,7 @@ impl AmcfgrEl0 {
 
     /// Returns the value of the `NCG` field.
     pub const fn ncg(self) -> u8 {
-        ((self.bits() >> Self::NCG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::NCG_SHIFT) & Self::NCG_MASK) as u8
     }
 
     /// Sets the value of the `NCG` field.
@@ -216,7 +216,7 @@ impl Amcgcr {
 
     /// Returns the value of the `CG0NC` field.
     pub const fn cg0nc(self) -> u8 {
-        ((self.bits() >> Self::CG0NC_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::CG0NC_SHIFT) & Self::CG0NC_MASK) as u8
     }
 
     /// Sets the value of the `CG0NC` field.
@@ -236,7 +236,7 @@ impl Amcgcr {
 
     /// Returns the value of the `CG1NC` field.
     pub const fn cg1nc(self) -> u8 {
-        ((self.bits() >> Self::CG1NC_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::CG1NC_SHIFT) & Self::CG1NC_MASK) as u8
     }
 
     /// Sets the value of the `CG1NC` field.
@@ -275,7 +275,7 @@ impl AmcgcrEl0 {
 
     /// Returns the value of the `CG0NC` field.
     pub const fn cg0nc(self) -> u8 {
-        ((self.bits() >> Self::CG0NC_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::CG0NC_SHIFT) & Self::CG0NC_MASK) as u8
     }
 
     /// Sets the value of the `CG0NC` field.
@@ -295,7 +295,7 @@ impl AmcgcrEl0 {
 
     /// Returns the value of the `CG1NC` field.
     pub const fn cg1nc(self) -> u8 {
-        ((self.bits() >> Self::CG1NC_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::CG1NC_SHIFT) & Self::CG1NC_MASK) as u8
     }
 
     /// Sets the value of the `CG1NC` field.
@@ -632,8 +632,7 @@ impl Amevcntr00 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -668,8 +667,7 @@ impl Amevcntr00El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -704,8 +702,7 @@ impl Amevcntr01 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -740,8 +737,7 @@ impl Amevcntr01El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -776,8 +772,7 @@ impl Amevcntr02 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -812,8 +807,7 @@ impl Amevcntr02El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -848,8 +842,7 @@ impl Amevcntr03 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -884,8 +877,7 @@ impl Amevcntr03El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -920,8 +912,7 @@ impl Amevcntr10El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -956,8 +947,7 @@ impl Amevcntr110El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -992,8 +982,7 @@ impl Amevcntr111El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1028,8 +1017,7 @@ impl Amevcntr112El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1064,8 +1052,7 @@ impl Amevcntr113El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1100,8 +1087,7 @@ impl Amevcntr114El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1136,8 +1122,7 @@ impl Amevcntr115El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1172,8 +1157,7 @@ impl Amevcntr11El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1208,8 +1192,7 @@ impl Amevcntr12El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1244,8 +1227,7 @@ impl Amevcntr13El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1280,8 +1262,7 @@ impl Amevcntr14El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1316,8 +1297,7 @@ impl Amevcntr15El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1352,8 +1332,7 @@ impl Amevcntr16El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1388,8 +1367,7 @@ impl Amevcntr17El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1424,8 +1402,7 @@ impl Amevcntr18El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1460,8 +1437,7 @@ impl Amevcntr19El0 {
 
     /// Returns the value of the `ACNT` field.
     pub const fn acnt(self) -> u64 {
-        ((self.bits() >> Self::ACNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK) as u64
     }
 
     /// Sets the value of the `ACNT` field.
@@ -1529,8 +1505,7 @@ impl ApiakeyhiEl1 {
 
     /// Returns the value of the `APIAKeyHi` field.
     pub const fn apiakeyhi(self) -> u64 {
-        ((self.bits() >> Self::APIAKEYHI_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::APIAKEYHI_SHIFT) & Self::APIAKEYHI_MASK) as u64
     }
 
     /// Sets the value of the `APIAKeyHi` field.
@@ -1568,8 +1543,7 @@ impl ApiakeyloEl1 {
 
     /// Returns the value of the `APIAKeyLo` field.
     pub const fn apiakeylo(self) -> u64 {
-        ((self.bits() >> Self::APIAKEYLO_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::APIAKEYLO_SHIFT) & Self::APIAKEYLO_MASK) as u64
     }
 
     /// Sets the value of the `APIAKeyLo` field.
@@ -1608,7 +1582,7 @@ impl Ccsidr {
 
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
-        ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LINESIZE_SHIFT) & Self::LINESIZE_MASK) as u8
     }
 
     /// Sets the value of the `LineSize` field.
@@ -1628,7 +1602,7 @@ impl Ccsidr {
 
     /// Returns the value of the `NumSets` field.
     pub const fn numsets(self) -> u16 {
-        ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111) as u16
+        ((self.bits() >> Self::NUMSETS_SHIFT) & Self::NUMSETS_MASK) as u16
     }
 
     /// Sets the value of the `NumSets` field.
@@ -1663,7 +1637,7 @@ impl Ccsidr2 {
 
     /// Returns the value of the `NumSets` field.
     pub const fn numsets(self) -> u32 {
-        ((self.bits() >> Self::NUMSETS_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::NUMSETS_SHIFT) & Self::NUMSETS_MASK) as u32
     }
 
     /// Sets the value of the `NumSets` field.
@@ -1700,7 +1674,7 @@ impl CcsidrEl1 {
 
     /// Returns the value of the `LineSize` field.
     pub const fn linesize(self) -> u8 {
-        ((self.bits() >> Self::LINESIZE_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LINESIZE_SHIFT) & Self::LINESIZE_MASK) as u8
     }
 
     /// Sets the value of the `LineSize` field.
@@ -1752,7 +1726,7 @@ impl Clidr {
     /// Returns the value of the given `Ctype<n>` field.
     pub const fn ctype(self, n: u32) -> u8 {
         assert!(n >= 1 && n < 8);
-        ((self.bits() >> (Self::CTYPE_SHIFT + (n - 1) * 3)) & 0b111) as u8
+        ((self.bits() >> (Self::CTYPE_SHIFT + (n - 1) * 3)) & Self::CTYPE_MASK) as u8
     }
 
     /// Sets the value of the `Ctype<n>` field.
@@ -1773,7 +1747,7 @@ impl Clidr {
 
     /// Returns the value of the `LoUIS` field.
     pub const fn louis(self) -> u8 {
-        ((self.bits() >> Self::LOUIS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LOUIS_SHIFT) & Self::LOUIS_MASK) as u8
     }
 
     /// Sets the value of the `LoUIS` field.
@@ -1793,7 +1767,7 @@ impl Clidr {
 
     /// Returns the value of the `LoC` field.
     pub const fn loc(self) -> u8 {
-        ((self.bits() >> Self::LOC_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LOC_SHIFT) & Self::LOC_MASK) as u8
     }
 
     /// Sets the value of the `LoC` field.
@@ -1813,7 +1787,7 @@ impl Clidr {
 
     /// Returns the value of the `LoUU` field.
     pub const fn louu(self) -> u8 {
-        ((self.bits() >> Self::LOUU_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LOUU_SHIFT) & Self::LOUU_MASK) as u8
     }
 
     /// Sets the value of the `LoUU` field.
@@ -1833,7 +1807,7 @@ impl Clidr {
 
     /// Returns the value of the `ICB` field.
     pub const fn icb(self) -> u8 {
-        ((self.bits() >> Self::ICB_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ICB_SHIFT) & Self::ICB_MASK) as u8
     }
 
     /// Sets the value of the `ICB` field.
@@ -1894,7 +1868,7 @@ impl ClidrEl1 {
     pub fn ctype(self, n: u32) -> crate::manual::CacheType {
         assert!(n >= 1 && n < 8);
         crate::manual::CacheType::try_from(
-            ((self.bits() >> (Self::CTYPE_SHIFT + (n - 1) * 3)) & 0b111) as u8,
+            ((self.bits() >> (Self::CTYPE_SHIFT + (n - 1) * 3)) & Self::CTYPE_MASK) as u8,
         )
         .unwrap()
     }
@@ -1920,7 +1894,7 @@ impl ClidrEl1 {
     ///
     /// Level of Unification Inner Shareable for the cache hierarchy.
     pub const fn louis(self) -> u8 {
-        ((self.bits() >> Self::LOUIS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LOUIS_SHIFT) & Self::LOUIS_MASK) as u8
     }
 
     /// Sets the value of the `LoUIS` field.
@@ -1946,7 +1920,7 @@ impl ClidrEl1 {
     ///
     /// Level of Coherence for the cache hierarchy.
     pub const fn loc(self) -> u8 {
-        ((self.bits() >> Self::LOC_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LOC_SHIFT) & Self::LOC_MASK) as u8
     }
 
     /// Sets the value of the `LoC` field.
@@ -1972,7 +1946,7 @@ impl ClidrEl1 {
     ///
     /// Level of Unification Uniprocessor for the cache hierarchy.
     pub const fn louu(self) -> u8 {
-        ((self.bits() >> Self::LOUU_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LOUU_SHIFT) & Self::LOUU_MASK) as u8
     }
 
     /// Sets the value of the `LoUU` field.
@@ -1998,7 +1972,7 @@ impl ClidrEl1 {
     ///
     /// Inner cache boundary level.
     pub const fn icb(self) -> u8 {
-        ((self.bits() >> Self::ICB_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::ICB_SHIFT) & Self::ICB_MASK) as u8
     }
 
     /// Sets the value of the `ICB` field.
@@ -2023,7 +1997,7 @@ impl ClidrEl1 {
     /// Returns the value of the given `Ttype<n>` field.
     pub const fn ttype(self, n: u32) -> u8 {
         assert!(n >= 1 && n < 8);
-        ((self.bits() >> (Self::TTYPE_SHIFT + (n - 1) * 2)) & 0b11) as u8
+        ((self.bits() >> (Self::TTYPE_SHIFT + (n - 1) * 2)) & Self::TTYPE_MASK) as u8
     }
 
     /// Sets the value of the `Ttype<n>` field.
@@ -2059,7 +2033,7 @@ impl Cntfrq {
 
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
-        ((self.bits() >> Self::CLOCKFREQ_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::CLOCKFREQ_SHIFT) & Self::CLOCKFREQ_MASK) as u32
     }
 
     /// Sets the value of the `ClockFreq` field.
@@ -2096,7 +2070,7 @@ impl CntfrqEl0 {
 
     /// Returns the value of the `ClockFreq` field.
     pub const fn clockfreq(self) -> u32 {
-        ((self.bits() >> Self::CLOCKFREQ_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::CLOCKFREQ_SHIFT) & Self::CLOCKFREQ_MASK) as u32
     }
 
     /// Sets the value of the `ClockFreq` field.
@@ -2151,7 +2125,7 @@ impl Cnthctl {
 
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
-        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EVNTI_SHIFT) & Self::EVNTI_MASK) as u8
     }
 
     /// Sets the value of the `EVNTI` field.
@@ -2254,7 +2228,7 @@ impl CnthctlEl2 {
 
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
-        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EVNTI_SHIFT) & Self::EVNTI_MASK) as u8
     }
 
     /// Sets the value of the `EVNTI` field.
@@ -2340,8 +2314,7 @@ impl CnthpsCval {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2381,8 +2354,7 @@ impl CnthpsCvalEl2 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2417,7 +2389,7 @@ impl CnthpsTval {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -2456,7 +2428,7 @@ impl CnthpsTvalEl2 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -2542,8 +2514,7 @@ impl CnthpCval {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2583,8 +2554,7 @@ impl CnthpCvalEl2 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2619,7 +2589,7 @@ impl CnthpTval {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -2658,7 +2628,7 @@ impl CnthpTvalEl2 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -2744,8 +2714,7 @@ impl CnthvsCval {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2785,8 +2754,7 @@ impl CnthvsCvalEl2 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2821,7 +2789,7 @@ impl CnthvsTval {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -2860,7 +2828,7 @@ impl CnthvsTvalEl2 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -2946,8 +2914,7 @@ impl CnthvCval {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -2987,8 +2954,7 @@ impl CnthvCvalEl2 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -3023,7 +2989,7 @@ impl CnthvTval {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -3062,7 +3028,7 @@ impl CnthvTvalEl2 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -3125,7 +3091,7 @@ impl Cntkctl {
 
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
-        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EVNTI_SHIFT) & Self::EVNTI_MASK) as u8
     }
 
     /// Sets the value of the `EVNTI` field.
@@ -3228,7 +3194,7 @@ impl CntkctlEl1 {
 
     /// Returns the value of the `EVNTI` field.
     pub const fn evnti(self) -> u8 {
-        ((self.bits() >> Self::EVNTI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EVNTI_SHIFT) & Self::EVNTI_MASK) as u8
     }
 
     /// Sets the value of the `EVNTI` field.
@@ -3264,8 +3230,7 @@ impl Cntpct {
 
     /// Returns the value of the `PhysicalCount` field.
     pub const fn physicalcount(self) -> u64 {
-        ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::PHYSICALCOUNT_SHIFT) & Self::PHYSICALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `PhysicalCount` field.
@@ -3301,8 +3266,7 @@ impl Cntpctss {
 
     /// Returns the value of the `SSPhysicalCount` field.
     pub const fn ssphysicalcount(self) -> u64 {
-        ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT) & Self::SSPHYSICALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `SSPhysicalCount` field.
@@ -3340,8 +3304,7 @@ impl CntpctssEl0 {
 
     /// Returns the value of the `SSPhysicalCount` field.
     pub const fn ssphysicalcount(self) -> u64 {
-        ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::SSPHYSICALCOUNT_SHIFT) & Self::SSPHYSICALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `SSPhysicalCount` field.
@@ -3379,8 +3342,7 @@ impl CntpctEl0 {
 
     /// Returns the value of the `PhysicalCount` field.
     pub const fn physicalcount(self) -> u64 {
-        ((self.bits() >> Self::PHYSICALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::PHYSICALCOUNT_SHIFT) & Self::PHYSICALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `PhysicalCount` field.
@@ -3419,8 +3381,7 @@ impl CntpoffEl2 {
 
     /// Returns the value of the `PO` field.
     pub const fn po(self) -> u64 {
-        ((self.bits() >> Self::PO_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::PO_SHIFT) & Self::PO_MASK) as u64
     }
 
     /// Sets the value of the `PO` field.
@@ -3487,8 +3448,7 @@ impl CntpsCvalEl1 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -3527,7 +3487,7 @@ impl CntpsTvalEl1 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -3611,8 +3571,7 @@ impl CntpCval {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -3650,8 +3609,7 @@ impl CntpCvalEl0 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -3686,7 +3644,7 @@ impl CntpTval {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -3723,7 +3681,7 @@ impl CntpTvalEl0 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -3759,8 +3717,7 @@ impl Cntvct {
 
     /// Returns the value of the `VirtualCount` field.
     pub const fn virtualcount(self) -> u64 {
-        ((self.bits() >> Self::VIRTUALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::VIRTUALCOUNT_SHIFT) & Self::VIRTUALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `VirtualCount` field.
@@ -3796,8 +3753,7 @@ impl Cntvctss {
 
     /// Returns the value of the `SSVirtualCount` field.
     pub const fn ssvirtualcount(self) -> u64 {
-        ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT) & Self::SSVIRTUALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `SSVirtualCount` field.
@@ -3835,8 +3791,7 @@ impl CntvctssEl0 {
 
     /// Returns the value of the `SSVirtualCount` field.
     pub const fn ssvirtualcount(self) -> u64 {
-        ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::SSVIRTUALCOUNT_SHIFT) & Self::SSVIRTUALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `SSVirtualCount` field.
@@ -3874,8 +3829,7 @@ impl CntvctEl0 {
 
     /// Returns the value of the `VirtualCount` field.
     pub const fn virtualcount(self) -> u64 {
-        ((self.bits() >> Self::VIRTUALCOUNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::VIRTUALCOUNT_SHIFT) & Self::VIRTUALCOUNT_MASK) as u64
     }
 
     /// Sets the value of the `VirtualCount` field.
@@ -3911,8 +3865,7 @@ impl Cntvoff {
 
     /// Returns the value of the `VOffset` field.
     pub const fn voffset(self) -> u64 {
-        ((self.bits() >> Self::VOFFSET_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::VOFFSET_SHIFT) & Self::VOFFSET_MASK) as u64
     }
 
     /// Sets the value of the `VOffset` field.
@@ -3952,8 +3905,7 @@ impl CntvoffEl2 {
 
     /// Returns the value of the `VOffset` field.
     pub const fn voffset(self) -> u64 {
-        ((self.bits() >> Self::VOFFSET_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::VOFFSET_SHIFT) & Self::VOFFSET_MASK) as u64
     }
 
     /// Sets the value of the `VOffset` field.
@@ -4037,8 +3989,7 @@ impl CntvCval {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -4076,8 +4027,7 @@ impl CntvCvalEl0 {
 
     /// Returns the value of the `CompareValue` field.
     pub const fn comparevalue(self) -> u64 {
-        ((self.bits() >> Self::COMPAREVALUE_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK) as u64
     }
 
     /// Sets the value of the `CompareValue` field.
@@ -4112,7 +4062,7 @@ impl CntvTval {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -4149,7 +4099,7 @@ impl CntvTvalEl0 {
 
     /// Returns the value of the `TimerValue` field.
     pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
     }
 
     /// Sets the value of the `TimerValue` field.
@@ -4184,7 +4134,7 @@ impl Contextidr {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u8
     }
 
     /// Sets the value of the `ASID` field.
@@ -4221,7 +4171,7 @@ impl ContextidrEl1 {
 
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
-        ((self.bits() >> Self::PROCID_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::PROCID_SHIFT) & Self::PROCID_MASK) as u32
     }
 
     /// Sets the value of the `PROCID` field.
@@ -4258,7 +4208,7 @@ impl ContextidrEl2 {
 
     /// Returns the value of the `PROCID` field.
     pub const fn procid(self) -> u32 {
-        ((self.bits() >> Self::PROCID_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::PROCID_SHIFT) & Self::PROCID_MASK) as u32
     }
 
     /// Sets the value of the `PROCID` field.
@@ -4305,7 +4255,7 @@ impl Cpacr {
 
     /// Returns the value of the `cp10` field.
     pub const fn cp10(self) -> u8 {
-        ((self.bits() >> Self::CP10_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::CP10_SHIFT) & Self::CP10_MASK) as u8
     }
 
     /// Sets the value of the `cp10` field.
@@ -4325,7 +4275,7 @@ impl Cpacr {
 
     /// Returns the value of the `cp11` field.
     pub const fn cp11(self) -> u8 {
-        ((self.bits() >> Self::CP11_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::CP11_SHIFT) & Self::CP11_MASK) as u8
     }
 
     /// Sets the value of the `cp11` field.
@@ -4394,7 +4344,7 @@ impl CpacrEl1 {
 
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
-        ((self.bits() >> Self::ZEN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ZEN_SHIFT) & Self::ZEN_MASK) as u8
     }
 
     /// Sets the value of the `ZEN` field.
@@ -4414,7 +4364,7 @@ impl CpacrEl1 {
 
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
-        ((self.bits() >> Self::FPEN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::FPEN_SHIFT) & Self::FPEN_MASK) as u8
     }
 
     /// Sets the value of the `FPEN` field.
@@ -4434,7 +4384,7 @@ impl CpacrEl1 {
 
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
-        ((self.bits() >> Self::SMEN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SMEN_SHIFT) & Self::SMEN_MASK) as u8
     }
 
     /// Sets the value of the `SMEN` field.
@@ -4513,7 +4463,7 @@ impl CptrEl2 {
 
     /// Returns the value of the `ZEN` field.
     pub const fn zen(self) -> u8 {
-        ((self.bits() >> Self::ZEN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ZEN_SHIFT) & Self::ZEN_MASK) as u8
     }
 
     /// Sets the value of the `ZEN` field.
@@ -4533,7 +4483,7 @@ impl CptrEl2 {
 
     /// Returns the value of the `FPEN` field.
     pub const fn fpen(self) -> u8 {
-        ((self.bits() >> Self::FPEN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::FPEN_SHIFT) & Self::FPEN_MASK) as u8
     }
 
     /// Sets the value of the `FPEN` field.
@@ -4553,7 +4503,7 @@ impl CptrEl2 {
 
     /// Returns the value of the `SMEN` field.
     pub const fn smen(self) -> u8 {
-        ((self.bits() >> Self::SMEN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SMEN_SHIFT) & Self::SMEN_MASK) as u8
     }
 
     /// Sets the value of the `SMEN` field.
@@ -4629,7 +4579,7 @@ impl Csselr {
 
     /// Returns the value of the `Level` field.
     pub const fn level(self) -> u8 {
-        ((self.bits() >> Self::LEVEL_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LEVEL_SHIFT) & Self::LEVEL_MASK) as u8
     }
 
     /// Sets the value of the `Level` field.
@@ -4674,7 +4624,7 @@ impl CsselrEl1 {
 
     /// Returns the value of the `Level` field.
     pub const fn level(self) -> u8 {
-        ((self.bits() >> Self::LEVEL_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::LEVEL_SHIFT) & Self::LEVEL_MASK) as u8
     }
 
     /// Sets the value of the `Level` field.
@@ -4735,7 +4685,7 @@ impl Ctr {
 
     /// Returns the value of the `IminLine` field.
     pub const fn iminline(self) -> u8 {
-        ((self.bits() >> Self::IMINLINE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::IMINLINE_SHIFT) & Self::IMINLINE_MASK) as u8
     }
 
     /// Sets the value of the `IminLine` field.
@@ -4755,7 +4705,7 @@ impl Ctr {
 
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
-        ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::L1IP_SHIFT) & Self::L1IP_MASK) as u8
     }
 
     /// Sets the value of the `L1Ip` field.
@@ -4775,7 +4725,7 @@ impl Ctr {
 
     /// Returns the value of the `DminLine` field.
     pub const fn dminline(self) -> u8 {
-        ((self.bits() >> Self::DMINLINE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DMINLINE_SHIFT) & Self::DMINLINE_MASK) as u8
     }
 
     /// Sets the value of the `DminLine` field.
@@ -4795,7 +4745,7 @@ impl Ctr {
 
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
-        ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ERG_SHIFT) & Self::ERG_MASK) as u8
     }
 
     /// Sets the value of the `ERG` field.
@@ -4815,7 +4765,7 @@ impl Ctr {
 
     /// Returns the value of the `CWG` field.
     pub const fn cwg(self) -> u8 {
-        ((self.bits() >> Self::CWG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CWG_SHIFT) & Self::CWG_MASK) as u8
     }
 
     /// Sets the value of the `CWG` field.
@@ -4882,7 +4832,7 @@ impl CtrEl0 {
 
     /// Returns the value of the `IminLine` field.
     pub const fn iminline(self) -> u8 {
-        ((self.bits() >> Self::IMINLINE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::IMINLINE_SHIFT) & Self::IMINLINE_MASK) as u8
     }
 
     /// Sets the value of the `IminLine` field.
@@ -4902,7 +4852,7 @@ impl CtrEl0 {
 
     /// Returns the value of the `L1Ip` field.
     pub const fn l1ip(self) -> u8 {
-        ((self.bits() >> Self::L1IP_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::L1IP_SHIFT) & Self::L1IP_MASK) as u8
     }
 
     /// Sets the value of the `L1Ip` field.
@@ -4924,7 +4874,7 @@ impl CtrEl0 {
     ///
     /// Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the PE.
     pub const fn dminline(self) -> u8 {
-        ((self.bits() >> Self::DMINLINE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DMINLINE_SHIFT) & Self::DMINLINE_MASK) as u8
     }
 
     /// Sets the value of the `DminLine` field.
@@ -4948,7 +4898,7 @@ impl CtrEl0 {
 
     /// Returns the value of the `ERG` field.
     pub const fn erg(self) -> u8 {
-        ((self.bits() >> Self::ERG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ERG_SHIFT) & Self::ERG_MASK) as u8
     }
 
     /// Sets the value of the `ERG` field.
@@ -4968,7 +4918,7 @@ impl CtrEl0 {
 
     /// Returns the value of the `CWG` field.
     pub const fn cwg(self) -> u8 {
-        ((self.bits() >> Self::CWG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CWG_SHIFT) & Self::CWG_MASK) as u8
     }
 
     /// Sets the value of the `CWG` field.
@@ -4988,7 +4938,7 @@ impl CtrEl0 {
 
     /// Returns the value of the `TminLine` field.
     pub const fn tminline(self) -> u8 {
-        ((self.bits() >> Self::TMINLINE_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::TMINLINE_SHIFT) & Self::TMINLINE_MASK) as u8
     }
 
     /// Sets the value of the `TminLine` field.
@@ -5023,7 +4973,7 @@ impl Currentel {
 
     /// Returns the value of the `EL` field.
     pub const fn el(self) -> u8 {
-        ((self.bits() >> Self::EL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::EL_SHIFT) & Self::EL_MASK) as u8
     }
 
     /// Sets the value of the `EL` field.
@@ -5059,7 +5009,7 @@ impl Dacr {
     /// Returns the value of the given `D<n>` field.
     pub const fn d(self, n: u32) -> u8 {
         assert!(n < 16);
-        ((self.bits() >> (Self::D_SHIFT + (n - 0) * 2)) & 0b11) as u8
+        ((self.bits() >> (Self::D_SHIFT + (n - 0) * 2)) & Self::D_MASK) as u8
     }
 
     /// Sets the value of the `D<n>` field.
@@ -5107,7 +5057,7 @@ impl Dbgauthstatus {
 
     /// Returns the value of the `NSID` field.
     pub const fn nsid(self) -> u8 {
-        ((self.bits() >> Self::NSID_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NSID_SHIFT) & Self::NSID_MASK) as u8
     }
 
     /// Sets the value of the `NSID` field.
@@ -5127,7 +5077,7 @@ impl Dbgauthstatus {
 
     /// Returns the value of the `NSNID` field.
     pub const fn nsnid(self) -> u8 {
-        ((self.bits() >> Self::NSNID_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NSNID_SHIFT) & Self::NSNID_MASK) as u8
     }
 
     /// Sets the value of the `NSNID` field.
@@ -5147,7 +5097,7 @@ impl Dbgauthstatus {
 
     /// Returns the value of the `SID` field.
     pub const fn sid(self) -> u8 {
-        ((self.bits() >> Self::SID_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SID_SHIFT) & Self::SID_MASK) as u8
     }
 
     /// Sets the value of the `SID` field.
@@ -5167,7 +5117,7 @@ impl Dbgauthstatus {
 
     /// Returns the value of the `SNID` field.
     pub const fn snid(self) -> u8 {
-        ((self.bits() >> Self::SNID_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SNID_SHIFT) & Self::SNID_MASK) as u8
     }
 
     /// Sets the value of the `SNID` field.
@@ -5307,7 +5257,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `PCSample` field.
     pub const fn pcsample(self) -> u8 {
-        ((self.bits() >> Self::PCSAMPLE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PCSAMPLE_SHIFT) & Self::PCSAMPLE_MASK) as u8
     }
 
     /// Sets the value of the `PCSample` field.
@@ -5327,7 +5277,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `WPAddrMask` field.
     pub const fn wpaddrmask(self) -> u8 {
-        ((self.bits() >> Self::WPADDRMASK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WPADDRMASK_SHIFT) & Self::WPADDRMASK_MASK) as u8
     }
 
     /// Sets the value of the `WPAddrMask` field.
@@ -5347,7 +5297,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `BPAddrMask` field.
     pub const fn bpaddrmask(self) -> u8 {
-        ((self.bits() >> Self::BPADDRMASK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BPADDRMASK_SHIFT) & Self::BPADDRMASK_MASK) as u8
     }
 
     /// Sets the value of the `BPAddrMask` field.
@@ -5367,7 +5317,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `VectorCatch` field.
     pub const fn vectorcatch(self) -> u8 {
-        ((self.bits() >> Self::VECTORCATCH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VECTORCATCH_SHIFT) & Self::VECTORCATCH_MASK) as u8
     }
 
     /// Sets the value of the `VectorCatch` field.
@@ -5387,7 +5337,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `VirtExtns` field.
     pub const fn virtextns(self) -> u8 {
-        ((self.bits() >> Self::VIRTEXTNS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VIRTEXTNS_SHIFT) & Self::VIRTEXTNS_MASK) as u8
     }
 
     /// Sets the value of the `VirtExtns` field.
@@ -5407,7 +5357,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
-        ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DOUBLELOCK_SHIFT) & Self::DOUBLELOCK_MASK) as u8
     }
 
     /// Sets the value of the `DoubleLock` field.
@@ -5427,7 +5377,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `AuxRegs` field.
     pub const fn auxregs(self) -> u8 {
-        ((self.bits() >> Self::AUXREGS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AUXREGS_SHIFT) & Self::AUXREGS_MASK) as u8
     }
 
     /// Sets the value of the `AuxRegs` field.
@@ -5447,7 +5397,7 @@ impl Dbgdevid {
 
     /// Returns the value of the `CIDMask` field.
     pub const fn cidmask(self) -> u8 {
-        ((self.bits() >> Self::CIDMASK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CIDMASK_SHIFT) & Self::CIDMASK_MASK) as u8
     }
 
     /// Sets the value of the `CIDMask` field.
@@ -5482,7 +5432,7 @@ impl Dbgdevid1 {
 
     /// Returns the value of the `PCSROffset` field.
     pub const fn pcsroffset(self) -> u8 {
-        ((self.bits() >> Self::PCSROFFSET_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PCSROFFSET_SHIFT) & Self::PCSROFFSET_MASK) as u8
     }
 
     /// Sets the value of the `PCSROffset` field.
@@ -5539,7 +5489,7 @@ impl Dbgdidr {
 
     /// Returns the value of the `Version` field.
     pub const fn version(self) -> u8 {
-        ((self.bits() >> Self::VERSION_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VERSION_SHIFT) & Self::VERSION_MASK) as u8
     }
 
     /// Sets the value of the `Version` field.
@@ -5559,7 +5509,7 @@ impl Dbgdidr {
 
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
-        ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CTX_CMPS_SHIFT) & Self::CTX_CMPS_MASK) as u8
     }
 
     /// Sets the value of the `CTX_CMPs` field.
@@ -5579,7 +5529,7 @@ impl Dbgdidr {
 
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
-        ((self.bits() >> Self::BRPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BRPS_SHIFT) & Self::BRPS_MASK) as u8
     }
 
     /// Sets the value of the `BRPs` field.
@@ -5599,7 +5549,7 @@ impl Dbgdidr {
 
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
-        ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WRPS_SHIFT) & Self::WRPS_MASK) as u8
     }
 
     /// Sets the value of the `WRPs` field.
@@ -5638,7 +5588,7 @@ impl Dbgdrar {
 
     /// Returns the value of the `Valid` field.
     pub const fn valid(self) -> u8 {
-        ((self.bits() >> Self::VALID_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::VALID_SHIFT) & Self::VALID_MASK) as u8
     }
 
     /// Sets the value of the `Valid` field.
@@ -5658,7 +5608,7 @@ impl Dbgdrar {
 
     /// Returns the value of the `ROMADDR[47:12]` field.
     pub const fn romaddr_47_12(self) -> u64 {
-        ((self.bits() >> Self::ROMADDR_47_12_SHIFT) & 0b111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ROMADDR_47_12_SHIFT) & Self::ROMADDR_47_12_MASK) as u64
     }
 
     /// Sets the value of the `ROMADDR[47:12]` field.
@@ -5753,7 +5703,7 @@ impl Dbgdscrext {
 
     /// Returns the value of the `MOE` field.
     pub const fn moe(self) -> u8 {
-        ((self.bits() >> Self::MOE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MOE_SHIFT) & Self::MOE_MASK) as u8
     }
 
     /// Sets the value of the `MOE` field.
@@ -5773,7 +5723,7 @@ impl Dbgdscrext {
 
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
-        ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::INTDIS_SHIFT) & Self::INTDIS_MASK) as u8
     }
 
     /// Sets the value of the `INTdis` field.
@@ -5836,7 +5786,7 @@ impl Dbgdscrint {
 
     /// Returns the value of the `MOE` field.
     pub const fn moe(self) -> u8 {
-        ((self.bits() >> Self::MOE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MOE_SHIFT) & Self::MOE_MASK) as u8
     }
 
     /// Sets the value of the `MOE` field.
@@ -5871,7 +5821,7 @@ impl Dbgdtrrxext {
 
     /// Returns the value of the `DTRRX` field.
     pub const fn dtrrx(self) -> u32 {
-        ((self.bits() >> Self::DTRRX_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::DTRRX_SHIFT) & Self::DTRRX_MASK) as u32
     }
 
     /// Sets the value of the `DTRRX` field.
@@ -5906,7 +5856,7 @@ impl Dbgdtrrxint {
 
     /// Returns the value of the `DTRRX` field.
     pub const fn dtrrx(self) -> u32 {
-        ((self.bits() >> Self::DTRRX_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::DTRRX_SHIFT) & Self::DTRRX_MASK) as u32
     }
 
     /// Sets the value of the `DTRRX` field.
@@ -5941,7 +5891,7 @@ impl Dbgdtrtxext {
 
     /// Returns the value of the `DTRTX` field.
     pub const fn dtrtx(self) -> u32 {
-        ((self.bits() >> Self::DTRTX_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::DTRTX_SHIFT) & Self::DTRTX_MASK) as u32
     }
 
     /// Sets the value of the `DTRTX` field.
@@ -5976,7 +5926,7 @@ impl Dbgdtrtxint {
 
     /// Returns the value of the `DTRTX` field.
     pub const fn dtrtx(self) -> u32 {
-        ((self.bits() >> Self::DTRTX_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::DTRTX_SHIFT) & Self::DTRTX_MASK) as u32
     }
 
     /// Sets the value of the `DTRTX` field.
@@ -6026,7 +5976,7 @@ impl Dbgoseccr {
 
     /// Returns the value of the `EDECCR` field.
     pub const fn edeccr(self) -> u32 {
-        ((self.bits() >> Self::EDECCR_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::EDECCR_SHIFT) & Self::EDECCR_MASK) as u32
     }
 
     /// Sets the value of the `EDECCR` field.
@@ -6061,7 +6011,7 @@ impl Dbgoslar {
 
     /// Returns the value of the `OSLA` field.
     pub const fn osla(self) -> u32 {
-        ((self.bits() >> Self::OSLA_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::OSLA_SHIFT) & Self::OSLA_MASK) as u32
     }
 
     /// Sets the value of the `OSLA` field.
@@ -6233,7 +6183,7 @@ impl Dfar {
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
-        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::VA_SHIFT) & Self::VA_MASK) as u32
     }
 
     /// Sets the value of the `VA` field.
@@ -6296,7 +6246,7 @@ impl Dfsr {
 
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
-        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::STATUS_SHIFT) & Self::STATUS_MASK) as u8
     }
 
     /// Sets the value of the `STATUS` field.
@@ -6316,7 +6266,7 @@ impl Dfsr {
 
     /// Returns the value of the `Domain` field.
     pub const fn domain(self) -> u8 {
-        ((self.bits() >> Self::DOMAIN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DOMAIN_SHIFT) & Self::DOMAIN_MASK) as u8
     }
 
     /// Sets the value of the `Domain` field.
@@ -6336,7 +6286,7 @@ impl Dfsr {
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::AET_SHIFT) & Self::AET_MASK) as u8
     }
 
     /// Sets the value of the `AET` field.
@@ -6391,7 +6341,7 @@ impl Disr {
 
     /// Returns the value of the `DFSC` field.
     pub const fn dfsc(self) -> u8 {
-        ((self.bits() >> Self::DFSC_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::DFSC_SHIFT) & Self::DFSC_MASK) as u8
     }
 
     /// Sets the value of the `DFSC` field.
@@ -6411,7 +6361,7 @@ impl Disr {
 
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
-        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::STATUS_SHIFT) & Self::STATUS_MASK) as u8
     }
 
     /// Sets the value of the `STATUS` field.
@@ -6476,7 +6426,7 @@ impl DisrEl1 {
 
     /// Returns the value of the `DFSC` field.
     pub const fn dfsc(self) -> u8 {
-        ((self.bits() >> Self::DFSC_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::DFSC_SHIFT) & Self::DFSC_MASK) as u8
     }
 
     /// Sets the value of the `DFSC` field.
@@ -6496,7 +6446,7 @@ impl DisrEl1 {
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        ((self.bits() >> Self::AET_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::AET_SHIFT) & Self::AET_MASK) as u8
     }
 
     /// Sets the value of the `AET` field.
@@ -6516,7 +6466,7 @@ impl DisrEl1 {
 
     /// Returns the value of the `WU` field.
     pub const fn wu(self) -> u8 {
-        ((self.bits() >> Self::WU_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::WU_SHIFT) & Self::WU_MASK) as u8
     }
 
     /// Sets the value of the `WU` field.
@@ -6568,7 +6518,7 @@ impl Dlr {
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u32 {
-        ((self.bits() >> Self::ADDR_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ADDR_SHIFT) & Self::ADDR_MASK) as u32
     }
 
     /// Sets the value of the `ADDR` field.
@@ -6667,7 +6617,7 @@ impl Dspsr {
 
     /// Returns the value of the `M[4:0]` field.
     pub const fn m_4_0(self) -> u8 {
-        ((self.bits() >> Self::M_4_0_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::M_4_0_SHIFT) & Self::M_4_0_MASK) as u8
     }
 
     /// Sets the value of the `M[4:0]` field.
@@ -6687,7 +6637,7 @@ impl Dspsr {
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GE_SHIFT) & Self::GE_MASK) as u8
     }
 
     /// Sets the value of the `GE` field.
@@ -6739,8 +6689,7 @@ impl ElrEl1 {
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
-        ((self.bits() >> Self::ADDR_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ADDR_SHIFT) & Self::ADDR_MASK) as u64
     }
 
     /// Sets the value of the `ADDR` field.
@@ -6777,8 +6726,7 @@ impl ElrEl2 {
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u64 {
-        ((self.bits() >> Self::ADDR_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::ADDR_SHIFT) & Self::ADDR_MASK) as u64
     }
 
     /// Sets the value of the `ADDR` field.
@@ -6815,7 +6763,7 @@ impl ElrHyp {
 
     /// Returns the value of the `ADDR` field.
     pub const fn addr(self) -> u32 {
-        ((self.bits() >> Self::ADDR_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ADDR_SHIFT) & Self::ADDR_MASK) as u32
     }
 
     /// Sets the value of the `ADDR` field.
@@ -6850,7 +6798,7 @@ impl Erridr {
 
     /// Returns the value of the `NUM` field.
     pub const fn num(self) -> u16 {
-        ((self.bits() >> Self::NUM_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::NUM_SHIFT) & Self::NUM_MASK) as u16
     }
 
     /// Sets the value of the `NUM` field.
@@ -6885,7 +6833,7 @@ impl Errselr {
 
     /// Returns the value of the `SEL` field.
     pub const fn sel(self) -> u16 {
-        ((self.bits() >> Self::SEL_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::SEL_SHIFT) & Self::SEL_MASK) as u16
     }
 
     /// Sets the value of the `SEL` field.
@@ -6920,7 +6868,7 @@ impl Erxaddr {
 
     /// Returns the value of the `ERRnADDRlo` field.
     pub const fn errnaddrlo(self) -> u32 {
-        ((self.bits() >> Self::ERRNADDRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNADDRLO_SHIFT) & Self::ERRNADDRLO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnADDRlo` field.
@@ -6955,7 +6903,7 @@ impl Erxaddr2 {
 
     /// Returns the value of the `ERRnADDRhi` field.
     pub const fn errnaddrhi(self) -> u32 {
-        ((self.bits() >> Self::ERRNADDRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNADDRHI_SHIFT) & Self::ERRNADDRHI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnADDRhi` field.
@@ -6990,7 +6938,7 @@ impl Erxctlr {
 
     /// Returns the value of the `ERRnCTLRlo` field.
     pub const fn errnctlrlo(self) -> u32 {
-        ((self.bits() >> Self::ERRNCTLRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNCTLRLO_SHIFT) & Self::ERRNCTLRLO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnCTLRlo` field.
@@ -7025,7 +6973,7 @@ impl Erxctlr2 {
 
     /// Returns the value of the `ERRnCTLRhi` field.
     pub const fn errnctlrhi(self) -> u32 {
-        ((self.bits() >> Self::ERRNCTLRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNCTLRHI_SHIFT) & Self::ERRNCTLRHI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnCTLRhi` field.
@@ -7060,7 +7008,7 @@ impl Erxfr {
 
     /// Returns the value of the `ERRnFRlo` field.
     pub const fn errnfrlo(self) -> u32 {
-        ((self.bits() >> Self::ERRNFRLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNFRLO_SHIFT) & Self::ERRNFRLO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnFRlo` field.
@@ -7095,7 +7043,7 @@ impl Erxfr2 {
 
     /// Returns the value of the `ERRnFRhi` field.
     pub const fn errnfrhi(self) -> u32 {
-        ((self.bits() >> Self::ERRNFRHI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNFRHI_SHIFT) & Self::ERRNFRHI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnFRhi` field.
@@ -7130,7 +7078,7 @@ impl Erxmisc0 {
 
     /// Returns the value of the `ERRnMISC0lo` field.
     pub const fn errnmisc0lo(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC0LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC0LO_SHIFT) & Self::ERRNMISC0LO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC0lo` field.
@@ -7165,7 +7113,7 @@ impl Erxmisc1 {
 
     /// Returns the value of the `ERRnMISC0hi` field.
     pub const fn errnmisc0hi(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC0HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC0HI_SHIFT) & Self::ERRNMISC0HI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC0hi` field.
@@ -7200,7 +7148,7 @@ impl Erxmisc2 {
 
     /// Returns the value of the `ERRnMISC1lo` field.
     pub const fn errnmisc1lo(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC1LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC1LO_SHIFT) & Self::ERRNMISC1LO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC1lo` field.
@@ -7235,7 +7183,7 @@ impl Erxmisc3 {
 
     /// Returns the value of the `ERRnMISC1hi` field.
     pub const fn errnmisc1hi(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC1HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC1HI_SHIFT) & Self::ERRNMISC1HI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC1hi` field.
@@ -7270,7 +7218,7 @@ impl Erxmisc4 {
 
     /// Returns the value of the `ERRnMISC2lo` field.
     pub const fn errnmisc2lo(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC2LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC2LO_SHIFT) & Self::ERRNMISC2LO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC2lo` field.
@@ -7305,7 +7253,7 @@ impl Erxmisc5 {
 
     /// Returns the value of the `ERRnMISC2hi` field.
     pub const fn errnmisc2hi(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC2HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC2HI_SHIFT) & Self::ERRNMISC2HI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC2hi` field.
@@ -7340,7 +7288,7 @@ impl Erxmisc6 {
 
     /// Returns the value of the `ERRnMISC3lo` field.
     pub const fn errnmisc3lo(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC3LO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC3LO_SHIFT) & Self::ERRNMISC3LO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC3lo` field.
@@ -7375,7 +7323,7 @@ impl Erxmisc7 {
 
     /// Returns the value of the `ERRnMISC3hi` field.
     pub const fn errnmisc3hi(self) -> u32 {
-        ((self.bits() >> Self::ERRNMISC3HI_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNMISC3HI_SHIFT) & Self::ERRNMISC3HI_MASK) as u32
     }
 
     /// Sets the value of the `ERRnMISC3hi` field.
@@ -7410,7 +7358,7 @@ impl Erxstatus {
 
     /// Returns the value of the `ERRnSTATUSlo` field.
     pub const fn errnstatuslo(self) -> u32 {
-        ((self.bits() >> Self::ERRNSTATUSLO_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ERRNSTATUSLO_SHIFT) & Self::ERRNSTATUSLO_MASK) as u32
     }
 
     /// Sets the value of the `ERRnSTATUSlo` field.
@@ -7459,7 +7407,7 @@ impl EsrEl1 {
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS_SHIFT) & Self::ISS_MASK) as u32
     }
 
     /// Sets the value of the `ISS` field.
@@ -7479,7 +7427,7 @@ impl EsrEl1 {
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::EC_SHIFT) & Self::EC_MASK) as u8
     }
 
     /// Sets the value of the `EC` field.
@@ -7499,7 +7447,7 @@ impl EsrEl1 {
 
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
-        ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS2_SHIFT) & Self::ISS2_MASK) as u32
     }
 
     /// Sets the value of the `ISS2` field.
@@ -7548,7 +7496,7 @@ impl EsrEl2 {
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS_SHIFT) & Self::ISS_MASK) as u32
     }
 
     /// Sets the value of the `ISS` field.
@@ -7568,7 +7516,7 @@ impl EsrEl2 {
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::EC_SHIFT) & Self::EC_MASK) as u8
     }
 
     /// Sets the value of the `EC` field.
@@ -7588,7 +7536,7 @@ impl EsrEl2 {
 
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
-        ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS2_SHIFT) & Self::ISS2_MASK) as u32
     }
 
     /// Sets the value of the `ISS2` field.
@@ -7637,7 +7585,7 @@ impl EsrEl3 {
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS_SHIFT) & Self::ISS_MASK) as u32
     }
 
     /// Sets the value of the `ISS` field.
@@ -7657,7 +7605,7 @@ impl EsrEl3 {
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::EC_SHIFT) & Self::EC_MASK) as u8
     }
 
     /// Sets the value of the `EC` field.
@@ -7677,7 +7625,7 @@ impl EsrEl3 {
 
     /// Returns the value of the `ISS2` field.
     pub const fn iss2(self) -> u32 {
-        ((self.bits() >> Self::ISS2_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS2_SHIFT) & Self::ISS2_MASK) as u32
     }
 
     /// Sets the value of the `ISS2` field.
@@ -7714,8 +7662,7 @@ impl FarEl1 {
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
-        ((self.bits() >> Self::VA_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::VA_SHIFT) & Self::VA_MASK) as u64
     }
 
     /// Sets the value of the `VA` field.
@@ -7752,8 +7699,7 @@ impl FarEl2 {
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u64 {
-        ((self.bits() >> Self::VA_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::VA_SHIFT) & Self::VA_MASK) as u64
     }
 
     /// Sets the value of the `VA` field.
@@ -7794,7 +7740,7 @@ impl GcrEl1 {
 
     /// Returns the value of the `Exclude` field.
     pub const fn exclude(self) -> u16 {
-        ((self.bits() >> Self::EXCLUDE_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::EXCLUDE_SHIFT) & Self::EXCLUDE_MASK) as u16
     }
 
     /// Sets the value of the `Exclude` field.
@@ -7977,7 +7923,7 @@ impl GpccrEl3 {
 
     /// Returns the value of the `PPS` field.
     pub const fn pps(self) -> u8 {
-        ((self.bits() >> Self::PPS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PPS_SHIFT) & Self::PPS_MASK) as u8
     }
 
     /// Sets the value of the `PPS` field.
@@ -7997,8 +7943,10 @@ impl GpccrEl3 {
 
     /// Returns the value of the `IRGN` field.
     pub fn irgn(self) -> crate::manual::Cacheability {
-        crate::manual::Cacheability::try_from(((self.bits() >> Self::IRGN_SHIFT) & 0b11) as u8)
-            .unwrap()
+        crate::manual::Cacheability::try_from(
+            ((self.bits() >> Self::IRGN_SHIFT) & Self::IRGN_MASK) as u8,
+        )
+        .unwrap()
     }
 
     /// Sets the value of the `IRGN` field.
@@ -8019,8 +7967,10 @@ impl GpccrEl3 {
 
     /// Returns the value of the `ORGN` field.
     pub fn orgn(self) -> crate::manual::Cacheability {
-        crate::manual::Cacheability::try_from(((self.bits() >> Self::ORGN_SHIFT) & 0b11) as u8)
-            .unwrap()
+        crate::manual::Cacheability::try_from(
+            ((self.bits() >> Self::ORGN_SHIFT) & Self::ORGN_MASK) as u8,
+        )
+        .unwrap()
     }
 
     /// Sets the value of the `ORGN` field.
@@ -8041,8 +7991,10 @@ impl GpccrEl3 {
 
     /// Returns the value of the `SH` field.
     pub fn sh(self) -> crate::manual::Shareability {
-        crate::manual::Shareability::try_from(((self.bits() >> Self::SH_SHIFT) & 0b11) as u8)
-            .unwrap()
+        crate::manual::Shareability::try_from(
+            ((self.bits() >> Self::SH_SHIFT) & Self::SH_MASK) as u8,
+        )
+        .unwrap()
     }
 
     /// Sets the value of the `SH` field.
@@ -8063,7 +8015,7 @@ impl GpccrEl3 {
 
     /// Returns the value of the `PGS` field.
     pub const fn pgs(self) -> u8 {
-        ((self.bits() >> Self::PGS_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::PGS_SHIFT) & Self::PGS_MASK) as u8
     }
 
     /// Sets the value of the `PGS` field.
@@ -8083,7 +8035,7 @@ impl GpccrEl3 {
 
     /// Returns the value of the `L0GPTSZ` field.
     pub const fn l0gptsz(self) -> u8 {
-        ((self.bits() >> Self::L0GPTSZ_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L0GPTSZ_SHIFT) & Self::L0GPTSZ_MASK) as u8
     }
 
     /// Sets the value of the `L0GPTSZ` field.
@@ -8124,7 +8076,7 @@ impl GptbrEl3 {
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        ((self.bits() >> Self::BADDR_SHIFT) & 0b1111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK) as u64
     }
 
     /// Sets the value of the `BADDR` field.
@@ -8144,7 +8096,7 @@ impl GptbrEl3 {
 
     /// Returns the value of the `BADDR[43:40]` field.
     pub const fn baddr_43_40(self) -> u8 {
-        ((self.bits() >> Self::BADDR_43_40_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BADDR_43_40_SHIFT) & Self::BADDR_43_40_MASK) as u8
     }
 
     /// Sets the value of the `BADDR[43:40]` field.
@@ -8351,7 +8303,7 @@ impl Hcr {
 
     /// Returns the value of the `BSU` field.
     pub const fn bsu(self) -> u8 {
-        ((self.bits() >> Self::BSU_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::BSU_SHIFT) & Self::BSU_MASK) as u8
     }
 
     /// Sets the value of the `BSU` field.
@@ -8822,7 +8774,7 @@ impl HcrEl2 {
 
     /// Returns the value of the `BSU` field.
     pub const fn bsu(self) -> u8 {
-        ((self.bits() >> Self::BSU_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::BSU_SHIFT) & Self::BSU_MASK) as u8
     }
 
     /// Sets the value of the `BSU` field.
@@ -8842,7 +8794,7 @@ impl HcrEl2 {
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TWEDEL_SHIFT) & Self::TWEDEL_MASK) as u8
     }
 
     /// Sets the value of the `TWEDEL` field.
@@ -8933,7 +8885,7 @@ impl Hdcr {
 
     /// Returns the value of the `HPMN` field.
     pub const fn hpmn(self) -> u8 {
-        ((self.bits() >> Self::HPMN_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::HPMN_SHIFT) & Self::HPMN_MASK) as u8
     }
 
     /// Sets the value of the `HPMN` field.
@@ -8968,7 +8920,7 @@ impl Hdfar {
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
-        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::VA_SHIFT) & Self::VA_MASK) as u32
     }
 
     /// Sets the value of the `VA` field.
@@ -10147,7 +10099,7 @@ impl Hfgrtr2El2 {
 
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
-        ((self.bits() >> Self::NFGDTN_EL1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NFGDTN_EL1_SHIFT) & Self::NFGDTN_EL1_MASK) as u8
     }
 
     /// Sets the value of the `nFGDTn_EL1` field.
@@ -10167,7 +10119,7 @@ impl Hfgrtr2El2 {
 
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
-        ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & Self::NAFGDTN_EL1_MASK) as u8
     }
 
     /// Sets the value of the `nAFGDTn_EL1` field.
@@ -10609,7 +10561,7 @@ impl Hfgwtr2El2 {
 
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
-        ((self.bits() >> Self::NFGDTN_EL1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NFGDTN_EL1_SHIFT) & Self::NFGDTN_EL1_MASK) as u8
     }
 
     /// Sets the value of the `nFGDTn_EL1` field.
@@ -10629,7 +10581,7 @@ impl Hfgwtr2El2 {
 
     /// Returns the value of the `nAFGDTn_EL1` field.
     pub const fn nafgdtn_el1(self) -> u8 {
-        ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NAFGDTN_EL1_SHIFT) & Self::NAFGDTN_EL1_MASK) as u8
     }
 
     /// Sets the value of the `nAFGDTn_EL1` field.
@@ -10877,7 +10829,7 @@ impl Hifar {
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
-        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::VA_SHIFT) & Self::VA_MASK) as u32
     }
 
     /// Sets the value of the `VA` field.
@@ -10913,7 +10865,7 @@ impl Hmair0 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 4);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -10950,7 +10902,7 @@ impl Hmair1 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n >= 4 && n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -10986,7 +10938,7 @@ impl Hpfar {
 
     /// Returns the value of the `FIPA[39:12]` field.
     pub const fn fipa_39_12(self) -> u32 {
-        ((self.bits() >> Self::FIPA_39_12_SHIFT) & 0b1111111111111111111111111111) as u32
+        ((self.bits() >> Self::FIPA_39_12_SHIFT) & Self::FIPA_39_12_MASK) as u32
     }
 
     /// Sets the value of the `FIPA[39:12]` field.
@@ -11027,7 +10979,7 @@ impl HpfarEl2 {
 
     /// Returns the value of the `FIPA` field.
     pub const fn fipa(self) -> u64 {
-        ((self.bits() >> Self::FIPA_SHIFT) & 0b11111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::FIPA_SHIFT) & Self::FIPA_MASK) as u64
     }
 
     /// Sets the value of the `FIPA` field.
@@ -11150,7 +11102,7 @@ impl Hsr {
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        ((self.bits() >> Self::ISS_SHIFT) & 0b1111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS_SHIFT) & Self::ISS_MASK) as u32
     }
 
     /// Sets the value of the `ISS` field.
@@ -11170,7 +11122,7 @@ impl Hsr {
 
     /// Returns the value of the `EC` field.
     pub const fn ec(self) -> u8 {
-        ((self.bits() >> Self::EC_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::EC_SHIFT) & Self::EC_MASK) as u8
     }
 
     /// Sets the value of the `EC` field.
@@ -11239,7 +11191,7 @@ impl Htcr {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -11259,7 +11211,7 @@ impl Htcr {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -11279,7 +11231,7 @@ impl Htcr {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -11299,7 +11251,7 @@ impl Htcr {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -11334,7 +11286,7 @@ impl Htpidr {
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
-        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TID_SHIFT) & Self::TID_MASK) as u32
     }
 
     /// Sets the value of the `TID` field.
@@ -11381,7 +11333,7 @@ impl Htrfcr {
 
     /// Returns the value of the `TS` field.
     pub const fn ts(self) -> u8 {
-        ((self.bits() >> Self::TS_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TS_SHIFT) & Self::TS_MASK) as u8
     }
 
     /// Sets the value of the `TS` field.
@@ -11420,8 +11372,7 @@ impl Httbr {
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK) as u64
     }
 
     /// Sets the value of the `BADDR` field.
@@ -11456,7 +11407,7 @@ impl Hvbar {
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
-        ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+        ((self.bits() >> Self::VBA_SHIFT) & Self::VBA_MASK) as u32
     }
 
     /// Sets the value of the `VBA` field.
@@ -11532,7 +11483,7 @@ impl IccAsgi1r {
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
     }
 
     /// Sets the value of the `TargetList` field.
@@ -11552,7 +11503,7 @@ impl IccAsgi1r {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -11572,7 +11523,7 @@ impl IccAsgi1r {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
     }
 
     /// Sets the value of the `INTID` field.
@@ -11592,7 +11543,7 @@ impl IccAsgi1r {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -11612,7 +11563,7 @@ impl IccAsgi1r {
 
     /// Returns the value of the `RS` field.
     pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
     }
 
     /// Sets the value of the `RS` field.
@@ -11632,7 +11583,7 @@ impl IccAsgi1r {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -11693,7 +11644,7 @@ impl IccAsgi1rEl1 {
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
     }
 
     /// Sets the value of the `TargetList` field.
@@ -11713,7 +11664,7 @@ impl IccAsgi1rEl1 {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -11733,7 +11684,7 @@ impl IccAsgi1rEl1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
     }
 
     /// Sets the value of the `INTID` field.
@@ -11753,7 +11704,7 @@ impl IccAsgi1rEl1 {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -11773,7 +11724,7 @@ impl IccAsgi1rEl1 {
 
     /// Returns the value of the `RS` field.
     pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
     }
 
     /// Sets the value of the `RS` field.
@@ -11793,7 +11744,7 @@ impl IccAsgi1rEl1 {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -11828,7 +11779,7 @@ impl IccBpr0 {
 
     /// Returns the value of the `BinaryPoint` field.
     pub const fn binarypoint(self) -> u8 {
-        ((self.bits() >> Self::BINARYPOINT_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::BINARYPOINT_SHIFT) & Self::BINARYPOINT_MASK) as u8
     }
 
     /// Sets the value of the `BinaryPoint` field.
@@ -11865,7 +11816,7 @@ impl IccBpr0El1 {
 
     /// Returns the value of the `BinaryPoint` field.
     pub const fn binarypoint(self) -> u8 {
-        ((self.bits() >> Self::BINARYPOINT_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::BINARYPOINT_SHIFT) & Self::BINARYPOINT_MASK) as u8
     }
 
     /// Sets the value of the `BinaryPoint` field.
@@ -11900,7 +11851,7 @@ impl IccBpr1 {
 
     /// Returns the value of the `BinaryPoint` field.
     pub const fn binarypoint(self) -> u8 {
-        ((self.bits() >> Self::BINARYPOINT_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::BINARYPOINT_SHIFT) & Self::BINARYPOINT_MASK) as u8
     }
 
     /// Sets the value of the `BinaryPoint` field.
@@ -11937,7 +11888,7 @@ impl IccBpr1El1 {
 
     /// Returns the value of the `BinaryPoint` field.
     pub const fn binarypoint(self) -> u8 {
-        ((self.bits() >> Self::BINARYPOINT_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::BINARYPOINT_SHIFT) & Self::BINARYPOINT_MASK) as u8
     }
 
     /// Sets the value of the `BinaryPoint` field.
@@ -12004,7 +11955,7 @@ impl IccCtlr {
 
     /// Returns the value of the `PRIbits` field.
     pub const fn pribits(self) -> u8 {
-        ((self.bits() >> Self::PRIBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PRIBITS_SHIFT) & Self::PRIBITS_MASK) as u8
     }
 
     /// Sets the value of the `PRIbits` field.
@@ -12024,7 +11975,7 @@ impl IccCtlr {
 
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
-        ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::IDBITS_SHIFT) & Self::IDBITS_MASK) as u8
     }
 
     /// Sets the value of the `IDbits` field.
@@ -12093,7 +12044,7 @@ impl IccCtlrEl1 {
 
     /// Returns the value of the `PRIbits` field.
     pub const fn pribits(self) -> u8 {
-        ((self.bits() >> Self::PRIBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PRIBITS_SHIFT) & Self::PRIBITS_MASK) as u8
     }
 
     /// Sets the value of the `PRIbits` field.
@@ -12113,7 +12064,7 @@ impl IccCtlrEl1 {
 
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
-        ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::IDBITS_SHIFT) & Self::IDBITS_MASK) as u8
     }
 
     /// Sets the value of the `IDbits` field.
@@ -12202,7 +12153,7 @@ impl IccCtlrEl3 {
 
     /// Returns the value of the `PRIbits` field.
     pub const fn pribits(self) -> u8 {
-        ((self.bits() >> Self::PRIBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PRIBITS_SHIFT) & Self::PRIBITS_MASK) as u8
     }
 
     /// Sets the value of the `PRIbits` field.
@@ -12222,7 +12173,7 @@ impl IccCtlrEl3 {
 
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
-        ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::IDBITS_SHIFT) & Self::IDBITS_MASK) as u8
     }
 
     /// Sets the value of the `IDbits` field.
@@ -12257,7 +12208,7 @@ impl IccDir {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12294,7 +12245,7 @@ impl IccDirEl1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12329,7 +12280,7 @@ impl IccEoir0 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12366,7 +12317,7 @@ impl IccEoir0El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12401,7 +12352,7 @@ impl IccEoir1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12438,7 +12389,7 @@ impl IccEoir1El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12473,7 +12424,7 @@ impl IccHppir0 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12510,7 +12461,7 @@ impl IccHppir0El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12545,7 +12496,7 @@ impl IccHppir1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12582,7 +12533,7 @@ impl IccHppir1El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12644,7 +12595,7 @@ impl IccIar0 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12681,7 +12632,7 @@ impl IccIar0El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12716,7 +12667,7 @@ impl IccIar1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12753,7 +12704,7 @@ impl IccIar1El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -12925,7 +12876,7 @@ impl IccMctlr {
 
     /// Returns the value of the `PRIbits` field.
     pub const fn pribits(self) -> u8 {
-        ((self.bits() >> Self::PRIBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PRIBITS_SHIFT) & Self::PRIBITS_MASK) as u8
     }
 
     /// Sets the value of the `PRIbits` field.
@@ -12945,7 +12896,7 @@ impl IccMctlr {
 
     /// Returns the value of the `IDbits` field.
     pub const fn idbits(self) -> u8 {
-        ((self.bits() >> Self::IDBITS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::IDBITS_SHIFT) & Self::IDBITS_MASK) as u8
     }
 
     /// Sets the value of the `IDbits` field.
@@ -13028,7 +12979,7 @@ impl IccNmiar1El1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
     }
 
     /// Sets the value of the `INTID` field.
@@ -13063,7 +13014,7 @@ impl IccPmr {
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
-        ((self.bits() >> Self::PRIORITY_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PRIORITY_SHIFT) & Self::PRIORITY_MASK) as u8
     }
 
     /// Sets the value of the `Priority` field.
@@ -13100,7 +13051,7 @@ impl IccPmrEl1 {
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
-        ((self.bits() >> Self::PRIORITY_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PRIORITY_SHIFT) & Self::PRIORITY_MASK) as u8
     }
 
     /// Sets the value of the `Priority` field.
@@ -13135,7 +13086,7 @@ impl IccRpr {
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
-        ((self.bits() >> Self::PRIORITY_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PRIORITY_SHIFT) & Self::PRIORITY_MASK) as u8
     }
 
     /// Sets the value of the `Priority` field.
@@ -13180,7 +13131,7 @@ impl IccRprEl1 {
 
     /// Returns the value of the `Priority` field.
     pub const fn priority(self) -> u8 {
-        ((self.bits() >> Self::PRIORITY_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PRIORITY_SHIFT) & Self::PRIORITY_MASK) as u8
     }
 
     /// Sets the value of the `Priority` field.
@@ -13239,7 +13190,7 @@ impl IccSgi0r {
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
     }
 
     /// Sets the value of the `TargetList` field.
@@ -13259,7 +13210,7 @@ impl IccSgi0r {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -13279,7 +13230,7 @@ impl IccSgi0r {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
     }
 
     /// Sets the value of the `INTID` field.
@@ -13299,7 +13250,7 @@ impl IccSgi0r {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -13319,7 +13270,7 @@ impl IccSgi0r {
 
     /// Returns the value of the `RS` field.
     pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
     }
 
     /// Sets the value of the `RS` field.
@@ -13339,7 +13290,7 @@ impl IccSgi0r {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -13400,7 +13351,7 @@ impl IccSgi0rEl1 {
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
     }
 
     /// Sets the value of the `TargetList` field.
@@ -13420,7 +13371,7 @@ impl IccSgi0rEl1 {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -13440,7 +13391,7 @@ impl IccSgi0rEl1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
     }
 
     /// Sets the value of the `INTID` field.
@@ -13460,7 +13411,7 @@ impl IccSgi0rEl1 {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -13480,7 +13431,7 @@ impl IccSgi0rEl1 {
 
     /// Returns the value of the `RS` field.
     pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
     }
 
     /// Sets the value of the `RS` field.
@@ -13500,7 +13451,7 @@ impl IccSgi0rEl1 {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -13559,7 +13510,7 @@ impl IccSgi1r {
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
     }
 
     /// Sets the value of the `TargetList` field.
@@ -13579,7 +13530,7 @@ impl IccSgi1r {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -13599,7 +13550,7 @@ impl IccSgi1r {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
     }
 
     /// Sets the value of the `INTID` field.
@@ -13619,7 +13570,7 @@ impl IccSgi1r {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -13639,7 +13590,7 @@ impl IccSgi1r {
 
     /// Returns the value of the `RS` field.
     pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
     }
 
     /// Sets the value of the `RS` field.
@@ -13659,7 +13610,7 @@ impl IccSgi1r {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -13720,7 +13671,7 @@ impl IccSgi1rEl1 {
 
     /// Returns the value of the `TargetList` field.
     pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
     }
 
     /// Sets the value of the `TargetList` field.
@@ -13740,7 +13691,7 @@ impl IccSgi1rEl1 {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -13760,7 +13711,7 @@ impl IccSgi1rEl1 {
 
     /// Returns the value of the `INTID` field.
     pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
     }
 
     /// Sets the value of the `INTID` field.
@@ -13780,7 +13731,7 @@ impl IccSgi1rEl1 {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -13800,7 +13751,7 @@ impl IccSgi1rEl1 {
 
     /// Returns the value of the `RS` field.
     pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
     }
 
     /// Sets the value of the `RS` field.
@@ -13820,7 +13771,7 @@ impl IccSgi1rEl1 {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -14023,7 +13974,7 @@ impl IchHcrEl2 {
 
     /// Returns the value of the `EOIcount` field.
     pub const fn eoicount(self) -> u8 {
-        ((self.bits() >> Self::EOICOUNT_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::EOICOUNT_SHIFT) & Self::EOICOUNT_MASK) as u8
     }
 
     /// Sets the value of the `EOIcount` field.
@@ -14092,7 +14043,7 @@ impl IchVmcrEl2 {
 
     /// Returns the value of the `VBPR1` field.
     pub const fn vbpr1(self) -> u8 {
-        ((self.bits() >> Self::VBPR1_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::VBPR1_SHIFT) & Self::VBPR1_MASK) as u8
     }
 
     /// Sets the value of the `VBPR1` field.
@@ -14112,7 +14063,7 @@ impl IchVmcrEl2 {
 
     /// Returns the value of the `VBPR0` field.
     pub const fn vbpr0(self) -> u8 {
-        ((self.bits() >> Self::VBPR0_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::VBPR0_SHIFT) & Self::VBPR0_MASK) as u8
     }
 
     /// Sets the value of the `VBPR0` field.
@@ -14205,7 +14156,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `DebugVer` field.
     pub const fn debugver(self) -> u8 {
-        ((self.bits() >> Self::DEBUGVER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DEBUGVER_SHIFT) & Self::DEBUGVER_MASK) as u8
     }
 
     /// Sets the value of the `DebugVer` field.
@@ -14225,7 +14176,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `TraceVer` field.
     pub const fn tracever(self) -> u8 {
-        ((self.bits() >> Self::TRACEVER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TRACEVER_SHIFT) & Self::TRACEVER_MASK) as u8
     }
 
     /// Sets the value of the `TraceVer` field.
@@ -14245,7 +14196,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `PMUVer` field.
     pub const fn pmuver(self) -> u8 {
-        ((self.bits() >> Self::PMUVER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PMUVER_SHIFT) & Self::PMUVER_MASK) as u8
     }
 
     /// Sets the value of the `PMUVer` field.
@@ -14265,7 +14216,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
-        ((self.bits() >> Self::BRPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BRPS_SHIFT) & Self::BRPS_MASK) as u8
     }
 
     /// Sets the value of the `BRPs` field.
@@ -14285,7 +14236,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `PMSS` field.
     pub const fn pmss(self) -> u8 {
-        ((self.bits() >> Self::PMSS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PMSS_SHIFT) & Self::PMSS_MASK) as u8
     }
 
     /// Sets the value of the `PMSS` field.
@@ -14305,7 +14256,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
-        ((self.bits() >> Self::WRPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WRPS_SHIFT) & Self::WRPS_MASK) as u8
     }
 
     /// Sets the value of the `WRPs` field.
@@ -14325,7 +14276,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
-        ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CTX_CMPS_SHIFT) & Self::CTX_CMPS_MASK) as u8
     }
 
     /// Sets the value of the `CTX_CMPs` field.
@@ -14345,7 +14296,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `PMSVer` field.
     pub const fn pmsver(self) -> u8 {
-        ((self.bits() >> Self::PMSVER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PMSVER_SHIFT) & Self::PMSVER_MASK) as u8
     }
 
     /// Sets the value of the `PMSVer` field.
@@ -14365,7 +14316,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `DoubleLock` field.
     pub const fn doublelock(self) -> u8 {
-        ((self.bits() >> Self::DOUBLELOCK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DOUBLELOCK_SHIFT) & Self::DOUBLELOCK_MASK) as u8
     }
 
     /// Sets the value of the `DoubleLock` field.
@@ -14385,7 +14336,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `TraceFilt` field.
     pub const fn tracefilt(self) -> u8 {
-        ((self.bits() >> Self::TRACEFILT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TRACEFILT_SHIFT) & Self::TRACEFILT_MASK) as u8
     }
 
     /// Sets the value of the `TraceFilt` field.
@@ -14405,7 +14356,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `TraceBuffer` field.
     pub const fn tracebuffer(self) -> u8 {
-        ((self.bits() >> Self::TRACEBUFFER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TRACEBUFFER_SHIFT) & Self::TRACEBUFFER_MASK) as u8
     }
 
     /// Sets the value of the `TraceBuffer` field.
@@ -14425,7 +14376,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `MTPMU` field.
     pub const fn mtpmu(self) -> u8 {
-        ((self.bits() >> Self::MTPMU_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MTPMU_SHIFT) & Self::MTPMU_MASK) as u8
     }
 
     /// Sets the value of the `MTPMU` field.
@@ -14445,7 +14396,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `BRBE` field.
     pub const fn brbe(self) -> u8 {
-        ((self.bits() >> Self::BRBE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BRBE_SHIFT) & Self::BRBE_MASK) as u8
     }
 
     /// Sets the value of the `BRBE` field.
@@ -14465,7 +14416,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `ExtTrcBuff` field.
     pub const fn exttrcbuff(self) -> u8 {
-        ((self.bits() >> Self::EXTTRCBUFF_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EXTTRCBUFF_SHIFT) & Self::EXTTRCBUFF_MASK) as u8
     }
 
     /// Sets the value of the `ExtTrcBuff` field.
@@ -14485,7 +14436,7 @@ impl IdAa64dfr0El1 {
 
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
-        ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HPMN0_SHIFT) & Self::HPMN0_MASK) as u8
     }
 
     /// Sets the value of the `HPMN0` field.
@@ -14562,7 +14513,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `SYSPMUID` field.
     pub const fn syspmuid(self) -> u8 {
-        ((self.bits() >> Self::SYSPMUID_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::SYSPMUID_SHIFT) & Self::SYSPMUID_MASK) as u8
     }
 
     /// Sets the value of the `SYSPMUID` field.
@@ -14582,7 +14533,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `BRPs` field.
     pub const fn brps(self) -> u8 {
-        ((self.bits() >> Self::BRPS_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::BRPS_SHIFT) & Self::BRPS_MASK) as u8
     }
 
     /// Sets the value of the `BRPs` field.
@@ -14602,7 +14553,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `WRPs` field.
     pub const fn wrps(self) -> u8 {
-        ((self.bits() >> Self::WRPS_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::WRPS_SHIFT) & Self::WRPS_MASK) as u8
     }
 
     /// Sets the value of the `WRPs` field.
@@ -14622,7 +14573,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `CTX_CMPs` field.
     pub const fn ctx_cmps(self) -> u8 {
-        ((self.bits() >> Self::CTX_CMPS_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::CTX_CMPS_SHIFT) & Self::CTX_CMPS_MASK) as u8
     }
 
     /// Sets the value of the `CTX_CMPs` field.
@@ -14642,7 +14593,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `SPMU` field.
     pub const fn spmu(self) -> u8 {
-        ((self.bits() >> Self::SPMU_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SPMU_SHIFT) & Self::SPMU_MASK) as u8
     }
 
     /// Sets the value of the `SPMU` field.
@@ -14662,7 +14613,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `PMICNTR` field.
     pub const fn pmicntr(self) -> u8 {
-        ((self.bits() >> Self::PMICNTR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PMICNTR_SHIFT) & Self::PMICNTR_MASK) as u8
     }
 
     /// Sets the value of the `PMICNTR` field.
@@ -14682,7 +14633,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `ABLE` field.
     pub const fn able(self) -> u8 {
-        ((self.bits() >> Self::ABLE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ABLE_SHIFT) & Self::ABLE_MASK) as u8
     }
 
     /// Sets the value of the `ABLE` field.
@@ -14702,7 +14653,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `ITE` field.
     pub const fn ite(self) -> u8 {
-        ((self.bits() >> Self::ITE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ITE_SHIFT) & Self::ITE_MASK) as u8
     }
 
     /// Sets the value of the `ITE` field.
@@ -14722,7 +14673,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `EBEP` field.
     pub const fn ebep(self) -> u8 {
-        ((self.bits() >> Self::EBEP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EBEP_SHIFT) & Self::EBEP_MASK) as u8
     }
 
     /// Sets the value of the `EBEP` field.
@@ -14742,7 +14693,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `DPFZS` field.
     pub const fn dpfzs(self) -> u8 {
-        ((self.bits() >> Self::DPFZS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DPFZS_SHIFT) & Self::DPFZS_MASK) as u8
     }
 
     /// Sets the value of the `DPFZS` field.
@@ -14762,7 +14713,7 @@ impl IdAa64dfr1El1 {
 
     /// Returns the value of the `ABL_CMPs` field.
     pub const fn abl_cmps(self) -> u8 {
-        ((self.bits() >> Self::ABL_CMPS_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::ABL_CMPS_SHIFT) & Self::ABL_CMPS_MASK) as u8
     }
 
     /// Sets the value of the `ABL_CMPs` field.
@@ -14859,7 +14810,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `DPB` field.
     pub const fn dpb(self) -> u8 {
-        ((self.bits() >> Self::DPB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DPB_SHIFT) & Self::DPB_MASK) as u8
     }
 
     /// Sets the value of the `DPB` field.
@@ -14879,7 +14830,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `APA` field.
     pub const fn apa(self) -> u8 {
-        ((self.bits() >> Self::APA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::APA_SHIFT) & Self::APA_MASK) as u8
     }
 
     /// Sets the value of the `APA` field.
@@ -14899,7 +14850,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `API` field.
     pub const fn api(self) -> u8 {
-        ((self.bits() >> Self::API_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::API_SHIFT) & Self::API_MASK) as u8
     }
 
     /// Sets the value of the `API` field.
@@ -14919,7 +14870,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `JSCVT` field.
     pub const fn jscvt(self) -> u8 {
-        ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::JSCVT_SHIFT) & Self::JSCVT_MASK) as u8
     }
 
     /// Sets the value of the `JSCVT` field.
@@ -14939,7 +14890,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `FCMA` field.
     pub const fn fcma(self) -> u8 {
-        ((self.bits() >> Self::FCMA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FCMA_SHIFT) & Self::FCMA_MASK) as u8
     }
 
     /// Sets the value of the `FCMA` field.
@@ -14959,7 +14910,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `LRCPC` field.
     pub const fn lrcpc(self) -> u8 {
-        ((self.bits() >> Self::LRCPC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LRCPC_SHIFT) & Self::LRCPC_MASK) as u8
     }
 
     /// Sets the value of the `LRCPC` field.
@@ -14979,7 +14930,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `GPA` field.
     pub const fn gpa(self) -> u8 {
-        ((self.bits() >> Self::GPA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GPA_SHIFT) & Self::GPA_MASK) as u8
     }
 
     /// Sets the value of the `GPA` field.
@@ -14999,7 +14950,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `GPI` field.
     pub const fn gpi(self) -> u8 {
-        ((self.bits() >> Self::GPI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GPI_SHIFT) & Self::GPI_MASK) as u8
     }
 
     /// Sets the value of the `GPI` field.
@@ -15019,7 +14970,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `FRINTTS` field.
     pub const fn frintts(self) -> u8 {
-        ((self.bits() >> Self::FRINTTS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FRINTTS_SHIFT) & Self::FRINTTS_MASK) as u8
     }
 
     /// Sets the value of the `FRINTTS` field.
@@ -15039,7 +14990,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `SB` field.
     pub const fn sb(self) -> u8 {
-        ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SB_SHIFT) & Self::SB_MASK) as u8
     }
 
     /// Sets the value of the `SB` field.
@@ -15059,7 +15010,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `SPECRES` field.
     pub const fn specres(self) -> u8 {
-        ((self.bits() >> Self::SPECRES_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SPECRES_SHIFT) & Self::SPECRES_MASK) as u8
     }
 
     /// Sets the value of the `SPECRES` field.
@@ -15079,7 +15030,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `BF16` field.
     pub const fn bf16(self) -> u8 {
-        ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BF16_SHIFT) & Self::BF16_MASK) as u8
     }
 
     /// Sets the value of the `BF16` field.
@@ -15099,7 +15050,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `DGH` field.
     pub const fn dgh(self) -> u8 {
-        ((self.bits() >> Self::DGH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DGH_SHIFT) & Self::DGH_MASK) as u8
     }
 
     /// Sets the value of the `DGH` field.
@@ -15119,7 +15070,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `I8MM` field.
     pub const fn i8mm(self) -> u8 {
-        ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::I8MM_SHIFT) & Self::I8MM_MASK) as u8
     }
 
     /// Sets the value of the `I8MM` field.
@@ -15139,7 +15090,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `XS` field.
     pub const fn xs(self) -> u8 {
-        ((self.bits() >> Self::XS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::XS_SHIFT) & Self::XS_MASK) as u8
     }
 
     /// Sets the value of the `XS` field.
@@ -15159,7 +15110,7 @@ impl IdAa64isar1El1 {
 
     /// Returns the value of the `LS64` field.
     pub const fn ls64(self) -> u8 {
-        ((self.bits() >> Self::LS64_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LS64_SHIFT) & Self::LS64_MASK) as u8
     }
 
     /// Sets the value of the `LS64` field.
@@ -15256,7 +15207,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `WFxT` field.
     pub const fn wfxt(self) -> u8 {
-        ((self.bits() >> Self::WFXT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WFXT_SHIFT) & Self::WFXT_MASK) as u8
     }
 
     /// Sets the value of the `WFxT` field.
@@ -15276,7 +15227,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `RPRES` field.
     pub const fn rpres(self) -> u8 {
-        ((self.bits() >> Self::RPRES_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RPRES_SHIFT) & Self::RPRES_MASK) as u8
     }
 
     /// Sets the value of the `RPRES` field.
@@ -15296,7 +15247,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `GPA3` field.
     pub const fn gpa3(self) -> u8 {
-        ((self.bits() >> Self::GPA3_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GPA3_SHIFT) & Self::GPA3_MASK) as u8
     }
 
     /// Sets the value of the `GPA3` field.
@@ -15316,7 +15267,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `APA3` field.
     pub const fn apa3(self) -> u8 {
-        ((self.bits() >> Self::APA3_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::APA3_SHIFT) & Self::APA3_MASK) as u8
     }
 
     /// Sets the value of the `APA3` field.
@@ -15336,7 +15287,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `MOPS` field.
     pub const fn mops(self) -> u8 {
-        ((self.bits() >> Self::MOPS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MOPS_SHIFT) & Self::MOPS_MASK) as u8
     }
 
     /// Sets the value of the `MOPS` field.
@@ -15356,7 +15307,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `BC` field.
     pub const fn bc(self) -> u8 {
-        ((self.bits() >> Self::BC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BC_SHIFT) & Self::BC_MASK) as u8
     }
 
     /// Sets the value of the `BC` field.
@@ -15376,7 +15327,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `PAC_frac` field.
     pub const fn pac_frac(self) -> u8 {
-        ((self.bits() >> Self::PAC_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PAC_FRAC_SHIFT) & Self::PAC_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `PAC_frac` field.
@@ -15396,7 +15347,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `CLRBHB` field.
     pub const fn clrbhb(self) -> u8 {
-        ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CLRBHB_SHIFT) & Self::CLRBHB_MASK) as u8
     }
 
     /// Sets the value of the `CLRBHB` field.
@@ -15416,7 +15367,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `SYSREG_128` field.
     pub const fn sysreg_128(self) -> u8 {
-        ((self.bits() >> Self::SYSREG_128_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SYSREG_128_SHIFT) & Self::SYSREG_128_MASK) as u8
     }
 
     /// Sets the value of the `SYSREG_128` field.
@@ -15436,7 +15387,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `SYSINSTR_128` field.
     pub const fn sysinstr_128(self) -> u8 {
-        ((self.bits() >> Self::SYSINSTR_128_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SYSINSTR_128_SHIFT) & Self::SYSINSTR_128_MASK) as u8
     }
 
     /// Sets the value of the `SYSINSTR_128` field.
@@ -15456,7 +15407,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `PRFMSLC` field.
     pub const fn prfmslc(self) -> u8 {
-        ((self.bits() >> Self::PRFMSLC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PRFMSLC_SHIFT) & Self::PRFMSLC_MASK) as u8
     }
 
     /// Sets the value of the `PRFMSLC` field.
@@ -15476,7 +15427,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `PCDPHINT` field.
     pub const fn pcdphint(self) -> u8 {
-        ((self.bits() >> Self::PCDPHINT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PCDPHINT_SHIFT) & Self::PCDPHINT_MASK) as u8
     }
 
     /// Sets the value of the `PCDPHINT` field.
@@ -15496,7 +15447,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `RPRFM` field.
     pub const fn rprfm(self) -> u8 {
-        ((self.bits() >> Self::RPRFM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RPRFM_SHIFT) & Self::RPRFM_MASK) as u8
     }
 
     /// Sets the value of the `RPRFM` field.
@@ -15516,7 +15467,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `CSSC` field.
     pub const fn cssc(self) -> u8 {
-        ((self.bits() >> Self::CSSC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CSSC_SHIFT) & Self::CSSC_MASK) as u8
     }
 
     /// Sets the value of the `CSSC` field.
@@ -15536,7 +15487,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `LUT` field.
     pub const fn lut(self) -> u8 {
-        ((self.bits() >> Self::LUT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LUT_SHIFT) & Self::LUT_MASK) as u8
     }
 
     /// Sets the value of the `LUT` field.
@@ -15556,7 +15507,7 @@ impl IdAa64isar2El1 {
 
     /// Returns the value of the `ATS1A` field.
     pub const fn ats1a(self) -> u8 {
-        ((self.bits() >> Self::ATS1A_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ATS1A_SHIFT) & Self::ATS1A_MASK) as u8
     }
 
     /// Sets the value of the `ATS1A` field.
@@ -15645,7 +15596,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `PARange` field.
     pub const fn parange(self) -> u8 {
-        ((self.bits() >> Self::PARANGE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PARANGE_SHIFT) & Self::PARANGE_MASK) as u8
     }
 
     /// Sets the value of the `PARange` field.
@@ -15665,7 +15616,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `ASIDBits` field.
     pub const fn asidbits(self) -> u8 {
-        ((self.bits() >> Self::ASIDBITS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ASIDBITS_SHIFT) & Self::ASIDBITS_MASK) as u8
     }
 
     /// Sets the value of the `ASIDBits` field.
@@ -15685,7 +15636,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `BigEnd` field.
     pub const fn bigend(self) -> u8 {
-        ((self.bits() >> Self::BIGEND_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BIGEND_SHIFT) & Self::BIGEND_MASK) as u8
     }
 
     /// Sets the value of the `BigEnd` field.
@@ -15705,7 +15656,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `SNSMem` field.
     pub const fn snsmem(self) -> u8 {
-        ((self.bits() >> Self::SNSMEM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SNSMEM_SHIFT) & Self::SNSMEM_MASK) as u8
     }
 
     /// Sets the value of the `SNSMem` field.
@@ -15725,7 +15676,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `BigEndEL0` field.
     pub const fn bigendel0(self) -> u8 {
-        ((self.bits() >> Self::BIGENDEL0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BIGENDEL0_SHIFT) & Self::BIGENDEL0_MASK) as u8
     }
 
     /// Sets the value of the `BigEndEL0` field.
@@ -15745,7 +15696,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `TGran16` field.
     pub const fn tgran16(self) -> u8 {
-        ((self.bits() >> Self::TGRAN16_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TGRAN16_SHIFT) & Self::TGRAN16_MASK) as u8
     }
 
     /// Sets the value of the `TGran16` field.
@@ -15765,7 +15716,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `TGran64` field.
     pub const fn tgran64(self) -> u8 {
-        ((self.bits() >> Self::TGRAN64_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TGRAN64_SHIFT) & Self::TGRAN64_MASK) as u8
     }
 
     /// Sets the value of the `TGran64` field.
@@ -15785,7 +15736,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `TGran4` field.
     pub const fn tgran4(self) -> u8 {
-        ((self.bits() >> Self::TGRAN4_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TGRAN4_SHIFT) & Self::TGRAN4_MASK) as u8
     }
 
     /// Sets the value of the `TGran4` field.
@@ -15805,7 +15756,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `TGran16_2` field.
     pub const fn tgran16_2(self) -> u8 {
-        ((self.bits() >> Self::TGRAN16_2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TGRAN16_2_SHIFT) & Self::TGRAN16_2_MASK) as u8
     }
 
     /// Sets the value of the `TGran16_2` field.
@@ -15825,7 +15776,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `TGran64_2` field.
     pub const fn tgran64_2(self) -> u8 {
-        ((self.bits() >> Self::TGRAN64_2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TGRAN64_2_SHIFT) & Self::TGRAN64_2_MASK) as u8
     }
 
     /// Sets the value of the `TGran64_2` field.
@@ -15845,7 +15796,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `TGran4_2` field.
     pub const fn tgran4_2(self) -> u8 {
-        ((self.bits() >> Self::TGRAN4_2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TGRAN4_2_SHIFT) & Self::TGRAN4_2_MASK) as u8
     }
 
     /// Sets the value of the `TGran4_2` field.
@@ -15865,7 +15816,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `ExS` field.
     pub const fn exs(self) -> u8 {
-        ((self.bits() >> Self::EXS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EXS_SHIFT) & Self::EXS_MASK) as u8
     }
 
     /// Sets the value of the `ExS` field.
@@ -15885,7 +15836,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `FGT` field.
     pub const fn fgt(self) -> u8 {
-        ((self.bits() >> Self::FGT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FGT_SHIFT) & Self::FGT_MASK) as u8
     }
 
     /// Sets the value of the `FGT` field.
@@ -15905,7 +15856,7 @@ impl IdAa64mmfr0El1 {
 
     /// Returns the value of the `ECV` field.
     pub const fn ecv(self) -> u8 {
-        ((self.bits() >> Self::ECV_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ECV_SHIFT) & Self::ECV_MASK) as u8
     }
 
     /// Sets the value of the `ECV` field.
@@ -16002,7 +15953,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `HAFDBS` field.
     pub const fn hafdbs(self) -> u8 {
-        ((self.bits() >> Self::HAFDBS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HAFDBS_SHIFT) & Self::HAFDBS_MASK) as u8
     }
 
     /// Sets the value of the `HAFDBS` field.
@@ -16022,7 +15973,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `VMIDBits` field.
     pub const fn vmidbits(self) -> u8 {
-        ((self.bits() >> Self::VMIDBITS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VMIDBITS_SHIFT) & Self::VMIDBITS_MASK) as u8
     }
 
     /// Sets the value of the `VMIDBits` field.
@@ -16042,7 +15993,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `VH` field.
     pub const fn vh(self) -> u8 {
-        ((self.bits() >> Self::VH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VH_SHIFT) & Self::VH_MASK) as u8
     }
 
     /// Sets the value of the `VH` field.
@@ -16062,7 +16013,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `HPDS` field.
     pub const fn hpds(self) -> u8 {
-        ((self.bits() >> Self::HPDS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HPDS_SHIFT) & Self::HPDS_MASK) as u8
     }
 
     /// Sets the value of the `HPDS` field.
@@ -16082,7 +16033,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `LO` field.
     pub const fn lo(self) -> u8 {
-        ((self.bits() >> Self::LO_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LO_SHIFT) & Self::LO_MASK) as u8
     }
 
     /// Sets the value of the `LO` field.
@@ -16102,7 +16053,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `PAN` field.
     pub const fn pan(self) -> u8 {
-        ((self.bits() >> Self::PAN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PAN_SHIFT) & Self::PAN_MASK) as u8
     }
 
     /// Sets the value of the `PAN` field.
@@ -16122,7 +16073,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `SpecSEI` field.
     pub const fn specsei(self) -> u8 {
-        ((self.bits() >> Self::SPECSEI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SPECSEI_SHIFT) & Self::SPECSEI_MASK) as u8
     }
 
     /// Sets the value of the `SpecSEI` field.
@@ -16142,7 +16093,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `XNX` field.
     pub const fn xnx(self) -> u8 {
-        ((self.bits() >> Self::XNX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::XNX_SHIFT) & Self::XNX_MASK) as u8
     }
 
     /// Sets the value of the `XNX` field.
@@ -16162,7 +16113,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `TWED` field.
     pub const fn twed(self) -> u8 {
-        ((self.bits() >> Self::TWED_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TWED_SHIFT) & Self::TWED_MASK) as u8
     }
 
     /// Sets the value of the `TWED` field.
@@ -16182,7 +16133,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `ETS` field.
     pub const fn ets(self) -> u8 {
-        ((self.bits() >> Self::ETS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ETS_SHIFT) & Self::ETS_MASK) as u8
     }
 
     /// Sets the value of the `ETS` field.
@@ -16202,7 +16153,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `HCX` field.
     pub const fn hcx(self) -> u8 {
-        ((self.bits() >> Self::HCX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HCX_SHIFT) & Self::HCX_MASK) as u8
     }
 
     /// Sets the value of the `HCX` field.
@@ -16222,7 +16173,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `AFP` field.
     pub const fn afp(self) -> u8 {
-        ((self.bits() >> Self::AFP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AFP_SHIFT) & Self::AFP_MASK) as u8
     }
 
     /// Sets the value of the `AFP` field.
@@ -16242,7 +16193,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `nTLBPA` field.
     pub const fn ntlbpa(self) -> u8 {
-        ((self.bits() >> Self::NTLBPA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::NTLBPA_SHIFT) & Self::NTLBPA_MASK) as u8
     }
 
     /// Sets the value of the `nTLBPA` field.
@@ -16262,7 +16213,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `TIDCP1` field.
     pub const fn tidcp1(self) -> u8 {
-        ((self.bits() >> Self::TIDCP1_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TIDCP1_SHIFT) & Self::TIDCP1_MASK) as u8
     }
 
     /// Sets the value of the `TIDCP1` field.
@@ -16282,7 +16233,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `CMOW` field.
     pub const fn cmow(self) -> u8 {
-        ((self.bits() >> Self::CMOW_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CMOW_SHIFT) & Self::CMOW_MASK) as u8
     }
 
     /// Sets the value of the `CMOW` field.
@@ -16302,7 +16253,7 @@ impl IdAa64mmfr1El1 {
 
     /// Returns the value of the `ECBHB` field.
     pub const fn ecbhb(self) -> u8 {
-        ((self.bits() >> Self::ECBHB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ECBHB_SHIFT) & Self::ECBHB_MASK) as u8
     }
 
     /// Sets the value of the `ECBHB` field.
@@ -16395,7 +16346,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `CnP` field.
     pub const fn cnp(self) -> u8 {
-        ((self.bits() >> Self::CNP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CNP_SHIFT) & Self::CNP_MASK) as u8
     }
 
     /// Sets the value of the `CnP` field.
@@ -16415,7 +16366,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `UAO` field.
     pub const fn uao(self) -> u8 {
-        ((self.bits() >> Self::UAO_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::UAO_SHIFT) & Self::UAO_MASK) as u8
     }
 
     /// Sets the value of the `UAO` field.
@@ -16435,7 +16386,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `LSM` field.
     pub const fn lsm(self) -> u8 {
-        ((self.bits() >> Self::LSM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LSM_SHIFT) & Self::LSM_MASK) as u8
     }
 
     /// Sets the value of the `LSM` field.
@@ -16455,7 +16406,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `IESB` field.
     pub const fn iesb(self) -> u8 {
-        ((self.bits() >> Self::IESB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::IESB_SHIFT) & Self::IESB_MASK) as u8
     }
 
     /// Sets the value of the `IESB` field.
@@ -16475,7 +16426,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `VARange` field.
     pub const fn varange(self) -> u8 {
-        ((self.bits() >> Self::VARANGE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VARANGE_SHIFT) & Self::VARANGE_MASK) as u8
     }
 
     /// Sets the value of the `VARange` field.
@@ -16495,7 +16446,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `CCIDX` field.
     pub const fn ccidx(self) -> u8 {
-        ((self.bits() >> Self::CCIDX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CCIDX_SHIFT) & Self::CCIDX_MASK) as u8
     }
 
     /// Sets the value of the `CCIDX` field.
@@ -16515,7 +16466,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `NV` field.
     pub const fn nv(self) -> u8 {
-        ((self.bits() >> Self::NV_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::NV_SHIFT) & Self::NV_MASK) as u8
     }
 
     /// Sets the value of the `NV` field.
@@ -16535,7 +16486,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `ST` field.
     pub const fn st(self) -> u8 {
-        ((self.bits() >> Self::ST_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ST_SHIFT) & Self::ST_MASK) as u8
     }
 
     /// Sets the value of the `ST` field.
@@ -16555,7 +16506,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `AT` field.
     pub const fn at(self) -> u8 {
-        ((self.bits() >> Self::AT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AT_SHIFT) & Self::AT_MASK) as u8
     }
 
     /// Sets the value of the `AT` field.
@@ -16575,7 +16526,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `IDS` field.
     pub const fn ids(self) -> u8 {
-        ((self.bits() >> Self::IDS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::IDS_SHIFT) & Self::IDS_MASK) as u8
     }
 
     /// Sets the value of the `IDS` field.
@@ -16595,7 +16546,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `FWB` field.
     pub const fn fwb(self) -> u8 {
-        ((self.bits() >> Self::FWB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FWB_SHIFT) & Self::FWB_MASK) as u8
     }
 
     /// Sets the value of the `FWB` field.
@@ -16615,7 +16566,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `TTL` field.
     pub const fn ttl(self) -> u8 {
-        ((self.bits() >> Self::TTL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TTL_SHIFT) & Self::TTL_MASK) as u8
     }
 
     /// Sets the value of the `TTL` field.
@@ -16635,7 +16586,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `BBM` field.
     pub const fn bbm(self) -> u8 {
-        ((self.bits() >> Self::BBM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BBM_SHIFT) & Self::BBM_MASK) as u8
     }
 
     /// Sets the value of the `BBM` field.
@@ -16655,7 +16606,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
-        ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EVT_SHIFT) & Self::EVT_MASK) as u8
     }
 
     /// Sets the value of the `EVT` field.
@@ -16675,7 +16626,7 @@ impl IdAa64mmfr2El1 {
 
     /// Returns the value of the `E0PD` field.
     pub const fn e0pd(self) -> u8 {
-        ((self.bits() >> Self::E0PD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::E0PD_SHIFT) & Self::E0PD_MASK) as u8
     }
 
     /// Sets the value of the `E0PD` field.
@@ -16768,7 +16719,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `TCRX` field.
     pub const fn tcrx(self) -> u8 {
-        ((self.bits() >> Self::TCRX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TCRX_SHIFT) & Self::TCRX_MASK) as u8
     }
 
     /// Sets the value of the `TCRX` field.
@@ -16788,7 +16739,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `SCTLRX` field.
     pub const fn sctlrx(self) -> u8 {
-        ((self.bits() >> Self::SCTLRX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SCTLRX_SHIFT) & Self::SCTLRX_MASK) as u8
     }
 
     /// Sets the value of the `SCTLRX` field.
@@ -16808,7 +16759,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `S1PIE` field.
     pub const fn s1pie(self) -> u8 {
-        ((self.bits() >> Self::S1PIE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::S1PIE_SHIFT) & Self::S1PIE_MASK) as u8
     }
 
     /// Sets the value of the `S1PIE` field.
@@ -16828,7 +16779,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `S2PIE` field.
     pub const fn s2pie(self) -> u8 {
-        ((self.bits() >> Self::S2PIE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::S2PIE_SHIFT) & Self::S2PIE_MASK) as u8
     }
 
     /// Sets the value of the `S2PIE` field.
@@ -16848,7 +16799,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `S1POE` field.
     pub const fn s1poe(self) -> u8 {
-        ((self.bits() >> Self::S1POE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::S1POE_SHIFT) & Self::S1POE_MASK) as u8
     }
 
     /// Sets the value of the `S1POE` field.
@@ -16868,7 +16819,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `S2POE` field.
     pub const fn s2poe(self) -> u8 {
-        ((self.bits() >> Self::S2POE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::S2POE_SHIFT) & Self::S2POE_MASK) as u8
     }
 
     /// Sets the value of the `S2POE` field.
@@ -16888,7 +16839,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `AIE` field.
     pub const fn aie(self) -> u8 {
-        ((self.bits() >> Self::AIE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AIE_SHIFT) & Self::AIE_MASK) as u8
     }
 
     /// Sets the value of the `AIE` field.
@@ -16908,7 +16859,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `MEC` field.
     pub const fn mec(self) -> u8 {
-        ((self.bits() >> Self::MEC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MEC_SHIFT) & Self::MEC_MASK) as u8
     }
 
     /// Sets the value of the `MEC` field.
@@ -16928,7 +16879,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `D128` field.
     pub const fn d128(self) -> u8 {
-        ((self.bits() >> Self::D128_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::D128_SHIFT) & Self::D128_MASK) as u8
     }
 
     /// Sets the value of the `D128` field.
@@ -16948,7 +16899,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `D128_2` field.
     pub const fn d128_2(self) -> u8 {
-        ((self.bits() >> Self::D128_2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::D128_2_SHIFT) & Self::D128_2_MASK) as u8
     }
 
     /// Sets the value of the `D128_2` field.
@@ -16968,7 +16919,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `SNERR` field.
     pub const fn snerr(self) -> u8 {
-        ((self.bits() >> Self::SNERR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SNERR_SHIFT) & Self::SNERR_MASK) as u8
     }
 
     /// Sets the value of the `SNERR` field.
@@ -16988,7 +16939,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `ANERR` field.
     pub const fn anerr(self) -> u8 {
-        ((self.bits() >> Self::ANERR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ANERR_SHIFT) & Self::ANERR_MASK) as u8
     }
 
     /// Sets the value of the `ANERR` field.
@@ -17008,7 +16959,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `SDERR` field.
     pub const fn sderr(self) -> u8 {
-        ((self.bits() >> Self::SDERR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SDERR_SHIFT) & Self::SDERR_MASK) as u8
     }
 
     /// Sets the value of the `SDERR` field.
@@ -17028,7 +16979,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `ADERR` field.
     pub const fn aderr(self) -> u8 {
-        ((self.bits() >> Self::ADERR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ADERR_SHIFT) & Self::ADERR_MASK) as u8
     }
 
     /// Sets the value of the `ADERR` field.
@@ -17048,7 +16999,7 @@ impl IdAa64mmfr3El1 {
 
     /// Returns the value of the `Spec_FPACC` field.
     pub const fn spec_fpacc(self) -> u8 {
-        ((self.bits() >> Self::SPEC_FPACC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SPEC_FPACC_SHIFT) & Self::SPEC_FPACC_MASK) as u8
     }
 
     /// Sets the value of the `Spec_FPACC` field.
@@ -17145,7 +17096,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `EL0` field.
     pub const fn el0(self) -> u8 {
-        ((self.bits() >> Self::EL0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EL0_SHIFT) & Self::EL0_MASK) as u8
     }
 
     /// Sets the value of the `EL0` field.
@@ -17165,7 +17116,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `EL1` field.
     pub const fn el1(self) -> u8 {
-        ((self.bits() >> Self::EL1_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EL1_SHIFT) & Self::EL1_MASK) as u8
     }
 
     /// Sets the value of the `EL1` field.
@@ -17185,7 +17136,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `EL2` field.
     pub const fn el2(self) -> u8 {
-        ((self.bits() >> Self::EL2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EL2_SHIFT) & Self::EL2_MASK) as u8
     }
 
     /// Sets the value of the `EL2` field.
@@ -17205,7 +17156,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `EL3` field.
     pub const fn el3(self) -> u8 {
-        ((self.bits() >> Self::EL3_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EL3_SHIFT) & Self::EL3_MASK) as u8
     }
 
     /// Sets the value of the `EL3` field.
@@ -17225,7 +17176,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `FP` field.
     pub const fn fp(self) -> u8 {
-        ((self.bits() >> Self::FP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FP_SHIFT) & Self::FP_MASK) as u8
     }
 
     /// Sets the value of the `FP` field.
@@ -17245,7 +17196,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `AdvSIMD` field.
     pub const fn advsimd(self) -> u8 {
-        ((self.bits() >> Self::ADVSIMD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ADVSIMD_SHIFT) & Self::ADVSIMD_MASK) as u8
     }
 
     /// Sets the value of the `AdvSIMD` field.
@@ -17265,7 +17216,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `GIC` field.
     pub const fn gic(self) -> u8 {
-        ((self.bits() >> Self::GIC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GIC_SHIFT) & Self::GIC_MASK) as u8
     }
 
     /// Sets the value of the `GIC` field.
@@ -17285,7 +17236,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
-        ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RAS_SHIFT) & Self::RAS_MASK) as u8
     }
 
     /// Sets the value of the `RAS` field.
@@ -17305,7 +17256,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `SVE` field.
     pub const fn sve(self) -> u8 {
-        ((self.bits() >> Self::SVE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SVE_SHIFT) & Self::SVE_MASK) as u8
     }
 
     /// Sets the value of the `SVE` field.
@@ -17325,7 +17276,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `SEL2` field.
     pub const fn sel2(self) -> u8 {
-        ((self.bits() >> Self::SEL2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SEL2_SHIFT) & Self::SEL2_MASK) as u8
     }
 
     /// Sets the value of the `SEL2` field.
@@ -17345,7 +17296,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `MPAM` field.
     pub const fn mpam(self) -> u8 {
-        ((self.bits() >> Self::MPAM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MPAM_SHIFT) & Self::MPAM_MASK) as u8
     }
 
     /// Sets the value of the `MPAM` field.
@@ -17365,7 +17316,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
-        ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AMU_SHIFT) & Self::AMU_MASK) as u8
     }
 
     /// Sets the value of the `AMU` field.
@@ -17385,7 +17336,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `DIT` field.
     pub const fn dit(self) -> u8 {
-        ((self.bits() >> Self::DIT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DIT_SHIFT) & Self::DIT_MASK) as u8
     }
 
     /// Sets the value of the `DIT` field.
@@ -17405,7 +17356,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `RME` field.
     pub const fn rme(self) -> u8 {
-        ((self.bits() >> Self::RME_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RME_SHIFT) & Self::RME_MASK) as u8
     }
 
     /// Sets the value of the `RME` field.
@@ -17425,7 +17376,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `CSV2` field.
     pub const fn csv2(self) -> u8 {
-        ((self.bits() >> Self::CSV2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CSV2_SHIFT) & Self::CSV2_MASK) as u8
     }
 
     /// Sets the value of the `CSV2` field.
@@ -17445,7 +17396,7 @@ impl IdAa64pfr0El1 {
 
     /// Returns the value of the `CSV3` field.
     pub const fn csv3(self) -> u8 {
-        ((self.bits() >> Self::CSV3_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CSV3_SHIFT) & Self::CSV3_MASK) as u8
     }
 
     /// Sets the value of the `CSV3` field.
@@ -17538,7 +17489,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `BT` field.
     pub const fn bt(self) -> u8 {
-        ((self.bits() >> Self::BT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BT_SHIFT) & Self::BT_MASK) as u8
     }
 
     /// Sets the value of the `BT` field.
@@ -17558,7 +17509,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
-        ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SSBS_SHIFT) & Self::SSBS_MASK) as u8
     }
 
     /// Sets the value of the `SSBS` field.
@@ -17578,7 +17529,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `MTE` field.
     pub const fn mte(self) -> u8 {
-        ((self.bits() >> Self::MTE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MTE_SHIFT) & Self::MTE_MASK) as u8
     }
 
     /// Sets the value of the `MTE` field.
@@ -17598,7 +17549,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
-        ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RAS_FRAC_SHIFT) & Self::RAS_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `RAS_frac` field.
@@ -17618,7 +17569,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `MPAM_frac` field.
     pub const fn mpam_frac(self) -> u8 {
-        ((self.bits() >> Self::MPAM_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MPAM_FRAC_SHIFT) & Self::MPAM_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `MPAM_frac` field.
@@ -17638,7 +17589,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `SME` field.
     pub const fn sme(self) -> u8 {
-        ((self.bits() >> Self::SME_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SME_SHIFT) & Self::SME_MASK) as u8
     }
 
     /// Sets the value of the `SME` field.
@@ -17658,7 +17609,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `RNDR_trap` field.
     pub const fn rndr_trap(self) -> u8 {
-        ((self.bits() >> Self::RNDR_TRAP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RNDR_TRAP_SHIFT) & Self::RNDR_TRAP_MASK) as u8
     }
 
     /// Sets the value of the `RNDR_trap` field.
@@ -17678,7 +17629,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `CSV2_frac` field.
     pub const fn csv2_frac(self) -> u8 {
-        ((self.bits() >> Self::CSV2_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CSV2_FRAC_SHIFT) & Self::CSV2_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `CSV2_frac` field.
@@ -17698,7 +17649,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `NMI` field.
     pub const fn nmi(self) -> u8 {
-        ((self.bits() >> Self::NMI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::NMI_SHIFT) & Self::NMI_MASK) as u8
     }
 
     /// Sets the value of the `NMI` field.
@@ -17718,7 +17669,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `MTE_frac` field.
     pub const fn mte_frac(self) -> u8 {
-        ((self.bits() >> Self::MTE_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MTE_FRAC_SHIFT) & Self::MTE_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `MTE_frac` field.
@@ -17738,7 +17689,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `GCS` field.
     pub const fn gcs(self) -> u8 {
-        ((self.bits() >> Self::GCS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GCS_SHIFT) & Self::GCS_MASK) as u8
     }
 
     /// Sets the value of the `GCS` field.
@@ -17758,7 +17709,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `THE` field.
     pub const fn the(self) -> u8 {
-        ((self.bits() >> Self::THE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::THE_SHIFT) & Self::THE_MASK) as u8
     }
 
     /// Sets the value of the `THE` field.
@@ -17778,7 +17729,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `MTEX` field.
     pub const fn mtex(self) -> u8 {
-        ((self.bits() >> Self::MTEX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MTEX_SHIFT) & Self::MTEX_MASK) as u8
     }
 
     /// Sets the value of the `MTEX` field.
@@ -17798,7 +17749,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `DF2` field.
     pub const fn df2(self) -> u8 {
-        ((self.bits() >> Self::DF2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DF2_SHIFT) & Self::DF2_MASK) as u8
     }
 
     /// Sets the value of the `DF2` field.
@@ -17818,7 +17769,7 @@ impl IdAa64pfr1El1 {
 
     /// Returns the value of the `PFAR` field.
     pub const fn pfar(self) -> u8 {
-        ((self.bits() >> Self::PFAR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PFAR_SHIFT) & Self::PFAR_MASK) as u8
     }
 
     /// Sets the value of the `PFAR` field.
@@ -17947,7 +17898,7 @@ impl IdAa64smfr0El1 {
 
     /// Returns the value of the `I8I32` field.
     pub const fn i8i32(self) -> u8 {
-        ((self.bits() >> Self::I8I32_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::I8I32_SHIFT) & Self::I8I32_MASK) as u8
     }
 
     /// Sets the value of the `I8I32` field.
@@ -17967,7 +17918,7 @@ impl IdAa64smfr0El1 {
 
     /// Returns the value of the `I16I32` field.
     pub const fn i16i32(self) -> u8 {
-        ((self.bits() >> Self::I16I32_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::I16I32_SHIFT) & Self::I16I32_MASK) as u8
     }
 
     /// Sets the value of the `I16I32` field.
@@ -17987,7 +17938,7 @@ impl IdAa64smfr0El1 {
 
     /// Returns the value of the `I16I64` field.
     pub const fn i16i64(self) -> u8 {
-        ((self.bits() >> Self::I16I64_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::I16I64_SHIFT) & Self::I16I64_MASK) as u8
     }
 
     /// Sets the value of the `I16I64` field.
@@ -18007,7 +17958,7 @@ impl IdAa64smfr0El1 {
 
     /// Returns the value of the `SMEver` field.
     pub const fn smever(self) -> u8 {
-        ((self.bits() >> Self::SMEVER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SMEVER_SHIFT) & Self::SMEVER_MASK) as u8
     }
 
     /// Sets the value of the `SMEver` field.
@@ -18070,7 +18021,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `CopDbg` field.
     pub const fn copdbg(self) -> u8 {
-        ((self.bits() >> Self::COPDBG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::COPDBG_SHIFT) & Self::COPDBG_MASK) as u8
     }
 
     /// Sets the value of the `CopDbg` field.
@@ -18090,7 +18041,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `CopSDbg` field.
     pub const fn copsdbg(self) -> u8 {
-        ((self.bits() >> Self::COPSDBG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::COPSDBG_SHIFT) & Self::COPSDBG_MASK) as u8
     }
 
     /// Sets the value of the `CopSDbg` field.
@@ -18110,7 +18061,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `MMapDbg` field.
     pub const fn mmapdbg(self) -> u8 {
-        ((self.bits() >> Self::MMAPDBG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MMAPDBG_SHIFT) & Self::MMAPDBG_MASK) as u8
     }
 
     /// Sets the value of the `MMapDbg` field.
@@ -18130,7 +18081,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `CopTrc` field.
     pub const fn coptrc(self) -> u8 {
-        ((self.bits() >> Self::COPTRC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::COPTRC_SHIFT) & Self::COPTRC_MASK) as u8
     }
 
     /// Sets the value of the `CopTrc` field.
@@ -18150,7 +18101,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `MMapTrc` field.
     pub const fn mmaptrc(self) -> u8 {
-        ((self.bits() >> Self::MMAPTRC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MMAPTRC_SHIFT) & Self::MMAPTRC_MASK) as u8
     }
 
     /// Sets the value of the `MMapTrc` field.
@@ -18170,7 +18121,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `MProfDbg` field.
     pub const fn mprofdbg(self) -> u8 {
-        ((self.bits() >> Self::MPROFDBG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MPROFDBG_SHIFT) & Self::MPROFDBG_MASK) as u8
     }
 
     /// Sets the value of the `MProfDbg` field.
@@ -18190,7 +18141,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `PerfMon` field.
     pub const fn perfmon(self) -> u8 {
-        ((self.bits() >> Self::PERFMON_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PERFMON_SHIFT) & Self::PERFMON_MASK) as u8
     }
 
     /// Sets the value of the `PerfMon` field.
@@ -18210,7 +18161,7 @@ impl IdDfr0 {
 
     /// Returns the value of the `TraceFilt` field.
     pub const fn tracefilt(self) -> u8 {
-        ((self.bits() >> Self::TRACEFILT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TRACEFILT_SHIFT) & Self::TRACEFILT_MASK) as u8
     }
 
     /// Sets the value of the `TraceFilt` field.
@@ -18249,7 +18200,7 @@ impl IdDfr1 {
 
     /// Returns the value of the `MTPMU` field.
     pub const fn mtpmu(self) -> u8 {
-        ((self.bits() >> Self::MTPMU_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MTPMU_SHIFT) & Self::MTPMU_MASK) as u8
     }
 
     /// Sets the value of the `MTPMU` field.
@@ -18269,7 +18220,7 @@ impl IdDfr1 {
 
     /// Returns the value of the `HPMN0` field.
     pub const fn hpmn0(self) -> u8 {
-        ((self.bits() >> Self::HPMN0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HPMN0_SHIFT) & Self::HPMN0_MASK) as u8
     }
 
     /// Sets the value of the `HPMN0` field.
@@ -18328,7 +18279,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `Swap` field.
     pub const fn swap(self) -> u8 {
-        ((self.bits() >> Self::SWAP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SWAP_SHIFT) & Self::SWAP_MASK) as u8
     }
 
     /// Sets the value of the `Swap` field.
@@ -18348,7 +18299,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `BitCount` field.
     pub const fn bitcount(self) -> u8 {
-        ((self.bits() >> Self::BITCOUNT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BITCOUNT_SHIFT) & Self::BITCOUNT_MASK) as u8
     }
 
     /// Sets the value of the `BitCount` field.
@@ -18368,7 +18319,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `BitField` field.
     pub const fn bitfield(self) -> u8 {
-        ((self.bits() >> Self::BITFIELD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BITFIELD_SHIFT) & Self::BITFIELD_MASK) as u8
     }
 
     /// Sets the value of the `BitField` field.
@@ -18388,7 +18339,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `CmpBranch` field.
     pub const fn cmpbranch(self) -> u8 {
-        ((self.bits() >> Self::CMPBRANCH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CMPBRANCH_SHIFT) & Self::CMPBRANCH_MASK) as u8
     }
 
     /// Sets the value of the `CmpBranch` field.
@@ -18408,7 +18359,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `Coproc` field.
     pub const fn coproc(self) -> u8 {
-        ((self.bits() >> Self::COPROC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::COPROC_SHIFT) & Self::COPROC_MASK) as u8
     }
 
     /// Sets the value of the `Coproc` field.
@@ -18428,7 +18379,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `Debug` field.
     pub const fn debug(self) -> u8 {
-        ((self.bits() >> Self::DEBUG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DEBUG_SHIFT) & Self::DEBUG_MASK) as u8
     }
 
     /// Sets the value of the `Debug` field.
@@ -18448,7 +18399,7 @@ impl IdIsar0 {
 
     /// Returns the value of the `Divide` field.
     pub const fn divide(self) -> u8 {
-        ((self.bits() >> Self::DIVIDE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DIVIDE_SHIFT) & Self::DIVIDE_MASK) as u8
     }
 
     /// Sets the value of the `Divide` field.
@@ -18511,7 +18462,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Endian` field.
     pub const fn endian(self) -> u8 {
-        ((self.bits() >> Self::ENDIAN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ENDIAN_SHIFT) & Self::ENDIAN_MASK) as u8
     }
 
     /// Sets the value of the `Endian` field.
@@ -18531,7 +18482,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Except` field.
     pub const fn except(self) -> u8 {
-        ((self.bits() >> Self::EXCEPT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EXCEPT_SHIFT) & Self::EXCEPT_MASK) as u8
     }
 
     /// Sets the value of the `Except` field.
@@ -18551,7 +18502,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Except_AR` field.
     pub const fn except_ar(self) -> u8 {
-        ((self.bits() >> Self::EXCEPT_AR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EXCEPT_AR_SHIFT) & Self::EXCEPT_AR_MASK) as u8
     }
 
     /// Sets the value of the `Except_AR` field.
@@ -18571,7 +18522,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Extend` field.
     pub const fn extend_(self) -> u8 {
-        ((self.bits() >> Self::EXTEND_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EXTEND_SHIFT) & Self::EXTEND_MASK) as u8
     }
 
     /// Sets the value of the `Extend` field.
@@ -18591,7 +18542,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `IfThen` field.
     pub const fn ifthen(self) -> u8 {
-        ((self.bits() >> Self::IFTHEN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::IFTHEN_SHIFT) & Self::IFTHEN_MASK) as u8
     }
 
     /// Sets the value of the `IfThen` field.
@@ -18611,7 +18562,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Immediate` field.
     pub const fn immediate(self) -> u8 {
-        ((self.bits() >> Self::IMMEDIATE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::IMMEDIATE_SHIFT) & Self::IMMEDIATE_MASK) as u8
     }
 
     /// Sets the value of the `Immediate` field.
@@ -18631,7 +18582,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Interwork` field.
     pub const fn interwork(self) -> u8 {
-        ((self.bits() >> Self::INTERWORK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INTERWORK_SHIFT) & Self::INTERWORK_MASK) as u8
     }
 
     /// Sets the value of the `Interwork` field.
@@ -18651,7 +18602,7 @@ impl IdIsar1 {
 
     /// Returns the value of the `Jazelle` field.
     pub const fn jazelle(self) -> u8 {
-        ((self.bits() >> Self::JAZELLE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::JAZELLE_SHIFT) & Self::JAZELLE_MASK) as u8
     }
 
     /// Sets the value of the `Jazelle` field.
@@ -18714,7 +18665,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `LoadStore` field.
     pub const fn loadstore(self) -> u8 {
-        ((self.bits() >> Self::LOADSTORE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LOADSTORE_SHIFT) & Self::LOADSTORE_MASK) as u8
     }
 
     /// Sets the value of the `LoadStore` field.
@@ -18734,7 +18685,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `MemHint` field.
     pub const fn memhint(self) -> u8 {
-        ((self.bits() >> Self::MEMHINT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MEMHINT_SHIFT) & Self::MEMHINT_MASK) as u8
     }
 
     /// Sets the value of the `MemHint` field.
@@ -18754,7 +18705,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `MultiAccessInt` field.
     pub const fn multiaccessint(self) -> u8 {
-        ((self.bits() >> Self::MULTIACCESSINT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MULTIACCESSINT_SHIFT) & Self::MULTIACCESSINT_MASK) as u8
     }
 
     /// Sets the value of the `MultiAccessInt` field.
@@ -18774,7 +18725,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `Mult` field.
     pub const fn mult(self) -> u8 {
-        ((self.bits() >> Self::MULT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MULT_SHIFT) & Self::MULT_MASK) as u8
     }
 
     /// Sets the value of the `Mult` field.
@@ -18794,7 +18745,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `MultS` field.
     pub const fn mults(self) -> u8 {
-        ((self.bits() >> Self::MULTS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MULTS_SHIFT) & Self::MULTS_MASK) as u8
     }
 
     /// Sets the value of the `MultS` field.
@@ -18814,7 +18765,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `MultU` field.
     pub const fn multu(self) -> u8 {
-        ((self.bits() >> Self::MULTU_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MULTU_SHIFT) & Self::MULTU_MASK) as u8
     }
 
     /// Sets the value of the `MultU` field.
@@ -18834,7 +18785,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `PSR_AR` field.
     pub const fn psr_ar(self) -> u8 {
-        ((self.bits() >> Self::PSR_AR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PSR_AR_SHIFT) & Self::PSR_AR_MASK) as u8
     }
 
     /// Sets the value of the `PSR_AR` field.
@@ -18854,7 +18805,7 @@ impl IdIsar2 {
 
     /// Returns the value of the `Reversal` field.
     pub const fn reversal(self) -> u8 {
-        ((self.bits() >> Self::REVERSAL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::REVERSAL_SHIFT) & Self::REVERSAL_MASK) as u8
     }
 
     /// Sets the value of the `Reversal` field.
@@ -18917,7 +18868,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `Saturate` field.
     pub const fn saturate(self) -> u8 {
-        ((self.bits() >> Self::SATURATE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SATURATE_SHIFT) & Self::SATURATE_MASK) as u8
     }
 
     /// Sets the value of the `Saturate` field.
@@ -18937,7 +18888,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `SIMD` field.
     pub const fn simd(self) -> u8 {
-        ((self.bits() >> Self::SIMD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SIMD_SHIFT) & Self::SIMD_MASK) as u8
     }
 
     /// Sets the value of the `SIMD` field.
@@ -18957,7 +18908,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `SVC` field.
     pub const fn svc(self) -> u8 {
-        ((self.bits() >> Self::SVC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SVC_SHIFT) & Self::SVC_MASK) as u8
     }
 
     /// Sets the value of the `SVC` field.
@@ -18977,7 +18928,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `SynchPrim` field.
     pub const fn synchprim(self) -> u8 {
-        ((self.bits() >> Self::SYNCHPRIM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SYNCHPRIM_SHIFT) & Self::SYNCHPRIM_MASK) as u8
     }
 
     /// Sets the value of the `SynchPrim` field.
@@ -18997,7 +18948,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `TabBranch` field.
     pub const fn tabbranch(self) -> u8 {
-        ((self.bits() >> Self::TABBRANCH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TABBRANCH_SHIFT) & Self::TABBRANCH_MASK) as u8
     }
 
     /// Sets the value of the `TabBranch` field.
@@ -19017,7 +18968,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `T32Copy` field.
     pub const fn t32copy(self) -> u8 {
-        ((self.bits() >> Self::T32COPY_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::T32COPY_SHIFT) & Self::T32COPY_MASK) as u8
     }
 
     /// Sets the value of the `T32Copy` field.
@@ -19037,7 +18988,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `TrueNOP` field.
     pub const fn truenop(self) -> u8 {
-        ((self.bits() >> Self::TRUENOP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TRUENOP_SHIFT) & Self::TRUENOP_MASK) as u8
     }
 
     /// Sets the value of the `TrueNOP` field.
@@ -19057,7 +19008,7 @@ impl IdIsar3 {
 
     /// Returns the value of the `T32EE` field.
     pub const fn t32ee(self) -> u8 {
-        ((self.bits() >> Self::T32EE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::T32EE_SHIFT) & Self::T32EE_MASK) as u8
     }
 
     /// Sets the value of the `T32EE` field.
@@ -19120,7 +19071,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `Unpriv` field.
     pub const fn unpriv(self) -> u8 {
-        ((self.bits() >> Self::UNPRIV_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::UNPRIV_SHIFT) & Self::UNPRIV_MASK) as u8
     }
 
     /// Sets the value of the `Unpriv` field.
@@ -19140,7 +19091,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `WithShifts` field.
     pub const fn withshifts(self) -> u8 {
-        ((self.bits() >> Self::WITHSHIFTS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WITHSHIFTS_SHIFT) & Self::WITHSHIFTS_MASK) as u8
     }
 
     /// Sets the value of the `WithShifts` field.
@@ -19160,7 +19111,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `Writeback` field.
     pub const fn writeback(self) -> u8 {
-        ((self.bits() >> Self::WRITEBACK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WRITEBACK_SHIFT) & Self::WRITEBACK_MASK) as u8
     }
 
     /// Sets the value of the `Writeback` field.
@@ -19180,7 +19131,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `SMC` field.
     pub const fn smc(self) -> u8 {
-        ((self.bits() >> Self::SMC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SMC_SHIFT) & Self::SMC_MASK) as u8
     }
 
     /// Sets the value of the `SMC` field.
@@ -19200,7 +19151,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `Barrier` field.
     pub const fn barrier(self) -> u8 {
-        ((self.bits() >> Self::BARRIER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BARRIER_SHIFT) & Self::BARRIER_MASK) as u8
     }
 
     /// Sets the value of the `Barrier` field.
@@ -19220,7 +19171,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `SynchPrim_frac` field.
     pub const fn synchprim_frac(self) -> u8 {
-        ((self.bits() >> Self::SYNCHPRIM_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SYNCHPRIM_FRAC_SHIFT) & Self::SYNCHPRIM_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `SynchPrim_frac` field.
@@ -19240,7 +19191,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `PSR_M` field.
     pub const fn psr_m(self) -> u8 {
-        ((self.bits() >> Self::PSR_M_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PSR_M_SHIFT) & Self::PSR_M_MASK) as u8
     }
 
     /// Sets the value of the `PSR_M` field.
@@ -19260,7 +19211,7 @@ impl IdIsar4 {
 
     /// Returns the value of the `SWP_frac` field.
     pub const fn swp_frac(self) -> u8 {
-        ((self.bits() >> Self::SWP_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SWP_FRAC_SHIFT) & Self::SWP_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `SWP_frac` field.
@@ -19319,7 +19270,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `SEVL` field.
     pub const fn sevl(self) -> u8 {
-        ((self.bits() >> Self::SEVL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SEVL_SHIFT) & Self::SEVL_MASK) as u8
     }
 
     /// Sets the value of the `SEVL` field.
@@ -19339,7 +19290,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `AES` field.
     pub const fn aes(self) -> u8 {
-        ((self.bits() >> Self::AES_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AES_SHIFT) & Self::AES_MASK) as u8
     }
 
     /// Sets the value of the `AES` field.
@@ -19359,7 +19310,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `SHA1` field.
     pub const fn sha1(self) -> u8 {
-        ((self.bits() >> Self::SHA1_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SHA1_SHIFT) & Self::SHA1_MASK) as u8
     }
 
     /// Sets the value of the `SHA1` field.
@@ -19379,7 +19330,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `SHA2` field.
     pub const fn sha2(self) -> u8 {
-        ((self.bits() >> Self::SHA2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SHA2_SHIFT) & Self::SHA2_MASK) as u8
     }
 
     /// Sets the value of the `SHA2` field.
@@ -19399,7 +19350,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `CRC32` field.
     pub const fn crc32(self) -> u8 {
-        ((self.bits() >> Self::CRC32_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CRC32_SHIFT) & Self::CRC32_MASK) as u8
     }
 
     /// Sets the value of the `CRC32` field.
@@ -19419,7 +19370,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `RDM` field.
     pub const fn rdm(self) -> u8 {
-        ((self.bits() >> Self::RDM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RDM_SHIFT) & Self::RDM_MASK) as u8
     }
 
     /// Sets the value of the `RDM` field.
@@ -19439,7 +19390,7 @@ impl IdIsar5 {
 
     /// Returns the value of the `VCMA` field.
     pub const fn vcma(self) -> u8 {
-        ((self.bits() >> Self::VCMA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VCMA_SHIFT) & Self::VCMA_MASK) as u8
     }
 
     /// Sets the value of the `VCMA` field.
@@ -19502,7 +19453,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `JSCVT` field.
     pub const fn jscvt(self) -> u8 {
-        ((self.bits() >> Self::JSCVT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::JSCVT_SHIFT) & Self::JSCVT_MASK) as u8
     }
 
     /// Sets the value of the `JSCVT` field.
@@ -19522,7 +19473,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `DP` field.
     pub const fn dp(self) -> u8 {
-        ((self.bits() >> Self::DP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DP_SHIFT) & Self::DP_MASK) as u8
     }
 
     /// Sets the value of the `DP` field.
@@ -19542,7 +19493,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `FHM` field.
     pub const fn fhm(self) -> u8 {
-        ((self.bits() >> Self::FHM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FHM_SHIFT) & Self::FHM_MASK) as u8
     }
 
     /// Sets the value of the `FHM` field.
@@ -19562,7 +19513,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `SB` field.
     pub const fn sb(self) -> u8 {
-        ((self.bits() >> Self::SB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SB_SHIFT) & Self::SB_MASK) as u8
     }
 
     /// Sets the value of the `SB` field.
@@ -19582,7 +19533,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `SPECRES` field.
     pub const fn specres(self) -> u8 {
-        ((self.bits() >> Self::SPECRES_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SPECRES_SHIFT) & Self::SPECRES_MASK) as u8
     }
 
     /// Sets the value of the `SPECRES` field.
@@ -19602,7 +19553,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `BF16` field.
     pub const fn bf16(self) -> u8 {
-        ((self.bits() >> Self::BF16_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BF16_SHIFT) & Self::BF16_MASK) as u8
     }
 
     /// Sets the value of the `BF16` field.
@@ -19622,7 +19573,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `I8MM` field.
     pub const fn i8mm(self) -> u8 {
-        ((self.bits() >> Self::I8MM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::I8MM_SHIFT) & Self::I8MM_MASK) as u8
     }
 
     /// Sets the value of the `I8MM` field.
@@ -19642,7 +19593,7 @@ impl IdIsar6 {
 
     /// Returns the value of the `CLRBHB` field.
     pub const fn clrbhb(self) -> u8 {
-        ((self.bits() >> Self::CLRBHB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CLRBHB_SHIFT) & Self::CLRBHB_MASK) as u8
     }
 
     /// Sets the value of the `CLRBHB` field.
@@ -19705,7 +19656,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `VMSA` field.
     pub const fn vmsa(self) -> u8 {
-        ((self.bits() >> Self::VMSA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VMSA_SHIFT) & Self::VMSA_MASK) as u8
     }
 
     /// Sets the value of the `VMSA` field.
@@ -19725,7 +19676,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `PMSA` field.
     pub const fn pmsa(self) -> u8 {
-        ((self.bits() >> Self::PMSA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PMSA_SHIFT) & Self::PMSA_MASK) as u8
     }
 
     /// Sets the value of the `PMSA` field.
@@ -19745,7 +19696,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `OuterShr` field.
     pub const fn outershr(self) -> u8 {
-        ((self.bits() >> Self::OUTERSHR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::OUTERSHR_SHIFT) & Self::OUTERSHR_MASK) as u8
     }
 
     /// Sets the value of the `OuterShr` field.
@@ -19765,7 +19716,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `ShareLvl` field.
     pub const fn sharelvl(self) -> u8 {
-        ((self.bits() >> Self::SHARELVL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SHARELVL_SHIFT) & Self::SHARELVL_MASK) as u8
     }
 
     /// Sets the value of the `ShareLvl` field.
@@ -19785,7 +19736,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `TCM` field.
     pub const fn tcm(self) -> u8 {
-        ((self.bits() >> Self::TCM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TCM_SHIFT) & Self::TCM_MASK) as u8
     }
 
     /// Sets the value of the `TCM` field.
@@ -19805,7 +19756,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `AuxReg` field.
     pub const fn auxreg(self) -> u8 {
-        ((self.bits() >> Self::AUXREG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AUXREG_SHIFT) & Self::AUXREG_MASK) as u8
     }
 
     /// Sets the value of the `AuxReg` field.
@@ -19825,7 +19776,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `FCSE` field.
     pub const fn fcse(self) -> u8 {
-        ((self.bits() >> Self::FCSE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::FCSE_SHIFT) & Self::FCSE_MASK) as u8
     }
 
     /// Sets the value of the `FCSE` field.
@@ -19845,7 +19796,7 @@ impl IdMmfr0 {
 
     /// Returns the value of the `InnerShr` field.
     pub const fn innershr(self) -> u8 {
-        ((self.bits() >> Self::INNERSHR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::INNERSHR_SHIFT) & Self::INNERSHR_MASK) as u8
     }
 
     /// Sets the value of the `InnerShr` field.
@@ -19908,7 +19859,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1HvdVA` field.
     pub const fn l1hvdva(self) -> u8 {
-        ((self.bits() >> Self::L1HVDVA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1HVDVA_SHIFT) & Self::L1HVDVA_MASK) as u8
     }
 
     /// Sets the value of the `L1HvdVA` field.
@@ -19928,7 +19879,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1UniVA` field.
     pub const fn l1univa(self) -> u8 {
-        ((self.bits() >> Self::L1UNIVA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1UNIVA_SHIFT) & Self::L1UNIVA_MASK) as u8
     }
 
     /// Sets the value of the `L1UniVA` field.
@@ -19948,7 +19899,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1HvdSW` field.
     pub const fn l1hvdsw(self) -> u8 {
-        ((self.bits() >> Self::L1HVDSW_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1HVDSW_SHIFT) & Self::L1HVDSW_MASK) as u8
     }
 
     /// Sets the value of the `L1HvdSW` field.
@@ -19968,7 +19919,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1UniSW` field.
     pub const fn l1unisw(self) -> u8 {
-        ((self.bits() >> Self::L1UNISW_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1UNISW_SHIFT) & Self::L1UNISW_MASK) as u8
     }
 
     /// Sets the value of the `L1UniSW` field.
@@ -19988,7 +19939,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1Hvd` field.
     pub const fn l1hvd(self) -> u8 {
-        ((self.bits() >> Self::L1HVD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1HVD_SHIFT) & Self::L1HVD_MASK) as u8
     }
 
     /// Sets the value of the `L1Hvd` field.
@@ -20008,7 +19959,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1Uni` field.
     pub const fn l1uni(self) -> u8 {
-        ((self.bits() >> Self::L1UNI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1UNI_SHIFT) & Self::L1UNI_MASK) as u8
     }
 
     /// Sets the value of the `L1Uni` field.
@@ -20028,7 +19979,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `L1TstCln` field.
     pub const fn l1tstcln(self) -> u8 {
-        ((self.bits() >> Self::L1TSTCLN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1TSTCLN_SHIFT) & Self::L1TSTCLN_MASK) as u8
     }
 
     /// Sets the value of the `L1TstCln` field.
@@ -20048,7 +19999,7 @@ impl IdMmfr1 {
 
     /// Returns the value of the `BPred` field.
     pub const fn bpred(self) -> u8 {
-        ((self.bits() >> Self::BPRED_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BPRED_SHIFT) & Self::BPRED_MASK) as u8
     }
 
     /// Sets the value of the `BPred` field.
@@ -20111,7 +20062,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `L1HvdFG` field.
     pub const fn l1hvdfg(self) -> u8 {
-        ((self.bits() >> Self::L1HVDFG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1HVDFG_SHIFT) & Self::L1HVDFG_MASK) as u8
     }
 
     /// Sets the value of the `L1HvdFG` field.
@@ -20131,7 +20082,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `L1HvdBG` field.
     pub const fn l1hvdbg(self) -> u8 {
-        ((self.bits() >> Self::L1HVDBG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1HVDBG_SHIFT) & Self::L1HVDBG_MASK) as u8
     }
 
     /// Sets the value of the `L1HvdBG` field.
@@ -20151,7 +20102,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `L1HvdRng` field.
     pub const fn l1hvdrng(self) -> u8 {
-        ((self.bits() >> Self::L1HVDRNG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::L1HVDRNG_SHIFT) & Self::L1HVDRNG_MASK) as u8
     }
 
     /// Sets the value of the `L1HvdRng` field.
@@ -20171,7 +20122,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `HvdTLB` field.
     pub const fn hvdtlb(self) -> u8 {
-        ((self.bits() >> Self::HVDTLB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HVDTLB_SHIFT) & Self::HVDTLB_MASK) as u8
     }
 
     /// Sets the value of the `HvdTLB` field.
@@ -20191,7 +20142,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `UniTLB` field.
     pub const fn unitlb(self) -> u8 {
-        ((self.bits() >> Self::UNITLB_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::UNITLB_SHIFT) & Self::UNITLB_MASK) as u8
     }
 
     /// Sets the value of the `UniTLB` field.
@@ -20211,7 +20162,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `MemBarr` field.
     pub const fn membarr(self) -> u8 {
-        ((self.bits() >> Self::MEMBARR_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MEMBARR_SHIFT) & Self::MEMBARR_MASK) as u8
     }
 
     /// Sets the value of the `MemBarr` field.
@@ -20231,7 +20182,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `WFIStall` field.
     pub const fn wfistall(self) -> u8 {
-        ((self.bits() >> Self::WFISTALL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::WFISTALL_SHIFT) & Self::WFISTALL_MASK) as u8
     }
 
     /// Sets the value of the `WFIStall` field.
@@ -20251,7 +20202,7 @@ impl IdMmfr2 {
 
     /// Returns the value of the `HWAccFlg` field.
     pub const fn hwaccflg(self) -> u8 {
-        ((self.bits() >> Self::HWACCFLG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HWACCFLG_SHIFT) & Self::HWACCFLG_MASK) as u8
     }
 
     /// Sets the value of the `HWAccFlg` field.
@@ -20314,7 +20265,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `CMaintVA` field.
     pub const fn cmaintva(self) -> u8 {
-        ((self.bits() >> Self::CMAINTVA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CMAINTVA_SHIFT) & Self::CMAINTVA_MASK) as u8
     }
 
     /// Sets the value of the `CMaintVA` field.
@@ -20334,7 +20285,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `CMaintSW` field.
     pub const fn cmaintsw(self) -> u8 {
-        ((self.bits() >> Self::CMAINTSW_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CMAINTSW_SHIFT) & Self::CMAINTSW_MASK) as u8
     }
 
     /// Sets the value of the `CMaintSW` field.
@@ -20354,7 +20305,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `BPMaint` field.
     pub const fn bpmaint(self) -> u8 {
-        ((self.bits() >> Self::BPMAINT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BPMAINT_SHIFT) & Self::BPMAINT_MASK) as u8
     }
 
     /// Sets the value of the `BPMaint` field.
@@ -20374,7 +20325,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `MaintBcst` field.
     pub const fn maintbcst(self) -> u8 {
-        ((self.bits() >> Self::MAINTBCST_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MAINTBCST_SHIFT) & Self::MAINTBCST_MASK) as u8
     }
 
     /// Sets the value of the `MaintBcst` field.
@@ -20394,7 +20345,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `PAN` field.
     pub const fn pan(self) -> u8 {
-        ((self.bits() >> Self::PAN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PAN_SHIFT) & Self::PAN_MASK) as u8
     }
 
     /// Sets the value of the `PAN` field.
@@ -20414,7 +20365,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `CohWalk` field.
     pub const fn cohwalk(self) -> u8 {
-        ((self.bits() >> Self::COHWALK_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::COHWALK_SHIFT) & Self::COHWALK_MASK) as u8
     }
 
     /// Sets the value of the `CohWalk` field.
@@ -20434,7 +20385,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `CMemSz` field.
     pub const fn cmemsz(self) -> u8 {
-        ((self.bits() >> Self::CMEMSZ_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CMEMSZ_SHIFT) & Self::CMEMSZ_MASK) as u8
     }
 
     /// Sets the value of the `CMemSz` field.
@@ -20454,7 +20405,7 @@ impl IdMmfr3 {
 
     /// Returns the value of the `Supersec` field.
     pub const fn supersec(self) -> u8 {
-        ((self.bits() >> Self::SUPERSEC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SUPERSEC_SHIFT) & Self::SUPERSEC_MASK) as u8
     }
 
     /// Sets the value of the `Supersec` field.
@@ -20517,7 +20468,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `SpecSEI` field.
     pub const fn specsei(self) -> u8 {
-        ((self.bits() >> Self::SPECSEI_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SPECSEI_SHIFT) & Self::SPECSEI_MASK) as u8
     }
 
     /// Sets the value of the `SpecSEI` field.
@@ -20537,7 +20488,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `AC2` field.
     pub const fn ac2(self) -> u8 {
-        ((self.bits() >> Self::AC2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AC2_SHIFT) & Self::AC2_MASK) as u8
     }
 
     /// Sets the value of the `AC2` field.
@@ -20557,7 +20508,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `XNX` field.
     pub const fn xnx(self) -> u8 {
-        ((self.bits() >> Self::XNX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::XNX_SHIFT) & Self::XNX_MASK) as u8
     }
 
     /// Sets the value of the `XNX` field.
@@ -20577,7 +20528,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `CnP` field.
     pub const fn cnp(self) -> u8 {
-        ((self.bits() >> Self::CNP_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CNP_SHIFT) & Self::CNP_MASK) as u8
     }
 
     /// Sets the value of the `CnP` field.
@@ -20597,7 +20548,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `HPDS` field.
     pub const fn hpds(self) -> u8 {
-        ((self.bits() >> Self::HPDS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::HPDS_SHIFT) & Self::HPDS_MASK) as u8
     }
 
     /// Sets the value of the `HPDS` field.
@@ -20617,7 +20568,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `LSM` field.
     pub const fn lsm(self) -> u8 {
-        ((self.bits() >> Self::LSM_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LSM_SHIFT) & Self::LSM_MASK) as u8
     }
 
     /// Sets the value of the `LSM` field.
@@ -20637,7 +20588,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `CCIDX` field.
     pub const fn ccidx(self) -> u8 {
-        ((self.bits() >> Self::CCIDX_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CCIDX_SHIFT) & Self::CCIDX_MASK) as u8
     }
 
     /// Sets the value of the `CCIDX` field.
@@ -20657,7 +20608,7 @@ impl IdMmfr4 {
 
     /// Returns the value of the `EVT` field.
     pub const fn evt(self) -> u8 {
-        ((self.bits() >> Self::EVT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EVT_SHIFT) & Self::EVT_MASK) as u8
     }
 
     /// Sets the value of the `EVT` field.
@@ -20696,7 +20647,7 @@ impl IdMmfr5 {
 
     /// Returns the value of the `ETS` field.
     pub const fn ets(self) -> u8 {
-        ((self.bits() >> Self::ETS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ETS_SHIFT) & Self::ETS_MASK) as u8
     }
 
     /// Sets the value of the `ETS` field.
@@ -20716,7 +20667,7 @@ impl IdMmfr5 {
 
     /// Returns the value of the `nTLBPA` field.
     pub const fn ntlbpa(self) -> u8 {
-        ((self.bits() >> Self::NTLBPA_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::NTLBPA_SHIFT) & Self::NTLBPA_MASK) as u8
     }
 
     /// Sets the value of the `nTLBPA` field.
@@ -20779,7 +20730,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `State0` field.
     pub const fn state0(self) -> u8 {
-        ((self.bits() >> Self::STATE0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::STATE0_SHIFT) & Self::STATE0_MASK) as u8
     }
 
     /// Sets the value of the `State0` field.
@@ -20799,7 +20750,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `State1` field.
     pub const fn state1(self) -> u8 {
-        ((self.bits() >> Self::STATE1_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::STATE1_SHIFT) & Self::STATE1_MASK) as u8
     }
 
     /// Sets the value of the `State1` field.
@@ -20819,7 +20770,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `State2` field.
     pub const fn state2(self) -> u8 {
-        ((self.bits() >> Self::STATE2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::STATE2_SHIFT) & Self::STATE2_MASK) as u8
     }
 
     /// Sets the value of the `State2` field.
@@ -20839,7 +20790,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `State3` field.
     pub const fn state3(self) -> u8 {
-        ((self.bits() >> Self::STATE3_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::STATE3_SHIFT) & Self::STATE3_MASK) as u8
     }
 
     /// Sets the value of the `State3` field.
@@ -20859,7 +20810,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `CSV2` field.
     pub const fn csv2(self) -> u8 {
-        ((self.bits() >> Self::CSV2_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CSV2_SHIFT) & Self::CSV2_MASK) as u8
     }
 
     /// Sets the value of the `CSV2` field.
@@ -20879,7 +20830,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `AMU` field.
     pub const fn amu(self) -> u8 {
-        ((self.bits() >> Self::AMU_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::AMU_SHIFT) & Self::AMU_MASK) as u8
     }
 
     /// Sets the value of the `AMU` field.
@@ -20899,7 +20850,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `DIT` field.
     pub const fn dit(self) -> u8 {
-        ((self.bits() >> Self::DIT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::DIT_SHIFT) & Self::DIT_MASK) as u8
     }
 
     /// Sets the value of the `DIT` field.
@@ -20919,7 +20870,7 @@ impl IdPfr0 {
 
     /// Returns the value of the `RAS` field.
     pub const fn ras(self) -> u8 {
-        ((self.bits() >> Self::RAS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RAS_SHIFT) & Self::RAS_MASK) as u8
     }
 
     /// Sets the value of the `RAS` field.
@@ -20982,7 +20933,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `ProgMod` field.
     pub const fn progmod(self) -> u8 {
-        ((self.bits() >> Self::PROGMOD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PROGMOD_SHIFT) & Self::PROGMOD_MASK) as u8
     }
 
     /// Sets the value of the `ProgMod` field.
@@ -21002,7 +20953,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `Security` field.
     pub const fn security(self) -> u8 {
-        ((self.bits() >> Self::SECURITY_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SECURITY_SHIFT) & Self::SECURITY_MASK) as u8
     }
 
     /// Sets the value of the `Security` field.
@@ -21022,7 +20973,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `MProgMod` field.
     pub const fn mprogmod(self) -> u8 {
-        ((self.bits() >> Self::MPROGMOD_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::MPROGMOD_SHIFT) & Self::MPROGMOD_MASK) as u8
     }
 
     /// Sets the value of the `MProgMod` field.
@@ -21042,7 +20993,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `Virtualization` field.
     pub const fn virtualization(self) -> u8 {
-        ((self.bits() >> Self::VIRTUALIZATION_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VIRTUALIZATION_SHIFT) & Self::VIRTUALIZATION_MASK) as u8
     }
 
     /// Sets the value of the `Virtualization` field.
@@ -21062,7 +21013,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `GenTimer` field.
     pub const fn gentimer(self) -> u8 {
-        ((self.bits() >> Self::GENTIMER_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GENTIMER_SHIFT) & Self::GENTIMER_MASK) as u8
     }
 
     /// Sets the value of the `GenTimer` field.
@@ -21082,7 +21033,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `Sec_frac` field.
     pub const fn sec_frac(self) -> u8 {
-        ((self.bits() >> Self::SEC_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SEC_FRAC_SHIFT) & Self::SEC_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `Sec_frac` field.
@@ -21102,7 +21053,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `Virt_frac` field.
     pub const fn virt_frac(self) -> u8 {
-        ((self.bits() >> Self::VIRT_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VIRT_FRAC_SHIFT) & Self::VIRT_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `Virt_frac` field.
@@ -21122,7 +21073,7 @@ impl IdPfr1 {
 
     /// Returns the value of the `GIC` field.
     pub const fn gic(self) -> u8 {
-        ((self.bits() >> Self::GIC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GIC_SHIFT) & Self::GIC_MASK) as u8
     }
 
     /// Sets the value of the `GIC` field.
@@ -21165,7 +21116,7 @@ impl IdPfr2 {
 
     /// Returns the value of the `CSV3` field.
     pub const fn csv3(self) -> u8 {
-        ((self.bits() >> Self::CSV3_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::CSV3_SHIFT) & Self::CSV3_MASK) as u8
     }
 
     /// Sets the value of the `CSV3` field.
@@ -21185,7 +21136,7 @@ impl IdPfr2 {
 
     /// Returns the value of the `SSBS` field.
     pub const fn ssbs(self) -> u8 {
-        ((self.bits() >> Self::SSBS_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::SSBS_SHIFT) & Self::SSBS_MASK) as u8
     }
 
     /// Sets the value of the `SSBS` field.
@@ -21205,7 +21156,7 @@ impl IdPfr2 {
 
     /// Returns the value of the `RAS_frac` field.
     pub const fn ras_frac(self) -> u8 {
-        ((self.bits() >> Self::RAS_FRAC_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::RAS_FRAC_SHIFT) & Self::RAS_FRAC_MASK) as u8
     }
 
     /// Sets the value of the `RAS_frac` field.
@@ -21240,7 +21191,7 @@ impl Ifar {
 
     /// Returns the value of the `VA` field.
     pub const fn va(self) -> u32 {
-        ((self.bits() >> Self::VA_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::VA_SHIFT) & Self::VA_MASK) as u32
     }
 
     /// Sets the value of the `VA` field.
@@ -21287,7 +21238,7 @@ impl Ifsr {
 
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
-        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::STATUS_SHIFT) & Self::STATUS_MASK) as u8
     }
 
     /// Sets the value of the `STATUS` field.
@@ -21379,7 +21330,7 @@ impl Mair0 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 4);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -21416,7 +21367,7 @@ impl Mair1 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n >= 4 && n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 4) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -21455,7 +21406,7 @@ impl MairEl1 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -21494,7 +21445,7 @@ impl MairEl2 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -21533,7 +21484,7 @@ impl MairEl3 {
     /// Returns the value of the given `Attr<n>` field.
     pub const fn attr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & 0b11111111) as u8
+        ((self.bits() >> (Self::ATTR_SHIFT + (n - 0) * 8)) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `Attr<n>` field.
@@ -21684,7 +21635,7 @@ impl MdcrEl2 {
 
     /// Returns the value of the `HPMN` field.
     pub const fn hpmn(self) -> u8 {
-        ((self.bits() >> Self::HPMN_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::HPMN_SHIFT) & Self::HPMN_MASK) as u8
     }
 
     /// Sets the value of the `HPMN` field.
@@ -21704,7 +21655,7 @@ impl MdcrEl2 {
 
     /// Returns the value of the `E2PB` field.
     pub const fn e2pb(self) -> u8 {
-        ((self.bits() >> Self::E2PB_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::E2PB_SHIFT) & Self::E2PB_MASK) as u8
     }
 
     /// Sets the value of the `E2PB` field.
@@ -21724,7 +21675,7 @@ impl MdcrEl2 {
 
     /// Returns the value of the `E2TB` field.
     pub const fn e2tb(self) -> u8 {
-        ((self.bits() >> Self::E2TB_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::E2TB_SHIFT) & Self::E2TB_MASK) as u8
     }
 
     /// Sets the value of the `E2TB` field.
@@ -21744,7 +21695,7 @@ impl MdcrEl2 {
 
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
-        ((self.bits() >> Self::PMSSE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::PMSSE_SHIFT) & Self::PMSSE_MASK) as u8
     }
 
     /// Sets the value of the `PMSSE` field.
@@ -21764,7 +21715,7 @@ impl MdcrEl2 {
 
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
-        ((self.bits() >> Self::PMEE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::PMEE_SHIFT) & Self::PMEE_MASK) as u8
     }
 
     /// Sets the value of the `PMEE` field.
@@ -21965,7 +21916,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `NSPB` field.
     pub const fn nspb(self) -> u8 {
-        ((self.bits() >> Self::NSPB_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NSPB_SHIFT) & Self::NSPB_MASK) as u8
     }
 
     /// Sets the value of the `NSPB` field.
@@ -21985,7 +21936,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `SPD32` field.
     pub const fn spd32(self) -> u8 {
-        ((self.bits() >> Self::SPD32_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SPD32_SHIFT) & Self::SPD32_MASK) as u8
     }
 
     /// Sets the value of the `SPD32` field.
@@ -22005,7 +21956,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `NSTB` field.
     pub const fn nstb(self) -> u8 {
-        ((self.bits() >> Self::NSTB_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::NSTB_SHIFT) & Self::NSTB_MASK) as u8
     }
 
     /// Sets the value of the `NSTB` field.
@@ -22025,7 +21976,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `PMSSE` field.
     pub const fn pmsse(self) -> u8 {
-        ((self.bits() >> Self::PMSSE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::PMSSE_SHIFT) & Self::PMSSE_MASK) as u8
     }
 
     /// Sets the value of the `PMSSE` field.
@@ -22045,7 +21996,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `SBRBE` field.
     pub const fn sbrbe(self) -> u8 {
-        ((self.bits() >> Self::SBRBE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SBRBE_SHIFT) & Self::SBRBE_MASK) as u8
     }
 
     /// Sets the value of the `SBRBE` field.
@@ -22065,7 +22016,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `PMEE` field.
     pub const fn pmee(self) -> u8 {
-        ((self.bits() >> Self::PMEE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::PMEE_SHIFT) & Self::PMEE_MASK) as u8
     }
 
     /// Sets the value of the `PMEE` field.
@@ -22085,7 +22036,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `EPMSSAD` field.
     pub const fn epmssad(self) -> u8 {
-        ((self.bits() >> Self::EPMSSAD_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::EPMSSAD_SHIFT) & Self::EPMSSAD_MASK) as u8
     }
 
     /// Sets the value of the `EPMSSAD` field.
@@ -22105,7 +22056,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `ETBAD` field.
     pub const fn etbad(self) -> u8 {
-        ((self.bits() >> Self::ETBAD_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ETBAD_SHIFT) & Self::ETBAD_MASK) as u8
     }
 
     /// Sets the value of the `ETBAD` field.
@@ -22125,7 +22076,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `PMSEE` field.
     pub const fn pmsee(self) -> u8 {
-        ((self.bits() >> Self::PMSEE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::PMSEE_SHIFT) & Self::PMSEE_MASK) as u8
     }
 
     /// Sets the value of the `PMSEE` field.
@@ -22145,7 +22096,7 @@ impl MdcrEl3 {
 
     /// Returns the value of the `TRBEE` field.
     pub const fn trbee(self) -> u8 {
-        ((self.bits() >> Self::TRBEE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TRBEE_SHIFT) & Self::TRBEE_MASK) as u8
     }
 
     /// Sets the value of the `TRBEE` field.
@@ -22254,7 +22205,7 @@ impl MdscrEl1 {
 
     /// Returns the value of the `INTdis` field.
     pub const fn intdis(self) -> u8 {
-        ((self.bits() >> Self::INTDIS_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::INTDIS_SHIFT) & Self::INTDIS_MASK) as u8
     }
 
     /// Sets the value of the `INTdis` field.
@@ -22305,7 +22256,7 @@ impl Midr {
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
-        ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::REVISION_SHIFT) & Self::REVISION_MASK) as u8
     }
 
     /// Sets the value of the `Revision` field.
@@ -22325,7 +22276,7 @@ impl Midr {
 
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
-        ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+        ((self.bits() >> Self::PARTNUM_SHIFT) & Self::PARTNUM_MASK) as u16
     }
 
     /// Sets the value of the `PartNum` field.
@@ -22345,7 +22296,7 @@ impl Midr {
 
     /// Returns the value of the `Architecture` field.
     pub const fn architecture(self) -> u8 {
-        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & Self::ARCHITECTURE_MASK) as u8
     }
 
     /// Sets the value of the `Architecture` field.
@@ -22365,7 +22316,7 @@ impl Midr {
 
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
-        ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VARIANT_SHIFT) & Self::VARIANT_MASK) as u8
     }
 
     /// Sets the value of the `Variant` field.
@@ -22385,7 +22336,7 @@ impl Midr {
 
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
-        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & Self::IMPLEMENTER_MASK) as u8
     }
 
     /// Sets the value of the `Implementer` field.
@@ -22438,7 +22389,7 @@ impl MidrEl1 {
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
-        ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::REVISION_SHIFT) & Self::REVISION_MASK) as u8
     }
 
     /// Sets the value of the `Revision` field.
@@ -22458,7 +22409,7 @@ impl MidrEl1 {
 
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
-        ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+        ((self.bits() >> Self::PARTNUM_SHIFT) & Self::PARTNUM_MASK) as u16
     }
 
     /// Sets the value of the `PartNum` field.
@@ -22478,7 +22429,7 @@ impl MidrEl1 {
 
     /// Returns the value of the `Architecture` field.
     pub const fn architecture(self) -> u8 {
-        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & Self::ARCHITECTURE_MASK) as u8
     }
 
     /// Sets the value of the `Architecture` field.
@@ -22498,7 +22449,7 @@ impl MidrEl1 {
 
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
-        ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VARIANT_SHIFT) & Self::VARIANT_MASK) as u8
     }
 
     /// Sets the value of the `Variant` field.
@@ -22518,7 +22469,7 @@ impl MidrEl1 {
 
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
-        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & Self::IMPLEMENTER_MASK) as u8
     }
 
     /// Sets the value of the `Implementer` field.
@@ -22615,7 +22566,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `PARTID` field.
     pub const fn partid(self) -> u16 {
-        ((self.bits() >> Self::PARTID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_SHIFT) & Self::PARTID_MASK) as u16
     }
 
     /// Sets the value of the `PARTID` field.
@@ -22635,7 +22586,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
-        ((self.bits() >> Self::PARTID_I_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_I_SHIFT) & Self::PARTID_I_MASK) as u16
     }
 
     /// Sets the value of the `PARTID_I` field.
@@ -22655,7 +22606,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `PARTID_D` field.
     pub const fn partid_d(self) -> u16 {
-        ((self.bits() >> Self::PARTID_D_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_D_SHIFT) & Self::PARTID_D_MASK) as u16
     }
 
     /// Sets the value of the `PARTID_D` field.
@@ -22675,7 +22626,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
-        ((self.bits() >> Self::ALTPARTID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ALTPARTID_SHIFT) & Self::ALTPARTID_MASK) as u16
     }
 
     /// Sets the value of the `altPARTID` field.
@@ -22695,7 +22646,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `PMG` field.
     pub const fn pmg(self) -> u16 {
-        ((self.bits() >> Self::PMG_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PMG_SHIFT) & Self::PMG_MASK) as u16
     }
 
     /// Sets the value of the `PMG` field.
@@ -22715,7 +22666,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
-        ((self.bits() >> Self::PMG_I_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PMG_I_SHIFT) & Self::PMG_I_MASK) as u8
     }
 
     /// Sets the value of the `PMG_I` field.
@@ -22735,7 +22686,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `PMG_D` field.
     pub const fn pmg_d(self) -> u8 {
-        ((self.bits() >> Self::PMG_D_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PMG_D_SHIFT) & Self::PMG_D_MASK) as u8
     }
 
     /// Sets the value of the `PMG_D` field.
@@ -22755,7 +22706,7 @@ impl Mpam2El2 {
 
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
-        ((self.bits() >> Self::ALTPMG_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ALTPMG_SHIFT) & Self::ALTPMG_MASK) as u16
     }
 
     /// Sets the value of the `altPMG` field.
@@ -22854,7 +22805,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `PARTID` field.
     pub const fn partid(self) -> u16 {
-        ((self.bits() >> Self::PARTID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_SHIFT) & Self::PARTID_MASK) as u16
     }
 
     /// Sets the value of the `PARTID` field.
@@ -22874,7 +22825,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `PARTID_I` field.
     pub const fn partid_i(self) -> u16 {
-        ((self.bits() >> Self::PARTID_I_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_I_SHIFT) & Self::PARTID_I_MASK) as u16
     }
 
     /// Sets the value of the `PARTID_I` field.
@@ -22894,7 +22845,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `PARTID_D` field.
     pub const fn partid_d(self) -> u16 {
-        ((self.bits() >> Self::PARTID_D_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_D_SHIFT) & Self::PARTID_D_MASK) as u16
     }
 
     /// Sets the value of the `PARTID_D` field.
@@ -22914,7 +22865,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `altPARTID` field.
     pub const fn altpartid(self) -> u16 {
-        ((self.bits() >> Self::ALTPARTID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ALTPARTID_SHIFT) & Self::ALTPARTID_MASK) as u16
     }
 
     /// Sets the value of the `altPARTID` field.
@@ -22934,7 +22885,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `PMG` field.
     pub const fn pmg(self) -> u16 {
-        ((self.bits() >> Self::PMG_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PMG_SHIFT) & Self::PMG_MASK) as u16
     }
 
     /// Sets the value of the `PMG` field.
@@ -22954,7 +22905,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `PMG_I` field.
     pub const fn pmg_i(self) -> u8 {
-        ((self.bits() >> Self::PMG_I_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PMG_I_SHIFT) & Self::PMG_I_MASK) as u8
     }
 
     /// Sets the value of the `PMG_I` field.
@@ -22974,7 +22925,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `PMG_D` field.
     pub const fn pmg_d(self) -> u8 {
-        ((self.bits() >> Self::PMG_D_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::PMG_D_SHIFT) & Self::PMG_D_MASK) as u8
     }
 
     /// Sets the value of the `PMG_D` field.
@@ -22994,7 +22945,7 @@ impl Mpam3El3 {
 
     /// Returns the value of the `altPMG` field.
     pub const fn altpmg(self) -> u16 {
-        ((self.bits() >> Self::ALTPMG_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ALTPMG_SHIFT) & Self::ALTPMG_MASK) as u16
     }
 
     /// Sets the value of the `altPMG` field.
@@ -23118,7 +23069,7 @@ impl MpamidrEl1 {
 
     /// Returns the value of the `PARTID_MAX` field.
     pub const fn partid_max(self) -> u16 {
-        ((self.bits() >> Self::PARTID_MAX_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PARTID_MAX_SHIFT) & Self::PARTID_MAX_MASK) as u16
     }
 
     /// Sets the value of the `PARTID_MAX` field.
@@ -23140,7 +23091,7 @@ impl MpamidrEl1 {
     ///
     /// Indicates the maximum register index n for the `MPAMVPM<n>_EL2` registers.
     pub const fn vpmr_max(self) -> u8 {
-        ((self.bits() >> Self::VPMR_MAX_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::VPMR_MAX_SHIFT) & Self::VPMR_MAX_MASK) as u8
     }
 
     /// Sets the value of the `VPMR_MAX` field.
@@ -23193,7 +23144,7 @@ impl Mpamvpm0El2 {
 
     /// Returns the value of the `PhyPARTID0` field.
     pub const fn phypartid0(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID0_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID0_SHIFT) & Self::PHYPARTID0_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID0` field.
@@ -23213,7 +23164,7 @@ impl Mpamvpm0El2 {
 
     /// Returns the value of the `PhyPARTID1` field.
     pub const fn phypartid1(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID1_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID1_SHIFT) & Self::PHYPARTID1_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID1` field.
@@ -23233,7 +23184,7 @@ impl Mpamvpm0El2 {
 
     /// Returns the value of the `PhyPARTID2` field.
     pub const fn phypartid2(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID2_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID2_SHIFT) & Self::PHYPARTID2_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID2` field.
@@ -23253,7 +23204,7 @@ impl Mpamvpm0El2 {
 
     /// Returns the value of the `PhyPARTID3` field.
     pub const fn phypartid3(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID3_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID3_SHIFT) & Self::PHYPARTID3_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID3` field.
@@ -23302,7 +23253,7 @@ impl Mpamvpm1El2 {
 
     /// Returns the value of the `PhyPARTID4` field.
     pub const fn phypartid4(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID4_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID4_SHIFT) & Self::PHYPARTID4_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID4` field.
@@ -23322,7 +23273,7 @@ impl Mpamvpm1El2 {
 
     /// Returns the value of the `PhyPARTID5` field.
     pub const fn phypartid5(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID5_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID5_SHIFT) & Self::PHYPARTID5_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID5` field.
@@ -23342,7 +23293,7 @@ impl Mpamvpm1El2 {
 
     /// Returns the value of the `PhyPARTID6` field.
     pub const fn phypartid6(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID6_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID6_SHIFT) & Self::PHYPARTID6_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID6` field.
@@ -23362,7 +23313,7 @@ impl Mpamvpm1El2 {
 
     /// Returns the value of the `PhyPARTID7` field.
     pub const fn phypartid7(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID7_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID7_SHIFT) & Self::PHYPARTID7_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID7` field.
@@ -23411,7 +23362,7 @@ impl Mpamvpm2El2 {
 
     /// Returns the value of the `PhyPARTID8` field.
     pub const fn phypartid8(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID8_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID8_SHIFT) & Self::PHYPARTID8_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID8` field.
@@ -23431,7 +23382,7 @@ impl Mpamvpm2El2 {
 
     /// Returns the value of the `PhyPARTID9` field.
     pub const fn phypartid9(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID9_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID9_SHIFT) & Self::PHYPARTID9_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID9` field.
@@ -23451,7 +23402,7 @@ impl Mpamvpm2El2 {
 
     /// Returns the value of the `PhyPARTID10` field.
     pub const fn phypartid10(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID10_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID10_SHIFT) & Self::PHYPARTID10_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID10` field.
@@ -23471,7 +23422,7 @@ impl Mpamvpm2El2 {
 
     /// Returns the value of the `PhyPARTID11` field.
     pub const fn phypartid11(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID11_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID11_SHIFT) & Self::PHYPARTID11_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID11` field.
@@ -23520,7 +23471,7 @@ impl Mpamvpm3El2 {
 
     /// Returns the value of the `PhyPARTID12` field.
     pub const fn phypartid12(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID12_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID12_SHIFT) & Self::PHYPARTID12_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID12` field.
@@ -23540,7 +23491,7 @@ impl Mpamvpm3El2 {
 
     /// Returns the value of the `PhyPARTID13` field.
     pub const fn phypartid13(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID13_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID13_SHIFT) & Self::PHYPARTID13_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID13` field.
@@ -23560,7 +23511,7 @@ impl Mpamvpm3El2 {
 
     /// Returns the value of the `PhyPARTID14` field.
     pub const fn phypartid14(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID14_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID14_SHIFT) & Self::PHYPARTID14_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID14` field.
@@ -23580,7 +23531,7 @@ impl Mpamvpm3El2 {
 
     /// Returns the value of the `PhyPARTID15` field.
     pub const fn phypartid15(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID15_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID15_SHIFT) & Self::PHYPARTID15_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID15` field.
@@ -23629,7 +23580,7 @@ impl Mpamvpm4El2 {
 
     /// Returns the value of the `PhyPARTID16` field.
     pub const fn phypartid16(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID16_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID16_SHIFT) & Self::PHYPARTID16_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID16` field.
@@ -23649,7 +23600,7 @@ impl Mpamvpm4El2 {
 
     /// Returns the value of the `PhyPARTID17` field.
     pub const fn phypartid17(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID17_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID17_SHIFT) & Self::PHYPARTID17_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID17` field.
@@ -23669,7 +23620,7 @@ impl Mpamvpm4El2 {
 
     /// Returns the value of the `PhyPARTID18` field.
     pub const fn phypartid18(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID18_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID18_SHIFT) & Self::PHYPARTID18_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID18` field.
@@ -23689,7 +23640,7 @@ impl Mpamvpm4El2 {
 
     /// Returns the value of the `PhyPARTID19` field.
     pub const fn phypartid19(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID19_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID19_SHIFT) & Self::PHYPARTID19_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID19` field.
@@ -23738,7 +23689,7 @@ impl Mpamvpm5El2 {
 
     /// Returns the value of the `PhyPARTID20` field.
     pub const fn phypartid20(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID20_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID20_SHIFT) & Self::PHYPARTID20_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID20` field.
@@ -23758,7 +23709,7 @@ impl Mpamvpm5El2 {
 
     /// Returns the value of the `PhyPARTID21` field.
     pub const fn phypartid21(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID21_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID21_SHIFT) & Self::PHYPARTID21_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID21` field.
@@ -23778,7 +23729,7 @@ impl Mpamvpm5El2 {
 
     /// Returns the value of the `PhyPARTID22` field.
     pub const fn phypartid22(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID22_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID22_SHIFT) & Self::PHYPARTID22_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID22` field.
@@ -23798,7 +23749,7 @@ impl Mpamvpm5El2 {
 
     /// Returns the value of the `PhyPARTID23` field.
     pub const fn phypartid23(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID23_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID23_SHIFT) & Self::PHYPARTID23_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID23` field.
@@ -23847,7 +23798,7 @@ impl Mpamvpm6El2 {
 
     /// Returns the value of the `PhyPARTID24` field.
     pub const fn phypartid24(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID24_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID24_SHIFT) & Self::PHYPARTID24_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID24` field.
@@ -23867,7 +23818,7 @@ impl Mpamvpm6El2 {
 
     /// Returns the value of the `PhyPARTID25` field.
     pub const fn phypartid25(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID25_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID25_SHIFT) & Self::PHYPARTID25_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID25` field.
@@ -23887,7 +23838,7 @@ impl Mpamvpm6El2 {
 
     /// Returns the value of the `PhyPARTID26` field.
     pub const fn phypartid26(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID26_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID26_SHIFT) & Self::PHYPARTID26_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID26` field.
@@ -23907,7 +23858,7 @@ impl Mpamvpm6El2 {
 
     /// Returns the value of the `PhyPARTID27` field.
     pub const fn phypartid27(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID27_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID27_SHIFT) & Self::PHYPARTID27_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID27` field.
@@ -23956,7 +23907,7 @@ impl Mpamvpm7El2 {
 
     /// Returns the value of the `PhyPARTID28` field.
     pub const fn phypartid28(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID28_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID28_SHIFT) & Self::PHYPARTID28_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID28` field.
@@ -23976,7 +23927,7 @@ impl Mpamvpm7El2 {
 
     /// Returns the value of the `PhyPARTID29` field.
     pub const fn phypartid29(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID29_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID29_SHIFT) & Self::PHYPARTID29_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID29` field.
@@ -23996,7 +23947,7 @@ impl Mpamvpm7El2 {
 
     /// Returns the value of the `PhyPARTID30` field.
     pub const fn phypartid30(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID30_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID30_SHIFT) & Self::PHYPARTID30_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID30` field.
@@ -24016,7 +23967,7 @@ impl Mpamvpm7El2 {
 
     /// Returns the value of the `PhyPARTID31` field.
     pub const fn phypartid31(self) -> u16 {
-        ((self.bits() >> Self::PHYPARTID31_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::PHYPARTID31_SHIFT) & Self::PHYPARTID31_MASK) as u16
     }
 
     /// Sets the value of the `PhyPARTID31` field.
@@ -24150,7 +24101,7 @@ impl Mpidr {
 
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
-        ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF0_SHIFT) & Self::AFF0_MASK) as u8
     }
 
     /// Sets the value of the `Aff0` field.
@@ -24170,7 +24121,7 @@ impl Mpidr {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -24190,7 +24141,7 @@ impl Mpidr {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -24249,7 +24200,7 @@ impl MpidrEl1 {
 
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
-        ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF0_SHIFT) & Self::AFF0_MASK) as u8
     }
 
     /// Sets the value of the `Aff0` field.
@@ -24269,7 +24220,7 @@ impl MpidrEl1 {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -24289,7 +24240,7 @@ impl MpidrEl1 {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -24309,7 +24260,7 @@ impl MpidrEl1 {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -24348,7 +24299,7 @@ impl Mvbar {
 
     /// Returns the value of the `Reserved` field.
     pub const fn reserved(self) -> u8 {
-        ((self.bits() >> Self::RESERVED_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::RESERVED_SHIFT) & Self::RESERVED_MASK) as u8
     }
 
     /// Sets the value of the `Reserved` field.
@@ -24368,7 +24319,7 @@ impl Mvbar {
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
-        ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+        ((self.bits() >> Self::VBA_SHIFT) & Self::VBA_MASK) as u32
     }
 
     /// Sets the value of the `VBA` field.
@@ -24408,7 +24359,7 @@ impl Nmrr {
     /// Returns the value of the given `IR<n>` field.
     pub const fn ir(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::IR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+        ((self.bits() >> (Self::IR_SHIFT + (n - 0) * 2)) & Self::IR_MASK) as u8
     }
 
     /// Sets the value of the `IR<n>` field.
@@ -24430,7 +24381,7 @@ impl Nmrr {
     /// Returns the value of the given `OR<n>` field.
     pub const fn or(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::OR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+        ((self.bits() >> (Self::OR_SHIFT + (n - 0) * 2)) & Self::OR_MASK) as u8
     }
 
     /// Sets the value of the `OR<n>` field.
@@ -24541,7 +24492,7 @@ impl Par {
 
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
-        ((self.bits() >> Self::FST_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::FST_SHIFT) & Self::FST_MASK) as u8
     }
 
     /// Sets the value of the `FST` field.
@@ -24561,7 +24512,7 @@ impl Par {
 
     /// Returns the value of the `FS[4:0]` field.
     pub const fn fs_4_0(self) -> u8 {
-        ((self.bits() >> Self::FS_4_0_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::FS_4_0_SHIFT) & Self::FS_4_0_MASK) as u8
     }
 
     /// Sets the value of the `FS[4:0]` field.
@@ -24581,7 +24532,7 @@ impl Par {
 
     /// Returns the value of the `Outer[1:0]` field.
     pub const fn outer_1_0(self) -> u8 {
-        ((self.bits() >> Self::OUTER_1_0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::OUTER_1_0_SHIFT) & Self::OUTER_1_0_MASK) as u8
     }
 
     /// Sets the value of the `Outer[1:0]` field.
@@ -24601,7 +24552,7 @@ impl Par {
 
     /// Returns the value of the `Inner[2:0]` field.
     pub const fn inner_2_0(self) -> u8 {
-        ((self.bits() >> Self::INNER_2_0_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::INNER_2_0_SHIFT) & Self::INNER_2_0_MASK) as u8
     }
 
     /// Sets the value of the `Inner[2:0]` field.
@@ -24621,7 +24572,7 @@ impl Par {
 
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
-        ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::ATTR_SHIFT) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `ATTR` field.
@@ -24712,7 +24663,7 @@ impl ParEl1 {
 
     /// Returns the value of the `FST` field.
     pub const fn fst(self) -> u8 {
-        ((self.bits() >> Self::FST_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::FST_SHIFT) & Self::FST_MASK) as u8
     }
 
     /// Sets the value of the `FST` field.
@@ -24732,7 +24683,7 @@ impl ParEl1 {
 
     /// Returns the value of the `SH` field.
     pub const fn sh(self) -> u8 {
-        ((self.bits() >> Self::SH_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH_SHIFT) & Self::SH_MASK) as u8
     }
 
     /// Sets the value of the `SH` field.
@@ -24752,7 +24703,7 @@ impl ParEl1 {
 
     /// Returns the value of the `PA[47:12]` field.
     pub const fn pa_47_12(self) -> u64 {
-        ((self.bits() >> Self::PA_47_12_SHIFT) & 0b111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::PA_47_12_SHIFT) & Self::PA_47_12_MASK) as u64
     }
 
     /// Sets the value of the `PA[47:12]` field.
@@ -24772,7 +24723,7 @@ impl ParEl1 {
 
     /// Returns the value of the `PA[51:48]` field.
     pub const fn pa_51_48(self) -> u8 {
-        ((self.bits() >> Self::PA_51_48_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::PA_51_48_SHIFT) & Self::PA_51_48_MASK) as u8
     }
 
     /// Sets the value of the `PA[51:48]` field.
@@ -24792,7 +24743,7 @@ impl ParEl1 {
 
     /// Returns the value of the `ATTR` field.
     pub const fn attr(self) -> u8 {
-        ((self.bits() >> Self::ATTR_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::ATTR_SHIFT) & Self::ATTR_MASK) as u8
     }
 
     /// Sets the value of the `ATTR` field.
@@ -24862,8 +24813,7 @@ impl Pmccntr {
 
     /// Returns the value of the `CCNT` field.
     pub const fn ccnt(self) -> u64 {
-        ((self.bits() >> Self::CCNT_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::CCNT_SHIFT) & Self::CCNT_MASK) as u64
     }
 
     /// Sets the value of the `CCNT` field.
@@ -25408,7 +25358,7 @@ impl Pmcr {
 
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
-        ((self.bits() >> Self::N_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::N_SHIFT) & Self::N_MASK) as u8
     }
 
     /// Sets the value of the `N` field.
@@ -25428,7 +25378,7 @@ impl Pmcr {
 
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
-        ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IDCODE_SHIFT) & Self::IDCODE_MASK) as u8
     }
 
     /// Sets the value of the `IDCODE` field.
@@ -25448,7 +25398,7 @@ impl Pmcr {
 
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
-        ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IMP_SHIFT) & Self::IMP_MASK) as u8
     }
 
     /// Sets the value of the `IMP` field.
@@ -25531,7 +25481,7 @@ impl PmcrEl0 {
 
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
-        ((self.bits() >> Self::N_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::N_SHIFT) & Self::N_MASK) as u8
     }
 
     /// Sets the value of the `N` field.
@@ -25551,7 +25501,7 @@ impl PmcrEl0 {
 
     /// Returns the value of the `IDCODE` field.
     pub const fn idcode(self) -> u8 {
-        ((self.bits() >> Self::IDCODE_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IDCODE_SHIFT) & Self::IDCODE_MASK) as u8
     }
 
     /// Sets the value of the `IDCODE` field.
@@ -25571,7 +25521,7 @@ impl PmcrEl0 {
 
     /// Returns the value of the `IMP` field.
     pub const fn imp(self) -> u8 {
-        ((self.bits() >> Self::IMP_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IMP_SHIFT) & Self::IMP_MASK) as u8
     }
 
     /// Sets the value of the `IMP` field.
@@ -25780,7 +25730,7 @@ impl Pmmir {
 
     /// Returns the value of the `SLOTS` field.
     pub const fn slots(self) -> u8 {
-        ((self.bits() >> Self::SLOTS_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::SLOTS_SHIFT) & Self::SLOTS_MASK) as u8
     }
 
     /// Sets the value of the `SLOTS` field.
@@ -25800,7 +25750,7 @@ impl Pmmir {
 
     /// Returns the value of the `BUS_SLOTS` field.
     pub const fn bus_slots(self) -> u8 {
-        ((self.bits() >> Self::BUS_SLOTS_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::BUS_SLOTS_SHIFT) & Self::BUS_SLOTS_MASK) as u8
     }
 
     /// Sets the value of the `BUS_SLOTS` field.
@@ -25820,7 +25770,7 @@ impl Pmmir {
 
     /// Returns the value of the `BUS_WIDTH` field.
     pub const fn bus_width(self) -> u8 {
-        ((self.bits() >> Self::BUS_WIDTH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::BUS_WIDTH_SHIFT) & Self::BUS_WIDTH_MASK) as u8
     }
 
     /// Sets the value of the `BUS_WIDTH` field.
@@ -25840,7 +25790,7 @@ impl Pmmir {
 
     /// Returns the value of the `THWIDTH` field.
     pub const fn thwidth(self) -> u8 {
-        ((self.bits() >> Self::THWIDTH_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::THWIDTH_SHIFT) & Self::THWIDTH_MASK) as u8
     }
 
     /// Sets the value of the `THWIDTH` field.
@@ -25860,7 +25810,7 @@ impl Pmmir {
 
     /// Returns the value of the `EDGE` field.
     pub const fn edge(self) -> u8 {
-        ((self.bits() >> Self::EDGE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::EDGE_SHIFT) & Self::EDGE_MASK) as u8
     }
 
     /// Sets the value of the `EDGE` field.
@@ -26053,7 +26003,7 @@ impl Pmselr {
 
     /// Returns the value of the `SEL` field.
     pub const fn sel(self) -> u8 {
-        ((self.bits() >> Self::SEL_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::SEL_SHIFT) & Self::SEL_MASK) as u8
     }
 
     /// Sets the value of the `SEL` field.
@@ -26194,7 +26144,7 @@ impl Pmxevtyper {
 
     /// Returns the value of the `ETR` field.
     pub const fn etr(self) -> u32 {
-        ((self.bits() >> Self::ETR_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::ETR_SHIFT) & Self::ETR_MASK) as u32
     }
 
     /// Sets the value of the `ETR` field.
@@ -26264,7 +26214,7 @@ impl Prrr {
     /// Returns the value of the given `TR<n>` field.
     pub const fn tr(self, n: u32) -> u8 {
         assert!(n < 8);
-        ((self.bits() >> (Self::TR_SHIFT + (n - 0) * 2)) & 0b11) as u8
+        ((self.bits() >> (Self::TR_SHIFT + (n - 0) * 2)) & Self::TR_MASK) as u8
     }
 
     /// Sets the value of the `TR<n>` field.
@@ -26306,7 +26256,7 @@ impl RgsrEl1 {
 
     /// Returns the value of the `TAG` field.
     pub const fn tag(self) -> u8 {
-        ((self.bits() >> Self::TAG_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TAG_SHIFT) & Self::TAG_MASK) as u8
     }
 
     /// Sets the value of the `TAG` field.
@@ -26326,7 +26276,7 @@ impl RgsrEl1 {
 
     /// Returns the value of the `SEED` field.
     pub const fn seed(self) -> u16 {
-        ((self.bits() >> Self::SEED_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::SEED_SHIFT) & Self::SEED_MASK) as u16
     }
 
     /// Sets the value of the `SEED` field.
@@ -26382,7 +26332,7 @@ impl Rvbar {
 
     /// Returns the value of the `ResetAddress` field.
     pub const fn resetaddress(self) -> u32 {
-        ((self.bits() >> Self::RESETADDRESS_SHIFT) & 0b1111111111111111111111111111111) as u32
+        ((self.bits() >> Self::RESETADDRESS_SHIFT) & Self::RESETADDRESS_MASK) as u32
     }
 
     /// Sets the value of the `ResetAddress` field.
@@ -26708,7 +26658,7 @@ impl ScrEl3 {
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TWEDEL_SHIFT) & Self::TWEDEL_MASK) as u8
     }
 
     /// Sets the value of the `TWEDEL` field.
@@ -27107,7 +27057,7 @@ impl SctlrEl1 {
 
     /// Returns the value of the `TCF0` field.
     pub const fn tcf0(self) -> u8 {
-        ((self.bits() >> Self::TCF0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TCF0_SHIFT) & Self::TCF0_MASK) as u8
     }
 
     /// Sets the value of the `TCF0` field.
@@ -27127,7 +27077,7 @@ impl SctlrEl1 {
 
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
-        ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TCF_SHIFT) & Self::TCF_MASK) as u8
     }
 
     /// Sets the value of the `TCF` field.
@@ -27147,7 +27097,7 @@ impl SctlrEl1 {
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TWEDEL_SHIFT) & Self::TWEDEL_MASK) as u8
     }
 
     /// Sets the value of the `TWEDEL` field.
@@ -27380,7 +27330,7 @@ impl SctlrEl2 {
 
     /// Returns the value of the `TCF0` field.
     pub const fn tcf0(self) -> u8 {
-        ((self.bits() >> Self::TCF0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TCF0_SHIFT) & Self::TCF0_MASK) as u8
     }
 
     /// Sets the value of the `TCF0` field.
@@ -27400,7 +27350,7 @@ impl SctlrEl2 {
 
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
-        ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TCF_SHIFT) & Self::TCF_MASK) as u8
     }
 
     /// Sets the value of the `TCF` field.
@@ -27420,7 +27370,7 @@ impl SctlrEl2 {
 
     /// Returns the value of the `TWEDEL` field.
     pub const fn twedel(self) -> u8 {
-        ((self.bits() >> Self::TWEDEL_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::TWEDEL_SHIFT) & Self::TWEDEL_MASK) as u8
     }
 
     /// Sets the value of the `TWEDEL` field.
@@ -27543,7 +27493,7 @@ impl SctlrEl3 {
 
     /// Returns the value of the `TCF` field.
     pub const fn tcf(self) -> u8 {
-        ((self.bits() >> Self::TCF_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TCF_SHIFT) & Self::TCF_MASK) as u8
     }
 
     /// Sets the value of the `TCF` field.
@@ -27610,7 +27560,7 @@ impl Sdcr {
 
     /// Returns the value of the `SPD` field.
     pub const fn spd(self) -> u8 {
-        ((self.bits() >> Self::SPD_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SPD_SHIFT) & Self::SPD_MASK) as u8
     }
 
     /// Sets the value of the `SPD` field.
@@ -27674,7 +27624,7 @@ impl SmcrEl3 {
 
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
-        ((self.bits() >> Self::LEN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LEN_SHIFT) & Self::LEN_MASK) as u8
     }
 
     /// Sets the value of the `LEN` field.
@@ -27815,7 +27765,7 @@ impl SpsrEl1 {
 
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
-        ((self.bits() >> Self::M_3_0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::M_3_0_SHIFT) & Self::M_3_0_MASK) as u8
     }
 
     /// Sets the value of the `M[3:0]` field.
@@ -27835,7 +27785,7 @@ impl SpsrEl1 {
 
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
-        ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::BTYPE_SHIFT) & Self::BTYPE_MASK) as u8
     }
 
     /// Sets the value of the `BTYPE` field.
@@ -27855,7 +27805,7 @@ impl SpsrEl1 {
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GE_SHIFT) & Self::GE_MASK) as u8
     }
 
     /// Sets the value of the `GE` field.
@@ -27996,7 +27946,7 @@ impl SpsrEl2 {
 
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
-        ((self.bits() >> Self::M_3_0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::M_3_0_SHIFT) & Self::M_3_0_MASK) as u8
     }
 
     /// Sets the value of the `M[3:0]` field.
@@ -28016,7 +27966,7 @@ impl SpsrEl2 {
 
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
-        ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::BTYPE_SHIFT) & Self::BTYPE_MASK) as u8
     }
 
     /// Sets the value of the `BTYPE` field.
@@ -28036,7 +27986,7 @@ impl SpsrEl2 {
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GE_SHIFT) & Self::GE_MASK) as u8
     }
 
     /// Sets the value of the `GE` field.
@@ -28177,7 +28127,7 @@ impl SpsrEl3 {
 
     /// Returns the value of the `M[3:0]` field.
     pub const fn m_3_0(self) -> u8 {
-        ((self.bits() >> Self::M_3_0_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::M_3_0_SHIFT) & Self::M_3_0_MASK) as u8
     }
 
     /// Sets the value of the `M[3:0]` field.
@@ -28197,7 +28147,7 @@ impl SpsrEl3 {
 
     /// Returns the value of the `BTYPE` field.
     pub const fn btype(self) -> u8 {
-        ((self.bits() >> Self::BTYPE_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::BTYPE_SHIFT) & Self::BTYPE_MASK) as u8
     }
 
     /// Sets the value of the `BTYPE` field.
@@ -28217,7 +28167,7 @@ impl SpsrEl3 {
 
     /// Returns the value of the `GE` field.
     pub const fn ge(self) -> u8 {
-        ((self.bits() >> Self::GE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::GE_SHIFT) & Self::GE_MASK) as u8
     }
 
     /// Sets the value of the `GE` field.
@@ -28255,8 +28205,7 @@ impl SpEl1 {
 
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
-        ((self.bits() >> Self::STACKPOINTER_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::STACKPOINTER_SHIFT) & Self::STACKPOINTER_MASK) as u64
     }
 
     /// Sets the value of the `StackPointer` field.
@@ -28294,8 +28243,7 @@ impl SpEl2 {
 
     /// Returns the value of the `StackPointer` field.
     pub const fn stackpointer(self) -> u64 {
-        ((self.bits() >> Self::STACKPOINTER_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::STACKPOINTER_SHIFT) & Self::STACKPOINTER_MASK) as u64
     }
 
     /// Sets the value of the `StackPointer` field.
@@ -28431,7 +28379,7 @@ impl Tcr2El1 {
 
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
-        ((self.bits() >> Self::POIW_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::POIW_SHIFT) & Self::POIW_MASK) as u8
     }
 
     /// Sets the value of the `POIW` field.
@@ -28451,7 +28399,7 @@ impl Tcr2El1 {
 
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
-        ((self.bits() >> Self::VTB0_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::VTB0_SHIFT) & Self::VTB0_MASK) as u8
     }
 
     /// Sets the value of the `VTB0` field.
@@ -28471,7 +28419,7 @@ impl Tcr2El1 {
 
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
-        ((self.bits() >> Self::VTB1_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::VTB1_SHIFT) & Self::VTB1_MASK) as u8
     }
 
     /// Sets the value of the `VTB1` field.
@@ -28588,7 +28536,7 @@ impl Tcr2El2 {
 
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
-        ((self.bits() >> Self::POIW_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::POIW_SHIFT) & Self::POIW_MASK) as u8
     }
 
     /// Sets the value of the `POIW` field.
@@ -28608,7 +28556,7 @@ impl Tcr2El2 {
 
     /// Returns the value of the `VTB0` field.
     pub const fn vtb0(self) -> u8 {
-        ((self.bits() >> Self::VTB0_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::VTB0_SHIFT) & Self::VTB0_MASK) as u8
     }
 
     /// Sets the value of the `VTB0` field.
@@ -28628,7 +28576,7 @@ impl Tcr2El2 {
 
     /// Returns the value of the `VTB1` field.
     pub const fn vtb1(self) -> u8 {
-        ((self.bits() >> Self::VTB1_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::VTB1_SHIFT) & Self::VTB1_MASK) as u8
     }
 
     /// Sets the value of the `VTB1` field.
@@ -28821,7 +28769,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -28841,7 +28789,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -28861,7 +28809,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -28881,7 +28829,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -28901,7 +28849,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TG0_SHIFT) & Self::TG0_MASK) as u8
     }
 
     /// Sets the value of the `TG0` field.
@@ -28921,7 +28869,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
-        ((self.bits() >> Self::T1SZ_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::T1SZ_SHIFT) & Self::T1SZ_MASK) as u8
     }
 
     /// Sets the value of the `T1SZ` field.
@@ -28941,7 +28889,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
-        ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN1_SHIFT) & Self::IRGN1_MASK) as u8
     }
 
     /// Sets the value of the `IRGN1` field.
@@ -28961,7 +28909,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
-        ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN1_SHIFT) & Self::ORGN1_MASK) as u8
     }
 
     /// Sets the value of the `ORGN1` field.
@@ -28981,7 +28929,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
-        ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH1_SHIFT) & Self::SH1_MASK) as u8
     }
 
     /// Sets the value of the `SH1` field.
@@ -29001,7 +28949,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `TG1` field.
     pub const fn tg1(self) -> u8 {
-        ((self.bits() >> Self::TG1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TG1_SHIFT) & Self::TG1_MASK) as u8
     }
 
     /// Sets the value of the `TG1` field.
@@ -29021,7 +28969,7 @@ impl TcrEl1 {
 
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
-        ((self.bits() >> Self::IPS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::IPS_SHIFT) & Self::IPS_MASK) as u8
     }
 
     /// Sets the value of the `IPS` field.
@@ -29244,7 +29192,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -29264,7 +29212,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -29284,7 +29232,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -29304,7 +29252,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -29324,7 +29272,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TG0_SHIFT) & Self::TG0_MASK) as u8
     }
 
     /// Sets the value of the `TG0` field.
@@ -29344,7 +29292,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
-        ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PS_SHIFT) & Self::PS_MASK) as u8
     }
 
     /// Sets the value of the `PS` field.
@@ -29364,7 +29312,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
-        ((self.bits() >> Self::T1SZ_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::T1SZ_SHIFT) & Self::T1SZ_MASK) as u8
     }
 
     /// Sets the value of the `T1SZ` field.
@@ -29384,7 +29332,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
-        ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN1_SHIFT) & Self::IRGN1_MASK) as u8
     }
 
     /// Sets the value of the `IRGN1` field.
@@ -29404,7 +29352,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
-        ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN1_SHIFT) & Self::ORGN1_MASK) as u8
     }
 
     /// Sets the value of the `ORGN1` field.
@@ -29424,7 +29372,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
-        ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH1_SHIFT) & Self::SH1_MASK) as u8
     }
 
     /// Sets the value of the `SH1` field.
@@ -29444,7 +29392,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `TG1` field.
     pub const fn tg1(self) -> u8 {
-        ((self.bits() >> Self::TG1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TG1_SHIFT) & Self::TG1_MASK) as u8
     }
 
     /// Sets the value of the `TG1` field.
@@ -29464,7 +29412,7 @@ impl TcrEl2 {
 
     /// Returns the value of the `IPS` field.
     pub const fn ips(self) -> u8 {
-        ((self.bits() >> Self::IPS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::IPS_SHIFT) & Self::IPS_MASK) as u8
     }
 
     /// Sets the value of the `IPS` field.
@@ -29619,7 +29567,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -29639,7 +29587,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -29659,7 +29607,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -29679,7 +29627,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -29699,7 +29647,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TG0_SHIFT) & Self::TG0_MASK) as u8
     }
 
     /// Sets the value of the `TG0` field.
@@ -29719,7 +29667,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
-        ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PS_SHIFT) & Self::PS_MASK) as u8
     }
 
     /// Sets the value of the `PS` field.
@@ -29739,7 +29687,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `POIW` field.
     pub const fn poiw(self) -> u8 {
-        ((self.bits() >> Self::POIW_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::POIW_SHIFT) & Self::POIW_MASK) as u8
     }
 
     /// Sets the value of the `POIW` field.
@@ -29759,7 +29707,7 @@ impl TcrEl3 {
 
     /// Returns the value of the `VTB` field.
     pub const fn vtb(self) -> u8 {
-        ((self.bits() >> Self::VTB_SHIFT) & 0b11111) as u8
+        ((self.bits() >> Self::VTB_SHIFT) & Self::VTB_MASK) as u8
     }
 
     /// Sets the value of the `VTB` field.
@@ -29872,7 +29820,7 @@ impl Tpidrprw {
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
-        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TID_SHIFT) & Self::TID_MASK) as u32
     }
 
     /// Sets the value of the `TID` field.
@@ -29908,8 +29856,7 @@ impl TpidrroEl0 {
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        ((self.bits() >> Self::THREADID_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::THREADID_SHIFT) & Self::THREADID_MASK) as u64
     }
 
     /// Sets the value of the `ThreadID` field.
@@ -29944,7 +29891,7 @@ impl Tpidruro {
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
-        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TID_SHIFT) & Self::TID_MASK) as u32
     }
 
     /// Sets the value of the `TID` field.
@@ -29979,7 +29926,7 @@ impl Tpidrurw {
 
     /// Returns the value of the `TID` field.
     pub const fn tid(self) -> u32 {
-        ((self.bits() >> Self::TID_SHIFT) & 0b11111111111111111111111111111111) as u32
+        ((self.bits() >> Self::TID_SHIFT) & Self::TID_MASK) as u32
     }
 
     /// Sets the value of the `TID` field.
@@ -30015,8 +29962,7 @@ impl TpidrEl0 {
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        ((self.bits() >> Self::THREADID_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::THREADID_SHIFT) & Self::THREADID_MASK) as u64
     }
 
     /// Sets the value of the `ThreadID` field.
@@ -30054,8 +30000,7 @@ impl TpidrEl1 {
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        ((self.bits() >> Self::THREADID_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::THREADID_SHIFT) & Self::THREADID_MASK) as u64
     }
 
     /// Sets the value of the `ThreadID` field.
@@ -30093,8 +30038,7 @@ impl TpidrEl2 {
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        ((self.bits() >> Self::THREADID_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::THREADID_SHIFT) & Self::THREADID_MASK) as u64
     }
 
     /// Sets the value of the `ThreadID` field.
@@ -30132,8 +30076,7 @@ impl TpidrEl3 {
 
     /// Returns the value of the `ThreadID` field.
     pub const fn threadid(self) -> u64 {
-        ((self.bits() >> Self::THREADID_SHIFT)
-            & 0b1111111111111111111111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::THREADID_SHIFT) & Self::THREADID_MASK) as u64
     }
 
     /// Sets the value of the `ThreadID` field.
@@ -30176,7 +30119,7 @@ impl Trfcr {
 
     /// Returns the value of the `TS` field.
     pub const fn ts(self) -> u8 {
-        ((self.bits() >> Self::TS_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TS_SHIFT) & Self::TS_MASK) as u8
     }
 
     /// Sets the value of the `TS` field.
@@ -30271,7 +30214,7 @@ impl Ttbcr {
 
     /// Returns the value of the `N` field.
     pub const fn n(self) -> u8 {
-        ((self.bits() >> Self::N_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::N_SHIFT) & Self::N_MASK) as u8
     }
 
     /// Sets the value of the `N` field.
@@ -30291,7 +30234,7 @@ impl Ttbcr {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -30311,7 +30254,7 @@ impl Ttbcr {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -30331,7 +30274,7 @@ impl Ttbcr {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -30351,7 +30294,7 @@ impl Ttbcr {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -30371,7 +30314,7 @@ impl Ttbcr {
 
     /// Returns the value of the `T1SZ` field.
     pub const fn t1sz(self) -> u8 {
-        ((self.bits() >> Self::T1SZ_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::T1SZ_SHIFT) & Self::T1SZ_MASK) as u8
     }
 
     /// Sets the value of the `T1SZ` field.
@@ -30391,7 +30334,7 @@ impl Ttbcr {
 
     /// Returns the value of the `IRGN1` field.
     pub const fn irgn1(self) -> u8 {
-        ((self.bits() >> Self::IRGN1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN1_SHIFT) & Self::IRGN1_MASK) as u8
     }
 
     /// Sets the value of the `IRGN1` field.
@@ -30411,7 +30354,7 @@ impl Ttbcr {
 
     /// Returns the value of the `ORGN1` field.
     pub const fn orgn1(self) -> u8 {
-        ((self.bits() >> Self::ORGN1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN1_SHIFT) & Self::ORGN1_MASK) as u8
     }
 
     /// Sets the value of the `ORGN1` field.
@@ -30431,7 +30374,7 @@ impl Ttbcr {
 
     /// Returns the value of the `SH1` field.
     pub const fn sh1(self) -> u8 {
-        ((self.bits() >> Self::SH1_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH1_SHIFT) & Self::SH1_MASK) as u8
     }
 
     /// Sets the value of the `SH1` field.
@@ -30545,8 +30488,7 @@ impl Ttbr0 {
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK) as u64
     }
 
     /// Sets the value of the `BADDR` field.
@@ -30566,7 +30508,7 @@ impl Ttbr0 {
 
     /// Returns the value of the `RGN` field.
     pub const fn rgn(self) -> u8 {
-        ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::RGN_SHIFT) & Self::RGN_MASK) as u8
     }
 
     /// Sets the value of the `RGN` field.
@@ -30586,7 +30528,7 @@ impl Ttbr0 {
 
     /// Returns the value of the `TTB0` field.
     pub const fn ttb0(self) -> u32 {
-        ((self.bits() >> Self::TTB0_SHIFT) & 0b1111111111111111111111111) as u32
+        ((self.bits() >> Self::TTB0_SHIFT) & Self::TTB0_MASK) as u32
     }
 
     /// Sets the value of the `TTB0` field.
@@ -30606,7 +30548,7 @@ impl Ttbr0 {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u8
     }
 
     /// Sets the value of the `ASID` field.
@@ -30655,8 +30597,7 @@ impl Ttbr0El1 {
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        ((self.bits() >> Self::BADDR_47_1_SHIFT)
-            & 0b11111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::BADDR_47_1_SHIFT) & Self::BADDR_47_1_MASK) as u64
     }
 
     /// Sets the value of the `BADDR[47:1]` field.
@@ -30676,7 +30617,7 @@ impl Ttbr0El1 {
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
     }
 
     /// Sets the value of the `SKL` field.
@@ -30696,7 +30637,7 @@ impl Ttbr0El1 {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u16
     }
 
     /// Sets the value of the `ASID` field.
@@ -30745,8 +30686,7 @@ impl Ttbr0El2 {
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        ((self.bits() >> Self::BADDR_47_1_SHIFT)
-            & 0b11111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::BADDR_47_1_SHIFT) & Self::BADDR_47_1_MASK) as u64
     }
 
     /// Sets the value of the `BADDR[47:1]` field.
@@ -30766,7 +30706,7 @@ impl Ttbr0El2 {
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
     }
 
     /// Sets the value of the `SKL` field.
@@ -30786,7 +30726,7 @@ impl Ttbr0El2 {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u16
     }
 
     /// Sets the value of the `ASID` field.
@@ -30827,7 +30767,7 @@ impl Ttbr0El3 {
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
     }
 
     /// Sets the value of the `SKL` field.
@@ -30890,8 +30830,7 @@ impl Ttbr1 {
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK) as u64
     }
 
     /// Sets the value of the `BADDR` field.
@@ -30911,7 +30850,7 @@ impl Ttbr1 {
 
     /// Returns the value of the `RGN` field.
     pub const fn rgn(self) -> u8 {
-        ((self.bits() >> Self::RGN_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::RGN_SHIFT) & Self::RGN_MASK) as u8
     }
 
     /// Sets the value of the `RGN` field.
@@ -30931,7 +30870,7 @@ impl Ttbr1 {
 
     /// Returns the value of the `TTB1` field.
     pub const fn ttb1(self) -> u32 {
-        ((self.bits() >> Self::TTB1_SHIFT) & 0b1111111111111111111111111) as u32
+        ((self.bits() >> Self::TTB1_SHIFT) & Self::TTB1_MASK) as u32
     }
 
     /// Sets the value of the `TTB1` field.
@@ -30951,7 +30890,7 @@ impl Ttbr1 {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u8 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u8
     }
 
     /// Sets the value of the `ASID` field.
@@ -31000,8 +30939,7 @@ impl Ttbr1El1 {
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        ((self.bits() >> Self::BADDR_47_1_SHIFT)
-            & 0b11111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::BADDR_47_1_SHIFT) & Self::BADDR_47_1_MASK) as u64
     }
 
     /// Sets the value of the `BADDR[47:1]` field.
@@ -31021,7 +30959,7 @@ impl Ttbr1El1 {
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
     }
 
     /// Sets the value of the `SKL` field.
@@ -31041,7 +30979,7 @@ impl Ttbr1El1 {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u16
     }
 
     /// Sets the value of the `ASID` field.
@@ -31090,8 +31028,7 @@ impl Ttbr1El2 {
 
     /// Returns the value of the `BADDR[47:1]` field.
     pub const fn baddr_47_1(self) -> u64 {
-        ((self.bits() >> Self::BADDR_47_1_SHIFT)
-            & 0b11111111111111111111111111111111111111111111111) as u64
+        ((self.bits() >> Self::BADDR_47_1_SHIFT) & Self::BADDR_47_1_MASK) as u64
     }
 
     /// Sets the value of the `BADDR[47:1]` field.
@@ -31111,7 +31048,7 @@ impl Ttbr1El2 {
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
     }
 
     /// Sets the value of the `SKL` field.
@@ -31131,7 +31068,7 @@ impl Ttbr1El2 {
 
     /// Returns the value of the `ASID` field.
     pub const fn asid(self) -> u16 {
-        ((self.bits() >> Self::ASID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u16
     }
 
     /// Sets the value of the `ASID` field.
@@ -31166,7 +31103,7 @@ impl Vbar {
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u32 {
-        ((self.bits() >> Self::VBA_SHIFT) & 0b111111111111111111111111111) as u32
+        ((self.bits() >> Self::VBA_SHIFT) & Self::VBA_MASK) as u32
     }
 
     /// Sets the value of the `VBA` field.
@@ -31207,8 +31144,7 @@ impl VbarEl1 {
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
-        ((self.bits() >> Self::VBA_SHIFT) & 0b11111111111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::VBA_SHIFT) & Self::VBA_MASK) as u64
     }
 
     /// Sets the value of the `VBA` field.
@@ -31249,8 +31185,7 @@ impl VbarEl2 {
 
     /// Returns the value of the `VBA` field.
     pub const fn vba(self) -> u64 {
-        ((self.bits() >> Self::VBA_SHIFT) & 0b11111111111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::VBA_SHIFT) & Self::VBA_MASK) as u64
     }
 
     /// Sets the value of the `VBA` field.
@@ -31289,7 +31224,7 @@ impl Vdfsr {
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::AET_SHIFT) & Self::AET_MASK) as u8
     }
 
     /// Sets the value of the `AET` field.
@@ -31340,7 +31275,7 @@ impl Vdisr {
 
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
-        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::STATUS_SHIFT) & Self::STATUS_MASK) as u8
     }
 
     /// Sets the value of the `STATUS` field.
@@ -31360,7 +31295,7 @@ impl Vdisr {
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::AET_SHIFT) & Self::AET_MASK) as u8
     }
 
     /// Sets the value of the `AET` field.
@@ -31421,7 +31356,7 @@ impl VdisrEl2 {
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        ((self.bits() >> Self::ISS_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS_SHIFT) & Self::ISS_MASK) as u32
     }
 
     /// Sets the value of the `ISS` field.
@@ -31441,7 +31376,7 @@ impl VdisrEl2 {
 
     /// Returns the value of the `STATUS` field.
     pub const fn status(self) -> u8 {
-        ((self.bits() >> Self::STATUS_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::STATUS_SHIFT) & Self::STATUS_MASK) as u8
     }
 
     /// Sets the value of the `STATUS` field.
@@ -31461,7 +31396,7 @@ impl VdisrEl2 {
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::AET_SHIFT) & Self::AET_MASK) as u8
     }
 
     /// Sets the value of the `AET` field.
@@ -31516,7 +31451,7 @@ impl Vmpidr {
 
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
-        ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF0_SHIFT) & Self::AFF0_MASK) as u8
     }
 
     /// Sets the value of the `Aff0` field.
@@ -31536,7 +31471,7 @@ impl Vmpidr {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -31556,7 +31491,7 @@ impl Vmpidr {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -31615,7 +31550,7 @@ impl VmpidrEl2 {
 
     /// Returns the value of the `Aff0` field.
     pub const fn aff0(self) -> u8 {
-        ((self.bits() >> Self::AFF0_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF0_SHIFT) & Self::AFF0_MASK) as u8
     }
 
     /// Sets the value of the `Aff0` field.
@@ -31635,7 +31570,7 @@ impl VmpidrEl2 {
 
     /// Returns the value of the `Aff1` field.
     pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
     }
 
     /// Sets the value of the `Aff1` field.
@@ -31655,7 +31590,7 @@ impl VmpidrEl2 {
 
     /// Returns the value of the `Aff2` field.
     pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
     }
 
     /// Sets the value of the `Aff2` field.
@@ -31675,7 +31610,7 @@ impl VmpidrEl2 {
 
     /// Returns the value of the `Aff3` field.
     pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
     }
 
     /// Sets the value of the `Aff3` field.
@@ -31726,7 +31661,7 @@ impl Vpidr {
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
-        ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::REVISION_SHIFT) & Self::REVISION_MASK) as u8
     }
 
     /// Sets the value of the `Revision` field.
@@ -31746,7 +31681,7 @@ impl Vpidr {
 
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
-        ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+        ((self.bits() >> Self::PARTNUM_SHIFT) & Self::PARTNUM_MASK) as u16
     }
 
     /// Sets the value of the `PartNum` field.
@@ -31766,7 +31701,7 @@ impl Vpidr {
 
     /// Returns the value of the `Architecture` field.
     pub const fn architecture(self) -> u8 {
-        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & Self::ARCHITECTURE_MASK) as u8
     }
 
     /// Sets the value of the `Architecture` field.
@@ -31786,7 +31721,7 @@ impl Vpidr {
 
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
-        ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VARIANT_SHIFT) & Self::VARIANT_MASK) as u8
     }
 
     /// Sets the value of the `Variant` field.
@@ -31806,7 +31741,7 @@ impl Vpidr {
 
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
-        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & Self::IMPLEMENTER_MASK) as u8
     }
 
     /// Sets the value of the `Implementer` field.
@@ -31859,7 +31794,7 @@ impl VpidrEl2 {
 
     /// Returns the value of the `Revision` field.
     pub const fn revision(self) -> u8 {
-        ((self.bits() >> Self::REVISION_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::REVISION_SHIFT) & Self::REVISION_MASK) as u8
     }
 
     /// Sets the value of the `Revision` field.
@@ -31879,7 +31814,7 @@ impl VpidrEl2 {
 
     /// Returns the value of the `PartNum` field.
     pub const fn partnum(self) -> u16 {
-        ((self.bits() >> Self::PARTNUM_SHIFT) & 0b111111111111) as u16
+        ((self.bits() >> Self::PARTNUM_SHIFT) & Self::PARTNUM_MASK) as u16
     }
 
     /// Sets the value of the `PartNum` field.
@@ -31899,7 +31834,7 @@ impl VpidrEl2 {
 
     /// Returns the value of the `Architecture` field.
     pub const fn architecture(self) -> u8 {
-        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::ARCHITECTURE_SHIFT) & Self::ARCHITECTURE_MASK) as u8
     }
 
     /// Sets the value of the `Architecture` field.
@@ -31919,7 +31854,7 @@ impl VpidrEl2 {
 
     /// Returns the value of the `Variant` field.
     pub const fn variant(self) -> u8 {
-        ((self.bits() >> Self::VARIANT_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::VARIANT_SHIFT) & Self::VARIANT_MASK) as u8
     }
 
     /// Sets the value of the `Variant` field.
@@ -31939,7 +31874,7 @@ impl VpidrEl2 {
 
     /// Returns the value of the `Implementer` field.
     pub const fn implementer(self) -> u8 {
-        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::IMPLEMENTER_SHIFT) & Self::IMPLEMENTER_MASK) as u8
     }
 
     /// Sets the value of the `Implementer` field.
@@ -31988,7 +31923,7 @@ impl VsesrEl2 {
 
     /// Returns the value of the `ISS` field.
     pub const fn iss(self) -> u32 {
-        ((self.bits() >> Self::ISS_SHIFT) & 0b111111111111111111111111) as u32
+        ((self.bits() >> Self::ISS_SHIFT) & Self::ISS_MASK) as u32
     }
 
     /// Sets the value of the `ISS` field.
@@ -32008,7 +31943,7 @@ impl VsesrEl2 {
 
     /// Returns the value of the `AET` field.
     pub const fn aet(self) -> u8 {
-        ((self.bits() >> Self::AET_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::AET_SHIFT) & Self::AET_MASK) as u8
     }
 
     /// Sets the value of the `AET` field.
@@ -32081,7 +32016,7 @@ impl Vtcr {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -32101,7 +32036,7 @@ impl Vtcr {
 
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
-        ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SL0_SHIFT) & Self::SL0_MASK) as u8
     }
 
     /// Sets the value of the `SL0` field.
@@ -32121,7 +32056,7 @@ impl Vtcr {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -32141,7 +32076,7 @@ impl Vtcr {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -32161,7 +32096,7 @@ impl Vtcr {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -32304,7 +32239,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `T0SZ` field.
     pub const fn t0sz(self) -> u8 {
-        ((self.bits() >> Self::T0SZ_SHIFT) & 0b111111) as u8
+        ((self.bits() >> Self::T0SZ_SHIFT) & Self::T0SZ_MASK) as u8
     }
 
     /// Sets the value of the `T0SZ` field.
@@ -32324,7 +32259,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `SL0` field.
     pub const fn sl0(self) -> u8 {
-        ((self.bits() >> Self::SL0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SL0_SHIFT) & Self::SL0_MASK) as u8
     }
 
     /// Sets the value of the `SL0` field.
@@ -32344,7 +32279,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `IRGN0` field.
     pub const fn irgn0(self) -> u8 {
-        ((self.bits() >> Self::IRGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::IRGN0_SHIFT) & Self::IRGN0_MASK) as u8
     }
 
     /// Sets the value of the `IRGN0` field.
@@ -32364,7 +32299,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `ORGN0` field.
     pub const fn orgn0(self) -> u8 {
-        ((self.bits() >> Self::ORGN0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::ORGN0_SHIFT) & Self::ORGN0_MASK) as u8
     }
 
     /// Sets the value of the `ORGN0` field.
@@ -32384,7 +32319,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `SH0` field.
     pub const fn sh0(self) -> u8 {
-        ((self.bits() >> Self::SH0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SH0_SHIFT) & Self::SH0_MASK) as u8
     }
 
     /// Sets the value of the `SH0` field.
@@ -32404,7 +32339,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `TG0` field.
     pub const fn tg0(self) -> u8 {
-        ((self.bits() >> Self::TG0_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::TG0_SHIFT) & Self::TG0_MASK) as u8
     }
 
     /// Sets the value of the `TG0` field.
@@ -32424,7 +32359,7 @@ impl VtcrEl2 {
 
     /// Returns the value of the `PS` field.
     pub const fn ps(self) -> u8 {
-        ((self.bits() >> Self::PS_SHIFT) & 0b111) as u8
+        ((self.bits() >> Self::PS_SHIFT) & Self::PS_MASK) as u8
     }
 
     /// Sets the value of the `PS` field.
@@ -32467,8 +32402,7 @@ impl Vttbr {
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK) as u64
     }
 
     /// Sets the value of the `BADDR` field.
@@ -32488,7 +32422,7 @@ impl Vttbr {
 
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u8 {
-        ((self.bits() >> Self::VMID_SHIFT) & 0b11111111) as u8
+        ((self.bits() >> Self::VMID_SHIFT) & Self::VMID_MASK) as u8
     }
 
     /// Sets the value of the `VMID` field.
@@ -32537,8 +32471,7 @@ impl VttbrEl2 {
 
     /// Returns the value of the `BADDR` field.
     pub const fn baddr(self) -> u64 {
-        ((self.bits() >> Self::BADDR_SHIFT) & 0b11111111111111111111111111111111111111111111111)
-            as u64
+        ((self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK) as u64
     }
 
     /// Sets the value of the `BADDR` field.
@@ -32558,7 +32491,7 @@ impl VttbrEl2 {
 
     /// Returns the value of the `SKL` field.
     pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & 0b11) as u8
+        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
     }
 
     /// Sets the value of the `SKL` field.
@@ -32578,7 +32511,7 @@ impl VttbrEl2 {
 
     /// Returns the value of the `VMID` field.
     pub const fn vmid(self) -> u16 {
-        ((self.bits() >> Self::VMID_SHIFT) & 0b1111111111111111) as u16
+        ((self.bits() >> Self::VMID_SHIFT) & Self::VMID_MASK) as u16
     }
 
     /// Sets the value of the `VMID` field.
@@ -32615,7 +32548,7 @@ impl ZcrEl3 {
 
     /// Returns the value of the `LEN` field.
     pub const fn len(self) -> u8 {
-        ((self.bits() >> Self::LEN_SHIFT) & 0b1111) as u8
+        ((self.bits() >> Self::LEN_SHIFT) & Self::LEN_MASK) as u8
     }
 
     /// Sets the value of the `LEN` field.
