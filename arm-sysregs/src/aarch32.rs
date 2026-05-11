@@ -109,8 +109,8 @@ macro_rules! read_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ",",
                             stringify!($crn), ",",
+                            stringify!($crm), ",",
                             stringify!($opc2)
                         ),
                         options(nomem, nostack, preserves_flags),
@@ -138,8 +138,8 @@ macro_rules! read_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ",",
                             stringify!($crn), ",",
+                            stringify!($crm), ",",
                             stringify!($opc2)
                         ),
                         options(nomem, nostack, preserves_flags),
@@ -167,8 +167,8 @@ macro_rules! read_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ",",
                             stringify!($crn), ",",
+                            stringify!($crm), ",",
                             stringify!($opc2)
                         ),
                         options(nomem, nostack, preserves_flags),
@@ -196,8 +196,8 @@ macro_rules! read_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ",",
                             stringify!($crn), ",",
+                            stringify!($crm), ",",
                             stringify!($opc2)
                         ),
                         options(nomem, nostack, preserves_flags),
@@ -438,8 +438,8 @@ macro_rules! write_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ", ",
                             stringify!($crn), ", ",
+                            stringify!($crm), ", ",
                             stringify!($opc2)
                         ),
                         options(nomem, nostack, preserves_flags),
@@ -468,8 +468,8 @@ macro_rules! write_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ", ",
                             stringify!($crn), ", ",
+                            stringify!($crm), ", ",
                             stringify!($opc2)
                         ),
                         options(nostack, preserves_flags),
@@ -496,8 +496,8 @@ macro_rules! write_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ", ",
                             stringify!($crn), ", ",
+                            stringify!($crm), ", ",
                             stringify!($opc2)
                         ),
                         options(nomem, nostack, preserves_flags),
@@ -527,8 +527,8 @@ macro_rules! write_sysreg {
                             stringify!($coproc), ", ",
                             stringify!($opc1), ", ",
                             "{value}, ",
-                            stringify!($crm), ", ",
                             stringify!($crn), ", ",
+                            stringify!($crm), ", ",
                             stringify!($opc2)
                         ),
                         options(nostack, preserves_flags),
