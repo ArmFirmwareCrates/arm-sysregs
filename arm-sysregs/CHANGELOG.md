@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Updated to AARCHMRS 2026-03 release.
+
+### Breaking changes
+
+- Armv8.9 FEAT_Debugv8p9 `Dspsr2` PPEND and `SpsrElx` PPEND bits removed.
+- Armv8.9 FEAT_FGT2 `Hdfgrtr2El2` NPMIAR_EL1 and `Hdfgwtr2El2` NPMIAR_EL1 bits removed, `Hfgwtr2El2` NLDSTT_EL1 and `Hfgwtr2El2` ACTLR_EL1 bits added.
+- FEAT_SEBEP identification register fields and system registers removed from architecture.
+- Armv8.6 FEAT_MPAMv0p1 `MpamhcrEl2` VPMEN / VMMEN / SMVPMEN / SMVMMEN bits removed.
+- `TcrEl2` TVAD and VTB fields removed.
+
 ## 0.2.9
 
 ### Bugfixes

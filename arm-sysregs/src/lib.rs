@@ -6711,16 +6711,12 @@ bitflags! {
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
     pub struct Dspsr2: u32 {
-        /// `PPEND` bit.
-        const PPEND = 1 << 1;
         /// `UINJ` bit.
         const UINJ = 1 << 4;
     }
 }
 
 impl Dspsr2 {
-    /// Offset of the `PPEND` field.
-    pub const PPEND_SHIFT: u32 = 1;
     /// Offset of the `UINJ` field.
     pub const UINJ_SHIFT: u32 = 4;
 }
@@ -8999,8 +8995,6 @@ bitflags! {
     pub struct Hdfgrtr2El2: u64 {
         /// `nPMECR_EL1` bit.
         const NPMECR_EL1 = 1 << 0;
-        /// `nPMIAR_EL1` bit.
-        const NPMIAR_EL1 = 1 << 1;
         /// `nPMICNTR_EL0` bit.
         const NPMICNTR_EL0 = 1 << 2;
         /// `nPMICFILTR_EL0` bit.
@@ -9052,8 +9046,6 @@ bitflags! {
 impl Hdfgrtr2El2 {
     /// Offset of the `nPMECR_EL1` field.
     pub const NPMECR_EL1_SHIFT: u32 = 0;
-    /// Offset of the `nPMIAR_EL1` field.
-    pub const NPMIAR_EL1_SHIFT: u32 = 1;
     /// Offset of the `nPMICNTR_EL0` field.
     pub const NPMICNTR_EL0_SHIFT: u32 = 2;
     /// Offset of the `nPMICFILTR_EL0` field.
@@ -9349,8 +9341,6 @@ bitflags! {
     pub struct Hdfgwtr2El2: u64 {
         /// `nPMECR_EL1` bit.
         const NPMECR_EL1 = 1 << 0;
-        /// `nPMIAR_EL1` bit.
-        const NPMIAR_EL1 = 1 << 1;
         /// `nPMICNTR_EL0` bit.
         const NPMICNTR_EL0 = 1 << 2;
         /// `nPMICFILTR_EL0` bit.
@@ -9398,8 +9388,6 @@ bitflags! {
 impl Hdfgwtr2El2 {
     /// Offset of the `nPMECR_EL1` field.
     pub const NPMECR_EL1_SHIFT: u32 = 0;
-    /// Offset of the `nPMIAR_EL1` field.
-    pub const NPMIAR_EL1_SHIFT: u32 = 1;
     /// Offset of the `nPMICNTR_EL0` field.
     pub const NPMICNTR_EL0_SHIFT: u32 = 2;
     /// Offset of the `nPMICFILTR_EL0` field.
@@ -10067,6 +10055,10 @@ bitflags! {
         const NTPIDR3_EL0 = 1 << 36;
         /// `nTPIDR3_EL1` bit.
         const NTPIDR3_EL1 = 1 << 37;
+        /// `nLDSTT_EL1` bit.
+        const NLDSTT_EL1 = 1 << 38;
+        /// `ACTLR_EL1` bit.
+        const ACTLR_EL1 = 1 << 39;
     }
 }
 
@@ -10148,6 +10140,10 @@ impl Hfgrtr2El2 {
     pub const NTPIDR3_EL0_SHIFT: u32 = 36;
     /// Offset of the `nTPIDR3_EL1` field.
     pub const NTPIDR3_EL1_SHIFT: u32 = 37;
+    /// Offset of the `nLDSTT_EL1` field.
+    pub const NLDSTT_EL1_SHIFT: u32 = 38;
+    /// Offset of the `ACTLR_EL1` field.
+    pub const ACTLR_EL1_SHIFT: u32 = 39;
 
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
@@ -10525,6 +10521,10 @@ bitflags! {
         const NTPIDR3_EL0 = 1 << 36;
         /// `nTPIDR3_EL1` bit.
         const NTPIDR3_EL1 = 1 << 37;
+        /// `nLDSTT_EL1` bit.
+        const NLDSTT_EL1 = 1 << 38;
+        /// `ACTLR_EL1` bit.
+        const ACTLR_EL1 = 1 << 39;
     }
 }
 
@@ -10602,6 +10602,10 @@ impl Hfgwtr2El2 {
     pub const NTPIDR3_EL0_SHIFT: u32 = 36;
     /// Offset of the `nTPIDR3_EL1` field.
     pub const NTPIDR3_EL1_SHIFT: u32 = 37;
+    /// Offset of the `nLDSTT_EL1` field.
+    pub const NLDSTT_EL1_SHIFT: u32 = 38;
+    /// Offset of the `ACTLR_EL1` field.
+    pub const ACTLR_EL1_SHIFT: u32 = 39;
 
     /// Returns the value of the `nFGDTn_EL1` field.
     pub const fn nfgdtn_el1(self) -> u8 {
@@ -14162,10 +14166,6 @@ impl IdAa64dfr0El1 {
     pub const WRPS_SHIFT: u32 = 20;
     /// Mask for the `WRPs` field.
     pub const WRPS_MASK: u64 = 0b1111;
-    /// Offset of the `SEBEP` field.
-    pub const SEBEP_SHIFT: u32 = 24;
-    /// Mask for the `SEBEP` field.
-    pub const SEBEP_MASK: u64 = 0b1111;
     /// Offset of the `CTX_CMPs` field.
     pub const CTX_CMPS_SHIFT: u32 = 28;
     /// Mask for the `CTX_CMPs` field.
@@ -14320,26 +14320,6 @@ impl IdAa64dfr0El1 {
     /// Returns a copy with the `WRPs` field set to the given value.
     pub const fn with_wrps(mut self, value: u8) -> Self {
         self.set_wrps(value);
-        self
-    }
-
-    /// Returns the value of the `SEBEP` field.
-    pub const fn sebep(self) -> u8 {
-        ((self.bits() >> Self::SEBEP_SHIFT) & 0b1111) as u8
-    }
-
-    /// Sets the value of the `SEBEP` field.
-    pub const fn set_sebep(&mut self, value: u8) {
-        let offset = Self::SEBEP_SHIFT;
-        assert!(value & (Self::SEBEP_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::SEBEP_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `SEBEP` field set to the given value.
-    pub const fn with_sebep(mut self, value: u8) -> Self {
-        self.set_sebep(value);
         self
     }
 
@@ -23043,14 +23023,6 @@ bitflags! {
         const EL0_VPMEN = 1 << 0;
         /// `EL1_VPMEN` bit.
         const EL1_VPMEN = 1 << 1;
-        /// `VPMEN` bit.
-        const VPMEN = 1 << 2;
-        /// `VMMEN` bit.
-        const VMMEN = 1 << 3;
-        /// `SMVPMEN` bit.
-        const SMVPMEN = 1 << 4;
-        /// `SMVMMEN` bit.
-        const SMVMMEN = 1 << 5;
         /// `GSTAPP_PLK` bit.
         const GSTAPP_PLK = 1 << 8;
         /// `TRAP_MPAMIDR_EL1` bit.
@@ -23072,14 +23044,6 @@ impl MpamhcrEl2 {
     pub const EL0_VPMEN_SHIFT: u32 = 0;
     /// Offset of the `EL1_VPMEN` field.
     pub const EL1_VPMEN_SHIFT: u32 = 1;
-    /// Offset of the `VPMEN` field.
-    pub const VPMEN_SHIFT: u32 = 2;
-    /// Offset of the `VMMEN` field.
-    pub const VMMEN_SHIFT: u32 = 3;
-    /// Offset of the `SMVPMEN` field.
-    pub const SMVPMEN_SHIFT: u32 = 4;
-    /// Offset of the `SMVMMEN` field.
-    pub const SMVMMEN_SHIFT: u32 = 5;
     /// Offset of the `GSTAPP_PLK` field.
     pub const GSTAPP_PLK_SHIFT: u32 = 8;
     /// Offset of the `TRAP_MPAMIDR_EL1` field.
@@ -27777,8 +27741,6 @@ bitflags! {
         const N = 1 << 31;
         /// `PM` bit.
         const PM = 1 << 32;
-        /// `PPEND` bit.
-        const PPEND = 1 << 33;
         /// `EXLOCK` bit.
         const EXLOCK = 1 << 34;
         /// `PACM` bit.
@@ -27844,8 +27806,6 @@ impl SpsrEl1 {
     pub const N_SHIFT: u32 = 31;
     /// Offset of the `PM` field.
     pub const PM_SHIFT: u32 = 32;
-    /// Offset of the `PPEND` field.
-    pub const PPEND_SHIFT: u32 = 33;
     /// Offset of the `EXLOCK` field.
     pub const EXLOCK_SHIFT: u32 = 34;
     /// Offset of the `PACM` field.
@@ -27962,8 +27922,6 @@ bitflags! {
         const N = 1 << 31;
         /// `PM` bit.
         const PM = 1 << 32;
-        /// `PPEND` bit.
-        const PPEND = 1 << 33;
         /// `EXLOCK` bit.
         const EXLOCK = 1 << 34;
         /// `PACM` bit.
@@ -28029,8 +27987,6 @@ impl SpsrEl2 {
     pub const N_SHIFT: u32 = 31;
     /// Offset of the `PM` field.
     pub const PM_SHIFT: u32 = 32;
-    /// Offset of the `PPEND` field.
-    pub const PPEND_SHIFT: u32 = 33;
     /// Offset of the `EXLOCK` field.
     pub const EXLOCK_SHIFT: u32 = 34;
     /// Offset of the `PACM` field.
@@ -28147,8 +28103,6 @@ bitflags! {
         const N = 1 << 31;
         /// `PM` bit.
         const PM = 1 << 32;
-        /// `PPEND` bit.
-        const PPEND = 1 << 33;
         /// `EXLOCK` bit.
         const EXLOCK = 1 << 34;
         /// `PACM` bit.
@@ -28214,8 +28168,6 @@ impl SpsrEl3 {
     pub const N_SHIFT: u32 = 31;
     /// Offset of the `PM` field.
     pub const PM_SHIFT: u32 = 32;
-    /// Offset of the `PPEND` field.
-    pub const PPEND_SHIFT: u32 = 33;
     /// Offset of the `EXLOCK` field.
     pub const EXLOCK_SHIFT: u32 = 34;
     /// Offset of the `PACM` field.
@@ -29152,8 +29104,6 @@ bitflags! {
         const TBID1 = 1 << 52;
         /// `NFD0` bit.
         const NFD0 = 1 << 53;
-        /// `TVAD` bit.
-        const TVAD = 1 << 53;
         /// `NFD1` bit.
         const NFD1 = 1 << 54;
         /// `E0PD0` bit.
@@ -29267,10 +29217,6 @@ impl TcrEl2 {
     pub const HWU159_SHIFT: u32 = 47;
     /// Offset of the `HWU160` field.
     pub const HWU160_SHIFT: u32 = 48;
-    /// Offset of the `VTB` field.
-    pub const VTB_SHIFT: u32 = 48;
-    /// Mask for the `VTB` field.
-    pub const VTB_MASK: u64 = 0b11111;
     /// Offset of the `HWU161` field.
     pub const HWU161_SHIFT: u32 = 49;
     /// Offset of the `HWU162` field.
@@ -29281,8 +29227,6 @@ impl TcrEl2 {
     pub const TBID1_SHIFT: u32 = 52;
     /// Offset of the `NFD0` field.
     pub const NFD0_SHIFT: u32 = 53;
-    /// Offset of the `TVAD` field.
-    pub const TVAD_SHIFT: u32 = 53;
     /// Offset of the `NFD1` field.
     pub const NFD1_SHIFT: u32 = 54;
     /// Offset of the `E0PD0` field.
@@ -29535,26 +29479,6 @@ impl TcrEl2 {
     /// Returns a copy with the `IPS` field set to the given value.
     pub const fn with_ips(mut self, value: u8) -> Self {
         self.set_ips(value);
-        self
-    }
-
-    /// Returns the value of the `VTB` field.
-    pub const fn vtb(self) -> u8 {
-        ((self.bits() >> Self::VTB_SHIFT) & 0b11111) as u8
-    }
-
-    /// Sets the value of the `VTB` field.
-    pub const fn set_vtb(&mut self, value: u8) {
-        let offset = Self::VTB_SHIFT;
-        assert!(value & (Self::VTB_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::VTB_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `VTB` field set to the given value.
-    pub const fn with_vtb(mut self, value: u8) -> Self {
-        self.set_vtb(value);
         self
     }
 }
