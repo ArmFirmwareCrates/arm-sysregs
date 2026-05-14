@@ -5,6 +5,7 @@
 ### New features
 
 - Updated to AARCHMRS 2026-03 release.
+- Added FEAT_PFAR `PFAR_EL1` and `PFAR_EL2` registers.
 
 ### Breaking changes
 

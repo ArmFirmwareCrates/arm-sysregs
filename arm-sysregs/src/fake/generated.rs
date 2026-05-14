@@ -40,8 +40,8 @@ use crate::{
     IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
     IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1,
-    MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, RgsrEl1, SctlrEl1, SpEl1, SpsrEl1,
-    Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, RgsrEl1, SctlrEl1, SpEl1,
+    SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -52,8 +52,8 @@ use crate::{
     Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2,
     IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2,
     Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2,
-    SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2,
-    VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    PfarEl2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2,
+    VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el3")]
 use crate::{
@@ -914,6 +914,12 @@ pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `PAR_EL1` system register.
     pub par_el1: ParEl1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `PFAR_EL1` system register.
+    pub pfar_el1: PfarEl1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `PFAR_EL2` system register.
+    pub pfar_el2: PfarEl2,
     /// Fake value for the `PMCCFILTR` system register.
     pub pmccfiltr: Pmccfiltr,
     /// Fake value for the `PMCCNTR` system register.
@@ -1616,6 +1622,10 @@ impl SystemRegisters {
             par: Par::empty(),
             #[cfg(feature = "el1")]
             par_el1: ParEl1::empty(),
+            #[cfg(feature = "el1")]
+            pfar_el1: PfarEl1::empty(),
+            #[cfg(feature = "el2")]
+            pfar_el2: PfarEl2::empty(),
             pmccfiltr: Pmccfiltr::empty(),
             pmccntr: Pmccntr::empty(),
             pmceid0: Pmceid0::empty(),

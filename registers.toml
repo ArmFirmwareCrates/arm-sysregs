@@ -648,6 +648,9 @@ VPMR_MAX = "Indicates the maximum register index n for the `MPAMVPM<n>_EL2` regi
 [registers.MPIDR_EL1]
 [registers.PAR_EL1]
 
+[registers.PFAR_EL1]
+[registers.PFAR_EL2]
+
 [registers.PMCR_EL0]
 write = "safe"
 [registers.PMCR_EL0.field_descriptions]

@@ -24780,6 +24780,194 @@ impl ParEl1 {
     }
 }
 
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `PFAR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PfarEl1: u64 {
+        /// `NSE` bit.
+        const NSE = 1 << 62;
+        /// `NS` bit.
+        const NS = 1 << 63;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl PfarEl1 {
+    /// Offset of the `PA` field.
+    pub const PA_SHIFT: u32 = 0;
+    /// Mask for the `PA` field.
+    pub const PA_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+    /// Offset of the `PA[51:48]` field.
+    pub const PA_51_48_SHIFT: u32 = 48;
+    /// Mask for the `PA[51:48]` field.
+    pub const PA_51_48_MASK: u64 = 0b1111;
+    /// Offset of the `PA[55:52]` field.
+    pub const PA_55_52_SHIFT: u32 = 52;
+    /// Mask for the `PA[55:52]` field.
+    pub const PA_55_52_MASK: u64 = 0b1111;
+    /// Offset of the `NSE` field.
+    pub const NSE_SHIFT: u32 = 62;
+    /// Offset of the `NS` field.
+    pub const NS_SHIFT: u32 = 63;
+
+    /// Returns the value of the `PA` field.
+    pub const fn pa(self) -> u64 {
+        (self.bits() >> Self::PA_SHIFT) & Self::PA_MASK
+    }
+
+    /// Sets the value of the `PA` field.
+    pub const fn set_pa(&mut self, value: u64) {
+        let offset = Self::PA_SHIFT;
+        assert!(value & Self::PA_MASK == value);
+        *self =
+            Self::from_bits_retain((self.bits() & !(Self::PA_MASK << offset)) | (value << offset));
+    }
+
+    /// Returns a copy with the `PA` field set to the given value.
+    pub const fn with_pa(mut self, value: u64) -> Self {
+        self.set_pa(value);
+        self
+    }
+
+    /// Returns the value of the `PA[51:48]` field.
+    pub const fn pa_51_48(self) -> u8 {
+        ((self.bits() >> Self::PA_51_48_SHIFT) & Self::PA_51_48_MASK) as u8
+    }
+
+    /// Sets the value of the `PA[51:48]` field.
+    pub const fn set_pa_51_48(&mut self, value: u8) {
+        let offset = Self::PA_51_48_SHIFT;
+        assert!(value & (Self::PA_51_48_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PA_51_48_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `PA[51:48]` field set to the given value.
+    pub const fn with_pa_51_48(mut self, value: u8) -> Self {
+        self.set_pa_51_48(value);
+        self
+    }
+
+    /// Returns the value of the `PA[55:52]` field.
+    pub const fn pa_55_52(self) -> u8 {
+        ((self.bits() >> Self::PA_55_52_SHIFT) & Self::PA_55_52_MASK) as u8
+    }
+
+    /// Sets the value of the `PA[55:52]` field.
+    pub const fn set_pa_55_52(&mut self, value: u8) {
+        let offset = Self::PA_55_52_SHIFT;
+        assert!(value & (Self::PA_55_52_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PA_55_52_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `PA[55:52]` field set to the given value.
+    pub const fn with_pa_55_52(mut self, value: u8) -> Self {
+        self.set_pa_55_52(value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `PFAR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PfarEl2: u64 {
+        /// `NSE2` bit.
+        const NSE2 = 1 << 61;
+        /// `NSE` bit.
+        const NSE = 1 << 62;
+        /// `NS` bit.
+        const NS = 1 << 63;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl PfarEl2 {
+    /// Offset of the `PA` field.
+    pub const PA_SHIFT: u32 = 0;
+    /// Mask for the `PA` field.
+    pub const PA_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+    /// Offset of the `PA[51:48]` field.
+    pub const PA_51_48_SHIFT: u32 = 48;
+    /// Mask for the `PA[51:48]` field.
+    pub const PA_51_48_MASK: u64 = 0b1111;
+    /// Offset of the `PA[55:52]` field.
+    pub const PA_55_52_SHIFT: u32 = 52;
+    /// Mask for the `PA[55:52]` field.
+    pub const PA_55_52_MASK: u64 = 0b1111;
+    /// Offset of the `NSE2` field.
+    pub const NSE2_SHIFT: u32 = 61;
+    /// Offset of the `NSE` field.
+    pub const NSE_SHIFT: u32 = 62;
+    /// Offset of the `NS` field.
+    pub const NS_SHIFT: u32 = 63;
+
+    /// Returns the value of the `PA` field.
+    pub const fn pa(self) -> u64 {
+        (self.bits() >> Self::PA_SHIFT) & Self::PA_MASK
+    }
+
+    /// Sets the value of the `PA` field.
+    pub const fn set_pa(&mut self, value: u64) {
+        let offset = Self::PA_SHIFT;
+        assert!(value & Self::PA_MASK == value);
+        *self =
+            Self::from_bits_retain((self.bits() & !(Self::PA_MASK << offset)) | (value << offset));
+    }
+
+    /// Returns a copy with the `PA` field set to the given value.
+    pub const fn with_pa(mut self, value: u64) -> Self {
+        self.set_pa(value);
+        self
+    }
+
+    /// Returns the value of the `PA[51:48]` field.
+    pub const fn pa_51_48(self) -> u8 {
+        ((self.bits() >> Self::PA_51_48_SHIFT) & Self::PA_51_48_MASK) as u8
+    }
+
+    /// Sets the value of the `PA[51:48]` field.
+    pub const fn set_pa_51_48(&mut self, value: u8) {
+        let offset = Self::PA_51_48_SHIFT;
+        assert!(value & (Self::PA_51_48_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PA_51_48_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `PA[51:48]` field set to the given value.
+    pub const fn with_pa_51_48(mut self, value: u8) -> Self {
+        self.set_pa_51_48(value);
+        self
+    }
+
+    /// Returns the value of the `PA[55:52]` field.
+    pub const fn pa_55_52(self) -> u8 {
+        ((self.bits() >> Self::PA_55_52_SHIFT) & Self::PA_55_52_MASK) as u8
+    }
+
+    /// Sets the value of the `PA[55:52]` field.
+    pub const fn set_pa_55_52(&mut self, value: u8) {
+        let offset = Self::PA_55_52_SHIFT;
+        assert!(value & (Self::PA_55_52_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PA_55_52_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `PA[55:52]` field set to the given value.
+    pub const fn with_pa_55_52(mut self, value: u8) -> Self {
+        self.set_pa_55_52(value);
+        self
+    }
+}
+
 bitflags! {
     /// `PMCCFILTR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -33303,6 +33491,10 @@ read_write_sysreg!(nsacr: (p15, 0, c1, c1, 2), u32: Nsacr, safe_read, fake::SYSR
 read_write_sysreg!(par: (p15, 0, c7), u64: Par, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(par_el1, u64: ParEl1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(pfar_el1: s3_0_c6_c0_5, u64: PfarEl1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(pfar_el2: s3_4_c6_c0_5, u64: PfarEl2, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(pmccfiltr: (p15, 0, c15, c14, 7), u32: Pmccfiltr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]

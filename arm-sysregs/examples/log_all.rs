@@ -788,6 +788,10 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("par = {:?}", arm_sysregs::read_par());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!("par_el1 = {:?}", arm_sysregs::read_par_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("pfar_el1 = {:?}", arm_sysregs::read_pfar_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("pfar_el2 = {:?}", arm_sysregs::read_pfar_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("pmccfiltr = {:?}", arm_sysregs::read_pmccfiltr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
