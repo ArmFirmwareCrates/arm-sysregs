@@ -19,17 +19,17 @@ use crate::{
     Dbgdidr, Dbgdrar, Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint,
     Dbgosdlr, Dbgoseccr, Dbgoslar, Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr,
     Dspsr2, Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0,
-    Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Hcptr, Hcr,
-    Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr,
-    Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1, IccHppir0,
-    IccHppir1, IccHsre, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccMctlr, IccMgrpen1, IccMsre,
-    IccPmr, IccRpr, IccSgi0r, IccSgi1r, IccSre, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3,
-    IdIsar4, IdIsar5, IdIsar6, IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0,
-    IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr,
-    Pmccntr, Pmceid0, Pmceid1, Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr,
-    Pmintenset, Pmmir, Pmovsr, Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr, Rmr, Rvbar,
-    Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr,
-    Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
+    Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Fpcr, Fpmr,
+    Fpsr, Hcptr, Hcr, Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr,
+    Htpidr, Htrfcr, Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1,
+    IccHppir0, IccHppir1, IccHsre, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccMctlr, IccMgrpen1,
+    IccMsre, IccPmr, IccRpr, IccSgi0r, IccSgi1r, IccSre, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2,
+    IdIsar3, IdIsar4, IdIsar5, IdIsar6, IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5,
+    IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par,
+    Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0,
+    Pmintenclr, Pmintenset, Pmmir, Pmovsr, Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr,
+    Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro,
+    Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el1")]
 use crate::{
@@ -39,9 +39,10 @@ use crate::{
     IccEoir0El1, IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1,
     IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
     IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64smfr0El1, IsrEl1, MairEl1,
-    MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, RgsrEl1, SctlrEl1, SpEl1,
-    SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1,
+    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, RgsrEl1,
+    SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1,
+    VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -487,6 +488,12 @@ pub struct SystemRegisters {
     pub far_el2: FarEl2,
     /// Fake value for the `FCSEIDR` system register.
     pub fcseidr: u32,
+    /// Fake value for the `FPCR` system register.
+    pub fpcr: Fpcr,
+    /// Fake value for the `FPMR` system register.
+    pub fpmr: Fpmr,
+    /// Fake value for the `FPSR` system register.
+    pub fpsr: Fpsr,
     #[cfg(feature = "el1")]
     /// Fake value for the `GCR_EL1` system register.
     pub gcr_el1: GcrEl1,
@@ -773,6 +780,9 @@ pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `ID_AA64PFR1_EL1` system register.
     pub id_aa64pfr1_el1: IdAa64pfr1El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ID_AA64PFR2_EL1` system register.
+    pub id_aa64pfr2_el1: IdAa64pfr2El1,
     #[cfg(feature = "el1")]
     /// Fake value for the `ID_AA64SMFR0_EL1` system register.
     pub id_aa64smfr0_el1: IdAa64smfr0El1,
@@ -1364,6 +1374,9 @@ impl SystemRegisters {
             #[cfg(feature = "el2")]
             far_el2: FarEl2::empty(),
             fcseidr: 0,
+            fpcr: Fpcr::empty(),
+            fpmr: Fpmr::empty(),
+            fpsr: Fpsr::empty(),
             #[cfg(feature = "el1")]
             gcr_el1: GcrEl1::empty(),
             #[cfg(feature = "el1")]
@@ -1539,6 +1552,8 @@ impl SystemRegisters {
             id_aa64pfr0_el1: IdAa64pfr0El1::empty(),
             #[cfg(feature = "el1")]
             id_aa64pfr1_el1: IdAa64pfr1El1::empty(),
+            #[cfg(feature = "el1")]
+            id_aa64pfr2_el1: IdAa64pfr2El1::empty(),
             #[cfg(feature = "el1")]
             id_aa64smfr0_el1: IdAa64smfr0El1::empty(),
             id_afr0: 0,

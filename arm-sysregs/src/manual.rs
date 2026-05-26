@@ -8,7 +8,7 @@ use crate::read_mpidr_el1;
 #[cfg(feature = "el1")]
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, MpidrEl1, SpsrEl1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, MpidrEl1, SpsrEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{EsrEl2, SpsrEl2};
@@ -260,6 +260,16 @@ impl IdAa64pfr1El1 {
     /// Indicates whether FEAT_GCS is implemented.
     pub fn is_feat_gcs_present(self) -> bool {
         self.gcs() == Self::GCS_IMPLEMENTED
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IdAa64pfr2El1 {
+    const FPMR_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_FPMR is implemented.
+    pub fn is_feat_fpmr_present(self) -> bool {
+        self.fpmr() == Self::FPMR_IMPLEMENTED
     }
 }
 

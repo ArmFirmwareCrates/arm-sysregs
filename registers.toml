@@ -419,6 +419,11 @@ IL = "32-bit instruction length."
 
 [registers.FAR_EL1]
 [registers.FAR_EL2]
+
+[registers.FPCR]
+[registers.FPMR]
+[registers.FPSR]
+
 [registers.GCR_EL1]
 [registers.GCSCR_EL1]
 description = "Guarded Control Stack Control register."
@@ -579,6 +584,7 @@ write = "safe"
 [registers.ID_AA64MMFR3_EL1]
 [registers.ID_AA64PFR0_EL1]
 [registers.ID_AA64PFR1_EL1]
+[registers.ID_AA64PFR2_EL1]
 [registers.ID_AA64SMFR0_EL1]
 use_raw_name = true
 

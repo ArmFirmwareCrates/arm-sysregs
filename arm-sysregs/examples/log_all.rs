@@ -432,6 +432,12 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("far_el2 = {:?}", arm_sysregs::read_far_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("fcseidr = {:?}", arm_sysregs::read_fcseidr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("fpcr = {:?}", arm_sysregs::read_fpcr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("fpmr = {:?}", arm_sysregs::read_fpmr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("fpsr = {:?}", arm_sysregs::read_fpsr());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!("gcr_el1 = {:?}", arm_sysregs::read_gcr_el1());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
@@ -668,6 +674,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!(
         "id_aa64pfr1_el1 = {:?}",
         arm_sysregs::read_id_aa64pfr1_el1()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!(
+        "id_aa64pfr2_el1 = {:?}",
+        arm_sysregs::read_id_aa64pfr2_el1()
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!(
