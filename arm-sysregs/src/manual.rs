@@ -250,6 +250,12 @@ impl IdAa64pfr1El1 {
     const SME2_IMPLEMENTED: u8 = 0b0010;
     const NMI_IMPLEMENTED: u8 = 0b1;
     const GCS_IMPLEMENTED: u8 = 0b1;
+    const PFAR_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_PFAR is implemented.
+    pub fn is_feat_pfar_present(self) -> bool {
+        self.pfar() == Self::PFAR_IMPLEMENTED
+    }
 
     /// Indicates whether FEAT_SSBS is implemented.
     pub fn is_feat_ssbs_present(self) -> bool {
