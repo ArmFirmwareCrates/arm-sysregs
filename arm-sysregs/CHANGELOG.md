@@ -7,6 +7,7 @@
 - Updated to AARCHMRS 2026-03 release.
 - Added FEAT_PFAR `PFAR_EL1` and `PFAR_EL2` registers.
 - Added FEAT_FPMR registers (`FPCR`, `FPMR`, `FPSR`), and `ID_AA64PFR2_EL1`.
+- Added registers for FEAT_S1PIE, FEAT_S1POE, FEAT_S2PIE, and FEAT_S2POE.
 
 ### Breaking changes
 

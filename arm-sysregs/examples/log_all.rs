@@ -155,6 +155,66 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     info!("amevcntr19_el0 = {:?}", arm_sysregs::read_amevcntr19_el0());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper00 = {:?}", arm_sysregs::read_amevtyper00());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevtyper00_el0 = {:?}",
+        arm_sysregs::read_amevtyper00_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper01 = {:?}", arm_sysregs::read_amevtyper01());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevtyper01_el0 = {:?}",
+        arm_sysregs::read_amevtyper01_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper02 = {:?}", arm_sysregs::read_amevtyper02());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevtyper02_el0 = {:?}",
+        arm_sysregs::read_amevtyper02_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper03 = {:?}", arm_sysregs::read_amevtyper03());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
+        "amevtyper03_el0 = {:?}",
+        arm_sysregs::read_amevtyper03_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper10 = {:?}", arm_sysregs::read_amevtyper10());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper11 = {:?}", arm_sysregs::read_amevtyper11());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper110 = {:?}", arm_sysregs::read_amevtyper110());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper111 = {:?}", arm_sysregs::read_amevtyper111());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper112 = {:?}", arm_sysregs::read_amevtyper112());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper113 = {:?}", arm_sysregs::read_amevtyper113());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper114 = {:?}", arm_sysregs::read_amevtyper114());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper115 = {:?}", arm_sysregs::read_amevtyper115());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper12 = {:?}", arm_sysregs::read_amevtyper12());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper13 = {:?}", arm_sysregs::read_amevtyper13());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper14 = {:?}", arm_sysregs::read_amevtyper14());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper15 = {:?}", arm_sysregs::read_amevtyper15());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper16 = {:?}", arm_sysregs::read_amevtyper16());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper17 = {:?}", arm_sysregs::read_amevtyper17());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper18 = {:?}", arm_sysregs::read_amevtyper18());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+    info!("amevtyper19 = {:?}", arm_sysregs::read_amevtyper19());
+    #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("amuserenr = {:?}", arm_sysregs::read_amuserenr());
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     info!("amuserenr_el0 = {:?}", arm_sysregs::read_amuserenr_el0());
@@ -803,6 +863,16 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("pfar_el1 = {:?}", arm_sysregs::read_pfar_el1());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!("pfar_el2 = {:?}", arm_sysregs::read_pfar_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("pire0_el1 = {:?}", arm_sysregs::read_pire0_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("pire0_el2 = {:?}", arm_sysregs::read_pire0_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("pir_el1 = {:?}", arm_sysregs::read_pir_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("pir_el2 = {:?}", arm_sysregs::read_pir_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+    info!("pir_el3 = {:?}", arm_sysregs::read_pir_el3());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("pmccfiltr = {:?}", arm_sysregs::read_pmccfiltr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -839,6 +909,14 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("pmuserenr = {:?}", arm_sysregs::read_pmuserenr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("pmxevtyper = {:?}", arm_sysregs::read_pmxevtyper());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("por_el0 = {:?}", arm_sysregs::read_por_el0());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("por_el1 = {:?}", arm_sysregs::read_por_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("por_el2 = {:?}", arm_sysregs::read_por_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+    info!("por_el3 = {:?}", arm_sysregs::read_por_el3());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("prrr = {:?}", arm_sysregs::read_prrr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -849,6 +927,10 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("rmr = {:?}", arm_sysregs::read_rmr());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("rvbar = {:?}", arm_sysregs::read_rvbar());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("s2pir_el2 = {:?}", arm_sysregs::read_s2pir_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("s2por_el1 = {:?}", arm_sysregs::read_s2por_el1());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("scr = {:?}", arm_sysregs::read_scr());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]

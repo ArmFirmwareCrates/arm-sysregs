@@ -1481,6 +1481,846 @@ impl Amevcntr19El0 {
 }
 
 bitflags! {
+    /// `AMEVTYPER00` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper00: u32 {
+    }
+}
+
+impl Amevtyper00 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER00_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper00El0: u64 {
+    }
+}
+
+impl Amevtyper00El0 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER01` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper01: u32 {
+    }
+}
+
+impl Amevtyper01 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER01_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper01El0: u64 {
+    }
+}
+
+impl Amevtyper01El0 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER02` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper02: u32 {
+    }
+}
+
+impl Amevtyper02 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER02_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper02El0: u64 {
+    }
+}
+
+impl Amevtyper02El0 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER03` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper03: u32 {
+    }
+}
+
+impl Amevtyper03 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER03_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper03El0: u64 {
+    }
+}
+
+impl Amevtyper03El0 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER10` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper10: u32 {
+    }
+}
+
+impl Amevtyper10 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER11` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper11: u32 {
+    }
+}
+
+impl Amevtyper11 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER110` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper110: u32 {
+    }
+}
+
+impl Amevtyper110 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER111` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper111: u32 {
+    }
+}
+
+impl Amevtyper111 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER112` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper112: u32 {
+    }
+}
+
+impl Amevtyper112 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER113` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper113: u32 {
+    }
+}
+
+impl Amevtyper113 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER114` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper114: u32 {
+    }
+}
+
+impl Amevtyper114 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER115` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper115: u32 {
+    }
+}
+
+impl Amevtyper115 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER12` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper12: u32 {
+    }
+}
+
+impl Amevtyper12 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER13` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper13: u32 {
+    }
+}
+
+impl Amevtyper13 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER14` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper14: u32 {
+    }
+}
+
+impl Amevtyper14 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER15` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper15: u32 {
+    }
+}
+
+impl Amevtyper15 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER16` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper16: u32 {
+    }
+}
+
+impl Amevtyper16 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER17` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper17: u32 {
+    }
+}
+
+impl Amevtyper17 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER18` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper18: u32 {
+    }
+}
+
+impl Amevtyper18 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `AMEVTYPER19` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevtyper19: u32 {
+    }
+}
+
+impl Amevtyper19 {
+    /// Offset of the `evtCount` field.
+    pub const EVTCOUNT_SHIFT: u32 = 0;
+    /// Mask for the `evtCount` field.
+    pub const EVTCOUNT_MASK: u32 = 0b1111_1111_1111_1111;
+
+    /// Returns the value of the `evtCount` field.
+    pub const fn evtcount(self) -> u16 {
+        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
+    }
+
+    /// Sets the value of the `evtCount` field.
+    pub const fn set_evtcount(&mut self, value: u16) {
+        let offset = Self::EVTCOUNT_SHIFT;
+        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u32) << offset),
+        );
+    }
+
+    /// Returns a copy with the `evtCount` field set to the given value.
+    pub const fn with_evtcount(mut self, value: u16) -> Self {
+        self.set_evtcount(value);
+        self
+    }
+}
+
+bitflags! {
     /// `AMUSERENR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -25626,6 +26466,201 @@ impl PfarEl2 {
     }
 }
 
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `PIRE0_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pire0El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl Pire0El1 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `PIRE0_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pire0El2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl Pire0El2 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `PIR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PirEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl PirEl1 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `PIR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PirEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl PirEl2 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `PIR_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PirEl3: u64 {
+    }
+}
+
+#[cfg(feature = "el3")]
+impl PirEl3 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
 bitflags! {
     /// `PMCCFILTR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -27028,6 +28063,160 @@ impl Pmxevtyper {
 }
 
 bitflags! {
+    /// `POR_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PorEl0: u64 {
+    }
+}
+
+impl PorEl0 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `POR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PorEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl PorEl1 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `POR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PorEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl PorEl2 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `POR_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct PorEl3: u64 {
+    }
+}
+
+#[cfg(feature = "el3")]
+impl PorEl3 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+bitflags! {
     /// `PRRR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -27211,6 +28400,84 @@ impl Rvbar {
     /// Returns a copy with the `ResetAddress` field set to the given value.
     pub const fn with_resetaddress(mut self, value: u32) -> Self {
         self.set_resetaddress(value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `S2PIR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct S2pirEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl S2pirEl2 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
+        self
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `S2POR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct S2porEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl S2porEl1 {
+    /// Offset of the `Perm<m>` field.
+    pub const PERM_SHIFT: u32 = 0;
+    /// Mask for the `Perm<m>` field.
+    pub const PERM_MASK: u64 = 0b1111;
+
+    /// Returns the value of the given `Perm<m>` field.
+    pub const fn perm(self, m: u32) -> u8 {
+        assert!(m < 16);
+        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
+    }
+
+    /// Sets the value of the `Perm<m>` field.
+    pub const fn set_perm(&mut self, m: u32, value: u8) {
+        assert!(m < 16);
+        let offset = Self::PERM_SHIFT + m * 4;
+        assert!(value & (Self::PERM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `Perm<m>` field set to the given value.
+    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
+        self.set_perm(m, value);
         self
     }
 }
@@ -33532,6 +34799,54 @@ read_write_sysreg!(amevcntr18_el0: s3_3_c13_c13_0, u64: Amevcntr18El0, safe_read
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amevcntr19_el0: s3_3_c13_c13_1, u64: Amevcntr19El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(amevtyper00: (p15, 0, c6, c13, 0), u32: Amevtyper00, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amevtyper00_el0: s3_3_c13_c6_0, u64: Amevtyper00El0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(amevtyper01: (p15, 0, c6, c13, 1), u32: Amevtyper01, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amevtyper01_el0: s3_3_c13_c6_1, u64: Amevtyper01El0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(amevtyper02: (p15, 0, c6, c13, 2), u32: Amevtyper02, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amevtyper02_el0: s3_3_c13_c6_2, u64: Amevtyper02El0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_sysreg!(amevtyper03: (p15, 0, c6, c13, 3), u32: Amevtyper03, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amevtyper03_el0: s3_3_c13_c6_3, u64: Amevtyper03El0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper10: (p15, 0, c14, c13, 0), u32: Amevtyper10, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper11: (p15, 0, c14, c13, 1), u32: Amevtyper11, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper110: (p15, 0, c15, c13, 2), u32: Amevtyper110, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper111: (p15, 0, c15, c13, 3), u32: Amevtyper111, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper112: (p15, 0, c15, c13, 4), u32: Amevtyper112, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper113: (p15, 0, c15, c13, 5), u32: Amevtyper113, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper114: (p15, 0, c15, c13, 6), u32: Amevtyper114, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper115: (p15, 0, c15, c13, 7), u32: Amevtyper115, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper12: (p15, 0, c14, c13, 2), u32: Amevtyper12, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper13: (p15, 0, c14, c13, 3), u32: Amevtyper13, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper14: (p15, 0, c14, c13, 4), u32: Amevtyper14, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper15: (p15, 0, c14, c13, 5), u32: Amevtyper15, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper16: (p15, 0, c14, c13, 6), u32: Amevtyper16, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper17: (p15, 0, c14, c13, 7), u32: Amevtyper17, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper18: (p15, 0, c15, c13, 0), u32: Amevtyper18, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
+read_write_sysreg!(amevtyper19: (p15, 0, c15, c13, 1), u32: Amevtyper19, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(amuserenr: (p15, 0, c2, c13, 3), u32: Amuserenr, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amuserenr_el0: s3_3_c13_c2_3, u64: AmuserenrEl0, safe_read, safe_write, fake::SYSREGS);
@@ -34161,6 +35476,16 @@ read_write_sysreg!(par_el1, u64: ParEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(pfar_el1: s3_0_c6_c0_5, u64: PfarEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(pfar_el2: s3_4_c6_c0_5, u64: PfarEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(pire0_el1: s3_0_c10_c2_2, u64: Pire0El1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(pire0_el2: s3_4_c10_c2_2, u64: Pire0El2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(pir_el1: s3_0_c10_c2_3, u64: PirEl1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(pir_el2: s3_4_c10_c2_3, u64: PirEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+read_write_sysreg!(pir_el3: s3_6_c10_c2_3, u64: PirEl3, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(pmccfiltr: (p15, 0, c15, c14, 7), u32: Pmccfiltr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -34199,6 +35524,14 @@ write_sysreg!(pmswinc: (p15, 0, c12, c9, 4), u32: Pmswinc, fake::SYSREGS);
 read_write_sysreg!(pmuserenr: (p15, 0, c14, c9, 0), u32: Pmuserenr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(pmxevtyper: (p15, 0, c13, c9, 1), u32: Pmxevtyper, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(por_el0: s3_3_c10_c2_4, u64: PorEl0, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(por_el1: s3_0_c10_c2_4, u64: PorEl1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(por_el2: s3_4_c10_c2_4, u64: PorEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+read_write_sysreg!(por_el3: s3_6_c10_c2_4, u64: PorEl3, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(prrr: (p15, 0, c2, c10, 0), u32: Prrr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
@@ -34209,6 +35542,10 @@ read_write_sysreg!(rgsr_el1: s3_0_c1_c0_5, u64: RgsrEl1, safe_read, safe_write, 
 read_write_sysreg!(rmr: (p15, 0, c0, c12, 2), u32: Rmr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(rvbar: (p15, 0, c0, c12, 1), u32: Rvbar, safe, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(s2pir_el2: s3_4_c10_c2_5, u64: S2pirEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(s2por_el1: s3_0_c10_c2_5, u64: S2porEl1, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(scr: (p15, 0, c1, c1, 0), u32: Scr, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]

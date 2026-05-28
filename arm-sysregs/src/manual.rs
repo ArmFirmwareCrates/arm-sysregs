@@ -188,6 +188,30 @@ impl IdAa64mmfr2El1 {
 #[cfg(feature = "el1")]
 impl IdAa64mmfr3El1 {
     const TCRX_SUPPORTED: u8 = 1;
+    const S1PIE_SUPPORTED: u8 = 0b0001;
+    const S1POE_SUPPORTED: u8 = 0b0001;
+    const S2PIE_SUPPORTED: u8 = 0b0001;
+    const S2POE_SUPPORTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_S1PIE is implemented.
+    pub fn is_feat_s1pie_present(self) -> bool {
+        self.s1pie() == Self::S1PIE_SUPPORTED
+    }
+
+    /// Indicates whether FEAT_S1POE is implemented.
+    pub fn is_feat_s1poe_present(self) -> bool {
+        self.s1poe() == Self::S1POE_SUPPORTED
+    }
+
+    /// Indicates whether FEAT_S2PIE is implemented.
+    pub fn is_feat_s2pie_present(self) -> bool {
+        self.s2pie() == Self::S2PIE_SUPPORTED
+    }
+
+    /// Indicates whether FEAT_S2POE is implemented.
+    pub fn is_feat_s2poe_present(self) -> bool {
+        self.s2poe() == Self::S2POE_SUPPORTED
+    }
 
     /// Indicates presence of FEAT_TCR2.
     pub fn is_feat_tcr2_present(self) -> bool {

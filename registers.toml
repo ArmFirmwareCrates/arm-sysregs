@@ -35,6 +35,9 @@ write = "safe"
 write = "safe"
 [registers."AMEVCNTR1<n>_EL0"]
 write = "safe"
+[registers."AMEVTYPER0<n>"]
+[registers."AMEVTYPER0<n>_EL0"]
+[registers."AMEVTYPER1<n>"]
 [registers.AMUSERENR_EL0]
 write = "safe"
 [registers.AMUSERENR]
@@ -657,6 +660,16 @@ VPMR_MAX = "Indicates the maximum register index n for the `MPAMVPM<n>_EL2` regi
 [registers.PFAR_EL1]
 [registers.PFAR_EL2]
 
+[registers.PIR_EL1]
+[registers.PIR_EL2]
+[registers.PIR_EL3]
+[registers.POR_EL0]
+[registers.POR_EL1]
+[registers.POR_EL2]
+[registers.POR_EL3]
+[registers.PIRE0_EL1]
+[registers.PIRE0_EL2]
+
 [registers.PMCR_EL0]
 write = "safe"
 [registers.PMCR_EL0.field_descriptions]
@@ -763,6 +776,10 @@ EnIA = "Enable pointer authentication using APIAKey_EL1."
 [registers.SPSR_EL2]
 [registers.SPSR_EL3]
 [registers.SVCR]
+
+[registers.S2PIR_EL2]
+[registers.S2POR_EL1]
+
 [registers.TCR_EL1]
 [registers.TCR_EL2]
 [registers.TCR_EL3]

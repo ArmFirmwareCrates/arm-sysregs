@@ -9,27 +9,31 @@ use crate::{
     Amevcntr00El0, Amevcntr01, Amevcntr01El0, Amevcntr02, Amevcntr02El0, Amevcntr03, Amevcntr03El0,
     Amevcntr10El0, Amevcntr11El0, Amevcntr12El0, Amevcntr13El0, Amevcntr14El0, Amevcntr15El0,
     Amevcntr16El0, Amevcntr17El0, Amevcntr18El0, Amevcntr19El0, Amevcntr110El0, Amevcntr111El0,
-    Amevcntr112El0, Amevcntr113El0, Amevcntr114El0, Amevcntr115El0, Amuserenr, AmuserenrEl0,
-    Ccsidr, Ccsidr2, Clidr, Cntfrq, CntfrqEl0, Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl,
-    CnthpsCval, CnthpsTval, CnthvCtl, CnthvCval, CnthvTval, CnthvsCtl, CnthvsCval, CnthvsTval,
-    Cntkctl, CntpCtl, CntpCtlEl0, CntpCval, CntpCvalEl0, CntpTval, CntpTvalEl0, Cntpct, CntpctEl0,
-    Cntpctss, CntpctssEl0, CntvCtl, CntvCtlEl0, CntvCval, CntvCvalEl0, CntvTval, CntvTvalEl0,
-    Cntvct, CntvctEl0, Cntvctss, CntvctssEl0, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0,
-    Currentel, Dacr, Dbgauthstatus, Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1,
-    Dbgdidr, Dbgdrar, Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint,
-    Dbgosdlr, Dbgoseccr, Dbgoslar, Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr,
-    Dspsr2, Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0,
-    Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Fpcr, Fpmr,
-    Fpsr, Hcptr, Hcr, Hcr2, Hdcr, Hdfar, Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr,
-    Htpidr, Htrfcr, Httbr, Hvbar, IccAsgi1r, IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1,
-    IccHppir0, IccHppir1, IccHsre, IccIar0, IccIar1, IccIgrpen0, IccIgrpen1, IccMctlr, IccMgrpen1,
-    IccMsre, IccPmr, IccRpr, IccSgi0r, IccSgi1r, IccSre, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2,
-    IdIsar3, IdIsar4, IdIsar5, IdIsar6, IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5,
-    IdPfr0, IdPfr1, IdPfr2, Ifar, Ifsr, Isr, Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par,
-    Pmccfiltr, Pmccntr, Pmceid0, Pmceid1, Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0,
-    Pmintenclr, Pmintenset, Pmmir, Pmovsr, Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, Prrr,
-    Rmr, Rvbar, Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro,
-    Tpidrurw, Trfcr, Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
+    Amevcntr112El0, Amevcntr113El0, Amevcntr114El0, Amevcntr115El0, Amevtyper00, Amevtyper00El0,
+    Amevtyper01, Amevtyper01El0, Amevtyper02, Amevtyper02El0, Amevtyper03, Amevtyper03El0,
+    Amevtyper10, Amevtyper11, Amevtyper12, Amevtyper13, Amevtyper14, Amevtyper15, Amevtyper16,
+    Amevtyper17, Amevtyper18, Amevtyper19, Amevtyper110, Amevtyper111, Amevtyper112, Amevtyper113,
+    Amevtyper114, Amevtyper115, Amuserenr, AmuserenrEl0, Ccsidr, Ccsidr2, Clidr, Cntfrq, CntfrqEl0,
+    Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl, CnthpsCval, CnthpsTval, CnthvCtl,
+    CnthvCval, CnthvTval, CnthvsCtl, CnthvsCval, CnthvsTval, Cntkctl, CntpCtl, CntpCtlEl0,
+    CntpCval, CntpCvalEl0, CntpTval, CntpTvalEl0, Cntpct, CntpctEl0, Cntpctss, CntpctssEl0,
+    CntvCtl, CntvCtlEl0, CntvCval, CntvCvalEl0, CntvTval, CntvTvalEl0, Cntvct, CntvctEl0, Cntvctss,
+    CntvctssEl0, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0, Currentel, Dacr, Dbgauthstatus,
+    Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1, Dbgdidr, Dbgdrar, Dbgdscrext,
+    Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint, Dbgosdlr, Dbgoseccr, Dbgoslar,
+    Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr, Dspsr2, Erridr, Errselr, Erxaddr,
+    Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0, Erxmisc1, Erxmisc2, Erxmisc3, Erxmisc4,
+    Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Fpcr, Fpmr, Fpsr, Hcptr, Hcr, Hcr2, Hdcr, Hdfar,
+    Hifar, Hmair0, Hmair1, Hpfar, Hrmr, Hsctlr, Hsr, Htcr, Htpidr, Htrfcr, Httbr, Hvbar, IccAsgi1r,
+    IccBpr0, IccBpr1, IccCtlr, IccDir, IccEoir0, IccEoir1, IccHppir0, IccHppir1, IccHsre, IccIar0,
+    IccIar1, IccIgrpen0, IccIgrpen1, IccMctlr, IccMgrpen1, IccMsre, IccPmr, IccRpr, IccSgi0r,
+    IccSgi1r, IccSre, IdDfr0, IdDfr1, IdIsar0, IdIsar1, IdIsar2, IdIsar3, IdIsar4, IdIsar5,
+    IdIsar6, IdMmfr0, IdMmfr1, IdMmfr2, IdMmfr3, IdMmfr4, IdMmfr5, IdPfr0, IdPfr1, IdPfr2, Ifar,
+    Ifsr, Isr, Mair0, Mair1, Midr, Mpidr, Mvbar, Nmrr, Nsacr, Par, Pmccfiltr, Pmccntr, Pmceid0,
+    Pmceid1, Pmceid2, Pmceid3, Pmcntenclr, Pmcntenset, Pmcr, PmcrEl0, Pmintenclr, Pmintenset,
+    Pmmir, Pmovsr, Pmovsset, Pmselr, Pmswinc, Pmuserenr, Pmxevtyper, PorEl0, Prrr, Rmr, Rvbar, Scr,
+    Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw, Trfcr,
+    Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el1")]
 use crate::{
@@ -40,9 +44,9 @@ use crate::{
     IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
     IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1,
-    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, RgsrEl1,
-    SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1,
-    VbarEl1,
+    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, PirEl1,
+    Pire0El1, PorEl1, RgsrEl1, S2porEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1,
+    Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -53,13 +57,15 @@ use crate::{
     Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2,
     IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2,
     Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2,
-    PfarEl2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2,
-    VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2,
+    TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2,
+    VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el3")]
 use crate::{
     CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3, MdcrEl3,
-    Mpam3El3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
+    Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, TpidrEl3,
+    Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -180,6 +186,54 @@ pub struct SystemRegisters {
     pub amevcntr18_el0: Amevcntr18El0,
     /// Fake value for the `AMEVCNTR19_EL0` system register.
     pub amevcntr19_el0: Amevcntr19El0,
+    /// Fake value for the `AMEVTYPER00` system register.
+    pub amevtyper00: Amevtyper00,
+    /// Fake value for the `AMEVTYPER00_EL0` system register.
+    pub amevtyper00_el0: Amevtyper00El0,
+    /// Fake value for the `AMEVTYPER01` system register.
+    pub amevtyper01: Amevtyper01,
+    /// Fake value for the `AMEVTYPER01_EL0` system register.
+    pub amevtyper01_el0: Amevtyper01El0,
+    /// Fake value for the `AMEVTYPER02` system register.
+    pub amevtyper02: Amevtyper02,
+    /// Fake value for the `AMEVTYPER02_EL0` system register.
+    pub amevtyper02_el0: Amevtyper02El0,
+    /// Fake value for the `AMEVTYPER03` system register.
+    pub amevtyper03: Amevtyper03,
+    /// Fake value for the `AMEVTYPER03_EL0` system register.
+    pub amevtyper03_el0: Amevtyper03El0,
+    /// Fake value for the `AMEVTYPER10` system register.
+    pub amevtyper10: Amevtyper10,
+    /// Fake value for the `AMEVTYPER11` system register.
+    pub amevtyper11: Amevtyper11,
+    /// Fake value for the `AMEVTYPER110` system register.
+    pub amevtyper110: Amevtyper110,
+    /// Fake value for the `AMEVTYPER111` system register.
+    pub amevtyper111: Amevtyper111,
+    /// Fake value for the `AMEVTYPER112` system register.
+    pub amevtyper112: Amevtyper112,
+    /// Fake value for the `AMEVTYPER113` system register.
+    pub amevtyper113: Amevtyper113,
+    /// Fake value for the `AMEVTYPER114` system register.
+    pub amevtyper114: Amevtyper114,
+    /// Fake value for the `AMEVTYPER115` system register.
+    pub amevtyper115: Amevtyper115,
+    /// Fake value for the `AMEVTYPER12` system register.
+    pub amevtyper12: Amevtyper12,
+    /// Fake value for the `AMEVTYPER13` system register.
+    pub amevtyper13: Amevtyper13,
+    /// Fake value for the `AMEVTYPER14` system register.
+    pub amevtyper14: Amevtyper14,
+    /// Fake value for the `AMEVTYPER15` system register.
+    pub amevtyper15: Amevtyper15,
+    /// Fake value for the `AMEVTYPER16` system register.
+    pub amevtyper16: Amevtyper16,
+    /// Fake value for the `AMEVTYPER17` system register.
+    pub amevtyper17: Amevtyper17,
+    /// Fake value for the `AMEVTYPER18` system register.
+    pub amevtyper18: Amevtyper18,
+    /// Fake value for the `AMEVTYPER19` system register.
+    pub amevtyper19: Amevtyper19,
     /// Fake value for the `AMUSERENR` system register.
     pub amuserenr: Amuserenr,
     /// Fake value for the `AMUSERENR_EL0` system register.
@@ -930,6 +984,21 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `PFAR_EL2` system register.
     pub pfar_el2: PfarEl2,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `PIRE0_EL1` system register.
+    pub pire0_el1: Pire0El1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `PIRE0_EL2` system register.
+    pub pire0_el2: Pire0El2,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `PIR_EL1` system register.
+    pub pir_el1: PirEl1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `PIR_EL2` system register.
+    pub pir_el2: PirEl2,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `PIR_EL3` system register.
+    pub pir_el3: PirEl3,
     /// Fake value for the `PMCCFILTR` system register.
     pub pmccfiltr: Pmccfiltr,
     /// Fake value for the `PMCCNTR` system register.
@@ -968,6 +1037,17 @@ pub struct SystemRegisters {
     pub pmuserenr: Pmuserenr,
     /// Fake value for the `PMXEVTYPER` system register.
     pub pmxevtyper: Pmxevtyper,
+    /// Fake value for the `POR_EL0` system register.
+    pub por_el0: PorEl0,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `POR_EL1` system register.
+    pub por_el1: PorEl1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `POR_EL2` system register.
+    pub por_el2: PorEl2,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `POR_EL3` system register.
+    pub por_el3: PorEl3,
     /// Fake value for the `PRRR` system register.
     pub prrr: Prrr,
     /// Fake value for the `REVIDR` system register.
@@ -979,6 +1059,12 @@ pub struct SystemRegisters {
     pub rmr: Rmr,
     /// Fake value for the `RVBAR` system register.
     pub rvbar: Rvbar,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `S2PIR_EL2` system register.
+    pub s2pir_el2: S2pirEl2,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `S2POR_EL1` system register.
+    pub s2por_el1: S2porEl1,
     /// Fake value for the `SCR` system register.
     pub scr: Scr,
     #[cfg(feature = "el3")]
@@ -1201,6 +1287,30 @@ impl SystemRegisters {
             amevcntr17_el0: Amevcntr17El0::empty(),
             amevcntr18_el0: Amevcntr18El0::empty(),
             amevcntr19_el0: Amevcntr19El0::empty(),
+            amevtyper00: Amevtyper00::empty(),
+            amevtyper00_el0: Amevtyper00El0::empty(),
+            amevtyper01: Amevtyper01::empty(),
+            amevtyper01_el0: Amevtyper01El0::empty(),
+            amevtyper02: Amevtyper02::empty(),
+            amevtyper02_el0: Amevtyper02El0::empty(),
+            amevtyper03: Amevtyper03::empty(),
+            amevtyper03_el0: Amevtyper03El0::empty(),
+            amevtyper10: Amevtyper10::empty(),
+            amevtyper11: Amevtyper11::empty(),
+            amevtyper110: Amevtyper110::empty(),
+            amevtyper111: Amevtyper111::empty(),
+            amevtyper112: Amevtyper112::empty(),
+            amevtyper113: Amevtyper113::empty(),
+            amevtyper114: Amevtyper114::empty(),
+            amevtyper115: Amevtyper115::empty(),
+            amevtyper12: Amevtyper12::empty(),
+            amevtyper13: Amevtyper13::empty(),
+            amevtyper14: Amevtyper14::empty(),
+            amevtyper15: Amevtyper15::empty(),
+            amevtyper16: Amevtyper16::empty(),
+            amevtyper17: Amevtyper17::empty(),
+            amevtyper18: Amevtyper18::empty(),
+            amevtyper19: Amevtyper19::empty(),
             amuserenr: Amuserenr::empty(),
             amuserenr_el0: AmuserenrEl0::empty(),
             #[cfg(feature = "el1")]
@@ -1641,6 +1751,16 @@ impl SystemRegisters {
             pfar_el1: PfarEl1::empty(),
             #[cfg(feature = "el2")]
             pfar_el2: PfarEl2::empty(),
+            #[cfg(feature = "el1")]
+            pire0_el1: Pire0El1::empty(),
+            #[cfg(feature = "el2")]
+            pire0_el2: Pire0El2::empty(),
+            #[cfg(feature = "el1")]
+            pir_el1: PirEl1::empty(),
+            #[cfg(feature = "el2")]
+            pir_el2: PirEl2::empty(),
+            #[cfg(feature = "el3")]
+            pir_el3: PirEl3::empty(),
             pmccfiltr: Pmccfiltr::empty(),
             pmccntr: Pmccntr::empty(),
             pmceid0: Pmceid0::empty(),
@@ -1660,12 +1780,23 @@ impl SystemRegisters {
             pmswinc: Pmswinc::empty(),
             pmuserenr: Pmuserenr::empty(),
             pmxevtyper: Pmxevtyper::empty(),
+            por_el0: PorEl0::empty(),
+            #[cfg(feature = "el1")]
+            por_el1: PorEl1::empty(),
+            #[cfg(feature = "el2")]
+            por_el2: PorEl2::empty(),
+            #[cfg(feature = "el3")]
+            por_el3: PorEl3::empty(),
             prrr: Prrr::empty(),
             revidr: 0,
             #[cfg(feature = "el1")]
             rgsr_el1: RgsrEl1::empty(),
             rmr: Rmr::empty(),
             rvbar: Rvbar::empty(),
+            #[cfg(feature = "el2")]
+            s2pir_el2: S2pirEl2::empty(),
+            #[cfg(feature = "el1")]
+            s2por_el1: S2porEl1::empty(),
             scr: Scr::empty(),
             #[cfg(feature = "el3")]
             scr_el3: ScrEl3::empty(),
