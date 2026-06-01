@@ -28909,6 +28909,228 @@ impl Sctlr {
     pub const DSSBS_SHIFT: u32 = 31;
 }
 
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `SCTLR2_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Sctlr2El1: u64 {
+        /// `NMEA` bit.
+        const NMEA = 1 << 2;
+        /// `EnADERR` bit.
+        const ENADERR = 1 << 3;
+        /// `EnANERR` bit.
+        const ENANERR = 1 << 4;
+        /// `EASE` bit.
+        const EASE = 1 << 5;
+        /// `EnIDCP128` bit.
+        const ENIDCP128 = 1 << 6;
+        /// `EnPACM` bit.
+        const ENPACM = 1 << 7;
+        /// `EnPACM0` bit.
+        const ENPACM0 = 1 << 8;
+        /// `CPTA` bit.
+        const CPTA = 1 << 9;
+        /// `CPTA0` bit.
+        const CPTA0 = 1 << 10;
+        /// `CPTM` bit.
+        const CPTM = 1 << 11;
+        /// `CPTM0` bit.
+        const CPTM0 = 1 << 12;
+        /// `DTZ` bit.
+        const DTZ = 1 << 14;
+        /// `TEIS` bit.
+        const TEIS = 1 << 15;
+        /// `TEOS` bit.
+        const TEOS = 1 << 16;
+        /// `VT` bit.
+        const VT = 1 << 17;
+        /// `EnDB2` bit.
+        const ENDB2 = 1 << 19;
+        /// `EnDA2` bit.
+        const ENDA2 = 1 << 20;
+        /// `EnIB2` bit.
+        const ENIB2 = 1 << 21;
+        /// `EnIA2` bit.
+        const ENIA2 = 1 << 22;
+        /// `BTD0` bit.
+        const BTD0 = 1 << 23;
+        /// `BTD` bit.
+        const BTD = 1 << 24;
+        /// `FDIT` bit.
+        const FDIT = 1 << 25;
+        /// `TLBOSNIS` bit.
+        const TLBOSNIS = 1 << 26;
+        /// `EnTP3` bit.
+        const ENTP3 = 1 << 28;
+    }
+}
+
+#[cfg(feature = "el1")]
+impl Sctlr2El1 {
+    /// Offset of the `NMEA` field.
+    pub const NMEA_SHIFT: u32 = 2;
+    /// Offset of the `EnADERR` field.
+    pub const ENADERR_SHIFT: u32 = 3;
+    /// Offset of the `EnANERR` field.
+    pub const ENANERR_SHIFT: u32 = 4;
+    /// Offset of the `EASE` field.
+    pub const EASE_SHIFT: u32 = 5;
+    /// Offset of the `EnIDCP128` field.
+    pub const ENIDCP128_SHIFT: u32 = 6;
+    /// Offset of the `EnPACM` field.
+    pub const ENPACM_SHIFT: u32 = 7;
+    /// Offset of the `EnPACM0` field.
+    pub const ENPACM0_SHIFT: u32 = 8;
+    /// Offset of the `CPTA` field.
+    pub const CPTA_SHIFT: u32 = 9;
+    /// Offset of the `CPTA0` field.
+    pub const CPTA0_SHIFT: u32 = 10;
+    /// Offset of the `CPTM` field.
+    pub const CPTM_SHIFT: u32 = 11;
+    /// Offset of the `CPTM0` field.
+    pub const CPTM0_SHIFT: u32 = 12;
+    /// Offset of the `DTZ` field.
+    pub const DTZ_SHIFT: u32 = 14;
+    /// Offset of the `TEIS` field.
+    pub const TEIS_SHIFT: u32 = 15;
+    /// Offset of the `TEOS` field.
+    pub const TEOS_SHIFT: u32 = 16;
+    /// Offset of the `VT` field.
+    pub const VT_SHIFT: u32 = 17;
+    /// Offset of the `EnDB2` field.
+    pub const ENDB2_SHIFT: u32 = 19;
+    /// Offset of the `EnDA2` field.
+    pub const ENDA2_SHIFT: u32 = 20;
+    /// Offset of the `EnIB2` field.
+    pub const ENIB2_SHIFT: u32 = 21;
+    /// Offset of the `EnIA2` field.
+    pub const ENIA2_SHIFT: u32 = 22;
+    /// Offset of the `BTD0` field.
+    pub const BTD0_SHIFT: u32 = 23;
+    /// Offset of the `BTD` field.
+    pub const BTD_SHIFT: u32 = 24;
+    /// Offset of the `FDIT` field.
+    pub const FDIT_SHIFT: u32 = 25;
+    /// Offset of the `TLBOSNIS` field.
+    pub const TLBOSNIS_SHIFT: u32 = 26;
+    /// Offset of the `EnTP3` field.
+    pub const ENTP3_SHIFT: u32 = 28;
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `SCTLR2_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Sctlr2El2: u64 {
+        /// `EMEC` bit.
+        const EMEC = 1 << 1;
+        /// `NMEA` bit.
+        const NMEA = 1 << 2;
+        /// `EnADERR` bit.
+        const ENADERR = 1 << 3;
+        /// `EnANERR` bit.
+        const ENANERR = 1 << 4;
+        /// `EASE` bit.
+        const EASE = 1 << 5;
+        /// `EnIDCP128` bit.
+        const ENIDCP128 = 1 << 6;
+        /// `EnPACM` bit.
+        const ENPACM = 1 << 7;
+        /// `EnPACM0` bit.
+        const ENPACM0 = 1 << 8;
+        /// `CPTA` bit.
+        const CPTA = 1 << 9;
+        /// `CPTA0` bit.
+        const CPTA0 = 1 << 10;
+        /// `CPTM` bit.
+        const CPTM = 1 << 11;
+        /// `CPTM0` bit.
+        const CPTM0 = 1 << 12;
+        /// `DTZ` bit.
+        const DTZ = 1 << 14;
+        /// `TEIS` bit.
+        const TEIS = 1 << 15;
+        /// `TEOS` bit.
+        const TEOS = 1 << 16;
+        /// `VT` bit.
+        const VT = 1 << 17;
+        /// `EnDB2` bit.
+        const ENDB2 = 1 << 19;
+        /// `EnDA2` bit.
+        const ENDA2 = 1 << 20;
+        /// `EnIB2` bit.
+        const ENIB2 = 1 << 21;
+        /// `EnIA2` bit.
+        const ENIA2 = 1 << 22;
+        /// `BTD0` bit.
+        const BTD0 = 1 << 23;
+        /// `BTD` bit.
+        const BTD = 1 << 24;
+        /// `FDIT` bit.
+        const FDIT = 1 << 25;
+        /// `TLBOSNIS` bit.
+        const TLBOSNIS = 1 << 26;
+        /// `EnTP3` bit.
+        const ENTP3 = 1 << 28;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl Sctlr2El2 {
+    /// Offset of the `EMEC` field.
+    pub const EMEC_SHIFT: u32 = 1;
+    /// Offset of the `NMEA` field.
+    pub const NMEA_SHIFT: u32 = 2;
+    /// Offset of the `EnADERR` field.
+    pub const ENADERR_SHIFT: u32 = 3;
+    /// Offset of the `EnANERR` field.
+    pub const ENANERR_SHIFT: u32 = 4;
+    /// Offset of the `EASE` field.
+    pub const EASE_SHIFT: u32 = 5;
+    /// Offset of the `EnIDCP128` field.
+    pub const ENIDCP128_SHIFT: u32 = 6;
+    /// Offset of the `EnPACM` field.
+    pub const ENPACM_SHIFT: u32 = 7;
+    /// Offset of the `EnPACM0` field.
+    pub const ENPACM0_SHIFT: u32 = 8;
+    /// Offset of the `CPTA` field.
+    pub const CPTA_SHIFT: u32 = 9;
+    /// Offset of the `CPTA0` field.
+    pub const CPTA0_SHIFT: u32 = 10;
+    /// Offset of the `CPTM` field.
+    pub const CPTM_SHIFT: u32 = 11;
+    /// Offset of the `CPTM0` field.
+    pub const CPTM0_SHIFT: u32 = 12;
+    /// Offset of the `DTZ` field.
+    pub const DTZ_SHIFT: u32 = 14;
+    /// Offset of the `TEIS` field.
+    pub const TEIS_SHIFT: u32 = 15;
+    /// Offset of the `TEOS` field.
+    pub const TEOS_SHIFT: u32 = 16;
+    /// Offset of the `VT` field.
+    pub const VT_SHIFT: u32 = 17;
+    /// Offset of the `EnDB2` field.
+    pub const ENDB2_SHIFT: u32 = 19;
+    /// Offset of the `EnDA2` field.
+    pub const ENDA2_SHIFT: u32 = 20;
+    /// Offset of the `EnIB2` field.
+    pub const ENIB2_SHIFT: u32 = 21;
+    /// Offset of the `EnIA2` field.
+    pub const ENIA2_SHIFT: u32 = 22;
+    /// Offset of the `BTD0` field.
+    pub const BTD0_SHIFT: u32 = 23;
+    /// Offset of the `BTD` field.
+    pub const BTD_SHIFT: u32 = 24;
+    /// Offset of the `FDIT` field.
+    pub const FDIT_SHIFT: u32 = 25;
+    /// Offset of the `TLBOSNIS` field.
+    pub const TLBOSNIS_SHIFT: u32 = 26;
+    /// Offset of the `EnTP3` field.
+    pub const ENTP3_SHIFT: u32 = 28;
+}
+
 #[cfg(feature = "el3")]
 bitflags! {
     /// `SCTLR2_EL3` system register value.
@@ -35552,6 +35774,10 @@ read_write_sysreg!(scr: (p15, 0, c1, c1, 0), u32: Scr, safe_read, fake::SYSREGS)
 read_write_sysreg!(scr_el3, u64: ScrEl3, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(sctlr: (p15, 0, c0, c1, 0), u32: Sctlr, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(sctlr2_el1: s3_0_c1_c0_3, u64: Sctlr2El1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(sctlr2_el2: s3_4_c1_c0_3, u64: Sctlr2El2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(sctlr2_el3: s3_6_c1_c0_3, u64: Sctlr2El3, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

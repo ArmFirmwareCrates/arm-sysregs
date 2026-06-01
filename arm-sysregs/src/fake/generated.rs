@@ -45,8 +45,8 @@ use crate::{
     IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1,
     IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, PirEl1,
-    Pire0El1, PorEl1, RgsrEl1, S2porEl1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1,
-    Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1,
+    TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -57,9 +57,9 @@ use crate::{
     Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2,
     IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2,
     Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2,
-    PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2,
-    TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2,
-    VtcrEl2, VttbrEl2,
+    PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, Sctlr2El2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2,
+    TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2,
+    VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el3")]
 use crate::{
@@ -1072,6 +1072,12 @@ pub struct SystemRegisters {
     pub scr_el3: ScrEl3,
     /// Fake value for the `SCTLR` system register.
     pub sctlr: Sctlr,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `SCTLR2_EL1` system register.
+    pub sctlr2_el1: Sctlr2El1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `SCTLR2_EL2` system register.
+    pub sctlr2_el2: Sctlr2El2,
     #[cfg(feature = "el3")]
     /// Fake value for the `SCTLR2_EL3` system register.
     pub sctlr2_el3: Sctlr2El3,
@@ -1801,6 +1807,10 @@ impl SystemRegisters {
             #[cfg(feature = "el3")]
             scr_el3: ScrEl3::empty(),
             sctlr: Sctlr::empty(),
+            #[cfg(feature = "el1")]
+            sctlr2_el1: Sctlr2El1::empty(),
+            #[cfg(feature = "el2")]
+            sctlr2_el2: Sctlr2El2::empty(),
             #[cfg(feature = "el3")]
             sctlr2_el3: Sctlr2El3::empty(),
             #[cfg(feature = "el1")]

@@ -937,6 +937,10 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("scr_el3 = {:?}", arm_sysregs::read_scr_el3());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("sctlr = {:?}", arm_sysregs::read_sctlr());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("sctlr2_el1 = {:?}", arm_sysregs::read_sctlr2_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("sctlr2_el2 = {:?}", arm_sysregs::read_sctlr2_el2());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
     info!("sctlr2_el3 = {:?}", arm_sysregs::read_sctlr2_el3());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]

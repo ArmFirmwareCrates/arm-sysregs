@@ -768,6 +768,8 @@ IESB = "Enable Implicit Error Synchronization events."
 EnIB = "Enable pointer authentication using APIBKey_EL1."
 EnIA = "Enable pointer authentication using APIAKey_EL1."
 
+[registers.SCTLR2_EL1]
+[registers.SCTLR2_EL2]
 [registers.SCTLR2_EL3]
 [registers.SMCR_EL3]
 [registers.SP_EL1]

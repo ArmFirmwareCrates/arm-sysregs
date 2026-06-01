@@ -192,6 +192,12 @@ impl IdAa64mmfr3El1 {
     const S1POE_SUPPORTED: u8 = 0b0001;
     const S2PIE_SUPPORTED: u8 = 0b0001;
     const S2POE_SUPPORTED: u8 = 0b0001;
+    const SCTLR2_SUPPORTED: u8 = 0b0001;
+
+    /// Indicates presence of FEAT_SCTLR2.
+    pub fn is_feat_sctlr2_present(self) -> bool {
+        self.sctlrx() >= Self::SCTLR2_SUPPORTED
+    }
 
     /// Indicates whether FEAT_S1PIE is implemented.
     pub fn is_feat_s1pie_present(self) -> bool {
