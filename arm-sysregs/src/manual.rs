@@ -230,6 +230,12 @@ impl IdAa64pfr0El1 {
     const SVE_SUPPORTED: u8 = 1;
     const MPAM_SUPPORTED: u8 = 1;
     const AMU_SUPPORTED: u8 = 1;
+    const DIT_SUPPORTED: u8 = 1;
+
+    /// Indicates whether DIT Extension is implemented.
+    pub fn is_feat_dit_present(self) -> bool {
+        self.dit() == Self::DIT_SUPPORTED
+    }
 
     /// Indicates whether SVE is implemented.
     pub fn is_feat_sve_present(self) -> bool {
