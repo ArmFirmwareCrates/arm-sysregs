@@ -2426,6 +2426,75 @@ impl ApiakeyloEl1 {
     }
 }
 
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `BRBCR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct BrbcrEl2: u64 {
+        /// `E0HBRE` bit.
+        const E0HBRE = 1 << 0;
+        /// `E2BRE` bit.
+        const E2BRE = 1 << 1;
+        /// `CC` bit.
+        const CC = 1 << 3;
+        /// `MPRED` bit.
+        const MPRED = 1 << 4;
+        /// `FZP` bit.
+        const FZP = 1 << 8;
+        /// `FZPSS` bit.
+        const FZPSS = 1 << 9;
+        /// `ERTN` bit.
+        const ERTN = 1 << 22;
+        /// `EXCEPTION` bit.
+        const EXCEPTION = 1 << 23;
+    }
+}
+
+#[cfg(feature = "el2")]
+impl BrbcrEl2 {
+    /// Offset of the `E0HBRE` field.
+    pub const E0HBRE_SHIFT: u32 = 0;
+    /// Offset of the `E2BRE` field.
+    pub const E2BRE_SHIFT: u32 = 1;
+    /// Offset of the `CC` field.
+    pub const CC_SHIFT: u32 = 3;
+    /// Offset of the `MPRED` field.
+    pub const MPRED_SHIFT: u32 = 4;
+    /// Offset of the `TS` field.
+    pub const TS_SHIFT: u32 = 5;
+    /// Mask for the `TS` field.
+    pub const TS_MASK: u64 = 0b11;
+    /// Offset of the `FZP` field.
+    pub const FZP_SHIFT: u32 = 8;
+    /// Offset of the `FZPSS` field.
+    pub const FZPSS_SHIFT: u32 = 9;
+    /// Offset of the `ERTN` field.
+    pub const ERTN_SHIFT: u32 = 22;
+    /// Offset of the `EXCEPTION` field.
+    pub const EXCEPTION_SHIFT: u32 = 23;
+
+    /// Returns the value of the `TS` field.
+    pub const fn ts(self) -> u8 {
+        ((self.bits() >> Self::TS_SHIFT) & Self::TS_MASK) as u8
+    }
+
+    /// Sets the value of the `TS` field.
+    pub const fn set_ts(&mut self, value: u8) {
+        let offset = Self::TS_SHIFT;
+        assert!(value & (Self::TS_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TS_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `TS` field set to the given value.
+    pub const fn with_ts(mut self, value: u8) -> Self {
+        self.set_ts(value);
+        self
+    }
+}
+
 bitflags! {
     /// `CCSIDR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -35076,6 +35145,8 @@ read_write_sysreg!(amuserenr_el0: s3_3_c13_c2_3, u64: AmuserenrEl0, safe_read, s
 read_write_sysreg!(apiakeyhi_el1: s3_0_c2_c1_1, u64: ApiakeyhiEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_write_sysreg!(apiakeylo_el1: s3_0_c2_c1_0, u64: ApiakeyloEl1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(brbcr_el2: s2_1_c9_c0_0, u64: BrbcrEl2, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(ccsidr: (p15, 1, c0, c0, 0), u32: Ccsidr, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]

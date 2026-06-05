@@ -245,6 +245,9 @@ write = "unsafe"
 
 [registers.APIAKeyHi_EL1]
 [registers.APIAKeyLo_EL1]
+
+[registers.BRBCR_EL2]
+
 [registers.CCSIDR_EL1]
 [registers.CLIDR_EL1]
 description = "Cache Level ID."

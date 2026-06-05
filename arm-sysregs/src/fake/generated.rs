@@ -50,7 +50,7 @@ use crate::{
 };
 #[cfg(feature = "el2")]
 use crate::{
-    CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2, CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2,
+    BrbcrEl2, CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2, CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2,
     CnthpsTvalEl2, CnthvCtlEl2, CnthvCvalEl2, CnthvTvalEl2, CnthvsCtlEl2, CnthvsCvalEl2,
     CnthvsTvalEl2, CntpoffEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2,
     GcscrEl2, HafgrtrEl2, HcrEl2, HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2,
@@ -244,6 +244,9 @@ pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `APIAKeyLo_EL1` system register.
     pub apiakeylo_el1: ApiakeyloEl1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `BRBCR_EL2` system register.
+    pub brbcr_el2: BrbcrEl2,
     /// Fake value for the `CCSIDR` system register.
     pub ccsidr: Ccsidr,
     /// Fake value for the `CCSIDR2` system register.
@@ -1323,6 +1326,8 @@ impl SystemRegisters {
             apiakeyhi_el1: ApiakeyhiEl1::empty(),
             #[cfg(feature = "el1")]
             apiakeylo_el1: ApiakeyloEl1::empty(),
+            #[cfg(feature = "el2")]
+            brbcr_el2: BrbcrEl2::empty(),
             ccsidr: Ccsidr::empty(),
             ccsidr2: Ccsidr2::empty(),
             #[cfg(feature = "el1")]

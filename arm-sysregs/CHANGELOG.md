@@ -8,6 +8,7 @@
 - Added FEAT_PFAR `PFAR_EL1` and `PFAR_EL2` registers.
 - Added FEAT_FPMR registers (`FPCR`, `FPMR`, `FPSR`), and `ID_AA64PFR2_EL1`.
 - Added registers for FEAT_S1PIE, FEAT_S1POE, FEAT_S2PIE, and FEAT_S2POE.
+- Added FEAT_BRBE register `BRBCR_EL2`, and query functions for FEAT_BRBE and FEAT_BRBEv1p1.
 - Added FEAT_SCTLR2 registers.
 
 ### Breaking changes

@@ -104,6 +104,19 @@ impl IdAa64dfr0El1 {
     const TRF_SUPPORTED: u8 = 1;
     const TRBE_NOT_SUPPORTED: u8 = 0;
     const MTPMU_SUPPORTED: u8 = 1;
+    const BRBE_NOT_SUPPORTED: u8 = 0;
+    const BRBEV1P1_SUPPORTED: u8 = 0b0010;
+
+    /// Indicates whether FEAT_BRBE is supported.
+    pub fn is_feat_brbe_supported(self) -> bool {
+        self.brbe() != Self::BRBE_NOT_SUPPORTED
+    }
+
+    /// Indicates whether FEAT_BRBEv1p1 is supported.
+    /// If FEAT_BRBEv1p1 is supported, FEAT_BRBE is also supported.
+    pub fn is_feat_brbe_v1p1_supported(self) -> bool {
+        self.brbe() == Self::BRBEV1P1_SUPPORTED
+    }
 
     /// Trace support. Indicates whether System register interface to a PE trace unit is
     /// implemented.
