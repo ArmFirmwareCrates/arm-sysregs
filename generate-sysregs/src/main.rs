@@ -17,6 +17,7 @@ use clap::{Parser, Subcommand};
 use eyre::Report;
 use log::{info, warn};
 use std::{
+    collections::HashMap,
     fs::{File, read_to_string},
     ops::Range,
     path::PathBuf,
@@ -26,7 +27,13 @@ fn main() -> Result<(), Report> {
     pretty_env_logger::init();
     let args = Args::parse();
     let config: Config = toml::from_str(&read_to_string(&args.config_toml)?)?;
-    let register_infos = parse_registers(&config, args.registers_json, args.all)?;
+    let register_infos = if args.disable_alias {
+        parse_registers(&config, args.registers_json, args.all)?
+    } else {
+        parse_and_alias_registers(&config, args.registers_json, args.all)?
+    };
+
+    println!("Parsed {} registers in total.", register_infos.len());
 
     match args.command {
         Command::Generate { output_directory } => {
@@ -54,6 +61,35 @@ fn main() -> Result<(), Report> {
     }
 
     Ok(())
+}
+
+fn parse_and_alias_registers(
+    config: &Config,
+    registers_json: PathBuf,
+    use_all_registers: bool,
+) -> Result<Vec<RegisterInfo>, Report> {
+    let mut register_infos = parse_registers(config, registers_json, use_all_registers)?;
+
+    let mut register_map = HashMap::<RegisterTypeKey, String>::new();
+    let mut alias_count: u32 = 0;
+
+    register_map.reserve(register_infos.len());
+
+    for register_info in &mut register_infos {
+        let register_type_key = RegisterTypeKey::from(&*register_info);
+        if !register_info.disable_alias
+            && let Some(existing_register) = register_map.get(&register_type_key)
+        {
+            register_info.alias = Some(existing_register.clone());
+            alias_count += 1;
+        } else {
+            register_map.insert(register_type_key, register_info.name.clone());
+        }
+    }
+
+    println!("Generated {} type aliases.", alias_count);
+
+    Ok(register_infos)
 }
 
 fn parse_registers(
@@ -150,6 +186,8 @@ fn remove_over_64bit(register: &mut RegisterInfo) {
 
 fn add_details(register: &mut RegisterInfo, config: &Config) {
     if let Some(register_config) = config.registers.get(&register.original_name) {
+        register.disable_alias = register_config.disable_alias;
+
         if let Some(description) = &register_config.description {
             register.description = Some(description.clone());
         }
@@ -209,7 +247,7 @@ impl RegisterField {
     }
 }
 
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq, Hash)]
 pub struct ArrayInfo {
     /// The range of entries in the array.
     pub indices: Range<u32>,
@@ -249,9 +287,80 @@ struct RegisterInfo {
     pub has_special_conditions: bool,
     /// The lowest exception level at which this system register is accessible.
     pub exception_level: ExceptionLevel,
+    /// Whether to disable type aliasing for this specific register.
+    /// Populated from the register configuration.
+    pub disable_alias: bool,
+    /// In case of identical registers, and aliases enabled, the name of the base register.
+    pub alias: Option<String>,
 }
 
-#[derive(Clone, Debug, Eq, PartialEq)]
+/// Helper struct to identify register field types.
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+struct RegisterFieldTypeKey {
+    name: String,
+    description: Option<String>,
+    type_name: Option<String>,
+    index: u32,
+    width: u32,
+    writable: bool,
+    array_info: Option<ArrayInfo>,
+}
+
+/// Helper struct to identify register types.
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+struct RegisterTypeKey {
+    width: u32,
+    aarch32: bool,
+    aarch64: bool,
+    res1: u64,
+    read: Option<Safety>,
+    write: Option<Safety>,
+    write_safety_doc: Option<String>,
+    derive_debug: bool,
+    aarch32_encoding: Option<AArch32Encoding>,
+    has_special_conditions: bool,
+    exception_level: ExceptionLevel,
+    fields: Vec<RegisterFieldTypeKey>,
+}
+
+impl From<&RegisterField> for RegisterFieldTypeKey {
+    fn from(value: &RegisterField) -> Self {
+        Self {
+            name: value.name.clone(),
+            description: value.description.clone(),
+            type_name: value.type_name.clone(),
+            index: value.index,
+            width: value.width,
+            writable: value.writable,
+            array_info: value.array_info.clone(),
+        }
+    }
+}
+
+impl From<&RegisterInfo> for RegisterTypeKey {
+    fn from(register: &RegisterInfo) -> Self {
+        Self {
+            width: register.width,
+            aarch32: register.aarch32,
+            aarch64: register.aarch64,
+            res1: register.res1,
+            read: register.read,
+            write: register.write,
+            write_safety_doc: register.write_safety_doc.clone(),
+            derive_debug: register.derive_debug,
+            aarch32_encoding: register.aarch32_encoding.clone(),
+            has_special_conditions: register.has_special_conditions,
+            exception_level: register.exception_level,
+            fields: register
+                .fields
+                .iter()
+                .map(RegisterFieldTypeKey::from)
+                .collect(),
+        }
+    }
+}
+
+#[derive(Clone, Debug, Eq, PartialEq, Hash)]
 enum AArch32Encoding {
     Single {
         crm: u8,
@@ -267,7 +376,7 @@ enum AArch32Encoding {
     },
 }
 
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Hash)]
 enum ExceptionLevel {
     #[default]
     El0,
@@ -276,7 +385,7 @@ enum ExceptionLevel {
     El3,
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
 enum Safety {
     Safe,
     Unsafe,
@@ -310,6 +419,9 @@ struct Args {
     /// Include all registers from the JSON file, not just those in the config file.
     #[arg(long)]
     all: bool,
+    /// Disable generating type aliases for identical register types.
+    #[arg(long)]
+    disable_alias: bool,
     /// Operation to execute.
     #[command(subcommand)]
     command: Command,

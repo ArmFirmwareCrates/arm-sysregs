@@ -155,6 +155,8 @@ impl RegisterInfo {
                         aarch32_encoding,
                         has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
                         exception_level,
+                        alias: None,
+                        disable_alias: false,
                     }
                 })
             })
@@ -194,6 +196,8 @@ impl RegisterInfo {
             aarch32_encoding,
             has_special_conditions: !STANDARD_CONDITIONS.contains(&register.condition),
             exception_level,
+            alias: None,
+            disable_alias: false,
         }
     }
 }

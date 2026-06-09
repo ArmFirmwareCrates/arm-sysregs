@@ -37,6 +37,8 @@ pub struct RegisterConfig {
     pub manual_debug: bool,
     #[serde(default)]
     pub use_raw_name: bool,
+    #[serde(default)]
+    pub disable_alias: bool,
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Eq, PartialEq, Serialize)]

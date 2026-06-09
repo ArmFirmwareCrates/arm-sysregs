@@ -467,26 +467,8 @@ impl Amcntenset0 {
     pub const P_SHIFT: u32 = 0;
 }
 
-bitflags! {
-    /// `AMCNTENSET0_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amcntenset0El0: u64 {
-        /// `P<n>` bit 0.
-        const P0 = 1 << 0;
-        /// `P<n>` bit 1.
-        const P1 = 1 << 1;
-        /// `P<n>` bit 2.
-        const P2 = 1 << 2;
-        /// `P<n>` bit 3.
-        const P3 = 1 << 3;
-    }
-}
-
-impl Amcntenset0El0 {
-    /// Offset of the `P<n>` field.
-    pub const P_SHIFT: u32 = 0;
-}
+/// `AMCNTENSET0_EL0` system register value.
+pub type Amcntenset0El0 = Amcntenclr0El0;
 
 bitflags! {
     /// `AMCNTENSET1` system register value.
@@ -533,50 +515,8 @@ impl Amcntenset1 {
     pub const P_SHIFT: u32 = 0;
 }
 
-bitflags! {
-    /// `AMCNTENSET1_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amcntenset1El0: u64 {
-        /// `P<n>` bit 0.
-        const P0 = 1 << 0;
-        /// `P<n>` bit 1.
-        const P1 = 1 << 1;
-        /// `P<n>` bit 2.
-        const P2 = 1 << 2;
-        /// `P<n>` bit 3.
-        const P3 = 1 << 3;
-        /// `P<n>` bit 4.
-        const P4 = 1 << 4;
-        /// `P<n>` bit 5.
-        const P5 = 1 << 5;
-        /// `P<n>` bit 6.
-        const P6 = 1 << 6;
-        /// `P<n>` bit 7.
-        const P7 = 1 << 7;
-        /// `P<n>` bit 8.
-        const P8 = 1 << 8;
-        /// `P<n>` bit 9.
-        const P9 = 1 << 9;
-        /// `P<n>` bit 10.
-        const P10 = 1 << 10;
-        /// `P<n>` bit 11.
-        const P11 = 1 << 11;
-        /// `P<n>` bit 12.
-        const P12 = 1 << 12;
-        /// `P<n>` bit 13.
-        const P13 = 1 << 13;
-        /// `P<n>` bit 14.
-        const P14 = 1 << 14;
-        /// `P<n>` bit 15.
-        const P15 = 1 << 15;
-    }
-}
-
-impl Amcntenset1El0 {
-    /// Offset of the `P<n>` field.
-    pub const P_SHIFT: u32 = 0;
-}
+/// `AMCNTENSET1_EL0` system register value.
+pub type Amcntenset1El0 = Amcntenclr1El0;
 
 bitflags! {
     /// `AMCR` system register value.
@@ -724,41 +664,8 @@ impl Amevcntr01 {
     }
 }
 
-bitflags! {
-    /// `AMEVCNTR01_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr01El0: u64 {
-    }
-}
-
-impl Amevcntr01El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
+/// `AMEVCNTR01_EL0` system register value.
+pub type Amevcntr01El0 = Amevcntr00El0;
 
 bitflags! {
     /// `AMEVCNTR02` system register value.
@@ -796,41 +703,8 @@ impl Amevcntr02 {
     }
 }
 
-bitflags! {
-    /// `AMEVCNTR02_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr02El0: u64 {
-    }
-}
-
-impl Amevcntr02El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
+/// `AMEVCNTR02_EL0` system register value.
+pub type Amevcntr02El0 = Amevcntr00El0;
 
 bitflags! {
     /// `AMEVCNTR03` system register value.
@@ -868,617 +742,56 @@ impl Amevcntr03 {
     }
 }
 
-bitflags! {
-    /// `AMEVCNTR03_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr03El0: u64 {
-    }
-}
+/// `AMEVCNTR03_EL0` system register value.
+pub type Amevcntr03El0 = Amevcntr00El0;
 
-impl Amevcntr03El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+/// `AMEVCNTR10_EL0` system register value.
+pub type Amevcntr10El0 = Amevcntr00El0;
 
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
+/// `AMEVCNTR110_EL0` system register value.
+pub type Amevcntr110El0 = Amevcntr00El0;
 
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
+/// `AMEVCNTR111_EL0` system register value.
+pub type Amevcntr111El0 = Amevcntr00El0;
 
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
+/// `AMEVCNTR112_EL0` system register value.
+pub type Amevcntr112El0 = Amevcntr00El0;
 
-bitflags! {
-    /// `AMEVCNTR10_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr10El0: u64 {
-    }
-}
+/// `AMEVCNTR113_EL0` system register value.
+pub type Amevcntr113El0 = Amevcntr00El0;
 
-impl Amevcntr10El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+/// `AMEVCNTR114_EL0` system register value.
+pub type Amevcntr114El0 = Amevcntr00El0;
 
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
+/// `AMEVCNTR115_EL0` system register value.
+pub type Amevcntr115El0 = Amevcntr00El0;
 
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
+/// `AMEVCNTR11_EL0` system register value.
+pub type Amevcntr11El0 = Amevcntr00El0;
 
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
+/// `AMEVCNTR12_EL0` system register value.
+pub type Amevcntr12El0 = Amevcntr00El0;
 
-bitflags! {
-    /// `AMEVCNTR110_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr110El0: u64 {
-    }
-}
+/// `AMEVCNTR13_EL0` system register value.
+pub type Amevcntr13El0 = Amevcntr00El0;
 
-impl Amevcntr110El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+/// `AMEVCNTR14_EL0` system register value.
+pub type Amevcntr14El0 = Amevcntr00El0;
 
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
+/// `AMEVCNTR15_EL0` system register value.
+pub type Amevcntr15El0 = Amevcntr00El0;
 
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
+/// `AMEVCNTR16_EL0` system register value.
+pub type Amevcntr16El0 = Amevcntr00El0;
 
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
+/// `AMEVCNTR17_EL0` system register value.
+pub type Amevcntr17El0 = Amevcntr00El0;
 
-bitflags! {
-    /// `AMEVCNTR111_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr111El0: u64 {
-    }
-}
+/// `AMEVCNTR18_EL0` system register value.
+pub type Amevcntr18El0 = Amevcntr00El0;
 
-impl Amevcntr111El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR112_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr112El0: u64 {
-    }
-}
-
-impl Amevcntr112El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR113_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr113El0: u64 {
-    }
-}
-
-impl Amevcntr113El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR114_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr114El0: u64 {
-    }
-}
-
-impl Amevcntr114El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR115_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr115El0: u64 {
-    }
-}
-
-impl Amevcntr115El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR11_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr11El0: u64 {
-    }
-}
-
-impl Amevcntr11El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR12_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr12El0: u64 {
-    }
-}
-
-impl Amevcntr12El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR13_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr13El0: u64 {
-    }
-}
-
-impl Amevcntr13El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR14_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr14El0: u64 {
-    }
-}
-
-impl Amevcntr14El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR15_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr15El0: u64 {
-    }
-}
-
-impl Amevcntr15El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR16_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr16El0: u64 {
-    }
-}
-
-impl Amevcntr16El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR17_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr17El0: u64 {
-    }
-}
-
-impl Amevcntr17El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR18_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr18El0: u64 {
-    }
-}
-
-impl Amevcntr18El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `AMEVCNTR19_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevcntr19El0: u64 {
-    }
-}
-
-impl Amevcntr19El0 {
-    /// Offset of the `ACNT` field.
-    pub const ACNT_SHIFT: u32 = 0;
-    /// Mask for the `ACNT` field.
-    pub const ACNT_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ACNT` field.
-    pub const fn acnt(self) -> u64 {
-        (self.bits() >> Self::ACNT_SHIFT) & Self::ACNT_MASK
-    }
-
-    /// Sets the value of the `ACNT` field.
-    pub const fn set_acnt(&mut self, value: u64) {
-        let offset = Self::ACNT_SHIFT;
-        assert!(value & Self::ACNT_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ACNT_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ACNT` field set to the given value.
-    pub const fn with_acnt(mut self, value: u64) -> Self {
-        self.set_acnt(value);
-        self
-    }
-}
+/// `AMEVCNTR19_EL0` system register value.
+pub type Amevcntr19El0 = Amevcntr00El0;
 
 bitflags! {
     /// `AMEVTYPER00` system register value.
@@ -1585,40 +898,8 @@ impl Amevtyper01 {
     }
 }
 
-bitflags! {
-    /// `AMEVTYPER01_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevtyper01El0: u64 {
-    }
-}
-
-impl Amevtyper01El0 {
-    /// Offset of the `evtCount` field.
-    pub const EVTCOUNT_SHIFT: u32 = 0;
-    /// Mask for the `evtCount` field.
-    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
-
-    /// Returns the value of the `evtCount` field.
-    pub const fn evtcount(self) -> u16 {
-        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
-    }
-
-    /// Sets the value of the `evtCount` field.
-    pub const fn set_evtcount(&mut self, value: u16) {
-        let offset = Self::EVTCOUNT_SHIFT;
-        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `evtCount` field set to the given value.
-    pub const fn with_evtcount(mut self, value: u16) -> Self {
-        self.set_evtcount(value);
-        self
-    }
-}
+/// `AMEVTYPER01_EL0` system register value.
+pub type Amevtyper01El0 = Amevtyper00El0;
 
 bitflags! {
     /// `AMEVTYPER02` system register value.
@@ -1655,40 +936,8 @@ impl Amevtyper02 {
     }
 }
 
-bitflags! {
-    /// `AMEVTYPER02_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevtyper02El0: u64 {
-    }
-}
-
-impl Amevtyper02El0 {
-    /// Offset of the `evtCount` field.
-    pub const EVTCOUNT_SHIFT: u32 = 0;
-    /// Mask for the `evtCount` field.
-    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
-
-    /// Returns the value of the `evtCount` field.
-    pub const fn evtcount(self) -> u16 {
-        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
-    }
-
-    /// Sets the value of the `evtCount` field.
-    pub const fn set_evtcount(&mut self, value: u16) {
-        let offset = Self::EVTCOUNT_SHIFT;
-        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `evtCount` field set to the given value.
-    pub const fn with_evtcount(mut self, value: u16) -> Self {
-        self.set_evtcount(value);
-        self
-    }
-}
+/// `AMEVTYPER02_EL0` system register value.
+pub type Amevtyper02El0 = Amevtyper00El0;
 
 bitflags! {
     /// `AMEVTYPER03` system register value.
@@ -1725,40 +974,8 @@ impl Amevtyper03 {
     }
 }
 
-bitflags! {
-    /// `AMEVTYPER03_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Amevtyper03El0: u64 {
-    }
-}
-
-impl Amevtyper03El0 {
-    /// Offset of the `evtCount` field.
-    pub const EVTCOUNT_SHIFT: u32 = 0;
-    /// Mask for the `evtCount` field.
-    pub const EVTCOUNT_MASK: u64 = 0b1111_1111_1111_1111;
-
-    /// Returns the value of the `evtCount` field.
-    pub const fn evtcount(self) -> u16 {
-        ((self.bits() >> Self::EVTCOUNT_SHIFT) & Self::EVTCOUNT_MASK) as u16
-    }
-
-    /// Sets the value of the `evtCount` field.
-    pub const fn set_evtcount(&mut self, value: u16) {
-        let offset = Self::EVTCOUNT_SHIFT;
-        assert!(value & (Self::EVTCOUNT_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::EVTCOUNT_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `evtCount` field set to the given value.
-    pub const fn with_evtcount(mut self, value: u16) -> Self {
-        self.set_evtcount(value);
-        self
-    }
-}
+/// `AMEVTYPER03_EL0` system register value.
+pub type Amevtyper03El0 = Amevtyper00El0;
 
 bitflags! {
     /// `AMEVTYPER10` system register value.
@@ -3380,205 +2597,32 @@ impl CnthpsTvalEl2 {
     }
 }
 
-bitflags! {
-    /// `CNTHP_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthpCtl: u32 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
-
-impl CnthpCtl {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTHP_CTL` system register value.
+pub type CnthpCtl = CnthpsCtl;
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHP_CTL_EL2` system register value.
-    ///
-    /// Counter-timer Hypervisor Physical Timer Control Register
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthpCtlEl2: u64 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
+/// `CNTHP_CTL_EL2` system register value.
+///
+/// Counter-timer Hypervisor Physical Timer Control Register
+pub type CnthpCtlEl2 = CnthpsCtlEl2;
+
+/// `CNTHP_CVAL` system register value.
+pub type CnthpCval = CnthpsCval;
 
 #[cfg(feature = "el2")]
-impl CnthpCtlEl2 {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTHP_CVAL_EL2` system register value.
+///
+/// Counter-timer Physical Timer CompareValue Register (EL2)
+pub type CnthpCvalEl2 = CnthpsCvalEl2;
 
-bitflags! {
-    /// `CNTHP_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthpCval: u64 {
-    }
-}
-
-impl CnthpCval {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
+/// `CNTHP_TVAL` system register value.
+pub type CnthpTval = CnthpsTval;
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHP_CVAL_EL2` system register value.
-    ///
-    /// Counter-timer Physical Timer CompareValue Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthpCvalEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl CnthpCvalEl2 {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `CNTHP_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthpTval: u32 {
-    }
-}
-
-impl CnthpTval {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        (self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & Self::TIMERVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
-
-#[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHP_TVAL_EL2` system register value.
-    ///
-    /// Counter-timer Physical Timer TimerValue Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthpTvalEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl CnthpTvalEl2 {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
+/// `CNTHP_TVAL_EL2` system register value.
+///
+/// Counter-timer Physical Timer TimerValue Register (EL2)
+pub type CnthpTvalEl2 = CnthpsTvalEl2;
 
 bitflags! {
     /// `CNTHVS_CTL` system register value.
@@ -3604,31 +2648,10 @@ impl CnthvsCtl {
 }
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHVS_CTL_EL2` system register value.
-    ///
-    /// Counter-timer Secure Virtual Timer Control Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvsCtlEl2: u64 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
-
-#[cfg(feature = "el2")]
-impl CnthvsCtlEl2 {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTHVS_CTL_EL2` system register value.
+///
+/// Counter-timer Secure Virtual Timer Control Register (EL2)
+pub type CnthvsCtlEl2 = CnthpsCtlEl2;
 
 bitflags! {
     /// `CNTHVS_CVAL` system register value.
@@ -3667,44 +2690,10 @@ impl CnthvsCval {
 }
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHVS_CVAL_EL2` system register value.
-    ///
-    /// Counter-timer Secure Virtual Timer CompareValue Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvsCvalEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl CnthvsCvalEl2 {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
+/// `CNTHVS_CVAL_EL2` system register value.
+///
+/// Counter-timer Secure Virtual Timer CompareValue Register (EL2)
+pub type CnthvsCvalEl2 = CnthpsCvalEl2;
 
 bitflags! {
     /// `CNTHVS_TVAL` system register value.
@@ -3742,243 +2731,37 @@ impl CnthvsTval {
 }
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHVS_TVAL_EL2` system register value.
-    ///
-    /// Counter-timer Secure Virtual Timer TimerValue Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvsTvalEl2: u64 {
-    }
-}
+/// `CNTHVS_TVAL_EL2` system register value.
+///
+/// Counter-timer Secure Virtual Timer TimerValue Register (EL2)
+pub type CnthvsTvalEl2 = CnthpsTvalEl2;
+
+/// `CNTHV_CTL` system register value.
+pub type CnthvCtl = CnthvsCtl;
 
 #[cfg(feature = "el2")]
-impl CnthvsTvalEl2 {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
+/// `CNTHV_CTL_EL2` system register value.
+///
+/// Counter-timer Virtual Timer Control Register (EL2)
+pub type CnthvCtlEl2 = CnthpsCtlEl2;
 
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `CNTHV_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvCtl: u32 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
-
-impl CnthvCtl {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTHV_CVAL` system register value.
+pub type CnthvCval = CnthvsCval;
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHV_CTL_EL2` system register value.
-    ///
-    /// Counter-timer Virtual Timer Control Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvCtlEl2: u64 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
+/// `CNTHV_CVAL_EL2` system register value.
+///
+/// Counter-timer Virtual Timer CompareValue Register (EL2)
+pub type CnthvCvalEl2 = CnthpsCvalEl2;
+
+/// `CNTHV_TVAL` system register value.
+pub type CnthvTval = CnthvsTval;
 
 #[cfg(feature = "el2")]
-impl CnthvCtlEl2 {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
-
-bitflags! {
-    /// `CNTHV_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvCval: u64 {
-    }
-}
-
-impl CnthvCval {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
-
-#[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHV_CVAL_EL2` system register value.
-    ///
-    /// Counter-timer Virtual Timer CompareValue Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvCvalEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl CnthvCvalEl2 {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `CNTHV_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvTval: u32 {
-    }
-}
-
-impl CnthvTval {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        (self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & Self::TIMERVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
-
-#[cfg(feature = "el2")]
-bitflags! {
-    /// `CNTHV_TVAL_EL2` system register value.
-    ///
-    /// Counter-timer Virtual Timer TimerValue Register (EL2)
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CnthvTvalEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl CnthvTvalEl2 {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
+/// `CNTHV_TVAL_EL2` system register value.
+///
+/// Counter-timer Virtual Timer TimerValue Register (EL2)
+pub type CnthvTvalEl2 = CnthpsTvalEl2;
 
 bitflags! {
     /// `CNTKCTL` system register value.
@@ -4439,28 +3222,8 @@ impl CntpsTvalEl1 {
     }
 }
 
-bitflags! {
-    /// `CNTP_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntpCtl: u32 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
-
-impl CntpCtl {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTP_CTL` system register value.
+pub type CntpCtl = CnthpsCtl;
 
 bitflags! {
     /// `CNTP_CTL_EL0` system register value.
@@ -4487,41 +3250,8 @@ impl CntpCtlEl0 {
     pub const ISTATUS_SHIFT: u32 = 2;
 }
 
-bitflags! {
-    /// `CNTP_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntpCval: u64 {
-    }
-}
-
-impl CntpCval {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
+/// `CNTP_CVAL` system register value.
+pub type CntpCval = CnthpsCval;
 
 bitflags! {
     /// `CNTP_CVAL_EL0` system register value.
@@ -4561,40 +3291,8 @@ impl CntpCvalEl0 {
     }
 }
 
-bitflags! {
-    /// `CNTP_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntpTval: u32 {
-    }
-}
-
-impl CntpTval {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        (self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & Self::TIMERVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
+/// `CNTP_TVAL` system register value.
+pub type CntpTval = CnthpsTval;
 
 bitflags! {
     /// `CNTP_TVAL_EL0` system register value.
@@ -4857,199 +3555,29 @@ impl CntvoffEl2 {
     }
 }
 
-bitflags! {
-    /// `CNTV_CTL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntvCtl: u32 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
+/// `CNTV_CTL` system register value.
+pub type CntvCtl = CnthvsCtl;
 
-impl CntvCtl {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTV_CTL_EL0` system register value.
+///
+/// Counter-timer Virtual Timer Control Register
+pub type CntvCtlEl0 = CntpCtlEl0;
 
-bitflags! {
-    /// `CNTV_CTL_EL0` system register value.
-    ///
-    /// Counter-timer Virtual Timer Control Register
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntvCtlEl0: u64 {
-        /// `ENABLE` bit.
-        const ENABLE = 1 << 0;
-        /// `IMASK` bit.
-        const IMASK = 1 << 1;
-        /// `ISTATUS` bit.
-        const ISTATUS = 1 << 2;
-    }
-}
+/// `CNTV_CVAL` system register value.
+pub type CntvCval = CnthvsCval;
 
-impl CntvCtlEl0 {
-    /// Offset of the `ENABLE` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-    /// Offset of the `IMASK` field.
-    pub const IMASK_SHIFT: u32 = 1;
-    /// Offset of the `ISTATUS` field.
-    pub const ISTATUS_SHIFT: u32 = 2;
-}
+/// `CNTV_CVAL_EL0` system register value.
+///
+/// Counter-timer Virtual Timer CompareValue Register
+pub type CntvCvalEl0 = CntpCvalEl0;
 
-bitflags! {
-    /// `CNTV_CVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntvCval: u64 {
-    }
-}
+/// `CNTV_TVAL` system register value.
+pub type CntvTval = CnthvsTval;
 
-impl CntvCval {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `CNTV_CVAL_EL0` system register value.
-    ///
-    /// Counter-timer Virtual Timer CompareValue Register
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntvCvalEl0: u64 {
-    }
-}
-
-impl CntvCvalEl0 {
-    /// Offset of the `CompareValue` field.
-    pub const COMPAREVALUE_SHIFT: u32 = 0;
-    /// Mask for the `CompareValue` field.
-    pub const COMPAREVALUE_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `CompareValue` field.
-    pub const fn comparevalue(self) -> u64 {
-        (self.bits() >> Self::COMPAREVALUE_SHIFT) & Self::COMPAREVALUE_MASK
-    }
-
-    /// Sets the value of the `CompareValue` field.
-    pub const fn set_comparevalue(&mut self, value: u64) {
-        let offset = Self::COMPAREVALUE_SHIFT;
-        assert!(value & Self::COMPAREVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::COMPAREVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `CompareValue` field set to the given value.
-    pub const fn with_comparevalue(mut self, value: u64) -> Self {
-        self.set_comparevalue(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `CNTV_TVAL` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntvTval: u32 {
-    }
-}
-
-impl CntvTval {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u32 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        (self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & Self::TIMERVALUE_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
-
-bitflags! {
-    /// `CNTV_TVAL_EL0` system register value.
-    ///
-    /// Counter-timer Virtual Timer TimerValue Register
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct CntvTvalEl0: u64 {
-    }
-}
-
-impl CntvTvalEl0 {
-    /// Offset of the `TimerValue` field.
-    pub const TIMERVALUE_SHIFT: u32 = 0;
-    /// Mask for the `TimerValue` field.
-    pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        ((self.bits() >> Self::TIMERVALUE_SHIFT) & Self::TIMERVALUE_MASK) as u32
-    }
-
-    /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
-        let offset = Self::TIMERVALUE_SHIFT;
-        assert!(value & (Self::TIMERVALUE_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TIMERVALUE_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
-        self.set_timervalue(value);
-        self
-    }
-}
+/// `CNTV_TVAL_EL0` system register value.
+///
+/// Counter-timer Virtual Timer TimerValue Register
+pub type CntvTvalEl0 = CntpTvalEl0;
 
 bitflags! {
     /// `CONTEXTIDR` system register value.
@@ -13157,41 +11685,8 @@ impl IccBpr1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_BPR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccBpr1El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccBpr1El1 {
-    /// Offset of the `BinaryPoint` field.
-    pub const BINARYPOINT_SHIFT: u32 = 0;
-    /// Mask for the `BinaryPoint` field.
-    pub const BINARYPOINT_MASK: u64 = 0b111;
-
-    /// Returns the value of the `BinaryPoint` field.
-    pub const fn binarypoint(self) -> u8 {
-        ((self.bits() >> Self::BINARYPOINT_SHIFT) & Self::BINARYPOINT_MASK) as u8
-    }
-
-    /// Sets the value of the `BinaryPoint` field.
-    pub const fn set_binarypoint(&mut self, value: u8) {
-        let offset = Self::BINARYPOINT_SHIFT;
-        assert!(value & (Self::BINARYPOINT_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::BINARYPOINT_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `BinaryPoint` field set to the given value.
-    pub const fn with_binarypoint(mut self, value: u8) -> Self {
-        self.set_binarypoint(value);
-        self
-    }
-}
+/// `ICC_BPR1_EL1` system register value.
+pub type IccBpr1El1 = IccBpr0El1;
 
 bitflags! {
     /// `ICC_CTLR` system register value.
@@ -13586,41 +12081,8 @@ impl IccEoir0 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_EOIR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccEoir0El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccEoir0El1 {
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u32) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u32) -> Self {
-        self.set_intid(value);
-        self
-    }
-}
+/// `ICC_EOIR0_EL1` system register value.
+pub type IccEoir0El1 = IccDirEl1;
 
 bitflags! {
     /// `ICC_EOIR1` system register value.
@@ -13658,41 +12120,8 @@ impl IccEoir1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_EOIR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccEoir1El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccEoir1El1 {
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u32) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u32) -> Self {
-        self.set_intid(value);
-        self
-    }
-}
+/// `ICC_EOIR1_EL1` system register value.
+pub type IccEoir1El1 = IccDirEl1;
 
 bitflags! {
     /// `ICC_HPPIR0` system register value.
@@ -13802,41 +12231,8 @@ impl IccHppir1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_HPPIR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccHppir1El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccHppir1El1 {
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u32) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u32) -> Self {
-        self.set_intid(value);
-        self
-    }
-}
+/// `ICC_HPPIR1_EL1` system register value.
+pub type IccHppir1El1 = IccHppir0El1;
 
 bitflags! {
     /// `ICC_HSRE` system register value.
@@ -13901,41 +12297,8 @@ impl IccIar0 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_IAR0_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccIar0El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccIar0El1 {
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u32) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u32) -> Self {
-        self.set_intid(value);
-        self
-    }
-}
+/// `ICC_IAR0_EL1` system register value.
+pub type IccIar0El1 = IccHppir0El1;
 
 bitflags! {
     /// `ICC_IAR1` system register value.
@@ -13973,41 +12336,8 @@ impl IccIar1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_IAR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccIar1El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccIar1El1 {
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u32) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u32) -> Self {
-        self.set_intid(value);
-        self
-    }
-}
+/// `ICC_IAR1_EL1` system register value.
+pub type IccIar1El1 = IccHppir0El1;
 
 bitflags! {
     /// `ICC_IGRPEN0` system register value.
@@ -14057,21 +12387,8 @@ impl IccIgrpen1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_IGRPEN1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccIgrpen1El1: u64 {
-        /// `Enable` bit.
-        const ENABLE = 1 << 0;
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccIgrpen1El1 {
-    /// Offset of the `Enable` field.
-    pub const ENABLE_SHIFT: u32 = 0;
-}
+/// `ICC_IGRPEN1_EL1` system register value.
+pub type IccIgrpen1El1 = IccIgrpen0El1;
 
 #[cfg(feature = "el3")]
 bitflags! {
@@ -14248,41 +12565,8 @@ impl IccMsre {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_NMIAR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccNmiar1El1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccNmiar1El1 {
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 0;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u32 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u32
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u32) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u32) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u32) -> Self {
-        self.set_intid(value);
-        self
-    }
-}
+/// `ICC_NMIAR1_EL1` system register value.
+pub type IccNmiar1El1 = IccHppir0El1;
 
 bitflags! {
     /// `ICC_PMR` system register value.
@@ -14596,165 +12880,8 @@ impl IccSgi0r {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_SGI0R_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccSgi0rEl1: u64 {
-        /// `IRM` bit.
-        const IRM = 1 << 40;
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccSgi0rEl1 {
-    /// Offset of the `TargetList` field.
-    pub const TARGETLIST_SHIFT: u32 = 0;
-    /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
-    /// Offset of the `Aff1` field.
-    pub const AFF1_SHIFT: u32 = 16;
-    /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b1111_1111;
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 24;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111;
-    /// Offset of the `Aff2` field.
-    pub const AFF2_SHIFT: u32 = 32;
-    /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b1111_1111;
-    /// Offset of the `IRM` field.
-    pub const IRM_SHIFT: u32 = 40;
-    /// Offset of the `RS` field.
-    pub const RS_SHIFT: u32 = 44;
-    /// Mask for the `RS` field.
-    pub const RS_MASK: u64 = 0b1111;
-    /// Offset of the `Aff3` field.
-    pub const AFF3_SHIFT: u32 = 48;
-    /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b1111_1111;
-
-    /// Returns the value of the `TargetList` field.
-    pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
-    }
-
-    /// Sets the value of the `TargetList` field.
-    pub const fn set_targetlist(&mut self, value: u16) {
-        let offset = Self::TARGETLIST_SHIFT;
-        assert!(value & (Self::TARGETLIST_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TARGETLIST_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `TargetList` field set to the given value.
-    pub const fn with_targetlist(mut self, value: u16) -> Self {
-        self.set_targetlist(value);
-        self
-    }
-
-    /// Returns the value of the `Aff1` field.
-    pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
-    }
-
-    /// Sets the value of the `Aff1` field.
-    pub const fn set_aff1(&mut self, value: u8) {
-        let offset = Self::AFF1_SHIFT;
-        assert!(value & (Self::AFF1_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Aff1` field set to the given value.
-    pub const fn with_aff1(mut self, value: u8) -> Self {
-        self.set_aff1(value);
-        self
-    }
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u8) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u8) -> Self {
-        self.set_intid(value);
-        self
-    }
-
-    /// Returns the value of the `Aff2` field.
-    pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
-    }
-
-    /// Sets the value of the `Aff2` field.
-    pub const fn set_aff2(&mut self, value: u8) {
-        let offset = Self::AFF2_SHIFT;
-        assert!(value & (Self::AFF2_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Aff2` field set to the given value.
-    pub const fn with_aff2(mut self, value: u8) -> Self {
-        self.set_aff2(value);
-        self
-    }
-
-    /// Returns the value of the `RS` field.
-    pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
-    }
-
-    /// Sets the value of the `RS` field.
-    pub const fn set_rs(&mut self, value: u8) {
-        let offset = Self::RS_SHIFT;
-        assert!(value & (Self::RS_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::RS_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `RS` field set to the given value.
-    pub const fn with_rs(mut self, value: u8) -> Self {
-        self.set_rs(value);
-        self
-    }
-
-    /// Returns the value of the `Aff3` field.
-    pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
-    }
-
-    /// Sets the value of the `Aff3` field.
-    pub const fn set_aff3(&mut self, value: u8) {
-        let offset = Self::AFF3_SHIFT;
-        assert!(value & (Self::AFF3_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Aff3` field set to the given value.
-    pub const fn with_aff3(mut self, value: u8) -> Self {
-        self.set_aff3(value);
-        self
-    }
-}
+/// `ICC_SGI0R_EL1` system register value.
+pub type IccSgi0rEl1 = IccAsgi1rEl1;
 
 bitflags! {
     /// `ICC_SGI1R` system register value.
@@ -14916,165 +13043,8 @@ impl IccSgi1r {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `ICC_SGI1R_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct IccSgi1rEl1: u64 {
-        /// `IRM` bit.
-        const IRM = 1 << 40;
-    }
-}
-
-#[cfg(feature = "el1")]
-impl IccSgi1rEl1 {
-    /// Offset of the `TargetList` field.
-    pub const TARGETLIST_SHIFT: u32 = 0;
-    /// Mask for the `TargetList` field.
-    pub const TARGETLIST_MASK: u64 = 0b1111_1111_1111_1111;
-    /// Offset of the `Aff1` field.
-    pub const AFF1_SHIFT: u32 = 16;
-    /// Mask for the `Aff1` field.
-    pub const AFF1_MASK: u64 = 0b1111_1111;
-    /// Offset of the `INTID` field.
-    pub const INTID_SHIFT: u32 = 24;
-    /// Mask for the `INTID` field.
-    pub const INTID_MASK: u64 = 0b1111;
-    /// Offset of the `Aff2` field.
-    pub const AFF2_SHIFT: u32 = 32;
-    /// Mask for the `Aff2` field.
-    pub const AFF2_MASK: u64 = 0b1111_1111;
-    /// Offset of the `IRM` field.
-    pub const IRM_SHIFT: u32 = 40;
-    /// Offset of the `RS` field.
-    pub const RS_SHIFT: u32 = 44;
-    /// Mask for the `RS` field.
-    pub const RS_MASK: u64 = 0b1111;
-    /// Offset of the `Aff3` field.
-    pub const AFF3_SHIFT: u32 = 48;
-    /// Mask for the `Aff3` field.
-    pub const AFF3_MASK: u64 = 0b1111_1111;
-
-    /// Returns the value of the `TargetList` field.
-    pub const fn targetlist(self) -> u16 {
-        ((self.bits() >> Self::TARGETLIST_SHIFT) & Self::TARGETLIST_MASK) as u16
-    }
-
-    /// Sets the value of the `TargetList` field.
-    pub const fn set_targetlist(&mut self, value: u16) {
-        let offset = Self::TARGETLIST_SHIFT;
-        assert!(value & (Self::TARGETLIST_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::TARGETLIST_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `TargetList` field set to the given value.
-    pub const fn with_targetlist(mut self, value: u16) -> Self {
-        self.set_targetlist(value);
-        self
-    }
-
-    /// Returns the value of the `Aff1` field.
-    pub const fn aff1(self) -> u8 {
-        ((self.bits() >> Self::AFF1_SHIFT) & Self::AFF1_MASK) as u8
-    }
-
-    /// Sets the value of the `Aff1` field.
-    pub const fn set_aff1(&mut self, value: u8) {
-        let offset = Self::AFF1_SHIFT;
-        assert!(value & (Self::AFF1_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::AFF1_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Aff1` field set to the given value.
-    pub const fn with_aff1(mut self, value: u8) -> Self {
-        self.set_aff1(value);
-        self
-    }
-
-    /// Returns the value of the `INTID` field.
-    pub const fn intid(self) -> u8 {
-        ((self.bits() >> Self::INTID_SHIFT) & Self::INTID_MASK) as u8
-    }
-
-    /// Sets the value of the `INTID` field.
-    pub const fn set_intid(&mut self, value: u8) {
-        let offset = Self::INTID_SHIFT;
-        assert!(value & (Self::INTID_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::INTID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `INTID` field set to the given value.
-    pub const fn with_intid(mut self, value: u8) -> Self {
-        self.set_intid(value);
-        self
-    }
-
-    /// Returns the value of the `Aff2` field.
-    pub const fn aff2(self) -> u8 {
-        ((self.bits() >> Self::AFF2_SHIFT) & Self::AFF2_MASK) as u8
-    }
-
-    /// Sets the value of the `Aff2` field.
-    pub const fn set_aff2(&mut self, value: u8) {
-        let offset = Self::AFF2_SHIFT;
-        assert!(value & (Self::AFF2_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::AFF2_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Aff2` field set to the given value.
-    pub const fn with_aff2(mut self, value: u8) -> Self {
-        self.set_aff2(value);
-        self
-    }
-
-    /// Returns the value of the `RS` field.
-    pub const fn rs(self) -> u8 {
-        ((self.bits() >> Self::RS_SHIFT) & Self::RS_MASK) as u8
-    }
-
-    /// Sets the value of the `RS` field.
-    pub const fn set_rs(&mut self, value: u8) {
-        let offset = Self::RS_SHIFT;
-        assert!(value & (Self::RS_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::RS_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `RS` field set to the given value.
-    pub const fn with_rs(mut self, value: u8) -> Self {
-        self.set_rs(value);
-        self
-    }
-
-    /// Returns the value of the `Aff3` field.
-    pub const fn aff3(self) -> u8 {
-        ((self.bits() >> Self::AFF3_SHIFT) & Self::AFF3_MASK) as u8
-    }
-
-    /// Sets the value of the `Aff3` field.
-    pub const fn set_aff3(&mut self, value: u8) {
-        let offset = Self::AFF3_SHIFT;
-        assert!(value & (Self::AFF3_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::AFF3_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Aff3` field set to the given value.
-    pub const fn with_aff3(mut self, value: u8) -> Self {
-        self.set_aff3(value);
-        self
-    }
-}
+/// `ICC_SGI1R_EL1` system register value.
+pub type IccSgi1rEl1 = IccAsgi1rEl1;
 
 bitflags! {
     /// `ICC_SRE` system register value.
@@ -26614,82 +24584,12 @@ impl Pire0El2 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `PIR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct PirEl1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl PirEl1 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `PIR_EL1` system register value.
+pub type PirEl1 = Pire0El1;
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `PIR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct PirEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl PirEl2 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `PIR_EL2` system register value.
+pub type PirEl2 = Pire0El2;
 
 #[cfg(feature = "el3")]
 bitflags! {
@@ -28169,121 +26069,16 @@ impl PorEl0 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `POR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct PorEl1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl PorEl1 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `POR_EL1` system register value.
+pub type PorEl1 = Pire0El1;
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `POR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct PorEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl PorEl2 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `POR_EL2` system register value.
+pub type PorEl2 = Pire0El2;
 
 #[cfg(feature = "el3")]
-bitflags! {
-    /// `POR_EL3` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct PorEl3: u64 {
-    }
-}
-
-#[cfg(feature = "el3")]
-impl PorEl3 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `POR_EL3` system register value.
+pub type PorEl3 = PirEl3;
 
 bitflags! {
     /// `PRRR` system register value.
@@ -28474,82 +26269,12 @@ impl Rvbar {
 }
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `S2PIR_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct S2pirEl2: u64 {
-    }
-}
-
-#[cfg(feature = "el2")]
-impl S2pirEl2 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `S2PIR_EL2` system register value.
+pub type S2pirEl2 = Pire0El2;
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `S2POR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct S2porEl1: u64 {
-    }
-}
-
-#[cfg(feature = "el1")]
-impl S2porEl1 {
-    /// Offset of the `Perm<m>` field.
-    pub const PERM_SHIFT: u32 = 0;
-    /// Mask for the `Perm<m>` field.
-    pub const PERM_MASK: u64 = 0b1111;
-
-    /// Returns the value of the given `Perm<m>` field.
-    pub const fn perm(self, m: u32) -> u8 {
-        assert!(m < 16);
-        ((self.bits() >> (Self::PERM_SHIFT + m * 4)) & Self::PERM_MASK) as u8
-    }
-
-    /// Sets the value of the `Perm<m>` field.
-    pub const fn set_perm(&mut self, m: u32, value: u8) {
-        assert!(m < 16);
-        let offset = Self::PERM_SHIFT + m * 4;
-        assert!(value & (Self::PERM_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::PERM_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `Perm<m>` field set to the given value.
-    pub const fn with_perm(mut self, m: u32, value: u8) -> Self {
-        self.set_perm(m, value);
-        self
-    }
-}
+/// `S2POR_EL1` system register value.
+pub type S2porEl1 = Pire0El1;
 
 bitflags! {
     /// `SCR` system register value.
@@ -32170,25 +29895,8 @@ impl Tfsre0El1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `TFSR_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct TfsrEl1: u64 {
-        /// `TF0` bit.
-        const TF0 = 1 << 0;
-        /// `TF1` bit.
-        const TF1 = 1 << 1;
-    }
-}
-
-#[cfg(feature = "el1")]
-impl TfsrEl1 {
-    /// Offset of the `TF0` field.
-    pub const TF0_SHIFT: u32 = 0;
-    /// Offset of the `TF1` field.
-    pub const TF1_SHIFT: u32 = 1;
-}
+/// `TFSR_EL1` system register value.
+pub type TfsrEl1 = Tfsre0El1;
 
 #[cfg(feature = "el2")]
 bitflags! {
@@ -32364,41 +30072,8 @@ impl Tpidrurw {
     }
 }
 
-bitflags! {
-    /// `TPIDR_EL0` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct TpidrEl0: u64 {
-    }
-}
-
-impl TpidrEl0 {
-    /// Offset of the `ThreadID` field.
-    pub const THREADID_SHIFT: u32 = 0;
-    /// Mask for the `ThreadID` field.
-    pub const THREADID_MASK: u64 =
-        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-
-    /// Returns the value of the `ThreadID` field.
-    pub const fn threadid(self) -> u64 {
-        (self.bits() >> Self::THREADID_SHIFT) & Self::THREADID_MASK
-    }
-
-    /// Sets the value of the `ThreadID` field.
-    pub const fn set_threadid(&mut self, value: u64) {
-        let offset = Self::THREADID_SHIFT;
-        assert!(value & Self::THREADID_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::THREADID_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `ThreadID` field set to the given value.
-    pub const fn with_threadid(mut self, value: u64) -> Self {
-        self.set_threadid(value);
-        self
-    }
-}
+/// `TPIDR_EL0` system register value.
+pub type TpidrEl0 = TpidrroEl0;
 
 #[cfg(feature = "el1")]
 bitflags! {
@@ -33329,182 +31004,12 @@ impl Ttbr1 {
 }
 
 #[cfg(feature = "el1")]
-bitflags! {
-    /// `TTBR1_EL1` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Ttbr1El1: u64 {
-        /// `CnP` bit.
-        const CNP = 1 << 0;
-    }
-}
-
-#[cfg(feature = "el1")]
-impl Ttbr1El1 {
-    /// Offset of the `CnP` field.
-    pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the `BADDR[47:1]` field.
-    pub const BADDR_47_1_SHIFT: u32 = 1;
-    /// Mask for the `BADDR[47:1]` field.
-    pub const BADDR_47_1_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-    /// Offset of the `SKL` field.
-    pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the `SKL` field.
-    pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the `ASID` field.
-    pub const ASID_SHIFT: u32 = 48;
-    /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b1111_1111_1111_1111;
-
-    /// Returns the value of the `BADDR[47:1]` field.
-    pub const fn baddr_47_1(self) -> u64 {
-        (self.bits() >> Self::BADDR_47_1_SHIFT) & Self::BADDR_47_1_MASK
-    }
-
-    /// Sets the value of the `BADDR[47:1]` field.
-    pub const fn set_baddr_47_1(&mut self, value: u64) {
-        let offset = Self::BADDR_47_1_SHIFT;
-        assert!(value & Self::BADDR_47_1_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::BADDR_47_1_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `BADDR[47:1]` field set to the given value.
-    pub const fn with_baddr_47_1(mut self, value: u64) -> Self {
-        self.set_baddr_47_1(value);
-        self
-    }
-
-    /// Returns the value of the `SKL` field.
-    pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
-    }
-
-    /// Sets the value of the `SKL` field.
-    pub const fn set_skl(&mut self, value: u8) {
-        let offset = Self::SKL_SHIFT;
-        assert!(value & (Self::SKL_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `SKL` field set to the given value.
-    pub const fn with_skl(mut self, value: u8) -> Self {
-        self.set_skl(value);
-        self
-    }
-
-    /// Returns the value of the `ASID` field.
-    pub const fn asid(self) -> u16 {
-        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u16
-    }
-
-    /// Sets the value of the `ASID` field.
-    pub const fn set_asid(&mut self, value: u16) {
-        let offset = Self::ASID_SHIFT;
-        assert!(value & (Self::ASID_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `ASID` field set to the given value.
-    pub const fn with_asid(mut self, value: u16) -> Self {
-        self.set_asid(value);
-        self
-    }
-}
+/// `TTBR1_EL1` system register value.
+pub type Ttbr1El1 = Ttbr0El1;
 
 #[cfg(feature = "el2")]
-bitflags! {
-    /// `TTBR1_EL2` system register value.
-    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
-    #[repr(transparent)]
-    pub struct Ttbr1El2: u64 {
-        /// `CnP` bit.
-        const CNP = 1 << 0;
-    }
-}
-
-#[cfg(feature = "el2")]
-impl Ttbr1El2 {
-    /// Offset of the `CnP` field.
-    pub const CNP_SHIFT: u32 = 0;
-    /// Offset of the `BADDR[47:1]` field.
-    pub const BADDR_47_1_SHIFT: u32 = 1;
-    /// Mask for the `BADDR[47:1]` field.
-    pub const BADDR_47_1_MASK: u64 = 0b111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
-    /// Offset of the `SKL` field.
-    pub const SKL_SHIFT: u32 = 1;
-    /// Mask for the `SKL` field.
-    pub const SKL_MASK: u64 = 0b11;
-    /// Offset of the `ASID` field.
-    pub const ASID_SHIFT: u32 = 48;
-    /// Mask for the `ASID` field.
-    pub const ASID_MASK: u64 = 0b1111_1111_1111_1111;
-
-    /// Returns the value of the `BADDR[47:1]` field.
-    pub const fn baddr_47_1(self) -> u64 {
-        (self.bits() >> Self::BADDR_47_1_SHIFT) & Self::BADDR_47_1_MASK
-    }
-
-    /// Sets the value of the `BADDR[47:1]` field.
-    pub const fn set_baddr_47_1(&mut self, value: u64) {
-        let offset = Self::BADDR_47_1_SHIFT;
-        assert!(value & Self::BADDR_47_1_MASK == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::BADDR_47_1_MASK << offset)) | (value << offset),
-        );
-    }
-
-    /// Returns a copy with the `BADDR[47:1]` field set to the given value.
-    pub const fn with_baddr_47_1(mut self, value: u64) -> Self {
-        self.set_baddr_47_1(value);
-        self
-    }
-
-    /// Returns the value of the `SKL` field.
-    pub const fn skl(self) -> u8 {
-        ((self.bits() >> Self::SKL_SHIFT) & Self::SKL_MASK) as u8
-    }
-
-    /// Sets the value of the `SKL` field.
-    pub const fn set_skl(&mut self, value: u8) {
-        let offset = Self::SKL_SHIFT;
-        assert!(value & (Self::SKL_MASK as u8) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::SKL_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `SKL` field set to the given value.
-    pub const fn with_skl(mut self, value: u8) -> Self {
-        self.set_skl(value);
-        self
-    }
-
-    /// Returns the value of the `ASID` field.
-    pub const fn asid(self) -> u16 {
-        ((self.bits() >> Self::ASID_SHIFT) & Self::ASID_MASK) as u16
-    }
-
-    /// Sets the value of the `ASID` field.
-    pub const fn set_asid(&mut self, value: u16) {
-        let offset = Self::ASID_SHIFT;
-        assert!(value & (Self::ASID_MASK as u16) == value);
-        *self = Self::from_bits_retain(
-            (self.bits() & !(Self::ASID_MASK << offset)) | ((value as u64) << offset),
-        );
-    }
-
-    /// Returns a copy with the `ASID` field set to the given value.
-    pub const fn with_asid(mut self, value: u16) -> Self {
-        self.set_asid(value);
-        self
-    }
-}
+/// `TTBR1_EL2` system register value.
+pub type Ttbr1El2 = Ttbr0El2;
 
 bitflags! {
     /// `VBAR` system register value.

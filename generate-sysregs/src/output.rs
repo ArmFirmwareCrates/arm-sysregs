@@ -44,8 +44,7 @@ pub use paste as _paste;
     for register in registers {
         if register.use_struct() {
             writeln!(writer)?;
-            register.write_bitflags(writer)?;
-            register.write_impl(writer)?;
+            register.write_lib(writer)?;
         }
     }
     writeln!(writer)?;
@@ -211,6 +210,49 @@ impl RegisterInfo {
     /// The name to use for the struct type for the register.
     fn struct_name(&self) -> String {
         camel_case(&self.name)
+    }
+
+    /// The struct name of the base type for the register, if it is type aliased.
+    fn alias_struct_name(&self) -> Option<String> {
+        Some(camel_case(self.alias.as_ref()?))
+    }
+
+    /// Writes the declaration - bitflags and impl - of this register.
+    /// If this register is aliased, only writes a type alias.
+    fn write_lib(&self, writer: impl Write + Copy) -> io::Result<()> {
+        match self.alias {
+            Some(_) => {
+                self.write_alias(writer)?;
+            }
+            None => {
+                self.write_bitflags(writer)?;
+                self.write_impl(writer)?;
+            }
+        }
+        Ok(())
+    }
+
+    /// Writes a type alias using self.alias as the base struct name.
+    /// Expects self.alias to be Some(String).
+    fn write_alias(&self, mut writer: impl Write) -> io::Result<()> {
+        if let Some(guard) = self.exception_level.cfg_guard() {
+            writeln!(writer, "{guard}")?;
+        }
+
+        writeln!(writer, "/// `{}` system register value.", self.name)?;
+        if let Some(description) = &self.description {
+            writeln!(writer, "///")?;
+            writeln!(writer, "/// {description}")?;
+        }
+
+        writeln!(
+            writer,
+            "pub type {} = {};",
+            self.struct_name(),
+            self.alias_struct_name().unwrap()
+        )?;
+
+        Ok(())
     }
 
     fn write_bitflags(&self, mut writer: impl Write) -> io::Result<()> {

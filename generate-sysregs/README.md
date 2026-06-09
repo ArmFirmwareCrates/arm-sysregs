@@ -75,6 +75,7 @@ such as array placeholders:
 | `write_safety_doc = "..."` | Adds the `# Safety` documentation for an unsafe write accessor. |
 | `manual_debug = true` | Prevents `#[derive(Debug)]` when the register type has a manual `Debug` implementation. |
 | `use_raw_name = true` | Keeps the raw assembly name from the JSON input instead of deriving one from the register name. |
+| `disable_alias = true` | Forces an unique `bitflags!` and `impl` block to be generated for the register's type, instead of using type aliases when the register is identical to another. |
 
 ### Field Descriptions
 
@@ -96,6 +97,25 @@ Use a `types` section to map generated field accessors to custom types:
 
 Custom types must be absolute paths. They must implement `TryFrom<raw type>`, where `raw type` is
 the smallest unsigned integer type that can hold the field value.
+
+## Type aliasing
+In the case of array registers (e.g. `AMEVCNTR1<n>_EL0`), and specific other registers (e.g. `PIRE0_EL1` and `POR_EL1`), the generated types might be identical.
+Due to the current implementation of the rust compiler, these duplicate types contribute immensely to the size of the dependency graph at compile-time; this feature aims to reduce memory usage during compilation via generating type aliases where possible.
+
+The generated types of two registers are considered identical if the generated Rust type would have the same public API and implementation-relevant metadata. This includes:
+ - register width,
+ - AArch32 and AArch64 availability,
+ - RES1 bits,
+ - read/write safety settings,
+ - generated `Debug` behavior,
+ - AArch32 encoding,
+ - special condition and exception-level gating,
+ - and fields in the same order - with the same names, descriptions, positions, widths, writability, custom types, and array metadata.
+
+Notably, this does not include the name and description of the register.
+
+The default behavior is to globally allow type aliasing.
+It may be turned off globally with the `--disable-alias` flag, or per-register via setting `disable_alias=true` in the register configuration.
 
 ## Example Configuration
 
