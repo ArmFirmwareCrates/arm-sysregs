@@ -11,6 +11,11 @@
 - Added FEAT_BRBE register `BRBCR_EL2`, and query functions for FEAT_BRBE and FEAT_BRBEv1p1.
 - Added FEAT_SCTLR2 registers.
 
+### Bugfixes
+
+- Fixed feature detection helpers for ID register fields to treat later feature versions as also
+  implementing earlier versions, following the Arm ARM ID scheme principles.
+
 ### Breaking changes
 
 - Armv8.9 FEAT_Debugv8p9 `Dspsr2` PPEND and `SpsrElx` PPEND bits removed.
