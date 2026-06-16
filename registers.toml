@@ -395,6 +395,9 @@ DminLine = "Log2 of the number of words in the smallest cache line of all the da
 
 [registers.CurrentEL]
 
+[registers.DAIF]
+description = "Interrupt Mask Bits"
+
 [registers.DISR_EL1]
 write = "safe"
 

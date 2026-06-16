@@ -4491,6 +4491,35 @@ impl Dacr {
 }
 
 bitflags! {
+    /// `DAIF` system register value.
+    ///
+    /// Interrupt Mask Bits
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Daif: u64 {
+        /// `F` bit.
+        const F = 1 << 6;
+        /// `I` bit.
+        const I = 1 << 7;
+        /// `A` bit.
+        const A = 1 << 8;
+        /// `D` bit.
+        const D = 1 << 9;
+    }
+}
+
+impl Daif {
+    /// Offset of the `F` field.
+    pub const F_SHIFT: u32 = 6;
+    /// Offset of the `I` field.
+    pub const I_SHIFT: u32 = 7;
+    /// Offset of the `A` field.
+    pub const A_SHIFT: u32 = 8;
+    /// Offset of the `D` field.
+    pub const D_SHIFT: u32 = 9;
+}
+
+bitflags! {
     /// `DBGAUTHSTATUS` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -32800,6 +32829,8 @@ read_sysreg!(ctr_el0, u64: CtrEl0, safe, fake::SYSREGS);
 read_sysreg!(currentel, u64: Currentel, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(dacr: (p15, 0, c0, c3, 0), u32: Dacr, safe_read, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_write_sysreg!(daif, u64: Daif, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(dbgauthstatus: (p14, 0, c14, c7, 6), u32: Dbgauthstatus, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]

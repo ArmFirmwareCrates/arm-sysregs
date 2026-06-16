@@ -384,6 +384,8 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("currentel = {:?}", arm_sysregs::read_currentel());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("dacr = {:?}", arm_sysregs::read_dacr());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("daif = {:?}", arm_sysregs::read_daif());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("dbgauthstatus = {:?}", arm_sysregs::read_dbgauthstatus());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]

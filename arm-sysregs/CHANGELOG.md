@@ -10,6 +10,7 @@
 - Added registers for FEAT_S1PIE, FEAT_S1POE, FEAT_S2PIE, and FEAT_S2POE.
 - Added FEAT_BRBE register `BRBCR_EL2`, and query functions for FEAT_BRBE and FEAT_BRBEv1p1.
 - Added FEAT_SCTLR2 registers.
+- Added DAIF register.
 - Use type aliasing for identical registers, rather than generate different types.
 
 ### Bugfixes
