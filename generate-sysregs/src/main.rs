@@ -10,7 +10,7 @@ use crate::{
     config::Config,
     enums::identify_enums,
     json_input::register_entries_to_register_infos,
-    output::{write_example, write_fake, write_lib},
+    output::{OutputContext, write_example, write_fake, write_lib},
 };
 use arm_sysregs_json::{RegisterEntry, Values};
 use clap::{Parser, Subcommand, ValueEnum};
@@ -60,9 +60,14 @@ fn main() -> Result<(), Report> {
             let output_example =
                 File::create(output_directory.join("examples").join("log_all.rs"))?;
 
-            write_lib(&output_lib, &register_infos)?;
-            write_fake(&output_fake, &register_infos)?;
-            write_example(&output_example, &register_infos)?;
+            let context = OutputContext {
+                // If there are no exception level filters, guards will be generated.
+                write_el_guards: !filter.is_some_and(|filter| filter.is_el()),
+            };
+
+            write_lib(&output_lib, &register_infos, &context)?;
+            write_fake(&output_fake, &register_infos, &context)?;
+            write_example(&output_example, &register_infos, &context)?;
 
             println!("Written {} registers in total.", register_infos.len());
         }
@@ -420,6 +425,7 @@ enum RegisterFilter {
 }
 
 impl RegisterFilter {
+    /// Whether the given register is selected by this filter.
     fn matches(self, register: &RegisterInfo) -> bool {
         match self {
             RegisterFilter::El0 => {
@@ -436,6 +442,14 @@ impl RegisterFilter {
             }
             RegisterFilter::Aarch32 => register.aarch32,
         }
+    }
+
+    /// Whether this filter selects a specific exception level.
+    fn is_el(self) -> bool {
+        matches!(
+            &self,
+            RegisterFilter::El0 | RegisterFilter::El1 | RegisterFilter::El2 | RegisterFilter::El3
+        )
     }
 }
 

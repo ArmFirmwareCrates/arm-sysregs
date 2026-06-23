@@ -11,7 +11,17 @@ use std::io::{self, Write};
 
 const RESERVED_NAMES: &[&str] = &["extend", "type"];
 
-pub fn write_lib(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
+/// Options shared by the generated output files.
+pub struct OutputContext {
+    /// Whether generated items should be guarded by exception level features.
+    pub write_el_guards: bool,
+}
+
+pub fn write_lib(
+    mut writer: impl Write + Copy,
+    registers: &[RegisterInfo],
+    context: &OutputContext,
+) -> io::Result<()> {
     writer.write_all(
         "\
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
@@ -44,18 +54,22 @@ pub use paste as _paste;
     for register in registers {
         if register.use_struct() {
             writeln!(writer)?;
-            register.write_lib(writer)?;
+            register.write_lib(writer, context)?;
         }
     }
     writeln!(writer)?;
     for register in registers {
-        register.write_accessor(writer)?;
+        register.write_accessor(writer, context)?;
     }
 
     Ok(())
 }
 
-pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
+pub fn write_fake(
+    mut writer: impl Write + Copy,
+    registers: &[RegisterInfo],
+    context: &OutputContext,
+) -> io::Result<()> {
     writer.write_all(
         "\
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
@@ -83,7 +97,9 @@ pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> 
             continue;
         }
 
-        if let Some(guard) = exception_level.cfg_guard() {
+        if context.write_el_guards
+            && let Some(guard) = exception_level.cfg_guard()
+        {
             writeln!(writer, "{guard}")?;
         }
         writeln!(writer, "use crate::{{{}}};", struct_names.join(", "))?;
@@ -100,7 +116,9 @@ pub struct SystemRegisters {
     )?;
 
     for register in registers {
-        if let Some(guard) = register.exception_level.cfg_guard() {
+        if context.write_el_guards
+            && let Some(guard) = register.exception_level.cfg_guard()
+        {
             writeln!(writer, "    {guard}")?;
         }
         writeln!(
@@ -126,7 +144,9 @@ pub struct SystemRegisters {
     writeln!(writer, "    pub(crate) const fn new() -> Self {{")?;
     writeln!(writer, "        Self {{")?;
     for register in registers {
-        if let Some(guard) = register.exception_level.cfg_guard() {
+        if context.write_el_guards
+            && let Some(guard) = register.exception_level.cfg_guard()
+        {
             writeln!(writer, "            {guard}")?;
         }
         if register.use_struct() {
@@ -147,7 +167,11 @@ pub struct SystemRegisters {
     Ok(())
 }
 
-pub fn write_example(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> io::Result<()> {
+pub fn write_example(
+    mut writer: impl Write + Copy,
+    registers: &[RegisterInfo],
+    context: &OutputContext,
+) -> io::Result<()> {
     writeln!(
         writer,
         "\
@@ -175,7 +199,7 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {{
     )?;
     for register in registers {
         if register.read.is_some() {
-            if let Some(guard) = register.cfg_guard() {
+            if let Some(guard) = register.cfg_guard(context) {
                 writeln!(writer, "    {guard}")?;
             }
             let name = register.variable_name();
@@ -223,14 +247,14 @@ impl RegisterInfo {
 
     /// Writes the declaration - bitflags and impl - of this register.
     /// If this register is aliased, only writes a type alias.
-    fn write_lib(&self, writer: impl Write + Copy) -> io::Result<()> {
+    fn write_lib(&self, writer: impl Write + Copy, context: &OutputContext) -> io::Result<()> {
         match self.alias {
             Some(_) => {
-                self.write_alias(writer)?;
+                self.write_alias(writer, context)?;
             }
             None => {
-                self.write_bitflags(writer)?;
-                self.write_impl(writer)?;
+                self.write_bitflags(writer, context)?;
+                self.write_impl(writer, context)?;
             }
         }
         Ok(())
@@ -238,8 +262,10 @@ impl RegisterInfo {
 
     /// Writes a type alias using self.alias as the base struct name.
     /// Expects self.alias to be Some(String).
-    fn write_alias(&self, mut writer: impl Write) -> io::Result<()> {
-        if let Some(guard) = self.exception_level.cfg_guard() {
+    fn write_alias(&self, mut writer: impl Write, context: &OutputContext) -> io::Result<()> {
+        if context.write_el_guards
+            && let Some(guard) = self.exception_level.cfg_guard()
+        {
             writeln!(writer, "{guard}")?;
         }
 
@@ -259,8 +285,10 @@ impl RegisterInfo {
         Ok(())
     }
 
-    fn write_bitflags(&self, mut writer: impl Write) -> io::Result<()> {
-        if let Some(guard) = self.exception_level.cfg_guard() {
+    fn write_bitflags(&self, mut writer: impl Write, context: &OutputContext) -> io::Result<()> {
+        if context.write_el_guards
+            && let Some(guard) = self.exception_level.cfg_guard()
+        {
             writeln!(writer, "{guard}")?;
         }
         writeln!(writer, "bitflags! {{")?;
@@ -333,9 +361,11 @@ impl RegisterInfo {
         Ok(())
     }
 
-    fn write_impl(&self, mut writer: impl Write) -> io::Result<()> {
+    fn write_impl(&self, mut writer: impl Write, context: &OutputContext) -> io::Result<()> {
         writeln!(writer)?;
-        if let Some(guard) = self.exception_level.cfg_guard() {
+        if context.write_el_guards
+            && let Some(guard) = self.exception_level.cfg_guard()
+        {
             writeln!(writer, "{guard}")?;
         }
         writeln!(writer, "impl {} {{", self.struct_name())?;
@@ -631,59 +661,52 @@ impl RegisterInfo {
         Ok(())
     }
 
-    fn cfg_guard(&self) -> Option<&'static str> {
-        match (&self.aarch32, self.aarch64) {
-            (false, true) => match self.exception_level {
-                ExceptionLevel::El0 => {
-                    Some("#[cfg(any(test, feature = \"fakes\", target_arch = \"aarch64\"))]")
-                }
-                ExceptionLevel::El1 => Some(
-                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"aarch64\"), feature = \"el1\"))]",
-                ),
-                ExceptionLevel::El2 => Some(
-                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"aarch64\"), feature = \"el2\"))]",
-                ),
-                ExceptionLevel::El3 => Some(
-                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"aarch64\"), feature = \"el3\"))]",
-                ),
-            },
-            (false, false) => match self.exception_level {
-                ExceptionLevel::El0 => Some("#[cfg(any(test, feature = \"fakes\"))]"),
-                ExceptionLevel::El1 => {
-                    Some("#[cfg(all(any(test, feature = \"fakes\"), feature = \"el1\"))]")
-                }
-                ExceptionLevel::El2 => {
-                    Some("#[cfg(all(any(test, feature = \"fakes\"), feature = \"el2\"))]")
-                }
-                ExceptionLevel::El3 => {
-                    Some("#[cfg(all(any(test, feature = \"fakes\"), feature = \"el3\"))]")
-                }
-            },
-            (true, true) => match self.exception_level {
-                ExceptionLevel::El0 => None,
-                ExceptionLevel::El1 => Some("#[cfg(feature = \"el1\")]"),
-                ExceptionLevel::El2 => Some("#[cfg(feature = \"el2\")]"),
-                ExceptionLevel::El3 => Some("#[cfg(feature = \"el3\")]"),
-            },
-            (true, false) => match self.exception_level {
-                ExceptionLevel::El0 => {
-                    Some("#[cfg(any(test, feature = \"fakes\", target_arch = \"arm\"))]")
-                }
-                ExceptionLevel::El1 => Some(
-                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"arm\"), feature = \"el1\"))]",
-                ),
-                ExceptionLevel::El2 => Some(
-                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"arm\"), feature = \"el2\"))]",
-                ),
-                ExceptionLevel::El3 => Some(
-                    "#[cfg(all(any(test, feature = \"fakes\", target_arch = \"arm\"), feature = \"el3\"))]",
-                ),
-            },
+    fn cfg_guard(&self, context: &OutputContext) -> Option<String> {
+        let (test, fakes, target_arch) = match (&self.aarch32, &self.aarch64) {
+            (true, true) => (None, None, None),
+            (true, false) => (Some("test"), Some("fakes"), Some("arm")),
+            (false, true) => (Some("test"), Some("fakes"), Some("aarch64")),
+            (false, false) => (Some("test"), Some("fakes"), None),
+        };
+
+        let target_el = match (&self.exception_level, &context.write_el_guards) {
+            (_, false) | (ExceptionLevel::El0, _) => None,
+            (ExceptionLevel::El1, true) => Some("el1"),
+            (ExceptionLevel::El2, true) => Some("el2"),
+            (ExceptionLevel::El3, true) => Some("el3"),
+        }
+        .map(|el_str| format!("feature = \"{}\"", el_str));
+
+        let definition_constraints = [
+            test.map(|v| v.to_owned()),
+            fakes.map(|v| format!("feature = \"{}\"", v)),
+            target_arch.map(|arch_str| format!("target_arch = \"{}\"", arch_str)),
+        ]
+        .into_iter()
+        .flatten()
+        .collect::<Vec<_>>();
+
+        let definition_constraints_coerced = match &definition_constraints[..] {
+            [] => None,
+            [constraint] => Some(constraint.to_string()),
+            [..] => Some(format!("any({})", definition_constraints.join(", "))),
+        };
+
+        match (definition_constraints_coerced, target_el) {
+            (None, None) => None,
+            (None, Some(target_el_str)) => Some(format!("#[cfg({})]", target_el_str)),
+            (Some(definition_constraints_str), None) => {
+                Some(format!("#[cfg({})]", definition_constraints_str))
+            }
+            (Some(definition_constraints_str), Some(target_el_str)) => Some(format!(
+                "#[cfg(all({}, {}))]",
+                definition_constraints_str, target_el_str
+            )),
         }
     }
 
-    fn write_accessor(&self, mut writer: impl Write) -> io::Result<()> {
-        if let Some(guard) = self.cfg_guard() {
+    fn write_accessor(&self, mut writer: impl Write, context: &OutputContext) -> io::Result<()> {
+        if let Some(guard) = self.cfg_guard(context) {
             writeln!(writer, "{guard}")?;
         }
         let register_type = if self.use_struct() {
