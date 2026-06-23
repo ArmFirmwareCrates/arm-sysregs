@@ -13,8 +13,8 @@ use crate::{
     output::{write_example, write_fake, write_lib},
 };
 use arm_sysregs_json::{RegisterEntry, Values};
-use clap::{Parser, Subcommand};
-use eyre::Report;
+use clap::{Parser, Subcommand, ValueEnum};
+use eyre::{Report, eyre};
 use log::{info, warn};
 use std::{
     collections::HashMap,
@@ -27,7 +27,7 @@ fn main() -> Result<(), Report> {
     pretty_env_logger::init();
     let args = Args::parse();
     let config: Config = toml::from_str(&read_to_string(&args.config_toml)?)?;
-    let register_infos = if args.disable_alias {
+    let mut register_infos = if args.disable_alias {
         parse_registers(&config, args.registers_json, args.all)?
     } else {
         parse_and_alias_registers(&config, args.registers_json, args.all)?
@@ -36,7 +36,20 @@ fn main() -> Result<(), Report> {
     println!("Parsed {} registers in total.", register_infos.len());
 
     match args.command {
-        Command::Generate { output_directory } => {
+        Command::Generate {
+            output_directory,
+            filter,
+        } => {
+            warn_missing(&register_infos, &config);
+
+            if let Some(register_filter) = filter {
+                register_infos.retain(|register| register_filter.matches(register));
+            }
+
+            if register_infos.is_empty() {
+                return Err(eyre!("Filter {:#?} yields no registers.", filter));
+            }
+
             let output_lib = File::create(output_directory.join("src").join("lib.rs"))?;
             let output_fake = File::create(
                 output_directory
@@ -47,10 +60,11 @@ fn main() -> Result<(), Report> {
             let output_example =
                 File::create(output_directory.join("examples").join("log_all.rs"))?;
 
-            warn_missing(&register_infos, &config);
             write_lib(&output_lib, &register_infos)?;
             write_fake(&output_fake, &register_infos)?;
             write_example(&output_example, &register_infos)?;
+
+            println!("Written {} registers in total.", register_infos.len());
         }
         Command::Enums {
             generate_stubs,
@@ -391,12 +405,49 @@ enum Safety {
     Unsafe,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
+enum RegisterFilter {
+    /// Filter EL0 AArch64 registers.
+    El0,
+    /// Filter EL1 AArch64 registers.
+    El1,
+    /// Filter EL2 AArch64 registers.
+    El2,
+    /// Filter EL3 AArch64 registers.
+    El3,
+    /// Filter AArch32 registers.
+    Aarch32,
+}
+
+impl RegisterFilter {
+    fn matches(self, register: &RegisterInfo) -> bool {
+        match self {
+            RegisterFilter::El0 => {
+                register.exception_level == ExceptionLevel::El0 && register.aarch64
+            }
+            RegisterFilter::El1 => {
+                register.exception_level == ExceptionLevel::El1 && register.aarch64
+            }
+            RegisterFilter::El2 => {
+                register.exception_level == ExceptionLevel::El2 && register.aarch64
+            }
+            RegisterFilter::El3 => {
+                register.exception_level == ExceptionLevel::El3 && register.aarch64
+            }
+            RegisterFilter::Aarch32 => register.aarch32,
+        }
+    }
+}
+
 #[derive(Subcommand, Clone, Debug)]
 enum Command {
     /// Generate all system registers.
     Generate {
         /// Path to output directory.
         output_directory: PathBuf,
+        /// Generate only registers matching the selected filter.
+        #[arg(long, short)]
+        filter: Option<RegisterFilter>,
     },
     /// Scans the register values to identify fields that could be represented as Rust enums.
     Enums {

@@ -31,7 +31,9 @@ into the `arm-sysregs` crate.
    - `registers.toml`: the generator configuration file.
    - `/path/to/Registers.json`: the extracted Arm register description file.
    - `generate`: the subcommand that writes generated Rust files.
-   - `arm-sysregs`: the output crate directory.
+   - `/path/to/arm-sysregs`: the output crate directory.
+   - `[-f filter]`: optional output register filter. See [Register Filtering](#register-filtering).
+
 
 3. Format the generated files:
 
@@ -116,6 +118,24 @@ Notably, this does not include the name and description of the register.
 
 The default behavior is to globally allow type aliasing.
 It may be turned off globally with the `--disable-alias` flag, or per-register via setting `disable_alias=true` in the register configuration.
+
+## Register filtering
+
+The `generate` command can limit output with `--filter`/`-f`.
+
+Filters select registers by exception level or architecture; valid values are `el0`, `el1`, `el2`, `el3`, and `aarch32`.
+The exception level filters imply AArch64.
+
+```sh
+cargo run --package generate-sysregs -- \
+       registers.toml \
+       /path/to/Registers.json \
+       generate \
+       arm-sysregs \
+       -f el0
+```
+
+Only one filter may be passed. With no filters, all configured registers are generated.
 
 ## Example Configuration
 

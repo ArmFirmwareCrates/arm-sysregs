@@ -77,12 +77,16 @@ pub fn write_fake(mut writer: impl Write + Copy, registers: &[RegisterInfo]) -> 
             .iter()
             .filter(|register| register.use_struct() && register.exception_level == exception_level)
             .map(RegisterInfo::struct_name)
-            .collect::<Vec<_>>()
-            .join(", ");
+            .collect::<Vec<_>>();
+
+        if struct_names.is_empty() {
+            continue;
+        }
+
         if let Some(guard) = exception_level.cfg_guard() {
             writeln!(writer, "{guard}")?;
         }
-        writeln!(writer, "use crate::{{{struct_names}}};")?;
+        writeln!(writer, "use crate::{{{}}};", struct_names.join(", "))?;
     }
 
     writer.write_all(
