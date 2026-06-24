@@ -3,4 +3,24 @@
 
 [workspace]
 resolver = "3"
-members = ["arm-sysregs", "generate-sysregs"]
+members = [
+    "arm-sysregs",
+    "arm-sysregs-aarch32",
+    "arm-sysregs-common",
+    "arm-sysregs-el0",
+    "arm-sysregs-el1",
+    "arm-sysregs-el2",
+    "arm-sysregs-el3",
+    "generate-sysregs"
+]
+
+[workspace.dependencies]
+aarch64-rt = { version = "0.4.2", default-features = false }
+arm-sysregs-aarch32 = { version = "=0.4.0", path = "arm-sysregs-aarch32" }
+arm-sysregs-common = { version = "=0.4.0", path = "arm-sysregs-common" }
+arm-sysregs-el0 = { version = "=0.4.0", path = "arm-sysregs-el0" }
+arm-sysregs-el1 = { version = "=0.4.0", path = "arm-sysregs-el1" }
+arm-sysregs-el2 = { version = "=0.4.0", path = "arm-sysregs-el2" }
+arm-sysregs-el3 = { version = "=0.4.0", path = "arm-sysregs-el3" }
+bitflags = "2.11.0"
+log = "0.4.29"

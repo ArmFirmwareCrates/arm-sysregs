@@ -1,25 +1,18 @@
 // SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! Manually implemented methods for system register types.
+//! Manually implemented methods for EL1 system register types.
 
-#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 use crate::accessors::read_mpidr_el1;
-#[cfg(feature = "el1")]
 use crate::registers::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1,
     MpidrEl1, SpsrEl1,
 };
-#[cfg(feature = "el2")]
-use crate::registers::{EsrEl2, SpsrEl2};
-#[cfg(feature = "el3")]
-use crate::registers::{EsrEl3, MdcrEl3, SmcrEl3, SpsrEl3};
-#[cfg(feature = "el1")]
+use arm_sysregs_common::types::{CacheLevel, CacheType};
 use core::fmt::{self, Debug, Formatter};
-use num_enum::{IntoPrimitive, TryFromPrimitive};
 
-#[cfg(feature = "el1")]
 impl ClidrEl1 {
     /// Returns the inner cache boundary level.
     pub fn icb_level(self) -> Option<CacheLevel> {
@@ -37,7 +30,6 @@ impl ClidrEl1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl CsselrEl1 {
     /// Creates new instance. TnD is only valid if FEAT_MTE2 is implemented.
     pub fn new(tnd: bool, level: CacheLevel, ind: bool) -> Self {
@@ -59,46 +51,17 @@ impl CsselrEl1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl EsrEl1 {
     /// Mask for the parts of an ESR value containing the opcode.
     pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
 }
 
-#[cfg(feature = "el1")]
 impl Debug for EsrEl1 {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "EsrEl1({:#x})", self.bits())
     }
 }
 
-#[cfg(feature = "el2")]
-impl EsrEl2 {
-    /// Mask for the parts of an ESR value containing the opcode.
-    pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
-}
-
-#[cfg(feature = "el2")]
-impl Debug for EsrEl2 {
-    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        write!(f, "EsrEl2({:#x})", self.bits())
-    }
-}
-
-#[cfg(feature = "el3")]
-impl EsrEl3 {
-    /// Mask for the parts of an ESR value containing the opcode.
-    pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
-}
-
-#[cfg(feature = "el3")]
-impl Debug for EsrEl3 {
-    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        write!(f, "EsrEl3({:#x})", self.bits())
-    }
-}
-
-#[cfg(feature = "el1")]
 impl IdAa64dfr0El1 {
     const SYS_REG_TRACE_IMPLEMENTED: u8 = 0b0001;
     const SPE_IMPLEMENTED: u8 = 0b0001;
@@ -146,7 +109,6 @@ impl IdAa64dfr0El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64dfr1El1 {
     const EBEP_IMPLEMENTED: u8 = 0b1;
 
@@ -156,7 +118,6 @@ impl IdAa64dfr1El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64mmfr0El1 {
     const FGT_IMPLEMENTED: u8 = 0b0001;
     const FGT2_IMPLEMENTED: u8 = 0b0010;
@@ -172,7 +133,6 @@ impl IdAa64mmfr0El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64mmfr1El1 {
     const VH_IMPLEMENTED: u8 = 0b0001;
     const HCX_IMPLEMENTED: u8 = 0b0001;
@@ -188,7 +148,6 @@ impl IdAa64mmfr1El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64mmfr2El1 {
     const CCIDX_64_BIT: u8 = 0b0001;
 
@@ -198,7 +157,6 @@ impl IdAa64mmfr2El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64mmfr3El1 {
     const TCRX_IMPLEMENTED: u8 = 0b0001;
     const S1PIE_IMPLEMENTED: u8 = 0b0001;
@@ -238,7 +196,6 @@ impl IdAa64mmfr3El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64mmfr4El1 {
     const FGWTE3_IMPLEMENTED: u8 = 0b0001;
     const RME_GDI_IMPLEMENTED: u8 = 0b0001;
@@ -254,7 +211,6 @@ impl IdAa64mmfr4El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64pfr0El1 {
     const SVE_IMPLEMENTED: u8 = 0b0001;
     const MPAM_IMPLEMENTED: u8 = 0b0001;
@@ -312,7 +268,6 @@ impl IdAa64pfr0El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64pfr1El1 {
     const SSBS_IMPLEMENTED: u8 = 0b0001;
     const MTE_IMPLEMENTED: u8 = 0b0001;
@@ -364,7 +319,6 @@ impl IdAa64pfr1El1 {
     }
 }
 
-#[cfg(feature = "el1")]
 impl IdAa64pfr2El1 {
     const FPMR_IMPLEMENTED: u8 = 0b0001;
 
@@ -374,20 +328,6 @@ impl IdAa64pfr2El1 {
     }
 }
 
-#[cfg(feature = "el3")]
-impl MdcrEl3 {
-    /// Set to 0b10 to disable AArch32 Secure self-hosted privileged debug from S-EL1.
-    pub const SPD32: Self = Self::from_bits_retain(0b10 << 14);
-    /// Non-secure state owns the Profiling Buffer. Profiling is disabled in Secure and Realm
-    /// states.
-    pub const NSPB_NS: Self = Self::from_bits_retain(0b11 << 12);
-    /// Enable TRBE register access for the security state that owns the buffer.
-    pub const NSTB_EN: Self = Self::from_bits_retain(1 << 24);
-    /// Together with MDCR_EL3.NSTBE determines which security state owns the trace buffer
-    pub const NSTB_SS: Self = Self::from_bits_retain(1 << 25);
-}
-
-#[cfg(feature = "el1")]
 impl MpidrEl1 {
     /// Size in bits of the affinity fields.
     pub const AFFINITY_BITS: usize = 8;
@@ -406,181 +346,18 @@ impl MpidrEl1 {
     }
 }
 
-#[cfg(feature = "el3")]
-impl SmcrEl3 {
-    /// Build SMCR_EL3 register value from given SSVE vector length.
-    pub fn from_ssve_vector_len(vector_length: u64) -> Self {
-        Self::from_bits_retain(((vector_length - 1) / 128) & Self::LEN_MASK)
-    }
-}
-
-#[cfg(feature = "el1")]
 impl SpsrEl1 {
     /// All of the N, Z, C and V bits.
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
 }
 
-#[cfg(feature = "el2")]
-impl SpsrEl2 {
-    /// All of the N, Z, C and V bits.
-    pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
-}
-
-#[cfg(feature = "el3")]
-impl SpsrEl3 {
-    /// AArch64 execution state, EL0.
-    pub const M_AARCH64_EL0: Self = Self::from_bits_retain(0b00000);
-    /// AArch64 execution state, EL1 with SP_EL0.
-    pub const M_AARCH64_EL1T: Self = Self::from_bits_retain(0b00100);
-    /// AArch64 execution state, EL1 with SP_EL1.
-    pub const M_AARCH64_EL1H: Self = Self::from_bits_retain(0b00101);
-    /// AArch64 execution state, EL2 with SP_EL0.
-    pub const M_AARCH64_EL2T: Self = Self::from_bits_retain(0b01000);
-    /// AArch64 execution state, EL2 with SP_EL2.
-    pub const M_AARCH64_EL2H: Self = Self::from_bits_retain(0b01001);
-    /// AArch64 execution state, EL3 with SP_EL0.
-    pub const M_AARCH64_EL3T: Self = Self::from_bits_retain(0b01100);
-    /// AArch64 execution state, EL3 with SP_EL3.
-    pub const M_AARCH64_EL3H: Self = Self::from_bits_retain(0b01101);
-
-    /// Exception was taken with PSTATE.SP set to SP_EL0.
-    pub const SP_EL0: Self = Self::from_bits_retain(0);
-    /// Exception was taken with PSTATE.SP set to SP_ELx.
-    pub const SP_ELX: Self = Self::from_bits_retain(1);
-
-    /// All of the N, Z, C and V bits.
-    pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
-
-    /// Speculative Store Bypass Safe.
-    pub const SSBS: Self = Self::from_bits_retain(1 << 12);
-
-    const EL_MASK: u64 = 0x3;
-    const EL_SHIFT: usize = 2;
-    const SP_MASK: u64 = 0x1;
-
-    /// Returns the value of the EL field.
-    pub const fn exception_level(self) -> ExceptionLevel {
-        match (self.bits() >> Self::EL_SHIFT) & Self::EL_MASK {
-            0 => ExceptionLevel::El0,
-            1 => ExceptionLevel::El1,
-            2 => ExceptionLevel::El2,
-            3 => ExceptionLevel::El3,
-            _ => unreachable!(),
-        }
-    }
-
-    /// Returns the value of the SP field.
-    pub const fn stack_pointer(self) -> StackPointer {
-        match self.bits() & Self::SP_MASK {
-            0 => StackPointer::El0,
-            1 => StackPointer::ElX,
-            _ => unreachable!(),
-        }
-    }
-}
-
-/// Cache type enum.
-#[derive(Clone, Copy, Debug, Eq, PartialEq, TryFromPrimitive, IntoPrimitive)]
-#[repr(u8)]
-pub enum CacheType {
-    /// No cache.
-    NoCache = 0b000,
-    /// Instruction cache only.
-    InstructionOnly = 0b001,
-    /// Data cache only.
-    DataOnly = 0b010,
-    /// Separate instruction and data caches.
-    SeparateInstructionAndData = 0b011,
-    /// Unified cache.
-    Unified = 0b100,
-}
-
-/// Wrapper type for describing cache level in a human readable format, e.g. L3 cache = `CacheLevel(3)`
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub struct CacheLevel(pub(crate) u8);
-
-impl CacheLevel {
-    /// Creates new instance.
-    pub fn new(level: u8) -> Self {
-        assert!((1..8).contains(&level));
-        Self(level)
-    }
-
-    /// Returns the level value.
-    pub fn level(&self) -> u8 {
-        self.0
-    }
-}
-
-impl From<CacheLevel> for u32 {
-    fn from(value: CacheLevel) -> Self {
-        (value.0 - 1).into()
-    }
-}
-
-impl From<CacheLevel> for u64 {
-    fn from(value: CacheLevel) -> Self {
-        u32::from(value).into()
-    }
-}
-
-/// An AArch64 exception level.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
-#[repr(u8)]
-pub enum ExceptionLevel {
-    /// Exception level 0.
-    El0 = 0,
-    /// Exception level 1.
-    El1 = 1,
-    /// Exception level 2.
-    El2 = 2,
-    /// Exception level 3.
-    El3 = 3,
-}
-
-/// Values for SPSEL.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
-#[repr(u8)]
-pub enum StackPointer {
-    /// Use SP_EL0.
-    El0 = 0,
-    /// Use SP_EL1, SP_EL2 or SP_EL3 according to the current exception level.
-    ElX = 1,
-}
-
-/// Allowed Shareability attributes.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
-#[repr(u8)]
-pub enum Shareability {
-    /// Non-shareable.
-    Non = 0b00,
-    /// Outer-shareable.
-    Outer = 0b10,
-    /// Inner-shareable.
-    Inner = 0b11,
-}
-
-/// Allowed Cacheability attributes.
-#[derive(Copy, Clone, Debug, Eq, Ord, PartialEq, PartialOrd, TryFromPrimitive, IntoPrimitive)]
-#[repr(u8)]
-pub enum Cacheability {
-    /// Normal memory, Non-cacheable.
-    Non = 0b00,
-    /// Normal memory, Write-Back Read-Allocate Write-Allocate Cacheable.
-    WriteBackAllocate = 0b01,
-    /// Normal memory, Write-Through Read-Allocate No Write-Allocate Cacheable.
-    WriteThrough = 0b10,
-    /// Normal memory, Write-Back Read-Allocate No Write-Allocate Cacheable.
-    WriteBackNoAllocate = 0b11,
-}
-
 #[cfg(test)]
 mod tests {
-    #[cfg(feature = "el1")]
+
     use super::*;
 
     #[test]
-    #[cfg(feature = "el1")]
+
     fn debug_mpidr_el1() {
         assert_eq!(format!("{:?}", MpidrEl1::empty()), "MpidrEl1(0x0)");
         assert_eq!(
@@ -593,29 +370,12 @@ mod tests {
         );
     }
 
-    #[cfg(feature = "el1")]
     #[test]
     fn debug_spsr_el1() {
         assert_eq!(format!("{:?}", SpsrEl1::empty()), "SpsrEl1(0x0)");
         assert_eq!(format!("{:?}", SpsrEl1::NZCV), "SpsrEl1(V | C | Z | N)");
     }
 
-    #[cfg(feature = "el2")]
-    #[test]
-    fn debug_spsr_el2() {
-        assert_eq!(format!("{:?}", SpsrEl2::empty()), "SpsrEl2(0x0)");
-        assert_eq!(format!("{:?}", SpsrEl2::NZCV), "SpsrEl2(V | C | Z | N)");
-    }
-
-    #[cfg(feature = "el3")]
-    #[test]
-    fn debug_spsr_el3() {
-        assert_eq!(format!("{:?}", SpsrEl3::empty()), "SpsrEl3(0x0)");
-        assert_eq!(format!("{:?}", SpsrEl3::NZCV), "SpsrEl3(V | C | Z | N)");
-        assert_eq!(format!("{:?}", SpsrEl3::M_AARCH64_EL3H), "SpsrEl3(0xd)");
-    }
-
-    #[cfg(feature = "el1")]
     #[test]
     fn debug_esr_el1() {
         assert_eq!(format!("{:?}", EsrEl1::empty()), "EsrEl1(0x0)");
@@ -623,28 +383,6 @@ mod tests {
         assert_eq!(
             format!("{:?}", EsrEl1::ISS_SYSREG_OPCODE_MASK),
             "EsrEl1(0x3ffc1e)"
-        );
-    }
-
-    #[cfg(feature = "el2")]
-    #[test]
-    fn debug_esr_el2() {
-        assert_eq!(format!("{:?}", EsrEl2::empty()), "EsrEl2(0x0)");
-        assert_eq!(format!("{:?}", EsrEl2::IL), "EsrEl2(0x2000000)");
-        assert_eq!(
-            format!("{:?}", EsrEl2::ISS_SYSREG_OPCODE_MASK),
-            "EsrEl2(0x3ffc1e)"
-        );
-    }
-
-    #[cfg(feature = "el3")]
-    #[test]
-    fn debug_esr_el3() {
-        assert_eq!(format!("{:?}", EsrEl3::empty()), "EsrEl3(0x0)");
-        assert_eq!(format!("{:?}", EsrEl3::IL), "EsrEl3(0x2000000)");
-        assert_eq!(
-            format!("{:?}", EsrEl3::ISS_SYSREG_OPCODE_MASK),
-            "EsrEl3(0x3ffc1e)"
         );
     }
 }

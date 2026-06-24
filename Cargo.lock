@@ -4,9 +4,9 @@ version = 4
 
 [[package]]
 name = "aarch64-rt"
-version = "0.4.2"
+version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4969245b57b2aef286e6f507cd3fd1b9be7c6df1f0341141ab42226e3e6c52ae"
+checksum = "c11ec2f9c11149816e7f9461f894b04dec5be5b8d87fedb0884b1c60f9dba00c"
 
 [[package]]
 name = "aho-corasick"
@@ -71,11 +71,74 @@ dependencies = [
 name = "arm-sysregs"
 version = "0.3.3"
 dependencies = [
- "aarch64-rt",
+ "arm-sysregs-aarch32",
+ "arm-sysregs-common",
+ "arm-sysregs-el0",
+ "arm-sysregs-el1",
+ "arm-sysregs-el2",
+ "arm-sysregs-el3",
+ "log",
+]
+
+[[package]]
+name = "arm-sysregs-aarch32"
+version = "0.4.0"
+dependencies = [
+ "arm-sysregs-common",
  "bitflags",
  "log",
+]
+
+[[package]]
+name = "arm-sysregs-common"
+version = "0.4.0"
+dependencies = [
  "num_enum",
  "paste",
+]
+
+[[package]]
+name = "arm-sysregs-el0"
+version = "0.4.0"
+dependencies = [
+ "aarch64-rt",
+ "arm-sysregs-aarch32",
+ "arm-sysregs-common",
+ "bitflags",
+ "log",
+]
+
+[[package]]
+name = "arm-sysregs-el1"
+version = "0.4.0"
+dependencies = [
+ "aarch64-rt",
+ "arm-sysregs-common",
+ "arm-sysregs-el0",
+ "bitflags",
+ "log",
+]
+
+[[package]]
+name = "arm-sysregs-el2"
+version = "0.4.0"
+dependencies = [
+ "aarch64-rt",
+ "arm-sysregs-common",
+ "arm-sysregs-el1",
+ "bitflags",
+ "log",
+]
+
+[[package]]
+name = "arm-sysregs-el3"
+version = "0.4.0"
+dependencies = [
+ "aarch64-rt",
+ "arm-sysregs-common",
+ "arm-sysregs-el2",
+ "bitflags",
+ "log",
 ]
 
 [[package]]
@@ -89,9 +152,9 @@ dependencies = [
 
 [[package]]
 name = "bitflags"
-version = "2.11.0"
+version = "2.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "843867be96c8daad0d758b57df9392b6d8d271134fce549de6ce169ff98a92af"
+checksum = "b4388bee8683e3d04af747c73422af53102d2bd24d9eadb6cbc100baef4b43f8"
 
 [[package]]
 name = "clap"
@@ -266,9 +329,9 @@ checksum = "f52b00d39961fc5b2736ea853c9cc86238e165017a493d1d5c8eac6bdc4cc273"
 
 [[package]]
 name = "num_enum"
-version = "0.7.5"
+version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b1207a7e20ad57b847bbddc6776b968420d38292bbfe2089accff5e19e82454c"
+checksum = "5d0bca838442ec211fa11de3a8b0e0e8f3a4522575b5c4c06ed722e005036f26"
 dependencies = [
  "num_enum_derive",
  "rustversion",
@@ -276,9 +339,9 @@ dependencies = [
 
 [[package]]
 name = "num_enum_derive"
-version = "0.7.5"
+version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ff32365de1b6743cb203b710788263c44a03de03802daf96092f2da4fe6ba4d7"
+checksum = "680998035259dcfcafe653688bf2aa6d3e2dc05e98be6ab46afb089dc84f1df8"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -362,9 +425,9 @@ checksum = "7a2d987857b319362043e95f5353c0535c1f58eec5336fdfcf626430af7def58"
 
 [[package]]
 name = "rustversion"
-version = "1.0.22"
+version = "1.0.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b39cdef0fa800fc44525c84ccb54a029961a8215f9619753635a9c0d2538d46d"
+checksum = "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"
 
 [[package]]
 name = "ryu"

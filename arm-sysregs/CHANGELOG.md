@@ -8,6 +8,11 @@
 
 - Changed the public API: moved `read_` and `write_` functions to the `accessors` submodule, system
   register types to the `registers` submodule, and public helper functions to the `helpers` module.
+- Split into crates by exception level and architecture; arm-sysregs acts as a facade crate. EL- and
+  architecture-specific registers, accessors, fakes and helpers can now be accessed via
+  `arm_sysregs::elx::` or `arm_sysregs::aarch32`. The `manual` modules are no longer public. Types
+  not semantically belonging to specific ELs (`Shareability`, `Cacheability`, etc.) are accessible
+  through `arm_sysregs::types`.
 
 ## 0.3.3
 

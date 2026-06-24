@@ -59,10 +59,10 @@ pub fn write_accessors(
 
 // This file is generated, do not edit manually.
 
-// Unused imports are allowed here because write_sysreg might be unused when targeting aarch64
-// without fakes.
+// `unused_imports` is allowed because it is possible that not all of these macros are used in the
+// generated output.
 #[allow(unused_imports)]
-use crate::{read_sysreg, read_write_sysreg, write_sysreg};
+use arm_sysregs_common::{read_sysreg, read_write_sysreg, write_sysreg};
 
 "#,
     )?;
@@ -727,7 +727,9 @@ impl RegisterInfo {
     }
 
     fn write_accessor(&self, mut writer: impl Write, context: &OutputContext) -> io::Result<()> {
-        if let Some(guard) = self.cfg_guard(context) {
+        if context.write_el_guards
+            && let Some(guard) = self.exception_level.cfg_guard()
+        {
             writeln!(writer, "{guard}")?;
         }
         let register_type = if self.use_struct() {

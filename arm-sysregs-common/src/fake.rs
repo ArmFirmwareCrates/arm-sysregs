@@ -3,11 +3,6 @@
 
 //! Fake implementations of system register getters and setters for unit tests.
 
-mod generated;
-
-pub use self::generated::SystemRegisters;
-use std::sync::Mutex;
-
 /// Generates a public function named `read_$sysreg` to read the fake system register `$sysreg` of
 /// type `$type`.
 #[macro_export]
@@ -108,20 +103,4 @@ macro_rules! write_sysreg {
             }
         }
     };
-}
-
-/// Values of fake system registers.
-pub static SYSREGS: Mutex<SystemRegisters> = Mutex::new(SystemRegisters::new());
-
-impl SystemRegisters {
-    /// Resets the fake system registers to their initial state.
-    pub fn reset(&mut self) {
-        *self = Self::new();
-    }
-}
-
-impl Default for SystemRegisters {
-    fn default() -> Self {
-        Self::new()
-    }
 }

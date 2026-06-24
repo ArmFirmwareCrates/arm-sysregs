@@ -33,6 +33,9 @@ fn main() -> Result<(), Report> {
     let mut register_infos = if args.disable_alias {
         parse_registers(&config, args.registers_json, args.all)?
     } else {
+        // note: Registers are not aliased across exception levels.
+        // This may be revised later, when the performance benefits are high enough, as it would
+        // require changing the generator code considerably.
         parse_and_alias_registers(&config, args.registers_json, args.all)?
     };
 

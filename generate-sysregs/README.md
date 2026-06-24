@@ -128,11 +128,14 @@ Use a `types` section to map generated field accessors to custom types:
 
 ```toml
 [registers.CLIDR_EL1.types]
-"Ctype<n>" = "crate::manual::CacheType"
+"Ctype<n>" = "arm_sysregs_common::types::CacheType"
 ```
 
 Custom types must be absolute paths. They must implement `TryFrom<raw type>`, where `raw type` is
 the smallest unsigned integer type that can hold the field value.
+
+They should be defined in `types.rs` in `arm-sysregs-common` when they do not explicitly belong to a
+specific subcrate. Otherwise, they should be defined in the `manual.rs` of the respective crate.
 
 ## Type aliasing
 In the case of array registers (e.g. `AMEVCNTR1<n>_EL0`), and specific other registers (e.g. `PIRE0_EL1` and `POR_EL1`), the generated types might be identical.
@@ -191,9 +194,9 @@ EnIA = "Enable pointer authentication using APIAKey_EL1."
 [registers.GPCCR_EL3]
 
 [registers.GPCCR_EL3.types]
-SH = "crate::manual::Shareability"
-IRGN = "crate::manual::Cacheability"
-ORGN = "crate::manual::Cacheability"
+SH = "arm_sysregs_common::types::Shareability"
+IRGN = "arm_sysregs_common::types::Cacheability"
+ORGN = "arm_sysregs_common::types::Cacheability"
 
 [registers.CONTEXTIDR_EL1]
 write = "safe"

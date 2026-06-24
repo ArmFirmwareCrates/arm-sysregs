@@ -16,7 +16,8 @@ feature implies the lower ELs.
 Without any feature flags only EL0 system registers are included.
 
 For unit testing, the `fakes` feature can be used. This replaces the assembly code for reading and
-writing system registers with accesses to a set of fake system registers, stored in `fake::SYSREGS`.
+writing system registers with accesses to a set of fake system registers, stored in `fake::SYSREGS`
+in the EL- and architecture-specific submodules.
 
 ## Future plans
 

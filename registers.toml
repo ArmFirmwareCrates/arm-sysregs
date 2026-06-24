@@ -462,9 +462,9 @@ PTR = "Guarded Control Stack Pointer bits."
 
 [registers.GPCCR_EL3]
 [registers.GPCCR_EL3.types]
-SH = "crate::manual::Shareability"
-IRGN = "crate::manual::Cacheability"
-ORGN = "crate::manual::Cacheability"
+SH = "arm_sysregs_common::types::Shareability"
+IRGN = "arm_sysregs_common::types::Cacheability"
+ORGN = "arm_sysregs_common::types::Cacheability"
 
 [registers.GPTBR_EL3]
 
@@ -868,4 +868,4 @@ write_safety_doc = "The base address must point to a valid and properly aligned 
 [registers.ZCR_EL3]
 
 [registers.CLIDR_EL1.types]
-"Ctype<n>" = "crate::manual::CacheType"
+"Ctype<n>" = "arm_sysregs_common::types::CacheType"
