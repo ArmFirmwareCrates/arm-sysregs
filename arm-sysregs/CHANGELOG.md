@@ -26,6 +26,7 @@
 - Armv8.6 FEAT_MPAMv0p1 `MpamhcrEl2` VPMEN / VMMEN / SMVPMEN / SMVMMEN bits removed.
 - `TcrEl2` TVAD and VTB fields removed.
 - Use type aliasing for identical registers, rather than generate different types.
+- Split AMU feature discovery to distinguish between FEAT_AMUv1 and FEAT_AMUv1p1.
 
 ## 0.2.9
 

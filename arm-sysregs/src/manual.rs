@@ -252,7 +252,8 @@ impl IdAa64mmfr4El1 {
 impl IdAa64pfr0El1 {
     const SVE_IMPLEMENTED: u8 = 0b0001;
     const MPAM_IMPLEMENTED: u8 = 0b0001;
-    const AMU_IMPLEMENTED: u8 = 0b0001;
+    const AMUV1_IMPLEMENTED: u8 = 0b0001;
+    const AMUV1P1_IMPLEMENTED: u8 = 0b0010;
     const DIT_IMPLEMENTED: u8 = 0b0001;
 
     /// Indicates whether DIT Extension is implemented.
@@ -270,9 +271,14 @@ impl IdAa64pfr0El1 {
         self.mpam() >= Self::MPAM_IMPLEMENTED
     }
 
-    /// Indicates whether AMU Extension is implemented.
-    pub fn is_feat_amu_present(self) -> bool {
-        self.amu() >= Self::AMU_IMPLEMENTED
+    /// Indicates whether AMUv1 Extension is implemented.
+    pub fn is_feat_amuv1_present(&self) -> bool {
+        self.amu() >= Self::AMUV1_IMPLEMENTED
+    }
+
+    /// Indicates whether AMUv1p1 Extension is implemented.
+    pub fn is_feat_amuv1p1_present(&self) -> bool {
+        self.amu() >= Self::AMUV1P1_IMPLEMENTED
     }
 }
 
