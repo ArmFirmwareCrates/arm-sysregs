@@ -43,10 +43,10 @@ use crate::{
     IccEoir0El1, IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1,
     IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
     IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1,
-    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, PirEl1,
-    Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1,
-    TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1,
+    IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1,
+    PfarEl1, PirEl1, Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1, SpEl1, SpsrEl1,
+    Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{
@@ -833,6 +833,9 @@ pub struct SystemRegisters {
     #[cfg(feature = "el1")]
     /// Fake value for the `ID_AA64MMFR3_EL1` system register.
     pub id_aa64mmfr3_el1: IdAa64mmfr3El1,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `ID_AA64MMFR4_EL1` system register.
+    pub id_aa64mmfr4_el1: IdAa64mmfr4El1,
     #[cfg(feature = "el1")]
     /// Fake value for the `ID_AA64PFR0_EL1` system register.
     pub id_aa64pfr0_el1: IdAa64pfr0El1,
@@ -1672,6 +1675,8 @@ impl SystemRegisters {
             id_aa64mmfr2_el1: IdAa64mmfr2El1::empty(),
             #[cfg(feature = "el1")]
             id_aa64mmfr3_el1: IdAa64mmfr3El1::empty(),
+            #[cfg(feature = "el1")]
+            id_aa64mmfr4_el1: IdAa64mmfr4El1::empty(),
             #[cfg(feature = "el1")]
             id_aa64pfr0_el1: IdAa64pfr0El1::empty(),
             #[cfg(feature = "el1")]

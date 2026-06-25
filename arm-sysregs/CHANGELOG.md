@@ -12,6 +12,7 @@
 - Added FEAT_SCTLR2 registers.
 - Added DAIF register.
 - Use type aliasing for identical registers, rather than generate different types.
+- Added `ID_AA64MMFR4_EL1` register, and query function for FEAT_RME_GDI.
 
 ### Bugfixes
 

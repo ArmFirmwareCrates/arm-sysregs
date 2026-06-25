@@ -8,7 +8,8 @@ use crate::read_mpidr_el1;
 #[cfg(feature = "el1")]
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, MpidrEl1, SpsrEl1,
+    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1,
+    MpidrEl1, SpsrEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{EsrEl2, SpsrEl2};
@@ -234,6 +235,16 @@ impl IdAa64mmfr3El1 {
     /// Indicates presence of FEAT_TCR2.
     pub fn is_feat_tcr2_present(self) -> bool {
         self.tcrx() >= Self::TCRX_IMPLEMENTED
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IdAa64mmfr4El1 {
+    const RME_GDI_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_RME_GDI is implemented.
+    pub fn is_feat_rme_gdi_present(self) -> bool {
+        self.rmegdi() >= Self::RME_GDI_IMPLEMENTED
     }
 }
 
