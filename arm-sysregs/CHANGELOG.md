@@ -11,7 +11,6 @@
 - Added FEAT_BRBE register `BRBCR_EL2`, and query functions for FEAT_BRBE and FEAT_BRBEv1p1.
 - Added FEAT_SCTLR2 registers.
 - Added DAIF register.
-- Use type aliasing for identical registers, rather than generate different types.
 - Added `ID_AA64MMFR4_EL1` register, and query function for FEAT_RME_GDI.
 
 ### Bugfixes
@@ -26,6 +25,7 @@
 - FEAT_SEBEP identification register fields and system registers removed from architecture.
 - Armv8.6 FEAT_MPAMv0p1 `MpamhcrEl2` VPMEN / VMMEN / SMVPMEN / SMVMMEN bits removed.
 - `TcrEl2` TVAD and VTB fields removed.
+- Use type aliasing for identical registers, rather than generate different types.
 
 ## 0.2.9
 
