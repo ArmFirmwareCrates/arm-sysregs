@@ -15,6 +15,8 @@ const RESERVED_NAMES: &[&str] = &["extend", "type"];
 pub struct OutputContext {
     /// Whether generated items should be guarded by exception level features.
     pub write_el_guards: bool,
+    /// The path of the output module.
+    pub module_path: String,
 }
 
 pub fn write_registers(
@@ -178,11 +180,7 @@ pub struct SystemRegisters {
     Ok(())
 }
 
-pub fn write_example(
-    mut writer: impl Write + Copy,
-    registers: &[RegisterInfo],
-    context: &OutputContext,
-) -> io::Result<()> {
+pub fn write_example_header(mut writer: impl Write) -> io::Result<()> {
     writeln!(
         writer,
         "\
@@ -207,19 +205,32 @@ entry!(entry);
 #[cfg_attr(any(test, feature = \"fakes\"), allow(unused))]
 fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {{
 "
-    )?;
+    )
+}
+
+pub fn write_example_body(
+    mut writer: impl Write + Copy,
+    registers: &[RegisterInfo],
+    context: &OutputContext,
+) -> io::Result<()> {
     for register in registers {
         if register.read.is_some() {
             if let Some(guard) = register.cfg_guard(context) {
                 writeln!(writer, "    {guard}")?;
             }
             let name = register.variable_name();
+            let module_path = &context.module_path;
+
             writeln!(
                 writer,
-                "    info!(\"{name} = {{:?}}\", arm_sysregs::accessors::read_{name}());"
+                "    info!(\"{name} = {{:?}}\", {module_path}::accessors::read_{name}());"
             )?;
         }
     }
+    Ok(())
+}
+
+pub fn write_example_footer(mut writer: impl Write) -> io::Result<()> {
     writeln!(
         writer,
         "\
@@ -235,8 +246,7 @@ fn panic(_panic: &PanicInfo) -> ! {{
     loop {{}}
 }}
 "
-    )?;
-    Ok(())
+    )
 }
 
 impl RegisterInfo {

@@ -10,7 +10,10 @@ use crate::{
     config::Config,
     enums::identify_enums,
     json_input::register_entries_to_register_infos,
-    output::{OutputContext, write_accessors, write_example, write_fake, write_registers},
+    output::{
+        OutputContext, write_accessors, write_example_body, write_example_footer,
+        write_example_header, write_fake, write_registers,
+    },
 };
 use arm_sysregs_json::{RegisterEntry, Values};
 use clap::{Parser, Subcommand, ValueEnum};
@@ -20,7 +23,7 @@ use std::{
     collections::HashMap,
     fs::{File, read_to_string},
     ops::Range,
-    path::PathBuf,
+    path::{Path, PathBuf},
 };
 
 fn main() -> Result<(), Report> {
@@ -42,36 +45,17 @@ fn main() -> Result<(), Report> {
         } => {
             warn_missing(&register_infos, &config);
 
-            if let Some(register_filter) = filter {
-                register_infos.retain(|register| register_filter.matches(register));
+            if let Some(filter) = filter {
+                filter_registers_inplace(&mut register_infos, filter)?;
             }
-
-            if register_infos.is_empty() {
-                return Err(eyre!("Filter {:#?} yields no registers.", filter));
-            }
-
-            let output_registers = File::create(output_directory.join("src").join("registers.rs"))?;
-            let output_accessors = File::create(output_directory.join("src").join("accessors.rs"))?;
-            let output_fake = File::create(
-                output_directory
-                    .join("src")
-                    .join("fake")
-                    .join("generated.rs"),
-            )?;
-            let output_example =
-                File::create(output_directory.join("examples").join("log_all.rs"))?;
 
             let context = OutputContext {
                 // If there are no exception level filters, guards will be generated.
-                write_el_guards: !filter.is_some_and(|filter| filter.is_el()),
+                write_el_guards: !filter.is_some_and(RegisterFilter::is_el),
+                module_path: crate_name_from_output_dir(&output_directory)?,
             };
 
-            write_registers(&output_registers, &register_infos, &context)?;
-            write_accessors(&output_accessors, &register_infos, &context)?;
-            write_fake(&output_fake, &register_infos, &context)?;
-            write_example(&output_example, &register_infos, &context)?;
-
-            println!("Written {} registers in total.", register_infos.len());
+            generate(&register_infos, output_directory, &context, true)?;
         }
         Command::Enums {
             generate_stubs,
@@ -79,9 +63,139 @@ fn main() -> Result<(), Report> {
         } => {
             identify_enums(&register_infos, generate_stubs, skip_existing);
         }
+        Command::GenerateCrates { output_root } => {
+            warn_missing(&register_infos, &config);
+
+            let toplevel_example = File::create(
+                output_root
+                    .join("arm-sysregs")
+                    .join("examples")
+                    .join("log_all.rs"),
+            )?;
+
+            write_example_header(&toplevel_example)?;
+
+            for filter in [
+                RegisterFilter::Aarch32,
+                RegisterFilter::El0,
+                RegisterFilter::El1,
+                RegisterFilter::El2,
+                RegisterFilter::El3,
+            ] {
+                let filtered_registers = filter_registers(&register_infos, filter)?;
+                let module_name = filter.as_module_name();
+                let directory_name = format!("arm-sysregs-{}", module_name);
+
+                let output_path = output_root.join(directory_name);
+
+                let context = OutputContext {
+                    // If there are no exception level filters, guards will be generated.
+                    write_el_guards: !filter.is_el(),
+                    module_path: crate_name_from_output_dir(&output_path)?,
+                };
+
+                write_example_body(
+                    &toplevel_example,
+                    &filtered_registers,
+                    &OutputContext {
+                        write_el_guards: true,
+                        module_path: format!("arm_sysregs::{}", module_name),
+                    },
+                )?;
+
+                generate(&filtered_registers, output_path, &context, false)?;
+            }
+
+            write_example_footer(&toplevel_example)?;
+        }
     }
 
     Ok(())
+}
+
+/// Keeps only the registers selected by `filter` in `register_infos`.
+fn filter_registers_inplace(
+    register_infos: &mut Vec<RegisterInfo>,
+    filter: RegisterFilter,
+) -> Result<(), Report> {
+    register_infos.retain(|register| filter.matches(register));
+
+    if register_infos.is_empty() {
+        return Err(eyre!("Filter {:#?} yields no registers.", filter));
+    }
+
+    Ok(())
+}
+
+/// Returns cloned registers matching `filter`.
+fn filter_registers(
+    register_infos: &[RegisterInfo],
+    filter: RegisterFilter,
+) -> Result<Vec<RegisterInfo>, Report> {
+    let filtered_registers = register_infos
+        .iter()
+        .filter(|register| filter.matches(register))
+        .cloned()
+        .collect::<Vec<_>>();
+
+    if filtered_registers.is_empty() {
+        return Err(eyre!("Filter {:#?} yields no registers.", filter));
+    }
+
+    Ok(filtered_registers)
+}
+
+/// Generates arm-sysregs in the given output directory. Optionally generates `examples/log_all.rs`
+/// as well.
+fn generate(
+    register_infos: &[RegisterInfo],
+    output_directory: PathBuf,
+    context: &OutputContext,
+    generate_examples: bool,
+) -> Result<(), Report> {
+    let output_registers = File::create(output_directory.join("src").join("registers.rs"))?;
+    let output_accessors = File::create(output_directory.join("src").join("accessors.rs"))?;
+    let output_fake = File::create(
+        output_directory
+            .join("src")
+            .join("fake")
+            .join("generated.rs"),
+    )?;
+
+    if generate_examples {
+        let output_example = File::create(output_directory.join("examples").join("log_all.rs"))?;
+
+        write_example_header(&output_example)?;
+        write_example_body(&output_example, register_infos, context)?;
+        write_example_footer(&output_example)?;
+    }
+
+    write_registers(&output_registers, register_infos, context)?;
+    write_accessors(&output_accessors, register_infos, context)?;
+    write_fake(&output_fake, register_infos, context)?;
+
+    let filtered_register_count = register_infos.iter().filter(|v| v.alias.is_some()).count();
+
+    println!(
+        "{}: Written {} registers ({} aliased).",
+        context.module_path,
+        register_infos.len(),
+        filtered_register_count
+    );
+    Ok(())
+}
+
+/// Transforms an output directory's basename into a crate name. Assumes output_directory is in
+/// snake-case.
+fn crate_name_from_output_dir(output_directory: &Path) -> Result<String, Report> {
+    Ok(output_directory
+        .canonicalize()?
+        .file_name()
+        .and_then(|v| v.to_str())
+        .ok_or(eyre!(
+            "Failed to get the base name of the output directory."
+        ))?
+        .replace('-', "_"))
 }
 
 fn parse_and_alias_registers(
@@ -453,6 +567,18 @@ impl RegisterFilter {
             RegisterFilter::El0 | RegisterFilter::El1 | RegisterFilter::El2 | RegisterFilter::El3
         )
     }
+
+    /// Returns the module name associated with this register filter.
+    fn as_module_name(&self) -> String {
+        match self {
+            RegisterFilter::El0 => "el0",
+            RegisterFilter::El1 => "el1",
+            RegisterFilter::El2 => "el2",
+            RegisterFilter::El3 => "el3",
+            RegisterFilter::Aarch32 => "aarch32",
+        }
+        .to_owned()
+    }
 }
 
 #[derive(Subcommand, Clone, Debug)]
@@ -474,6 +600,11 @@ enum Command {
         /// Skip all fields which have a type assigned in the configuration file.
         #[arg(long)]
         skip_existing: bool,
+    },
+    /// Generate the split system register crates arm-sysregs-el0,1,2,3, and arm-sysregs-aarch32.
+    GenerateCrates {
+        /// Path to the output directory, containing arm-sysregs-elx/aarch32/common directories.
+        output_root: PathBuf,
     },
 }
 

@@ -12,7 +12,41 @@ The generator reads:
 It writes the generated register accessors, fake backend support, and examples
 into the `arm-sysregs` crate.
 
-## Generate `arm-sysregs`
+## Generate `arm-sysregs` crates
+
+1. Download and extract the **Features, Registers, A64, A32** machine-readable JSON specification
+  from the Arm A-profile architecture [downloads page][1].
+2. Run the following command from the repository root:
+
+   ```sh
+   cargo run --package generate-sysregs -- \
+       registers.toml \
+       /path/to/Registers.json \
+       generate-crates \
+       .
+   ```
+
+   The arguments are:
+
+   - `registers.toml`: the generator configuration file.
+   - `/path/to/Registers.json`: the extracted Arm register description file.
+   - `generate-crates`: the subcommand that writes generated Rust files.
+   - `.`: root directory for the output. It must contain the `arm-sysregs`, `arm-sysregs-el0,1,2,3`, and `arm-sysregs-aarch32` directories.
+
+   The command generates the `arm-sysregs-elx` and `arm-sysregs-aarch32` subcrates, using the corresponding filter (see [Register Filtering](#register-filtering)) for each crate.
+
+   Unlike when generating with `generate`, the generated crates do not have their own `log_all.rs`.
+   A full `log_all.rs` containing all registers is generated instead in `arm-sysregs/examples`.
+
+3. Format the generated files:
+
+   ```sh
+   cargo fmt
+   ```
+
+4. Update `arm-sysregs/CHANGELOG.md`.
+
+## Generate an individual `arm-sysregs` crate
 
 1. Download and extract the **Features, Registers, A64, A32** machine-readable JSON specification
   from the Arm A-profile architecture [downloads page][1].
@@ -23,7 +57,7 @@ into the `arm-sysregs` crate.
        registers.toml \
        /path/to/Registers.json \
        generate \
-       arm-sysregs
+       /path/to/arm-sysregs
    ```
 
    The arguments are:
