@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Added `is_feat_*_present` for `FEAT_RME`, `FEAT_RME_GPC2` and `FEAT_RME_GPC3`.
+
 ## 0.3.0
 
 ### New features
