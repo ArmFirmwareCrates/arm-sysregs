@@ -5,6 +5,7 @@
 ### New features
 
 - Added `is_feat_*_present` for `FEAT_RME`, `FEAT_RME_GPC2` and `FEAT_RME_GPC3`.
+- Added `ID_AA64ISAR3_EL1` register.
 
 ## 0.3.0
 

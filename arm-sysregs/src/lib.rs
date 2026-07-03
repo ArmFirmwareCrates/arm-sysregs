@@ -14813,6 +14813,307 @@ impl IdAa64isar2El1 {
 
 #[cfg(feature = "el1")]
 bitflags! {
+    /// `ID_AA64ISAR3_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct IdAa64isar3El1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl IdAa64isar3El1 {
+    /// Offset of the `CPA` field.
+    pub const CPA_SHIFT: u32 = 0;
+    /// Mask for the `CPA` field.
+    pub const CPA_MASK: u64 = 0b1111;
+    /// Offset of the `FAMINMAX` field.
+    pub const FAMINMAX_SHIFT: u32 = 4;
+    /// Mask for the `FAMINMAX` field.
+    pub const FAMINMAX_MASK: u64 = 0b1111;
+    /// Offset of the `TLBIW` field.
+    pub const TLBIW_SHIFT: u32 = 8;
+    /// Mask for the `TLBIW` field.
+    pub const TLBIW_MASK: u64 = 0b1111;
+    /// Offset of the `PACM` field.
+    pub const PACM_SHIFT: u32 = 12;
+    /// Mask for the `PACM` field.
+    pub const PACM_MASK: u64 = 0b1111;
+    /// Offset of the `LSFE` field.
+    pub const LSFE_SHIFT: u32 = 16;
+    /// Mask for the `LSFE` field.
+    pub const LSFE_MASK: u64 = 0b1111;
+    /// Offset of the `OCCMO` field.
+    pub const OCCMO_SHIFT: u32 = 20;
+    /// Mask for the `OCCMO` field.
+    pub const OCCMO_MASK: u64 = 0b1111;
+    /// Offset of the `LSUI` field.
+    pub const LSUI_SHIFT: u32 = 24;
+    /// Mask for the `LSUI` field.
+    pub const LSUI_MASK: u64 = 0b1111;
+    /// Offset of the `FPRCVT` field.
+    pub const FPRCVT_SHIFT: u32 = 28;
+    /// Mask for the `FPRCVT` field.
+    pub const FPRCVT_MASK: u64 = 0b1111;
+    /// Offset of the `PAC_frac2` field.
+    pub const PAC_FRAC2_SHIFT: u32 = 32;
+    /// Mask for the `PAC_frac2` field.
+    pub const PAC_FRAC2_MASK: u64 = 0b1111;
+    /// Offset of the `MTETC` field.
+    pub const MTETC_SHIFT: u32 = 36;
+    /// Mask for the `MTETC` field.
+    pub const MTETC_MASK: u64 = 0b1111;
+    /// Offset of the `LSCSHINT` field.
+    pub const LSCSHINT_SHIFT: u32 = 40;
+    /// Mask for the `LSCSHINT` field.
+    pub const LSCSHINT_MASK: u64 = 0b1111;
+    /// Offset of the `LSCP` field.
+    pub const LSCP_SHIFT: u32 = 44;
+    /// Mask for the `LSCP` field.
+    pub const LSCP_MASK: u64 = 0b1111;
+
+    /// Returns the value of the `CPA` field.
+    pub const fn cpa(self) -> u8 {
+        ((self.bits() >> Self::CPA_SHIFT) & Self::CPA_MASK) as u8
+    }
+
+    /// Sets the value of the `CPA` field.
+    pub const fn set_cpa(&mut self, value: u8) {
+        let offset = Self::CPA_SHIFT;
+        assert!(value & (Self::CPA_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::CPA_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `CPA` field set to the given value.
+    pub const fn with_cpa(mut self, value: u8) -> Self {
+        self.set_cpa(value);
+        self
+    }
+
+    /// Returns the value of the `FAMINMAX` field.
+    pub const fn faminmax(self) -> u8 {
+        ((self.bits() >> Self::FAMINMAX_SHIFT) & Self::FAMINMAX_MASK) as u8
+    }
+
+    /// Sets the value of the `FAMINMAX` field.
+    pub const fn set_faminmax(&mut self, value: u8) {
+        let offset = Self::FAMINMAX_SHIFT;
+        assert!(value & (Self::FAMINMAX_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FAMINMAX_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `FAMINMAX` field set to the given value.
+    pub const fn with_faminmax(mut self, value: u8) -> Self {
+        self.set_faminmax(value);
+        self
+    }
+
+    /// Returns the value of the `TLBIW` field.
+    pub const fn tlbiw(self) -> u8 {
+        ((self.bits() >> Self::TLBIW_SHIFT) & Self::TLBIW_MASK) as u8
+    }
+
+    /// Sets the value of the `TLBIW` field.
+    pub const fn set_tlbiw(&mut self, value: u8) {
+        let offset = Self::TLBIW_SHIFT;
+        assert!(value & (Self::TLBIW_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::TLBIW_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `TLBIW` field set to the given value.
+    pub const fn with_tlbiw(mut self, value: u8) -> Self {
+        self.set_tlbiw(value);
+        self
+    }
+
+    /// Returns the value of the `PACM` field.
+    pub const fn pacm(self) -> u8 {
+        ((self.bits() >> Self::PACM_SHIFT) & Self::PACM_MASK) as u8
+    }
+
+    /// Sets the value of the `PACM` field.
+    pub const fn set_pacm(&mut self, value: u8) {
+        let offset = Self::PACM_SHIFT;
+        assert!(value & (Self::PACM_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PACM_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `PACM` field set to the given value.
+    pub const fn with_pacm(mut self, value: u8) -> Self {
+        self.set_pacm(value);
+        self
+    }
+
+    /// Returns the value of the `LSFE` field.
+    pub const fn lsfe(self) -> u8 {
+        ((self.bits() >> Self::LSFE_SHIFT) & Self::LSFE_MASK) as u8
+    }
+
+    /// Sets the value of the `LSFE` field.
+    pub const fn set_lsfe(&mut self, value: u8) {
+        let offset = Self::LSFE_SHIFT;
+        assert!(value & (Self::LSFE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LSFE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `LSFE` field set to the given value.
+    pub const fn with_lsfe(mut self, value: u8) -> Self {
+        self.set_lsfe(value);
+        self
+    }
+
+    /// Returns the value of the `OCCMO` field.
+    pub const fn occmo(self) -> u8 {
+        ((self.bits() >> Self::OCCMO_SHIFT) & Self::OCCMO_MASK) as u8
+    }
+
+    /// Sets the value of the `OCCMO` field.
+    pub const fn set_occmo(&mut self, value: u8) {
+        let offset = Self::OCCMO_SHIFT;
+        assert!(value & (Self::OCCMO_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::OCCMO_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `OCCMO` field set to the given value.
+    pub const fn with_occmo(mut self, value: u8) -> Self {
+        self.set_occmo(value);
+        self
+    }
+
+    /// Returns the value of the `LSUI` field.
+    pub const fn lsui(self) -> u8 {
+        ((self.bits() >> Self::LSUI_SHIFT) & Self::LSUI_MASK) as u8
+    }
+
+    /// Sets the value of the `LSUI` field.
+    pub const fn set_lsui(&mut self, value: u8) {
+        let offset = Self::LSUI_SHIFT;
+        assert!(value & (Self::LSUI_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LSUI_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `LSUI` field set to the given value.
+    pub const fn with_lsui(mut self, value: u8) -> Self {
+        self.set_lsui(value);
+        self
+    }
+
+    /// Returns the value of the `FPRCVT` field.
+    pub const fn fprcvt(self) -> u8 {
+        ((self.bits() >> Self::FPRCVT_SHIFT) & Self::FPRCVT_MASK) as u8
+    }
+
+    /// Sets the value of the `FPRCVT` field.
+    pub const fn set_fprcvt(&mut self, value: u8) {
+        let offset = Self::FPRCVT_SHIFT;
+        assert!(value & (Self::FPRCVT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FPRCVT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `FPRCVT` field set to the given value.
+    pub const fn with_fprcvt(mut self, value: u8) -> Self {
+        self.set_fprcvt(value);
+        self
+    }
+
+    /// Returns the value of the `PAC_frac2` field.
+    pub const fn pac_frac2(self) -> u8 {
+        ((self.bits() >> Self::PAC_FRAC2_SHIFT) & Self::PAC_FRAC2_MASK) as u8
+    }
+
+    /// Sets the value of the `PAC_frac2` field.
+    pub const fn set_pac_frac2(&mut self, value: u8) {
+        let offset = Self::PAC_FRAC2_SHIFT;
+        assert!(value & (Self::PAC_FRAC2_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PAC_FRAC2_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `PAC_frac2` field set to the given value.
+    pub const fn with_pac_frac2(mut self, value: u8) -> Self {
+        self.set_pac_frac2(value);
+        self
+    }
+
+    /// Returns the value of the `MTETC` field.
+    pub const fn mtetc(self) -> u8 {
+        ((self.bits() >> Self::MTETC_SHIFT) & Self::MTETC_MASK) as u8
+    }
+
+    /// Sets the value of the `MTETC` field.
+    pub const fn set_mtetc(&mut self, value: u8) {
+        let offset = Self::MTETC_SHIFT;
+        assert!(value & (Self::MTETC_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::MTETC_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `MTETC` field set to the given value.
+    pub const fn with_mtetc(mut self, value: u8) -> Self {
+        self.set_mtetc(value);
+        self
+    }
+
+    /// Returns the value of the `LSCSHINT` field.
+    pub const fn lscshint(self) -> u8 {
+        ((self.bits() >> Self::LSCSHINT_SHIFT) & Self::LSCSHINT_MASK) as u8
+    }
+
+    /// Sets the value of the `LSCSHINT` field.
+    pub const fn set_lscshint(&mut self, value: u8) {
+        let offset = Self::LSCSHINT_SHIFT;
+        assert!(value & (Self::LSCSHINT_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LSCSHINT_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `LSCSHINT` field set to the given value.
+    pub const fn with_lscshint(mut self, value: u8) -> Self {
+        self.set_lscshint(value);
+        self
+    }
+
+    /// Returns the value of the `LSCP` field.
+    pub const fn lscp(self) -> u8 {
+        ((self.bits() >> Self::LSCP_SHIFT) & Self::LSCP_MASK) as u8
+    }
+
+    /// Sets the value of the `LSCP` field.
+    pub const fn set_lscp(&mut self, value: u8) {
+        let offset = Self::LSCP_SHIFT;
+        assert!(value & (Self::LSCP_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::LSCP_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `LSCP` field set to the given value.
+    pub const fn with_lscp(mut self, value: u8) -> Self {
+        self.set_lscp(value);
+        self
+    }
+}
+
+#[cfg(feature = "el1")]
+bitflags! {
     /// `ID_AA64MMFR0_EL1` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -33563,6 +33864,8 @@ read_sysreg!(id_aa64dfr1_el1, u64: IdAa64dfr1El1, safe, fake::SYSREGS);
 read_sysreg!(id_aa64isar1_el1, u64: IdAa64isar1El1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(id_aa64isar2_el1, u64: IdAa64isar2El1, safe, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_sysreg!(id_aa64isar3_el1, u64: IdAa64isar3El1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 read_sysreg!(id_aa64mmfr0_el1, u64: IdAa64mmfr0El1, safe, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
