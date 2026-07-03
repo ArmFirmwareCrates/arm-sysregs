@@ -9,7 +9,7 @@ use crate::read_mpidr_el1;
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1,
-    MpidrEl1, SpsrEl1,
+    MpidrEl1, SpsrEl1, read_id_aa64isar1_el1, read_id_aa64isar2_el1, read_id_aa64isar3_el1,
 };
 #[cfg(feature = "el2")]
 use crate::{EsrEl2, SpsrEl2};
@@ -560,6 +560,26 @@ pub enum Cacheability {
     WriteThrough = 0b10,
     /// Normal memory, Write-Back Read-Allocate No Write-Allocate Cacheable.
     WriteBackNoAllocate = 0b11,
+}
+
+/// Indicates whether FEAT_PAuth_LR is implemented.
+///
+/// The presence of FEAT_PAuth_LR is indicated by multiple ID register fields.
+/// * ID_AA64ISAR3_EL1.PACM.
+/// * ID_AA64ISAR1_EL1.APA.
+/// * ID_AA64ISAR1_EL1.API.
+/// * ID_AA64ISAR2_EL1.APA3.
+#[cfg(feature = "el1")]
+pub fn is_feat_pauth_lr_present() -> bool {
+    const PACM_IMPLEMENTED: u8 = 0b0001;
+    const PAUTH_LR_IMPLEMENTED: u8 = 0b0110;
+
+    let id_aa64isar1_el1 = read_id_aa64isar1_el1();
+
+    read_id_aa64isar3_el1().pacm() >= PACM_IMPLEMENTED
+        || id_aa64isar1_el1.apa() == PAUTH_LR_IMPLEMENTED
+        || id_aa64isar1_el1.api() == PAUTH_LR_IMPLEMENTED
+        || read_id_aa64isar2_el1().apa3() == PAUTH_LR_IMPLEMENTED
 }
 
 #[cfg(test)]
