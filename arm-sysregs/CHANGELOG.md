@@ -7,6 +7,7 @@
 - Added `is_feat_*_present` for `FEAT_RME`, `FEAT_RME_GPC2` and `FEAT_RME_GPC3`.
 - Added `ID_AA64ISAR3_EL1` register.
 - Added `is_feat_pauth_lr_present()` function.
+- Added FEAT_AMUv1p1 registers.
 
 ## 0.3.0
 

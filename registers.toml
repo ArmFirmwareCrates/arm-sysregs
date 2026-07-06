@@ -7,6 +7,7 @@
 [registers.AMAIR1]
 [registers.AMCFGR_EL0]
 [registers.AMCFGR]
+[registers.AMCG1IDR_EL0]
 [registers.AMCGCR_EL0]
 [registers.AMCGCR]
 [registers.AMCNTENCLR0_EL0]
@@ -34,6 +35,10 @@ write = "safe"
 [registers."AMEVCNTR0<n>_EL0"]
 write = "safe"
 [registers."AMEVCNTR1<n>_EL0"]
+write = "safe"
+[registers."AMEVCNTVOFF0<n>_EL2"]
+write = "safe"
+[registers."AMEVCNTVOFF1<n>_EL2"]
 write = "safe"
 [registers."AMEVTYPER0<n>"]
 [registers."AMEVTYPER0<n>_EL0"]

@@ -197,6 +197,85 @@ impl AmcfgrEl0 {
 }
 
 bitflags! {
+    /// `AMCG1IDR_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amcg1idrEl0: u64 {
+        /// `AMEVCNTR1<n>_EL0` bit 0.
+        const AMEVCNTR10_EL0 = 1 << 0;
+        /// `AMEVCNTR1<n>_EL0` bit 1.
+        const AMEVCNTR11_EL0 = 1 << 1;
+        /// `AMEVCNTR1<n>_EL0` bit 2.
+        const AMEVCNTR12_EL0 = 1 << 2;
+        /// `AMEVCNTR1<n>_EL0` bit 3.
+        const AMEVCNTR13_EL0 = 1 << 3;
+        /// `AMEVCNTR1<n>_EL0` bit 4.
+        const AMEVCNTR14_EL0 = 1 << 4;
+        /// `AMEVCNTR1<n>_EL0` bit 5.
+        const AMEVCNTR15_EL0 = 1 << 5;
+        /// `AMEVCNTR1<n>_EL0` bit 6.
+        const AMEVCNTR16_EL0 = 1 << 6;
+        /// `AMEVCNTR1<n>_EL0` bit 7.
+        const AMEVCNTR17_EL0 = 1 << 7;
+        /// `AMEVCNTR1<n>_EL0` bit 8.
+        const AMEVCNTR18_EL0 = 1 << 8;
+        /// `AMEVCNTR1<n>_EL0` bit 9.
+        const AMEVCNTR19_EL0 = 1 << 9;
+        /// `AMEVCNTR1<n>_EL0` bit 10.
+        const AMEVCNTR110_EL0 = 1 << 10;
+        /// `AMEVCNTR1<n>_EL0` bit 11.
+        const AMEVCNTR111_EL0 = 1 << 11;
+        /// `AMEVCNTR1<n>_EL0` bit 12.
+        const AMEVCNTR112_EL0 = 1 << 12;
+        /// `AMEVCNTR1<n>_EL0` bit 13.
+        const AMEVCNTR113_EL0 = 1 << 13;
+        /// `AMEVCNTR1<n>_EL0` bit 14.
+        const AMEVCNTR114_EL0 = 1 << 14;
+        /// `AMEVCNTR1<n>_EL0` bit 15.
+        const AMEVCNTR115_EL0 = 1 << 15;
+        /// `AMEVCNTOFF1<n>_EL2` bit 0.
+        const AMEVCNTOFF10_EL2 = 1 << 16;
+        /// `AMEVCNTOFF1<n>_EL2` bit 1.
+        const AMEVCNTOFF11_EL2 = 1 << 17;
+        /// `AMEVCNTOFF1<n>_EL2` bit 2.
+        const AMEVCNTOFF12_EL2 = 1 << 18;
+        /// `AMEVCNTOFF1<n>_EL2` bit 3.
+        const AMEVCNTOFF13_EL2 = 1 << 19;
+        /// `AMEVCNTOFF1<n>_EL2` bit 4.
+        const AMEVCNTOFF14_EL2 = 1 << 20;
+        /// `AMEVCNTOFF1<n>_EL2` bit 5.
+        const AMEVCNTOFF15_EL2 = 1 << 21;
+        /// `AMEVCNTOFF1<n>_EL2` bit 6.
+        const AMEVCNTOFF16_EL2 = 1 << 22;
+        /// `AMEVCNTOFF1<n>_EL2` bit 7.
+        const AMEVCNTOFF17_EL2 = 1 << 23;
+        /// `AMEVCNTOFF1<n>_EL2` bit 8.
+        const AMEVCNTOFF18_EL2 = 1 << 24;
+        /// `AMEVCNTOFF1<n>_EL2` bit 9.
+        const AMEVCNTOFF19_EL2 = 1 << 25;
+        /// `AMEVCNTOFF1<n>_EL2` bit 10.
+        const AMEVCNTOFF110_EL2 = 1 << 26;
+        /// `AMEVCNTOFF1<n>_EL2` bit 11.
+        const AMEVCNTOFF111_EL2 = 1 << 27;
+        /// `AMEVCNTOFF1<n>_EL2` bit 12.
+        const AMEVCNTOFF112_EL2 = 1 << 28;
+        /// `AMEVCNTOFF1<n>_EL2` bit 13.
+        const AMEVCNTOFF113_EL2 = 1 << 29;
+        /// `AMEVCNTOFF1<n>_EL2` bit 14.
+        const AMEVCNTOFF114_EL2 = 1 << 30;
+        /// `AMEVCNTOFF1<n>_EL2` bit 15.
+        const AMEVCNTOFF115_EL2 = 1 << 31;
+    }
+}
+
+impl Amcg1idrEl0 {
+    /// Offset of the `AMEVCNTR1<n>_EL0` field.
+    pub const AMEVCNTR1_EL0_SHIFT: u32 = 0;
+    /// Offset of the `AMEVCNTOFF1<n>_EL2` field.
+    pub const AMEVCNTOFF1_EL2_SHIFT: u32 = 16;
+}
+
+bitflags! {
     /// `AMCGCR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -792,6 +871,168 @@ pub type Amevcntr18El0 = Amevcntr00El0;
 
 /// `AMEVCNTR19_EL0` system register value.
 pub type Amevcntr19El0 = Amevcntr00El0;
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `AMEVCNTVOFF00_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Amevcntvoff00El2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl Amevcntvoff00El2 {
+    /// Offset of the `VOffset` field.
+    pub const VOFFSET_SHIFT: u32 = 0;
+    /// Mask for the `VOffset` field.
+    pub const VOFFSET_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `VOffset` field.
+    pub const fn voffset(self) -> u64 {
+        (self.bits() >> Self::VOFFSET_SHIFT) & Self::VOFFSET_MASK
+    }
+
+    /// Sets the value of the `VOffset` field.
+    pub const fn set_voffset(&mut self, value: u64) {
+        let offset = Self::VOFFSET_SHIFT;
+        assert!(value & Self::VOFFSET_MASK == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::VOFFSET_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `VOffset` field set to the given value.
+    pub const fn with_voffset(mut self, value: u64) -> Self {
+        self.set_voffset(value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF010_EL2` system register value.
+pub type Amevcntvoff010El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF011_EL2` system register value.
+pub type Amevcntvoff011El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF012_EL2` system register value.
+pub type Amevcntvoff012El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF013_EL2` system register value.
+pub type Amevcntvoff013El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF014_EL2` system register value.
+pub type Amevcntvoff014El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF015_EL2` system register value.
+pub type Amevcntvoff015El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF01_EL2` system register value.
+pub type Amevcntvoff01El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF02_EL2` system register value.
+pub type Amevcntvoff02El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF03_EL2` system register value.
+pub type Amevcntvoff03El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF04_EL2` system register value.
+pub type Amevcntvoff04El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF05_EL2` system register value.
+pub type Amevcntvoff05El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF06_EL2` system register value.
+pub type Amevcntvoff06El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF07_EL2` system register value.
+pub type Amevcntvoff07El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF08_EL2` system register value.
+pub type Amevcntvoff08El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF09_EL2` system register value.
+pub type Amevcntvoff09El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF10_EL2` system register value.
+pub type Amevcntvoff10El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF110_EL2` system register value.
+pub type Amevcntvoff110El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF111_EL2` system register value.
+pub type Amevcntvoff111El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF112_EL2` system register value.
+pub type Amevcntvoff112El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF113_EL2` system register value.
+pub type Amevcntvoff113El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF114_EL2` system register value.
+pub type Amevcntvoff114El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF115_EL2` system register value.
+pub type Amevcntvoff115El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF11_EL2` system register value.
+pub type Amevcntvoff11El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF12_EL2` system register value.
+pub type Amevcntvoff12El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF13_EL2` system register value.
+pub type Amevcntvoff13El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF14_EL2` system register value.
+pub type Amevcntvoff14El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF15_EL2` system register value.
+pub type Amevcntvoff15El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF16_EL2` system register value.
+pub type Amevcntvoff16El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF17_EL2` system register value.
+pub type Amevcntvoff17El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF18_EL2` system register value.
+pub type Amevcntvoff18El2 = Amevcntvoff00El2;
+
+#[cfg(feature = "el2")]
+/// `AMEVCNTVOFF19_EL2` system register value.
+pub type Amevcntvoff19El2 = Amevcntvoff00El2;
 
 bitflags! {
     /// `AMEVTYPER00` system register value.
@@ -33249,6 +33490,8 @@ read_write_sysreg!(amair_el2, u64, safe_read, fake::SYSREGS);
 read_sysreg!(amcfgr: (p15, 0, c2, c13, 1), u32: Amcfgr, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_sysreg!(amcfgr_el0: s3_3_c13_c2_1, u64: AmcfgrEl0, safe, fake::SYSREGS);
+#[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+read_sysreg!(amcg1idr_el0: s3_3_c13_c2_6, u64: Amcg1idrEl0, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(amcgcr: (p15, 0, c2, c13, 2), u32: Amcgcr, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
@@ -33321,6 +33564,70 @@ read_write_sysreg!(amevcntr17_el0: s3_3_c13_c12_7, u64: Amevcntr17El0, safe_read
 read_write_sysreg!(amevcntr18_el0: s3_3_c13_c13_0, u64: Amevcntr18El0, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(amevcntr19_el0: s3_3_c13_c13_1, u64: Amevcntr19El0, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff00_el2: s3_4_c13_c8_0, u64: Amevcntvoff00El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff010_el2: s3_4_c13_c9_2, u64: Amevcntvoff010El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff011_el2: s3_4_c13_c9_3, u64: Amevcntvoff011El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff012_el2: s3_4_c13_c9_4, u64: Amevcntvoff012El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff013_el2: s3_4_c13_c9_5, u64: Amevcntvoff013El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff014_el2: s3_4_c13_c9_6, u64: Amevcntvoff014El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff015_el2: s3_4_c13_c9_7, u64: Amevcntvoff015El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff01_el2: s3_4_c13_c8_1, u64: Amevcntvoff01El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff02_el2: s3_4_c13_c8_2, u64: Amevcntvoff02El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff03_el2: s3_4_c13_c8_3, u64: Amevcntvoff03El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff04_el2: s3_4_c13_c8_4, u64: Amevcntvoff04El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff05_el2: s3_4_c13_c8_5, u64: Amevcntvoff05El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff06_el2: s3_4_c13_c8_6, u64: Amevcntvoff06El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff07_el2: s3_4_c13_c8_7, u64: Amevcntvoff07El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff08_el2: s3_4_c13_c9_0, u64: Amevcntvoff08El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff09_el2: s3_4_c13_c9_1, u64: Amevcntvoff09El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff10_el2: s3_4_c13_c10_0, u64: Amevcntvoff10El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff110_el2: s3_4_c13_c11_2, u64: Amevcntvoff110El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff111_el2: s3_4_c13_c11_3, u64: Amevcntvoff111El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff112_el2: s3_4_c13_c11_4, u64: Amevcntvoff112El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff113_el2: s3_4_c13_c11_5, u64: Amevcntvoff113El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff114_el2: s3_4_c13_c11_6, u64: Amevcntvoff114El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff115_el2: s3_4_c13_c11_7, u64: Amevcntvoff115El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff11_el2: s3_4_c13_c10_1, u64: Amevcntvoff11El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff12_el2: s3_4_c13_c10_2, u64: Amevcntvoff12El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff13_el2: s3_4_c13_c10_3, u64: Amevcntvoff13El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff14_el2: s3_4_c13_c10_4, u64: Amevcntvoff14El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff15_el2: s3_4_c13_c10_5, u64: Amevcntvoff15El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff16_el2: s3_4_c13_c10_6, u64: Amevcntvoff16El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff17_el2: s3_4_c13_c10_7, u64: Amevcntvoff17El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff18_el2: s3_4_c13_c11_0, u64: Amevcntvoff18El2, safe_read, safe_write, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(amevcntvoff19_el2: s3_4_c13_c11_1, u64: Amevcntvoff19El2, safe_read, safe_write, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_sysreg!(amevtyper00: (p15, 0, c6, c13, 0), u32: Amevtyper00, safe, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]

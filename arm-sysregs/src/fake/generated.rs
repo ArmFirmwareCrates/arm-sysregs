@@ -4,23 +4,23 @@
 // This file is generated, do not edit manually.
 
 use crate::{
-    Amcfgr, AmcfgrEl0, Amcgcr, AmcgcrEl0, Amcntenclr0, Amcntenclr0El0, Amcntenclr1, Amcntenclr1El0,
-    Amcntenset0, Amcntenset0El0, Amcntenset1, Amcntenset1El0, Amcr, AmcrEl0, Amevcntr00,
-    Amevcntr00El0, Amevcntr01, Amevcntr01El0, Amevcntr02, Amevcntr02El0, Amevcntr03, Amevcntr03El0,
-    Amevcntr10El0, Amevcntr11El0, Amevcntr12El0, Amevcntr13El0, Amevcntr14El0, Amevcntr15El0,
-    Amevcntr16El0, Amevcntr17El0, Amevcntr18El0, Amevcntr19El0, Amevcntr110El0, Amevcntr111El0,
-    Amevcntr112El0, Amevcntr113El0, Amevcntr114El0, Amevcntr115El0, Amevtyper00, Amevtyper00El0,
-    Amevtyper01, Amevtyper01El0, Amevtyper02, Amevtyper02El0, Amevtyper03, Amevtyper03El0,
-    Amevtyper10, Amevtyper11, Amevtyper12, Amevtyper13, Amevtyper14, Amevtyper15, Amevtyper16,
-    Amevtyper17, Amevtyper18, Amevtyper19, Amevtyper110, Amevtyper111, Amevtyper112, Amevtyper113,
-    Amevtyper114, Amevtyper115, Amuserenr, AmuserenrEl0, Ccsidr, Ccsidr2, Clidr, Cntfrq, CntfrqEl0,
-    Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl, CnthpsCval, CnthpsTval, CnthvCtl,
-    CnthvCval, CnthvTval, CnthvsCtl, CnthvsCval, CnthvsTval, Cntkctl, CntpCtl, CntpCtlEl0,
-    CntpCval, CntpCvalEl0, CntpTval, CntpTvalEl0, Cntpct, CntpctEl0, Cntpctss, CntpctssEl0,
-    CntvCtl, CntvCtlEl0, CntvCval, CntvCvalEl0, CntvTval, CntvTvalEl0, Cntvct, CntvctEl0, Cntvctss,
-    CntvctssEl0, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0, Currentel, Dacr, Daif,
-    Dbgauthstatus, Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1, Dbgdidr, Dbgdrar,
-    Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint, Dbgosdlr,
+    Amcfgr, AmcfgrEl0, Amcg1idrEl0, Amcgcr, AmcgcrEl0, Amcntenclr0, Amcntenclr0El0, Amcntenclr1,
+    Amcntenclr1El0, Amcntenset0, Amcntenset0El0, Amcntenset1, Amcntenset1El0, Amcr, AmcrEl0,
+    Amevcntr00, Amevcntr00El0, Amevcntr01, Amevcntr01El0, Amevcntr02, Amevcntr02El0, Amevcntr03,
+    Amevcntr03El0, Amevcntr10El0, Amevcntr11El0, Amevcntr12El0, Amevcntr13El0, Amevcntr14El0,
+    Amevcntr15El0, Amevcntr16El0, Amevcntr17El0, Amevcntr18El0, Amevcntr19El0, Amevcntr110El0,
+    Amevcntr111El0, Amevcntr112El0, Amevcntr113El0, Amevcntr114El0, Amevcntr115El0, Amevtyper00,
+    Amevtyper00El0, Amevtyper01, Amevtyper01El0, Amevtyper02, Amevtyper02El0, Amevtyper03,
+    Amevtyper03El0, Amevtyper10, Amevtyper11, Amevtyper12, Amevtyper13, Amevtyper14, Amevtyper15,
+    Amevtyper16, Amevtyper17, Amevtyper18, Amevtyper19, Amevtyper110, Amevtyper111, Amevtyper112,
+    Amevtyper113, Amevtyper114, Amevtyper115, Amuserenr, AmuserenrEl0, Ccsidr, Ccsidr2, Clidr,
+    Cntfrq, CntfrqEl0, Cnthctl, CnthpCtl, CnthpCval, CnthpTval, CnthpsCtl, CnthpsCval, CnthpsTval,
+    CnthvCtl, CnthvCval, CnthvTval, CnthvsCtl, CnthvsCval, CnthvsTval, Cntkctl, CntpCtl,
+    CntpCtlEl0, CntpCval, CntpCvalEl0, CntpTval, CntpTvalEl0, Cntpct, CntpctEl0, Cntpctss,
+    CntpctssEl0, CntvCtl, CntvCtlEl0, CntvCval, CntvCvalEl0, CntvTval, CntvTvalEl0, Cntvct,
+    CntvctEl0, Cntvctss, CntvctssEl0, Cntvoff, Contextidr, Cpacr, Csselr, Ctr, CtrEl0, Currentel,
+    Dacr, Daif, Dbgauthstatus, Dbgclaimclr, Dbgclaimset, Dbgdccint, Dbgdevid, Dbgdevid1, Dbgdidr,
+    Dbgdrar, Dbgdscrext, Dbgdscrint, Dbgdtrrxext, Dbgdtrrxint, Dbgdtrtxext, Dbgdtrtxint, Dbgosdlr,
     Dbgoseccr, Dbgoslar, Dbgoslsr, Dbgprcr, Dbgvcr, Dfar, Dfsr, Disr, Dit, Dlr, Dspsr, Dspsr2,
     Erridr, Errselr, Erxaddr, Erxaddr2, Erxctlr, Erxctlr2, Erxfr, Erxfr2, Erxmisc0, Erxmisc1,
     Erxmisc2, Erxmisc3, Erxmisc4, Erxmisc5, Erxmisc6, Erxmisc7, Erxstatus, Fpcr, Fpmr, Fpsr, Hcptr,
@@ -35,6 +35,25 @@ use crate::{
     Rvbar, Scr, Sctlr, Sdcr, Sder, Svcr, Tlbtr, TpidrEl0, Tpidrprw, TpidrroEl0, Tpidruro, Tpidrurw,
     Trfcr, Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
+#[cfg(feature = "el2")]
+use crate::{
+    Amevcntvoff00El2, Amevcntvoff01El2, Amevcntvoff02El2, Amevcntvoff03El2, Amevcntvoff04El2,
+    Amevcntvoff05El2, Amevcntvoff06El2, Amevcntvoff07El2, Amevcntvoff08El2, Amevcntvoff09El2,
+    Amevcntvoff010El2, Amevcntvoff10El2, Amevcntvoff011El2, Amevcntvoff11El2, Amevcntvoff012El2,
+    Amevcntvoff12El2, Amevcntvoff013El2, Amevcntvoff13El2, Amevcntvoff014El2, Amevcntvoff14El2,
+    Amevcntvoff015El2, Amevcntvoff15El2, Amevcntvoff16El2, Amevcntvoff17El2, Amevcntvoff18El2,
+    Amevcntvoff19El2, Amevcntvoff110El2, Amevcntvoff111El2, Amevcntvoff112El2, Amevcntvoff113El2,
+    Amevcntvoff114El2, Amevcntvoff115El2, BrbcrEl2, CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2,
+    CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2, CnthpsTvalEl2, CnthvCtlEl2, CnthvCvalEl2,
+    CnthvTvalEl2, CnthvsCtlEl2, CnthvsCvalEl2, CnthvsTvalEl2, CntpoffEl2, CntvoffEl2,
+    ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2, GcscrEl2, HafgrtrEl2, HcrEl2, HcrxEl2,
+    Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2, Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2,
+    Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2,
+    MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2,
+    Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, Sctlr2El2,
+    SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2,
+    VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+};
 #[cfg(feature = "el1")]
 use crate::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
@@ -47,19 +66,6 @@ use crate::{
     IdAa64pfr2El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1,
     MpidrEl1, ParEl1, PfarEl1, PirEl1, Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1,
     SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
-};
-#[cfg(feature = "el2")]
-use crate::{
-    BrbcrEl2, CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2, CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2,
-    CnthpsTvalEl2, CnthvCtlEl2, CnthvCvalEl2, CnthvTvalEl2, CnthvsCtlEl2, CnthvsCvalEl2,
-    CnthvsTvalEl2, CntpoffEl2, CntvoffEl2, ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2,
-    GcscrEl2, HafgrtrEl2, HcrEl2, HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2,
-    Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2,
-    IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2,
-    Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2,
-    PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, Sctlr2El2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2,
-    TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2,
-    VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el3")]
 use crate::{
@@ -114,6 +120,8 @@ pub struct SystemRegisters {
     pub amcfgr: Amcfgr,
     /// Fake value for the `AMCFGR_EL0` system register.
     pub amcfgr_el0: AmcfgrEl0,
+    /// Fake value for the `AMCG1IDR_EL0` system register.
+    pub amcg1idr_el0: Amcg1idrEl0,
     /// Fake value for the `AMCGCR` system register.
     pub amcgcr: Amcgcr,
     /// Fake value for the `AMCGCR_EL0` system register.
@@ -186,6 +194,102 @@ pub struct SystemRegisters {
     pub amevcntr18_el0: Amevcntr18El0,
     /// Fake value for the `AMEVCNTR19_EL0` system register.
     pub amevcntr19_el0: Amevcntr19El0,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF00_EL2` system register.
+    pub amevcntvoff00_el2: Amevcntvoff00El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF010_EL2` system register.
+    pub amevcntvoff010_el2: Amevcntvoff010El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF011_EL2` system register.
+    pub amevcntvoff011_el2: Amevcntvoff011El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF012_EL2` system register.
+    pub amevcntvoff012_el2: Amevcntvoff012El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF013_EL2` system register.
+    pub amevcntvoff013_el2: Amevcntvoff013El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF014_EL2` system register.
+    pub amevcntvoff014_el2: Amevcntvoff014El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF015_EL2` system register.
+    pub amevcntvoff015_el2: Amevcntvoff015El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF01_EL2` system register.
+    pub amevcntvoff01_el2: Amevcntvoff01El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF02_EL2` system register.
+    pub amevcntvoff02_el2: Amevcntvoff02El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF03_EL2` system register.
+    pub amevcntvoff03_el2: Amevcntvoff03El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF04_EL2` system register.
+    pub amevcntvoff04_el2: Amevcntvoff04El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF05_EL2` system register.
+    pub amevcntvoff05_el2: Amevcntvoff05El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF06_EL2` system register.
+    pub amevcntvoff06_el2: Amevcntvoff06El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF07_EL2` system register.
+    pub amevcntvoff07_el2: Amevcntvoff07El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF08_EL2` system register.
+    pub amevcntvoff08_el2: Amevcntvoff08El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF09_EL2` system register.
+    pub amevcntvoff09_el2: Amevcntvoff09El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF10_EL2` system register.
+    pub amevcntvoff10_el2: Amevcntvoff10El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF110_EL2` system register.
+    pub amevcntvoff110_el2: Amevcntvoff110El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF111_EL2` system register.
+    pub amevcntvoff111_el2: Amevcntvoff111El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF112_EL2` system register.
+    pub amevcntvoff112_el2: Amevcntvoff112El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF113_EL2` system register.
+    pub amevcntvoff113_el2: Amevcntvoff113El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF114_EL2` system register.
+    pub amevcntvoff114_el2: Amevcntvoff114El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF115_EL2` system register.
+    pub amevcntvoff115_el2: Amevcntvoff115El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF11_EL2` system register.
+    pub amevcntvoff11_el2: Amevcntvoff11El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF12_EL2` system register.
+    pub amevcntvoff12_el2: Amevcntvoff12El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF13_EL2` system register.
+    pub amevcntvoff13_el2: Amevcntvoff13El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF14_EL2` system register.
+    pub amevcntvoff14_el2: Amevcntvoff14El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF15_EL2` system register.
+    pub amevcntvoff15_el2: Amevcntvoff15El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF16_EL2` system register.
+    pub amevcntvoff16_el2: Amevcntvoff16El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF17_EL2` system register.
+    pub amevcntvoff17_el2: Amevcntvoff17El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF18_EL2` system register.
+    pub amevcntvoff18_el2: Amevcntvoff18El2,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `AMEVCNTVOFF19_EL2` system register.
+    pub amevcntvoff19_el2: Amevcntvoff19El2,
     /// Fake value for the `AMEVTYPER00` system register.
     pub amevtyper00: Amevtyper00,
     /// Fake value for the `AMEVTYPER00_EL0` system register.
@@ -1268,6 +1372,7 @@ impl SystemRegisters {
             amair_el2: 0,
             amcfgr: Amcfgr::empty(),
             amcfgr_el0: AmcfgrEl0::empty(),
+            amcg1idr_el0: Amcg1idrEl0::empty(),
             amcgcr: Amcgcr::empty(),
             amcgcr_el0: AmcgcrEl0::empty(),
             amcntenclr0: Amcntenclr0::empty(),
@@ -1304,6 +1409,70 @@ impl SystemRegisters {
             amevcntr17_el0: Amevcntr17El0::empty(),
             amevcntr18_el0: Amevcntr18El0::empty(),
             amevcntr19_el0: Amevcntr19El0::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff00_el2: Amevcntvoff00El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff010_el2: Amevcntvoff010El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff011_el2: Amevcntvoff011El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff012_el2: Amevcntvoff012El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff013_el2: Amevcntvoff013El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff014_el2: Amevcntvoff014El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff015_el2: Amevcntvoff015El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff01_el2: Amevcntvoff01El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff02_el2: Amevcntvoff02El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff03_el2: Amevcntvoff03El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff04_el2: Amevcntvoff04El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff05_el2: Amevcntvoff05El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff06_el2: Amevcntvoff06El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff07_el2: Amevcntvoff07El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff08_el2: Amevcntvoff08El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff09_el2: Amevcntvoff09El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff10_el2: Amevcntvoff10El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff110_el2: Amevcntvoff110El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff111_el2: Amevcntvoff111El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff112_el2: Amevcntvoff112El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff113_el2: Amevcntvoff113El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff114_el2: Amevcntvoff114El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff115_el2: Amevcntvoff115El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff11_el2: Amevcntvoff11El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff12_el2: Amevcntvoff12El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff13_el2: Amevcntvoff13El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff14_el2: Amevcntvoff14El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff15_el2: Amevcntvoff15El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff16_el2: Amevcntvoff16El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff17_el2: Amevcntvoff17El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff18_el2: Amevcntvoff18El2::empty(),
+            #[cfg(feature = "el2")]
+            amevcntvoff19_el2: Amevcntvoff19El2::empty(),
             amevtyper00: Amevtyper00::empty(),
             amevtyper00_el0: Amevtyper00El0::empty(),
             amevtyper01: Amevtyper01::empty(),
