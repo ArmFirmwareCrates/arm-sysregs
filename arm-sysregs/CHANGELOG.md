@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Added `is_feat_sel2_present`.
+
 ## 0.3.1
 
 ### New features

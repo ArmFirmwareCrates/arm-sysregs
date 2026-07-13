@@ -258,6 +258,7 @@ impl IdAa64pfr0El1 {
     const RME_IMPLEMENTED: u8 = 0b0001;
     const RME_GPC2_IMPLEMENTED: u8 = 0b0010;
     const RME_GPC3_IMPLEMENTED: u8 = 0b0011;
+    const SEL2_IMPLEMENTED: u8 = 0b0001;
 
     /// Indicates whether DIT Extension is implemented.
     pub fn is_feat_dit_present(self) -> bool {
@@ -297,6 +298,11 @@ impl IdAa64pfr0El1 {
     /// Indicates whether FEAT_RME_GPC3 is implemented.
     pub fn is_feat_rme_gpc3_present(self) -> bool {
         self.rme() >= Self::RME_GPC3_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_SEL2 is implemented.
+    pub fn is_feat_sel2_present(self) -> bool {
+        self.sel2() >= Self::SEL2_IMPLEMENTED
     }
 }
 
