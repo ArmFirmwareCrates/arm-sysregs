@@ -3,18 +3,18 @@
 
 //! Manually implemented methods for system register types.
 
-#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
-use crate::read_mpidr_el1;
 #[cfg(feature = "el1")]
 use crate::{
     ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
     IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1,
-    MpidrEl1, SpsrEl1, read_id_aa64isar1_el1, read_id_aa64isar2_el1, read_id_aa64isar3_el1,
+    MpidrEl1, SpsrEl1,
 };
 #[cfg(feature = "el2")]
 use crate::{EsrEl2, SpsrEl2};
 #[cfg(feature = "el3")]
 use crate::{EsrEl3, MdcrEl3, SmcrEl3, SpsrEl3};
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+use crate::{read_id_aa64isar1_el1, read_id_aa64isar2_el1, read_id_aa64isar3_el1, read_mpidr_el1};
 #[cfg(feature = "el1")]
 use core::fmt::{self, Debug, Formatter};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
@@ -569,7 +569,7 @@ pub enum Cacheability {
 /// * ID_AA64ISAR1_EL1.APA.
 /// * ID_AA64ISAR1_EL1.API.
 /// * ID_AA64ISAR2_EL1.APA3.
-#[cfg(feature = "el1")]
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
 pub fn is_feat_pauth_lr_present() -> bool {
     const PACM_IMPLEMENTED: u8 = 0b0001;
     const PAUTH_LR_IMPLEMENTED: u8 = 0b0110;
