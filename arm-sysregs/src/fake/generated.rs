@@ -69,9 +69,9 @@ use crate::{
 };
 #[cfg(feature = "el3")]
 use crate::{
-    CptrEl3, EsrEl3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3, MdcrEl3,
-    Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3, TpidrEl3,
-    Ttbr0El3, ZcrEl3,
+    CptrEl3, EsrEl3, Fgwte3El3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3,
+    MdcrEl3, Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3,
+    TpidrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -651,6 +651,9 @@ pub struct SystemRegisters {
     pub far_el2: FarEl2,
     /// Fake value for the `FCSEIDR` system register.
     pub fcseidr: u32,
+    #[cfg(feature = "el3")]
+    /// Fake value for the `FGWTE3_EL3` system register.
+    pub fgwte3_el3: Fgwte3El3,
     /// Fake value for the `FPCR` system register.
     pub fpcr: Fpcr,
     /// Fake value for the `FPMR` system register.
@@ -1673,6 +1676,8 @@ impl SystemRegisters {
             #[cfg(feature = "el2")]
             far_el2: FarEl2::empty(),
             fcseidr: 0,
+            #[cfg(feature = "el3")]
+            fgwte3_el3: Fgwte3El3::empty(),
             fpcr: Fpcr::empty(),
             fpmr: Fpmr::empty(),
             fpsr: Fpsr::empty(),

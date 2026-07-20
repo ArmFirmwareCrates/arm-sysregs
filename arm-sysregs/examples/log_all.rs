@@ -658,6 +658,8 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("far_el2 = {:?}", arm_sysregs::read_far_el2());
     #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
     info!("fcseidr = {:?}", arm_sysregs::read_fcseidr());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+    info!("fgwte3_el3 = {:?}", arm_sysregs::read_fgwte3_el3());
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     info!("fpcr = {:?}", arm_sysregs::read_fpcr());
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]

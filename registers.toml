@@ -129,6 +129,7 @@ write = "safe"
 [registers.ERXMISC7]
 [registers.ERXSTATUS]
 [registers.FCSEIDR]
+[registers.FGWTE3_EL3]
 [registers.HACR]
 [registers.HACTLR]
 [registers.HACTLR2]

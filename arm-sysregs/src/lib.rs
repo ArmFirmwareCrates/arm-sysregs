@@ -7450,6 +7450,111 @@ impl FarEl2 {
     }
 }
 
+#[cfg(feature = "el3")]
+bitflags! {
+    /// `FGWTE3_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Fgwte3El3: u64 {
+        /// `ACTLR_EL3` bit.
+        const ACTLR_EL3 = 1 << 0;
+        /// `AFSR0_EL3` bit.
+        const AFSR0_EL3 = 1 << 1;
+        /// `AFSR1_EL3` bit.
+        const AFSR1_EL3 = 1 << 2;
+        /// `AMAIR_EL3` bit.
+        const AMAIR_EL3 = 1 << 3;
+        /// `AMAIR2_EL3` bit.
+        const AMAIR2_EL3 = 1 << 4;
+        /// `GCSCR_EL3` bit.
+        const GCSCR_EL3 = 1 << 5;
+        /// `GCSPR_EL3` bit.
+        const GCSPR_EL3 = 1 << 6;
+        /// `GPCCR_EL3` bit.
+        const GPCCR_EL3 = 1 << 7;
+        /// `GPTBR_EL3` bit.
+        const GPTBR_EL3 = 1 << 8;
+        /// `MAIR_EL3` bit.
+        const MAIR_EL3 = 1 << 9;
+        /// `MAIR2_EL3` bit.
+        const MAIR2_EL3 = 1 << 10;
+        /// `MDCR_EL3` bit.
+        const MDCR_EL3 = 1 << 11;
+        /// `MECID_RL_A_EL3` bit.
+        const MECID_RL_A_EL3 = 1 << 12;
+        /// `MPAM3_EL3` bit.
+        const MPAM3_EL3 = 1 << 13;
+        /// `PIR_EL3` bit.
+        const PIR_EL3 = 1 << 14;
+        /// `SCTLR_EL3` bit.
+        const SCTLR_EL3 = 1 << 15;
+        /// `SCTLR2_EL3` bit.
+        const SCTLR2_EL3 = 1 << 16;
+        /// `SPMROOTCR_EL3` bit.
+        const SPMROOTCR_EL3 = 1 << 17;
+        /// `TCR_EL3` bit.
+        const TCR_EL3 = 1 << 18;
+        /// `TPIDR_EL3` bit.
+        const TPIDR_EL3 = 1 << 19;
+        /// `TTBR0_EL3` bit.
+        const TTBR0_EL3 = 1 << 20;
+        /// `VBAR_EL3` bit.
+        const VBAR_EL3 = 1 << 21;
+        /// `GPCBW_EL3` bit.
+        const GPCBW_EL3 = 1 << 22;
+    }
+}
+
+#[cfg(feature = "el3")]
+impl Fgwte3El3 {
+    /// Offset of the `ACTLR_EL3` field.
+    pub const ACTLR_EL3_SHIFT: u32 = 0;
+    /// Offset of the `AFSR0_EL3` field.
+    pub const AFSR0_EL3_SHIFT: u32 = 1;
+    /// Offset of the `AFSR1_EL3` field.
+    pub const AFSR1_EL3_SHIFT: u32 = 2;
+    /// Offset of the `AMAIR_EL3` field.
+    pub const AMAIR_EL3_SHIFT: u32 = 3;
+    /// Offset of the `AMAIR2_EL3` field.
+    pub const AMAIR2_EL3_SHIFT: u32 = 4;
+    /// Offset of the `GCSCR_EL3` field.
+    pub const GCSCR_EL3_SHIFT: u32 = 5;
+    /// Offset of the `GCSPR_EL3` field.
+    pub const GCSPR_EL3_SHIFT: u32 = 6;
+    /// Offset of the `GPCCR_EL3` field.
+    pub const GPCCR_EL3_SHIFT: u32 = 7;
+    /// Offset of the `GPTBR_EL3` field.
+    pub const GPTBR_EL3_SHIFT: u32 = 8;
+    /// Offset of the `MAIR_EL3` field.
+    pub const MAIR_EL3_SHIFT: u32 = 9;
+    /// Offset of the `MAIR2_EL3` field.
+    pub const MAIR2_EL3_SHIFT: u32 = 10;
+    /// Offset of the `MDCR_EL3` field.
+    pub const MDCR_EL3_SHIFT: u32 = 11;
+    /// Offset of the `MECID_RL_A_EL3` field.
+    pub const MECID_RL_A_EL3_SHIFT: u32 = 12;
+    /// Offset of the `MPAM3_EL3` field.
+    pub const MPAM3_EL3_SHIFT: u32 = 13;
+    /// Offset of the `PIR_EL3` field.
+    pub const PIR_EL3_SHIFT: u32 = 14;
+    /// Offset of the `SCTLR_EL3` field.
+    pub const SCTLR_EL3_SHIFT: u32 = 15;
+    /// Offset of the `SCTLR2_EL3` field.
+    pub const SCTLR2_EL3_SHIFT: u32 = 16;
+    /// Offset of the `SPMROOTCR_EL3` field.
+    pub const SPMROOTCR_EL3_SHIFT: u32 = 17;
+    /// Offset of the `TCR_EL3` field.
+    pub const TCR_EL3_SHIFT: u32 = 18;
+    /// Offset of the `TPIDR_EL3` field.
+    pub const TPIDR_EL3_SHIFT: u32 = 19;
+    /// Offset of the `TTBR0_EL3` field.
+    pub const TTBR0_EL3_SHIFT: u32 = 20;
+    /// Offset of the `VBAR_EL3` field.
+    pub const VBAR_EL3_SHIFT: u32 = 21;
+    /// Offset of the `GPCBW_EL3` field.
+    pub const GPCBW_EL3_SHIFT: u32 = 22;
+}
+
 bitflags! {
     /// `FPCR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -33950,6 +34055,8 @@ read_write_sysreg!(far_el1, u64: FarEl1, safe_read, fake::SYSREGS);
 read_write_sysreg!(far_el2, u64: FarEl2, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "arm"))]
 read_write_sysreg!(fcseidr: (p15, 0, c0, c13, 0), u32, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+read_write_sysreg!(fgwte3_el3: s3_6_c1_c1_5, u64: Fgwte3El3, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 read_write_sysreg!(fpcr, u64: Fpcr, safe_read, fake::SYSREGS);
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]

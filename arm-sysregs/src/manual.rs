@@ -240,7 +240,13 @@ impl IdAa64mmfr3El1 {
 
 #[cfg(feature = "el1")]
 impl IdAa64mmfr4El1 {
+    const FGWTE3_IMPLEMENTED: u8 = 0b0001;
     const RME_GDI_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_FGWTE3 is implemented.
+    pub fn is_feat_fgwte3_present(self) -> bool {
+        self.fgwte3() >= Self::FGWTE3_IMPLEMENTED
+    }
 
     /// Indicates whether FEAT_RME_GDI is implemented.
     pub fn is_feat_rme_gdi_present(self) -> bool {

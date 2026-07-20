@@ -5,6 +5,7 @@
 ### New features
 
 - Added `is_feat_sel2_present`.
+- Added the `FGWTE3_EL3` register. Added `is_feat_fgwte3_present` to `IdAa64Mmfr4El1`.
 
 ## 0.3.1
 
