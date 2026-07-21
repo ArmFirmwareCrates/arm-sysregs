@@ -672,6 +672,10 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("gcscr_el1 = {:?}", arm_sysregs::read_gcscr_el1());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!("gcscr_el2 = {:?}", arm_sysregs::read_gcscr_el2());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!("gcspr_el1 = {:?}", arm_sysregs::read_gcspr_el1());
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!("gcspr_el2 = {:?}", arm_sysregs::read_gcspr_el2());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
     info!("gpccr_el3 = {:?}", arm_sysregs::read_gpccr_el3());
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]

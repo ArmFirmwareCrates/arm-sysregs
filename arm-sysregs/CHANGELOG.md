@@ -6,6 +6,7 @@
 
 - Added `is_feat_sel2_present`.
 - Added the `FGWTE3_EL3` register. Added `is_feat_fgwte3_present` to `IdAa64Mmfr4El1`.
+- Added `GCSPR_EL1` and `GCSPR_EL2` registers
 
 ## 0.3.1
 

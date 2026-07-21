@@ -8023,6 +8023,86 @@ impl GcscrEl2 {
     pub const STREN_SHIFT: u32 = 9;
 }
 
+#[cfg(feature = "el1")]
+bitflags! {
+    /// `GCSPR_EL1` system register value.
+    ///
+    /// Guarded Control Stack Pointer register.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct GcsprEl1: u64 {
+    }
+}
+
+#[cfg(feature = "el1")]
+impl GcsprEl1 {
+    /// Offset of the `PTR[63:3]` field.
+    pub const PTR_63_3_SHIFT: u32 = 3;
+    /// Mask for the `PTR[63:3]` field.
+    pub const PTR_63_3_MASK: u64 =
+        0b1_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `PTR[63:3]` field.
+    pub const fn ptr_63_3(self) -> u64 {
+        (self.bits() >> Self::PTR_63_3_SHIFT) & Self::PTR_63_3_MASK
+    }
+
+    /// Sets the value of the `PTR[63:3]` field.
+    pub const fn set_ptr_63_3(&mut self, value: u64) {
+        let offset = Self::PTR_63_3_SHIFT;
+        assert!(value & Self::PTR_63_3_MASK == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PTR_63_3_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `PTR[63:3]` field set to the given value.
+    pub const fn with_ptr_63_3(mut self, value: u64) -> Self {
+        self.set_ptr_63_3(value);
+        self
+    }
+}
+
+#[cfg(feature = "el2")]
+bitflags! {
+    /// `GCSPR_EL2` system register value.
+    ///
+    /// Guarded Control Stack Pointer register.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct GcsprEl2: u64 {
+    }
+}
+
+#[cfg(feature = "el2")]
+impl GcsprEl2 {
+    /// Offset of the `PTR[63:3]` field.
+    pub const PTR_63_3_SHIFT: u32 = 3;
+    /// Mask for the `PTR[63:3]` field.
+    pub const PTR_63_3_MASK: u64 =
+        0b1_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `PTR[63:3]` field.
+    pub const fn ptr_63_3(self) -> u64 {
+        (self.bits() >> Self::PTR_63_3_SHIFT) & Self::PTR_63_3_MASK
+    }
+
+    /// Sets the value of the `PTR[63:3]` field.
+    pub const fn set_ptr_63_3(&mut self, value: u64) {
+        let offset = Self::PTR_63_3_SHIFT;
+        assert!(value & Self::PTR_63_3_MASK == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PTR_63_3_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `PTR[63:3]` field set to the given value.
+    pub const fn with_ptr_63_3(mut self, value: u64) -> Self {
+        self.set_ptr_63_3(value);
+        self
+    }
+}
+
 #[cfg(feature = "el3")]
 bitflags! {
     /// `GPCCR_EL3` system register value.
@@ -10180,14 +10260,14 @@ bitflags! {
         const NDPOTBR1_EL1 = 1 << 24;
         /// `nDPOTBR0_EL1` bit.
         const NDPOTBR0_EL1 = 1 << 25;
-        /// `nTPMIN1_EL1` bit.
-        const NTPMIN1_EL1 = 1 << 26;
-        /// `nTPMIN0_EL1` bit.
-        const NTPMIN0_EL1 = 1 << 27;
-        /// `nTPMIN1_EL0` bit.
-        const NTPMIN1_EL0 = 1 << 28;
-        /// `nTPMIN0_EL0` bit.
-        const NTPMIN0_EL0 = 1 << 29;
+        /// `nTPCR1_EL1` bit.
+        const NTPCR1_EL1 = 1 << 26;
+        /// `nTPCR0_EL1` bit.
+        const NTPCR0_EL1 = 1 << 27;
+        /// `nTPCR1_EL0` bit.
+        const NTPCR1_EL0 = 1 << 28;
+        /// `nTPCR0_EL0` bit.
+        const NTPCR0_EL0 = 1 << 29;
         /// `nTLBIDIDR_EL1` bit.
         const NTLBIDIDR_EL1 = 1 << 30;
         /// `TFSR_EL1` bit.
@@ -10261,14 +10341,14 @@ impl Hfgrtr2El2 {
     pub const NDPOTBR1_EL1_SHIFT: u32 = 24;
     /// Offset of the `nDPOTBR0_EL1` field.
     pub const NDPOTBR0_EL1_SHIFT: u32 = 25;
-    /// Offset of the `nTPMIN1_EL1` field.
-    pub const NTPMIN1_EL1_SHIFT: u32 = 26;
-    /// Offset of the `nTPMIN0_EL1` field.
-    pub const NTPMIN0_EL1_SHIFT: u32 = 27;
-    /// Offset of the `nTPMIN1_EL0` field.
-    pub const NTPMIN1_EL0_SHIFT: u32 = 28;
-    /// Offset of the `nTPMIN0_EL0` field.
-    pub const NTPMIN0_EL0_SHIFT: u32 = 29;
+    /// Offset of the `nTPCR1_EL1` field.
+    pub const NTPCR1_EL1_SHIFT: u32 = 26;
+    /// Offset of the `nTPCR0_EL1` field.
+    pub const NTPCR0_EL1_SHIFT: u32 = 27;
+    /// Offset of the `nTPCR1_EL0` field.
+    pub const NTPCR1_EL0_SHIFT: u32 = 28;
+    /// Offset of the `nTPCR0_EL0` field.
+    pub const NTPCR0_EL0_SHIFT: u32 = 29;
     /// Offset of the `nTLBIDIDR_EL1` field.
     pub const NTLBIDIDR_EL1_SHIFT: u32 = 30;
     /// Offset of the `nAFGDTn_EL1` field.
@@ -10648,14 +10728,14 @@ bitflags! {
         const NDPOTBR1_EL1 = 1 << 24;
         /// `nDPOTBR0_EL1` bit.
         const NDPOTBR0_EL1 = 1 << 25;
-        /// `nTPMIN1_EL1` bit.
-        const NTPMIN1_EL1 = 1 << 26;
-        /// `nTPMIN0_EL1` bit.
-        const NTPMIN0_EL1 = 1 << 27;
-        /// `nTPMIN1_EL0` bit.
-        const NTPMIN1_EL0 = 1 << 28;
-        /// `nTPMIN0_EL0` bit.
-        const NTPMIN0_EL0 = 1 << 29;
+        /// `nTPCR1_EL1` bit.
+        const NTPCR1_EL1 = 1 << 26;
+        /// `nTPCR0_EL1` bit.
+        const NTPCR0_EL1 = 1 << 27;
+        /// `nTPCR1_EL0` bit.
+        const NTPCR1_EL0 = 1 << 28;
+        /// `nTPCR0_EL0` bit.
+        const NTPCR0_EL0 = 1 << 29;
         /// `TFSR_EL1` bit.
         const TFSR_EL1 = 1 << 33;
         /// `RGSR_EL1` bit.
@@ -10725,14 +10805,14 @@ impl Hfgwtr2El2 {
     pub const NDPOTBR1_EL1_SHIFT: u32 = 24;
     /// Offset of the `nDPOTBR0_EL1` field.
     pub const NDPOTBR0_EL1_SHIFT: u32 = 25;
-    /// Offset of the `nTPMIN1_EL1` field.
-    pub const NTPMIN1_EL1_SHIFT: u32 = 26;
-    /// Offset of the `nTPMIN0_EL1` field.
-    pub const NTPMIN0_EL1_SHIFT: u32 = 27;
-    /// Offset of the `nTPMIN1_EL0` field.
-    pub const NTPMIN1_EL0_SHIFT: u32 = 28;
-    /// Offset of the `nTPMIN0_EL0` field.
-    pub const NTPMIN0_EL0_SHIFT: u32 = 29;
+    /// Offset of the `nTPCR1_EL1` field.
+    pub const NTPCR1_EL1_SHIFT: u32 = 26;
+    /// Offset of the `nTPCR0_EL1` field.
+    pub const NTPCR0_EL1_SHIFT: u32 = 27;
+    /// Offset of the `nTPCR1_EL0` field.
+    pub const NTPCR1_EL0_SHIFT: u32 = 28;
+    /// Offset of the `nTPCR0_EL0` field.
+    pub const NTPCR0_EL0_SHIFT: u32 = 29;
     /// Offset of the `nAFGDTn_EL1` field.
     pub const NAFGDTN_EL1_SHIFT: u32 = 31;
     /// Mask for the `nAFGDTn_EL1` field.
@@ -15216,6 +15296,10 @@ impl IdAa64isar3El1 {
     pub const LSCP_SHIFT: u32 = 44;
     /// Mask for the `LSCP` field.
     pub const LSCP_MASK: u64 = 0b1111;
+    /// Offset of the `HINTE` field.
+    pub const HINTE_SHIFT: u32 = 56;
+    /// Mask for the `HINTE` field.
+    pub const HINTE_MASK: u64 = 0b1111;
 
     /// Returns the value of the `CPA` field.
     pub const fn cpa(self) -> u8 {
@@ -15454,6 +15538,26 @@ impl IdAa64isar3El1 {
     /// Returns a copy with the `LSCP` field set to the given value.
     pub const fn with_lscp(mut self, value: u8) -> Self {
         self.set_lscp(value);
+        self
+    }
+
+    /// Returns the value of the `HINTE` field.
+    pub const fn hinte(self) -> u8 {
+        ((self.bits() >> Self::HINTE_SHIFT) & Self::HINTE_MASK) as u8
+    }
+
+    /// Sets the value of the `HINTE` field.
+    pub const fn set_hinte(&mut self, value: u8) {
+        let offset = Self::HINTE_SHIFT;
+        assert!(value & (Self::HINTE_MASK as u8) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::HINTE_MASK << offset)) | ((value as u64) << offset),
+        );
+    }
+
+    /// Returns a copy with the `HINTE` field set to the given value.
+    pub const fn with_hinte(mut self, value: u8) -> Self {
+        self.set_hinte(value);
         self
     }
 }
@@ -34069,6 +34173,10 @@ read_write_sysreg!(gcr_el1: s3_0_c1_c0_6, u64: GcrEl1, safe_read, fake::SYSREGS)
 read_write_sysreg!(gcscr_el1: s3_0_c2_c5_0, u64: GcscrEl1, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
 read_write_sysreg!(gcscr_el2: s3_4_c2_c5_0, u64: GcscrEl2, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+read_write_sysreg!(gcspr_el1: s3_0_c2_c5_1, u64: GcsprEl1, safe_read, fake::SYSREGS);
+#[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+read_write_sysreg!(gcspr_el2: s3_4_c2_c5_1, u64: GcsprEl2, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
 read_write_sysreg!(gpccr_el3: s3_6_c2_c1_6, u64: GpccrEl3, safe_read, fake::SYSREGS);
 #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]

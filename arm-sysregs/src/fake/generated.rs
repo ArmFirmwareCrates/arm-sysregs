@@ -46,19 +46,19 @@ use crate::{
     Amevcntvoff114El2, Amevcntvoff115El2, BrbcrEl2, CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2,
     CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2, CnthpsTvalEl2, CnthvCtlEl2, CnthvCvalEl2,
     CnthvTvalEl2, CnthvsCtlEl2, CnthvsCvalEl2, CnthvsTvalEl2, CntpoffEl2, CntvoffEl2,
-    ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2, GcscrEl2, HafgrtrEl2, HcrEl2, HcrxEl2,
-    Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2, Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2,
-    Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2,
-    MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2,
-    Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, Sctlr2El2,
-    SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2,
-    VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    ContextidrEl2, CptrEl2, ElrEl2, ElrHyp, EsrEl2, FarEl2, GcscrEl2, GcsprEl2, HafgrtrEl2, HcrEl2,
+    HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2, Hfgitr2El2, HfgitrEl2, Hfgrtr2El2,
+    HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2,
+    Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2,
+    Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, PfarEl2, PirEl2, Pire0El2, PorEl2,
+    S2pirEl2, Sctlr2El2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2,
+    Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el1")]
 use crate::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
     CntpsTvalEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1, ElrEl1, EsrEl1, FarEl1, GcrEl1,
-    GcscrEl1, IccAp1r0El1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1,
+    GcscrEl1, GcsprEl1, IccAp1r0El1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1,
     IccEoir0El1, IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1,
     IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
     IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64isar3El1, IdAa64mmfr0El1,
@@ -669,6 +669,12 @@ pub struct SystemRegisters {
     #[cfg(feature = "el2")]
     /// Fake value for the `GCSCR_EL2` system register.
     pub gcscr_el2: GcscrEl2,
+    #[cfg(feature = "el1")]
+    /// Fake value for the `GCSPR_EL1` system register.
+    pub gcspr_el1: GcsprEl1,
+    #[cfg(feature = "el2")]
+    /// Fake value for the `GCSPR_EL2` system register.
+    pub gcspr_el2: GcsprEl2,
     #[cfg(feature = "el3")]
     /// Fake value for the `GPCCR_EL3` system register.
     pub gpccr_el3: GpccrEl3,
@@ -1687,6 +1693,10 @@ impl SystemRegisters {
             gcscr_el1: GcscrEl1::empty(),
             #[cfg(feature = "el2")]
             gcscr_el2: GcscrEl2::empty(),
+            #[cfg(feature = "el1")]
+            gcspr_el1: GcsprEl1::empty(),
+            #[cfg(feature = "el2")]
+            gcspr_el2: GcsprEl2::empty(),
             #[cfg(feature = "el3")]
             gpccr_el3: GpccrEl3::empty(),
             #[cfg(feature = "el3")]
