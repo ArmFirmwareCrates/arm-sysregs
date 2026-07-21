@@ -1,12 +1,16 @@
 # Changelog
 
-## Unreleased
+## 0.3.2
 
 ### New features
 
-- Added `is_feat_sel2_present`.
-- Added the `FGWTE3_EL3` register. Added `is_feat_fgwte3_present` to `IdAa64Mmfr4El1`.
-- Added `GCSPR_EL1` and `GCSPR_EL2` registers
+- Added `is_feat_sel2_present()` to `IdAa64pfr0El1`.
+- Added the `FGWTE3_EL3` register. Added `is_feat_fgwte3_present()` to `IdAa64Mmfr4El1`.
+- Added `GCSPR_EL1` and `GCSPR_EL2` registers.
+
+### Bugfixes
+
+- Fixed the gating of `is_feat_pauth_lr_present()` and its underlying accessor functions.
 
 ## 0.3.1
 
