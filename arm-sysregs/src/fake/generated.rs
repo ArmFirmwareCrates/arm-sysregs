@@ -3,7 +3,7 @@
 
 // This file is generated, do not edit manually.
 
-use crate::{
+use crate::registers::{
     Amcfgr, AmcfgrEl0, Amcg1idrEl0, Amcgcr, AmcgcrEl0, Amcntenclr0, Amcntenclr0El0, Amcntenclr1,
     Amcntenclr1El0, Amcntenset0, Amcntenset0El0, Amcntenset1, Amcntenset1El0, Amcr, AmcrEl0,
     Amevcntr00, Amevcntr00El0, Amevcntr01, Amevcntr01El0, Amevcntr02, Amevcntr02El0, Amevcntr03,
@@ -36,7 +36,7 @@ use crate::{
     Trfcr, Ttbcr, Ttbcr2, Ttbr0, Ttbr1, Vbar, Vdfsr, Vdisr, Vmpidr, Vpidr, Vtcr, Vttbr,
 };
 #[cfg(feature = "el2")]
-use crate::{
+use crate::registers::{
     Amevcntvoff00El2, Amevcntvoff01El2, Amevcntvoff02El2, Amevcntvoff03El2, Amevcntvoff04El2,
     Amevcntvoff05El2, Amevcntvoff06El2, Amevcntvoff07El2, Amevcntvoff08El2, Amevcntvoff09El2,
     Amevcntvoff010El2, Amevcntvoff10El2, Amevcntvoff011El2, Amevcntvoff11El2, Amevcntvoff012El2,
@@ -55,7 +55,7 @@ use crate::{
     Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 #[cfg(feature = "el1")]
-use crate::{
+use crate::registers::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
     CntpsTvalEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1, ElrEl1, EsrEl1, FarEl1, GcrEl1,
     GcscrEl1, GcsprEl1, IccAp1r0El1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1,
@@ -68,7 +68,7 @@ use crate::{
     SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 #[cfg(feature = "el3")]
-use crate::{
+use crate::registers::{
     CptrEl3, EsrEl3, Fgwte3El3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3,
     MdcrEl3, Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3,
     TpidrEl3, Ttbr0El3, ZcrEl3,

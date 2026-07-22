@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+### Breaking changes
+
+- Changed the public API: moved `read_` and `write_` functions to the `accessors` submodule, system
+  register types to the `registers` submodule, and public helper functions to the `helpers` module.
+
 ## 0.3.3
 
 ### Bugfixes

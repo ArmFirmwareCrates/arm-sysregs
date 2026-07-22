@@ -17,38 +17,21 @@ pub struct OutputContext {
     pub write_el_guards: bool,
 }
 
-pub fn write_lib(
+pub fn write_registers(
     mut writer: impl Write + Copy,
     registers: &[RegisterInfo],
     context: &OutputContext,
 ) -> io::Result<()> {
     writer.write_all(
-        "\
-// SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
+        br#"// SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-//! Access to Arm CPU system registers.
+//! Arm CPU system registers.
 
 // This file is generated, do not edit manually.
 
-#![cfg_attr(not(any(test, feature = \"fakes\")), no_std)]
-#![cfg_attr(docsrs, feature(doc_cfg))]
-
-#[cfg(all(not(any(test, feature = \"fakes\")), target_arch = \"arm\"))]
-mod aarch32;
-#[cfg(all(not(any(test, feature = \"fakes\")), target_arch = \"aarch64\"))]
-mod aarch64;
-#[cfg(any(test, feature = \"fakes\"))]
-pub mod fake;
-mod macros;
-mod manual;
-
 use bitflags::bitflags;
-pub use manual::*;
-#[doc(hidden)]
-pub use paste as _paste;
-"
-        .as_bytes(),
+"#,
     )?;
 
     for register in registers {
@@ -57,7 +40,31 @@ pub use paste as _paste;
             register.write_lib(writer, context)?;
         }
     }
-    writeln!(writer)?;
+
+    Ok(())
+}
+
+pub fn write_accessors(
+    mut writer: impl Write + Copy,
+    registers: &[RegisterInfo],
+    context: &OutputContext,
+) -> io::Result<()> {
+    writer.write_all(
+        br#"// SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
+// SPDX-License-Identifier: MIT OR Apache-2.0
+
+//! Access to Arm CPU system registers.
+
+// This file is generated, do not edit manually.
+
+// Unused imports are allowed here because write_sysreg might be unused when targeting aarch64
+// without fakes.
+#[allow(unused_imports)]
+use crate::{read_sysreg, read_write_sysreg, write_sysreg};
+
+"#,
+    )?;
+
     for register in registers {
         register.write_accessor(writer, context)?;
     }
@@ -102,7 +109,11 @@ pub fn write_fake(
         {
             writeln!(writer, "{guard}")?;
         }
-        writeln!(writer, "use crate::{{{}}};", struct_names.join(", "))?;
+        writeln!(
+            writer,
+            "use crate::registers::{{{}}};",
+            struct_names.join(", ")
+        )?;
     }
 
     writer.write_all(
@@ -205,7 +216,7 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {{
             let name = register.variable_name();
             writeln!(
                 writer,
-                "    info!(\"{name} = {{:?}}\", arm_sysregs::read_{name}());"
+                "    info!(\"{name} = {{:?}}\", arm_sysregs::accessors::read_{name}());"
             )?;
         }
     }
@@ -710,7 +721,7 @@ impl RegisterInfo {
             writeln!(writer, "{guard}")?;
         }
         let register_type = if self.use_struct() {
-            format!("u{}: {}", self.width, self.struct_name())
+            format!("u{}: crate::registers::{}", self.width, self.struct_name())
         } else {
             format!("u{}", self.width)
         };
@@ -748,7 +759,7 @@ write_sysreg! {{
     /// # Safety
     ///
     /// {}
-    {}{}, {}{}, fake::SYSREGS
+    {}{}, {}{}, crate::fake::SYSREGS
 }}",
                         safety_doc,
                         self.variable_name(),
@@ -759,7 +770,7 @@ write_sysreg! {{
                 } else {
                     writeln!(
                         writer,
-                        "write_sysreg!({}{}, {}{}, fake::SYSREGS);",
+                        "write_sysreg!({}{}, {}{}, crate::fake::SYSREGS);",
                         self.variable_name(),
                         register_assembly_name,
                         register_type,
@@ -774,7 +785,7 @@ write_sysreg! {{
                 };
                 writeln!(
                     writer,
-                    "read_sysreg!({}{}, {}{}, fake::SYSREGS);",
+                    "read_sysreg!({}{}, {}{}, crate::fake::SYSREGS);",
                     self.variable_name(),
                     register_assembly_name,
                     register_type,
@@ -798,7 +809,7 @@ read_write_sysreg! {{
     /// # Safety
     ///
     /// {}
-    {}{}, {}{}{}, fake::SYSREGS
+    {}{}, {}{}{}, crate::fake::SYSREGS
 }}",
                         safety_doc,
                         self.variable_name(),
@@ -810,7 +821,7 @@ read_write_sysreg! {{
                 } else {
                     writeln!(
                         writer,
-                        "read_write_sysreg!({}{}, {}{}{}, fake::SYSREGS);",
+                        "read_write_sysreg!({}{}, {}{}{}, crate::fake::SYSREGS);",
                         self.variable_name(),
                         register_assembly_name,
                         register_type,

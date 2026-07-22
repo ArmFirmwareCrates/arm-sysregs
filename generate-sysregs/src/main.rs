@@ -10,7 +10,7 @@ use crate::{
     config::Config,
     enums::identify_enums,
     json_input::register_entries_to_register_infos,
-    output::{OutputContext, write_example, write_fake, write_lib},
+    output::{OutputContext, write_accessors, write_example, write_fake, write_registers},
 };
 use arm_sysregs_json::{RegisterEntry, Values};
 use clap::{Parser, Subcommand, ValueEnum};
@@ -50,7 +50,8 @@ fn main() -> Result<(), Report> {
                 return Err(eyre!("Filter {:#?} yields no registers.", filter));
             }
 
-            let output_lib = File::create(output_directory.join("src").join("lib.rs"))?;
+            let output_registers = File::create(output_directory.join("src").join("registers.rs"))?;
+            let output_accessors = File::create(output_directory.join("src").join("accessors.rs"))?;
             let output_fake = File::create(
                 output_directory
                     .join("src")
@@ -65,7 +66,8 @@ fn main() -> Result<(), Report> {
                 write_el_guards: !filter.is_some_and(|filter| filter.is_el()),
             };
 
-            write_lib(&output_lib, &register_infos, &context)?;
+            write_registers(&output_registers, &register_infos, &context)?;
+            write_accessors(&output_accessors, &register_infos, &context)?;
             write_fake(&output_fake, &register_infos, &context)?;
             write_example(&output_example, &register_infos, &context)?;
 
