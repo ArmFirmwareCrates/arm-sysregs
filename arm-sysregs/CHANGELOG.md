@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Bugfixes
+
+- Regenerated the code using AARCHMRS 2026-03, because the 0.3.2 release accidentally used AARCHMRS 2026-06.
+
 ## 0.3.2
 
 ### New features
