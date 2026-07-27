@@ -136,6 +136,9 @@ impl IdAa64mmfr0El1 {
 impl IdAa64mmfr1El1 {
     const VH_IMPLEMENTED: u8 = 0b0001;
     const HCX_IMPLEMENTED: u8 = 0b0001;
+    const PAN_IMPLEMENTED: u8 = 0b0001;
+    const PAN2_IMPLEMENTED: u8 = 0b0010;
+    const PAN3_IMPLEMENTED: u8 = 0b0011;
 
     /// Indicates presence of FEAT_VHE.
     pub fn is_feat_vhe_present(self) -> bool {
@@ -145,6 +148,21 @@ impl IdAa64mmfr1El1 {
     /// Indicates presence of FEAT_HCX.
     pub fn is_feat_hcx_present(self) -> bool {
         self.hcx() >= Self::HCX_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_PAN.
+    pub fn is_feat_pan_present(self) -> bool {
+        self.pan() >= Self::PAN_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_PAN2.
+    pub fn is_feat_pan2_present(self) -> bool {
+        self.pan() >= Self::PAN2_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_PAN3.
+    pub fn is_feat_pan3_present(self) -> bool {
+        self.pan() >= Self::PAN3_IMPLEMENTED
     }
 }
 
