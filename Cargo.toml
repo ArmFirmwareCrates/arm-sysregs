@@ -22,5 +22,5 @@ arm-sysregs-el0 = { version = "=0.4.0", path = "arm-sysregs-el0" }
 arm-sysregs-el1 = { version = "=0.4.0", path = "arm-sysregs-el1" }
 arm-sysregs-el2 = { version = "=0.4.0", path = "arm-sysregs-el2" }
 arm-sysregs-el3 = { version = "=0.4.0", path = "arm-sysregs-el3" }
-bitflags = "2.11.0"
+bitflags = "2.13.1"
 log = "0.4.29"
