@@ -33,46 +33,15 @@ into the `arm-sysregs` crate.
    - `generate-crates`: the subcommand that writes generated Rust files.
    - `.`: root directory for the output. It must contain the `arm-sysregs`, `arm-sysregs-el0,1,2,3`, and `arm-sysregs-aarch32` directories.
 
-   The command generates the `arm-sysregs-elx` and `arm-sysregs-aarch32` subcrates, using the corresponding filter (see [Register Filtering](#register-filtering)) for each crate.
+   The command generates the `arm-sysregs-elx` and `arm-sysregs-aarch32` subcrates, keeping only
+   registers implied by the crate name.
 
-   Unlike when generating with `generate`, the generated crates do not have their own `log_all.rs`.
-   A full `log_all.rs` containing all registers is generated instead in `arm-sysregs/examples`.
+   A full `log_all.rs` containing all registers is also generated in `arm-sysregs/examples`.
 
 3. Format the generated files:
 
    ```sh
    cargo fmt
-   ```
-
-4. Update `arm-sysregs/CHANGELOG.md`.
-
-## Generate an individual `arm-sysregs` crate
-
-1. Download and extract the **Features, Registers, A64, A32** machine-readable JSON specification
-  from the Arm A-profile architecture [downloads page][1].
-2. Run the following command from the repository root:
-
-   ```sh
-   cargo run --package generate-sysregs -- \
-       registers.toml \
-       /path/to/Registers.json \
-       generate \
-       /path/to/arm-sysregs
-   ```
-
-   The arguments are:
-
-   - `registers.toml`: the generator configuration file.
-   - `/path/to/Registers.json`: the extracted Arm register description file.
-   - `generate`: the subcommand that writes generated Rust files.
-   - `/path/to/arm-sysregs`: the output crate directory.
-   - `[-f filter]`: optional output register filter. See [Register Filtering](#register-filtering).
-
-
-3. Format the generated files:
-
-   ```sh
-   cargo fmt --package arm-sysregs
    ```
 
 4. Update `arm-sysregs/CHANGELOG.md`.
@@ -155,24 +124,6 @@ Notably, this does not include the name and description of the register.
 
 The default behavior is to globally allow type aliasing.
 It may be turned off globally with the `--disable-alias` flag, or per-register via setting `disable_alias=true` in the register configuration.
-
-## Register filtering
-
-The `generate` command can limit output with `--filter`/`-f`.
-
-Filters select registers by exception level or architecture; valid values are `el0`, `el1`, `el2`, `el3`, and `aarch32`.
-The exception level filters imply AArch64.
-
-```sh
-cargo run --package generate-sysregs -- \
-       registers.toml \
-       /path/to/Registers.json \
-       generate \
-       arm-sysregs \
-       -f el0
-```
-
-Only one filter may be passed. With no filters, all configured registers are generated.
 
 ## Example Configuration
 

@@ -16,7 +16,7 @@ use crate::{
     },
 };
 use arm_sysregs_json::{RegisterEntry, Values};
-use clap::{Parser, Subcommand, ValueEnum};
+use clap::{Parser, Subcommand};
 use eyre::{Report, eyre};
 use log::{info, warn};
 use std::{
@@ -30,7 +30,7 @@ fn main() -> Result<(), Report> {
     pretty_env_logger::init();
     let args = Args::parse();
     let config: Config = toml::from_str(&read_to_string(&args.config_toml)?)?;
-    let mut register_infos = if args.disable_alias {
+    let register_infos = if args.disable_alias {
         parse_registers(&config, args.registers_json, args.all)?
     } else {
         // note: Registers are not aliased across exception levels.
@@ -42,24 +42,6 @@ fn main() -> Result<(), Report> {
     println!("Parsed {} registers in total.", register_infos.len());
 
     match args.command {
-        Command::Generate {
-            output_directory,
-            filter,
-        } => {
-            warn_missing(&register_infos, &config);
-
-            if let Some(filter) = filter {
-                filter_registers_inplace(&mut register_infos, filter)?;
-            }
-
-            let context = OutputContext {
-                // If there are no exception level filters, guards will be generated.
-                write_el_guards: !filter.is_some_and(RegisterFilter::is_el),
-                module_path: crate_name_from_output_dir(&output_directory)?,
-            };
-
-            generate(&register_infos, output_directory, &context, true)?;
-        }
         Command::Enums {
             generate_stubs,
             skip_existing,
@@ -106,25 +88,11 @@ fn main() -> Result<(), Report> {
                     },
                 )?;
 
-                generate(&filtered_registers, output_path, &context, false)?;
+                generate(&filtered_registers, output_path, &context)?;
             }
 
             write_example_footer(&toplevel_example)?;
         }
-    }
-
-    Ok(())
-}
-
-/// Keeps only the registers selected by `filter` in `register_infos`.
-fn filter_registers_inplace(
-    register_infos: &mut Vec<RegisterInfo>,
-    filter: RegisterFilter,
-) -> Result<(), Report> {
-    register_infos.retain(|register| filter.matches(register));
-
-    if register_infos.is_empty() {
-        return Err(eyre!("Filter {:#?} yields no registers.", filter));
     }
 
     Ok(())
@@ -148,13 +116,11 @@ fn filter_registers(
     Ok(filtered_registers)
 }
 
-/// Generates arm-sysregs in the given output directory. Optionally generates `examples/log_all.rs`
-/// as well.
+/// Generates arm-sysregs in the given output directory.
 fn generate(
     register_infos: &[RegisterInfo],
     output_directory: PathBuf,
     context: &OutputContext,
-    generate_examples: bool,
 ) -> Result<(), Report> {
     let output_registers = File::create(output_directory.join("src").join("registers.rs"))?;
     let output_accessors = File::create(output_directory.join("src").join("accessors.rs"))?;
@@ -164,14 +130,6 @@ fn generate(
             .join("fake")
             .join("generated.rs"),
     )?;
-
-    if generate_examples {
-        let output_example = File::create(output_directory.join("examples").join("log_all.rs"))?;
-
-        write_example_header(&output_example)?;
-        write_example_body(&output_example, register_infos, context)?;
-        write_example_footer(&output_example)?;
-    }
 
     write_registers(&output_registers, register_infos, context)?;
     write_accessors(&output_accessors, register_infos, context)?;
@@ -529,7 +487,7 @@ enum Safety {
     Unsafe,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 enum RegisterFilter {
     /// Filter EL0 AArch64 registers.
     El0,
@@ -586,14 +544,6 @@ impl RegisterFilter {
 
 #[derive(Subcommand, Clone, Debug)]
 enum Command {
-    /// Generate all system registers.
-    Generate {
-        /// Path to output directory.
-        output_directory: PathBuf,
-        /// Generate only registers matching the selected filter.
-        #[arg(long, short)]
-        filter: Option<RegisterFilter>,
-    },
     /// Scans the register values to identify fields that could be represented as Rust enums.
     Enums {
         /// Generate a stub implementation for the encountered enums, along with the corresponding
