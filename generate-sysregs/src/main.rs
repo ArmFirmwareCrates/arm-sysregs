@@ -12,10 +12,10 @@ use crate::{
     json_input::register_entries_to_register_infos,
     output::{
         OutputContext, write_accessors, write_example_body, write_example_footer,
-        write_example_header, write_fake, write_registers,
+        write_example_header, write_fake, write_registers, write_version,
     },
 };
-use arm_sysregs_json::{RegisterEntry, Values};
+use arm_sysregs_json::{Register, RegisterArray, RegisterBlock, RegisterEntry, Values, Version};
 use clap::{Parser, Subcommand};
 use eyre::{Report, eyre};
 use log::{info, warn};
@@ -30,7 +30,7 @@ fn main() -> Result<(), Report> {
     pretty_env_logger::init();
     let args = Args::parse();
     let config: Config = toml::from_str(&read_to_string(&args.config_toml)?)?;
-    let register_infos = if args.disable_alias {
+    let ParsedRegisters { version, registers } = if args.disable_alias {
         parse_registers(&config, args.registers_json, args.all)?
     } else {
         // note: Registers are not aliased across exception levels.
@@ -39,23 +39,38 @@ fn main() -> Result<(), Report> {
         parse_and_alias_registers(&config, args.registers_json, args.all)?
     };
 
-    println!("Parsed {} registers in total.", register_infos.len());
+    println!("Parsed {} registers in total.", registers.len());
 
     match args.command {
         Command::Enums {
             generate_stubs,
             skip_existing,
         } => {
-            identify_enums(&register_infos, generate_stubs, skip_existing);
+            identify_enums(&registers, generate_stubs, skip_existing);
         }
         Command::GenerateCrates { output_root } => {
-            warn_missing(&register_infos, &config);
+            warn_missing(&registers, &config);
 
             let toplevel_example = File::create(
                 output_root
                     .join("arm-sysregs")
                     .join("examples")
                     .join("log_all.rs"),
+            )?;
+
+            let toplevel_version = File::create(
+                output_root
+                    .join("arm-sysregs")
+                    .join("src")
+                    .join("version.rs"),
+            )?;
+
+            write_version(
+                &toplevel_version,
+                version
+                    .as_ref()
+                    .map(|version| version.ref_.as_str())
+                    .unwrap_or("unknown"),
             )?;
 
             write_example_header(&toplevel_example)?;
@@ -67,7 +82,7 @@ fn main() -> Result<(), Report> {
                 RegisterFilter::El2,
                 RegisterFilter::El3,
             ] {
-                let filtered_registers = filter_registers(&register_infos, filter)?;
+                let filtered_registers = filter_registers(&registers, filter)?;
                 let module_name = filter.as_module_name();
                 let directory_name = format!("arm-sysregs-{}", module_name);
 
@@ -159,19 +174,29 @@ fn crate_name_from_output_dir(output_directory: &Path) -> Result<String, Report>
         .replace('-', "_"))
 }
 
+struct ParsedRegisters {
+    /// AARCHMRS version, if present.
+    version: Option<Version>,
+    /// A list of parsed [`RegisterInfo`]s.
+    registers: Vec<RegisterInfo>,
+}
+
 fn parse_and_alias_registers(
     config: &Config,
     registers_json: PathBuf,
     use_all_registers: bool,
-) -> Result<Vec<RegisterInfo>, Report> {
-    let mut register_infos = parse_registers(config, registers_json, use_all_registers)?;
+) -> Result<ParsedRegisters, Report> {
+    let ParsedRegisters {
+        version,
+        mut registers,
+    } = parse_registers(config, registers_json, use_all_registers)?;
 
     let mut register_map = HashMap::<RegisterTypeKey, String>::new();
     let mut alias_count: u32 = 0;
 
-    register_map.reserve(register_infos.len());
+    register_map.reserve(registers.len());
 
-    for register_info in &mut register_infos {
+    for register_info in &mut registers {
         let register_type_key = RegisterTypeKey::from(&*register_info);
         if !register_info.disable_alias
             && let Some(existing_register) = register_map.get(&register_type_key)
@@ -185,20 +210,40 @@ fn parse_and_alias_registers(
 
     println!("Generated {} type aliases.", alias_count);
 
-    Ok(register_infos)
+    Ok(ParsedRegisters { version, registers })
 }
 
 fn parse_registers(
     config: &Config,
     registers_json: PathBuf,
     use_all_registers: bool,
-) -> Result<Vec<RegisterInfo>, Report> {
+) -> Result<ParsedRegisters, Report> {
     let registers = serde_json::from_str::<Vec<RegisterEntry>>(&read_to_string(&registers_json)?)?;
     println!(
         "Read {} system registers from {}",
         registers.len(),
         registers_json.display()
     );
+
+    // It is assumed that all the entries in the JSON release have the same `_meta.version` fields.
+    // This is true for `2026-03_rel` but may change in later releases, according to the schema:
+    // > The _meta property is a scratchpad for user-defined data.
+    // > Warning:
+    // > AARCHMRS makes no guarantees about the structure of this data, and it should be used mainly
+    // > for guidance purposes.
+    // `arm_sysregs_json` has already made an assumption about `_meta` having a defined structure.
+    let aarchmrs_version = match registers.first() {
+        Some(RegisterEntry::Register(Register {
+            meta: Some(meta), ..
+        }))
+        | Some(RegisterEntry::RegisterArray(RegisterArray {
+            meta: Some(meta), ..
+        }))
+        | Some(RegisterEntry::RegisterBlock(RegisterBlock { meta, .. })) => {
+            Some(meta.version.clone())
+        }
+        _ => None,
+    };
 
     let registers_filter = if use_all_registers {
         None
@@ -217,7 +262,10 @@ fn parse_registers(
     register_infos.sort_by_cached_key(|register| register.name.clone());
     register_infos.retain(|register| register.width > 0);
 
-    Ok(register_infos)
+    Ok(ParsedRegisters {
+        version: aarchmrs_version,
+        registers: register_infos,
+    })
 }
 
 /// Logs warnings for any registers which are present in the config file but not the JSON file.

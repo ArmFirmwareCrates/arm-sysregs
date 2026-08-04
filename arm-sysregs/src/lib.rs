@@ -14,7 +14,9 @@ pub mod el1;
 pub mod el2;
 #[cfg(feature = "el3")]
 pub mod el3;
+mod version;
 
 pub use arm_sysregs_common::types;
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64", target_arch = "arm"))]
 pub use arm_sysregs_common::{read_sysreg, read_write_sysreg, write_sysreg};
+pub use version::AARCHMRS_VERSION;

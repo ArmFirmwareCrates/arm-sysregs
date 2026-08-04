@@ -5,6 +5,8 @@
 ### New features
 
 - Added GCSCRE0_EL1 and GCSPR_EL0 registers.
+- Added a `AARCHMRS_VERSION` module to the top-level `arm-sysregs` crate, generated from the JSON
+  input.
 
 ### Breaking changes
 

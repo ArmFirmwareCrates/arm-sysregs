@@ -19,6 +19,29 @@ pub struct OutputContext {
     pub module_path: String,
 }
 
+/// Writes `version` as the value of the AARCHMRS_VERSION constant. It is assumed that the
+/// provided version string does not contain `"#`.
+pub fn write_version(mut writer: impl Write + Copy, version: &str) -> io::Result<()> {
+    writer.write_all(
+        br#"// SPDX-FileCopyrightText: Copyright The arm-sysregs Contributors.
+// SPDX-License-Identifier: MIT OR Apache-2.0
+
+//! Register version information.
+
+// This file is generated, do not edit manually.
+
+"#,
+    )?;
+
+    // Even if `version` contains `"#`, it will cause a compile-time error.
+    writeln!(
+        writer,
+        r##"/// The AARCHMRS ref used when generating the crate.
+pub const AARCHMRS_VERSION: &str = r#"{}"#;"##,
+        version
+    )
+}
+
 pub fn write_registers(
     mut writer: impl Write + Copy,
     registers: &[RegisterInfo],
