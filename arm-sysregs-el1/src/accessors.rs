@@ -30,6 +30,7 @@ read_write_sysreg!(elr_el1, u64: crate::registers::ElrEl1, safe_read, crate::fak
 read_write_sysreg!(esr_el1, u64: crate::registers::EsrEl1, safe_read, safe_write, crate::fake::SYSREGS);
 read_write_sysreg!(far_el1, u64: crate::registers::FarEl1, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gcr_el1: s3_0_c1_c0_6, u64: crate::registers::GcrEl1, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(gcscre0_el1: s3_0_c2_c5_2, u64: crate::registers::Gcscre0El1, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gcscr_el1: s3_0_c2_c5_0, u64: crate::registers::GcscrEl1, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gcspr_el1: s3_0_c2_c5_1, u64: crate::registers::GcsprEl1, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(icc_ap0r0_el1: s3_0_c12_c8_4, u64, safe_read, crate::fake::SYSREGS);

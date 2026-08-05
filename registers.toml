@@ -450,6 +450,14 @@ description = "Guarded Control Stack Control register."
 [registers.GCSCR_EL2.field_descriptions]
 EXLOCKEN = "Exception state lock enable."
 
+[registers.GCSCRE0_EL1]
+description = "Guarded Control Stack Control register."
+
+[registers.GCSPR_EL0]
+description = "Guarded Control Stack Pointer register."
+[registers.GCSPR_EL0.field_descriptions]
+PTR = "Guarded Control Stack Pointer bits."
+
 [registers.GCSPR_EL1]
 description = "Guarded Control Stack Pointer register."
 [registers.GCSPR_EL1.field_descriptions]

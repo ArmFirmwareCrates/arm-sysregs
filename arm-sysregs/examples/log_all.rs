@@ -1339,6 +1339,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!("fpsr = {:?}", arm_sysregs::el0::accessors::read_fpsr());
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     info!(
+        "gcspr_el0 = {:?}",
+        arm_sysregs::el0::accessors::read_gcspr_el0()
+    );
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!(
         "pmcr_el0 = {:?}",
         arm_sysregs::el0::accessors::read_pmcr_el0()
     );
@@ -1458,6 +1463,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!(
         "gcr_el1 = {:?}",
         arm_sysregs::el1::accessors::read_gcr_el1()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!(
+        "gcscre0_el1 = {:?}",
+        arm_sysregs::el1::accessors::read_gcscre0_el1()
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!(

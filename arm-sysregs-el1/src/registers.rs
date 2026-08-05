@@ -990,6 +990,39 @@ impl GcrEl1 {
 }
 
 bitflags! {
+    /// `GCSCRE0_EL1` system register value.
+    ///
+    /// Guarded Control Stack Control register.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Gcscre0El1: u64 {
+        /// `PCRSEL` bit.
+        const PCRSEL = 1 << 0;
+        /// `RVCHKEN` bit.
+        const RVCHKEN = 1 << 5;
+        /// `PUSHMEn` bit.
+        const PUSHMEN = 1 << 8;
+        /// `STREn` bit.
+        const STREN = 1 << 9;
+        /// `nTR` bit.
+        const NTR = 1 << 10;
+    }
+}
+
+impl Gcscre0El1 {
+    /// Offset of the `PCRSEL` field.
+    pub const PCRSEL_SHIFT: u32 = 0;
+    /// Offset of the `RVCHKEN` field.
+    pub const RVCHKEN_SHIFT: u32 = 5;
+    /// Offset of the `PUSHMEn` field.
+    pub const PUSHMEN_SHIFT: u32 = 8;
+    /// Offset of the `STREn` field.
+    pub const STREN_SHIFT: u32 = 9;
+    /// Offset of the `nTR` field.
+    pub const NTR_SHIFT: u32 = 10;
+}
+
+bitflags! {
     /// `GCSCR_EL1` system register value.
     ///
     /// Guarded Control Stack Control register.

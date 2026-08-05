@@ -6,14 +6,15 @@
 use crate::registers::{
     ApiakeyhiEl1, ApiakeyloEl1, CcsidrEl1, ClidrEl1, CntkctlEl1, CntpsCtlEl1, CntpsCvalEl1,
     CntpsTvalEl1, ContextidrEl1, CpacrEl1, CsselrEl1, DisrEl1, ElrEl1, EsrEl1, FarEl1, GcrEl1,
-    GcscrEl1, GcsprEl1, IccAp1r0El1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1, IccDirEl1,
-    IccEoir0El1, IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1, IccIgrpen0El1,
-    IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1, IccSreEl1,
-    IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64isar3El1, IdAa64mmfr0El1,
-    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1,
-    IdAa64pfr2El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1,
-    MpidrEl1, ParEl1, PfarEl1, PirEl1, Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1,
-    SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    GcscrEl1, Gcscre0El1, GcsprEl1, IccAp1r0El1, IccAsgi1rEl1, IccBpr0El1, IccBpr1El1, IccCtlrEl1,
+    IccDirEl1, IccEoir0El1, IccEoir1El1, IccHppir0El1, IccHppir1El1, IccIar0El1, IccIar1El1,
+    IccIgrpen0El1, IccIgrpen1El1, IccNmiar1El1, IccPmrEl1, IccRprEl1, IccSgi0rEl1, IccSgi1rEl1,
+    IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar1El1, IdAa64isar2El1, IdAa64isar3El1,
+    IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1,
+    IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1,
+    MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, PirEl1, Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1,
+    SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1,
+    VbarEl1,
 };
 
 /// A set of fake system registers.
@@ -60,6 +61,8 @@ pub struct SystemRegisters {
     pub far_el1: FarEl1,
     /// Fake value for the `GCR_EL1` system register.
     pub gcr_el1: GcrEl1,
+    /// Fake value for the `GCSCRE0_EL1` system register.
+    pub gcscre0_el1: Gcscre0El1,
     /// Fake value for the `GCSCR_EL1` system register.
     pub gcscr_el1: GcscrEl1,
     /// Fake value for the `GCSPR_EL1` system register.
@@ -223,6 +226,7 @@ impl SystemRegisters {
             esr_el1: EsrEl1::empty(),
             far_el1: FarEl1::empty(),
             gcr_el1: GcrEl1::empty(),
+            gcscre0_el1: Gcscre0El1::empty(),
             gcscr_el1: GcscrEl1::empty(),
             gcspr_el1: GcsprEl1::empty(),
             icc_ap0r0_el1: 0,

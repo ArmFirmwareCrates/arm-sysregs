@@ -1391,6 +1391,44 @@ impl Fpsr {
 }
 
 bitflags! {
+    /// `GCSPR_EL0` system register value.
+    ///
+    /// Guarded Control Stack Pointer register.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct GcsprEl0: u64 {
+    }
+}
+
+impl GcsprEl0 {
+    /// Offset of the `PTR[63:3]` field.
+    pub const PTR_63_3_SHIFT: u32 = 3;
+    /// Mask for the `PTR[63:3]` field.
+    pub const PTR_63_3_MASK: u64 =
+        0b1_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `PTR[63:3]` field.
+    pub const fn ptr_63_3(self) -> u64 {
+        (self.bits() >> Self::PTR_63_3_SHIFT) & Self::PTR_63_3_MASK
+    }
+
+    /// Sets the value of the `PTR[63:3]` field.
+    pub const fn set_ptr_63_3(&mut self, value: u64) {
+        let offset = Self::PTR_63_3_SHIFT;
+        assert!(value & Self::PTR_63_3_MASK == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::PTR_63_3_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `PTR[63:3]` field set to the given value.
+    pub const fn with_ptr_63_3(mut self, value: u64) -> Self {
+        self.set_ptr_63_3(value);
+        self
+    }
+}
+
+bitflags! {
     /// `PMCR_EL0` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]

@@ -4,6 +4,8 @@
 
 ### New features
 
+- Added GCSCRE0_EL1 and GCSPR_EL0 registers.
+
 ### Breaking changes
 
 - Changed the public API: moved `read_` and `write_` functions to the `accessors` submodule, system
