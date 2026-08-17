@@ -187,6 +187,7 @@ write = "safe"
 [registers.MVBAR]
 [registers.NMRR]
 [registers.NSACR]
+[registers.PAN]
 [registers.PAR]
 [registers.PMCCFILTR]
 [registers.PMCCNTR]

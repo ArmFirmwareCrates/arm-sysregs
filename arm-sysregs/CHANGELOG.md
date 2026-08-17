@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Added the PAN register
+
 ## 0.4.0
 
 ### New features

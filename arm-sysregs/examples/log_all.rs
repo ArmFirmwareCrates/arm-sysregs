@@ -1343,6 +1343,8 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
         arm_sysregs::el0::accessors::read_gcspr_el0()
     );
     #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
+    info!("pan = {:?}", arm_sysregs::el0::accessors::read_pan());
+    #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
     info!(
         "pmcr_el0 = {:?}",
         arm_sysregs::el0::accessors::read_pmcr_el0()

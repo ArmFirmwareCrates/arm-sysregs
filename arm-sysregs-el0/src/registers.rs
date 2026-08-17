@@ -1429,6 +1429,21 @@ impl GcsprEl0 {
 }
 
 bitflags! {
+    /// `PAN` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct Pan: u64 {
+        /// `PAN` bit.
+        const PAN = 1 << 22;
+    }
+}
+
+impl Pan {
+    /// Offset of the `PAN` field.
+    pub const PAN_SHIFT: u32 = 22;
+}
+
+bitflags! {
     /// `PMCR_EL0` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]

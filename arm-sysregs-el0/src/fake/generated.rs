@@ -11,7 +11,8 @@ use crate::registers::{
     Amevcntr112El0, Amevcntr113El0, Amevcntr114El0, Amevcntr115El0, Amevtyper00El0, Amevtyper01El0,
     Amevtyper02El0, Amevtyper03El0, AmuserenrEl0, CntfrqEl0, CntpCtlEl0, CntpCvalEl0, CntpTvalEl0,
     CntpctEl0, CntpctssEl0, CntvCtlEl0, CntvCvalEl0, CntvTvalEl0, CntvctEl0, CntvctssEl0, CtrEl0,
-    Currentel, Daif, Dit, Fpcr, Fpmr, Fpsr, GcsprEl0, PmcrEl0, PorEl0, Svcr, TpidrEl0, TpidrroEl0,
+    Currentel, Daif, Dit, Fpcr, Fpmr, Fpsr, GcsprEl0, Pan, PmcrEl0, PorEl0, Svcr, TpidrEl0,
+    TpidrroEl0,
 };
 
 /// A set of fake system registers.
@@ -122,6 +123,8 @@ pub struct SystemRegisters {
     pub fpsr: Fpsr,
     /// Fake value for the `GCSPR_EL0` system register.
     pub gcspr_el0: GcsprEl0,
+    /// Fake value for the `PAN` system register.
+    pub pan: Pan,
     /// Fake value for the `PMCR_EL0` system register.
     pub pmcr_el0: PmcrEl0,
     /// Fake value for the `POR_EL0` system register.
@@ -189,6 +192,7 @@ impl SystemRegisters {
             fpmr: Fpmr::empty(),
             fpsr: Fpsr::empty(),
             gcspr_el0: GcsprEl0::empty(),
+            pan: Pan::empty(),
             pmcr_el0: PmcrEl0::empty(),
             por_el0: PorEl0::empty(),
             svcr: Svcr::empty(),
