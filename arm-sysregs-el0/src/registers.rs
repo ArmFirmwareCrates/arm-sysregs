@@ -666,12 +666,12 @@ impl CntpTvalEl0 {
     pub const TIMERVALUE_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
 
     /// Returns the value of the `TimerValue` field.
-    pub const fn timervalue(self) -> u32 {
-        (self.bits() >> Self::TIMERVALUE_SHIFT) as u32
+    pub const fn timervalue(self) -> i32 {
+        (self.bits() >> Self::TIMERVALUE_SHIFT) as i32
     }
 
     /// Sets the value of the `TimerValue` field.
-    pub const fn set_timervalue(&mut self, value: u32) {
+    pub const fn set_timervalue(&mut self, value: i32) {
         let offset = Self::TIMERVALUE_SHIFT;
         *self = Self::from_bits_retain(
             (self.bits() & !(Self::TIMERVALUE_MASK << offset))
@@ -680,7 +680,7 @@ impl CntpTvalEl0 {
     }
 
     /// Returns a copy with the `TimerValue` field set to the given value.
-    pub const fn with_timervalue(mut self, value: u32) -> Self {
+    pub const fn with_timervalue(mut self, value: i32) -> Self {
         self.set_timervalue(value);
         self
     }

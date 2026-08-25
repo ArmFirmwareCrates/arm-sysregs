@@ -7,6 +7,11 @@
 - Added the PAN register
 - Added `is_*_present` for `FEAT_PAN`, `FEAT_PAN2` and `FEAT_PAN3`.
 
+### Breaking changes
+
+- Changed type of `*_TVAL*.TimerValue` fields from `u32` to `i32`.
+- Made writes to AArch32 timer registers safe, the same as the AArch64 equivalents.
+
 ### Other changes
 
 - Replaced the unmaintained `paste` crate with `pastey`.

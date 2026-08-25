@@ -53,29 +53,59 @@ write = "safe"
 [registers.CNTFRQ]
 [registers.CNTHCTL]
 [registers.CNTHPS_CTL]
+write = "safe"
 [registers.CNTHPS_CVAL]
+write = "safe"
 [registers.CNTHPS_TVAL]
+write = "safe"
+[registers.CNTHPS_TVAL.types]
+TimerValue = "signed"
 [registers.CNTHP_CTL]
+write = "safe"
 [registers.CNTHP_CVAL]
+write = "safe"
 [registers.CNTHP_TVAL]
+write = "safe"
+[registers.CNTHP_TVAL.types]
+TimerValue = "signed"
 [registers.CNTHVS_CTL]
+write = "safe"
 [registers.CNTHVS_CVAL]
+write = "safe"
 [registers.CNTHVS_TVAL]
+write = "safe"
+[registers.CNTHVS_TVAL.types]
+TimerValue = "signed"
 [registers.CNTHV_CTL]
+write = "safe"
 [registers.CNTHV_CVAL]
+write = "safe"
 [registers.CNTHV_TVAL]
+write = "safe"
+[registers.CNTHV_TVAL.types]
+TimerValue = "signed"
 [registers.CNTKCTL]
 [registers.CNTPCT]
 [registers.CNTPCTSS]
 [registers.CNTP_CTL]
+write = "safe"
 [registers.CNTP_CVAL]
+write = "safe"
 [registers.CNTP_TVAL]
+write = "safe"
+[registers.CNTP_TVAL.types]
+TimerValue = "signed"
 [registers.CNTVCT]
 [registers.CNTVCTSS]
 [registers.CNTVOFF]
 [registers.CNTV_CTL]
+write = "safe"
 [registers.CNTV_CVAL]
+write = "safe"
 [registers.CNTV_TVAL]
+write = "safe"
+[registers.CNTV_TVAL.types]
+TimerValue = "signed"
 [registers.CONTEXTIDR]
 [registers.CPACR]
 [registers.CSSELR]
@@ -306,6 +336,8 @@ write = "safe"
 [registers.CNTP_TVAL_EL0]
 description = "Counter-timer Physical Timer TimerValue Register"
 write = "safe"
+[registers.CNTP_TVAL_EL0.types]
+TimerValue = "signed"
 
 # EL2 physical timer
 [registers.CNTHP_CTL_EL2]
@@ -317,6 +349,8 @@ write = "safe"
 [registers.CNTHP_TVAL_EL2]
 description = "Counter-timer Physical Timer TimerValue Register (EL2)"
 write = "safe"
+[registers.CNTHP_TVAL_EL2.types]
+TimerValue = "signed"
 
 # Secure EL2 physical timer
 [registers.CNTHPS_CTL_EL2]
@@ -328,6 +362,8 @@ write = "safe"
 [registers.CNTHPS_TVAL_EL2]
 description = "Counter-timer Secure Physical Timer TimerValue Register (EL2)"
 write = "safe"
+[registers.CNTHPS_TVAL_EL2.types]
+TimerValue = "signed"
 
 # EL3 physical timer
 [registers.CNTPS_CTL_EL1]
@@ -339,6 +375,8 @@ write = "safe"
 [registers.CNTPS_TVAL_EL1]
 description = "Counter-timer Physical Secure Timer TimerValue Register"
 write = "safe"
+[registers.CNTPS_TVAL_EL1.types]
+TimerValue = "signed"
 
 # EL1 virtual timer
 [registers.CNTV_CTL_EL0]
@@ -350,6 +388,8 @@ write = "safe"
 [registers.CNTV_TVAL_EL0]
 description = "Counter-timer Virtual Timer TimerValue Register"
 write = "safe"
+[registers.CNTV_TVAL_EL0.types]
+TimerValue = "signed"
 
 # EL2 virtual timer
 [registers.CNTHV_CTL_EL2]
@@ -361,6 +401,8 @@ write = "safe"
 [registers.CNTHV_TVAL_EL2]
 description = "Counter-timer Virtual Timer TimerValue Register (EL2)"
 write = "safe"
+[registers.CNTHV_TVAL_EL2.types]
+TimerValue = "signed"
 
 # Secure EL2 virtual timer
 [registers.CNTHVS_CTL_EL2]
@@ -372,6 +414,8 @@ write = "safe"
 [registers.CNTHVS_TVAL_EL2]
 description = "Counter-timer Secure Virtual Timer TimerValue Register (EL2)"
 write = "safe"
+[registers.CNTHVS_TVAL_EL2.types]
+TimerValue = "signed"
 
 [registers.CONTEXTIDR_EL1]
 write = "safe"
