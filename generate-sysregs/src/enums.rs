@@ -9,7 +9,7 @@ use std::{
 use arm_sysregs_json::{ValueEntry, Values};
 use log::warn;
 
-use crate::{RegisterField, RegisterInfo};
+use crate::{FieldType, RegisterField, RegisterInfo};
 
 /// Entry of an [`Enum`], collected from the specification.
 #[derive(Debug, Hash, PartialEq, Eq)]
@@ -172,14 +172,23 @@ pub fn identify_enums(registers: &[RegisterInfo], generate_stubs: bool, skip_exi
         );
 
         if skip_existing {
-            if usage.iter().all(|(_, f)| f.type_name.is_some()) {
+            if usage
+                .iter()
+                .all(|(_, f)| matches!(f.type_name, FieldType::Custom(..)))
+            {
                 println!("Skipped (already implemented)");
                 println!();
                 continue;
             } else {
                 let mut impls = usage
                     .iter()
-                    .filter_map(|(_, f)| f.type_name.clone())
+                    .filter_map(|(_, f)| {
+                        if let FieldType::Custom(custom_name) = &f.type_name {
+                            Some(custom_name.clone())
+                        } else {
+                            None
+                        }
+                    })
                     .collect::<Vec<_>>();
                 impls.sort();
                 impls.dedup();

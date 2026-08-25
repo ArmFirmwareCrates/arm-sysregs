@@ -348,7 +348,7 @@ fn add_details(register: &mut RegisterInfo, config: &Config) {
                 field.description = Some(description.clone());
             }
             if let Some(ty) = register_config.types.get(&field.name) {
-                field.type_name = Some(ty.clone());
+                field.type_name = ty.as_str().into();
             }
         }
         if !register.has_special_conditions && !register_config.use_raw_name {
@@ -362,7 +362,7 @@ struct RegisterField {
     /// The name of the field.
     pub name: String,
     /// The type of the field.
-    pub type_name: Option<String>,
+    pub type_name: FieldType,
     /// The description of the field, if available.
     pub description: Option<String>,
     /// The index of the least significant bit of the field.
@@ -375,6 +375,27 @@ struct RegisterField {
     pub array_info: Option<ArrayInfo>,
     /// Possible values that this field can hold, if specified.
     pub values: Option<Values>,
+}
+
+/// The type to use for a particular field of a register.
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+enum FieldType {
+    /// An unsigned integer of the appropriate width.
+    Unsigned,
+    /// A signed integer of the appropriate width.
+    Signed,
+    /// A custom type.
+    Custom(String),
+}
+
+impl From<&str> for FieldType {
+    fn from(value: &str) -> Self {
+        if value == "signed" {
+            Self::Signed
+        } else {
+            Self::Custom(value.to_owned())
+        }
+    }
 }
 
 impl RegisterField {
@@ -443,7 +464,7 @@ struct RegisterInfo {
 struct RegisterFieldTypeKey {
     name: String,
     description: Option<String>,
-    type_name: Option<String>,
+    type_name: FieldType,
     index: u32,
     width: u32,
     writable: bool,
@@ -688,7 +709,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
-                    type_name: None,
+                    type_name: FieldType::Unsigned,
                     values: None,
                 },
                 RegisterField {
@@ -698,7 +719,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
-                    type_name: None,
+                    type_name: FieldType::Unsigned,
                     values: None,
                 },
                 RegisterField {
@@ -708,7 +729,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
-                    type_name: None,
+                    type_name: FieldType::Unsigned,
                     values: None,
                 },
                 RegisterField {
@@ -718,7 +739,7 @@ mod tests {
                     width: 1,
                     writable: false,
                     array_info: None,
-                    type_name: None,
+                    type_name: FieldType::Unsigned,
                     values: None,
                 },
             ],
@@ -736,7 +757,7 @@ mod tests {
                         width: 1,
                         writable: false,
                         array_info: None,
-                        type_name: None,
+                        type_name: FieldType::Unsigned,
                         values: None,
                     },
                     RegisterField {
@@ -746,7 +767,7 @@ mod tests {
                         width: 1,
                         writable: false,
                         array_info: None,
-                        type_name: None,
+                        type_name: FieldType::Unsigned,
                         values: None,
                     },
                 ],

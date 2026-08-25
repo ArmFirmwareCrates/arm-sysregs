@@ -4,7 +4,7 @@
 //! Logic for writing out a Rust source file with system register types and accessors.
 
 use crate::{
-    AArch32Encoding, ExceptionLevel, RegisterField, RegisterInfo, Safety, ones,
+    AArch32Encoding, ExceptionLevel, FieldType, RegisterField, RegisterInfo, Safety, ones,
     separated_binary_literal,
 };
 use std::io::{self, Write};
@@ -55,6 +55,7 @@ pub fn write_registers(
 
 // This file is generated, do not edit manually.
 
+use arm_sysregs_common::mask_extend;
 use bitflags::bitflags;
 "#,
     )?;
@@ -444,17 +445,37 @@ impl RegisterInfo {
 
             writeln!(writer)?;
 
-            let (int_ty, effective_width) = type_for_width(field.width);
+            let int_ty: &str;
             let constness;
             let field_type: &str;
-            let use_custom_type = field.type_name.is_some();
-            if let Some(ty) = &field.type_name {
-                constness = "";
-                field_type = ty;
-            } else {
-                constness = "const ";
-                field_type = int_ty;
-            };
+            let use_custom_type: bool;
+            let effective_width;
+            let needs_cast: bool;
+            match &field.type_name {
+                FieldType::Unsigned => {
+                    (int_ty, effective_width) = type_for_width(field.width, false);
+                    use_custom_type = false;
+                    constness = "const ";
+                    field_type = int_ty;
+                    needs_cast = effective_width != self.width;
+                }
+                FieldType::Signed => {
+                    (int_ty, effective_width) = type_for_width(field.width, true);
+                    use_custom_type = false;
+                    constness = "const ";
+                    field_type = int_ty;
+                    needs_cast = true;
+                }
+                FieldType::Custom(ty) => {
+                    (int_ty, effective_width) = type_for_width(field.width, false);
+                    use_custom_type = true;
+                    constness = "";
+                    field_type = ty;
+                    needs_cast = effective_width != self.width;
+                }
+            }
+            // The number of extra unused bits in the type used for the field.
+            let extra_bits = effective_width - field.width;
 
             if let Some(array_info) = &field.array_info {
                 writeln!(
@@ -498,22 +519,20 @@ impl RegisterInfo {
                 if array_info.indices.start != 0 {
                     write!(
                         writer,
-                        "((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) & Self::{}_MASK) as {}",
+                        "mask_extend!(((self.bits() >> (Self::{}_SHIFT + ({} - {}) * {})) as {}), {extra_bits})",
                         field.constant_name(),
                         array_info.index_variable,
                         array_info.indices.start,
                         field.width,
-                        field.constant_name(),
                         int_ty,
                     )?;
                 } else {
                     write!(
                         writer,
-                        "((self.bits() >> (Self::{}_SHIFT + {} * {})) & Self::{}_MASK) as {}",
+                        "mask_extend!(((self.bits() >> (Self::{}_SHIFT + {} * {})) as {}), {extra_bits})",
                         field.constant_name(),
                         array_info.index_variable,
                         field.width,
-                        field.constant_name(),
                         int_ty,
                     )?;
                 }
@@ -544,16 +563,37 @@ impl RegisterInfo {
                 if use_custom_type {
                     write!(writer, "{}::try_from(", field_type)?;
                 }
-                if effective_width != self.width {
-                    write!(writer, "(")?;
-                }
-                write!(
-                    writer,
-                    "(self.bits() >> Self::{0}_SHIFT) & Self::{0}_MASK",
-                    field.constant_name(),
-                )?;
-                if effective_width != self.width {
-                    write!(writer, ") as {}", int_ty)?;
+
+                // We could have more cases, but we limit to three for simplicity.
+                // Signed, field.width = effective_width: cast
+                // Unsigned, field.width = effective_width < self.width: cast
+                // Signed, field.width < effective_width: cast and double shift
+                // Unsigned, field.width < effective_width < self.width: cast and mask (or double shift)
+                // Unsigned, field.width < effective_width = self.width: mask (or double shift)
+                // Unsigned, field.width = effective_width = self.width: nothing
+                if needs_cast {
+                    if extra_bits == 0 {
+                        write!(
+                            writer,
+                            "(self.bits() >> Self::{0}_SHIFT) as {int_ty}",
+                            field.constant_name(),
+                        )?;
+                    } else {
+                        // Shift left first to put the top bit of the field in the top bit of the type,
+                        // then shift back to the right for sign extension in case the field is signed.
+                        // This also achieves masking, so we don't need to apply the mask as well.
+                        write!(
+                            writer,
+                            "mask_extend!(((self.bits() >> Self::{0}_SHIFT) as {int_ty}), {extra_bits})",
+                            field.constant_name(),
+                        )?;
+                    }
+                } else {
+                    write!(
+                        writer,
+                        "(self.bits() >> Self::{0}_SHIFT) & Self::{0}_MASK",
+                        field.constant_name(),
+                    )?;
                 }
                 if use_custom_type {
                     write!(writer, ").unwrap()")?;
@@ -635,25 +675,28 @@ impl RegisterInfo {
                 writeln!(writer, "        let value: {int_ty} = value.into();")?;
             }
 
-            if effective_width != self.width {
+            if needs_cast {
+                if extra_bits != 0 {
+                    writeln!(
+                        writer,
+                        "        assert!(mask_extend!(value, {extra_bits}) == value);",
+                    )?;
+                }
                 writeln!(
                     writer,
-                    "        assert!(value & (Self::{}_MASK as {int_ty}) == value);",
-                    field.constant_name(),
-                )?;
-                writeln!(
-                    writer,
-                    "        *self = Self::from_bits_retain((self.bits() & !(Self::{}_MASK << offset)) | ((value as u{}) << offset));",
+                    "        *self = Self::from_bits_retain((self.bits() & !(Self::{0}_MASK << offset)) | ((value as u{1} & Self::{0}_MASK) << offset));",
                     field.constant_name(),
                     self.width,
                 )?;
             } else {
-                // Omit as u[width] if the field has the same width as the register.
-                writeln!(
-                    writer,
-                    "        assert!(value & Self::{}_MASK == value);",
-                    field.constant_name(),
-                )?;
+                if extra_bits != 0 {
+                    writeln!(
+                        writer,
+                        "        assert!(value & Self::{}_MASK == value);",
+                        field.constant_name(),
+                    )?;
+                }
+                // Omit `as u[width]` if the field has the same width as the register.
                 writeln!(
                     writer,
                     "        *self = Self::from_bits_retain((self.bits() & !(Self::{}_MASK << offset)) | (value << offset));",
@@ -925,19 +968,19 @@ fn uppercase_name(name: &str) -> String {
         .to_uppercase()
 }
 
-/// Returns the smallest unsigned type that can hold at least the given number of bits and the width
-/// of the type in bits.
-fn type_for_width(width: u32) -> (&'static str, u32) {
+/// Returns the smallest integer type that can hold at least the given number of bits, and the width
+/// of that type in bits.
+fn type_for_width(width: u32, signed: bool) -> (&'static str, u32) {
     assert!(width <= 64);
 
     if width > 32 {
-        ("u64", 64)
+        (if signed { "i64" } else { "u64" }, 64)
     } else if width > 16 {
-        ("u32", 32)
+        (if signed { "i32" } else { "u32" }, 32)
     } else if width > 8 {
-        ("u16", 16)
+        (if signed { "i16" } else { "u16" }, 16)
     } else {
-        ("u8", 8)
+        (if signed { "i8" } else { "u8" }, 8)
     }
 }
 

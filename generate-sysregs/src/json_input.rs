@@ -7,7 +7,7 @@
 mod conditions;
 
 use crate::{
-    AArch32Encoding, ArrayInfo, ExceptionLevel, RegisterField, RegisterInfo, Safety,
+    AArch32Encoding, ArrayInfo, ExceptionLevel, FieldType, RegisterField, RegisterInfo, Safety,
     json_input::conditions::{Environment, EvalValue, Evaluable},
     ones,
 };
@@ -543,7 +543,7 @@ impl RegisterField {
                 width: range.width,
                 writable: true,
                 array_info: None,
-                type_name: None,
+                type_name: FieldType::Unsigned,
                 values: field.values.clone(),
             })
         } else {
@@ -569,7 +569,7 @@ impl RegisterField {
                         indices: array_range.start..array_range.start + array_range.width,
                         index_variable: field.index_variable.clone(),
                     }),
-                    type_name: None,
+                    type_name: FieldType::Unsigned,
                     values: field.values.clone(),
                 })
             } else {
@@ -598,7 +598,7 @@ impl RegisterField {
                 width: range.width,
                 writable: false,
                 array_info: None,
-                type_name: None,
+                type_name: FieldType::Unsigned,
                 values: Some(Values {
                     values: vec![field.value.clone()],
                 }),
@@ -622,7 +622,7 @@ impl RegisterField {
                 width: range.width,
                 writable: true,
                 array_info: None,
-                type_name: None,
+                type_name: FieldType::Unsigned,
                 values: None,
             })
         } else {
@@ -648,7 +648,7 @@ impl RegisterField {
                         indices: array_range.start..array_range.start + array_range.width,
                         index_variable: field.index_variable.clone(),
                     }),
-                    type_name: None,
+                    type_name: FieldType::Unsigned,
                     values: field.values.clone(),
                 })
             } else {

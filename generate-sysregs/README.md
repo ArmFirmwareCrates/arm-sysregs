@@ -15,7 +15,7 @@ into the `arm-sysregs` crate.
 ## Generate `arm-sysregs` crates
 
 1. Download and extract the **Features, Registers, A64, A32** machine-readable JSON specification
-  from the Arm A-profile architecture [downloads page][1].
+   from the Arm A-profile architecture [downloads page][1].
 2. Run the following command from the repository root:
 
    ```sh
@@ -106,7 +106,11 @@ the smallest unsigned integer type that can hold the field value.
 They should be defined in `types.rs` in `arm-sysregs-common` when they do not explicitly belong to a
 specific subcrate. Otherwise, they should be defined in the `manual.rs` of the respective crate.
 
+As a special case, the value `"signed"` will result in the appropriate signed integer type being
+used rather than the default unsigned integer type.
+
 ## Type aliasing
+
 In the case of array registers (e.g. `AMEVCNTR1<n>_EL0`), and specific other registers (e.g. `PIRE0_EL1` and `POR_EL1`), the generated types might be identical.
 Due to the current implementation of the rust compiler, these duplicate types contribute immensely to the size of the dependency graph at compile-time; this feature aims to reduce memory usage during compilation via generating type aliases where possible.
 

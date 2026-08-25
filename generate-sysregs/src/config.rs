@@ -23,6 +23,9 @@ pub struct RegisterConfig {
     /// They must be absolute paths and implement `TryFrom<uXX>`, where `uXX` is the smallest
     /// unsigned type able to store the field. E.g. a 3-bits wide field must implement
     /// `TryFrom<u8>`, while a 15-bits one needs `TryFrom<u16>`.
+    ///
+    /// As a special case, the value "signed" will result in the appropriate signed integer type
+    /// being used rather than the default unsigned integer type.
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub types: BTreeMap<String, String>,
     /// If this is set it overrides the read access from the JSON input.
