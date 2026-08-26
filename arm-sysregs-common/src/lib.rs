@@ -14,4 +14,4 @@ pub mod macros;
 pub mod types;
 
 #[doc(hidden)]
-pub use paste as _paste;
+pub use pastey as _pastey;

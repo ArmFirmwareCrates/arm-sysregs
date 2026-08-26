@@ -9,12 +9,12 @@
 #[macro_export]
 macro_rules! read_sysreg {
     ($sysreg:ident, $type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< read_ $sysreg >]() -> $type {
+            pub fn [< # read_ $sysreg >]() -> $type {
                 let value: $type;
                 // SAFETY: The macro call site's author (see below) has determined that it is
                 // always safe to read the given `$sysreg.`
@@ -30,13 +30,13 @@ macro_rules! read_sysreg {
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident, $type:ty $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< read_ $sysreg >]() -> $type {
+            pub unsafe fn [< # read_ $sysreg >]() -> $type {
                 let value: $type;
                 // SAFETY: The caller promises that it is safe to read the given `$sysreg`.
                 unsafe {
@@ -51,12 +51,12 @@ macro_rules! read_sysreg {
         }
     };
     ($sysreg:ident, $type:ty : $bitflags_type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub fn [< # read_ $sysreg >]() -> $bitflags_type {
                 let value: $type;
                 // SAFETY: The macro call site's author (see below) has determined that it is
                 // always safe to read the given `$sysreg.`
@@ -72,13 +72,13 @@ macro_rules! read_sysreg {
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident, $type:ty : $bitflags_type:ty $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub unsafe fn [< # read_ $sysreg >]() -> $bitflags_type {
                 let value: $type;
                 // SAFETY: The caller promises that it is safe to read the given `$sysreg`.
                 unsafe {
@@ -93,12 +93,12 @@ macro_rules! read_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< read_ $sysreg >]() -> u32 {
+            pub fn [< # read_ $sysreg >]() -> u32 {
                 let value: u32;
                 // SAFETY: The macro call site's author (see below) has determined that it is
                 // always safe to read the given `$sysreg.`
@@ -122,13 +122,13 @@ macro_rules! read_sysreg {
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32 $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< read_ $sysreg >]() -> u32 {
+            pub unsafe fn [< # read_ $sysreg >]() -> u32 {
                 let value: u32;
                 // SAFETY: The caller promises that it is safe to read the given `$sysreg`.
                 unsafe {
@@ -151,12 +151,12 @@ macro_rules! read_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32 : $bitflags_type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub fn [< # read_ $sysreg >]() -> $bitflags_type {
                 let value: u32;
                 // SAFETY: The macro call site's author (see below) has determined that it is
                 // always safe to read the given `$sysreg.`
@@ -180,13 +180,13 @@ macro_rules! read_sysreg {
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32 : $bitflags_type:ty $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub unsafe fn [< # read_ $sysreg >]() -> $bitflags_type {
                 let value: u32;
                 // SAFETY: The caller promises that it is safe to read the given `$sysreg`.
                 unsafe {
@@ -209,12 +209,12 @@ macro_rules! read_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< read_ $sysreg >]() -> u64 {
+            pub fn [< # read_ $sysreg >]() -> u64 {
                 let value_low: u32;
                 let value_high: u32;
                 // SAFETY: The macro call site's author (see below) has determined that it is
@@ -239,13 +239,13 @@ macro_rules! read_sysreg {
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64 $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< read_ $sysreg >]() -> u64 {
+            pub unsafe fn [< # read_ $sysreg >]() -> u64 {
                 let value_low: u32;
                 let value_high: u32;
                 // SAFETY: The caller promises that it is safe to read the given `$sysreg`.
@@ -269,12 +269,12 @@ macro_rules! read_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64 : $bitflags_type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub fn [< # read_ $sysreg >]() -> $bitflags_type {
                 let value_low: u32;
                 let value_high: u32;
                 // SAFETY: The macro call site's author (see below) has determined that it is
@@ -299,13 +299,13 @@ macro_rules! read_sysreg {
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64 : $bitflags_type:ty $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub unsafe fn [< # read_ $sysreg >]() -> $bitflags_type {
                 let value_low: u32;
                 let value_high: u32;
                 // SAFETY: The caller promises that it is safe to read the given `$sysreg`.
@@ -339,12 +339,12 @@ macro_rules! read_sysreg {
 #[macro_export]
 macro_rules! write_sysreg {
     ($sysreg:ident, $type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< write_ $sysreg >](value: $type) {
+            pub fn [< # write_ $sysreg >](value: $type) {
                 // SAFETY: The macro call site's author (see below) has determined that it is safe
                 // to write any value to the given `$sysreg.`
                 unsafe {
@@ -361,13 +361,13 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident, $type:ty $(, $fake_sysregs:expr)?
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< write_ $sysreg >](value: $type) {
+            pub unsafe fn [< # write_ $sysreg >](value: $type) {
                 // SAFETY: The caller promises that it is safe to write `value` to the given `$sysreg`.
                 unsafe {
                     core::arch::asm!(
@@ -380,12 +380,12 @@ macro_rules! write_sysreg {
         }
     };
     ($sysreg:ident, $type:ty : $bitflags_type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub fn [< # write_ $sysreg >](value: $bitflags_type) {
                 let value: $type = value.bits();
                 // SAFETY: The macro call site's author (see below) has determined that it is safe
                 // to write any value to the given `$sysreg.`
@@ -403,13 +403,13 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident, $type:ty : $bitflags_type:ty $(, $fake_sysregs:expr)?
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub unsafe fn [< # write_ $sysreg >](value: $bitflags_type) {
                 let value: $type = value.bits();
                 // SAFETY: The caller promises that it is safe to write `value` to the given `$sysreg`.
                 unsafe {
@@ -423,12 +423,12 @@ macro_rules! write_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< write_ $sysreg >](value: u32) {
+            pub fn [< # write_ $sysreg >](value: u32) {
                 // SAFETY: The macro call site's author (see below) has determined that it is safe
                 // to write any value to the given `$sysreg.`
                 unsafe {
@@ -453,13 +453,13 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32 $(, $fake_sysregs:expr)?
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< write_ $sysreg >](value: u32) {
+            pub unsafe fn [< # write_ $sysreg >](value: u32) {
                 // SAFETY: The caller promises that it is safe to write `value` to the given `$sysreg`.
                 unsafe {
                     core::arch::asm!(
@@ -480,12 +480,12 @@ macro_rules! write_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32 : $bitflags_type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub fn [< # write_ $sysreg >](value: $bitflags_type) {
                 let value: u32 = value.bits();
                 // SAFETY: The macro call site's author (see below) has determined that it is safe
                 // to write any value to the given `$sysreg.`
@@ -511,13 +511,13 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident, $crn:ident, $opc2:literal), u32 : $bitflags_type:ty $(, $fake_sysregs:expr)?
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub unsafe fn [< # write_ $sysreg >](value: $bitflags_type) {
                 let value: u32 = value.bits();
                 // SAFETY: The caller promises that it is safe to write `value` to the given `$sysreg`.
                 unsafe {
@@ -539,12 +539,12 @@ macro_rules! write_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< write_ $sysreg >](value: u64) {
+            pub fn [< # write_ $sysreg >](value: u64) {
                 let value_low = value as u32;
                 let value_high = (value >> 32) as u32;
                 // SAFETY: The macro call site's author (see below) has determined that it is safe
@@ -571,13 +571,13 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64 $(, $fake_sysregs:expr)?
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< write_ $sysreg >](value: u64) {
+            pub unsafe fn [< # write_ $sysreg >](value: u64) {
                 let value_low = value as u32;
                 let value_high = (value >> 32) as u32;
                 // SAFETY: The caller promises that it is safe to write `value` to the given `$sysreg`.
@@ -600,12 +600,12 @@ macro_rules! write_sysreg {
         }
     };
     ($sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64 : $bitflags_type:ty, safe $(, $fake_sysregs:expr)?) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             #[inline(always)]
-            pub fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub fn [< # write_ $sysreg >](value: $bitflags_type) {
                 let value: u64 = value.bits();
                 let value_low = value as u32;
                 let value_high = (value >> 32) as u32;
@@ -633,13 +633,13 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident : ($coproc:ident, $opc1:literal, $crm:ident), u64 : $bitflags_type:ty $(, $fake_sysregs:expr)?
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
             #[inline(always)]
-            pub unsafe fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub unsafe fn [< # write_ $sysreg >](value: $bitflags_type) {
                 let value: u64 = value.bits();
                 let value_low = value as u32;
                 let value_high = (value >> 32) as u32;

@@ -7,6 +7,10 @@
 - Added the PAN register
 - Added `is_*_present` for `FEAT_PAN`, `FEAT_PAN2` and `FEAT_PAN3`.
 
+### Other changes
+
+- Replaced the unmaintained `paste` crate with `pastey`.
+
 ## 0.4.0
 
 ### New features

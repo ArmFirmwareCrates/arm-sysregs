@@ -8,43 +8,43 @@
 #[macro_export]
 macro_rules! read_sysreg {
     ($sysreg:ident $(: $asm_sysreg:tt)?, $type:ty, safe, $fake_sysregs:expr) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
-            pub fn [< read_ $sysreg >]() -> $type {
+            pub fn [< # read_ $sysreg >]() -> $type {
                 $fake_sysregs.lock().unwrap().$sysreg
             }
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident $(: $asm_sysreg:tt)?, $type:ty, $fake_sysregs:expr) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
-            pub unsafe fn [< read_ $sysreg >]() -> $type {
+            pub unsafe fn [< # read_ $sysreg >]() -> $type {
                 $fake_sysregs.lock().unwrap().$sysreg
             }
         }
     };
     ($sysreg:ident $(: $asm_sysreg:tt)?, $type:ty : $bitflags_type:ty, safe, $fake_sysregs:expr) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
-            pub fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub fn [< # read_ $sysreg >]() -> $bitflags_type {
                 $fake_sysregs.lock().unwrap().$sysreg
             }
         }
     };
     ($(#[$attributes:meta])* $sysreg:ident $(: $asm_sysreg:tt)?, $type:ty : $bitflags_type:ty, $fake_sysregs:expr) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Returns the value of the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
-            pub unsafe fn [< read_ $sysreg >]() -> $bitflags_type {
+            pub unsafe fn [< # read_ $sysreg >]() -> $bitflags_type {
                 $fake_sysregs.lock().unwrap().$sysreg
             }
         }
@@ -56,11 +56,11 @@ macro_rules! read_sysreg {
 #[macro_export]
 macro_rules! write_sysreg {
     ($sysreg:ident $(: $asm_sysreg:tt)?, $type:ty, safe, $fake_sysregs:expr) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
-            pub fn [< write_ $sysreg >](value: $type) {
+            pub fn [< # write_ $sysreg >](value: $type) {
                 $fake_sysregs.lock().unwrap().$sysreg = value;
             }
         }
@@ -69,22 +69,22 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident $(: $asm_sysreg:tt)?, $type:ty, $fake_sysregs:expr
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
-            pub unsafe fn [< write_ $sysreg >](value: $type) {
+            pub unsafe fn [< # write_ $sysreg >](value: $type) {
                 $fake_sysregs.lock().unwrap().$sysreg = value;
             }
         }
     };
     ($sysreg:ident $(: $asm_sysreg:tt)?, $type:ty : $bitflags_type:ty, safe, $fake_sysregs:expr) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
-            pub fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub fn [< # write_ $sysreg >](value: $bitflags_type) {
                 $fake_sysregs.lock().unwrap().$sysreg = value;
             }
         }
@@ -93,12 +93,12 @@ macro_rules! write_sysreg {
         $(#[$attributes:meta])*
         $sysreg:ident $(: $asm_sysreg:tt)?, $type:ty : $bitflags_type:ty, $fake_sysregs:expr
     ) => {
-        $crate::_paste::paste! {
+        $crate::_pastey::paste! {
             #[doc = "Writes `value` to the `"]
             #[doc = stringify!($sysreg)]
             #[doc = "` system register."]
             $(#[$attributes])*
-            pub unsafe fn [< write_ $sysreg >](value: $bitflags_type) {
+            pub unsafe fn [< # write_ $sysreg >](value: $bitflags_type) {
                 $fake_sysregs.lock().unwrap().$sysreg = value;
             }
         }
