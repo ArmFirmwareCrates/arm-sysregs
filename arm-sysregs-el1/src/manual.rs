@@ -371,11 +371,9 @@ impl SpsrEl1 {
 
 #[cfg(test)]
 mod tests {
-
     use super::*;
 
     #[test]
-
     fn debug_mpidr_el1() {
         assert_eq!(format!("{:?}", MpidrEl1::empty()), "MpidrEl1(0x0)");
         assert_eq!(
