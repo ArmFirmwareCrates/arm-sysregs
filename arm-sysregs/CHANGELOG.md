@@ -9,6 +9,7 @@
 
 ### Breaking changes
 
+- Renamed `IdAa64mmfr2El1::has_64_bit_ccsidr_el1` to `is_feat_ccidx_present`.
 - Changed type of `*_TVAL*.TimerValue` fields from `u32` to `i32`.
 - Made writes to AArch32 timer registers safe, the same as the AArch64 equivalents.
 

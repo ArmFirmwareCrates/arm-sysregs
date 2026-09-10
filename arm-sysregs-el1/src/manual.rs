@@ -167,11 +167,13 @@ impl IdAa64mmfr1El1 {
 }
 
 impl IdAa64mmfr2El1 {
-    const CCIDX_64_BIT: u8 = 0b0001;
+    const CCIDX_IMPLEMENTED: u8 = 0b0001;
 
-    /// Checks whether 64-bit format is implemented for all levels of the CCSIDR_EL1.
-    pub fn has_64_bit_ccsidr_el1(self) -> bool {
-        self.ccidx() >= Self::CCIDX_64_BIT
+    /// Indicates the presence of FEAT_CCIDX.
+    ///
+    /// If FEAT_CCIDX is present, 64-bit format is implemented for all levels of CCSIDR_EL1.
+    pub fn is_feat_ccidx_present(self) -> bool {
+        self.ccidx() >= Self::CCIDX_IMPLEMENTED
     }
 }
 
