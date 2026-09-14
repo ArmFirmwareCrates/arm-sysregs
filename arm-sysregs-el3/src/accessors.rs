@@ -41,6 +41,7 @@ read_write_sysreg! {
     /// The caller must ensure that `value` is a correct and safe configuration value for the EL3 system control register.
     sctlr_el3, u64: crate::registers::SctlrEl3, safe_read, crate::fake::SYSREGS
 }
+read_write_sysreg!(scxtnum_el3: s3_6_c13_c0_7, u64: crate::registers::ScxtnumEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(smcr_el3: s3_6_c1_c2_6, u64: crate::registers::SmcrEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(spsr_el3, u64: crate::registers::SpsrEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg! {

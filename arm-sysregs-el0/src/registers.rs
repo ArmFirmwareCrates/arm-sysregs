@@ -1615,6 +1615,41 @@ impl PorEl0 {
 }
 
 bitflags! {
+    /// `SCXTNUM_EL0` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct ScxtnumEl0: u64 {
+    }
+}
+
+impl ScxtnumEl0 {
+    /// Offset of the `SCXTNUM` field.
+    pub const SCXTNUM_SHIFT: u32 = 0;
+    /// Mask for the `SCXTNUM` field.
+    pub const SCXTNUM_MASK: u64 =
+        0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `SCXTNUM` field.
+    pub const fn scxtnum(self) -> u64 {
+        (self.bits() >> Self::SCXTNUM_SHIFT) & Self::SCXTNUM_MASK
+    }
+
+    /// Sets the value of the `SCXTNUM` field.
+    pub const fn set_scxtnum(&mut self, value: u64) {
+        let offset = Self::SCXTNUM_SHIFT;
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SCXTNUM_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `SCXTNUM` field set to the given value.
+    pub const fn with_scxtnum(mut self, value: u64) -> Self {
+        self.set_scxtnum(value);
+        self
+    }
+}
+
+bitflags! {
     /// `SVCR` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]

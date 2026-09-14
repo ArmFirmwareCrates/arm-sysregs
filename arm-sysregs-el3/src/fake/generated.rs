@@ -5,8 +5,8 @@
 
 use crate::registers::{
     CptrEl3, EsrEl3, Fgwte3El3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3,
-    MdcrEl3, Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, SmcrEl3, SpsrEl3, TcrEl3,
-    TpidrEl3, Ttbr0El3, ZcrEl3,
+    MdcrEl3, Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, ScxtnumEl3, SmcrEl3, SpsrEl3,
+    TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -45,6 +45,8 @@ pub struct SystemRegisters {
     pub sctlr2_el3: Sctlr2El3,
     /// Fake value for the `SCTLR_EL3` system register.
     pub sctlr_el3: SctlrEl3,
+    /// Fake value for the `SCXTNUM_EL3` system register.
+    pub scxtnum_el3: ScxtnumEl3,
     /// Fake value for the `SMCR_EL3` system register.
     pub smcr_el3: SmcrEl3,
     /// Fake value for the `SPSR_EL3` system register.
@@ -78,6 +80,7 @@ impl SystemRegisters {
             scr_el3: ScrEl3::empty(),
             sctlr2_el3: Sctlr2El3::empty(),
             sctlr_el3: SctlrEl3::empty(),
+            scxtnum_el3: ScxtnumEl3::empty(),
             smcr_el3: SmcrEl3::empty(),
             spsr_el3: SpsrEl3::empty(),
             tcr_el3: TcrEl3::empty(),

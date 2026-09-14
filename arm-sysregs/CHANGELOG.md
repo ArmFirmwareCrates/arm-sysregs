@@ -6,6 +6,8 @@
 
 - Added the PAN register
 - Added `is_*_present` for `FEAT_PAN`, `FEAT_PAN2` and `FEAT_PAN3`.
+- Added the SCXTNUM_ELx registers.
+- Added `is_*_present` for `FEAT_CSV2`, `FEAT_CSV2_2` and `FEAT_CSV2_3`.
 
 ### Breaking changes
 

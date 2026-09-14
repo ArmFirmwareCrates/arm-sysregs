@@ -108,6 +108,7 @@ read_write_sysreg!(por_el2: s3_4_c10_c2_4, u64: crate::registers::PorEl2, safe_r
 read_write_sysreg!(s2pir_el2: s3_4_c10_c2_5, u64: crate::registers::S2pirEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(sctlr2_el2: s3_4_c1_c0_3, u64: crate::registers::Sctlr2El2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(sctlr_el2, u64: crate::registers::SctlrEl2, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(scxtnum_el2: s3_4_c13_c0_7, u64: crate::registers::ScxtnumEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(spsr_el2, u64: crate::registers::SpsrEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(sp_el2, u64: crate::registers::SpEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(tcr2_el2: s3_4_c2_c0_3, u64: crate::registers::Tcr2El2, safe_read, crate::fake::SYSREGS);

@@ -232,6 +232,9 @@ impl IdAa64mmfr4El1 {
 }
 
 impl IdAa64pfr0El1 {
+    const CSV2_IMPLEMENTED: u8 = 0b0001;
+    const CSV2_2_IMPLEMENTED: u8 = 0b0010;
+    const CSV2_3_IMPLEMENTED: u8 = 0b0011;
     const SVE_IMPLEMENTED: u8 = 0b0001;
     const MPAM_IMPLEMENTED: u8 = 0b0001;
     const AMUV1_IMPLEMENTED: u8 = 0b0001;
@@ -241,6 +244,21 @@ impl IdAa64pfr0El1 {
     const RME_GPC2_IMPLEMENTED: u8 = 0b0010;
     const RME_GPC3_IMPLEMENTED: u8 = 0b0011;
     const SEL2_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether CSV2 Extension is implemented.
+    pub fn is_feat_csv2_present(self) -> bool {
+        self.csv2() >= Self::CSV2_IMPLEMENTED
+    }
+
+    /// Indicates whether CSV2_2 Extension is implemented.
+    pub fn is_feat_csv2_2_present(self) -> bool {
+        self.csv2() >= Self::CSV2_2_IMPLEMENTED
+    }
+
+    /// Indicates whether CSV2_3 Extension is implemented.
+    pub fn is_feat_csv2_3_present(self) -> bool {
+        self.csv2() >= Self::CSV2_3_IMPLEMENTED
+    }
 
     /// Indicates whether DIT Extension is implemented.
     pub fn is_feat_dit_present(self) -> bool {

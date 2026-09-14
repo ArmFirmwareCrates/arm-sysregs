@@ -18,8 +18,8 @@ use crate::registers::{
     HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2,
     Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2,
     Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, PfarEl2, PirEl2, Pire0El2, PorEl2,
-    S2pirEl2, Sctlr2El2, SctlrEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2,
-    Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    S2pirEl2, Sctlr2El2, SctlrEl2, ScxtnumEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2,
+    Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 
 /// A set of fake system registers.
@@ -222,6 +222,8 @@ pub struct SystemRegisters {
     pub sctlr2_el2: Sctlr2El2,
     /// Fake value for the `SCTLR_EL2` system register.
     pub sctlr_el2: SctlrEl2,
+    /// Fake value for the `SCXTNUM_EL2` system register.
+    pub scxtnum_el2: ScxtnumEl2,
     /// Fake value for the `SPSR_EL2` system register.
     pub spsr_el2: SpsrEl2,
     /// Fake value for the `SP_EL2` system register.
@@ -355,6 +357,7 @@ impl SystemRegisters {
             s2pir_el2: S2pirEl2::empty(),
             sctlr2_el2: Sctlr2El2::empty(),
             sctlr_el2: SctlrEl2::empty(),
+            scxtnum_el2: ScxtnumEl2::empty(),
             spsr_el2: SpsrEl2::empty(),
             sp_el2: SpEl2::empty(),
             tcr2_el2: Tcr2El2::empty(),

@@ -13,8 +13,8 @@ use crate::registers::{
     IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1,
     IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1, IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1,
     MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, PirEl1, Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1,
-    SctlrEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1,
-    VbarEl1,
+    SctlrEl1, ScxtnumEl1, SpEl1, SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1,
+    Ttbr1El1, VbarEl1,
 };
 
 /// A set of fake system registers.
@@ -181,6 +181,8 @@ pub struct SystemRegisters {
     pub sctlr2_el1: Sctlr2El1,
     /// Fake value for the `SCTLR_EL1` system register.
     pub sctlr_el1: SctlrEl1,
+    /// Fake value for the `SCXTNUM_EL1` system register.
+    pub scxtnum_el1: ScxtnumEl1,
     /// Fake value for the `SPSR_EL1` system register.
     pub spsr_el1: SpsrEl1,
     /// Fake value for the `SP_EL1` system register.
@@ -286,6 +288,7 @@ impl SystemRegisters {
             s2por_el1: S2porEl1::empty(),
             sctlr2_el1: Sctlr2El1::empty(),
             sctlr_el1: SctlrEl1::empty(),
+            scxtnum_el1: ScxtnumEl1::empty(),
             spsr_el1: SpsrEl1::empty(),
             sp_el1: SpEl1::empty(),
             tcr2_el1: Tcr2El1::empty(),

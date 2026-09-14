@@ -65,6 +65,7 @@ read_write_sysreg!(gcspr_el0: s3_3_c2_c5_1, u64: crate::registers::GcsprEl0, saf
 read_write_sysreg!(pan: s3_0_c4_c2_3, u64: crate::registers::Pan, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(pmcr_el0: s3_3_c9_c12_0, u64: crate::registers::PmcrEl0, safe_read, safe_write, crate::fake::SYSREGS);
 read_write_sysreg!(por_el0: s3_3_c10_c2_4, u64: crate::registers::PorEl0, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(scxtnum_el0: s3_3_c13_c0_7, u64: crate::registers::ScxtnumEl0, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(svcr: s3_3_c4_c2_2, u64: crate::registers::Svcr, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(tpidrro_el0, u64: crate::registers::TpidrroEl0, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(tpidr_el0, u64: crate::registers::TpidrEl0, safe_read, crate::fake::SYSREGS);
