@@ -3,7 +3,9 @@
 
 [package]
 name = "arm-sysregs"
-version = "0.5.0"
+# When updating this version, also update the `arm-sysregs-*` crate versions and the corresponding
+# workspace dependency versions.
+version = "0.5.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 description = "Armv8-A system register helper crate"

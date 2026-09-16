@@ -1,6 +1,13 @@
 # Changelog
 
-## 0.5.0
+## 0.5.1
+
+# Bugfixes
+
+- Bump the versions of the `arm-sysregs-*` crates and update the referenced version in the root
+  `arm-sysregs` crate.
+
+## 0.5.0 (yanked)
 
 ### New features
 
