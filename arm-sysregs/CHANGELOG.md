@@ -10,7 +10,7 @@
 
 ## 0.5.1
 
-# Bugfixes
+### Bugfixes
 
 - Bump the versions of the `arm-sysregs-*` crates and update the referenced version in the root
   `arm-sysregs` crate.
@@ -19,7 +19,7 @@
 
 ### New features
 
-- Added the PAN register
+- Added the PAN register.
 - Added `is_*_present` for `FEAT_PAN`, `FEAT_PAN2` and `FEAT_PAN3`.
 - Added the SCXTNUM_ELx registers.
 - Added `is_*_present` for `FEAT_CSV2`, `FEAT_CSV2_2` and `FEAT_CSV2_3`.
@@ -58,7 +58,7 @@
 
 - Regenerated the code using AARCHMRS 2026-03, because the 0.3.2 release accidentally used AARCHMRS 2026-06.
 
-## 0.3.2
+## 0.3.2 (yanked)
 
 ### New features
 
