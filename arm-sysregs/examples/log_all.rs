@@ -1603,6 +1603,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!(
+        "id_aa64isar0_el1 = {:?}",
+        arm_sysregs::el1::accessors::read_id_aa64isar0_el1()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!(
         "id_aa64isar1_el1 = {:?}",
         arm_sysregs::el1::accessors::read_id_aa64isar1_el1()
     );

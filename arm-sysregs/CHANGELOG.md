@@ -5,6 +5,7 @@
 ### New features
 
 - Added `is_feat_uinj_present`.
+- Added the ID_AA64ISAR0_EL1 register.
 
 ## 0.5.1
 
