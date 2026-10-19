@@ -6,6 +6,7 @@
 
 - Added `is_feat_uinj_present`.
 - Added the ID_AA64ISAR0_EL1 register.
+- Added `is_*_present` for `FEAT_RNG` and `FEAT_RNG_TRAP`.
 
 ## 0.5.1
 

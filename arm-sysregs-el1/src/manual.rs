@@ -6,9 +6,9 @@
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 use crate::accessors::read_mpidr_el1;
 use crate::registers::{
-    ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64mmfr0El1, IdAa64mmfr1El1,
-    IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1,
-    MpidrEl1, SpsrEl1,
+    ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar0El1, IdAa64mmfr0El1,
+    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1,
+    IdAa64pfr2El1, MpidrEl1, SpsrEl1,
 };
 use arm_sysregs_common::types::{CacheLevel, CacheType};
 use core::fmt::{self, Debug, Formatter};
@@ -315,6 +315,7 @@ impl IdAa64pfr1El1 {
     const NMI_IMPLEMENTED: u8 = 0b0001;
     const GCS_IMPLEMENTED: u8 = 0b0001;
     const PFAR_IMPLEMENTED: u8 = 0b0001;
+    const RNG_TRAP_IMPLEMENTED: u8 = 0b0001;
 
     /// Indicates whether FEAT_PFAR is implemented.
     pub fn is_feat_pfar_present(self) -> bool {
@@ -355,6 +356,11 @@ impl IdAa64pfr1El1 {
     pub fn is_feat_gcs_present(self) -> bool {
         self.gcs() >= Self::GCS_IMPLEMENTED
     }
+
+    /// Indicates whether FEAT_RNG_TRAP is implemented.
+    pub fn is_feat_rng_trap_present(self) -> bool {
+        self.rndr_trap() >= Self::RNG_TRAP_IMPLEMENTED
+    }
 }
 
 impl IdAa64pfr2El1 {
@@ -393,6 +399,15 @@ impl MpidrEl1 {
 impl SpsrEl1 {
     /// All of the N, Z, C and V bits.
     pub const NZCV: Self = Self::V.union(Self::C).union(Self::Z).union(Self::N);
+}
+
+impl IdAa64isar0El1 {
+    const RNG_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_RNG is implemented.
+    pub fn is_feat_rng_present(self) -> bool {
+        self.rndr() >= Self::RNG_IMPLEMENTED
+    }
 }
 
 #[cfg(test)]
