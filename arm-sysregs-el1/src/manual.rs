@@ -359,10 +359,16 @@ impl IdAa64pfr1El1 {
 
 impl IdAa64pfr2El1 {
     const FPMR_IMPLEMENTED: u8 = 0b0001;
+    const UINJ_IMPLEMENTED: u8 = 0b0001;
 
     /// Indicates whether FEAT_FPMR is implemented.
     pub fn is_feat_fpmr_present(self) -> bool {
         self.fpmr() >= Self::FPMR_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_UINJ is implemented.
+    pub fn is_feat_uinj_present(self) -> bool {
+        self.uinj() >= Self::UINJ_IMPLEMENTED
     }
 }
 

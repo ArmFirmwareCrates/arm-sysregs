@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+- Added `is_feat_uinj_present`.
+
 ## 0.5.1
 
 # Bugfixes
