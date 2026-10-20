@@ -46,6 +46,10 @@ into the `arm-sysregs` crate.
 
 4. Update `arm-sysregs/CHANGELOG.md`.
 
+For convenience, a posix shell script is provided to perform steps 1-3. To use
+it, ensure `curl` and `tar` are available and run `./do_generate.sh` at the
+repository's root.
+
 ## Add a Register
 
 1. Add a new `[registers.REGISTER_NAME]` entry to `registers.toml`. Please keep the register
