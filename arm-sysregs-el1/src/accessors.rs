@@ -10,6 +10,7 @@
 #[allow(unused_imports)]
 use arm_sysregs_common::{read_sysreg, read_write_sysreg, write_sysreg};
 
+read_write_sysreg!(accdata_el1: s3_0_c13_c0_5, u64: crate::registers::AccdataEl1, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(actlr_el1, u64, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(afsr0_el1, u64, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(afsr1_el1, u64, safe_read, crate::fake::SYSREGS);

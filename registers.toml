@@ -1,3 +1,4 @@
+[registers.ACCDATA_EL1]
 [registers.ACTLR]
 [registers.ACTLR2]
 [registers.ADFSR]

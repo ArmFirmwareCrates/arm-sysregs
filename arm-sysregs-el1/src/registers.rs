@@ -9,6 +9,41 @@ use arm_sysregs_common::mask_extend;
 use bitflags::bitflags;
 
 bitflags! {
+    /// `ACCDATA_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct AccdataEl1: u64 {
+    }
+}
+
+impl AccdataEl1 {
+    /// Offset of the `ACCDATA` field.
+    pub const ACCDATA_SHIFT: u32 = 0;
+    /// Mask for the `ACCDATA` field.
+    pub const ACCDATA_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `ACCDATA` field.
+    pub const fn accdata(self) -> u32 {
+        (self.bits() >> Self::ACCDATA_SHIFT) as u32
+    }
+
+    /// Sets the value of the `ACCDATA` field.
+    pub const fn set_accdata(&mut self, value: u32) {
+        let offset = Self::ACCDATA_SHIFT;
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ACCDATA_MASK << offset))
+                | ((value as u64 & Self::ACCDATA_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ACCDATA` field set to the given value.
+    pub const fn with_accdata(mut self, value: u32) -> Self {
+        self.set_accdata(value);
+        self
+    }
+}
+
+bitflags! {
     /// `APIAKeyHi_EL1` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]

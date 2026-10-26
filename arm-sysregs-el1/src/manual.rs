@@ -6,9 +6,9 @@
 #[cfg(any(test, feature = "fakes", target_arch = "aarch64"))]
 use crate::accessors::read_mpidr_el1;
 use crate::registers::{
-    ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar0El1, IdAa64mmfr0El1,
-    IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1,
-    IdAa64pfr2El1, MpidrEl1, SpsrEl1,
+    ClidrEl1, CsselrEl1, EsrEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar0El1, IdAa64isar1El1,
+    IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1,
+    IdAa64pfr1El1, IdAa64pfr2El1, MpidrEl1, SpsrEl1,
 };
 use arm_sysregs_common::types::{CacheLevel, CacheType};
 use core::fmt::{self, Debug, Formatter};
@@ -115,6 +115,33 @@ impl IdAa64dfr1El1 {
     /// Indicates whether FEAT_EBEP is implemented.
     pub fn is_feat_ebep_present(self) -> bool {
         self.ebep() >= Self::EBEP_IMPLEMENTED
+    }
+}
+
+impl IdAa64isar1El1 {
+    const LS64_IMPLEMENTED: u8 = 0b0001;
+    const LS64_V_IMPLEMENTED: u8 = 0b0010;
+    const LS64_ACCDATA_IMPLEMENTED: u8 = 0b0011;
+    const LS64WB_IMPLEMENTED: u8 = 0b0100;
+
+    /// Indicates whether FEAT_LS64 is implemented.
+    pub fn is_feat_ls64_present(self) -> bool {
+        self.ls64() >= Self::LS64_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_LS64_V is implemented.
+    pub fn is_feat_ls64_v_present(self) -> bool {
+        self.ls64() >= Self::LS64_V_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_LS64_ACCDATA is implemented.
+    pub fn is_feat_ls64_accdata_present(self) -> bool {
+        self.ls64() >= Self::LS64_ACCDATA_IMPLEMENTED
+    }
+
+    /// Indicates whether FEAT_LS64WB is implemented.
+    pub fn is_feat_ls64wb_present(self) -> bool {
+        self.ls64() >= Self::LS64WB_IMPLEMENTED
     }
 }
 

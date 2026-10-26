@@ -1373,6 +1373,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!(
+        "accdata_el1 = {:?}",
+        arm_sysregs::el1::accessors::read_accdata_el1()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!(
         "actlr_el1 = {:?}",
         arm_sysregs::el1::accessors::read_actlr_el1()
     );
