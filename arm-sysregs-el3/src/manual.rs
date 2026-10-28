@@ -4,12 +4,19 @@
 //! Manually implemented methods for EL3 system register types.
 
 use crate::registers::{EsrEl3, MdcrEl3, SmcrEl3, SpsrEl3};
-use arm_sysregs_common::types::{ExceptionLevel, StackPointer};
+use arm_sysregs_common::types::{EsrIssSysreg, ExceptionLevel, StackPointer};
 use core::fmt::{self, Debug, Formatter};
 
 impl EsrEl3 {
-    /// Mask for the parts of an ESR value containing the opcode.
-    pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
+    /// Returns the value of the `ISS` field, as interpreted in the case of an exception from MSR,
+    /// MRS, or System instruction execution in AArch64 state.
+    pub const fn iss_sysreg(self) -> Option<EsrIssSysreg> {
+        if self.ec() == 0b01_1000 {
+            Some(EsrIssSysreg::from_bits_retain(self.iss()))
+        } else {
+            None
+        }
+    }
 }
 
 impl Debug for EsrEl3 {
@@ -104,9 +111,5 @@ mod tests {
     fn debug_esr_el3() {
         assert_eq!(format!("{:?}", EsrEl3::empty()), "EsrEl3(0x0)");
         assert_eq!(format!("{:?}", EsrEl3::IL), "EsrEl3(0x2000000)");
-        assert_eq!(
-            format!("{:?}", EsrEl3::ISS_SYSREG_OPCODE_MASK),
-            "EsrEl3(0x3ffc1e)"
-        );
     }
 }

@@ -93,6 +93,7 @@ dependencies = [
 name = "arm-sysregs-common"
 version = "0.5.1"
 dependencies = [
+ "bitflags",
  "num_enum",
  "pastey",
 ]

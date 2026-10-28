@@ -10,7 +10,7 @@ use crate::registers::{
     IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1, IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1,
     IdAa64pfr1El1, IdAa64pfr2El1, MpidrEl1, SpsrEl1,
 };
-use arm_sysregs_common::types::{CacheLevel, CacheType};
+use arm_sysregs_common::types::{CacheLevel, CacheType, EsrIssSysreg};
 use core::fmt::{self, Debug, Formatter};
 
 impl ClidrEl1 {
@@ -52,8 +52,15 @@ impl CsselrEl1 {
 }
 
 impl EsrEl1 {
-    /// Mask for the parts of an ESR value containing the opcode.
-    pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
+    /// Returns the value of the `ISS` field, as interpreted in the case of an exception from MSR,
+    /// MRS, or System instruction execution in AArch64 state.
+    pub const fn iss_sysreg(self) -> Option<EsrIssSysreg> {
+        if self.ec() == 0b01_1000 {
+            Some(EsrIssSysreg::from_bits_retain(self.iss()))
+        } else {
+            None
+        }
+    }
 }
 
 impl Debug for EsrEl1 {
@@ -500,9 +507,5 @@ mod tests {
     fn debug_esr_el1() {
         assert_eq!(format!("{:?}", EsrEl1::empty()), "EsrEl1(0x0)");
         assert_eq!(format!("{:?}", EsrEl1::IL), "EsrEl1(0x2000000)");
-        assert_eq!(
-            format!("{:?}", EsrEl1::ISS_SYSREG_OPCODE_MASK),
-            "EsrEl1(0x3ffc1e)"
-        );
     }
 }
