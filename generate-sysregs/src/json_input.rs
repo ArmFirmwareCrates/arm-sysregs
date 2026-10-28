@@ -349,24 +349,26 @@ impl AccessorDetails {
     }
 }
 
+static VALUE_PATTERN: LazyLock<Regex> = LazyLock::new(|| Regex::new("^'([01]+)'(?::|$)").unwrap());
+static INDEX_PATTERN: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new("^([a-z])\\[([0-9]+)\\](?::|$)").unwrap());
+static SLICE_PATTERN: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new("^([a-z])\\[([0-9]+):([0-9]+)\\](?::|$)").unwrap());
+
 fn parse_binary_value(
     value_entry: &ValueEntry,
     values: &BTreeMap<String, u32>,
 ) -> Result<u8, Report> {
-    let value_pattern = Regex::new("^'([01]+)'(?::|$)").unwrap();
-    let index_pattern = Regex::new("^([a-z])\\[([0-9]+)\\](?::|$)").unwrap();
-    let slice_pattern = Regex::new("^([a-z])\\[([0-9]+):([0-9]+)\\](?::|$)").unwrap();
-
     match value_entry {
         ValueEntry::Value(value) => Ok(u8::from_str_radix(value.value.trim_matches('\''), 2)?),
         ValueEntry::Group(group) => {
             let mut concatenated_value = String::new();
             let mut group_value: &str = &group.value;
             while !group_value.is_empty() {
-                if let Some(captures) = value_pattern.captures(group_value) {
+                if let Some(captures) = VALUE_PATTERN.captures(group_value) {
                     group_value = &group_value[captures.get_match().end()..];
                     concatenated_value += &captures[1];
-                } else if let Some(captures) = index_pattern.captures(group_value) {
+                } else if let Some(captures) = INDEX_PATTERN.captures(group_value) {
                     group_value = &group_value[captures.get_match().end()..];
                     let variable = &captures[1];
                     let bit_index = captures[2].parse::<u8>()?;
@@ -374,7 +376,7 @@ fn parse_binary_value(
                         .get(variable)
                         .ok_or_else(|| eyre!("Value {} not found", variable))?;
                     write!(concatenated_value, "{:01b}", (value >> bit_index) & 1).unwrap();
-                } else if let Some(captures) = slice_pattern.captures(group_value) {
+                } else if let Some(captures) = SLICE_PATTERN.captures(group_value) {
                     group_value = &group_value[captures.get_match().end()..];
                     let variable = &captures[1];
                     let high_index = captures[2].parse::<u8>()?;
