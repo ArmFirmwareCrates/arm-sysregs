@@ -211,6 +211,7 @@ impl IdAa64mmfr3El1 {
     const S2PIE_IMPLEMENTED: u8 = 0b0001;
     const S2POE_IMPLEMENTED: u8 = 0b0001;
     const SCTLR2_IMPLEMENTED: u8 = 0b0001;
+    const MEC_IMPLEMENTED: u8 = 0b0001;
 
     /// Indicates presence of FEAT_SCTLR2.
     pub fn is_feat_sctlr2_present(self) -> bool {
@@ -240,6 +241,11 @@ impl IdAa64mmfr3El1 {
     /// Indicates presence of FEAT_TCR2.
     pub fn is_feat_tcr2_present(self) -> bool {
         self.tcrx() >= Self::TCRX_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_MEC.
+    pub fn is_feat_mec_present(self) -> bool {
+        self.mec() >= Self::MEC_IMPLEMENTED
     }
 }
 

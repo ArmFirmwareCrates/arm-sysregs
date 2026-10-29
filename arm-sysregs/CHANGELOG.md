@@ -9,6 +9,7 @@
 - Added `is_*_present` for `FEAT_RNG` and `FEAT_RNG_TRAP`.
 - Added the ACCDATA_EL1 register.
 - Added `is_*_present` for `FEAT_LS64`, `FEAT_LS64_V`, `FEAT_LS64_ACCDATA` and `FEAT_LS64WB`.
+- Added `is_feat_mec_present`.
 
 ## 0.5.1
 
