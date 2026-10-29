@@ -514,6 +514,8 @@ description = "Guarded Control Stack Pointer register."
 [registers.GCSPR_EL2.field_descriptions]
 PTR = "Guarded Control Stack Pointer bits."
 
+[registers.GPCBW_EL3]
+
 [registers.GPCCR_EL3]
 [registers.GPCCR_EL3.types]
 SH = "arm_sysregs_common::types::Shareability"

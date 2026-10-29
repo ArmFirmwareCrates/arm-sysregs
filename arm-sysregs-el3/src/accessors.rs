@@ -13,6 +13,7 @@ use arm_sysregs_common::{read_sysreg, read_write_sysreg, write_sysreg};
 read_write_sysreg!(cptr_el3, u64: crate::registers::CptrEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(esr_el3, u64: crate::registers::EsrEl3, safe_read, safe_write, crate::fake::SYSREGS);
 read_write_sysreg!(fgwte3_el3: s3_6_c1_c1_5, u64: crate::registers::Fgwte3El3, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(gpcbw_el3: s3_6_c2_c1_5, u64: crate::registers::GpcbwEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gpccr_el3: s3_6_c2_c1_6, u64: crate::registers::GpccrEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gptbr_el3: s3_6_c2_c1_4, u64: crate::registers::GptbrEl3, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(icc_ctlr_el3: s3_6_c12_c12_4, u64: crate::registers::IccCtlrEl3, safe_read, safe_write, crate::fake::SYSREGS);

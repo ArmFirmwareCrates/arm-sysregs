@@ -4,9 +4,9 @@
 // This file is generated, do not edit manually.
 
 use crate::registers::{
-    CptrEl3, EsrEl3, Fgwte3El3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3, MairEl3,
-    MdcrEl3, Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, ScxtnumEl3, SmcrEl3, SpsrEl3,
-    TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
+    CptrEl3, EsrEl3, Fgwte3El3, GpcbwEl3, GpccrEl3, GptbrEl3, IccCtlrEl3, IccIgrpen1El3, IccSreEl3,
+    MairEl3, MdcrEl3, Mpam3El3, PirEl3, PorEl3, ScrEl3, Sctlr2El3, SctlrEl3, ScxtnumEl3, SmcrEl3,
+    SpsrEl3, TcrEl3, TpidrEl3, Ttbr0El3, ZcrEl3,
 };
 
 /// A set of fake system registers.
@@ -19,6 +19,8 @@ pub struct SystemRegisters {
     pub esr_el3: EsrEl3,
     /// Fake value for the `FGWTE3_EL3` system register.
     pub fgwte3_el3: Fgwte3El3,
+    /// Fake value for the `GPCBW_EL3` system register.
+    pub gpcbw_el3: GpcbwEl3,
     /// Fake value for the `GPCCR_EL3` system register.
     pub gpccr_el3: GpccrEl3,
     /// Fake value for the `GPTBR_EL3` system register.
@@ -67,6 +69,7 @@ impl SystemRegisters {
             cptr_el3: CptrEl3::empty(),
             esr_el3: EsrEl3::empty(),
             fgwte3_el3: Fgwte3El3::empty(),
+            gpcbw_el3: GpcbwEl3::empty(),
             gpccr_el3: GpccrEl3::empty(),
             gptbr_el3: GptbrEl3::empty(),
             icc_ctlr_el3: IccCtlrEl3::empty(),

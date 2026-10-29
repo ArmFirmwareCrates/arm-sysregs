@@ -236,6 +236,92 @@ impl Fgwte3El3 {
 }
 
 bitflags! {
+    /// `GPCBW_EL3` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct GpcbwEl3: u64 {
+    }
+}
+
+impl GpcbwEl3 {
+    /// Offset of the `BWADDR` field.
+    pub const BWADDR_SHIFT: u32 = 0;
+    /// Mask for the `BWADDR` field.
+    pub const BWADDR_MASK: u64 = 0b11_1111_1111_1111_1111_1111_1111;
+    /// Offset of the `BWSTRIDE` field.
+    pub const BWSTRIDE_SHIFT: u32 = 32;
+    /// Mask for the `BWSTRIDE` field.
+    pub const BWSTRIDE_MASK: u64 = 0b1_1111;
+    /// Offset of the `BWSIZE` field.
+    pub const BWSIZE_SHIFT: u32 = 37;
+    /// Mask for the `BWSIZE` field.
+    pub const BWSIZE_MASK: u64 = 0b111;
+
+    /// Returns the value of the `BWADDR` field.
+    pub const fn bwaddr(self) -> u32 {
+        mask_extend!(((self.bits() >> Self::BWADDR_SHIFT) as u32), 6)
+    }
+
+    /// Sets the value of the `BWADDR` field.
+    pub const fn set_bwaddr(&mut self, value: u32) {
+        let offset = Self::BWADDR_SHIFT;
+        assert!(mask_extend!(value, 6) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BWADDR_MASK << offset))
+                | ((value as u64 & Self::BWADDR_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `BWADDR` field set to the given value.
+    pub const fn with_bwaddr(mut self, value: u32) -> Self {
+        self.set_bwaddr(value);
+        self
+    }
+
+    /// Returns the value of the `BWSTRIDE` field.
+    pub const fn bwstride(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::BWSTRIDE_SHIFT) as u8), 3)
+    }
+
+    /// Sets the value of the `BWSTRIDE` field.
+    pub const fn set_bwstride(&mut self, value: u8) {
+        let offset = Self::BWSTRIDE_SHIFT;
+        assert!(mask_extend!(value, 3) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BWSTRIDE_MASK << offset))
+                | ((value as u64 & Self::BWSTRIDE_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `BWSTRIDE` field set to the given value.
+    pub const fn with_bwstride(mut self, value: u8) -> Self {
+        self.set_bwstride(value);
+        self
+    }
+
+    /// Returns the value of the `BWSIZE` field.
+    pub const fn bwsize(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::BWSIZE_SHIFT) as u8), 5)
+    }
+
+    /// Sets the value of the `BWSIZE` field.
+    pub const fn set_bwsize(&mut self, value: u8) {
+        let offset = Self::BWSIZE_SHIFT;
+        assert!(mask_extend!(value, 5) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BWSIZE_MASK << offset))
+                | ((value as u64 & Self::BWSIZE_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `BWSIZE` field set to the given value.
+    pub const fn with_bwsize(mut self, value: u8) -> Self {
+        self.set_bwsize(value);
+        self
+    }
+}
+
+bitflags! {
     /// `GPCCR_EL3` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]

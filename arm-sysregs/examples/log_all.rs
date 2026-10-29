@@ -2387,6 +2387,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
     info!(
+        "gpcbw_el3 = {:?}",
+        arm_sysregs::el3::accessors::read_gpcbw_el3()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el3"))]
+    info!(
         "gpccr_el3 = {:?}",
         arm_sysregs::el3::accessors::read_gpccr_el3()
     );
