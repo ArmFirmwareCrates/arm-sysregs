@@ -69,10 +69,14 @@ read_write_sysreg!(esr_el2, u64: crate::registers::EsrEl2, safe_read, safe_write
 read_write_sysreg!(far_el2, u64: crate::registers::FarEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gcscr_el2: s3_4_c2_c5_0, u64: crate::registers::GcscrEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(gcspr_el2: s3_4_c2_c5_1, u64: crate::registers::GcsprEl2, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(hacdbsbr_el2: s3_4_c2_c3_4, u64: crate::registers::HacdbsbrEl2, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(hacdbscons_el2: s3_4_c2_c3_5, u64: crate::registers::HacdbsconsEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hacr_el2, u64, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hafgrtr_el2: s3_4_c3_c1_6, u64: crate::registers::HafgrtrEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hcrx_el2: s3_4_c1_c2_2, u64: crate::registers::HcrxEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hcr_el2, u64: crate::registers::HcrEl2, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(hdbssbr_el2: s3_4_c2_c3_2, u64: crate::registers::HdbssbrEl2, safe_read, crate::fake::SYSREGS);
+read_write_sysreg!(hdbssprod_el2: s3_4_c2_c3_3, u64: crate::registers::HdbssprodEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hdfgrtr2_el2: s3_4_c3_c1_0, u64: crate::registers::Hdfgrtr2El2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hdfgrtr_el2: s3_4_c3_c1_4, u64: crate::registers::HdfgrtrEl2, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(hdfgwtr2_el2: s3_4_c3_c1_1, u64: crate::registers::Hdfgwtr2El2, safe_read, crate::fake::SYSREGS);

@@ -2100,6 +2100,16 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!(
+        "hacdbsbr_el2 = {:?}",
+        arm_sysregs::el2::accessors::read_hacdbsbr_el2()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "hacdbscons_el2 = {:?}",
+        arm_sysregs::el2::accessors::read_hacdbscons_el2()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
         "hacr_el2 = {:?}",
         arm_sysregs::el2::accessors::read_hacr_el2()
     );
@@ -2117,6 +2127,16 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     info!(
         "hcr_el2 = {:?}",
         arm_sysregs::el2::accessors::read_hcr_el2()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "hdbssbr_el2 = {:?}",
+        arm_sysregs::el2::accessors::read_hdbssbr_el2()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
+    info!(
+        "hdbssprod_el2 = {:?}",
+        arm_sysregs::el2::accessors::read_hdbssprod_el2()
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el2"))]
     info!(

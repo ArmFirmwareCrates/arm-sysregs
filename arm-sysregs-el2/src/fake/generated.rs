@@ -13,13 +13,14 @@ use crate::registers::{
     Amevcntvoff114El2, Amevcntvoff115El2, BrbcrEl2, CnthctlEl2, CnthpCtlEl2, CnthpCvalEl2,
     CnthpTvalEl2, CnthpsCtlEl2, CnthpsCvalEl2, CnthpsTvalEl2, CnthvCtlEl2, CnthvCvalEl2,
     CnthvTvalEl2, CnthvsCtlEl2, CnthvsCvalEl2, CnthvsTvalEl2, CntpoffEl2, CntvoffEl2,
-    ContextidrEl2, CptrEl2, ElrEl2, EsrEl2, FarEl2, GcscrEl2, GcsprEl2, HafgrtrEl2, HcrEl2,
-    HcrxEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2, HdfgwtrEl2, Hfgitr2El2, HfgitrEl2, Hfgrtr2El2,
-    HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2, IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2,
-    Mpam2El2, MpamhcrEl2, Mpamvpm0El2, Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2,
-    Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2, MpamvpmvEl2, PfarEl2, PirEl2, Pire0El2, PorEl2,
-    S2pirEl2, Sctlr2El2, SctlrEl2, ScxtnumEl2, SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2,
-    Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2, VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
+    ContextidrEl2, CptrEl2, ElrEl2, EsrEl2, FarEl2, GcscrEl2, GcsprEl2, HacdbsbrEl2, HacdbsconsEl2,
+    HafgrtrEl2, HcrEl2, HcrxEl2, HdbssbrEl2, HdbssprodEl2, Hdfgrtr2El2, HdfgrtrEl2, Hdfgwtr2El2,
+    HdfgwtrEl2, Hfgitr2El2, HfgitrEl2, Hfgrtr2El2, HfgrtrEl2, Hfgwtr2El2, HfgwtrEl2, HpfarEl2,
+    IccSreEl2, IchHcrEl2, IchVmcrEl2, MairEl2, MdcrEl2, Mpam2El2, MpamhcrEl2, Mpamvpm0El2,
+    Mpamvpm1El2, Mpamvpm2El2, Mpamvpm3El2, Mpamvpm4El2, Mpamvpm5El2, Mpamvpm6El2, Mpamvpm7El2,
+    MpamvpmvEl2, PfarEl2, PirEl2, Pire0El2, PorEl2, S2pirEl2, Sctlr2El2, SctlrEl2, ScxtnumEl2,
+    SpEl2, SpsrEl2, Tcr2El2, TcrEl2, TfsrEl2, TpidrEl2, Ttbr0El2, Ttbr1El2, VbarEl2, VdisrEl2,
+    VmpidrEl2, VpidrEl2, VsesrEl2, VtcrEl2, VttbrEl2,
 };
 
 /// A set of fake system registers.
@@ -144,6 +145,10 @@ pub struct SystemRegisters {
     pub gcscr_el2: GcscrEl2,
     /// Fake value for the `GCSPR_EL2` system register.
     pub gcspr_el2: GcsprEl2,
+    /// Fake value for the `HACDBSBR_EL2` system register.
+    pub hacdbsbr_el2: HacdbsbrEl2,
+    /// Fake value for the `HACDBSCONS_EL2` system register.
+    pub hacdbscons_el2: HacdbsconsEl2,
     /// Fake value for the `HACR_EL2` system register.
     pub hacr_el2: u64,
     /// Fake value for the `HAFGRTR_EL2` system register.
@@ -152,6 +157,10 @@ pub struct SystemRegisters {
     pub hcrx_el2: HcrxEl2,
     /// Fake value for the `HCR_EL2` system register.
     pub hcr_el2: HcrEl2,
+    /// Fake value for the `HDBSSBR_EL2` system register.
+    pub hdbssbr_el2: HdbssbrEl2,
+    /// Fake value for the `HDBSSPROD_EL2` system register.
+    pub hdbssprod_el2: HdbssprodEl2,
     /// Fake value for the `HDFGRTR2_EL2` system register.
     pub hdfgrtr2_el2: Hdfgrtr2El2,
     /// Fake value for the `HDFGRTR_EL2` system register.
@@ -318,10 +327,14 @@ impl SystemRegisters {
             far_el2: FarEl2::empty(),
             gcscr_el2: GcscrEl2::empty(),
             gcspr_el2: GcsprEl2::empty(),
+            hacdbsbr_el2: HacdbsbrEl2::empty(),
+            hacdbscons_el2: HacdbsconsEl2::empty(),
             hacr_el2: 0,
             hafgrtr_el2: HafgrtrEl2::empty(),
             hcrx_el2: HcrxEl2::empty(),
             hcr_el2: HcrEl2::empty(),
+            hdbssbr_el2: HdbssbrEl2::empty(),
+            hdbssprod_el2: HdbssprodEl2::empty(),
             hdfgrtr2_el2: Hdfgrtr2El2::empty(),
             hdfgrtr_el2: HdfgrtrEl2::empty(),
             hdfgwtr2_el2: Hdfgwtr2El2::empty(),

@@ -161,11 +161,35 @@ impl IdAa64mmfr0El1 {
 }
 
 impl IdAa64mmfr1El1 {
+    const HAF_IMPLEMENTED: u8 = 0b0001;
+    const HAFDBS_IMPLEMENTED: u8 = 0b0010;
+    const HAFT_IMPLEMENTED: u8 = 0b0011;
+    const HDBSS_IMPLEMENTED: u8 = 0b0100;
     const VH_IMPLEMENTED: u8 = 0b0001;
     const HCX_IMPLEMENTED: u8 = 0b0001;
     const PAN_IMPLEMENTED: u8 = 0b0001;
     const PAN2_IMPLEMENTED: u8 = 0b0010;
     const PAN3_IMPLEMENTED: u8 = 0b0011;
+
+    /// Indicates presence of FEAT_HAF.
+    pub fn is_feat_haf_present(self) -> bool {
+        self.hafdbs() >= Self::HAF_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_HAFDBS.
+    pub fn is_feat_hafdbs_present(self) -> bool {
+        self.hafdbs() >= Self::HAFDBS_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_HAFT.
+    pub fn is_feat_haft_present(self) -> bool {
+        self.hafdbs() >= Self::HAFT_IMPLEMENTED
+    }
+
+    /// Indicates presence of FEAT_HDBSS.
+    pub fn is_feat_hdbss_present(self) -> bool {
+        self.hafdbs() >= Self::HDBSS_IMPLEMENTED
+    }
 
     /// Indicates presence of FEAT_VHE.
     pub fn is_feat_vhe_present(self) -> bool {
@@ -250,8 +274,14 @@ impl IdAa64mmfr3El1 {
 }
 
 impl IdAa64mmfr4El1 {
+    const HACDBS_IMPLEMENTED: u8 = 0b0001;
     const FGWTE3_IMPLEMENTED: u8 = 0b0001;
     const RME_GDI_IMPLEMENTED: u8 = 0b0001;
+
+    /// Indicates whether FEAT_HACDBS is implemented.
+    pub fn is_feat_hacdbs_present(self) -> bool {
+        self.hacdbs() >= Self::HACDBS_IMPLEMENTED
+    }
 
     /// Indicates whether FEAT_FGWTE3 is implemented.
     pub fn is_feat_fgwte3_present(self) -> bool {

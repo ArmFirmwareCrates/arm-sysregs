@@ -907,6 +907,130 @@ impl GcsprEl2 {
 }
 
 bitflags! {
+    /// `HACDBSBR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HacdbsbrEl2: u64 {
+        /// `EN` bit.
+        const EN = 1 << 11;
+    }
+}
+
+impl HacdbsbrEl2 {
+    /// Offset of the `SZ` field.
+    pub const SZ_SHIFT: u32 = 0;
+    /// Mask for the `SZ` field.
+    pub const SZ_MASK: u64 = 0b1111;
+    /// Offset of the `EN` field.
+    pub const EN_SHIFT: u32 = 11;
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 12;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `SZ` field.
+    pub const fn sz(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::SZ_SHIFT) as u8), 4)
+    }
+
+    /// Sets the value of the `SZ` field.
+    pub const fn set_sz(&mut self, value: u8) {
+        let offset = Self::SZ_SHIFT;
+        assert!(mask_extend!(value, 4) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SZ_MASK << offset)) | ((value as u64 & Self::SZ_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `SZ` field set to the given value.
+    pub const fn with_sz(mut self, value: u8) -> Self {
+        self.set_sz(value);
+        self
+    }
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        (self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK
+    }
+
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & Self::BADDR_MASK == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `HACDBSCONS_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HacdbsconsEl2: u64 {
+    }
+}
+
+impl HacdbsconsEl2 {
+    /// Offset of the `INDEX` field.
+    pub const INDEX_SHIFT: u32 = 0;
+    /// Mask for the `INDEX` field.
+    pub const INDEX_MASK: u64 = 0b111_1111_1111_1111_1111;
+    /// Offset of the `ERR_REASON` field.
+    pub const ERR_REASON_SHIFT: u32 = 62;
+    /// Mask for the `ERR_REASON` field.
+    pub const ERR_REASON_MASK: u64 = 0b11;
+
+    /// Returns the value of the `INDEX` field.
+    pub const fn index(self) -> u32 {
+        mask_extend!(((self.bits() >> Self::INDEX_SHIFT) as u32), 13)
+    }
+
+    /// Sets the value of the `INDEX` field.
+    pub const fn set_index(&mut self, value: u32) {
+        let offset = Self::INDEX_SHIFT;
+        assert!(mask_extend!(value, 13) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INDEX_MASK << offset))
+                | ((value as u64 & Self::INDEX_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `INDEX` field set to the given value.
+    pub const fn with_index(mut self, value: u32) -> Self {
+        self.set_index(value);
+        self
+    }
+
+    /// Returns the value of the `ERR_REASON` field.
+    pub const fn err_reason(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::ERR_REASON_SHIFT) as u8), 6)
+    }
+
+    /// Sets the value of the `ERR_REASON` field.
+    pub const fn set_err_reason(&mut self, value: u8) {
+        let offset = Self::ERR_REASON_SHIFT;
+        assert!(mask_extend!(value, 6) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::ERR_REASON_MASK << offset))
+                | ((value as u64 & Self::ERR_REASON_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `ERR_REASON` field set to the given value.
+    pub const fn with_err_reason(mut self, value: u8) -> Self {
+        self.set_err_reason(value);
+        self
+    }
+}
+
+bitflags! {
     /// `HAFGRTR_EL2` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]
@@ -1369,6 +1493,126 @@ impl HcrEl2 {
     /// Returns a copy with the `TWEDEL` field set to the given value.
     pub const fn with_twedel(mut self, value: u8) -> Self {
         self.set_twedel(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `HDBSSBR_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HdbssbrEl2: u64 {
+    }
+}
+
+impl HdbssbrEl2 {
+    /// Offset of the `SZ` field.
+    pub const SZ_SHIFT: u32 = 0;
+    /// Mask for the `SZ` field.
+    pub const SZ_MASK: u64 = 0b1111;
+    /// Offset of the `BADDR` field.
+    pub const BADDR_SHIFT: u32 = 12;
+    /// Mask for the `BADDR` field.
+    pub const BADDR_MASK: u64 = 0b1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111;
+
+    /// Returns the value of the `SZ` field.
+    pub const fn sz(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::SZ_SHIFT) as u8), 4)
+    }
+
+    /// Sets the value of the `SZ` field.
+    pub const fn set_sz(&mut self, value: u8) {
+        let offset = Self::SZ_SHIFT;
+        assert!(mask_extend!(value, 4) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::SZ_MASK << offset)) | ((value as u64 & Self::SZ_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `SZ` field set to the given value.
+    pub const fn with_sz(mut self, value: u8) -> Self {
+        self.set_sz(value);
+        self
+    }
+
+    /// Returns the value of the `BADDR` field.
+    pub const fn baddr(self) -> u64 {
+        (self.bits() >> Self::BADDR_SHIFT) & Self::BADDR_MASK
+    }
+
+    /// Sets the value of the `BADDR` field.
+    pub const fn set_baddr(&mut self, value: u64) {
+        let offset = Self::BADDR_SHIFT;
+        assert!(value & Self::BADDR_MASK == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BADDR_MASK << offset)) | (value << offset),
+        );
+    }
+
+    /// Returns a copy with the `BADDR` field set to the given value.
+    pub const fn with_baddr(mut self, value: u64) -> Self {
+        self.set_baddr(value);
+        self
+    }
+}
+
+bitflags! {
+    /// `HDBSSPROD_EL2` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct HdbssprodEl2: u64 {
+    }
+}
+
+impl HdbssprodEl2 {
+    /// Offset of the `INDEX` field.
+    pub const INDEX_SHIFT: u32 = 0;
+    /// Mask for the `INDEX` field.
+    pub const INDEX_MASK: u64 = 0b111_1111_1111_1111_1111;
+    /// Offset of the `FSC` field.
+    pub const FSC_SHIFT: u32 = 26;
+    /// Mask for the `FSC` field.
+    pub const FSC_MASK: u64 = 0b11_1111;
+
+    /// Returns the value of the `INDEX` field.
+    pub const fn index(self) -> u32 {
+        mask_extend!(((self.bits() >> Self::INDEX_SHIFT) as u32), 13)
+    }
+
+    /// Sets the value of the `INDEX` field.
+    pub const fn set_index(&mut self, value: u32) {
+        let offset = Self::INDEX_SHIFT;
+        assert!(mask_extend!(value, 13) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::INDEX_MASK << offset))
+                | ((value as u64 & Self::INDEX_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `INDEX` field set to the given value.
+    pub const fn with_index(mut self, value: u32) -> Self {
+        self.set_index(value);
+        self
+    }
+
+    /// Returns the value of the `FSC` field.
+    pub const fn fsc(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::FSC_SHIFT) as u8), 2)
+    }
+
+    /// Sets the value of the `FSC` field.
+    pub const fn set_fsc(&mut self, value: u8) {
+        let offset = Self::FSC_SHIFT;
+        assert!(mask_extend!(value, 2) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::FSC_MASK << offset))
+                | ((value as u64 & Self::FSC_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `FSC` field set to the given value.
+    pub const fn with_fsc(mut self, value: u8) -> Self {
+        self.set_fsc(value);
         self
     }
 }
