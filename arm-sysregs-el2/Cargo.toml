@@ -33,11 +33,5 @@ aarch64-rt = { workspace = true }
 [features]
 fakes = ["arm-sysregs-common/fakes", "arm-sysregs-el1/fakes"]
 
-[lints.clippy]
-missing_safety_doc = "deny"
-undocumented_unsafe_blocks = "deny"
-unreadable_literal = "deny"
-
-[lints.rust]
-missing_docs = "deny"
-unsafe_op_in_unsafe_fn = "deny"
+[lints]
+workspace = true

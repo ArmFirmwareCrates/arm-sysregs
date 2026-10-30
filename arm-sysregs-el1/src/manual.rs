@@ -18,7 +18,7 @@ impl ClidrEl1 {
     pub fn icb_level(self) -> Option<CacheLevel> {
         let icb = self.icb();
         if icb != 0 {
-            Some(CacheLevel(icb as u8))
+            Some(CacheLevel(icb))
         } else {
             None
         }
@@ -26,7 +26,7 @@ impl ClidrEl1 {
 
     /// Returns Cache Type [1-7] fields.
     pub fn cache_type(self, level: CacheLevel) -> CacheType {
-        self.ctype(level.level().into()).try_into().unwrap()
+        self.ctype(level.level().into())
     }
 }
 

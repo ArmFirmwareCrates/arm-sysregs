@@ -24,3 +24,14 @@ arm-sysregs-el2 = { version = "=0.5.1", path = "arm-sysregs-el2" }
 arm-sysregs-el3 = { version = "=0.5.1", path = "arm-sysregs-el3" }
 bitflags = "2.13.2"
 log = "0.4.34"
+
+[workspace.lints.clippy]
+len_without_is_empty = "allow"
+manual_range_contains = "allow"
+missing_safety_doc = "deny"
+undocumented_unsafe_blocks = "deny"
+unreadable_literal = "deny"
+
+[workspace.lints.rust]
+missing_docs = "deny"
+unsafe_op_in_unsafe_fn = "deny"
