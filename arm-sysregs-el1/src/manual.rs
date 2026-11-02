@@ -52,6 +52,9 @@ impl CsselrEl1 {
 }
 
 impl EsrEl1 {
+    /// Mask for the parts of an ESR value containing the opcode.
+    pub const ISS_SYSREG_OPCODE_MASK: Self = Self::from_bits_retain(0x003f_fc1e);
+
     /// Returns the value of the `ISS` field, as interpreted in the case of an exception from MSR,
     /// MRS, or System instruction execution in AArch64 state.
     pub const fn iss_sysreg(self) -> Option<EsrIssSysreg> {

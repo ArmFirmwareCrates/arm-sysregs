@@ -15,6 +15,8 @@
 - Added `is_*_present` for `FEAT_HACDBS`.
 - Added the HDBSSBR_EL2 and HDBSSPROD_EL2 registers.
 - Added `is_*_present` for `FEAT_HAF`, `FEAT_HAFDBS`, `FEAT_HAFT` and `FEAT_HDBSS`.
+- Added `EsrIssSysreg` and `EsrEl*::iss_sysreg()` to decode trapped system register accesses,
+  including the system register ID, `Rt`, and read/write direction.
 
 ## 0.5.1
 
