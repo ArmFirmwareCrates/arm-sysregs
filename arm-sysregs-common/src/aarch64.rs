@@ -104,7 +104,7 @@ macro_rules! read_sysreg {
         $crate::read_sysreg!($sysreg : $sysreg, $type : $bitflags_type, safe $(, $fake_sysregs)?);
     };
     ($(#[$attributes:meta])* $sysreg:ident, $type:ty : $bitflags_type:ty $(, $fake_sysregs:expr)?) => {
-        $crate::read_sysreg($(#[$attributes])* $sysreg : $sysreg, $type : $bitflags_type $(, $fake_sysregs)?);
+        $crate::read_sysreg!($(#[$attributes])* $sysreg : $sysreg, $type : $bitflags_type $(, $fake_sysregs)?);
     };
 }
 
