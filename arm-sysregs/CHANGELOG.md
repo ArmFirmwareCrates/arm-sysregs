@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### New features
+
+ - Added `IdAa64dfr0El1::is_feat_debugv8p9_present` and `MDSELR_EL1`.
+
 ## 0.5.2
 
 ### New features

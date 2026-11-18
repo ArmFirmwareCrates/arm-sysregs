@@ -714,6 +714,9 @@ EnPMS3 = "Enable access to SPE registers. When disabled, accesses to SPE registe
 [registers.MDSCR_EL1]
 write = "safe"
 
+[registers.MDSELR_EL1]
+write = "safe"
+
 [registers.MIDR_EL1]
 [registers.MPAM2_EL2]
 

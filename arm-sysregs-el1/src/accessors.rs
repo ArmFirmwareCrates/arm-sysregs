@@ -80,6 +80,7 @@ read_sysreg!(isr_el1, u64: crate::registers::IsrEl1, safe, crate::fake::SYSREGS)
 read_write_sysreg!(mair_el1, u64: crate::registers::MairEl1, safe_read, crate::fake::SYSREGS);
 read_write_sysreg!(mdccint_el1, u64: crate::registers::MdccintEl1, safe_read, safe_write, crate::fake::SYSREGS);
 read_write_sysreg!(mdscr_el1, u64: crate::registers::MdscrEl1, safe_read, safe_write, crate::fake::SYSREGS);
+read_write_sysreg!(mdselr_el1: s2_0_c0_c4_2, u64: crate::registers::MdselrEl1, safe_read, safe_write, crate::fake::SYSREGS);
 read_sysreg!(midr_el1, u64: crate::registers::MidrEl1, safe, crate::fake::SYSREGS);
 read_sysreg!(mpamidr_el1: s3_0_c10_c4_4, u64: crate::registers::MpamidrEl1, safe, crate::fake::SYSREGS);
 read_sysreg!(mpidr_el1, u64: crate::registers::MpidrEl1, safe, crate::fake::SYSREGS);

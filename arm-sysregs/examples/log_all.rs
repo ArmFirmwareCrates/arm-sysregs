@@ -1693,6 +1693,11 @@ fn entry(_: u64, _: u64, _: u64, _: u64) -> ! {
     );
     #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
     info!(
+        "mdselr_el1 = {:?}",
+        arm_sysregs::el1::accessors::read_mdselr_el1()
+    );
+    #[cfg(all(any(test, feature = "fakes", target_arch = "aarch64"), feature = "el1"))]
+    info!(
         "midr_el1 = {:?}",
         arm_sysregs::el1::accessors::read_midr_el1()
     );

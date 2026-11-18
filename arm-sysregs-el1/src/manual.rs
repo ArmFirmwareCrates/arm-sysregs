@@ -80,6 +80,12 @@ impl IdAa64dfr0El1 {
     const MTPMU_IMPLEMENTED: u8 = 0b0001;
     const BRBE_IMPLEMENTED: u8 = 0b0001;
     const BRBEV1P1_IMPLEMENTED: u8 = 0b0010;
+    const DEBUGV8P9_IMPLEMENTED: u8 = 0b1011;
+
+    /// Indicates whether FEAT_DEBUGv8p9 is supported.
+    pub fn is_feat_debugv8p9_present(self) -> bool {
+        self.debugver() >= Self::DEBUGV8P9_IMPLEMENTED
+    }
 
     /// Indicates whether FEAT_BRBE is supported.
     pub fn is_feat_brbe_present(self) -> bool {

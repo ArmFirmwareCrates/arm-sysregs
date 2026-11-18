@@ -7261,6 +7261,42 @@ impl MdscrEl1 {
 }
 
 bitflags! {
+    /// `MDSELR_EL1` system register value.
+    #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+    #[repr(transparent)]
+    pub struct MdselrEl1: u64 {
+    }
+}
+
+impl MdselrEl1 {
+    /// Offset of the `BANK` field.
+    pub const BANK_SHIFT: u32 = 4;
+    /// Mask for the `BANK` field.
+    pub const BANK_MASK: u64 = 0b11;
+
+    /// Returns the value of the `BANK` field.
+    pub const fn bank(self) -> u8 {
+        mask_extend!(((self.bits() >> Self::BANK_SHIFT) as u8), 6)
+    }
+
+    /// Sets the value of the `BANK` field.
+    pub const fn set_bank(&mut self, value: u8) {
+        let offset = Self::BANK_SHIFT;
+        assert!(mask_extend!(value, 6) == value);
+        *self = Self::from_bits_retain(
+            (self.bits() & !(Self::BANK_MASK << offset))
+                | ((value as u64 & Self::BANK_MASK) << offset),
+        );
+    }
+
+    /// Returns a copy with the `BANK` field set to the given value.
+    pub const fn with_bank(mut self, value: u8) -> Self {
+        self.set_bank(value);
+        self
+    }
+}
+
+bitflags! {
     /// `MIDR_EL1` system register value.
     #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
     #[repr(transparent)]

@@ -12,9 +12,9 @@ use crate::registers::{
     IccSgi0rEl1, IccSgi1rEl1, IccSreEl1, IdAa64dfr0El1, IdAa64dfr1El1, IdAa64isar0El1,
     IdAa64isar1El1, IdAa64isar2El1, IdAa64isar3El1, IdAa64mmfr0El1, IdAa64mmfr1El1, IdAa64mmfr2El1,
     IdAa64mmfr3El1, IdAa64mmfr4El1, IdAa64pfr0El1, IdAa64pfr1El1, IdAa64pfr2El1, IdAa64smfr0El1,
-    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1, PfarEl1, PirEl1,
-    Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1, ScxtnumEl1, SpEl1, SpsrEl1, Tcr2El1,
-    TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
+    IsrEl1, MairEl1, MdccintEl1, MdscrEl1, MdselrEl1, MidrEl1, MpamidrEl1, MpidrEl1, ParEl1,
+    PfarEl1, PirEl1, Pire0El1, PorEl1, RgsrEl1, S2porEl1, Sctlr2El1, SctlrEl1, ScxtnumEl1, SpEl1,
+    SpsrEl1, Tcr2El1, TcrEl1, TfsrEl1, Tfsre0El1, TpidrEl1, Ttbr0El1, Ttbr1El1, VbarEl1,
 };
 
 /// A set of fake system registers.
@@ -161,6 +161,8 @@ pub struct SystemRegisters {
     pub mdccint_el1: MdccintEl1,
     /// Fake value for the `MDSCR_EL1` system register.
     pub mdscr_el1: MdscrEl1,
+    /// Fake value for the `MDSELR_EL1` system register.
+    pub mdselr_el1: MdselrEl1,
     /// Fake value for the `MIDR_EL1` system register.
     pub midr_el1: MidrEl1,
     /// Fake value for the `MPAMIDR_EL1` system register.
@@ -282,6 +284,7 @@ impl SystemRegisters {
             mair_el1: MairEl1::empty(),
             mdccint_el1: MdccintEl1::empty(),
             mdscr_el1: MdscrEl1::empty(),
+            mdselr_el1: MdselrEl1::empty(),
             midr_el1: MidrEl1::empty(),
             mpamidr_el1: MpamidrEl1::empty(),
             mpidr_el1: MpidrEl1::empty(),
